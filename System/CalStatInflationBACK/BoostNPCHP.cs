@@ -28,9 +28,10 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                     GoozmaBoss = FuckGoozma.Type;
             }
         }
-        public override bool PreAI(NPC npc)
+
+        public override void OnSpawn(NPC npc, IEntitySource source)
         {
-            if (CIServerConfig.Instance.CalStatInflationBACK && FirstFrame)
+            if (CIServerConfig.Instance.CalStatInflationBACK)
             {
                 SetWarthofGods(npc);
                 if (CalamityInheritanceLists.PostMLBoss.Contains(npc.type))
@@ -86,12 +87,10 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                     npc.defense = (int)(npc.defense * 1.2f);
                 }
                 npc.netUpdate = true;
-                FirstFrame = false;
             }
-            return false;
         }
 
-        private void SetWarthofGods(NPC npc)
+        public void SetWarthofGods(NPC npc)
         {
             //暗神的两个阶段血量与npc独立
             string noxusP1 = "AvatarRift";

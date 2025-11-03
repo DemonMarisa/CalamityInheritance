@@ -1,63 +1,65 @@
-﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+﻿using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.MiscItem;
+using CalamityInheritance.Content.Items.Placeables.Relic;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.Core;
 using CalamityInheritance.NPCs.Boss.SCAL.ArenaTile;
+using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
+using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
+using CalamityInheritance.NPCs.TownNPC;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.Potions;
+using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Events;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Mounts;
-using CalamityMod.Particles;
-using CalamityMod.World;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.GameContent.Bestiary;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
-using CalamityInheritance.NPCs.Boss.SCAL.Proj;
-using CalamityInheritance.NPCs.TownNPC;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityMod.Items.Pets;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
+using CalamityMod.Items.Potions;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Placeables.Relic;
-using CalamityMod.Items.Potions;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityMod.NPCs;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
-using Terraria.GameContent.ItemDropRules;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Core;
-using CalamityMod.Items.LoreItems;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Pets;
+using CalamityMod.Projectiles.Rogue;
+using CalamityMod.World;
+using LAP.Core.MusicEvent;
 using log4net.Core;
-using CalamityMod.NPCs;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.IO;
-using CalamityInheritance.Content.Items.MiscItem;
-using CalamityMod.Buffs.Potions;
-using CalamityInheritance.Buffs.Potions;
-using CalamityMod.Buffs.StatBuffs;
-using CalamityMod.Buffs.DamageOverTime;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL
 {
@@ -1910,6 +1912,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (!BossRushEvent.BossRushActive)
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y + 12, ModContent.NPCType<CalamitasNPCLegacy>());
 
+            if (!CIDownedBossSystem.DownedLegacyScal)
+            {
+                MusicEventManger.AddMusicEventEntry("CalamityModMusic/Sounds/Music/Interlude3", TimeSpan.FromSeconds(295.532d), () => CIConfig.Instance.Scal, TimeSpan.FromSeconds(5d));
+            }
             // Mark Calamitas as defeated
             CIDownedBossSystem.DownedLegacyScal = true;
             CalamityNetcode.SyncWorld();

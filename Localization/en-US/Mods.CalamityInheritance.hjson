@@ -92,17 +92,17 @@ Configs: {
 
 		Tyrant1: {
 			Label: "[i:CalamityInheritance/TyrantPart1]Post-Yharon Custom Music"
-			Tooltip: Player custom mod music after Yharon fight
+			Tooltip: Player TyrantPart1 after Jungle Dragon - Yharon fight
 		}
 
 		Exomechs: {
 			Label: "[i:CalamityInheritance/RequiemsOfACruelWorld]Post-Exo Music Event"
-			Tooltip: '''Replaced post-Exo music with custom mod music	'''
+			Tooltip: Player RequiemsOfACruelWorld after Exo Mech fight
 		}
 
 		Scal: {
 			Label: "[i:CalamityModMusic/Interlude3MusicBox]Post-SCal Music Event"
-			Tooltip: Replaced post-SCal music with custom mod music
+			Tooltip: Player Interlude3 after Supreme Calamitas fight
 		}
 
 		DoGLegacyMusic: {
@@ -227,6 +227,11 @@ Configs: {
 		Debugint4: {
 			Label: Debugint4
 			Tooltip: ""
+		}
+
+		CalClone: {
+			Label: "[i:CalamityModMusic/Interlude1MusicBox]Slience Before The Storms"
+			Tooltip: Player Interlude1 after Calamitas Clone Legacy fight
 		}
 	}
 
@@ -614,10 +619,7 @@ Configs: {
 				Additionally, some Post-DoG recipes will be modified as a result of this global change. 
 				Be sure to consult the Recipe Browser for full details.
 				Recipe Change:
-				[i:CalamityMod/AscendantSpiritEssence]Ascendant Spirit Essence: removed Darksun Fragment 
-				[i:CalamityInheritance/SilvaHeadMelee]Silva Sets: removed Ascendant Spirit Essence, add Darksun Fragment
-				[i:CalamityMod/TeslaCannon]Draedons Asrenal: removed Ascendant Spirit Essence, add Darksun Fragment
-				[i:CalamityMod/AuricBar]Some Auric Weapon: removed Auric Bar, add Darksun Fragment
+				[i:CalamityMod/AscendantSpiritEssence]Ascendant Spirit Essence can be used with crafting recipes that do not include Darksun Fragment
 				'''
 		}
 
@@ -650,8 +652,13 @@ Configs: {
 		}
 
 		CalSIBEOtherMod: {
-			Label: Cal S I B E Other Mod
-			Tooltip: ""
+			Label: "[i:Zenith]Brings back stat bloat can affect other mod"
+			Tooltip: Experimental options, enable with caution
+		}
+
+		MarkSameBossDown: {
+			Label: Defeating the Legacy Boss also marks the Calamity Boss as defeated.
+			Tooltip: defeating the Calamitas Clone [Legacy] and Jungle Dragon - Yharon will also mark the status of the Calamitas Clone and Yharon, Dragon of Rebirth as defeated.
 		}
 	}
 }

@@ -3,6 +3,7 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -80,10 +81,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Vector2 offset = new Vector2(OffsetX, OffsetY * player.direction).RotatedBy(Projectile.rotation);
             Projectile.Center = playerHandPos + offset;
 
-            Projectile.spriteDirection = Projectile.direction;
+            Projectile.spriteDirection = Owner.direction;
+            float rot = Projectile.rotation - MathHelper.PiOver4 - MathHelper.PiOver4 * (Owner.direction + 1);
+            Owner.SetCompositeArmBack(true, Player.CompositeArmStretchAmount.Full, rot);
+            Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rot);
 
-
-            player.ChangeDir(Main.MouseWorld.X - player.Center.X > 0 ? 1 : -1);
+            player.ChangeDir(Owner.LocalMouseWorld().X - player.Center.X > 0 ? 1 : -1);
             player.heldProj = Projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
@@ -93,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 
         public virtual void UpdateAim(Vector2 source, float speed)
         {
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;
@@ -163,7 +166,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Vector2 glowRotationPoint = Glowtexture.Size() / 2f;
             //进行渐变
             Color setColor = Color.White;
-            setColor.A = (byte)(255 / 20f * GlowingFadingTimer);
+            setColor.A = (byte)(255 * 0.5 / 20f * GlowingFadingTimer);
             Main.spriteBatch.Draw(Glowtexture, drawPosition, null, setColor, rot, glowRotationPoint, Projectile.scale * Owner.gravDir * 0.5f, flipSprite, 0f);
             #endregion
             spriteBatch.End();

@@ -75,5 +75,8 @@ namespace CalamityInheritance.System.Configs
         public bool TurnOffLevelSystem { get; set; } // 关闭等级系统
 
 
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool MarkSameBossDown { get; set; } // 同类boss击败一次即可
     }
 }

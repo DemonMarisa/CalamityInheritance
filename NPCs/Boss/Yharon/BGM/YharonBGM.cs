@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.NPCs.Boss.CalamitasClone.BGM
+namespace CalamityInheritance.NPCs.Boss.Yharon.BGM
 {
     public class YharonBGM
     {

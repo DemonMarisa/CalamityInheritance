@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                 CreateRecipe().
                     AddIngredient<PlantyMush>(6).
                     AddIngredient<EffulgentFeather>(5).
-                    AddIngredient<AscendantSpiritEssence>(2).
+                    AddIngredient(ModContent.ItemType<DarksunFragment>(), 10).
                     AddTile<CosmicAnvil>().
                     Register();
             }

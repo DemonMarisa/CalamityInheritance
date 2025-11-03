@@ -1,5 +1,6 @@
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -68,12 +69,16 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override bool PreDraw(ref Color lightColor)
         {
+            LAPUtilities.ReSetToBeginShader();
             Texture2D mark = ModContent.Request<Texture2D>($"CalamityInheritance/Content/Projectiles/Typeless/Shizuku/SwordArk/{GetType().Name}").Value;
             float scale = 2f - Projectile.scale;
             scale /= 3;
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
-            Color lerpColor = Color.Lerp(Color.Aqua, Color.GhostWhite, 0.2f);
+            Color lerpColor = Color.SkyBlue;
+            lerpColor = lerpColor * 0.5f;
+            Main.spriteBatch.Draw(mark, drawPos, null, Color.Turquoise * Projectile.Opacity *  0.6f, Projectile.rotation, mark.Size() / 2, scale, SpriteEffects.None, 0);
             Main.spriteBatch.Draw(mark, drawPos, null, lerpColor * Projectile.Opacity, Projectile.rotation, mark.Size() / 2, scale, SpriteEffects.None, 0);
+            LAPUtilities.ReSetToEndShader();
             return false;
         }
     }

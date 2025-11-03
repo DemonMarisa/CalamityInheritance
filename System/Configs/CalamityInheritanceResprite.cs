@@ -66,9 +66,11 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool HeliumFlashResprite{ get; set; }
+
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool PlasmaRod{ get; set; }
+
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool StaffofBlushie{ get; set; }

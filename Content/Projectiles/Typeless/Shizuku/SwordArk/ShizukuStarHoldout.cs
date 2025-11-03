@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -50,13 +51,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override void AI()
         {
-            NPC Target = Projectile.FindClosestTarget(1800f);
+            NPC Target = LAPUtilities.FindClosestTarget(Projectile ,1800f, Owner.LocalMouseWorld());
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
             if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ModContent.ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] > 0)
                 Projectile.timeLeft = 3;
             //控制射弹运动，在鼠标指针位置更新
-            Vector2 topHead = new(Main.MouseWorld.X, Main.MouseWorld.Y);
+            Vector2 topHead = Owner.LocalMouseWorld();
             Vector2 distance = topHead - Projectile.Center;
             Vector2 homeDirection = distance.SafeNormalize(Vector2.UnitY);
             //这里追踪速度一会被一定程度上降低
@@ -68,6 +69,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 ShootDarkStar(Target.Center);
                 DrawMark(Target);
+                foreach(Projectile proj in Main.ActiveProjectiles)
+                {
+                    if (LAPUtilities.CheckType<ShizukuStarMark>(proj))
+                    {
+                        proj.ai[0] = Target.whoAmI;
+                    }
+                }
             }
         }
         private void DrawMark(NPC target)
@@ -80,7 +88,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             }
         }
 
-   
         private void ShootDarkStar(Vector2 Target)
         {
             ShootStarTimer += 1;

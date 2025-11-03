@@ -1,19 +1,30 @@
 ﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Accessories.Wings;
+using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.TreasureBags;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.NPCs.Boss.Yharon.Arena;
+using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.CalPlayer;
 using CalamityMod.Events;
-using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Pets;
+using CalamityMod.Items.Placeables.Furniture.BossRelics;
 using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Potions;
@@ -29,30 +40,20 @@ using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.Tiles.Ores;
 using CalamityMod.World;
+using LAP.Core.MusicEvent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.Placeables.Furniture.BossRelics;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
-using Terraria.GameContent.Bestiary;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.Content.Items.Accessories.Wings;
-using CalamityInheritance.System.Configs;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -1025,9 +1026,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 string key = "Mods.CalamityInheritance.Boss.Text.DownedYharon";
                 Color messageColor = Color.Gold;
                 CIFunction.BroadcastLocalizedText(key, messageColor);
-            }
 
-            // Mark Calamitas as defeated
+                if (!CIDownedBossSystem.DownedLegacyScal)
+                {
+                    MusicEventManger.AddMusicEventEntry("CalamityInheritance/Music/Tyrant", TimeSpan.FromSeconds(110d), () => CIConfig.Instance.Tyrant1, TimeSpan.FromSeconds(5d));
+                }
+            }
+            if (CIServerConfig.Instance.MarkSameBossDown)
+            {
+                DownedBossSystem.downedYharon = true;
+            }
             CIDownedBossSystem.DownedBuffedSolarEclipse = true;
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CIDownedBossSystem.DownedLegacyYharonP2 = true;

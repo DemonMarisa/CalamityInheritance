@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.System.DownedBoss;
+﻿using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.World;
@@ -32,5 +33,8 @@ namespace CalamityInheritance.Core
         public static readonly Condition MAD = Create("MAD", () => CIWorld.armageddon && CIWorld.malice && CIWorld.defiled && Main.masterMode);
         public static readonly Condition DownedCalClone = Create("DownedCalClone", () => CIDownedBossSystem.DownedCalClone);
         public static readonly Condition NoInfernumMode = Create("NoInfernumMode", () => CalamityInheritance.Instance.infernumMode != null);
+
+        public static readonly Condition OpenSolarEclipseChange = Create("OpenSolarEclipseChange", () => CIServerConfig.Instance.SolarEclipseChange);
+        public static readonly Condition TurnOffSolarEclipseChange = Create("TurnOffSolarEclipseChange", () => !CIServerConfig.Instance.SolarEclipseChange);
     }
 }

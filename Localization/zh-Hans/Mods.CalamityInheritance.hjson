@@ -70,7 +70,7 @@ Configs: {
 			Label: "[i:CalamityInheritance/TyrantPart1]插曲：暴君 阶段1"
 			Tooltip:
 				'''
-				丛林龙后播放，并未禁用灾厄丛林龙后播放
+				丛林龙后播放
 				关闭后禁止播放
 				'''
 		}
@@ -88,9 +88,8 @@ Configs: {
 			Label: "[i:CalamityModMusic/Interlude3MusicBox]插曲：灾厄前的灾难"
 			Tooltip:
 				'''
-				击败終灾后播放
+				击败至尊灾厄后播放
 				关闭后禁止播放
-				会反复播放
 				'''
 		}
 
@@ -204,6 +203,15 @@ Configs: {
 		Debugint4: {
 			// Label: Debugint4
 			// Tooltip: ""
+		}
+
+		CalClone: {
+			Label: "[i:CalamityModMusic/Interlude1MusicBox]插曲：风暴前的宁静"
+			Tooltip:
+				'''
+				击败灾厄之眼[Legacy]后播放
+				关闭后禁止播放
+				'''
 		}
 	}
 
@@ -580,11 +588,7 @@ Configs: {
 				开启这一选项后，击败神明吞噬者将只强化霜月与南瓜月事件，日食强化被移交至丛林龙（阶段一）后
 				使用召唤物召唤的丛林龙将会为（阶段一），在血量低于10%时脱战，并启动日食强化
 				开启日食强化并完成对应条件之后，即可启用丛林龙（二阶段）
-				神明吞噬者后的一些合成物品也会因此得到配方修改，这是一个全局性修改。请务必查阅合成表以一览究竟
-				[i:CalamityMod/AscendantSpiritEssence]化魂神晶：移除日蚀碎片
-				[i:CalamityInheritance/SilvaHeadMelee]始源林海系列：移除化魂神晶，加入日蚀碎片
-				[i:CalamityMod/TeslaCannon]嘉登军工厂系列：移除化魂神晶，加入日蚀碎片
-				[i:CalamityMod/AuricBar]一些现版本金源武器：移除金源锭，加入日蚀碎片
+				同时，[i:CalamityMod/AscendantSpiritEssence]化魂神晶可以使用不包含日蚀碎片的合成表
 				'''
 		}
 
@@ -617,8 +621,17 @@ Configs: {
 		}
 
 		CalSIBEOtherMod: {
-			// Label: Cal S I B E Other Mod
-			// Tooltip: ""
+			Label: 数据膨胀会影响其它mod
+			Tooltip: 实验选项，谨慎开启
+		}
+
+		MarkSameBossDown: {
+			Label: 击败LegacyBoss时标记灾厄boss也被击败
+			Tooltip:
+				'''
+				开启后，击败灾厄之眼[Legacy]，丛林龙 - 犽绒
+				也会标记灾厄之眼，重生之龙，的状态为被击败
+				'''
 		}
 	}
 }

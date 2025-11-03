@@ -1,28 +1,20 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using System;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityMod.Dusts;
-using Terraria.Audio;
-using CalamityInheritance.Utilities;
-using static CalamityInheritance.NPCs.Boss.SCAL.SupremeCalamitasLegacy;
-using CalamityInheritance.NPCs.Boss.SCAL.Proj;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
-using Terraria.GameContent;
-using CalamityInheritance.System.DownedBoss;
-using CalamityMod.Events;
-using CalamityMod.Particles;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Placeables.Relic;
+using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker;
-using CalamityMod.World;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Sounds;
+using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
+using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.Potions;
+using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.Dusts;
+using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.LoreItems;
@@ -34,16 +26,26 @@ using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Summon;
-using Terraria.GameContent.ItemDropRules;
-using CalamityInheritance.Content.Items.Placeables.Relic;
-using Terraria.GameContent.Bestiary;
-using CalamityInheritance.System.Configs;
-using Terraria.Localization;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Boss;
+using CalamityMod.Sounds;
+using CalamityMod.World;
+using LAP.Core.MusicEvent;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using ReLogic.Content;
+using System;
 using System.IO;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Buffs.Potions;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityMod.Buffs.StatBuffs;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using static CalamityInheritance.NPCs.Boss.SCAL.SupremeCalamitasLegacy;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 {
@@ -1060,6 +1062,15 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             // 手动卸载一下，不知道为什么会有问题
             CIGlobalNPC.LegacyCalamitasClone = -1;
             CIGlobalNPC.LegacyCalamitasCloneP2 = -1;
+
+            if (!CIDownedBossSystem.DownedCalClone)
+            {
+                MusicEventManger.AddMusicEventEntry("CalamityModMusic/Sounds/Music/Interlude3", TimeSpan.FromSeconds(214f), () => CIConfig.Instance.CalClone, TimeSpan.FromSeconds(5d));
+            }
+            if (CIServerConfig.Instance.MarkSameBossDown)
+            {
+                DownedBossSystem.downedCalamitasClone = true;
+            }
             //无论如何标记这个为真。
             CIDownedBossSystem.DownedCalClone = true;
             DeathAshParticle.CreateAshesFromNPC(NPC);
@@ -1077,6 +1088,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
                 CalamityUtils.DisplayLocalizedText(key, messageColor);
             }
+
         }
         #endregion
     }

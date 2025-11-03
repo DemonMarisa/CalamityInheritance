@@ -96,6 +96,10 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
+        public bool CalClone { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
         public bool Tyrant1 { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
@@ -117,39 +121,5 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool Kunoji{ get; set; }
-
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // [Range(-1000, 1000)]
-        // [DefaultValue(1)]
-        // public int Debugint { get; set; }
-        
-
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // [Range(-1000, 1000)]
-        // [DefaultValue(1)]
-        // public int Debugint2 { get; set; }
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // [Range(-1000, 1000)]
-        // [DefaultValue(1)]
-        // public int Debugint3 { get; set; }
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // [Range(-1000, 1000)]
-        // [DefaultValue(1)]
-        // public int Debugint4 { get; set; }
-
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // public Color DebugColor { get; set; }
-
-
-        // [BackgroundColor(192, 54, 64, 192)]
-        // [SliderColor(224, 165, 56, 128)]
-        // [Range(-1, 1)]
-        // [DefaultValue(1)]
-        // public float Debugfloat { get; set; }
     }
 }

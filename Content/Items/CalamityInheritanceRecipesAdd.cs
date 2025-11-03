@@ -69,6 +69,7 @@ using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Items;
 using CalamityInheritance.Content.Items.Placeables.Banner;
 using CalamityInheritance.Content.Items.Accessories.Wings;
+using CalamityInheritance.Core;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -224,141 +225,30 @@ namespace CalamityInheritance.Content.Items
                 Register();
             #endregion
         }
-
         public override void PostAddRecipes()
         {
-            PostModifyModYharon();
             YharonEclispe();        //龙一/龙二, 请确保这一修改最后被执行。
         }
-
-        public static void PostModifyModYharon()
-        {
-            if (!CIServerConfig.Instance.SolarEclipseChange)
-                return;
-            int[] silvaLegacy =
-            [
-                ModContent.ItemType<SilvaHeadMelee>(),
-                ModContent.ItemType<SilvaHeadRanged>(),
-                ModContent.ItemType<SilvaHeadMagicold>(),
-                ModContent.ItemType<SilvaHeadSummonold>(),
-                ModContent.ItemType<SilvaHeadRogue>(),
-                ModContent.ItemType<SilvaArmorold>(),
-                ModContent.ItemType<SilvaLeggingsold>()
-            ];
-            for (int i = 0; i < Recipe.numRecipes; i++)
-            {
-                Recipe rec = Main.recipe[i];
-    
-                foreach (var s in silvaLegacy)
-                {
-                    if (rec.HasResult(s) && rec.createItem.stack == 1)
-                    {
-                        rec.RemoveIngredient(ModContent.ItemType<AscendantSpiritEssence>());
-                        rec.AddIngredient(ModContent.ItemType<DarksunFragment>(), 10);
-                    }
-                }
-            }
-        }
-
         public static void YharonEclispe()
         {
-            if (!CIServerConfig.Instance.SolarEclipseChange)
-                return;
-
-            //Silva系列物品做准备。
-            int[] silvaTrain =
-            [
-                ModContent.ItemType<SilvaArmor>(),
-                ModContent.ItemType<SilvaLeggings>(),
-                ModContent.ItemType<SilvaHeadSummon>(),
-                ModContent.ItemType<SilvaHeadMagic>(),
-                ModContent.ItemType<SilvaWings>(),
-                //备注：我们模组里面的林海物件也会算进去，这样会方便不少。
-            ];
-            //军工厂系列
-            int[] draedonTrain =
-            [
-                ModContent.ItemType<PlasmaGrenade>(),
-                ModContent.ItemType<Phaseslayer>(),
-                ModContent.ItemType<PoleWarper>(),
-                ModContent.ItemType<PulseRifle>(),
-                ModContent.ItemType<TeslaCannon>(),
-                ModContent.ItemType<TheAnomalysNanogun>(),
-            ];
             for (int i = 0; i < Recipe.numRecipes; i++)
             {
                 Recipe rec = Main.recipe[i];
-                
                 int stack = rec.createItem.stack;
-                int spirit = ModContent.ItemType<AscendantSpiritEssence>();
-                int darkSun = ModContent.ItemType<DarksunFragment>();
-                int blueOne = ModContent.ItemType<EndothermicEnergy>();
-                int bar = ModContent.ItemType<CosmiliteBar>();
-                //1.化魂神晶：移除日食碎片
+                //1.化魂神晶：有日食碎片的版本必须关闭龙一龙二差分才能合成
                 if (rec.HasResult<AscendantSpiritEssence>() && stack == 1)
                 {
-                    rec.RemoveIngredient(darkSun);
-                }
-                //2.林海系列：移除化魂神晶，添加日食碎片
-                foreach(var silvaItem in silvaTrain)
-                {
-                    if (rec.HasResult(silvaItem) && stack == 1)
-                    {
-                        rec.RemoveIngredient(spirit);
-                        //统一+10份，我们不做差分了
-                        rec.AddIngredient(darkSun, 10);
-                    }
-                }
-                //3.军工套件：补充日食碎片
-                foreach(var draedonWeapon in draedonTrain)
-                {
-                    if (rec.HasResult(draedonWeapon) && stack == 1)
-                    {
-                        //移除化魂神晶，不然也太怪了
-                        rec.RemoveIngredient(spirit);
-                        //补5份
-                        rec.AddIngredient(darkSun, 5);
-                    }
-                }
-                //4.查漏补缺
-                //4.1 秩序大剑->移除恒温魔能, 添加化魂神晶与日食碎片
-                if (rec.HasResult<Orderbringer>() && stack == 1)
-                {
-                    rec.RemoveIngredient(blueOne);
-                    rec.AddIngredient(spirit, 2);
-                    rec.AddIngredient(darkSun, 20);
-                }
-                //4.2 星辰重炮->移除日食碎片，修改为宇宙锭
-                if (rec.HasResult<Starmada>() && stack == 1)
-                {
-                    rec.RemoveIngredient(darkSun);
-                    rec.AddIngredient(bar, 10);
-                }
-                //4.3 天底：移除金源锭
-                if (rec.HasResult<Nadir>() && stack == 1)
-                {
-                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
-                }
-                //4.4 氦闪：金源锭 -> 宇宙锭
-                if (rec.HasResult<HeliumFlash>() && stack == 1)
-                {
-                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
-                    rec.AddIngredient(bar, 10);
-                }
-                //4.5 极昼信标：金源锭 -> 宇宙锭与日食碎片
-                if (rec.HasResult<MidnightSunBeacon>() && stack == 1)
-                {
-                    rec.RemoveIngredient(ModContent.ItemType<AuricBar>());
-                    rec.AddIngredient(bar, 10); 
-                    rec.AddIngredient(darkSun, 25);
-                }
-                //4.6本mod的卡拉萨瓦大人：恒温魔能 -> 日式碎片
-                if (rec.HasResult<ACTKarasawa>() && stack == 1)
-                {
-                    rec.RemoveIngredient(blueOne);
-                    rec.AddIngredient(darkSun, 10);
+                    rec.AddCondition(CIConditions.TurnOffSolarEclipseChange);
                 }
             }
+            // 化魂神晶添加一份必须打开差分才能用的合成
+            Recipe.Create(ModContent.ItemType<AscendantSpiritEssence>()).
+                AddIngredient<Necroplasm>(2).
+                AddIngredient<NightmareFuel>(5).
+                AddIngredient<EndothermicEnergy>(5).
+                AddCondition(CIConditions.OpenSolarEclipseChange).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
 
         public static void Misc()

@@ -25,9 +25,7 @@ namespace CalamityInheritance.Content.Items.Tools
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             Item.ResearchUnlockCount = 1;
         }
-
         public new string LocalizationCategory => "Content.Items.Tools";
-
         public override void SetDefaults()
         {
             Item.width = 42;
@@ -52,8 +50,6 @@ namespace CalamityInheritance.Content.Items.Tools
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
             if (player.altFunctionUse == 2)
             {
-                CIMusicEventSystem.PlayedEvents.Add("YharonDefeated");
-                CIMusicEventSystem.PlayedEvents.Add("ExoMechsDefeated");
                 //灾厄的音乐事件
                 MusicEventSystem.PlayedEvents.Add("CloneDefeated");
                 MusicEventSystem.PlayedEvents.Add("MLDefeated");
@@ -63,9 +59,6 @@ namespace CalamityInheritance.Content.Items.Tools
             }
             else
             {
-                CIMusicEventSystem.PlayedEvents.Remove("YharonDefeated");
-                CIMusicEventSystem.PlayedEvents.Remove("ExoMechsDefeated");
-                CIMusicEventSystem.PlayedEvents.Remove("ScalDefeatedL");
                 //灾厄的音乐事件
                 MusicEventSystem.PlayedEvents.Remove("CloneDefeated");
                 MusicEventSystem.PlayedEvents.Remove("MLDefeated");

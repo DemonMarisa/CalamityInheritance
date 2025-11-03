@@ -3,6 +3,7 @@ using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -107,27 +108,12 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public GraphicsDevice graphicsDevice { get => Main.graphics.GraphicsDevice; }
         public override bool PreDraw(ref Color lightColor)
         {
-
             Projectile.GetBaseDrawField(out Texture2D tex, out Vector2 posBase, out Vector2 orig);
             // orig.Y += CIConfig.Instance.Debugint;
             SpriteEffects flip = Direction < 0f? SpriteEffects.FlipVertically : SpriteEffects.None;
-            BlendState blendState = spriteBatch.GraphicsDevice.BlendState;
-            SamplerState samplerState = spriteBatch.GraphicsDevice.SamplerStates[0]; 
-            // 直接尝试绘制辉光。
-            spriteBatch.End();
-            spriteBatch.Begin(SpriteSortMode.Deferred,
-                BlendState.Additive,
-                SamplerState.AnisotropicClamp,
-                DepthStencilState.None,
-                RasterizerState.CullNone,
-                null,
-                Main.GameViewMatrix.TransformationMatrix);
-            //发光绘制只在准备发起攻击的时候进行
-            //获取辉光。
             Texture2D Glowtexture = CITextureRegistry.ShizukuSwordGlow.Value;
             Vector2 glowPostion = Projectile.Center - Main.screenPosition;
             Vector2 glowRotationPoint = Glowtexture.Size() / 2f;
-
             //终极史山这一块
             if (Direction > 0)
             {
@@ -143,13 +129,13 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 glowRotationPoint.X -= 70;
                 glowRotationPoint.Y -= 70;
             }
-            // glowRotationPoint.Y += CIConfig.Instance.Debugint;
-            //进行渐变
             Main.spriteBatch.Draw(tex, posBase, null, Color.White, Projectile.rotation, orig, Projectile.scale, flip, 1f);
+
+            // 直接尝试绘制辉光。
+            LAPUtilities.ReSetToBeginShader();
             Color setColor = Color.White;
-            Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor, Projectile.rotation, glowRotationPoint, Projectile.scale * 0.5f, flip, 1f);
-            spriteBatch.End();
-            spriteBatch.Begin();
+            Main.spriteBatch.Draw(Glowtexture, glowPostion, null, setColor * 0.75f, Projectile.rotation, glowRotationPoint, Projectile.scale * 0.5f, flip, 1f);
+            LAPUtilities.ReSetToEndShader();
             return false;
         }
     }
