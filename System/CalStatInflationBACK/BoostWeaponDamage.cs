@@ -50,8 +50,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             {
                 item.LAP().UseCICalStatInflation = true;
                 item.LAP().WeaponTier = AllWeaponTier.PostPolterghast;
-                if (item.DamageType == DamageClass.Ranged)
-                    item.LAP().GlobalMult = 1.3f;
             }
             if (CheckItem.PostOldDukeWeapons.Contains(item.type))
             {
@@ -72,8 +70,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             {
                 item.LAP().UseCICalStatInflation = true;
                 item.LAP().WeaponTier = AllWeaponTier.PostYharon;
-                if (item.DamageType == DamageClass.Ranged || item.DamageType == ModContent.GetInstance<RogueDamageClass>())
-                    item.LAP().GlobalMult = 1.5f;
             }
             if (CheckItem.PostExoAndScalWeapons.Contains(item.type))
             {

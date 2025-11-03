@@ -175,36 +175,6 @@ Configs: {
 			Tooltip: ""
 		}
 
-		Debugint: {
-			// Label: Debugint
-			// Tooltip: ""
-		}
-
-		Debugint2: {
-			// Label: Debugint2
-			// Tooltip: ""
-		}
-
-		Debugfloat: {
-			// Label: Debugfloat
-			// Tooltip: ""
-		}
-
-		DebugColor: {
-			// Label: Debug Color
-			// Tooltip: ""
-		}
-
-		Debugint3: {
-			// Label: Debugint3
-			// Tooltip: ""
-		}
-
-		Debugint4: {
-			// Label: Debugint4
-			// Tooltip: ""
-		}
-
 		CalClone: {
 			Label: "[i:CalamityModMusic/Interlude1MusicBox]插曲：风暴前的宁静"
 			Tooltip:

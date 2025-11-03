@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -574,5 +575,10 @@ namespace CalamityInheritance.Utilities
         public static Player GetProjOwner(this Projectile proj) => Main.player[proj.owner];
         public static bool IsOwnedProj<T>(this Player player, int count = 1) where T : ModProjectile => IsOwnedProj(player, ModContent.ProjectileType<T>(), count);
         public static bool IsOwnedProj(this Player player, int Type, int count = 1) => player.ownedProjectileCounts[Type] < count;
+
+        public static void SetCantSpilt(this Projectile proj)
+        {
+            proj.GetGlobalProjectile<CIElementalQuiverSplit>().canSplit = false;
+        }
     }
 }

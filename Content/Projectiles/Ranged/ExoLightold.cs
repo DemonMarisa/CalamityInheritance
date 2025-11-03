@@ -56,6 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.alpha = 127;
             Projectile.extraUpdates = 2;
             Projectile.MaxUpdates = 2;
+            Projectile.SetCantSpilt();
         }
 
         public override void SendExtraAI(BinaryWriter writer)

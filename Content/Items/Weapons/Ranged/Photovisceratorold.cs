@@ -17,6 +17,7 @@ using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -60,6 +61,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool CanUseItem(Player player)
         {
+            Item.LAP().UseCustomStatInflationMult = false;
+            float mult = 1300 / (float)Item.damage;
+            Item.LAP().StatInflationMult = mult;
             return true;
         }
 
@@ -96,7 +100,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            damage.Base *= 0.9f;
             // 低一点伤害
             if (player.CheckExoLore())
                 damage.Base *= 0.7f;

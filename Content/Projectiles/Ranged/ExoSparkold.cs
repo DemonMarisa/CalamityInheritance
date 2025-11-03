@@ -34,6 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
+            Projectile.SetCantSpilt();
         }
 
         public override void AI()
