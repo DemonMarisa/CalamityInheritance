@@ -1,6 +1,7 @@
 using System;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -51,7 +52,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //Y速度除非大于8f我们才执行右键的功能，即触墙生成一些花瓣
             if (TrueRightClick)
             {
-                HitEffect(Main.MouseWorld, 1);
+                Player player = Main.player[Projectile.owner];
+                HitEffect(player.LocalMouseWorld(), 1);
                 float oldVelY = -oldVelocity.Y;
                 if (Projectile.velocity.Y < 8f)
                     oldVelY = -8f;

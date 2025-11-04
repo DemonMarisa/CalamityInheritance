@@ -2,6 +2,7 @@ using System;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -209,7 +210,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 
         private void UpdateAiming(Vector2 rrp, float shootSpeed)
         {
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - rrp);
+            Player player = Main.player[Projectile.owner];
+            Vector2 aim = Vector2.Normalize(player.LocalMouseWorld() - rrp);
 
             if (aim.HasNaNs())
                 aim = -Vector2.UnitY;

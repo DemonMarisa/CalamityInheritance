@@ -227,67 +227,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     // DoDragonUpgrade(target, src);
             }
         }
-
-        private void DoScalUpgrade(NPC target, IEntitySource src)
-        {
-            Player player = Main.player[Projectile.owner];
-            var usPlayer = player.CIMod();
-            //这里会跳过指针，即光柱的位置
-            if (usPlayer.GlobalMiscCounter > 7)
-                usPlayer.GlobalMiscCounter = 1;
-            //设置初始向量为指向鼠标的向量
-            Vector2 getFireSpeed = Main.MouseWorld - player.Center;
-            //设定一个速度，这里用的27f
-            float setSpeed = 27f;
-            //将距离向量转速度向量
-            float dist = getFireSpeed.Length();
-            dist = setSpeed / dist;
-            getFireSpeed.X *= dist;
-            getFireSpeed.Y *= dist;
-            //设置方向
-            Vector2 fireSupporter = ((MathHelper.TwoPi * usPlayer.GlobalMiscCounter / 8f) + getFireSpeed.ToRotation()).ToRotationVector2() * getFireSpeed.Length() * 0.8f;
-            Projectile.NewProjectile(src, player.Center, fireSupporter, ModContent.ProjectileType<YharimsScalSupport>(), Projectile.damage, 0f, player.whoAmI, 0f, 0f, target.whoAmI);
-            usPlayer.GlobalFireDelay = 8;
-            usPlayer.GlobalMiscCounter++;
-        }
-
-
-        private void DoExoUpgrade(NPC target, IEntitySource src)
-        {
-            Player player = Main.player[Projectile.owner];
-            for (int i = -1; i < 2; i += 2)
-            {
-                //设置生成位置
-                float projX = target.Center.X + Main.rand.NextFloat(-50f, 51f);
-                float projY = target.Center.Y + 800f;  
-                Vector2 spawnPos = new (projX, projY);
-                //-1 -> 1, 这样会使其从上下方，两个方向进行进攻
-                Vector2 spawnVel = new Vector2(10f, 0f).RotatedBy(-MathHelper.PiOver2);
-                int damage = Projectile.damage /4;
-                //生成流星
-                Projectile.NewProjectile(src, spawnPos, spawnVel, ModContent.ProjectileType<CIExocometMagic>(), damage, 0f, player.whoAmI);
-            }
-        }
-
-
-        private void DoDragonUpgrade(NPC target, IEntitySource src)
-        {
-            Player player = Main.player[Projectile.owner];
-            for (int i = -1; i < 2; i += 2)
-            {
-                //设置生成位置
-                float projX = target.Center.X + Main.rand.NextFloat(-50f, 51f);
-                float projY = target.Center.Y - 800f;  
-                Vector2 spawnPos = new (projX, projY);
-                //-1 -> 1, 这样会使其从上下方，两个方向进行进攻
-                Vector2 spawnVel = new Vector2(10f, 0f).RotatedBy(MathHelper.PiOver2);
-                int damage = Projectile.damage /4;
-                //生成火球
-                Projectile.NewProjectile(src, spawnPos, spawnVel, ModContent.ProjectileType<YharimsDragonSupport>(), damage, 0f, player.whoAmI, 0f, 0f, target.whoAmI);
-            }
-        }
-
-
         public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
 
         //决定目标hitbox与射弹hitbox接触时的行为

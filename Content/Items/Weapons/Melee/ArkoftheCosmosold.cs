@@ -12,6 +12,7 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -67,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Main.projectile[projectile].tileCollide = false;
 
             int fireOffset = -100;
-            Vector2 mousePos = Main.MouseWorld;
+            Vector2 mousePos = player.LocalMouseWorld();
             int totalFire = 4;
             int firePosX = (int)(mousePos.X + player.Center.X) / 2;
             int firePosY = (int)player.Center.Y;

@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -50,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Player player = Main.player[Projectile.owner];
             if (!fireframe)
             {
-                if (Main.MouseWorld.X < player.Center.X)
+                if (player.LocalMouseWorld().X < player.Center.X)
                     isFilp = true;
                 else
                     isFilp = false;

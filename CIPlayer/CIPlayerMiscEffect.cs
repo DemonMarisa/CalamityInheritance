@@ -1414,15 +1414,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (LoreProvidence || PanelsLoreProvidence)
                 ShieldDurabilityMax = (int)(ShieldDurabilityMax * 0.25f);
-
-            if (CIConfig.Instance.TheSpongeBarrier == true)
-            {
-                if(usPlayer.CISpongeShieldDurability == 0 && CIsponge)
-                {
-                    Player.statDefense -= Player.statDefense * 0.5f;
-                    Player.endurance *= 0.5f;
-                }
-            }
         }
     }
 }

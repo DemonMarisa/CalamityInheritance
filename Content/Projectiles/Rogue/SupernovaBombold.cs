@@ -17,6 +17,7 @@ using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
 using CalamityInheritance.Sounds.Custom;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -100,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.UnitY * 2f, ModContent.ProjectileType<SupernovaHoming>(), (int)(Projectile.damage * 0.48), Projectile.knockBack, Projectile.owner, 0f, 0f);
             Player player = Main.player[Projectile.owner];
-            if (Main.mouseRight && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
+            if (player.LAP().MouseRight && (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo))
             {
                 if (!hasPressRight)
                 {
@@ -116,7 +117,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.timeLeft = 500;
                 Projectile.extraUpdates = 8;
                 //除非你没有鼠标，不然这里肯定会在下方赋予成鼠标位置
-                Vector2 tar = Main.MouseWorld;
+                Vector2 tar = player.LocalMouseWorld();
                 Rectangle mouseHitBox = new ((int)tar.X, (int)tar.Y, Projectile.width, Projectile.height);
                 if (Projectile.Hitbox.Intersects(mouseHitBox))
                 {

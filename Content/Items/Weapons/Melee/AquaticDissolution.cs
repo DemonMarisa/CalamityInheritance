@@ -1,5 +1,6 @@
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position = Main.MouseWorld;
+            position = player.LocalMouseWorld();
             for (int i = 0; i < 3; i++)
                 Projectile.NewProjectile(source,position.X + Main.rand.Next(-30,31), position.Y - 600f, 0f, 12f, type, damage, knockback, Main.myPlayer, 0f, 0f);
             return false;

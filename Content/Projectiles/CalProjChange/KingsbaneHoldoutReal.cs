@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -146,9 +147,10 @@ namespace CalamityInheritance.Content.Projectiles.CalProjChange
         {
             if (Main.myPlayer == Projectile.owner)
             {
-                float interpolant = Utils.GetLerpValue(5f, 55f, Projectile.Distance(Main.MouseWorld), true);
+                Player player = Main.player[Projectile.owner];
+                float interpolant = Utils.GetLerpValue(5f, 55f, Projectile.Distance(player.LocalMouseWorld()), true);
                 Vector2 oldVelocity = Projectile.velocity;
-                Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.SafeDirectionTo(Main.MouseWorld), interpolant);
+                Projectile.velocity = Vector2.Lerp(Projectile.velocity, Projectile.SafeDirectionTo(player.LocalMouseWorld()), interpolant);
                 if (Projectile.velocity != oldVelocity)
                 {
                     Projectile.netSpam = 0;

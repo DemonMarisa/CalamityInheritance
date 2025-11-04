@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Summon;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -190,8 +191,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public void UpdateAim(Vector2 source, float speed)
         {
             // 获取玩家当前的瞄准方向作为归一化向量
-
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Player player = Main.player[Projectile.owner];
+            Vector2 aim = Vector2.Normalize(player.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;

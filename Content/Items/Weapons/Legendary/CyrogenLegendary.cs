@@ -8,6 +8,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -138,11 +139,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 //给自己发送一个buff
                 player.AddBuff(ModContent.BuffType<CyrogenLegendaryBuff>(), 120, true);
                 //将鼠标位置赋值
-                position = Main.MouseWorld;
+                position = player.LocalMouseWorld();
                 int p = Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI);
                 //实时刷新伤害
-                //if (Main.projectile.IndexInRange(p))
-                //    Main.projectile[p].originalDamage = damage;
+                if (Main.projectile.IndexInRange(p))
+                   Main.projectile[p].originalDamage = Item.damage;
 
                 //查询当前在玩家身上持有的射弹数量
                 int ptr = 0;

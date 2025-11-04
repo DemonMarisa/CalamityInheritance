@@ -7,6 +7,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -97,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         {
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
+                Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Owner, player.LocalMouseWorld(), -Vector2.UnitY);
                 float warpDist = Main.rand.NextFloat(60f, 120f);
                 float warpAngle = Main.rand.NextFloat(-MathHelper.Pi / 2.6f, MathHelper.Pi / 2.6f);
                 Vector2 warpOffset = -warpDist * playerToMouseVec.RotatedBy(warpAngle);

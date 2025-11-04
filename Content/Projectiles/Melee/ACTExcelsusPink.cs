@@ -3,6 +3,7 @@ using System.Numerics;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -44,6 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         ];
         #endregion
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
             Projectile.width = 34;
@@ -109,7 +111,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private void DoIdleing()
         {
             //自定义：其余状态下单独让这个刀片指向指针, 并且在原地进行待机。
-            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
+            float rot = Projectile.AngleTo(Owner.LocalMouseWorld()) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
         }

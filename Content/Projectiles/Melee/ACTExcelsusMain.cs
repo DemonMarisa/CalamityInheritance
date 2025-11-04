@@ -5,6 +5,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Melee;
+using LAP.Core.Utilities;
 using Microsoft.Build.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -50,6 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         4.回击一次后，再次旋转，回击一次
         5.消失
         */
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
             Projectile.width = 34;
@@ -161,7 +163,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         //没有搜索到目标的时候，指向鼠标
         private void DoPointMouse()
         {
-            float rot = Projectile.AngleTo(Main.MouseWorld) + MathHelper.PiOver4;
+            float rot = Projectile.AngleTo(Owner.LocalMouseWorld()) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, ACTExcelsus.LerpAngle);
             Projectile.velocity *= 0.9f;
         }

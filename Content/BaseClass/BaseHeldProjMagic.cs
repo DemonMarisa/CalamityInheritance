@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -36,6 +37,7 @@ namespace CalamityInheritance.Content.BaseClass
         public virtual float AimResponsiveness { get; }
 
         public int UseDelay = 0;
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
@@ -98,8 +100,7 @@ namespace CalamityInheritance.Content.BaseClass
         public virtual void UpdateAim(Vector2 source, float speed)
         {
             // Get the player's current aiming direction as a normalized vector.
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
-            if (aim.HasNaNs())
+            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld());
             {
                 aim = -Vector2.UnitY;
             }

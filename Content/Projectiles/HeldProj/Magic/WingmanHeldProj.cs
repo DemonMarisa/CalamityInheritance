@@ -14,6 +14,7 @@ using CalamityInheritance.Sounds.Custom;
 using System.IO;
 using CalamityInheritance.Utilities;
 using System.Collections.Generic;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
@@ -57,12 +58,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             ref float attackTimer = ref Projectile.ai[1];
 
             attackType = (float)BehaviorType.FollowMouse;
-            if (Main.mouseRight)
+            if (Owner.LAP().MouseRight)
                 attackType = (float)BehaviorType.ReturnPlayerNearBy;
 
             if (!firstFrame)
             {
-                Projectile.rotation = Projectile.AngleTo(Main.MouseWorld);
+                Projectile.rotation = Projectile.AngleTo(Owner.LocalMouseWorld());
                 Projectile.velocity = Vector2.Zero;
                 firstFrame = true;
             }
@@ -70,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             // Update damage based on curent magic damage stat (so Mana Sickness affects it)
             Projectile.damage = Owner.HeldItem is null ? 0 : Owner.GetWeaponDamage(Owner.HeldItem);
 
-            if (Main.mouseRight)
+            if (Owner.LAP().MouseRight)
                 Projectile.damage = (int)(Owner.HeldItem is null ? 0 : Owner.GetWeaponDamage(Owner.HeldItem) * 1.2f);
 
             switch ((BehaviorType)attackType)
@@ -92,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             const float RepelForce = 12f;        // 反向排斥力系数
             const float slowZone = 10f; // 静止缓冲区域
 
-            Vector2 mousePosition = Main.MouseWorld;
+            Vector2 mousePosition = Owner.LocalMouseWorld();
             Vector2 toMouse = mousePosition - Projectile.Center;
             float distanceToMouse = toMouse.Length();
             // 处理零向量情况
@@ -142,9 +143,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         {
             attackTimer++;
 
-            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
+            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Owner.LocalMouseWorld()), AimResponsiveness);
 
-            Vector2 playeraim = Vector2.Normalize(Main.MouseWorld - Owner.Center);
+            Vector2 playeraim = Vector2.Normalize(Owner.LocalMouseWorld() - Owner.Center);
             Vector2 offset = new Vector2(-80 * Owner.direction, -40);
 
             Projectile.Center = Vector2.Lerp(Projectile.Center, Owner.Center + offset, AimResponsiveness);
@@ -169,7 +170,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         {
             float attackType = Projectile.ai[0];
             // 从弹幕中心指向鼠标中心
-            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
+            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Owner.LocalMouseWorld()), AimResponsiveness);
 
             if (Projectile.rotation > -MathHelper.PiOver2 && Projectile.rotation < MathHelper.PiOver2)
                 Projectile.spriteDirection = -1;

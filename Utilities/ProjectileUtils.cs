@@ -3,6 +3,7 @@ using System.IO;
 using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -272,8 +273,9 @@ namespace CalamityInheritance.Utilities
         /// <param name="ignoreTiles">是否无视物块</param>
         /// <param name="stopHomingDist">如果距离鼠标位置有一定距离时停止跟随</param>
         public static void HomeInOnMouseBetter(Projectile projectile, float homingSpeed, float inertia, int giveExtraUpdate = 1, bool ignoreTiles = false, float? stopHomingDist = null)
-        {
-            Vector2 des = Main.MouseWorld;
+        {  
+            Player Owner = Main.player[projectile.owner];
+            Vector2 des = Owner.LocalMouseWorld();
             //一般情况下……鼠标是不会大于4k屏幕的，对吧？
             float distCompared = 6400f;
             if (projectile.CalamityInheritance().StoreEU == -1)
@@ -503,18 +505,11 @@ namespace CalamityInheritance.Utilities
             if (player == null || !player.active || player.dead)
                 return false;
             // 计算与玩家的距离
-            float distanceToPlayer = Vector2.Distance(player.Center, Main.MouseWorld);
+            float distanceToPlayer = Vector2.Distance(player.Center, player.LocalMouseWorld());
             // 如果距离小于等于distanceRe像素，则返回true
             return distanceToPlayer <= distanceRe;
         }
 
-        public static bool DistanceTo(Vector2 vector2, float distanceRe)
-        {
-            // 计算与玩家的距离
-            float distanceToPlayer = Vector2.Distance(vector2, Main.MouseWorld);
-            // 如果距离小于等于distanceRe像素，则返回true
-            return distanceToPlayer <= distanceRe;
-        }
         public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel)
         {
             if (proj.velocity.X != oldVel.X)

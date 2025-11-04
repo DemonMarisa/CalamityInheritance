@@ -1,10 +1,12 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil;
@@ -61,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             attacktimer++;
             if (!firstFrame)
             {
-                Projectile.rotation = Projectile.AngleTo(Main.MouseWorld);
+                Projectile.rotation = Projectile.AngleTo(Owner.LocalMouseWorld());
                 Reentry = (int)Projectile.ai[2];
                 firstFrame = true;
             }
@@ -116,9 +118,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             else if (Projectile.rotation > MathHelper.TwoPi)
                 Projectile.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
 
-            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), 0.35f);
+            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Owner.LocalMouseWorld()), 0.35f);
 
-            Vector2 playeraim = Vector2.Normalize(Main.MouseWorld - player.Center);
+            Vector2 playeraim = Vector2.Normalize(Owner.LocalMouseWorld() - player.Center);
             Vector2 offset = new Vector2(OffsetX, OffsetY).RotatedBy(playeraim.ToRotation());
 
             Projectile.Center = Vector2.Lerp(Projectile.Center, player.Center + offset, AimResponsiveness);
@@ -137,7 +139,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             if (timer < animationProgress)
             {
                 timer++;
-                float progress = EasingHelper.EaseOutExpo((float)timer / animationProgress);
+                float progress = CIFunction.EasingHelper.EaseOutExpo((float)timer / animationProgress);
                 aniYdistance = MathHelper.Lerp(0, maxYdistance * Reentry, progress);
             }
             else
@@ -155,7 +157,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
                 timer++;
                 if (timer < animationProgress)
                 {
-                    float progress = EasingHelper.EaseOutExpo((float)timer / animationProgress);
+                    float progress = CIFunction.EasingHelper.EaseOutExpo((float)timer / animationProgress);
                     aniYdistance = MathHelper.Lerp(maxYdistance * Reentry, minYdistance * Reentry, progress);
                 }
 

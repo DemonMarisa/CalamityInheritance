@@ -1,8 +1,9 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Dusts;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -138,7 +139,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 speed = player.ActiveItem().shootSpeed * Projectile.scale;
             }
-            Vector2 newVelocity = (Main.MouseWorld - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
+            Vector2 newVelocity = (player.LocalMouseWorld() - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
 
             // Sync if a velocity component changes.
             if (Projectile.velocity.X != newVelocity.X || Projectile.velocity.Y != newVelocity.Y)

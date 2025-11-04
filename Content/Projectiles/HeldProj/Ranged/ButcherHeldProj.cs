@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Texture;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework.Graphics;
+using LAP.Core.Utilities;
 
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
@@ -17,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     public class ButcherHeldProj : ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<ButcherLegacy>();
-
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
             Projectile.width = 66;
@@ -110,10 +111,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     player.PickAmmo(player.ActiveItem(), out projType, out speedMult, out damage, out kback, out _);
                     kback = player.GetWeaponKnockback(player.ActiveItem(), kback);
                     float speed = player.ActiveItem().shootSpeed * Projectile.scale;
-                    Vector2 targetPos = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - source;
+                    Vector2 targetPos = Main.screenPosition + Owner.LocalMouseWorld() - source;
                     if (player.gravDir == -1f)
                     {
-                        targetPos.Y = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - source.Y;
+                        targetPos.Y = (float)(Main.screenHeight - Owner.LocalMouseWorld().Y) + Main.screenPosition.Y - source.Y;
                     }
                     Vector2 velMult = Vector2.Normalize(targetPos);
                     if (float.IsNaN(velMult.X) || float.IsNaN(velMult.Y))
@@ -167,7 +168,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         {
             // 获取玩家当前的瞄准方向作为归一化向量
 
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;

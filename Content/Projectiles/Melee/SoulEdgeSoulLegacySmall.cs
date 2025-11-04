@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Main.player[Projectile.owner].active && !Main.player[Projectile.owner].dead)
             {
                 NPC npc = CIFunction.FindClosestTarget(Projectile, 1500, true, true);
-                if (npc == null && !CIFunction.DistanceTo(Projectile.Center, 900))
+                if (npc == null && !CIFunction.DistanceToPlayer(Main.player[Projectile.owner], 900))
                 {
                     Vector2 moveDirection = Projectile.SafeDirectionTo(Main.player[Projectile.owner].Center, Vector2.UnitY);
                     Projectile.velocity = (Projectile.velocity * (projVelocityFactor - 1f) + moveDirection * scaleFactor) / projVelocityFactor;

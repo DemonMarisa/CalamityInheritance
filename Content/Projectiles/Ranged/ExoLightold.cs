@@ -11,6 +11,7 @@ using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Sounds.Custom;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -80,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 InitialCenter = Projectile.Center;
                 if (Main.myPlayer == Projectile.owner)
                 {
-                    Destination = Main.MouseWorld;
+                    Destination = Owner.LocalMouseWorld();
                     Projectile.netUpdate = true;
                 }
                 DustType = Main.rand.NextBool(2) ? 107 : 234;

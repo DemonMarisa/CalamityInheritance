@@ -2,6 +2,7 @@
 using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -159,7 +160,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 speed = player.ActiveItem().shootSpeed * Projectile.scale;
             }
-            Vector2 newVelocity = (Main.MouseWorld - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
+            Vector2 newVelocity = (player.LocalMouseWorld() - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
 
             // Sync if a velocity component changes.
             if (Slashing)

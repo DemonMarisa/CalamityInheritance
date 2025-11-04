@@ -12,6 +12,7 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Rogue;
 using Mono.Cecil;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -127,7 +128,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.netUpdate = true;
 
             // 计算玩家到鼠标的向量
-            Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, Main.MouseWorld, -Vector2.UnitY);
+            Vector2 playerToMouseVec = CalamityUtils.SafeDirectionTo(Main.LocalPlayer, player.LocalMouseWorld(), -Vector2.UnitY);
             for (int k = 0; k < 3; k++)
             {
                 // 位置计算
@@ -136,7 +137,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Vector2 warpOffset = -warpDist * playerToMouseVec.RotatedBy(warpAngle);
                 Vector2 Finalposition = player.Center + warpOffset;
 
-                Vector2 mouseToPlayer = (player.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitY);
+                Vector2 mouseToPlayer = (player.Center - player.LocalMouseWorld()).SafeNormalize(Vector2.UnitY);
                 // 方向计算
                 // Proj的ai1和2用于传进去跟踪目标
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -mouseToPlayer.RotatedByRandom(MathHelper.ToRadians(16f)) * 15f, ModContent.ProjectileType<CIExocometMagic>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, Projectile.Center.X, Projectile.Center.Y);

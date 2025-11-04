@@ -8,6 +8,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -19,6 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public int MaxDistance = 450;
         public bool BeginReturn = false;
         public float FollowVector = 14f;
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
         }
@@ -68,9 +70,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
 
             // 鼠标与玩家的距离
-            float distanceToPlayer = Vector2.Distance(Main.MouseWorld, owner.Center);
+            float distanceToPlayer = Vector2.Distance(Owner.LocalMouseWorld(), owner.Center);
             // 玩家到鼠标的位置
-            float PlayerToMouse = (Main.MouseWorld - owner.Center).ToRotation();
+            float PlayerToMouse = (Owner.LocalMouseWorld() - owner.Center).ToRotation();
             // 设置距离
             Vector2 Distance = new(MaxDistance, 0);
             Vector2 targetPos;
@@ -93,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else
             {
                 // 否则跟随鼠标
-                targetPos = Main.MouseWorld;
+                targetPos = Owner.LocalMouseWorld();
 
                 MoveToTarget(targetPos);
                 // 如果距离小于当前速度，则直接设置速度为目标位置到中心的向量
@@ -105,7 +107,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
 
-            if (owner.HeldItem.type != ModContent.ItemType<AncientShiv>() || !Main.mouseLeft)
+            if (owner.HeldItem.type != ModContent.ItemType<AncientShiv>() || !Owner.LAP().MouseLeft)
             {
                 BeginReturn = true;
             }

@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -60,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     scaleFactor6 = player.ActiveItem().shootSpeed * Projectile.scale;
                 }
-                Vector2 vector13 = Main.MouseWorld - vector;
+                Vector2 vector13 = player.LocalMouseWorld() - vector;
                 vector13.Normalize();
                 if (vector13.HasNaNs())
                 {
@@ -85,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= Projectile.velocity;
             }
-            Projectile.position = player.RotatedRelativePoint(Main.MouseWorld, true) - Projectile.Size / 2f;
+            Projectile.position = player.RotatedRelativePoint(player.LocalMouseWorld(), true) - Projectile.Size / 2f;
             Projectile.rotation = Projectile.velocity.ToRotation() + rot;
             Projectile.spriteDirection = Projectile.direction;
             Projectile.timeLeft = 2;

@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons.Magic;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
+using LAP.Core.Utilities;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
@@ -95,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {
-                        Projectile.velocity = Projectile.SafeDirectionTo(Main.MouseWorld) * SubsumingVortex.ReleaseSpeed;
+                        Projectile.velocity = Projectile.SafeDirectionTo(Owner.LocalMouseWorld()) * SubsumingVortex.ReleaseSpeed;
                         Projectile.damage = (int)(Projectile.damage * SubsumingVortex.ReleaseDamageFactor);
                         HasBeenReleased = true;
                         Projectile.netUpdate = true;
@@ -106,7 +107,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 {
                     if (Main.myPlayer == Projectile.owner)
                     {
-                        Projectile.velocity = Projectile.SafeDirectionTo(Main.MouseWorld) * SubsumingVortex.ReleaseSpeed;
+                        Projectile.velocity = Projectile.SafeDirectionTo(Owner.LocalMouseWorld()) * SubsumingVortex.ReleaseSpeed;
                         Projectile.damage = (int)(Projectile.damage * (1f + Time * 0.0152f));
                         HasBeenReleased = true;
                         Projectile.netUpdate = true;
@@ -248,7 +249,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 // Smoothly approach a sinusoidal offset as time goes on.
                 float verticalOffset = Utils.Remap(Time, 0f, 90f, -30f, (float)Math.Cos(Projectile.timeLeft / 32f) * 30f);
                 Vector2 hoverDestination = Owner.Top + new Vector2(Owner.direction * Projectile.scale * 30f, verticalOffset);
-                hoverDestination += (Main.MouseWorld - hoverDestination) * SubsumingVortex.GiantVortexMouseDriftFactor;
+                hoverDestination += (Owner.LocalMouseWorld() - hoverDestination) * SubsumingVortex.GiantVortexMouseDriftFactor;
 
                 Vector2 idealVelocity = Vector2.Zero.MoveTowards(hoverDestination - Projectile.Center, 32f);
                 Projectile.velocity = Vector2.Lerp(Projectile.velocity, idealVelocity, 0.04f);

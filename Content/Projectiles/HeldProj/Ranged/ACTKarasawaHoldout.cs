@@ -4,6 +4,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
 using CalamityMod.Particles;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Utilities;
@@ -160,8 +161,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         {
             if (Main.myPlayer == Projectile.owner)
             {
-                float interpolant = Utils.GetLerpValue(5f, 25f, Projectile.Distance(Main.MouseWorld), true);
-                Projectile.velocity = Vector2.Lerp(Projectile.velocity, Plr.SafeDirectionTo(Main.MouseWorld, null), interpolant);
+                Player player = Main.player[Projectile.owner];
+                float interpolant = Utils.GetLerpValue(5f, 25f, Projectile.Distance(player.LocalMouseWorld()), true);
+                Projectile.velocity = Vector2.Lerp(Projectile.velocity, Plr.SafeDirectionTo(player.LocalMouseWorld(), null), interpolant);
                 Projectile.netUpdate = true;
             }
             Projectile.Center = rrp + Projectile.velocity * MathHelper.Clamp(30f - Projectile.ai[2], 0f, 30f) + new Vector2(0f, -1.5f);

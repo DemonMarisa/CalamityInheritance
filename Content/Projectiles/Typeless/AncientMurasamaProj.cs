@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -58,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
 					{
 						scaleFactor6 = player.inventory[player.selectedItem].shootSpeed * Projectile.scale;
 					}
-					Vector2 cursurPos = Main.MouseWorld - vector;
+					Vector2 cursurPos = player.LocalMouseWorld() - vector;
 					cursurPos.Normalize();
 					if (cursurPos.HasNaNs())
 					{

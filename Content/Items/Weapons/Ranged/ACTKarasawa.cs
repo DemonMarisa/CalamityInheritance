@@ -5,6 +5,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -46,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Vector2 targetPosition = Main.MouseWorld;
+            Vector2 targetPosition = player.LocalMouseWorld();
             player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, -18);
             return false;
         }

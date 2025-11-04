@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -37,6 +38,8 @@ namespace CalamityInheritance.Content.BaseClass
 
 
         public int UseDelay = 0;
+
+        public Player Owner => Main.player[Projectile.owner];
         //你小子jb给手持射弹创个新图片都不愿意用路径是吧
         public override void SetStaticDefaults()
         {
@@ -103,7 +106,7 @@ namespace CalamityInheritance.Content.BaseClass
         public virtual void UpdateAim(Vector2 source, float speed)
         {
             // Get the player's current aiming direction as a normalized vector.
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;

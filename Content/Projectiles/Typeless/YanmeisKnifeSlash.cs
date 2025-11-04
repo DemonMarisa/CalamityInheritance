@@ -13,6 +13,7 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
@@ -85,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             {
                 speed = player.ActiveItem().shootSpeed * Projectile.scale;
             }
-            Vector2 newVelocity = (Main.MouseWorld - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
+            Vector2 newVelocity = (player.LocalMouseWorld() - playerRotatedPoint).SafeNormalize(Vector2.UnitX * player.direction) * speed;
 
             // Sync if a velocity component changes.
             if (Projectile.velocity.X != newVelocity.X || Projectile.velocity.Y != newVelocity.Y)

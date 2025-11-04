@@ -4,6 +4,7 @@ using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod.Particles;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -75,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         {
             NPC target = Main.npc[TargetIndex];
             if (!target.CanBeChasedBy(Projectile))
-                target = Projectile.FindClosestTarget(1800f);
+                target = LAPUtilities.FindClosestTarget(Projectile, 1800f);
             DashingTimer += 1;
             Projectile.Opacity = Utils.GetLerpValue(0f, 1f, DashingTimer, true) * Utils.GetLerpValue(0f, 1f, Projectile.timeLeft, true);
             //缓动，减速，与自转，类似于隔壁ACT射弹
@@ -144,7 +145,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     Projectile.timeLeft = 50;
                 if (AttackTimer is 0)
                 {
-                    Vector2 direction = (Projectile.Center - Main.MouseWorld).SafeNormalize(Vector2.UnitX);
+                    Player player = Main.player[Projectile.owner];
+                    Vector2 direction = (Projectile.Center - player.LocalMouseWorld()).SafeNormalize(Vector2.UnitX);
                     Projectile.velocity = direction * 23;
                     Projectile.rotation = Projectile.velocity.ToRotation() +  MathHelper.PiOver4;
                     AttackTimer = -1;

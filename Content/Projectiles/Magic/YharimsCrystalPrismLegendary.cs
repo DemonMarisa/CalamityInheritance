@@ -1,6 +1,7 @@
 ﻿using System;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                 //？
                 float speedTimesScale = player.ActiveItem().shootSpeed * Projectile.scale;
-                UpdateAim(rrp, speedTimesScale);
+                UpdateAim(rrp, speedTimesScale, player);
 
                 //查看是否消耗魔力。
                 bool allowContinuedUse = !AllowMana() || player.CheckMana(player.ActiveItem(), -1, true, false);
@@ -134,9 +135,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
 
         //调整水晶的朝向
-        private void UpdateAim(Vector2 source, float speed)
+        private void UpdateAim(Vector2 source, float speed, Player player)
         {
-            Vector2 aimVector = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aimVector = Vector2.Normalize(player.LocalMouseWorld() - source);
             if (aimVector.HasNaNs())
                 aimVector = -Vector2.UnitY;
             aimVector = Vector2.Normalize(Vector2.Lerp(aimVector, Vector2.Normalize(Projectile.velocity), AimSpeed));

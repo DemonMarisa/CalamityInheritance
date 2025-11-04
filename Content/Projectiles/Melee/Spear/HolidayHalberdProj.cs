@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -87,8 +88,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         }
         public virtual void UpdateAim(Vector2 source, float speed)
         {
+            Player owner = Main.player[Projectile.owner];
             // Get the player's current aiming direction as a normalized vector.
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aim = Vector2.Normalize(owner.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;

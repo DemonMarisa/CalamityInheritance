@@ -57,10 +57,8 @@ namespace CalamityInheritance.System.ModeChange.Malice
             #region 加载与卸载IL和ON
             public override void Load()
             {
-                
                 IL_NPC.UpdateNPC_Inner += ModifyVelocityIL;
                 On_NPC.UpdateNPC_Inner += AccelerateAIUpdates;
-                
             }
             public override void Unload()
             {
@@ -73,7 +71,6 @@ namespace CalamityInheritance.System.ModeChange.Malice
             public static void ModifyVelocityIL(ILContext il)
             {
                 var cursor = new ILCursor(il);
-                // 定位到velocity计算的位置，定位的原理我不知道（
                 if (cursor.TryGotoNext(MoveType.After,i => i.MatchLdfld<NPC>("velocity"),i => i.MatchCall<Vector2>("op_Addition")))
                 {
                     cursor.Emit(OpCodes.Ldarg_0);

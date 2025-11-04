@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 float rad = 120f;
                 int count = 4;
                 float spreadAngle= -MathHelper.PiOver4;
-                Vector2 tarDir = (Main.MouseWorld - Owner.Center).SafeNormalize(Vector2.UnitX);
+                Vector2 tarDir = (Owner.LocalMouseWorld()- Owner.Center).SafeNormalize(Vector2.UnitX);
                 float mouseAngle = tarDir.ToRotation();
                 float rearBaseAngle = mouseAngle + MathHelper.Pi;
                 float startAngle = rearBaseAngle - spreadAngle / 2;

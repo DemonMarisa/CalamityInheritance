@@ -10,6 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -18,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         protected virtual float RangeMin => 16f;
         protected virtual float RangeMax => 106f;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
@@ -73,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public virtual void UpdateAim(Vector2 source, float speed)
         {
             // Get the player's current aiming direction as a normalized vector.
-            Vector2 aim = Vector2.Normalize(Main.MouseWorld - source);
+            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld() - source);
             if (aim.HasNaNs())
             {
                 aim = -Vector2.UnitY;

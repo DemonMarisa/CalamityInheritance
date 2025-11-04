@@ -1,6 +1,7 @@
 ﻿using System;
 using CalamityMod;
 using CalamityMod.Projectiles.Melee;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -151,7 +152,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public void HandleChannelMovement(Vector2 playerRotatedPosition)
         {
-            Vector2 idealAimDirection = (Main.MouseWorld - playerRotatedPosition).SafeNormalize(Vector2.UnitX * Owner.direction);
+            Vector2 idealAimDirection = (Owner.LocalMouseWorld() - playerRotatedPosition).SafeNormalize(Vector2.UnitX * Owner.direction);
 
             float angularAimVelocity = 0.15f;
             float directionAngularDisparity = Projectile.velocity.AngleBetween(idealAimDirection) / MathHelper.Pi;
@@ -206,7 +207,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //修改这个也会让锯齿随着你鼠标的距离而改变
             shootReach *= Owner.ActiveItem().shootSpeed;
 
-            float distanceFromMouse = Owner.Distance(Main.MouseWorld);
+            float distanceFromMouse = Owner.Distance(Owner.LocalMouseWorld());
 
             //锯齿到鼠标的距离比最基础的距离短，只让他抵达鼠标距离。
             //而如果鼠标距离足够短，则设定一个最小值

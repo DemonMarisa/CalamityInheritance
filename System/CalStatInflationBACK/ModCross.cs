@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.System.Configs;
 using LAP.Core.CrossModSupports;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.CalStatInflationBACK

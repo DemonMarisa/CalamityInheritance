@@ -12,6 +12,7 @@ using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.SupremeCalamitas;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -61,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Projectile.ai[0] += 1f;
             Projectile.rotation += MathHelper.TwoPi * 2f/spinTime * spinDirection;
-            int wantedDirection = (player.SafeDirectionTo(Main.MouseWorld).X>0f).ToDirectionInt();
+            int wantedDirection = (player.SafeDirectionTo(player.LocalMouseWorld()).X > 0f).ToDirectionInt();
             if(Projectile.ai[0] % spinTime > spinTime*0.5f && wantedDirection != Projectile.velocity.X)
             {
                 player.ChangeDir(wantedDirection);

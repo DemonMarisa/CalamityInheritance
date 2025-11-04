@@ -1,6 +1,7 @@
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Summon;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -36,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int p = Projectile.NewProjectile(source, Main.MouseWorld, velocity, ModContent.ProjectileType<AncientClasper>(), damage, knockback, player.whoAmI);
+            int p = Projectile.NewProjectile(source, player.LocalMouseWorld(), velocity, ModContent.ProjectileType<AncientClasper>(), damage, knockback, player.whoAmI);
             if (Main.projectile.IndexInRange(p))
                 Main.projectile[p].originalDamage = Item.damage;
             return false;

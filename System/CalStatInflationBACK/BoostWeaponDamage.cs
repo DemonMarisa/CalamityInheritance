@@ -129,11 +129,13 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         #region 特殊平衡改动
         public static void SetCustomMult(Item item, float mult)
         {
+            item.LAP().UseCICalStatInflation = true;
             item.LAP().UseCustomStatInflationMult = true;
             item.LAP().StatInflationMult = mult;
         }
         public static void SetCustomMult(Item item, int TargetDamage)
         {
+            item.LAP().UseCICalStatInflation = true;
             item.LAP().UseCustomStatInflationMult = true;
             float mult = TargetDamage / (float)item.damage;
             item.LAP().StatInflationMult = mult;
@@ -224,7 +226,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             #region 战士
 
             if (item.type == ModContent.ItemType<EmpyreanKnives>())
-                SetCustomMult(item, 7f);
+                SetCustomMult(item, 5f);
 
             if (item.type == ModContent.ItemType<PrismaticBreaker>())
                 SetCustomMult(item, 5.6f);
@@ -255,7 +257,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             #endregion
             #region 射手
             if (item.type == ModContent.ItemType<Deathwind>())
-                item.LAP().GlobalMult *= 2f;
+                item.LAP().GlobalMult *= 1.4f;
 
             if (item.type == ModContent.ItemType<Alluvion>())
                 item.LAP().GlobalMult *= 2f;
@@ -337,7 +339,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
 
             if (item.type == ModContent.ItemType<RogueTypeHammerGalaxySmasher>())
                 SetCustomMult(item, 1.5f);
-
             #endregion
         }
         #endregion
@@ -455,7 +456,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 SetCustomMult(item, 22000);
             // 星流刀
             if (item.type == ModContent.ItemType<Exoblade>())
-                SetCustomMult(item, 300);
+                SetCustomMult(item, 3000);
             // 旋涡
             if (item.type == ModContent.ItemType<SubsumingVortex>())
                 SetCustomMult(item, 1165);
@@ -492,7 +493,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             //光辉飞刀需要接近四万五的面板，比大锤子稍低
             //这个面板已经是灾厄基础近50倍了
             if (item.Same<IllustriousKnives>())
-                SetCustomMult(item, 42000);
+                SetCustomMult(item, 22000);
             //魔影悠悠球面板需要x10
             if (item.Same<Ozzathoth>())
                 SetCustomMult(item, 900);

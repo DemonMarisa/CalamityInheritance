@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using System;
@@ -18,7 +19,6 @@ namespace CalamityInheritance.Utilities
     {
         //以向右开火/使用为准
         //调用
-        //Vector2 targetPosition = Main.MouseWorld;
         //player.itemRotation = CIFunction.CalculateItemRotation(player, targetPosition, 7);
         //还有这一段jb纯屎山，以后有机会要重构
         public static float CalculateItemRotation(Player player, Vector2 mouseWorld, float rotationOffsetDegrees)
@@ -102,12 +102,12 @@ namespace CalamityInheritance.Utilities
         {
             player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
 
-            Vector2 aimVect = Main.MouseWorld - player.Center;
+            Vector2 aimVect = player.LocalMouseWorld() - player.Center;
             aimVect.SafeNormalize(Vector2.UnitX);
 
             float targetRotation = aimVect.ToRotation();
 
-            if(Main.MouseWorld.X < player.Center.X)
+            if(player.LocalMouseWorld().X < player.Center.X)
                 player.itemRotation = player.itemRotation.AngleLerp(targetRotation - MathHelper.ToRadians(rotationOffset) + MathHelper.Pi, rotationSpeed);
             else
                 player.itemRotation = player.itemRotation.AngleLerp(targetRotation + MathHelper.ToRadians(rotationOffset), rotationSpeed);

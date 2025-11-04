@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -57,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             player.itemTime = 6;
             if (Projectile.ai[0] == 0f && hitRange < ExoFlail.MaxRange && player.whoAmI == Main.myPlayer)
             {
-                Vector2 value = Main.MouseWorld - Projectile.Center;
+                Vector2 value = player.LocalMouseWorld() - Projectile.Center;
                 value.Normalize();
                 value.X *= ExoFlail.MouseHomingAcceleration;
                 value.Y *= ExoFlail.MouseHomingAcceleration;

@@ -15,6 +15,7 @@ using CalamityInheritance.Sounds.Custom;
 using System.IO;
 using Terraria.ID;
 using System.Collections.Generic;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
@@ -85,11 +86,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 Projectile.netUpdate = true;
             }
             else
-                Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
+                Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Owner.LocalMouseWorld()), AimResponsiveness);
 
             if (!firstFrame && Projectile.localAI[1] == 0)
             {
-                Projectile.rotation = Projectile.AngleTo(Main.MouseWorld);
+                Projectile.rotation = Projectile.AngleTo(Owner.LocalMouseWorld());
                 Projectile.velocity = Vector2.Zero;
                 firstFrame = true;
             }
@@ -141,7 +142,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             const float RepelForce = 12f;        // 反向排斥力系数
             const float slowZone = 20f; // 静止缓冲区域
 
-            Vector2 mousePosition = Main.MouseWorld;
+            Vector2 mousePosition = Owner.LocalMouseWorld();
             Vector2 toMouse = mousePosition - Projectile.Center;
             float distanceToMouse = toMouse.Length();
             // 处理零向量情况
@@ -225,9 +226,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
         {
             attackTimer++;
 
-            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Main.MouseWorld), AimResponsiveness);
+            Projectile.rotation = Projectile.rotation.AngleLerp(Projectile.AngleTo(Owner.LocalMouseWorld()), AimResponsiveness);
 
-            Vector2 playeraim = Vector2.Normalize(Main.MouseWorld - Owner.Center);
+            Vector2 playeraim = Vector2.Normalize(Owner.LocalMouseWorld() - Owner.Center);
             Vector2 offset = new Vector2(55, 35 * isSecondProj).RotatedBy(playeraim.ToRotation());
 
             Projectile.Center = Vector2.Lerp(Projectile.Center, Owner.Center + offset, AimResponsiveness);

@@ -604,6 +604,6 @@ PaintballBlaster: {
 }
 
 PumplerLegacy: {
-	Tooltip: ""
+	Tooltip: right click to firing pumpkin grenades
 	DisplayName: Pumpler Legacy
 }
