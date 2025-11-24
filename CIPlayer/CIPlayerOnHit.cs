@@ -19,6 +19,7 @@ namespace CalamityInheritance.CIPlayer
         #region On Hit NPC With Item
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
+            
             if (Player.whoAmI != Main.myPlayer)
                 return;
             Player player = Main.LocalPlayer;

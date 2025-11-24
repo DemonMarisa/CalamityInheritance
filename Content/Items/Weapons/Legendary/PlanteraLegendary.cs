@@ -1,7 +1,5 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -9,29 +7,25 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class PlanteraLegendary: CIRanged, ILocalizedModType
+    public class PlanteraLegendary: LegendaryWeaponClass
     {
-        
-        public static string TextRoute => $"{Generic.WeaponTextPath}Ranged.PlanteraLegendary"; 
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-        }
+
+        public override int SetRarityColor => ModContent.RarityType<PlantareGreen>();
+        public override Color DrawColor => new(85,210,28);
+        public override ClassType WeaponDamageClass => ClassType.Ranged;
         public static readonly int BaseDamage = 8;
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 40;
             Item.height = 62;
             Item.damage = BaseDamage;
-            Item.DamageType = DamageClass.Ranged;
             Item.useTime = 2;
             Item.useAnimation = 2;
             Item.knockBack = 0.15f;
@@ -42,12 +36,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<PlanteraLegendaryLeaf>();
             Item.useAmmo = AmmoID.Arrow;
-            Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PlanteraGreen>() : ModContent.RarityType<MaliceChallengeDrop>();
-        }
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
         }
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
@@ -62,11 +50,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.PlanteraTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.PlanteraTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.PlanteraTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.PlanteraTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.PlanteraTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.PlanteraTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;

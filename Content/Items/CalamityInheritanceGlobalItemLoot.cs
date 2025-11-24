@@ -1,6 +1,5 @@
 ﻿using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using CalamityMod.Items.TreasureBags;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
@@ -12,16 +11,13 @@ using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.System.Configs;
 using Terraria.DataStructures;
-using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
-using Terraria.ModLoader.Default;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Qol;
 using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
-using CalamityMod.NPCs.DesertScourge;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items

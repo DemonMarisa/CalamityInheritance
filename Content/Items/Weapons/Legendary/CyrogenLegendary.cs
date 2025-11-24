@@ -2,9 +2,7 @@ using System.Collections.Generic;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -19,18 +17,19 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     //我本人完全看不懂这个代码，如果需要的话可能重写？
-    public class CyrogenLegendary: CISummon, ILocalizedModType
+    public class CyrogenLegendary: LegendaryWeaponClass
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Summon";
-        public static string TextRoute => $"{Generic.WeaponTextPath}Summon.CyrogenLegendary";
+        public override ClassType WeaponDamageClass => ClassType.Summon;
+        public override int SetRarityColor => ModContent.RarityType<CryogenBlue>();
+        public override Color DrawColor => new (30, 144, 255);
         public static readonly float ShootSpeed = 10f;
         public static int baseDamage = 48;
         public static int TrueDamage = 0;
-        public override void SetStaticDefaults()
+        public override void ExSSD()
         {
-            Item.ResearchUnlockCount = 1;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = false;
         }
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 52;
             Item.height = 50;
@@ -44,9 +43,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.autoReuse = true;
             Item.shootSpeed = ShootSpeed;
             Item.shoot = ModContent.ProjectileType<CryogenPtr>();
-            Item.DamageType = DamageClass.Summon;
-            Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<CryogenBlue>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -58,9 +54,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 ("[TIERTWO]",mp.ColdDivityTier2,"TierTwo"),
                 ("[TIERTHREE]",mp.ColdDivityTier3,"TierThree")
             };
-            static void ReplaceTierTooltip(List<TooltipLine> tooltips,string placeholder,bool isEnable,string textKey)
+            void ReplaceTierTooltip(List<TooltipLine> tooltips,string placeholder,bool isEnable,string textKey)
             {
-                string text = isEnable ? Language.GetTextValue($"{TextRoute}.{textKey}") : Language.GetTextValue($"{TextRoute}.{textKey}Tint");
+                string text = isEnable ? Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}") : Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}Tint");
                 tooltips.FindAndReplace(placeholder, text);
             }
             foreach (var (placehloder, isEnable, textKey) in tiers)

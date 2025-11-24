@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.CIOverride
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type is ItemID.EmpressFlightBooster;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (CIServerConfig.Instance.VanillaUnnerf)
+            if (!CIServerConfig.Instance.VanillaUnnerf)
                 return;
 
             if (item.type != ItemID.EmpressFlightBooster)

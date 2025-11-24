@@ -9,32 +9,28 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class RavagerLegendary: CIMagic, ILocalizedModType
+    public class RavagerLegendary: LegendaryWeaponClass
     {
-        
-        public static string TextRoute => $"{Generic.WeaponTextPath}Magic.RavagerLegendary";
-        public override void SetStaticDefaults()
+        public override ClassType WeaponDamageClass => ClassType.Magic;
+        public override Color DrawColor => Color.HotPink;
+        public override int SetRarityColor => ModContent.RarityType<BetsyPink>();
+        public override void ExSSD()
         {
             Item.staff[Item.type] = true;
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-            Item.ResearchUnlockCount = 1;
         }
         public int baseDamage = 60;
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 62;
             Item.height = 62;
             Item.damage = baseDamage;
             Item.mana = 9;
-            Item.DamageType = DamageClass.Magic;
             Item.useAnimation = Item.useTime = 11;
             Item.noMelee = true;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -43,12 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<RavagerLegendaryProjAlt>();
-
-            Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<BetsyPink>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
-
-        public override bool AltFunctionUse(Player player) => true;
 
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
         {
@@ -60,11 +51,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.BetsyTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.BetsyTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.BetsyTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.BetsyTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.BetsyTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.BetsyTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;

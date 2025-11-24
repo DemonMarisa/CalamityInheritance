@@ -1,7 +1,5 @@
-using CalamityMod.Items.Weapons.Rogue;
 using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityInheritance.Rarity;
 using Terraria;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
@@ -9,9 +7,7 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod;
 using Terraria.Audio;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
@@ -19,24 +15,19 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class PBGLegendary: RogueWeapon, ILocalizedModType
+    public class PBGLegendary: LegendaryWeaponClass
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
-        public static string TextRoute => $"{Generic.WeaponTextPath}Rogue.PBGLegendary";
+        public override ClassType WeaponDamageClass => ClassType.Rogue;
+        public override Color DrawColor => new(0, 255, 127);
+        public override int SetRarityColor => ModContent.RarityType<PBGLime>();
         public int BaseDamage = 30;
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type]= true;
-        }
         public int baseDamage = 30;
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 26;
             Item.height = 58;
             Item.damage = baseDamage;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useTime = 10;
@@ -47,8 +38,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<PBGLegendaryProj>();
             Item.shootSpeed = 10f;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<PBGLime>() : ModContent.RarityType<MaliceChallengeDrop>();
-            Item.value = CIShopValue.RarityMaliceDrop;
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
@@ -70,11 +59,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.PBGTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.PBGTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.PBGTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.PBGTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.PBGTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.PBGTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;

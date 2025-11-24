@@ -26,6 +26,7 @@ namespace CalamityInheritance.CIPlayer
 {
     public partial class CalamityInheritancePlayer : ModPlayer 
     {
+        
         public void MeleeOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
             var calPlayer = Player.Calamity(); 

@@ -1,8 +1,5 @@
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,31 +7,24 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class DestroyerLegendary: CIMagic, ILocalizedModType
+    public class DestroyerLegendary: LegendaryWeaponClass
     {
-        
-        public static string TextRoute => $"{Generic.WeaponTextPath}Magic.DestroyerLegendary";
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-        }
+        public override ClassType WeaponDamageClass => ClassType.Magic;
+        public override Color DrawColor => new(65, 105, 225);
+        public override int SetRarityColor => ModContent.RarityType<SHPCAqua>();
         public static readonly int BaseDamage = 17;
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 96;
             Item.height = 34;
             Item.damage = BaseDamage;
-            Item.DamageType = DamageClass.Magic;
             Item.mana = 20;
             Item.useTime = Item.useAnimation = 7;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -43,9 +33,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<LegacySHPCHeldProj>();
             Item.shootSpeed = 20f;
-            Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<SHPCAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
-
             Item.noUseGraphic = true;
             Item.channel = true;
         }
@@ -67,11 +54,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{TextRoute}.TierOne")    : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne")    : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{TextRoute}.TierTwo")    : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo")    : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{TextRoute}.TierThree")  : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree")  : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
