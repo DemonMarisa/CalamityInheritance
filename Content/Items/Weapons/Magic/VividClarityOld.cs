@@ -171,26 +171,26 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Register();
 
             CreateRecipe().
-            AddRecipeGroup("CalamityInheritance:AnyElementalRay").
-            AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+            AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+            AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
             AddIngredient<ShadowboltStaff>().
             AddIngredient<UltraLiquidator>().
             AddDecraftCondition(CalamityConditions.DownedExoMechs).
-            AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
+            AddIngredient<HeliumFlashLegacy>().
             AddIngredient<MiracleMatter>().
             AddTile(ModContent.TileType<DraedonsForge>()).
             Register();
 
             CreateRecipe().
-            AddRecipeGroup("CalamityInheritance:AnyElementalRay").
-            AddRecipeGroup("CalamityInheritance:AnyPhantasmalFury").
+            AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+            AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
             AddIngredient<ShadowboltStaff>().
             AddIngredient<UltraLiquidator>().
-            AddRecipeGroup("CalamityInheritance:AnyHeliumFlash").
+            AddIngredient<HeliumFlashLegacy>().
             AddIngredient<AncientMiracleMatter>().
             AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
             DisableDecraft().

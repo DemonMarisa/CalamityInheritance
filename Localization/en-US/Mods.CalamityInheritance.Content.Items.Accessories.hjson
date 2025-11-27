@@ -34,7 +34,10 @@ CIRampartofDeities: {
 		Causes stars to fall and increases length of invincibility after taking damage
 		Frozen Turtel Shell and Paladin Shield effects
 		+2 HP/s life regen speed and reduces the cooldown of healings potion by 25%
-		Increases armor penetration by 50
+		Immunity to Frostburn, Chilled and Frozen
+		Being above 50% life grants 10% increased damage
+		Being below 50% life grants 20 defense, Puts a shell around the owner
+		Grants resistance against cold attacks
 		'Strongest defensive accessory ever'
 		'''
 }
@@ -231,7 +234,7 @@ TheSpongetest: {
 		Active a barrier can absorb damage, which durability is the same as your max HP
 		Damage taken will not overflow HP
 		Halves Adrenaline lost on hit if barrier fully absorbed the damage
-		Takes up more time to recharge and Reduces defense and damage redcution by 50% if your barrier is broken
+		Takes up more time to recharge
 		[c/FF3030:Significantly reduce durability of shield while being equipped with an accessory that being eager for a drop of blood]
 		[c/FFD700:✟Thanks for the support by Plantare✟]
 		'''
@@ -443,3 +446,18 @@ TheAmalgamLegacy: {
 }
 
 DSANerfed: ""
+
+FrigidBulwark: {
+	DisplayName: Frigid Bulwark Revamped
+	Tooltip:
+		'''
+		Absorbs 25% of damage done to players on your team
+		Only active above 25% life
+		Grants immunity to knockback
+		Immunity to Frostburn, Chilled and Frozen
+		Being above 50% life grants 10% increased damage
+		Being below 50% life grants 20 defense, Puts a shell around the owner
+		The shell becomes more powerful when below 15% life and reduces damage even further
+		Grants resistance against cold attacks
+		'''
+}

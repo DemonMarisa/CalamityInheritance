@@ -32,11 +32,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.TrophyLevi).
-                DisableDecraft().
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
                 AddIngredient<LoreLeviathanAnahita>().
                 AddTile(TileID.Bookcases).
                 Register();

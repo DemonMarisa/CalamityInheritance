@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.LumiStriker).
+                AddIngredient<LumiStriker>().
                 AddIngredient<PhantomLance>().
                 AddIngredient<RuinousSoul>(4).
                 AddIngredient<Necroplasm> (20).

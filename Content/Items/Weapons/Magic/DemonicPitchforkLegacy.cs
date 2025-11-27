@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             CreateRecipe().
                 AddIngredient(ItemID.Obsidian, 20).
-                AddRecipeGroup(CIRecipeGroup.RottenMatter, 15).
+                AddRecipeGroup(CIRecipeGroup.AnyRottenMatter, 15).
                 AddIngredient(ItemID.HellstoneBar, 20).
                 AddIngredient(ItemID.SoulofNight, 20).
                 AddTile(TileID.Anvils).

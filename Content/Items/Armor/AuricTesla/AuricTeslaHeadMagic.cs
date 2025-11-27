@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using System;
+using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -103,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnySilvaHeadMagic").
+                AddIngredient<SilvaHeadMagicold>().
                 AddIngredient<GodSlayerHeadMagicold>().
                 AddIngredient<BloodflareHeadMagic>().
                 AddIngredient<TarragonHeadMagic>().
@@ -113,7 +114,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnySilvaHeadMagic").
+                AddIngredient<SilvaHeadMagicold>().
                 AddIngredient<GodSlayerHeadMagicold>().
                 AddIngredient<BloodflareHeadMagic>().
                 AddIngredient<TarragonHeadMagic>().

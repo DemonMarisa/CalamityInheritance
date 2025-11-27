@@ -171,7 +171,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
+                AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().
@@ -183,7 +183,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Register();
             
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyTerratomere").
+                AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
                 AddIngredient<EntropicClaymore>().

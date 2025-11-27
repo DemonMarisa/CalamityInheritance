@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         {
             CreateRecipe().
                 AddIngredient<SilvaHeadRogue>().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRogue").
+                AddIngredient<GodSlayerHeadRogueold>().
                 AddIngredient<BloodflareHeadRogue>().
                 AddIngredient<TarragonHeadRogue>().
                 AddIngredient<PsychoticAmulet>().
@@ -116,7 +116,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             CreateRecipe().
                 AddIngredient<SilvaHeadRogue>().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRogue").
+                AddIngredient<GodSlayerHeadRogueold>().
                 AddIngredient<BloodflareHeadRogue>().
                 AddIngredient<TarragonHeadRogue>().
                 AddIngredient<PsychoticAmulet>().

@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
                 .Register();
             CreateRecipe()
                 .AddIngredient<GalileoGladius>()
-                .AddRecipeGroup("CalamityInheritance:AnyCosmicShiv")
+                .AddIngredient<CosmicShivold>()
                 .AddIngredient<Lucrecia>()
                 .AddIngredient<MiracleMatter>()
                 .AddDecraftCondition(CalamityConditions.DownedExoMechs)
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 
             CreateRecipe().
                 AddIngredient<GalileoGladius>().
-                AddRecipeGroup("CalamityInheritance:AnyCosmicShiv").
+                AddIngredient<CosmicShivold>().
                 AddIngredient<Lucrecia>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).

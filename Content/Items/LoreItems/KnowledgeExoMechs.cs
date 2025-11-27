@@ -35,10 +35,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 AddIngredient<LoreExoMechs>().
                 AddTile(TileID.Bookcases).
                 Register();
-            CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyExoTropy").
-                AddTile(TileID.Bookcases).
-                Register();
         }
     }
 }

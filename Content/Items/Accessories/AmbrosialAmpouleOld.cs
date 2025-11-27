@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.CrimsonFlask).
+                AddRecipeGroup(CIRecipeGroup.AnyEvilFlask).
                 AddIngredient<ArchaicPowder>().
                 AddIngredient<RadiantOoze>().
                 AddIngredient<HoneyDew>().

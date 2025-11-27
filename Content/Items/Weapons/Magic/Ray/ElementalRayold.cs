@@ -1,10 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -50,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyTerraRay").
+                AddIngredient<TerraRay>().
                 AddIngredient(ItemID.LunarBar, 5).
                 AddIngredient<LifeAlloy>(5).
                 AddIngredient<GalacticaSingularity>(5).

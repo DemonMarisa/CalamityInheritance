@@ -151,7 +151,12 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(43, 56, 95, 182)]
         [DefaultValue(false)]
         public bool MOABResprite{ get; set; }
-
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool FrigidBulwarkResprite { get; set; }
+        [BackgroundColor(43, 56, 95, 182)]
+        [DefaultValue(false)]
+        public bool FrostBarrierResprite { get; set; }
         [Header("Misc")]
         #region 材料/物品贴图
         [BackgroundColor(43, 56, 95, 182)]

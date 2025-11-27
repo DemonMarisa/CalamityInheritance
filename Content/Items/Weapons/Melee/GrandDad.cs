@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (CIServerConfig.Instance.LegendaryitemsRecipes)
             {
                 CreateRecipe().
-                    AddRecipeGroup(CIRecipeGroup.LoreMoonLord).
+                    AddIngredient<KnowledgeMoonLord>().
                     DisableDecraft().
                     AddTile(TileID.LunarCraftingStation).
                     Register();

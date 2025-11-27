@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Sounds;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -77,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddRecipeGroup(CIRecipeGroup.DartGun)
+                .AddRecipeGroup(LAPRecipeGroup.AnyDartGun)
                 .AddIngredient(ItemID.MartianConduitPlating, 25)
                 .AddIngredient<CoreofEleum>(3)
                 .AddIngredient(ItemID.FragmentVortex, 5)

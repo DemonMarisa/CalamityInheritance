@@ -1,7 +1,5 @@
-﻿using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
+﻿using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityInheritance.Content.Items.Tools;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
@@ -11,10 +9,8 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
-using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Ammo;
 using CalamityMod.Items.Weapons.DraedonsArsenal;
 using CalamityMod.Items.Weapons.Magic;
@@ -24,10 +20,8 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.CalStatInflationBACK

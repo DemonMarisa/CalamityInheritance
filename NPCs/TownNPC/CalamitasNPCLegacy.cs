@@ -564,7 +564,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ModContent.ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ItemID.BlackInk) { shopCustomPrice = Item.buyPrice(gold: 1) })
                 .Add(new Item(ModContent.ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) }, CIConditions.DownedBloodMoon)
-                .Add(new Item(ItemID.WarTable) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedPlantera)
+                .Add(new Item(ItemID.WarTable) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.Hardmode)
 
                 .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
                 .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)

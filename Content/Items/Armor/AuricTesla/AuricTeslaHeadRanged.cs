@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRanged").
+                AddIngredient<GodSlayerHeadRangedold>().
                 AddIngredient<SilvaHeadRanged>().
                 AddIngredient<BloodflareHeadRanged>().
                 AddIngredient<TarragonHeadRanged>().
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadRanged").
+                AddIngredient<GodSlayerHeadRangedold>().
                 AddIngredient<SilvaHeadRanged>().
                 AddIngredient<BloodflareHeadRanged>().
                 AddIngredient<TarragonHeadRanged>().

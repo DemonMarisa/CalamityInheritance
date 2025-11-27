@@ -481,6 +481,16 @@ Configs: {
 			Label: "[i:CalamityInheritance/SomaPrimeOld]月神Prime[Legacy]贴图切换"
 			Tooltip: 切换月神Prime[legacy]的贴图
 		}
+
+		FrigidBulwarkResprite: {
+			Label: "[i:CalamityInheritance/FrigidBulwark]切换寒霜壁垒的贴图"
+			Tooltip: 切换月神Prime[legacy]的贴图
+		}
+
+		FrostBarrierResprite: {
+			Label: "[i:CalamityMod/FrostBarrier]切换寒冰屏障的贴图"
+			Tooltip: 切换月神Prime[legacy]的贴图
+		}
 	}
 
 	CIServerConfig: {

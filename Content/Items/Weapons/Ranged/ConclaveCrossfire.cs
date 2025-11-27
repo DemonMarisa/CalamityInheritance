@@ -54,8 +54,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             int bulletAmt = Main.rand.Next(4, 6); ;
             for (int index = 0; index < bulletAmt; ++index)
             {
-                velocity.X += Main.rand.Next(-30, 31) * 0.05f;
-                velocity.Y += Main.rand.Next(-30, 31) * 0.05f;
+                velocity.X += Main.rand.Next(-5, 5) * 0.05f;
+                velocity.Y += Main.rand.Next(-5, 5) * 0.05f;
                 int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
                 Main.projectile[proj].extraUpdates += 2;
                 Main.projectile[proj].ArmorPenetration += 15;

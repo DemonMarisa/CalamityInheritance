@@ -1,13 +1,14 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
+using CalamityMod.Items.Materials;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
@@ -39,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         {
             CreateRecipe(100).
                 AddIngredient(ItemID.MusketBall, 100).
-                AddRecipeGroup(CIRecipeGroup.CryoBar).
+                AddIngredient<CryoBar>().
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

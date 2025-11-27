@@ -62,13 +62,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
                 AddIngredient<SubsumingVortexold>().
                 AddIngredient<CosmicDischarge>(1).
-                AddRecipeGroup(CIRecipeGroup.Norfleet, 3).
-                AddRecipeGroup(CIRecipeGroup.Excelsus, 3).
+                AddIngredient<NorfleetLegacy>(1).
+                AddIngredient<Excelsus>().
                 AddIngredient<TheObliterator>(3).
                 AddIngredient<Deathwind>(3).
                 AddIngredient<DeathhailStaff>(3).
                 AddIngredient<StaffoftheMechworm>(3).
-                AddRecipeGroup(CIRecipeGroup.Eradicator, 6).
+                AddRecipeGroup(CIRecipeGroup.AnyEradicator, 6).
                 AddIngredient<NebulousCore>(3).
                 AddIngredient<AscendantSpiritEssence>(77).
                 AddIngredient<CosmiliteBar>(77).

@@ -14,6 +14,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.GameContent;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 {
@@ -83,7 +84,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
 
-            if (CalamityConfig.Instance.Afterimages)
+            if (LAPConfig.Instance.PerformanceMode)
             {
                 for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {

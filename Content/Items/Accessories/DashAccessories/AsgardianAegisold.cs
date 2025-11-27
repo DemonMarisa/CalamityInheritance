@@ -71,8 +71,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyElysianAegis").
-                AddRecipeGroup("CalamityInheritance:AnyAsgardsValor").
+                AddIngredient<ElysianAegisold>().
+                AddIngredient<AsgardsValorold>().
                 AddIngredient<CosmiliteBar>(10).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().

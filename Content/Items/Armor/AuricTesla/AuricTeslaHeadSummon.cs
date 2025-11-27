@@ -21,6 +21,7 @@ using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
+using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -238,7 +239,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnySilvaHeadSummon").
+                AddIngredient<SilvaHeadSummonold>().
                 AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<BloodflareHeadSummon>().
                 AddIngredient<TarragonHeadSummon>().
@@ -248,7 +249,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnySilvaHeadSummon").
+                AddIngredient<SilvaHeadSummonold>().
                 AddIngredient<GodSlayerHeadSummonold>().
                 AddIngredient<BloodflareHeadSummon>().
                 AddIngredient<TarragonHeadSummon>().

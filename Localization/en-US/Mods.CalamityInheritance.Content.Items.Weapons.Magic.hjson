@@ -104,9 +104,8 @@ VehemencOld: {
 	Tooltip:
 		'''
 		Casts an intense energy blast
-		Does far more damage the more HP an enemy has left
-		Max damage is capped at 1,000,000
-		If an enemy has full HP it will inflict several long-lasting debuffs
+		base damage is one-seventh of the enemy's maximum health.
+		inflict several long-lasting debuffs
 		Revengence drop, for a while
 		'''
 }

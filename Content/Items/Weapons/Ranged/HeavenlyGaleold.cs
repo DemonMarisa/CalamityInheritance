@@ -174,11 +174,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
-                AddRecipeGroup(CIRecipeGroup.ClockworkBow).
+                AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
-                AddRecipeGroup(CIRecipeGroup.Phangasm).
+                AddIngredient<PhangasmOS>().
                 AddIngredient<TheBallista>().
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddIngredient<MiracleMatter>().
@@ -188,11 +188,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
                 AddIngredient<TelluricGlare>().
-                AddRecipeGroup(CIRecipeGroup.ClockworkBow).
+                AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
                 AddIngredient<FlarewingBow>().
-                AddRecipeGroup(CIRecipeGroup.Phangasm).
+                AddIngredient<PhangasmOS>().
                 AddIngredient<TheBallista>().
                 AddIngredient<AncientMiracleMatter>().
                 DisableDecraft().

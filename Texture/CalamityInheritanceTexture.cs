@@ -23,9 +23,10 @@ namespace CalamityInheritance.Texture
 
         public static Asset<Texture2D> WulfrumPickaxeOld;
         #endregion
-        //元素手套
+        #region 元素之握
         public static Asset<Texture2D> ElemGloveCal;
         public static Asset<Texture2D> ElemGloveAlt;
+        #endregion
         #region 神之壁垒
         public static Asset<Texture2D> RampartofDeitiesNew;
         public static Asset<Texture2D> RampartofDeitiesOld;
@@ -85,9 +86,13 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> MOABCalamity;
         public static Asset<Texture2D> MOABAlter;
         #endregion
-        #region 盔甲
-        //弑神
-
+        #region 寒霜壁垒
+        public static Asset<Texture2D> FrigidBulwarkOld;
+        public static Asset<Texture2D> FrigidBulwarkNew;
+        #endregion
+        #region 寒冰屏障
+        public static Asset<Texture2D> FrostBarrierOld;
+        public static Asset<Texture2D> FrostBarrierNew;
         #endregion
         #endregion
         #region 路径
@@ -102,14 +107,14 @@ namespace CalamityInheritance.Texture
             WulfrumAxeNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumAxeNew");
             WulfrumHammerNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumHammerNew");
             WulfrumPickaxeNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumPickaxeNew");
-
             WulfrumAxeOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumAxe");
             WulfrumHammerOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumHammer");
             WulfrumPickaxeOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Tools/WulfrumPickaxe");
             #endregion
-            //元素手套
+            #region 元素之握
             ElemGloveCal = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Melee/ElementalGauntletold");
             ElemGloveAlt = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/ElemGloveAlt");
+            #endregion
             #region 壁垒
             RampartofDeitiesNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/CIRampartofDeities");
             RampartofDeitiesOld = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/RampartofDeitiesOld");
@@ -118,14 +123,12 @@ namespace CalamityInheritance.Texture
             EtherealTalismanNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Magic/EtherealTalisman");
             EtherealTalismanOld = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/Magic/AncientEtherealTalisman");
             #endregion
-
             #region 无记名灵基
             FateGirlOriginal = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Pets/DaawnlightSpiritOriginMinion");
             FateGirlOriginalBuff = ModContent.Request<Texture2D>("CalamityMod/Buffs/Pets/ArcherofLunamoon");
             FateGirlLegacy = ModContent.Request<Texture2D>($"{CIExtraRoute}/Summon/FateGirlReal"); 
             FateGirlLegacyBuff = ModContent.Request<Texture2D>($"{CIExtraRoute}/Summon/FateGirlBuff");
             #endregion
-            
             #region 材料
             GS = ModContent.Request<Texture2D>($"{CalItemsRoute}/Materials/GalacticaSingularity");
             GSAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/GalacticaSingularityAlter");
@@ -155,7 +158,6 @@ namespace CalamityInheritance.Texture
             ManaHeart = ModContent.Request<Texture2D>($"{CalItemsRoute}/PermanentBoosters/PhantomHeart");
             ManaHeartAlter = ModContent.Request<Texture2D>($"{CIExtraRoute}/Misc/PhantomHeartAlter");
             #endregion
-           
             #region 天使鞋
             AngelTreadsCalamity = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/AngelTreadsCalamity");
             AngelTreadsAlter    = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/AngelTreadsLegacy");
@@ -168,52 +170,57 @@ namespace CalamityInheritance.Texture
             MOABCalamity        = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/MOABCalamity");
             MOABAlter           = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/MOABLegacy");
             #endregion
+            #region 寒霜壁垒寒冰屏障
+            FrigidBulwarkNew = ModContent.Request<Texture2D>($"{CIItemsRoute}/Accessories/FrigidBulwark");
+            FrigidBulwarkOld = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/FrigidBulwarkOld");
+            FrostBarrierNew = ModContent.Request<Texture2D>($"{CalItemsRoute}/Accessories/FrostBarrier");
+            FrostBarrierOld = ModContent.Request<Texture2D>($"{CIExtraRoute}/Accessories/FrostBarrierOld");
+            #endregion
         }
         public static void UnloadTexture()
         {
-            Asset<Texture2D>[] train =
-            [
-                RemovedGlowMask,
-                WulfrumAxeNew,
-                WulfrumHammerNew,
-                WulfrumPickaxeNew,
-                WulfrumAxeNew,
-                WulfrumHammerNew,
-                WulfrumPickaxeNew,
-                RampartofDeitiesNew,
-                RampartofDeitiesOld,
-                EtherealTalismanNew,
-                EtherealTalismanOld,
-                FateGirlLegacy,
-                FateGirlLegacyBuff,
-                FateGirlOriginal,
-                FateGirlOriginalBuff,
-                GS,
-                GSAlter,
-                RedSoul,
-                RedSoulAlter,
-                HealthOrange,
-                HealthOrangeAlter,
-                HealthMira,
-                HealthMiraAlter,
-                HealthDragon,
-                HealthDragonAlter,
-                ManaShard,
-                ManaShardAlter,
-                ManaCore,
-                ManaCoreAlter,
-                ManaHeartAlter,
-                AngelTreadsCalamity,
-                AngelTreadsAlter,
-                LunarBootsCalamity,
-                LunarBootsAlter,
-                MOABCalamity,
-                MOABAlter,
-                ElemGloveAlt,
-                ElemGloveCal,
-            ];
-            for(int i = 0; i < train.Length; i++)
-                train[i] = null;
+            RemovedGlowMask = null;
+            WulfrumAxeNew = null;
+            WulfrumHammerNew = null;
+            WulfrumPickaxeNew = null;
+            WulfrumAxeNew = null;
+            WulfrumHammerNew = null;
+            WulfrumPickaxeNew = null;
+            RampartofDeitiesNew = null;
+            RampartofDeitiesOld = null;
+            EtherealTalismanNew = null;
+            EtherealTalismanOld = null;
+            FateGirlLegacy = null;
+            FateGirlLegacyBuff = null;
+            FateGirlOriginal = null;
+            FateGirlOriginalBuff = null;
+            GS = null;
+            GSAlter = null;
+            RedSoul = null;
+            RedSoulAlter = null;
+            HealthOrange = null;
+            HealthOrangeAlter = null;
+            HealthMira = null;
+            HealthMiraAlter = null;
+            HealthDragon = null;
+            HealthDragonAlter = null;
+            ManaShard = null;
+            ManaShardAlter = null;
+            ManaCore = null;
+            ManaCoreAlter = null;
+            ManaHeartAlter = null;
+            AngelTreadsCalamity = null;
+            AngelTreadsAlter = null;
+            LunarBootsCalamity = null;
+            LunarBootsAlter = null;
+            MOABCalamity = null;
+            MOABAlter = null;
+            ElemGloveAlt = null;
+            ElemGloveCal = null;
+            FrigidBulwarkNew = null;
+            FrigidBulwarkOld = null;
+            FrostBarrierNew = null;
+            FrostBarrierOld = null;
         }
     }
 }

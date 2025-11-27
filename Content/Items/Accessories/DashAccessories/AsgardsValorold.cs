@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             CreateRecipe().
                 AddIngredient(ItemID.AnkhShield).
                 AddIngredient<OrnateShield>().
-                AddRecipeGroup(CIRecipeGroup.ShieldoftheOcean).
+                AddIngredient<ShieldoftheOceanLegacy>().
                 AddIngredient<Abaddon>().
                 AddIngredient<CoreofCalamity>().
                 AddTile(TileID.MythrilAnvil).

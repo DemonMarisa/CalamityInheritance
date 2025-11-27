@@ -56,14 +56,10 @@ namespace CalamityInheritance.CIPlayer
         //3.6: 将重绘的排序更加严格地分类
         public static void RespriteOptions()
         {
-            var R = CIRespriteConfig.Instance;
-            var item = TextureAssets.Item;
-            var proj = TextureAssets.Projectile;
+            var R = CIRespriteConfig.Instance;  var item = TextureAssets.Item; var proj = TextureAssets.Projectile;
             #region Texture
             #region 钨钢Family
-            if (GI<WulfrumAxe>()     != null ||
-                GI<WulfrumHammer>()  != null ||
-                GI<WulfrumPickaxe>() != null)
+            if (GI<WulfrumAxe>() != null || GI<WulfrumHammer>() != null || GI<WulfrumPickaxe>() != null)
             {
                 if(!R.WulfumTexture)
                 {
@@ -80,15 +76,8 @@ namespace CalamityInheritance.CIPlayer
             }
             #endregion
             #region 全部的元素武器
-            if (GI<ElementalShivold>() != null ||
-                GI<ElementalRayold>()  != null ||
-                GI<MeleeTypeElementalDisk>() != null ||
-                GI<ElementalLance>() != null ||
-                GI<ElementalGauntletold>() != null ||
-                // 冲击波已经离开了我们
-                GI<ElementalBlaster>() != null ||
-                GI<ArkoftheElementsold>() != null ||
-                GI<Swordsplosion>() != null) 
+            if (GI<ElementalShivold>() != null ||  GI<ElementalRayold>()  != null || GI<MeleeTypeElementalDisk>() != null || GI<ElementalLance>() != null || GI<ElementalGauntletold>() != null ||
+                GI<ElementalBlaster>() != null || GI<ArkoftheElementsold>() != null || GI<Swordsplosion>() != null) 
             {
                 if (!R.AllElemental)
                 {
@@ -133,10 +122,8 @@ namespace CalamityInheritance.CIPlayer
                     IR<ElementalRayold>(CIWeaponsResprite.ElemRayAlt);
                     //手套
                     IR<ElementalGauntletold>(CIResprite.ElemGloveAlt);
-                    
                     //byd
                     IR<ElementalBlaster>(CIWeaponsResprite.ElemBYDAlt);
-                    
                     //爆破
                     IR<Swordsplosion>(CIWeaponsResprite.RareArkAlt);
                     //元素喷火器
@@ -158,7 +145,9 @@ namespace CalamityInheritance.CIPlayer
             SummonResprite(item, proj, R);
             RogueResprite(R);
             MeleeRogueResprite(R);
-           
+            //壁垒
+            if (GI<CIRampartofDeities>() != null)
+                IR<CIRampartofDeities>(R.RampartofDeitiesTexture ? CIResprite.RampartofDeitiesOld : CIResprite.RampartofDeitiesNew);
             //壁垒
             if (GI<CIRampartofDeities>() != null)
                 IR<CIRampartofDeities>(R.RampartofDeitiesTexture ? CIResprite.RampartofDeitiesOld : CIResprite.RampartofDeitiesNew);
@@ -189,7 +178,12 @@ namespace CalamityInheritance.CIPlayer
             //MOAB
             if (GI<MOAB>() != null)
                 IR<MOAB>(R.MOABResprite                     ? CIResprite.MOABAlter          : CIResprite.MOABCalamity);
-
+            //寒霜壁垒
+            if (GI<FrigidBulwark>() != null)
+                IR<FrigidBulwark>(R.FrigidBulwarkResprite ? CIResprite.FrigidBulwarkOld : CIResprite.FrigidBulwarkNew);
+            //寒冰屏障
+            if (GI<FrostBarrier>() != null)
+                IR<FrostBarrier>(R.FrostBarrierResprite ? CIResprite.FrostBarrierOld : CIResprite.FrigidBulwarkNew);
             #region 增益道具
             if (GI<BloodOrange>() != null)
                 IR<BloodOrange>(R.BloodOrangeResprite   ? CIResprite.HealthOrangeAlter  : CIResprite.HealthOrange);
@@ -452,8 +446,6 @@ namespace CalamityInheritance.CIPlayer
                     //腐巢
                     IR<LeechingDagger>              (CIWeaponsResprite.HiveMindShivCal);
                     PR<LeechingDaggerProj>          (CIWeaponsResprite.HiveMindShivCal);
-
-
                 }
                 if (R.AllShivs)
                 {
@@ -490,13 +482,6 @@ namespace CalamityInheritance.CIPlayer
             #region 庇护
             if (GI<AegisBlade>() != null)
                 IR<AegisBlade>(R.AegisResprite ? CIWeaponsResprite.AegisAlt : CIWeaponsResprite.AegisCal);
-
-            #endregion
-            #region 明月链刃
-            if (GI<CrescentMoon>() != null)
-            {
-                
-            }
             #endregion
         }
 

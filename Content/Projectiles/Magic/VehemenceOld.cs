@@ -54,28 +54,17 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            double lifeAmount = target.life;
-            double lifeMax = target.lifeMax;
-            double damageMult = lifeAmount / lifeMax * 7;
-
-            modifiers.SourceDamage.Flat += target.life / 7;
-
-            if (modifiers.SourceDamage.Flat > 1000000f)
-            {
-                modifiers.SourceDamage.Flat = 1000000f;
-            }
+            float lifeMax = target.lifeMax;
+            modifiers.SourceDamage.Flat += lifeMax / 7;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (target.life == target.lifeMax)
-            {
-                target.AddBuff(BuffID.ShadowFlame, 12000);
-                target.AddBuff(BuffID.Ichor, 12000);
-                target.AddBuff(BuffID.Frostburn2, 12000);
-                target.AddBuff(BuffID.OnFire3, 12000);
-                target.AddBuff(BuffID.Venom, 12000);
-            }
+            target.AddBuff(BuffID.ShadowFlame, 12000);
+            target.AddBuff(BuffID.Ichor, 12000);
+            target.AddBuff(BuffID.Frostburn2, 12000);
+            target.AddBuff(BuffID.OnFire3, 12000);
+            target.AddBuff(BuffID.Venom, 12000);
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -1,15 +1,16 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Ammo;
+using CalamityMod.Items.Materials;
+using CalamityMod.NPCs.NormalNPCs;
+using CalamityMod.Projectiles.Pets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Materials;
-using CalamityMod.NPCs.NormalNPCs;
-using CalamityMod.Projectiles.Pets;
-using CalamityInheritance.Content.Projectiles.Ammo;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
@@ -36,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         {
             CreateRecipe(150).
                 AddIngredient(ItemID.MusketBall, 150).
-                AddRecipeGroup(CIRecipeGroup.CryoBar).
+                AddIngredient<CryoBar>().
                 AddTile(TileID.IceMachine).
                 Register();
         }

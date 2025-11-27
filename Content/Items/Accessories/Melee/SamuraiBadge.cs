@@ -8,6 +8,7 @@ using Terraria;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
@@ -91,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
-                    AddRecipeGroup(CIRecipeGroup.LoreProvidence).
+                    AddIngredient<KnowledgeProvidence>().
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

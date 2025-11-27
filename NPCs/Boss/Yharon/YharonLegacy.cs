@@ -40,6 +40,7 @@ using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
 using CalamityMod.Tiles.Ores;
 using CalamityMod.World;
+using LAP.Content.Configs;
 using LAP.Core.MusicEvent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -370,7 +371,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             NPC.value = Item.buyPrice(platinum: 100, gold: 0, silver: 0, copper: 0);
             NPC.lifeMax = LifeMax;
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
 
 
@@ -777,7 +778,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             float lerpStrength = invincible ? 1f : (attackType is (float)YharonAttacksType.Charge or (float)YharonAttacksType.ChargeNoRoar ? 0.5f : 0f);
 
             // 残影绘制
-            if (CalamityConfig.Instance.Afterimages)
+            if (LAPConfig.Instance.PerformanceMode)
             {
                 DrawAfterimages(spriteBatch, texture, baseDrawPos, halfSize, drawRotation, spriteEffects,
                     baseColor, effectColor, lerpStrength, drawColor);

@@ -97,7 +97,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             string Text = "+" + healnum * 5;
 
-            if (CalamityConfig.Instance.BossHealthBoost == 0f)
+            if (CalamityServerConfig.Instance.BossHealthBoost == 0f)
                 Text = "+4040";
 
             if (RebornTimer % 5 == 0)

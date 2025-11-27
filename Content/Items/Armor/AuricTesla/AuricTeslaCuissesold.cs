@@ -7,6 +7,8 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -38,8 +40,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerLeg").
-                AddRecipeGroup("CalamityInheritance:AnySilvaLeg").
+                AddIngredient<GodSlayerLeggingsold>().
+                AddIngredient<SilvaLeggingsold>().
                 AddIngredient<BloodflareCuisses>().
                 AddIngredient<TarragonLeggings>().
                 AddIngredient(ItemID.FlyingCarpet).
@@ -48,8 +50,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerLeg").
-                AddRecipeGroup("CalamityInheritance:AnySilvaLeg").
+                AddIngredient<GodSlayerLeggingsold>().
+                AddIngredient<SilvaLeggingsold>().
                 AddIngredient<BloodflareCuisses>().
                 AddIngredient<TarragonLeggings>().
                 AddIngredient(ItemID.FlyingCarpet).

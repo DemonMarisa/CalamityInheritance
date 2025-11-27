@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CreateRecipe().
                 AddIngredient<SeaShell>().
                 AddIngredient<AmidiasSpark>().
-                AddRecipeGroup(CIRecipeGroup.GrandGelatin).
+                AddIngredient<GrandGelatinLegacy>().
                 AddIngredient<CrawCarapace>().
                 AddIngredient<FungalCarapace>().
                 AddIngredient<GiantTortoiseShell>().

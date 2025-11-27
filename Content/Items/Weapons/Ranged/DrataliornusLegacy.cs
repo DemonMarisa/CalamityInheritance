@@ -1,4 +1,9 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Legendary;
+﻿using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
@@ -150,15 +155,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<Deathwind>().
                 AddIngredient<HeavenlyGaleold>().
                 AddConsumeItemCallback(CIRecipesCallback.DontConsumeExoWeapons). //旧天风合成时不会被消耗掉
-                AddRecipeGroup(CIRecipeGroup.DragonSky, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonSword, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonGun, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonCannon, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonStaff, 4).
+                AddIngredient<BurningSkyLegacy>(4).
+                AddIngredient<DragonSword>(4).
+                AddIngredient<DragonsBreathold>(4).
+                AddIngredient<ChickenCannonLegacy>(4).
+                AddIngredient<DragonStaff>(4).
                 AddIngredient<YharimsCrystalLegendary>(4).
-                AddRecipeGroup(CIRecipeGroup.DragonSummon, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonSpear, 4).
-                AddRecipeGroup(CIRecipeGroup.DragonGift, 8).
+                AddIngredient<YharonSonStaff>(4).
+                AddIngredient<DragonSpear>(4).
+                AddIngredient<YharimsGiftLegacy>(4).
                 AddIngredient<EffulgentFeather>(160).
                 AddIngredient<YharonSoulFragment>(160). //龙魂与化魂神晶用于合成这个物品时候不会被消耗
                 AddConsumeItemCallback(CIRecipesCallback.DontConsumePostDOGMaterials).

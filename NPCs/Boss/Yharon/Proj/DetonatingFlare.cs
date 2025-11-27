@@ -11,6 +11,7 @@ using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework.Graphics;
 using CalamityMod;
 using Terraria.GameContent;
+using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 {
@@ -135,7 +136,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             float amount9 = 0.5f;
             int num153 = 10;
 
-            if (CalamityConfig.Instance.Afterimages)
+            if (LAPConfig.Instance.PerformanceMode)
             {
                 for (int num155 = 1; num155 < num153; num155 += 2)
                 {

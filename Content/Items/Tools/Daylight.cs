@@ -3,6 +3,7 @@ using CalamityMod.Items;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Tools
 {
@@ -61,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.DemoniteBar, 10).
+                AddRecipeGroup(LAPRecipeGroup.AnyEvilBar, 10).
                 AddTile(TileID.Anvils).
                 Register();
         }

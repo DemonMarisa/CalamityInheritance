@@ -308,6 +308,9 @@ namespace CalamityInheritance.CIPlayer
             //日食魔镜的闪避优于所有闪避之前执行
             if (AmalgamLegacy && Main.rand.NextBool(5))
             {
+                Player.SetImmuneTimeForAllTypes(120);
+                if (Player.whoAmI == Main.myPlayer)
+                    NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
                 return true;
             }
             if (CheckEMirror())
@@ -323,8 +326,9 @@ namespace CalamityInheritance.CIPlayer
             if (GodSlayerDMGprotect && info.Damage <= GodSlayerDMGprotectMax && !modPlayer1.chaliceOfTheBloodGod)
             {
                 GodSlayerDMGprotectMax = 20;
-                Player.immune = true;
-                Player.immuneTime = 15;
+                Player.SetImmuneTimeForAllTypes(15);
+                if (Player.whoAmI == Main.myPlayer)
+                    NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
                 return true;
             }
             if((YharimAuricSet || AncientGodSlayerSet) && yharimArmorinvincibility > 0)
@@ -344,7 +348,6 @@ namespace CalamityInheritance.CIPlayer
             //4/5的概率没有触发闪避，直接返回
             if (!Main.rand.NextBool(5))
                 return false;
-            
             //无敌帧
             int eclipseMirrorDodgeIFrames = Player.ComputeDodgeIFrames();
             Player.GiveUniversalIFrames(eclipseMirrorDodgeIFrames, true);
@@ -360,8 +363,10 @@ namespace CalamityInheritance.CIPlayer
 
             int eclipse = Projectile.NewProjectile(source, Player.Center, Vector2.Zero, ModContent.ProjectileType<EclipseMirrorBurst>(), damage, 0, Player.whoAmI);
             if (eclipse.WithinBounds(Main.maxProjectiles))
-                Main.projectile[eclipse].DamageType = DamageClass.Generic; 
+                Main.projectile[eclipse].DamageType = DamageClass.Generic;
 
+            if (Player.whoAmI == Main.myPlayer)
+                NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
             //允许其触发闪避
             return true;
         }

@@ -7,6 +7,7 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Potions;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
+using LAP.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -53,7 +54,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             NPC.LifeMaxNERB(1200000, 1500000);
 
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
 
             NPC.aiStyle = -1;
@@ -262,7 +263,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			float amount9 = 0.5f;
 			int num153 = 7;
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (CalamityClientConfig.Instance.Afterimages)
 			{
 				for (int num155 = 1; num155 < num153; num155 += 2)
 				{
@@ -288,7 +289,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (LAPConfig.Instance.PerformanceMode)
 			{
 				for (int num163 = 1; num163 < num153; num163++)
 				{

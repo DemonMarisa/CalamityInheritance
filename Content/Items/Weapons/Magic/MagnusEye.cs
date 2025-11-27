@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.useAnimation = 20; 
             Item.shoot = ModContent.ProjectileType<MagnusProj>();
-            Item.shootSpeed = 14f;
+            Item.shootSpeed = 7f;
             Item.UseSound = CommonCalamitySounds.LaserCannonSound;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;

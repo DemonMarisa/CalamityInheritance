@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         public override void AddRecipes()
         {
             CreateRecipe(250).
-                AddRecipeGroup(CIRecipeGroup.CryoBar).
+                AddIngredient<CryoBar>().
                 AddTile(TileID.IceMachine).
                 Register();
         }

@@ -19,6 +19,7 @@ using CalamityInheritance.Buffs.Legendary;
 using CalamityMod.NPCs.SupremeCalamitas;
 using Terraria.GameContent.Bestiary;
 using CalamityMod.Items.Potions;
+using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 {
@@ -57,7 +58,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f, true);
 
 			NPC.LifeMaxNERB(1200000, 1500000);
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;
             AIType = -1;
@@ -269,7 +270,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			float cLerp = 0.5f;
 			int afterAmt = 7;
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (LAPConfig.Instance.PerformanceMode)
 			{
 				for (int i = 1; i < afterAmt; i += 2)
 				{
@@ -295,7 +296,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (LAPConfig.Instance.PerformanceMode)
 			{
 				for (int j = 1; j < afterAmt; j++)
 				{

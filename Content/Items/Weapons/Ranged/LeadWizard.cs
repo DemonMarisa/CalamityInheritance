@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe()
-                    .AddRecipeGroup(CIRecipeGroup.LoreGolem)
+                    .AddIngredient<KnowledgeGolem>()
                     .DisableDecraft()
                     .AddTile(TileID.MythrilAnvil)
                     .Register();

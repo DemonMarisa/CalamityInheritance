@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items
     }
     public abstract class CIAccessories: ModItem, ILocalizedModType
     {
-        protected abstract BaseSetDefault BaseSD{ get; }
+        protected virtual BaseSetDefault BaseSD{ get; }
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
@@ -32,7 +32,6 @@ namespace CalamityInheritance.Content.Items
             Item.defense = BaseSD.Defense;
             Item.accessory = true;
             ExSD();
-
             base.SetDefaults();
         }
         public virtual void ExSD() {}

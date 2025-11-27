@@ -39,72 +39,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Projectile.ai[1] = 1f;
                 Projectile.localAI[0] = -(float)Main.rand.Next(48);
             }
-            else if (Projectile.ai[1] == 1f && Projectile.owner == Main.myPlayer)
-            {
-                int targetIdx = -1;
-                //cnm灾厄150f
-                float npcRange = CIFunction.SetDistance(75);
-                foreach (NPC n in Main.ActiveNPCs)
-                {
-                    if (n.CanBeChasedBy(Projectile, false))
-                    {
-                        Vector2 npcPos = n.Center;
-                        float npcDist = Vector2.Distance(npcPos, Projectile.Center);
-                        if (npcDist < npcRange && targetIdx == -1 && Collision.CanHitLine(Projectile.Center, 1, 1, npcPos, 1, 1))
-                        {
-                            npcRange = npcDist;
-                            targetIdx = n.whoAmI;
-                        }
-                    }
-                }
-                if (npcRange < 8f)
-                {
-                    Projectile.Kill();
-                    return;
-                }
-                if (targetIdx != -1)
-                {
-                    Projectile.ai[1] = limit + 1f;
-                    Projectile.ai[0] = targetIdx;
-                    Projectile.netUpdate = true;
-                }
-            }
-            else if (Projectile.ai[1] > limit)
-            {
-                Projectile.ai[1] += 1f;
-                int idx = (int)Projectile.ai[0];
-                if (!Main.npc[idx].active || !Main.npc[idx].CanBeChasedBy(Projectile, false))
-                {
-                    Projectile.ai[1] = 1f;
-                    Projectile.ai[0] = 0f;
-                    Projectile.netUpdate = true;
-                }
-                else
-                {
-                    Projectile.velocity.ToRotation();
-                    Vector2 toNPC = Main.npc[idx].Center - Projectile.Center;
-                    if (toNPC.Length() < 20f)
-                    {
-                        Projectile.Kill();
-                        return;
-                    }
-                    if (toNPC != Vector2.Zero)
-                    {
-                        toNPC.Normalize();
-                        toNPC *= scaleFactor;
-                    }
-                    float homingSpeed = 30f;
-                    Projectile.velocity = (Projectile.velocity * (homingSpeed - 1f) + toNPC) / homingSpeed;
-                }
-            }
-            if (Projectile.ai[1] >= 1f && Projectile.ai[1] < limit)
-            {
-                Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] == limit)
-                {
-                    Projectile.ai[1] = 1f;
-                }
-            }
+
+            CalamityUtils.HomeInOnNPC(Projectile, false, 1500f, 9f, 70f);
 
             int dustTypeRand = Utils.SelectRandom(Main.rand, new int[]
             {

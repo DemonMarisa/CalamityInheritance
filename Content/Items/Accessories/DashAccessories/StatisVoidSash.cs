@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.StatisNinjaBelt).
+                AddIngredient<StatisNinjaBeltLegacy>().
                 AddIngredient<TwistingNether>(10).
                 AddIngredient<NightmareFuel>(20).
                 AddIngredient(ItemID.AvengerEmblem, 1).

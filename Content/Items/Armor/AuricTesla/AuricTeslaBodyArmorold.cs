@@ -11,6 +11,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -56,8 +58,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerBody").
-                AddRecipeGroup("CalamityInheritance:AnySilvaBody").
+                AddIngredient<GodSlayerChestplateold>().
+                AddIngredient<SilvaArmorold>().
                 AddIngredient<BloodflareBodyArmor>().
                 AddIngredient<TarragonBreastplate>().
                 AddIngredient<FrostBarrier>().
@@ -66,8 +68,8 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerBody").
-                AddRecipeGroup("CalamityInheritance:AnySilvaBody").
+                AddIngredient<GodSlayerChestplateold>().
+                AddIngredient<SilvaArmorold>().
                 AddIngredient<BloodflareBodyArmor>().
                 AddIngredient<TarragonBreastplate>().
                 AddIngredient<FrostBarrier>().

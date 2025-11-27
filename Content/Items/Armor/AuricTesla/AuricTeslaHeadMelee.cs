@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             CreateRecipe().
                 AddIngredient<TarragonHeadMelee>().
                 AddIngredient<BloodflareHeadMelee>().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadMelee").
+                AddIngredient<GodSlayerHeadMeleeold>().
                 AddIngredient<SilvaHeadMelee>().
                 AddIngredient<PsychoticAmulet>().
                 AddIngredient<AuricBarold>(1).
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             CreateRecipe().
                 AddIngredient<TarragonHeadMelee>().
                 AddIngredient<BloodflareHeadMelee>().
-                AddRecipeGroup("CalamityInheritance:AnyGodSlayerHeadMelee").
+                AddIngredient<GodSlayerHeadMeleeold>().
                 AddIngredient<SilvaHeadMelee>().
                 AddIngredient<PsychoticAmulet>().
                 AddIngredient<AuricBar>(12).

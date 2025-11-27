@@ -7,6 +7,8 @@ using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -50,9 +52,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.OpalStriker).
-                AddRecipeGroup(CIRecipeGroup.MagnaCannon).
-                AddRecipeGroup("AnyAdamantiteBar", 6).
+                AddIngredient<OpalStrikerLegacy>().
+                AddIngredient<MagnaCannonLegacy>().
+                AddRecipeGroup(LAPRecipeGroup.AnyAdamantiteBar, 6).
                 AddIngredient(ItemID.Ectoplasm, 5).
                 AddTile(TileID.MythrilAnvil).
                 Register();

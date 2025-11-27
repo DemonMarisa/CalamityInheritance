@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
                 CreateRecipe().
-                    AddRecipeGroup(CIRecipeGroup.LoreAD).
+                    AddIngredient<KnowledgeAstrumDeus>().
                     DisableDecraft().
                     AddTile(TileID.LunarCraftingStation).
                     Register();

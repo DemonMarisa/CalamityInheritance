@@ -93,8 +93,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("CalamityInheritance:AnyMiniGun").
-                AddRecipeGroup("CalamityInheritance:AnyP90").
+                AddIngredient<Minigun>().
+                AddIngredient<P90Legacy>().
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
                 Register();

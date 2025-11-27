@@ -15,6 +15,7 @@ using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.NPCs.SupremeCalamitas;
 using Terraria.GameContent.Bestiary;
+using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 {
@@ -190,7 +191,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 			float amount9 = 0.5f;
 			int num153 = 5;
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (LAPConfig.Instance.PerformanceMode)
 			{
 				for (int num155 = 1; num155 < num153; num155 += 2)
 				{
@@ -213,7 +214,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 			texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SoulSeeker/SoulSeekerSupremeLegacyGlow").Value;
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (CalamityConfig.Instance.Afterimages)
+			if (LAPConfig.Instance.PerformanceMode)
 			{
 				for (int num163 = 1; num163 < num153; num163++)
 				{

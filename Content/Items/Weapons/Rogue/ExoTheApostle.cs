@@ -122,11 +122,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Register();
 
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.DragonSpear).
+                AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().
                 AddIngredient<ShardofAntumbra>(500).
-                AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
-                AddRecipeGroup(CIRecipeGroup.EclipsesFall).
+                AddIngredient<PhantasmalRuinold>().
+                AddIngredient<EclipseSpear>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<MiracleMatter>().
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
@@ -134,11 +134,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Register();
             
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.DragonSpear).
+                AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().
                 AddIngredient<ShardofAntumbra>(500).
-                AddRecipeGroup("CalamityInheritance:AnyPhantasmalRuin").
-                AddRecipeGroup(CIRecipeGroup.EclipsesFall).
+                AddIngredient<PhantasmalRuinold>().
+                AddIngredient<EclipseSpear>().
                 AddIngredient<TarragonThrowingDart>(500).
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).

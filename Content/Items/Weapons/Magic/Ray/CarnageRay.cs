@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             CreateRecipe().
                 AddIngredient(ItemID.CrimsonRod).
                 AddIngredient(ItemID.MagicMissile).
-                AddRecipeGroup(CIRecipeGroup.WandofSparking).
+                AddIngredient(ItemID.WandofSparking).
                 AddIngredient(ItemID.ThunderStaff).
                 AddTile(TileID.DemonAltar).
                 Register();

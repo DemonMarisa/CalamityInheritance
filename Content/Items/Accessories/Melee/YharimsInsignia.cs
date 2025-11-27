@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             CreateRecipe().
                 AddIngredient(ItemID.WarriorEmblem).
                 AddIngredient<NecklaceofVexation>().
-                AddRecipeGroup(CIRecipeGroup.BadgeofBravery).
+                AddIngredient<BadgeofBravery>().
                 AddIngredient<CoreofSunlight>(5).
                 AddIngredient<DivineGeode>(5).
                 AddTile(TileID.LunarCraftingStation).

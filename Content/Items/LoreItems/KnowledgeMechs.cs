@@ -23,11 +23,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.TrophyMechs).
-                DisableDecraft().
-                AddTile(TileID.Bookcases).
-                Register();
-            CreateRecipe().
                 AddIngredient<LoreMechs>().
                 AddTile(TileID.Bookcases).
                 Register();

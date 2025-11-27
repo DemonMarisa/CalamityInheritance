@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
     {
         public new string LocalizationCategory => "Content.Items.Ammo";
 
-        internal const float ExplosionMultiplier = 0.33f;
+        public const float ExplosionMultiplier = 0.33f;
 
         public override void SetStaticDefaults()
         {

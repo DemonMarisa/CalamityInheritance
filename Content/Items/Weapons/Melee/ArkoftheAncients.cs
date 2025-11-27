@@ -1,6 +1,7 @@
 ﻿using System;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
+using LAP.Content.RecipeGroupAdd;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -157,7 +158,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofSunlight>(3).
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
-                AddRecipeGroup(CIRecipeGroup.Arkhalis).
+                AddRecipeGroup(LAPRecipeGroup.AnyArkhalis).
                 AddIngredient(ItemID.Excalibur).
                 AddTile(TileID.MythrilAnvil).
                 Register();

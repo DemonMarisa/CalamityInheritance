@@ -29,11 +29,6 @@ namespace CalamityInheritance.Content.Items.LoreItems
                 DisableDecraft().
                 AddTile(TileID.Bookcases).
                 Register();
-            CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.TrophySentinal).
-                DisableDecraft().
-                AddTile(TileID.Bookcases).
-                Register();
         }
     }
 }

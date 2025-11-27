@@ -1,9 +1,5 @@
 ﻿using CalamityMod.Projectiles.Magic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -84,7 +80,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 num79 *= num80;
                 float speedX4 = num78 + (float)Main.rand.Next(-30, 31) * 0.02f;
                 float speedY5 = num79 + (float)Main.rand.Next(-30, 31) * 0.02f;
-                Projectile.NewProjectile(source, vector2.X, vector2.Y, speedX4, speedY5, ModContent.ProjectileType<AuraRain>(), damage, knockback, player.whoAmI, 0f, (float)Main.rand.Next(10));
+                int p = Projectile.NewProjectile(source, vector2.X, vector2.Y, speedX4, speedY5, ModContent.ProjectileType<AuraRain>(), damage, knockback, player.whoAmI, 0f, (float)Main.rand.Next(10));
+                Main.projectile[p].usesLocalNPCImmunity = true;
+                Main.projectile[p].localNPCHitCooldown = 10;
             }
             return false;
         }

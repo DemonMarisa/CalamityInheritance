@@ -164,7 +164,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             NPC.DR_NERD((CalamityWorld.death || BossRushEvent.BossRushActive) ? 0.15f : 0.075f);
             NPC.LifeMaxNERB(32500, 40000, 520000);
 
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
             NPC.aiStyle = -1;
             AIType = -1;
@@ -928,7 +928,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             float colorLerpAmt = 0.5f;
             int afterimageAmt = 7;
 
-            if (CalamityConfig.Instance.Afterimages)
+            if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int i = 1; i < afterimageAmt; i += 2)
                 {
@@ -951,7 +951,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             texture = isStage2 ? P2GlowTexture.Value : P1GlowTexture.Value;
             Color color = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-            if (CalamityConfig.Instance.Afterimages)
+            if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int i = 1; i < afterimageAmt; i++)
                 {
@@ -1065,7 +1065,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             if (!CIDownedBossSystem.DownedCalClone)
             {
-                MusicEventManger.AddMusicEventEntry("CalamityModMusic/Sounds/Music/Interlude3", TimeSpan.FromSeconds(214f), () => CIConfig.Instance.CalClone, TimeSpan.FromSeconds(5d));
+                MusicEventManger.AddMusicEventEntry("CalamityModMusic/Sounds/Music/Interlude1", TimeSpan.FromSeconds(214f), () => CIConfig.Instance.CalClone, TimeSpan.FromSeconds(5d));
             }
             if (CIServerConfig.Instance.MarkSameBossDown)
             {

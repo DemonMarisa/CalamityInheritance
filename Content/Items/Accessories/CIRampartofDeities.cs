@@ -1,12 +1,13 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Accessories;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -35,14 +36,15 @@ namespace CalamityInheritance.Content.Items.Accessories
             if (player.statLife <= player.statLifeMax2 * 0.5)
                 player.AddBuff(BuffID.IceBarrier, 5);
             player.noKnockback = true;
+            usPlayer.FrigidBulwark = true;
         }
 
         public override void AddRecipes()
         {
             CreateRecipe(). //
-                AddIngredient(ItemID.FrozenShield).
+                AddIngredient(ModContent.ItemType<FrigidBulwark>()).
                 AddIngredient<CosmiliteBar>(10).
-                AddRecipeGroup("CalamityInheritance:AnyDeificAmulet").
+                AddRecipeGroup(CIRecipeGroup.AnyDeificAmulet).
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();

@@ -118,9 +118,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 if (type == ProjectileID.Bullet)
                 {
-                    type = ModContent.ProjectileType<BetterAMR>();
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<BetterAMR>(), damage, knockback, Main.myPlayer, 0f, 0f);
+                    proj.CalamityInheritance().ignoreDrAndDef = true;
                 }
-                if (type != ModContent.ProjectileType<BetterAMR>())
+                else
                 {
                     Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
                     proj.CalamityInheritance().AMRextraTy = true;

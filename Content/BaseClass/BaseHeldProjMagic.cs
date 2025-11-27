@@ -100,10 +100,7 @@ namespace CalamityInheritance.Content.BaseClass
         public virtual void UpdateAim(Vector2 source, float speed)
         {
             // Get the player's current aiming direction as a normalized vector.
-            Vector2 aim = Vector2.Normalize(Owner.LocalMouseWorld());
-            {
-                aim = -Vector2.UnitY;
-            }
+            Vector2 aim = Owner.GetToMouseVector2(Owner.Center);
 
             // Change a portion of the Prism's current velocity so that it points to the mouse. This gives smooth movement over time.
             aim = Vector2.Normalize(Vector2.Lerp(Vector2.Normalize(Projectile.velocity), aim, AimResponsiveness));

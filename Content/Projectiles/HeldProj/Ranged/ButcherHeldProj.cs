@@ -33,48 +33,48 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            Projectile.ai[0] += 1f;
-            int incrementAmt = 0;
-            float spreadMult = 0.15f;
+            Projectile.ai[0] += 2f;
+            int incrementAmt = 2;
+            float spreadMult = 0.07f;
             if (Projectile.ai[0] >= 80f)
             {
                 incrementAmt++;
-                spreadMult = 0.13f;
+                spreadMult = 0.06f;
             }
             if (Projectile.ai[0] >= 160f)
             {
                 incrementAmt++;
-                spreadMult = 0.11f;
+                spreadMult = 0.05f;
             }
             if (Projectile.ai[0] >= 240f)
             {
                 incrementAmt++;
-                spreadMult = 0.09f;
+                spreadMult = 0.04f;
             }
             if (Projectile.ai[0] >= 320f)
             {
                 incrementAmt++;
-                spreadMult = 0.07f;
+                spreadMult = 0.03f;
             }
             if (Projectile.ai[0] >= 400f)
             {
                 incrementAmt++;
-                spreadMult = 0.05f;
+                spreadMult = 0.025f;
             }
             if (Projectile.ai[0] >= 480f)
             {
                 incrementAmt++;
-                spreadMult = 0.04f;
+                spreadMult = 0.02f;
             }
             if (Projectile.ai[0] >= 560f)
             {
                 incrementAmt++;
-                spreadMult = 0.03f;
+                spreadMult = 0.015f;
             }
             if (Projectile.ai[0] >= 640f) //8
             {
                 incrementAmt++;
-                spreadMult = 0.02f;
+                spreadMult = 0.01f;
             }
             int shootDelayBase = 40;
             int incrementMult = 3;
@@ -111,10 +111,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     player.PickAmmo(player.ActiveItem(), out projType, out speedMult, out damage, out kback, out _);
                     kback = player.GetWeaponKnockback(player.ActiveItem(), kback);
                     float speed = player.ActiveItem().shootSpeed * Projectile.scale;
-                    Vector2 targetPos = Main.screenPosition + Owner.LocalMouseWorld() - source;
+                    Vector2 targetPos = Owner.LocalMouseWorld() - source;
                     if (player.gravDir == -1f)
                     {
-                        targetPos.Y = (float)(Main.screenHeight - Owner.LocalMouseWorld().Y) + Main.screenPosition.Y - source.Y;
+                        targetPos.Y = (float)(Owner.LocalMouseWorld().Y) + Main.screenPosition.Y - source.Y;
                     }
                     Vector2 velMult = Vector2.Normalize(targetPos);
                     if (float.IsNaN(velMult.X) || float.IsNaN(velMult.Y))
@@ -130,11 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     int randomBulletCount = Main.rand.Next(3, 5); //3 to 4 bullets
                     for (int projIndex = 0; projIndex < randomBulletCount; projIndex++)
                     {
-                        Vector2 bulletVel = Vector2.Normalize(Projectile.velocity) * speedMult * (0.6f + Main.rand.NextFloat() * spreadMult);
-                        if (float.IsNaN(bulletVel.X) || float.IsNaN(bulletVel.Y))
-                        {
-                            bulletVel = -Vector2.UnitY;
-                        }
+                        Vector2 bulletVel = Projectile.velocity.SafeNormalize(Vector2.UnitX) * 36;
                         source += Utils.RandomVector2(Main.rand, -5f, 5f);
                         bulletVel.X += (float)Main.rand.Next(-15, 16) * spreadMult;
                         bulletVel.Y += (float)Main.rand.Next(-15, 16) * spreadMult;

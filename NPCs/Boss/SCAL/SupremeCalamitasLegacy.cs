@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Placeables.Relic;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
@@ -12,7 +10,6 @@ using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Core;
 using CalamityInheritance.NPCs.Boss.SCAL.ArenaTile;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
@@ -23,16 +20,12 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.Potions;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Mounts;
 using CalamityMod.Items.Pets;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Potions;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Weapons.Magic;
@@ -40,15 +33,9 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.NPCs;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Projectiles.Pets;
-using CalamityMod.Projectiles.Rogue;
 using CalamityMod.World;
 using LAP.Core.MusicEvent;
-using log4net.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -257,7 +244,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.value = Item.buyPrice(platinum: 9999, gold: 99, silver: 99, copper: 99);
             
             NPC.lifeMax = LifeMax;
-            double HPBoost = CalamityConfig.Instance.BossHealthBoost * 0.01;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
 
             NPC.aiStyle = -1;
@@ -1742,7 +1729,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             float amount9 = 0.5f;
             int num153 = 7;
 
-            if (CalamityConfig.Instance.Afterimages)
+            if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int num155 = 1; num155 < num153; num155 += 2)
                 {
@@ -1763,7 +1750,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             spriteBatch.Draw(Scal, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
             Color color37 = Color.Lerp(Color.White, CIGlobalNPC.LegacySCalLament == -1 ? Color.Red : Color.White, 0.5f);
-            if (CalamityConfig.Instance.Afterimages)
+            if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int num163 = 1; num163 < num153; num163++)
                 {

@@ -1,11 +1,12 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Magic.Ray;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -49,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddRecipeGroup("CalamityInheritance:AnyNightsRay")
+                .AddIngredient<NightsRayold>()
                 .AddIngredient<ValkyrieRay>()
                 .AddIngredient<LivingShard>(7)
                 .AddTile(TileID.MythrilAnvil)

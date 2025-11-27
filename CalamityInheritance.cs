@@ -127,7 +127,6 @@ namespace CalamityInheritance
             CIResprite.LoadTexture();
             CIWeaponsResprite.LoadTexture();
             #region Hook
-            CalamityInheritanceDashHook.Load(this);
             HeavenlyGaleProjHook.Load(this);
             // 日掉原灾归元的发光贴图
             FuckSubsumingGlowMask.Load(this);
@@ -230,26 +229,5 @@ namespace CalamityInheritance
         }
         #endregion
 
-        #region Force ModConfig save (Reflection)
-
-        internal static void SaveConfig(CalamityConfig cfg)
-        {
-            // There is no current way to manually save a mod configuration file in tModLoader.
-            // The method which saves mod config files is private in ConfigManager, so reflection is used to invoke it.
-            //TODO：8月更新已经提供了保存config的方法，不需要用反射了，看情况最好改一下
-            try
-            {
-                MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);
-                if (saveMethodInfo is not null)
-                    saveMethodInfo.Invoke(null, new object[] { cfg });
-                else
-                    Instance.Logger.Error("TML ConfigManager.Save reflection failed. Method signature has changed. Notify Calamity Devs if you see this in your log.");
-            }
-            catch
-            {
-                Instance.Logger.Error("An error occurred while manually saving Calamity mod configuration. This may be due to a complex mod conflict. It is safe to ignore this error.");
-            }
-        }
-        #endregion
     }
 }

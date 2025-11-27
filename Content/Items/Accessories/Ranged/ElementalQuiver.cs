@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         {
             CreateRecipe().
                 AddIngredient(ItemID.MagicQuiver).
-                AddRecipeGroup(CIRecipeGroup.DaedalusEmblem).
+                AddIngredient<DaedalusEmblem>().
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();

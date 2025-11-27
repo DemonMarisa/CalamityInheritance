@@ -65,7 +65,8 @@ namespace CalamityInheritance.CIPlayer
         public bool IsWearingElemQuiverCal = false;
         public bool OverloadManaPower = false;
         public bool AmalgamLegacy = false;
-        
+        // 寒霜壁垒
+        public bool FrigidBulwark = false;
         //日食魔镜
         public bool EMirror = false;
         #region 削弱同类职业饰品堆叠
@@ -167,6 +168,7 @@ namespace CalamityInheritance.CIPlayer
             ReaperToothNecklaceLegacyEquipped = false;
             YGiftLegacyOn = false;
             YGiftOn = false;
+            FrigidBulwark = false;
             #endregion
 
         }
@@ -205,6 +207,7 @@ namespace CalamityInheritance.CIPlayer
             OverloadManaPower = false;
             GodlySons = false;
             AmalgamLegacy = false;
+            FrigidBulwark = false;
         }
     }
 }

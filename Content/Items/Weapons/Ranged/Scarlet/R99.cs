@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet
             CreateRecipe().
                 AddIngredient<Minigun>().
                 AddIngredient<CelestialObliterator>().
-                AddRecipeGroup(CIRecipeGroup.DragonGun).
+                AddIngredient<DragonsBreathold>().
                 AddIngredient<ExoPrism>(5).
                 AddIngredient<AshesofAnnihilation>(5).
                 AddTile<DraedonsForge>().

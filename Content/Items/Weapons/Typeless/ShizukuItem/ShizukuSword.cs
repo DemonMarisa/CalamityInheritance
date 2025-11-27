@@ -1,16 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Sounds.Custom.Shizuku;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -161,10 +164,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         public override void AddRecipes()
         {
             CreateRecipe().
-                    AddRecipeGroup(CIRecipeGroup.AnyMoonMusicBox).
-                    AddRecipeGroup(CIRecipeGroup.AnyRareReaper).
-                    AddRecipeGroup(CIRecipeGroup.AnySoulEdge).
-                    AddRecipeGroup(CIRecipeGroup.AnyChest).
+                    AddIngredient<BlessingOftheMoon>().
+                    AddIngredient<Valediction>().
+                    AddIngredient<SoulEdge>().
+                    AddIngredient(ItemID.Chest).
                     AddIngredient(ItemID.LunarBar, 30).
                     AddIngredient<Lumenyl>(30).
                     AddIngredient<AshesofAnnihilation>(15).

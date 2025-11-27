@@ -14,6 +14,7 @@ using CalamityMod.NPCs.NormalNPCs;
 using CalamityMod.Projectiles.Pets;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -47,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddRecipeGroup(CIRecipeGroup.CryoBar, 15)
+                .AddIngredient<CryoBar>(15)
                 .AddIngredient<SeaPrism>(15)
                 .AddIngredient(ItemID.Ectoplasm, 5)
                 .AddTile(TileID.IceMachine)

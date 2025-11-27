@@ -94,11 +94,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                     .Register();
 
                 CreateRecipe()
-                    .AddRecipeGroup(CIRecipeGroup.LoreYharon)
-                    .AddTile(ModContent.TileType<CosmicAnvil>())
-                    .Register();
-
-                CreateRecipe()
                     .AddIngredient<VoltaicClimax>()
                     .AddIngredient<AuricBarold>()
                     .AddTile(ModContent.TileType<CosmicAnvil>())

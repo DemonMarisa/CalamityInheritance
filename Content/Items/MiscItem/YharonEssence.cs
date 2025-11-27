@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Armor.AncientAuric;
 using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
 using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
@@ -80,7 +81,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
                     AddIngredient<AncientGodSlayerHelm>().
                     AddIngredient<AncientGodSlayerChestplate>().
                     AddIngredient<AncientGodSlayerLeggings>().
-                    AddRecipeGroup(CIRecipeGroup.DragonGift).
+                    AddIngredient<YharimsGiftLegacy>().
                     DisableDecraft().
                     AddTile<DemonshadeTile>().
                     Register();

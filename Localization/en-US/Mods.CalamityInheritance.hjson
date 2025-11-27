@@ -506,6 +506,16 @@ Configs: {
 			Label: "[i:CalamityInheritance/SomaPrimeOld]Soma Prime[Legacy] Resprite"
 			Tooltip: Determines sprite style of Soma Prime[Legacy]
 		}
+
+		FrigidBulwarkResprite: {
+			Label: "[i:CalamityInheritance/FrigidBulwark]Frigid Bulwark Resprite"
+			Tooltip: Determines sprite style of Frigid Bulwark[Legacy]
+		}
+
+		FrostBarrierResprite: {
+			Label: "[i:CalamityMod/FrostBarrier]Frost Barrier Resprite"
+			Tooltip: Determines sprite style of Frost Barrier[Legacy]
+		}
 	}
 
 	CIServerConfig: {

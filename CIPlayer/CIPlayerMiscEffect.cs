@@ -217,6 +217,20 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
         }
+        public void FrigidBulwarkBuff()
+        {
+            if (FrigidBulwark)
+            {
+                Player.resistCold = true;
+                Player.buffImmune[BuffID.Frostburn] = true;
+                Player.buffImmune[BuffID.Chilled] = true;
+                Player.buffImmune[BuffID.Frozen] = true;
+                if (Player.statLife > (int)(Player.statLifeMax2 * 0.5))
+                    Player.GetDamage<GenericDamageClass>() += 0.1f;
+                if (Player.statLife <= (int)(Player.statLifeMax2 * 0.5))
+                    Player.statDefense += 20;
+            }
+        }
         internal static int GetModBuff<R>() where R : ModBuff => ModContent.BuffType<R>();
         internal bool SameBuffType<T>(int hasType) where T : ModBuff => SameBuffType(hasType, ModContent.BuffType<T>());
         internal bool SameBuffType(int buffType, int alterType) => buffType == alterType;

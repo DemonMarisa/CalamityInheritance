@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup(CIRecipeGroup.WandofSparking).
+                AddIngredient(ItemID.WandofSparking).
                 AddIngredient<YharonSoulFragment>(8).
                 AddTile<CosmicAnvil>().
                 Register();

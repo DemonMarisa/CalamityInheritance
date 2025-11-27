@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             CreateRecipe().
                 AddIngredient<Floodtide>().
                 AddIngredient<Hellkite>().
-                AddRecipeGroup(CIRecipeGroup.TerraBlade).
+                AddIngredient<TerraEdge>().
                 AddIngredient<UelibloomBar>(7).
                 AddCondition(Condition.NotZenithWorld).
                 AddDecraftCondition(Condition.NotZenithWorld).
