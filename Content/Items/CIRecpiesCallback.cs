@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Materials;
 using Terraria;

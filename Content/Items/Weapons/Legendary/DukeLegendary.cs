@@ -17,17 +17,18 @@ using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class DukeLegendary: CIMelee, ILocalizedModType
+    public class DukeLegendary: LegendaryWeaponClass
     {
         public int baseDamage = 75;
-        public static string TextRoute => $"{Generic.WeaponTextPath}Melee.DukeLegendary";
-        public override void SetStaticDefaults()
+        public override ClassType WeaponDamageClass => ClassType.Melee;
+        public override int SetRarityColor => ModContent.RarityType<DukeAqua>();
+        public override Color DrawColor => Color.SkyBlue;
+        public override void ExSSD()
         {
-            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
             ItemID.Sets.BonusAttackSpeedMultiplier[Item.type] = 1.33f;
         }
 
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 100;
             Item.height = 102;
@@ -35,20 +36,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.scale *= 1.5f;
             Item.knockBack = 4f;
             Item.useAnimation = Item.useTime = 15;
-            Item.DamageType = DamageClass.Melee;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.shootSpeed = 9f;
-
             Item.shoot = ModContent.ProjectileType<Razorwind>();
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = CISoundID.SoundWeaponSwing;
-
-            Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.LegendaryRarity ? ModContent.RarityType<DukeAqua>() : ModContent.RarityType<MaliceChallengeDrop>();
         }
-
-        public override bool AltFunctionUse(Player player) => true;
 
         public override bool? UseItem(Player player)
         {
@@ -70,11 +64,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.DukeTier1 ? Language.GetTextValue($"{TextRoute}.TierOne") : Language.GetTextValue($"{TextRoute}.TierOneTint");
+            string t1 = mp.DukeTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.DukeTier2 ? Language.GetTextValue($"{TextRoute}.TierTwo") : Language.GetTextValue($"{TextRoute}.TierTwoTint");
+            string t2 = mp.DukeTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.DukeTier3 ? Language.GetTextValue($"{TextRoute}.TierThree") : Language.GetTextValue($"{TextRoute}.TierThreeTint");
+            string t3 = mp.DukeTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
@@ -92,7 +86,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
-            
             // 必须手动转换，不然会按照int进行加成
             float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
             damage *= Buff;

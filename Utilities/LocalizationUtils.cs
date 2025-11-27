@@ -89,7 +89,7 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="tooltips"></param>
         /// <param name="textPath"></param>
-        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath, Color color)
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod, string textPath, Color color)
         {
             string text = textPath.ToLangValue();
             var newLine = new TooltipLine(mod, "ModName", text)

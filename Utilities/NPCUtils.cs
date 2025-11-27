@@ -270,7 +270,6 @@ namespace CalamityInheritance.Utilities
             list.AddRange(bagdrops);
             return list;
         }
-        public static Mod Calamity => ModLoader.GetMod("CalamityMod");
         public static bool IsNotMaterial(Item item, bool dontNeedCheck = true)
         {
             if (item.ModItem != null)
@@ -284,6 +283,7 @@ namespace CalamityInheritance.Utilities
                 return false;
             return false;
         }
+        public static Mod Calamity => ModLoader.GetMod("CalamityMod");
         #endregion
         #region 召唤boss
         /// <summary>

@@ -1,9 +1,5 @@
 ﻿using CalamityInheritance.System.Configs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalamityInheritance.Common.ModSupport
 {
@@ -17,6 +13,8 @@ namespace CalamityInheritance.Common.ModSupport
                 default:
                     return false;
                 case "CalStatInflationBACK":
+                case "ActiveStatBloat":
+                case "StatBloatMode":
                     return CIServerConfig.Instance.CalStatInflationBACK;
             }
         }
@@ -28,7 +26,10 @@ namespace CalamityInheritance.Common.ModSupport
             switch (methodName)
             {
                 case "GetConfigs":
-                    if (!(args[1] is string))
+                case "GetConfig":
+                case "CIConfigs":
+                case "CIConfig":
+                    if (args[1] is not string)
                         return new ArgumentException("ERROR: The argument to \"Downed\" must be a string.");
                     return GetConfigs(args[1].ToString()); ;
 

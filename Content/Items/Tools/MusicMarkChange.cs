@@ -1,18 +1,10 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.System;
 using CalamityMod.CalPlayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Content.Items.LoreItems;
 using CalamityModMusic.Items.Placeables;
 using CalamityMod.Systems;
 
