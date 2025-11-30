@@ -2,13 +2,10 @@
 using CalamityMod.CalPlayer;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.EntitySources;
+using CalamityMod.Enums;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -66,6 +63,116 @@ namespace CalamityInheritance.Common.CIHook
                     }
                 }
             }
+            if (self.Player.dashDelay > 0)
+            {
+                self.VerticalOmnidashTimer = 0;
+                self.LastUsedDashID = string.Empty;
+                return;
+            }
+
+            if (self.Player.dashDelay < 0)
+            {
+                int dashDelayToApply = DashCoolDown;
+                if (self.UsedDash.CollisionType == DashCollisionType.ShieldSlam)
+                    dashDelayToApply = DashCoolDown;
+                else if (self.UsedDash.CollisionType == DashCollisionType.ShieldBonk)
+                    dashDelayToApply = DashCoolDown;
+                if (self.DashID == "Deep Diver")
+                    dashDelayToApply = DashCoolDown - 7;
+
+                float dashSpeed = 12f;
+                float dashSpeedDecelerationFactor = 0.985f;
+                float runSpeed = Math.Max(self.Player.accRunSpeed, self.Player.maxRunSpeed);
+                float runSpeedDecelerationFactor = 0.94f;
+
+                self.LastUsedDashID = self.DashID;
+
+                // Handle mid-dash effects.
+                self.UsedDash.MidDashEffects(self.Player, ref dashSpeed, ref dashSpeedDecelerationFactor, ref runSpeedDecelerationFactor);
+                if (self.UsedDash.IsOmnidirectional && self.VerticalOmnidashTimer < 25)
+                {
+                    self.VerticalOmnidashTimer++;
+                    if (self.VerticalOmnidashTimer >= 25)
+                    {
+                        self.Player.dashDelay = dashDelayToApply;
+                        // Stop the player from going flying
+                        self.Player.velocity *= 0.2f;
+                    }
+                }
+
+                if (self.HasCustomDash)
+                {
+                    self.Player.vortexStealthActive = false;
+
+                    // Handle mid-dash movement.
+                    if (self.UsedDash.IsOmnidirectional)
+                    {
+                        if (self.Player.velocity.Length() > dashSpeed)
+                        {
+                            self.Player.velocity *= dashSpeedDecelerationFactor;
+                            return;
+                        }
+                        if (self.Player.velocity.Length() > runSpeed)
+                        {
+                            self.Player.velocity *= runSpeedDecelerationFactor;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (self.Player.velocity.X > dashSpeed || self.Player.velocity.X < -dashSpeed)
+                        {
+                            self.Player.velocity.X *= dashSpeedDecelerationFactor;
+                            return;
+                        }
+                        if (self.Player.velocity.X > runSpeed || self.Player.velocity.X < -runSpeed)
+                        {
+                            self.Player.velocity.X *= runSpeedDecelerationFactor;
+                            return;
+                        }
+                    }
+
+                    // Dash delay depends on the type of dash used.
+                    self.Player.dashDelay = dashDelayToApply;
+
+                    if (self.UsedDash.IsOmnidirectional)
+                    {
+                        if (self.Player.velocity.Length() < 0f)
+                        {
+                            self.Player.velocity.Normalize();
+                            self.Player.velocity *= -runSpeed;
+                            return;
+                        }
+                        if (self.Player.velocity.Length() > 0f)
+                        {
+                            self.Player.velocity.Normalize();
+                            self.Player.velocity *= runSpeed;
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (self.Player.velocity.X < 0f)
+                        {
+                            self.Player.velocity.X = -runSpeed;
+                            return;
+                        }
+                        if (self.Player.velocity.X > 0f)
+                        {
+                            self.Player.velocity.X = runSpeed;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Handle first-frame effects.
+            else if (self.HasCustomDash && !self.Player.mount.Active)
+            {
+                if (self.DoADash(self.UsedDash.CalculateDashSpeed(self.Player)))
+                    self.UsedDash.OnDashEffects(self.Player);
+            }
         }
+
     }
 }
