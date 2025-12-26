@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage / 5, 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage / 2, 0f, Projectile.owner);
             }
         }
         #endregion

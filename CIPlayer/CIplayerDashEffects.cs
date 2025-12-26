@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Balancing;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityMod.Items.Mounts;
+using System.Collections.Generic;
 
 /* 
  * 这一段是从灾厄里面复制过来的盾冲实现机制
@@ -272,7 +273,7 @@ namespace CalamityInheritance.CIPlayer
             bool dashWasExecuted = false;
 
             // If the manual hotkey is bound, standard Terraria dashes cannot be triggered by double tapping.
-            var manualDashHotkeys = CalamityKeybinds.DashHotkey.GetAssignedKeys();
+            List<string> manualDashHotkeys = CalamityKeybinds.DashHotkey.GetAssignedKeys();
             bool manualHotkeyBound = (manualDashHotkeys?.Count ?? 0) > 0;
             bool pressedManualHotkey = manualHotkeyBound && CalamityKeybinds.DashHotkey.JustPressed;
 
@@ -507,13 +508,11 @@ namespace CalamityInheritance.CIPlayer
                         Player.velocity = possibleVelocities[1];
                         break;
                 }
-
                 // Make any dash movements move to a rapid halt if there are any tiles in the way.
                 Point upwardTilePoint = (Player.Center + new Vector2(MathHelper.Clamp((int)direction, -1f, 1f) * Player.width / 2 + 2, Player.gravDir * -Player.height / 2f + Player.gravDir * 2f)).ToTileCoordinates();
                 Point aheadTilePoint = (Player.Center + new Vector2(MathHelper.Clamp((int)direction, -1f, 1f) * Player.width / 2 + 2, 0f)).ToTileCoordinates();
                 if (WorldGen.SolidOrSlopedTile(upwardTilePoint.X, upwardTilePoint.Y) || WorldGen.SolidOrSlopedTile(aheadTilePoint.X, aheadTilePoint.Y))
                     Player.velocity.X /= 2f;
-
                 if (CIDashID == "Statis' Void Sash Old")
                 {
                     CIDashDelay = -30;
@@ -522,14 +521,6 @@ namespace CalamityInheritance.CIPlayer
                 {
                     CIDashDelay = -18;
                 }
-                /*
-                Main.NewText($"dashDelay doadash部分 : {Player.dashDelay}");
-
-                if (Player.dashDelay != -1)
-                {
-                    Main.NewText($"dashDelay 实际值: {Player.dashDelay}");
-                }
-                */
             }
             return justDashed;
         }

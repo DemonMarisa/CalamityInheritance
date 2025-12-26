@@ -270,7 +270,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			float cLerp = 0.5f;
 			int afterAmt = 7;
 
-			if (LAPConfig.Instance.PerformanceMode)
+			if (!LAPConfig.Instance.PerformanceMode)
 			{
 				for (int i = 1; i < afterAmt; i += 2)
 				{
@@ -296,7 +296,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (LAPConfig.Instance.PerformanceMode)
+			if (!LAPConfig.Instance.PerformanceMode)
 			{
 				for (int j = 1; j < afterAmt; j++)
 				{

@@ -106,8 +106,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             PostProfanedWeapons.Add(ModContent.ItemType<CosmicKunai>());
             // 旧极乐火箭
             PostProfanedWeapons.Add(ModContent.ItemType<ProfanedLancher>());
-            // 终焉百合
-            PostProfanedWeapons.Add(ModContent.ItemType<LiliesOfFinality>());
             #endregion
             #region 幽花表单
             PostPolterghastWeapons.Add(ModContent.ItemType<VoidEdge>());
@@ -125,7 +123,9 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             #endregion
             #region 老猪表单
             PostOldDukeWeapons.Add(ModContent.ItemType<InsidiousImpalerLegacy>());
+
             #endregion
+
             #region 神长表单删除
             // 怎么你也没有过滤金源武器
             PostDOGWeapons.Remove(ModContent.ItemType<Ataraxia>());
@@ -135,12 +135,16 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             #endregion
             #region 神长添加
             PostDOGWeapons.Add(ModContent.ItemType<ACTExcelsus>());
-            PostDOGWeapons.Add(ModContent.ItemType<ACTExcelsus>());
+            PostDOGWeapons.Add(ModContent.ItemType<ACTKarasawa>());
+            PostDOGWeapons.Add(ModContent.ItemType<ACTMinigun>());
+            PostDOGWeapons.Add(ModContent.ItemType<ScorchedEarth>());
             #endregion
             #region 龙后
             PostyharonWeapons.Add(ModContent.ItemType<Murasama>());
             //把天顶干掉了，天顶会有个单独的增幅
             PostyharonWeapons.Remove(ItemID.Zenith);
+            // 终焉百合
+            PostyharonWeapons.Add(ModContent.ItemType<LiliesOfFinality>());
             #endregion
             #region 終灾表单添加
             PostExoAndScalWeapons.Add(ModContent.ItemType<GruesomeEminence>());

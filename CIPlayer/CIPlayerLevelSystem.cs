@@ -254,7 +254,7 @@ namespace CalamityInheritance.CIPlayer
             bool isSummon = proj.CountsAsClass<SummonDamageClass>() || isWhip;
             // 盗贼
             bool isRogueStealth = proj.Calamity().stealthStrike;
-            bool isRogue = proj.CountsAsClass<RogueDamageClass>() && (!proj.Calamity().stealthStrike || isRogueStealth);
+            bool isRogue = proj.CountsAsClass<RogueDamageClass>();
             #endregion
             int points = exp;
             // 攻击成功暴击都会让Points基础值 +1

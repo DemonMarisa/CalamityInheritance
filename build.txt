@@ -3,5 +3,5 @@ author = DemonMarisa
 hideCode = false
 hideResources = false
 modReferences = CalamityMod, LAP
-version = 2.0.3.6
+version = 2.0.3.13
 sortBefore = UnCalamityModMusic, InfernumMode

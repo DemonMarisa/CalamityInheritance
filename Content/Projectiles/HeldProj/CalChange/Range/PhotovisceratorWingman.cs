@@ -53,6 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
+            Projectile.LAP().canSplit = false;
         }
         public Color sparkColor;
         public int attacktimer = 0;

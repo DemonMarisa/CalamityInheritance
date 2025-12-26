@@ -144,23 +144,23 @@ namespace CalamityInheritance
         {
             // 加载屏幕shader到ModSystem中
             // 红色
-            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy1"] = new SCalSkyLegacy();
             // 蓝色
-            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0.2f, 0.8f, 1f).UseOpacity(0.5f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0.2f, 0.8f, 1f).UseOpacity(0.5f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy2"] = new SCalSkyLegacy();
             // 橙色
-            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.4f, 0f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.4f, 0f).UseOpacity(0.65f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy3"] = new SCalSkyLegacy();
             //灰色
-            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(1f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(1f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy4"] = new SCalSkyLegacy();
             // 丛林龙的SKY
-            Filters.Scene["CalamityInheritance:Yharon"] = new Filter(new YharonScreenShaderDataLegacy("FilterMiniTower").UseColor(1f, 0.4f, 0f).UseOpacity(0.75f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:Yharon"] = new Filter(new YharonScreenShaderDataLegacy("FilterMiniTower").UseColor(1f, 0.4f, 0f).UseOpacity(0.75f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:Yharon"] = new YharonSkyLegacy();
 
             // 红色
-            Filters.Scene["CalamityInheritance:CalClone"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), EffectPriority.VeryHigh);
+            Filters.Scene["CalamityInheritance:CalClone"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:CalClone"] = new CalCloneSky();
 
             AstralArcanumUI.Load(this);

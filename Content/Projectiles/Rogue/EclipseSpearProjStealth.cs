@@ -45,6 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             set => Projectile.ai[0] = value;
         }
         public int timer = 0;
+        public int SpawnCount = 0;
         public override void SendExtraAI(BinaryWriter writer)
         {
             Projectile.DoSyncHandlerWrite(ref writer);
@@ -96,12 +97,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 Projectile.Center = Main.npc[Target].Center - Projectile.velocity * 2f;
                 Projectile.gfxOffY = Main.npc[Target].gfxOffY;
-                timer++;
-                if (timer > 30 && timer % 25 == 0)
+                if (timer > 0)
+                    timer--;
+                if (timer <= 0)
                 {
                     RainDownSpears();
-                    if (timer > 75)
-                        timer = 0;
+                    SpawnCount++;
+                    timer = 40;
+                    if (SpawnCount >= 2)
+                    {
+                        SpawnCount = 0;
+                        timer = 90;
+                    }
                 }
             }
             else
@@ -162,9 +169,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         private void RainDownSpears()
         {
-            //潜伏情况下一直在发起挂载，则每次从天上落下3~5个
             Vector2 tarPos = Projectile.Center;
-            int pAmt = Main.rand.Next(2,4);
+            int pAmt = Main.rand.Next(2,3);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置

@@ -223,7 +223,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             AncientAeroSet = false;
             AncientAeroWingsPower = false;
-
             DesertProwler = false;
 
         }

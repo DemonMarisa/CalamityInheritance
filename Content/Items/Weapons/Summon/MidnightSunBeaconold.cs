@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;
-            Item.damage = 60;
+            Item.damage = 80;
             Item.mana = 10;
             Item.useTime = Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Swing;

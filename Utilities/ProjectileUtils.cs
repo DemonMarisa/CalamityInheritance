@@ -500,12 +500,12 @@ namespace CalamityInheritance.Utilities
         /// <returns></returns>
         public static bool TrueMeleeClass(this Projectile proj) => proj.CountsAsClass<TrueMeleeDamageClass>() || proj.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
         /// <summary>
-        public static bool DistanceToPlayer(Player player, float distanceRe)
+        public static bool DistanceToPlayer(Player player, Vector2 pos, float distanceRe)
         {
             if (player == null || !player.active || player.dead)
                 return false;
             // 计算与玩家的距离
-            float distanceToPlayer = Vector2.Distance(player.Center, player.LocalMouseWorld());
+            float distanceToPlayer = Vector2.Distance(player.Center, pos);
             // 如果距离小于等于distanceRe像素，则返回true
             return distanceToPlayer <= distanceRe;
         }
@@ -570,10 +570,5 @@ namespace CalamityInheritance.Utilities
         public static Player GetProjOwner(this Projectile proj) => Main.player[proj.owner];
         public static bool IsOwnedProj<T>(this Player player, int count = 1) where T : ModProjectile => IsOwnedProj(player, ModContent.ProjectileType<T>(), count);
         public static bool IsOwnedProj(this Player player, int Type, int count = 1) => player.ownedProjectileCounts[Type] < count;
-
-        public static void SetCantSpilt(this Projectile proj)
-        {
-            proj.GetGlobalProjectile<CIElementalQuiverSplit>().canSplit = false;
-        }
     }
 }

@@ -84,7 +84,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
 
-            if (LAPConfig.Instance.PerformanceMode)
+            if (!LAPConfig.Instance.PerformanceMode)
             {
                 for (int i = 0; i < Projectile.oldPos.Length; i++)
                 {

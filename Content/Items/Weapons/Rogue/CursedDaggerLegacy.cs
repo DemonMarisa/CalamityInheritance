@@ -48,5 +48,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             return false;
         }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.CursedFlame, 20).
+                AddIngredient(ItemID.RottenChunk, 15).
+                AddTile(TileID.Anvils).
+                Register();
+        }
     }
 }

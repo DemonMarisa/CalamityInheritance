@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.height = 36;
             Item.DamageType = DamageClass.Ranged;
             //面板250->200, 不然巨龙之息拼尽全力不敌远古巨龙之息，泪目了
-            Item.damage = 200;
+            Item.damage = 125;
             Item.useTime = 13;
             Item.useAnimation = 13;
             Item.useStyle = ItemUseStyleID.Shoot;

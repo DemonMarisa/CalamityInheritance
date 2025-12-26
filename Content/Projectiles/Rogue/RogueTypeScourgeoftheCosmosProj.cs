@@ -14,11 +14,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
 
-        private int bounce = 3;
-        private int stealthBounce = 9;
-        private readonly int miniStealthDevouers = 9;
-        private readonly int miniStealthDevouersTilesBounce = 3 ;
-
+        public int bounce = 2;
+        public int stealthBounce = 9;
+        public int OnceStealthBouncesProj = 2;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
@@ -78,14 +76,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.60f) : (int)(Projectile.damage * 1.10f);
+            int projectileDamage = (int)(Projectile.damage * 0.25f);
             if(Projectile.Calamity().stealthStrike == false)
             {
                 if (bounce <= 0)
                     Projectile.Kill();
                 else
                 {
-
                     bounce--;
                     SoundEngine.PlaySound(SoundID.NPCHit4, Projectile.position);
                     if (Projectile.velocity.X != oldVelocity.X)
@@ -111,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             else
             {
-                if (stealthBounce<= 0)
+                if (stealthBounce <= 0)
                     Projectile.Kill();
                 else
                 {
@@ -123,7 +120,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         Projectile.velocity.Y = -oldVelocity.Y;
                     if (Projectile.owner == Main.myPlayer)
                     {
-                        int minisAmt = miniStealthDevouersTilesBounce;
+                        int minisAmt = OnceStealthBouncesProj;
                         if (Main.rand.NextBool(10))
                             minisAmt++;
                         int inc;
@@ -169,9 +166,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.owner == Main.myPlayer)
             {
                 int minisAmt = 3;
-                int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.55f): (int)(Projectile.damage * 1.45f);
+                int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.55f) : Projectile.damage;
                 if (Projectile.Calamity().stealthStrike)
-                    minisAmt = miniStealthDevouers;
+                    minisAmt = stealthBounce * OnceStealthBouncesProj;
                 if (Main.rand.NextBool(10))
                     minisAmt++;
                 for (int j = 0; j < minisAmt; j = inc + 1)

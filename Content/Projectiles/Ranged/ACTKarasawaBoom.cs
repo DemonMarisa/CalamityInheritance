@@ -95,10 +95,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Main.player[Projectile.owner].Calamity().adrenaline = 0;
             }
-            if (Projectile.numHits <= 0 && CalamityPlayer.areThereAnyDamnBosses)
-            {
-                CombatText.NewText(Main.player[Projectile.owner].Hitbox, Color.Red, Language.GetTextValue("Mods.CalamityInheritance.Status.KarasawaMiss"), dramatic: true);
-            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

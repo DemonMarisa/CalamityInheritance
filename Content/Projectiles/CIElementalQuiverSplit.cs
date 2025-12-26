@@ -1,9 +1,10 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -13,13 +14,10 @@ namespace CalamityInheritance.Content.Projectiles
     {
         public override bool InstancePerEntity => true;
         // 是否允许分裂
-        public bool canSplit = true;
         public override void SetDefaults(Projectile projectile)
         {
-            base.SetDefaults(projectile);
-
-            if (CalamityInheritanceLists.rangedProjectileExceptionList.TrueForAll(x => projectile.type == x))
-                canSplit = false;
+            if (CalamityInheritanceLists.rangedProjectileExceptionList.Any(x => projectile.type == x))
+                projectile.SetCantSplit();
         }
         public override void PostAI(Projectile projectile)
         {
@@ -39,33 +37,30 @@ namespace CalamityInheritance.Content.Projectiles
             if (!usPlayer.ElemQuiver)
                 return false;
 
-            if (!canSplit)
-                return false;
-
-            if (!projectile.friendly)
+            if (!projectile.CantSplit())
                 return false;
 
             if (projectile.DamageType != DamageClass.Ranged)
                 return false;
 
-            if (projectile.damage < 5)
+            if (projectile.whoAmI == player.heldProj)
                 return false;
 
-            if (projectile.whoAmI == player.heldProj)
+            if (projectile.IsHeldProj())
                 return false;
 
             // 上面的判定都过了后过最终随机发射判定
             if (CIConfig.Instance.ElementalQuiverSplitstyle == 1 || CIConfig.Instance.ElementalQuiverSplitstyle == 2)
             {
-                if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
+                if (Main.player[projectile.owner].miscCounter % 60 == 0 && LAPUtilities.FinalExtraUpdate(projectile))
                     return true;
             }
             else
             {
-                if (Main.rand.NextBool(100))
+                int a = (int)(50 * MathF.Sqrt(projectile.MaxUpdates));
+                if (Main.rand.NextBool(a))
                     return true;
             }
-
             // 默认不分裂
             return false;
         }
@@ -82,13 +77,13 @@ namespace CalamityInheritance.Content.Projectiles
                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                 Main.projectile[projectile2].noDropItem = true;
                 Main.projectile[projectile3].noDropItem = true;
-
+                Main.projectile[projectile2].SetCantSplit();
+                Main.projectile[projectile3].SetCantSplit();
                 if (CIConfig.Instance.ElementalQuiverSplitstyle == 1 || CIConfig.Instance.ElementalQuiverSplitstyle == 3)
                 {
                     Main.projectile[projectile2].timeLeft = 60;
                     Main.projectile[projectile3].timeLeft = 60;
                 }
-
             }
         }
     }

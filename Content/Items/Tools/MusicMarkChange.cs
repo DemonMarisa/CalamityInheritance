@@ -1,12 +1,13 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityMod.CalPlayer;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityModMusic.Items.Placeables;
+using CalamityMod.CalPlayer;
 using CalamityMod.Systems;
+using CalamityModMusic.Items.Placeables;
+using Terraria;
+using Terraria.Graphics.Effects;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Tools
 {
@@ -40,24 +41,6 @@ namespace CalamityInheritance.Content.Items.Tools
         {
             CalamityPlayer modPlayer = player.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
-            if (player.altFunctionUse == 2)
-            {
-                //灾厄的音乐事件
-                MusicEventSystem.PlayedEvents.Add("CloneDefeated");
-                MusicEventSystem.PlayedEvents.Add("MLDefeated");
-                MusicEventSystem.PlayedEvents.Add("YharonDefeated");
-                MusicEventSystem.PlayedEvents.Add("DoGDefeated");
-                Main.NewText("添加所有音乐事件标记");
-            }
-            else
-            {
-                //灾厄的音乐事件
-                MusicEventSystem.PlayedEvents.Remove("CloneDefeated");
-                MusicEventSystem.PlayedEvents.Remove("MLDefeated");
-                MusicEventSystem.PlayedEvents.Remove("YharonDefeated");
-                MusicEventSystem.PlayedEvents.Remove("DoGDefeated");
-                Main.NewText("清除所有音乐事件标记");
-            }
             return base.CanUseItem(player);
         }
         public override void AddRecipes()

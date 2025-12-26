@@ -16,6 +16,7 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 using CalamityInheritance.NPCs.TownNPC;
+using CalamityInheritance.System;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
@@ -378,6 +379,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #region AI
         public override void AI()
         {
+            MiscFlagReset.ScalSkyActive = true;
+
             if (NPC.rotation < 0f)
                 NPC.rotation += MathHelper.TwoPi;
             else if  (NPC.rotation > MathHelper.TwoPi) 
@@ -1823,8 +1826,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //yysy 20个都够你把所有魔影物品做完了
-            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 20, 30);
+            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 30, 40);
             //魔影梯凳掉率为0.0005%
             npcLoot.Add(ModContent.ItemType<StepToolShadows>(), 2000);
 

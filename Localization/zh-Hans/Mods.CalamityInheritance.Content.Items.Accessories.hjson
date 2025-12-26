@@ -465,3 +465,15 @@ FrigidBulwark: {
 		使你获得对冷系攻击的抗性
 		'''
 }
+
+BurdenBreaker: {
+	DisplayName: 解脱樊笼[Legacy]
+	Tooltip:
+		'''
+		欢乐的时光
+		更快
+		警告：可能有灾难性的后果
+		获得难以置信的水平移动速度
+		有boss存活时失效
+		'''
+}

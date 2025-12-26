@@ -1,16 +1,9 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;

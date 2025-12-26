@@ -1,23 +1,21 @@
 ﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Placeables.Relic;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.System;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.Potions;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Dusts;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Vanity;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
@@ -33,7 +31,6 @@ using CalamityMod.World;
 using LAP.Core.MusicEvent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using ReLogic.Content;
 using System;
 using System.IO;
@@ -43,7 +40,6 @@ using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static CalamityInheritance.NPCs.Boss.SCAL.SupremeCalamitasLegacy;
 
@@ -288,6 +284,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             // 处理音乐
             HandleMusicVariables();
 
+            if (currentPhase > 1)
+                MiscFlagReset.CalCloneSkyActive = true;
             if (lifeRatio <= stage1LifeRatio && currentPhase == 0f)
             {
                 attackTimer = 0;

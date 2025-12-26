@@ -405,14 +405,6 @@ namespace CalamityInheritance.CIPlayer
                 Player.runAcceleration *= 0.95f;
             }
 
-            if (!Player.mount.Active)
-            {
-                _ = 1f +
-                    (AuricSilvaFakeDeath ? 0.05f : 0f);
-                _ = 1f +
-                    (AuricSilvaFakeDeath ? 0.05f : 0f);
-            }
-
             #region DashEffects
 
             if (!string.IsNullOrEmpty(DeferredDashID))
@@ -425,7 +417,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 ModDashMovement();
             }
-
             else if (Player.grappling[0] == -1 && !Player.tongued)
             {
                 ModHorizontalMovement();

@@ -1,15 +1,16 @@
 ﻿using CalamityInheritance.NPCs.Boss.Yharon;
-using Microsoft.Xna.Framework.Graphics;
+using CalamityInheritance.System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.Graphics.Effects;
-using Terraria.ModLoader;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
 {
@@ -39,17 +40,10 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
         private bool isActive = false;
         public List<Cinder> Cinders = [];
 
-        public static bool RitualDramaProjectileIsPresent
-        {
-            get;
-            internal set;
-        }
-
         public static int CinderReleaseChance
         {
             get
             {
-                // Release a moderate amount of cinders normally.
                 return 4;
             }
         }
@@ -57,17 +51,13 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
         {
             get
             {
-                // Move moderately quickly usually.
                 return 5.6f;
             }
         }
         public override void Update(GameTime gameTime)
         {
-            if (CIGlobalNPC.LegacyCalamitasCloneP2 < 0 || !NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()))
-            {
-                isActive = false;
-            }
-
+            if (!MiscFlagReset.CalCloneSkyActive)
+                return;
 
             static Color selectCinderColor()
             {

@@ -1,13 +1,14 @@
-﻿using CalamityMod.Events;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.System;
+using CalamityMod.Events;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Effects;
-using Terraria.ModLoader;
-using Terraria;
 using Terraria.Graphics.Shaders;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
 {
@@ -33,16 +34,9 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
                 Velocity = startingVelocity;
             }
         }
+        private bool _isActive;
 
-        private bool isActive = false;
-        private int yharonIndex = -1;
         public List<Cinder> Cinders = [];
-
-        public static bool RitualDramaProjectileIsPresent
-        {
-            get;
-            internal set;
-        }
 
         public static int CinderReleaseChance
         {
@@ -68,15 +62,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
         }
         public override void Update(GameTime gameTime)
         {
-            if (yharonIndex == -1)
-            {
-                UpdateIndex();
-                if (yharonIndex == -1)
-                    isActive = false;
-            }
-
-            if (!Main.npc.IndexInRange(CIGlobalNPC.LegacyYharon) || Main.npc[CIGlobalNPC.LegacyYharon].type != ModContent.NPCType<YharonLegacy>())
-                isActive = false;
+            if (!MiscFlagReset.YharonSkyActive)
+                return;
 
             static Color selectCinderColor()
             {
@@ -114,25 +101,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
             // Clear away all dead cinders.
             Cinders.RemoveAll(c => c.Time >= c.Lifetime);
         }
-        private bool UpdateIndex()
-        {
-            int yharonType = ModContent.NPCType<YharonLegacy>();
-            if (yharonIndex >= 0 && Main.npc[yharonIndex].active && Main.npc[yharonIndex].type == yharonType)
-            {
-                return true;
-            }
-            yharonIndex = -1;
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                if (Main.npc[i].active && Main.npc[i].type == yharonType)
-                {
-                    yharonIndex = i;
-                    break;
-                }
-            }
-            return yharonIndex != -1;
-        }
-
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             // Draw cinders.
@@ -152,22 +120,22 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            isActive = true;
+            _isActive = true;
         }
 
         public override void Deactivate(params object[] args)
         {
-            isActive = false;
+            _isActive = false;
         }
 
         public override void Reset()
         {
-            isActive = false;
+            _isActive = false;
         }
 
         public override bool IsActive()
         {
-            return isActive;
+            return _isActive;
         }
     }
 }

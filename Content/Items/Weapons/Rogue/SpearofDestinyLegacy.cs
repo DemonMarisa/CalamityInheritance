@@ -26,9 +26,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.damage = 42;
             Item.noMelee = true;
             Item.noUseGraphic = true;
-            Item.useAnimation = 10;
+            Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTime = 10;
+            Item.useTime = 20;
             Item.knockBack = 2f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
@@ -43,6 +43,21 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int index = 7;
+            if (player.Calamity().StealthStrikeAvailable())
+            {
+                for (int i = -2 * index; i <= 2 * index; i += index)
+                {
+                    int projType = type;
+                    Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.ToRadians(i));
+                    int spear = Projectile.NewProjectile(source, position, perturbedSpeed, projType, damage, knockback, player.whoAmI);
+                    if (spear.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[spear].Calamity().stealthStrike = true;
+                        Main.projectile[spear].extraUpdates += 2;
+                    }
+                }
+                return false;
+            }
             for (int i = -index; i <= index; i += index)
             {
                 int projType = (i != 0 || player.Calamity().StealthStrikeAvailable()) ? type : ModContent.ProjectileType<IchorSpearProjLegacy>();

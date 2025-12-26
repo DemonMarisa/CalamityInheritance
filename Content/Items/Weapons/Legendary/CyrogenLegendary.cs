@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             void ReplaceTierTooltip(List<TooltipLine> tooltips,string placeholder,bool isEnable,string textKey)
             {
                 string text = isEnable ? Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}") : Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}Tint");
-                tooltips.FindAndReplace(placeholder, text);
+                LAPUtilities.FindAndReplace(tooltips, placeholder, text);
             }
             foreach (var (placehloder, isEnable, textKey) in tiers)
                 ReplaceTierTooltip(tooltips, placehloder, isEnable, textKey);
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             string update = this.GetLocalization("LegendaryScaling").Format(
                 getDmg.ToString()
             );
-            tooltips.FindAndReplace("[SCALING]", update);
+            LAPUtilities.FindAndReplace(tooltips, "[SCALING]", update);
             if (t4 != null)
                 tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         } 

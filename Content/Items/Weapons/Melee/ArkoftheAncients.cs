@@ -100,6 +100,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float speedY5 = num79 + Main.rand.Next(-120, 121) * 0.02f;
 
                 int proj = Projectile.NewProjectile(source, vector2.X, vector2.Y, speedX4, speedY5, ProjectileID.HallowStar, damage / 3, knockback, player.whoAmI, 0f, Main.rand.Next(5));
+                Main.projectile[proj].DamageType = DamageClass.Melee;
             }
 
             return false;
@@ -150,7 +151,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
                 AddIngredient(ItemID.EnchantedSword).
-                AddIngredient(ItemID.Excalibur).
                 AddTile(TileID.MythrilAnvil).
                 Register();
 
@@ -159,7 +159,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
                 AddRecipeGroup(LAPRecipeGroup.AnyArkhalis).
-                AddIngredient(ItemID.Excalibur).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

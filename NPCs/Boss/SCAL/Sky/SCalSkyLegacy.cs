@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
+using CalamityInheritance.System;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 {
@@ -25,17 +26,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             public Vector2 Velocity = startingVelocity;
             public Vector2 Center = startingPosition;
         }
-
-        private bool isActive = false;
-        private int SCalIndex = -1;
+        private bool _isActive;
         public List<Cinder> Cinders = [];
-
-        public static bool RitualDramaProjectileIsPresent
-        {
-            get;
-            internal set;
-        }
-
         public static int CinderReleaseChance
         {
             get
@@ -93,16 +85,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         public static float OverridingIntensity = 0f;
         public override void Update(GameTime gameTime)
         {
-            if (SCalIndex == -1)
-            {
-                UpdateSCalIndex();
-                if (SCalIndex == -1)
-                    isActive = false;
-            }
-
-            if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
-                isActive = false;
-
             static Color selectCinderColor()
             {
                 if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
@@ -148,48 +130,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             // Clear away all dead cinders.
             Cinders.RemoveAll(c => c.Time >= c.Lifetime);
         }
-        private float GetIntensity()
-        {
-            if (RitualDramaProjectileIsPresent)
-                return OverridingIntensity;
-
-            OverridingIntensity = 0f;
-            if (UpdateSCalIndex())
-            {
-                float x = 0f;
-                if (SCalIndex != -1)
-                    x = Vector2.Distance(Main.player[Main.myPlayer].Center, Main.npc[SCalIndex].Center);
-
-                return (1f - Utils.SmoothStep(3000f, 6000f, x));
-            }
-            return 0f;
-        }
         public Color Phase1Colore = new(205, 100, 100);
-        private bool UpdateSCalIndex()
-        {
-            int SCalType = ModContent.NPCType<SupremeCalamitasLegacy>();
-            if (SCalIndex >= 0 && Main.npc[SCalIndex].active && Main.npc[SCalIndex].type == SCalType)
-            {
-                return true;
-            }
-            SCalIndex = -1;
-            for (int i = 0; i < Main.npc.Length; i++)
-            {
-                if (Main.npc[i].active && Main.npc[i].type == SCalType)
-                {
-                    SCalIndex = i;
-                    break;
-                }
-            }
-            return SCalIndex != -1;
-        }
-
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             if (maxDepth >= 0 && minDepth < 0)
             {
-                float intensity = GetIntensity();
-                spriteBatch.Draw(TextureAssets.BlackTile.Value, new Rectangle(0, 0, Main.screenWidth * 2, Main.screenHeight * 2), Color.Black * intensity);
+                spriteBatch.Draw(TextureAssets.BlackTile.Value, new Rectangle(0, 0, Main.screenWidth * 2, Main.screenHeight * 2), Color.Black);
             }
 
             // Draw cinders.
@@ -214,22 +160,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            isActive = true;
+            _isActive = true;
         }
 
         public override void Deactivate(params object[] args)
         {
-            isActive = false;
+            _isActive = false;
         }
 
         public override void Reset()
         {
-            isActive = false;
+            _isActive = false;
         }
 
         public override bool IsActive()
         {
-            return isActive;
+            return _isActive;
         }
     }
 }

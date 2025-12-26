@@ -1,5 +1,6 @@
-﻿using System;
+﻿using CalamityInheritance.System;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
@@ -18,40 +19,21 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         public SCalScreenShaderDataLegacy(string passName) : base(passName)
         {
         }
-
-        private void UpdateSCalIndex()
-        {
-            int SCalType = ModContent.NPCType<SupremeCalamitasLegacy>();
-            if (SCalIndex >= 0 && Main.npc[SCalIndex].active && Main.npc[SCalIndex].type == SCalType)
-            {
-                return;
-            }
-            SCalIndex = NPC.FindFirstNPC(SCalType);
-        }
-
-
         public override void Update(GameTime gameTime)
         {
-            if (SCalIndex == -1)
+            if (!MiscFlagReset.ScalSkyActive)
             {
-                UpdateSCalIndex();
-                if (SCalIndex == -1)
-                {
-                    Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"].Deactivate(Array.Empty<object>());
-                    Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"].Deactivate(Array.Empty<object>());
-                    Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"].Deactivate(Array.Empty<object>());
-                    Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"].Deactivate(Array.Empty<object>());
-                }
+                Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy1"].Deactivate(Array.Empty<object>());
+                Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy2"].Deactivate(Array.Empty<object>());
+                Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"].Deactivate(Array.Empty<object>());
+                Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"].Deactivate(Array.Empty<object>());
             }
         }
 
         public override void Apply()
         {
-            UpdateSCalIndex();
-            if (SCalIndex != -1)
-            {
-                UseTargetPosition(Main.npc[SCalIndex].Center);
-            }
+            if (MiscFlagReset.ScalSkyActive)
+                UseTargetPosition(Main.LocalPlayer.Center);
             base.Apply();
         }
     }

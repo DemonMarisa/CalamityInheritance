@@ -136,7 +136,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             float amount9 = 0.5f;
             int num153 = 10;
 
-            if (LAPConfig.Instance.PerformanceMode)
+            if (!LAPConfig.Instance.PerformanceMode)
             {
                 for (int num155 = 1; num155 < num153; num155 += 2)
                 {

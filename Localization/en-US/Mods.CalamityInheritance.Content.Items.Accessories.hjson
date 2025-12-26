@@ -461,3 +461,15 @@ FrigidBulwark: {
 		Grants resistance against cold attacks
 		'''
 }
+
+BurdenBreaker: {
+	DisplayName: Burden Breaker Legacy
+	Tooltip:
+		'''
+		The good time
+		Go fast
+		WARNING: May have disastrous results
+		Increases horizontal movement speed beyond comprehension
+		Does not work while a boss is alive
+		'''
+}

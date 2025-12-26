@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient(ItemID.FrozenShield).
-                AddIngredient(ModContent.ItemType<FrostBarrier>()).
+                AddIngredient(ModContent.ItemType<FrostFlare>()).
                 AddIngredient(ModContent.ItemType<CoreofEleum>(), 5).
                 AddTile(TileID.MythrilAnvil).
                 Register();

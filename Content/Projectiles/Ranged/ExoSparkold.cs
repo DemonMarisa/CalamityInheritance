@@ -5,6 +5,7 @@ using Terraria;
 using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -34,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
-            Projectile.SetCantSpilt();
+            Projectile.SetCantSplit();
         }
 
         public override void AI()

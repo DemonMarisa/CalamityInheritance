@@ -42,7 +42,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = ModContent.RarityType<DeepBlue>();
         }
-        public override float StealthDamageMultiplier => 1.15f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool ifStealth = player.CheckStealth();

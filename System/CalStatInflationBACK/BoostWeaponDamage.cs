@@ -285,6 +285,9 @@ namespace CalamityInheritance.System.CalStatInflationBACK
 
             if (item.type == ModContent.ItemType<UniversalGenesis>())
                 item.LAP().GlobalMult *= 1.4f;
+
+            if (item.type == ModContent.ItemType<ACTMinigun>())
+                SetCustomMult(item, 2.2f);
             #endregion
             #region 法师
 

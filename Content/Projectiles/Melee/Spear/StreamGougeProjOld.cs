@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             Vector2 projPos = Projectile.Center + Projectile.velocity;
             Vector2 projVel = Projectile.velocity * 15f;
             if (Projectile.owner == Main.myPlayer)
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, ModContent.ProjectileType<EssenceBeam>(), damage * 4, kb, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, ModContent.ProjectileType<EssenceBeam>(), damage * 3, kb, Projectile.owner, 0f, 0f);
 
             SoundEngine.PlaySound(SoundID.Item20, Projectile.Center);
             //粒子

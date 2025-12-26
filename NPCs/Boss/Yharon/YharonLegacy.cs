@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.NPCs.Boss.Yharon.Arena;
+using CalamityInheritance.System;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
@@ -306,7 +307,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         // 生命值
         public int LifeMax = CalamityWorld.death ? 4040000 : CalamityWorld.revenge ? 2525000 : 2275000;
         // 免伤
-        public float DR = CalamityWorld.death ? 0.35f : 0.26f;
+        public float DR = CalamityWorld.death ? 0.65f : 0.46f;
         public int fireballDamage = 130;
         #endregion
         #region 杂项bool
@@ -472,6 +473,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         }
         public override void AI()
         {
+            MiscFlagReset.YharonSkyActive = true;
             // 生命百分比
             float lifeRatio = NPC.life / (float)NPC.lifeMax;
 
@@ -778,7 +780,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             float lerpStrength = invincible ? 1f : (attackType is (float)YharonAttacksType.Charge or (float)YharonAttacksType.ChargeNoRoar ? 0.5f : 0f);
 
             // 残影绘制
-            if (LAPConfig.Instance.PerformanceMode)
+            if (!LAPConfig.Instance.PerformanceMode)
             {
                 DrawAfterimages(spriteBatch, texture, baseDrawPos, halfSize, drawRotation, spriteEffects,
                     baseColor, effectColor, lerpStrength, drawColor);

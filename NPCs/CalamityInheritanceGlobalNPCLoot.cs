@@ -513,6 +513,9 @@ namespace CalamityInheritance.NPCs
                     Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<IchorSpearLegacy>(), 100, 50));
                     Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<SpearofDestinyLegacy>(), 200, 100));
                     break;
+                case NPCID.Clinger:
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<CursedDaggerLegacy>(), 100, 50));
+                    break;
                 case NPCID.VortexRifleman:
                     //我能问个问题吗，为啥交叉集火是星璇小怪掉的？
                     Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<ConclaveCrossfire>(), 100, 50));

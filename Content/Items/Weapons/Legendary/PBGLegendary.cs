@@ -124,10 +124,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedStormWeaver ? 5 : 0;     // 155
             dmgBuff += DownedBossSystem.downedPolterghast ? 50 : 0;    // 205
             dmgBuff += DownedBossSystem.downedBoomerDuke ? 25 : 0;     // 230
-            dmgBuff += DownedBossSystem.downedDoG ? 100 : 0;           // 330
-            dmgBuff += DownedBossSystem.downedYharon ? 600 : 0;        // 930
-            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1030
-            dmgBuff += DownedBossSystem.downedExoMechs ? 70 : 0;       // 1100
+            dmgBuff += DownedBossSystem.downedDoG ? 80 : 0;            // 310
+            dmgBuff += DownedBossSystem.downedYharon ? 600 : 0;        // 920
+            dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;     // 1020
+            dmgBuff += DownedBossSystem.downedExoMechs ? 80 : 0;       // 1100
             dmgBuff += DownedBossSystem.downedExoMechs && DownedBossSystem.downedCalamitas && DownedBossSystem.downedPrimordialWyrm && CIDownedBossSystem.DownedLegacyScal ? 3100 : 0;
 
             return dmgBuff;

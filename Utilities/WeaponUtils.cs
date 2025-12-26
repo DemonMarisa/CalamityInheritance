@@ -100,7 +100,7 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         public static void NoHeldProjUpdateAim(Player player, float rotationOffset = 0f, float rotationSpeed = 1f)
         {
-            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
 
             Vector2 aimVect = player.LocalMouseWorld() - player.Center;
             aimVect.SafeNormalize(Vector2.UnitX);

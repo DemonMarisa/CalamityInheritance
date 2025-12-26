@@ -1,9 +1,13 @@
 ﻿using CalamityInheritance.System.Configs;
 using CalamityMod.NPCs.Yharon;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Terraria.Net;
 
 namespace CalamityInheritance.System.CalStatInflationBACK
 {
@@ -13,6 +17,9 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         #region 弱引用
         public static Mod FuckGoozmaMod { get; set; }
         public static int GoozmaBoss { get; private set; }
+        public static int AvatarRift { get; private set; }
+        public static int AvatarOfEmptiness { get; private set; }
+        public static int NamelessDeityBoss { get; private set; }
         public bool FirstFrame = true;
         #endregion
         public override void Load()
@@ -23,8 +30,30 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 if (FuckGoozmaMod.TryFind("Goozma", out ModNPC FuckGoozma))
                     GoozmaBoss = FuckGoozma.Type;
             }
+            if (CalamityInheritance.WrathoftheGods is not null)
+            {
+                if (CalamityInheritance.WrathoftheGods.TryFind("AvatarRift", out ModNPC avatarRift))
+                    AvatarRift = avatarRift.Type;
+                if (CalamityInheritance.WrathoftheGods.TryFind("AvatarOfEmptiness", out ModNPC avatarOfEmptiness))
+                    AvatarOfEmptiness = avatarOfEmptiness.Type;
+                if (CalamityInheritance.WrathoftheGods.TryFind("NamelessDeityBoss", out ModNPC namelessDeity))
+                    NamelessDeityBoss = namelessDeity.Type;
+            }
         }
-
+        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+        {
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+                return;
+            binaryWriter.Write(npc.lifeMax);
+            binaryWriter.Write(npc.life);
+        }
+        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+        {
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+                return;
+            npc.lifeMax = binaryReader.ReadInt32();
+            npc.life = binaryReader.ReadInt32();
+        }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
             if (CIServerConfig.Instance.CalStatInflationBACK)
@@ -85,34 +114,23 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 npc.netUpdate = true;
             }
         }
-
         public void SetWarthofGods(NPC npc)
         {
-            //暗神的两个阶段血量与npc独立
-            string noxusP1 = "AvatarRift";
-            string noxusP2 = "AvatarOfEmptiness";
-            string xeroc = "NamelessDeityBoss";
-            //暗神一阶段8500w，看看得了，打一半会自己进二阶段的
-            int noxusP1HP = 85000000;
-            //暗神二阶段2.5亿
-            int noxuseP2HP = (int)(25 * Math.Pow(10, 7));
-            //光神暂时采用3亿的数值
-            int namelessHP = (int)(5 * Math.Pow(10, 8));
             Mod mod = CalamityInheritance.WrathoftheGods;
             if (mod is null)
                 return;
-            ModNPC avatarRift = mod.Find<ModNPC>(noxusP1);
-            ModNPC avatarOfEmptiness = mod.Find<ModNPC>(noxusP2);
-            ModNPC namelessDeity = mod.Find<ModNPC>(xeroc);
-            if (npc.type == avatarRift.Type)
+            int noxusP1HP = 85000000;
+            int noxuseP2HP = (int)(25 * Math.Pow(10, 7));
+            int namelessHP = (int)(5 * Math.Pow(10, 8));
+            if (npc.type == AvatarRift)
             {
                 npc.lifeMax = npc.life = noxusP1HP;
             }
-            if (npc.type == avatarOfEmptiness.Type)
+            if (npc.type == AvatarOfEmptiness)
             {
                 npc.lifeMax = npc.life = noxuseP2HP;
             }
-            if (npc.type == namelessDeity.Type)
+            if (npc.type == NamelessDeityBoss)
             {
                 npc.lifeMax = npc.life = namelessHP;
             }

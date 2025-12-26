@@ -289,7 +289,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (LAPConfig.Instance.PerformanceMode)
+			if (!LAPConfig.Instance.PerformanceMode)
 			{
 				for (int num163 = 1; num163 < num153; num163++)
 				{

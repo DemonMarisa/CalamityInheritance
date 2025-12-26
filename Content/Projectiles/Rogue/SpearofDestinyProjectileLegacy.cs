@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
 using System.IO;
 using ReLogic.Text;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -30,9 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = 2;
-            Projectile.aiStyle = ProjAIStyleID.StickProjectile;
             Projectile.timeLeft = 600;
-            AIType = ProjectileID.BoneJavelin;
             Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
@@ -56,6 +55,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 DustID.GoldCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+
+            NPC npc = Projectile.FindClosestTarget(800);
+            if (npc is not null)
+            {
+                Projectile.HomingTarget(npc.Center, 800, 20f, 35f);
+            }
 
             Vector2 center = Projectile.Center;
             float maxDistance = 800f;

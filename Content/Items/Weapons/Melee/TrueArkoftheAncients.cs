@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
 
                 int proj = Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ProjectileID.HallowStar, damage / 2, adjustedKnockback, i, 0f, Main.rand.Next(10));
-
+                Main.projectile[proj].DamageType = DamageClass.Melee;
 
                 speedX2 = num78 + Main.rand.Next(-80, 81) * 0.02f;
                 speedY2 = num79 + Main.rand.Next(-80, 81) * 0.02f;

@@ -61,7 +61,7 @@ SpearofDestinyLegacy: {
 	Tooltip:
 		'''
 		Throws three spears with the outer two having homing capabilities
-		Stealth strikes cause all three spears to home in, ignore tiles, and pierce more
+		Stealth strikes Throws five spears to home in, ignore tiles, and pierce more
 		'''
 }
 

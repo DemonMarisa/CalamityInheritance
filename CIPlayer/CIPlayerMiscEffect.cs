@@ -654,9 +654,9 @@ namespace CalamityInheritance.CIPlayer
                 // 45秒
                 Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(90));
             }
-            // 重置到100血防止反复触发复活
-            if (Player.statLife < 100)
-                Player.statLife = 100;
+            // 重置到满血
+            if (Player.statLife < Player.statLifeMax2)
+                Player.statLife = Player.statLifeMax2;
         }
         public void DoSilvaDust()
         {
@@ -1410,8 +1410,7 @@ namespace CalamityInheritance.CIPlayer
 
                 Player.statDefense -= 10;
             }
-            #endregion
-            
+            #endregion         
         }
         public void ShieldEffect()
         {

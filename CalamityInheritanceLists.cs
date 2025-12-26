@@ -46,7 +46,7 @@ namespace CalamityInheritance
 {
     public class CalamityInheritanceLists
     {
-        public static List<int> rangedProjectileExceptionList;
+        public static int[] rangedProjectileExceptionList;
         public static List<int> AuricdebuffList;
         public static List<int> pierceResistExceptionList;
         public static List<int> ProjNoCIdeadshotBrooch;
@@ -70,11 +70,8 @@ namespace CalamityInheritance
         public static void LoadLists()
         {
             #region 用于元素箭袋分裂
-            rangedProjectileExceptionList = new List<int>
-            {
-                ProjectileID.IchorDart,
-                ProjectileID.RainbowBack,
-                ProjectileID.PhantasmArrow,
+            rangedProjectileExceptionList = 
+            [
                 ProjectileType<DryadsTearSplit>(),
                 ProjectileType<NorfleetCannon>(),
                 ProjectileType<NorfleetComet>(),
@@ -101,7 +98,7 @@ namespace CalamityInheritance
                 ProjectileType<StarmageddonStar>(),
                 ProjectileType<StarmageddonStar2>(),
                 ProjectileType<StarmageddonBinaryStarCenter>()
-            };
+            ];
             #endregion
             #region 用于金源的buff免疫
             AuricdebuffList = new List<int>()

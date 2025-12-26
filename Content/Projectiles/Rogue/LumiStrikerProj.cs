@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Player player = Main.player[Projectile.owner];
             Projectile.rotation = Projectile.velocity.ToRotation() + rotOffset;
             //生成月明碎片
-            if (Projectile.timeLeft % 20 == 0 && Projectile.owner == Main.myPlayer && CIFunction.DistanceToPlayer(player, Main.screenWidth))
+            if (Projectile.timeLeft % 20 == 0 && Projectile.owner == Main.myPlayer && CIFunction.DistanceToPlayer(player, Projectile.Center, Main.screenWidth))
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, -2f, ModContent.ProjectileType<LumiShard>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.25f, Projectile.owner);
         }
 

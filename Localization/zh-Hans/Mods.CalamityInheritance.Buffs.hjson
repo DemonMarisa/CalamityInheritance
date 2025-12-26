@@ -260,7 +260,7 @@ SarosPossessionBuffLegacy: {
 
 FungalClumpLegacyBuff: {
 	// DisplayName: Fungal Clump Legacy Buff
-	// Description: Mods.CalamityInheritance.Buffs.FungalClumpLegacyBuff.Description
+	// Description: Fungal Clump will protect you
 }
 
 ShizukuMoonlight: {

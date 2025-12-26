@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
     {
         
         internal const float ExplosionDamageMultiplier = 0.65f;
-        public static readonly int HeliumFlashDamage = 600;
+        public static readonly int HeliumFlashDamage = 720;
         public static readonly int HeliumFlashManaCost = 15;
 
         public override void SetStaticDefaults()

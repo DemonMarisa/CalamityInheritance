@@ -8,6 +8,9 @@ using CalamityInheritance.CIPlayer;
 using System.Collections.Generic;
 using Terraria.Localization;
 using Terraria.ID;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -17,19 +20,13 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<MagnomalyCannon>();
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
-            var usPlayer = player.CIMod();
-            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-                damage.Base *= 1.5f;
         }
 
         public override bool CanUseItem(Item item, Player player)
         {
-
-            var CIPlayer = player.CIMod();
-
             if (player.CheckExoLore())
             {
-                item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
+                item.shoot = ModContent.ProjectileType<MagnomalyRocketExoLore>();
                 item.useAnimation = item.useTime = 67;
                 item.UseSound = CISoundMenu.MagnomalyShootSound.WithVolumeScale(0.8f);
             }
@@ -40,6 +37,11 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 item.UseSound = SoundID.Item11;
             }
             return base.CanUseItem(item , player);
+        }
+        public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI, 0f, 0f);
+            return false;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

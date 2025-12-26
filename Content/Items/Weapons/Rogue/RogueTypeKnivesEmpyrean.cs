@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
     public class RogueTypeKnivesEmpyrean: RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
-        public static int BaseDamage = 250;
+        public static int BaseDamage = 200;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.shoot = ModContent.ProjectileType<RogueTypeKnivesEmpyreanProj>();
             Item.shootSpeed = 15f;
         }
-
+        public override float StealthDamageMultiplier => 0.8f;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int knifeAmt = 4;
@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 tarDist = Item.shootSpeed / tarDist;
                 tarPos.X *= tarDist;
                 tarPos.Y *= tarDist;
-                int p =Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
+                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
                 Main.projectile[p].Calamity().stealthStrike = stealth;
             }
             return false;
