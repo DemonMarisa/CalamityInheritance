@@ -53,6 +53,7 @@ Thunderbolt雷暴云
 回春环刃
 金星三叉戟
 影流法杖
+幻象之怒
 地狱降临
 酸蚀毒蝰。
 剧毒叉枪。
@@ -92,6 +93,7 @@ Thunderbolt雷暴云
 新月链刃
 伽利略短剑
 苍穹飞刀时期
+星龙破空杖
 远古之怒和赤潮矛
 深渊护身符
 再生护符
@@ -108,10 +110,11 @@ Thunderbolt雷暴云
 旧神之契约
 贴图切换
 弑神弹，博比特虫钩
-
-NPC
-海胆
-
+太阳之灵
+星宇护卫召唤
+圣耀火花
+驱魔十字架
+震爆弹
 重命名
 39 - 将血橙（Blood Orange）重命名为Sanguine Tangerine。
 40 - 将旧神浆果（Elderberry）重命名为Tainted Cloudberry。
@@ -139,3 +142,6 @@ NPC
 579 - 重做海耀之刃并重命名为Seashine Hilt。
 632 - 重制流明护身符并更名为Diamond of the Deep。
 700 - 将Dark Blue稀有度改为Cosmic Purple，Violet稀有度改为Burnished Auric，更改后的二者都具有特殊的文字效果。
+
+NPC
+海胆
