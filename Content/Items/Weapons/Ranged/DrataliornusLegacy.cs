@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<DaemonsFlame>().
                 AddIngredient<Deathwind>().
                 AddIngredient<HeavenlyGaleold>().
-                AddConsumeItemCallback(CIRecipesCallback.DontConsumeExoWeapons). //旧天风合成时不会被消耗掉
+                AddConsumeIngredientCallback(CIRecipesCallback.DontConsumeExoWeapons). //旧天风合成时不会被消耗掉
                 AddIngredient<BurningSkyLegacy>(4).
                 AddIngredient<DragonSword>(4).
                 AddIngredient<DragonsBreathold>(4).
@@ -166,9 +166,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<YharimsGiftLegacy>(4).
                 AddIngredient<EffulgentFeather>(160).
                 AddIngredient<YharonSoulFragment>(160). //龙魂与化魂神晶用于合成这个物品时候不会被消耗
-                AddConsumeItemCallback(CIRecipesCallback.DontConsumePostDOGMaterials).
+                AddConsumeIngredientCallback(CIRecipesCallback.DontConsumePostDOGMaterials).
                 AddIngredient<AscendantSpiritEssence>(160). //调整为化魂神晶
-                AddConsumeItemCallback(CIRecipesCallback.DontConsumePostDOGMaterials).
+                AddConsumeIngredientCallback(CIRecipesCallback.DontConsumePostDOGMaterials).
                 AddIngredient<CalamityMod.Items.Placeables.Ores.AuricOre>(320). //调整为320个原灾的金源矿
                 AddTile<CosmicAnvil>().
                 Register();

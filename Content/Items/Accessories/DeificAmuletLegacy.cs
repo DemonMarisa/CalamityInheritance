@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

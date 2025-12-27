@@ -5,6 +5,7 @@ using CalamityInheritance.Rarity;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;

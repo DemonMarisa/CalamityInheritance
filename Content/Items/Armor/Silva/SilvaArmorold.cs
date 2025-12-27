@@ -2,9 +2,9 @@
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {

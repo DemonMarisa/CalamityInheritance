@@ -30,7 +30,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void ExSSD()
         {
             ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(160, 9f, 2.5f);
-            Type.ShimmerEach<TracersCelestial>(false);
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

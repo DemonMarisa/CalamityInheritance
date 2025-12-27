@@ -1,11 +1,11 @@
 ﻿using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Rarities;
+using CalamityMod.Items.Placeables.Crags;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.consumable = true;
             Item.maxStack = 9999;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.rare = ModContent.RarityType<Violet>();
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
         }
 
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)

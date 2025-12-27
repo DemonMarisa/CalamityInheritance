@@ -43,7 +43,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             return false;
         }
 
-        [Obsolete]
         public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 2; k++)

@@ -1,16 +1,10 @@
 ﻿using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
-using CalamityInheritance.Utilities;
 using Terraria.ID;
-using CalamityMod.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -36,7 +30,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
             Projectile.timeLeft = 900;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
         }
 
         public override void AI()

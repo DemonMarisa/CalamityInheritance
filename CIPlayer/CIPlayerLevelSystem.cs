@@ -160,7 +160,7 @@ namespace CalamityInheritance.CIPlayer
             //天顶世界下，熟练度成功后发射的火箭将会获得5000基础伤害，且将会根据玩家当前的增伤来获得伤害，并且以1/2的概率成为敌对
             if (Main.zenithWorld && Main.rand.NextBool())
             {
-                damage = Player.ApplyArmorAccDamageBonusesTo(5000);
+                damage = 5000;
             }
             Vector2 firePos = new(0f, -4f);
             int p = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, firePos, fireType, damage, 0f, Player.whoAmI);

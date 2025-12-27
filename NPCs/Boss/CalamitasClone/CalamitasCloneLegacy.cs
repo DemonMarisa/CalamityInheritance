@@ -17,7 +17,6 @@ using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.TreasureBags;
 using CalamityMod.Items.Weapons.Magic;
@@ -29,6 +28,7 @@ using CalamityMod.Projectiles.Boss;
 using CalamityMod.Sounds;
 using CalamityMod.World;
 using LAP.Core.MusicEvent;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -1026,7 +1026,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 // Equipment
                 normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<VoidofCalamity>()));
                 normalOnly.Add(ModContent.ItemType<ChaosStone>(), DropHelper.NormalWeaponDropRateFraction);
-                normalOnly.Add(ModContent.ItemType<Regenator>(), 10);
+                normalOnly.Add(ModContent.ItemType<Regenerator>(), 10);
 
                 // Materials
                 normalOnly.Add(ModContent.ItemType<EssenceofHavoc>(), 1, 8, 10);
@@ -1037,7 +1037,6 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 var calVanity = ItemDropRule.Common(ModContent.ItemType<HoodOfCalamity>(), 10);
                 calVanity.OnSuccess(ItemDropRule.Common(ModContent.ItemType<RobesOfCalamity>()));
                 normalOnly.Add(calVanity);
-                normalOnly.Add(ModContent.ItemType<ThankYouPainting>(), ThankYouPainting.DropInt);
             }
             npcLoot.Add(ItemID.BrokenHeroSword, 1, 2, 2);
 
@@ -1071,7 +1070,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             }
             //无论如何标记这个为真。
             CIDownedBossSystem.DownedCalClone = true;
-            DeathAshParticle.CreateAshesFromNPC(NPC);
+            DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
             CalamityNetcode.SyncWorld();
         }
         public static void PingDownedLevi()
@@ -1084,7 +1083,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 if (!Main.player[Main.myPlayer].dead && Main.player[Main.myPlayer].active)
                     SoundEngine.PlaySound(CommonCalamitySounds.WyrmScreamSound, Main.player[Main.myPlayer].Center);
 
-                CalamityUtils.DisplayLocalizedText(key, messageColor);
+                LAPUtilities.DisplayLocalizedText(key, messageColor);
             }
 
         }

@@ -22,7 +22,7 @@ namespace CalamityInheritance.NPCs
             {
                 shop.AddWithCustomValue(ModContent.ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));
             }
-            if (type == ModContent.NPCType<THIEF>())
+            if (type == ModContent.NPCType<Bandit>())
             {
                 shop.ShopHelper<BouncingBetty>(Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
                 shop.ShopHelper<SylvanSlasher>(Item.buyPrice(platinum: 1), Condition.DownedMoonLord);

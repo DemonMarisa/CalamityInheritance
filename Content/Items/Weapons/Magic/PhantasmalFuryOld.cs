@@ -7,6 +7,7 @@ using CalamityInheritance.Content.Projectiles.Magic;
 using Terraria.GameContent.Golf;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {

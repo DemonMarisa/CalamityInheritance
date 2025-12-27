@@ -15,6 +15,7 @@ using CalamityMod.Projectiles.Pets;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

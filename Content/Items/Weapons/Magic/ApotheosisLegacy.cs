@@ -1,5 +1,8 @@
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Summon.Worms;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
@@ -67,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 AddIngredient<TheObliterator>(3).
                 AddIngredient<Deathwind>(3).
                 AddIngredient<DeathhailStaff>(3).
-                AddIngredient<StaffoftheMechworm>(3).
+                AddIngredient<StaffofDOG>(3).
                 AddRecipeGroup(CIRecipeGroup.AnyEradicator, 6).
                 AddIngredient<NebulousCore>(3).
                 AddIngredient<AscendantSpiritEssence>(77).

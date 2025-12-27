@@ -1,15 +1,16 @@
-﻿using CalamityMod.Projectiles.BaseProjectiles;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.BaseProjectiles;
 using CalamityMod.Projectiles.Melee;
-using CalamityMod;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -54,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Player player = Main.player[Projectile.owner];
             var source = Projectile.GetSource_FromThis();
             int sparkDamage = player.CalcIntDamage<MeleeDamageClass>(0.5f * Projectile.damage);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<Spark>(), sparkDamage, hit.Knockback, Main.myPlayer);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<GenericElectricSpark>(), sparkDamage, hit.Knockback, Main.myPlayer);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -62,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Player player = Main.player[Projectile.owner];
             var source = Projectile.GetSource_FromThis();
             int sparkDamage = player.CalcIntDamage<MeleeDamageClass>(0.5f * Projectile.damage);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<Spark>(), sparkDamage, Projectile.knockBack, Main.myPlayer);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<GenericElectricSpark>(), sparkDamage, Projectile.knockBack, Main.myPlayer);
         }
     }
 }

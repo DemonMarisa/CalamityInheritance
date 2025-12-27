@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
@@ -7,14 +6,13 @@ using Terraria.Audio;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Projectiles.Summon;
-using CalamityMod.Items.Placeables;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
     [AutoloadEquip(EquipType.Head)]
-    [LegacyName("SilvaHelmet")]
         public class SilvaHeadSummonold : CIArmor, ILocalizedModType
         {
             
@@ -56,8 +54,6 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                     }
                     if (player.ownedProjectileCounts[ModContent.ProjectileType<SilvaCrystal>()] < 1)
                     {
-                        // 08DEC2023: Ozzatron: Silva Crystals spawned with Old Fashioned active will retain their bonus damage indefinitely. Oops. Don't care.
-                        int baseDamage = player.ApplyArmorAccDamageBonusesTo(1500);
                         var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
 
                         var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);

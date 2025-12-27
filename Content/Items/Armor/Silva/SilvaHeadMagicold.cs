@@ -6,6 +6,7 @@ using Terraria;
 using CalamityMod.Items.Placeables;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {

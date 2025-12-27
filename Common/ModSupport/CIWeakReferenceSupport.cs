@@ -6,25 +6,13 @@ using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.NPCs.Boss.Yharon;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Vanity;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.Pets;
-using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
-using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.TreasureBags;
-using CalamityMod.NPCs.DesertScourge;
-using CalamityMod.NPCs.SupremeCalamitas;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -163,7 +151,6 @@ namespace CalamityInheritance.Common.ModSupport
                     ModContent.ItemType<LoreCynosure>(),
                     ModContent.ItemType<BrimstoneJewel>(),
                     ModContent.ItemType<Levi>(),
-                    ModContent.ItemType<ThankYouPainting>() 
                 };
                 AddBoss(bossChecklist, cI, entryName, order, DownedScal, type, new Dictionary<string, object>()
                 {

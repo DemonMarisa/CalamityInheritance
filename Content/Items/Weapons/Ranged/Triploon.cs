@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

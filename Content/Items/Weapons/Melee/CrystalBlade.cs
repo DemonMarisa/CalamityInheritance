@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Projectiles.Melee;
+using LAP.Content.RecipeGroupAdd;
+using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -37,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             CreateRecipe().
                 AddIngredient(ItemID.CrystalShard, 10).
                 AddIngredient(ItemID.PixieDust, 10).
-                AddRecipeGroup("AnyCobaltBar", 8).
+                AddRecipeGroup(LAPRecipeGroup.AnyCobaltBar, 8).
                 AddIngredient<SeaPrism>(15).
                 AddTile(TileID.Anvils).
                 Register();

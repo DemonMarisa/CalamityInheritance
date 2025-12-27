@@ -9,8 +9,6 @@ using CalamityMod;
 using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -20,7 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<Phangasm>(false);
         }
         public override void SetDefaults()
         {
@@ -42,7 +39,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 20f;
             Item.useAmmo = AmmoID.Arrow;
             Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

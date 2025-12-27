@@ -5,7 +5,6 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
-using BotanicPlanter = CalamityMod.Tiles.Furniture.CraftingStations.BotanicPlanter;
 using ProfanedCrucible = CalamityMod.Tiles.Furniture.CraftingStations.ProfanedCrucible;
 using DraedonsForge = CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge;
 
@@ -32,8 +31,6 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
                 ModContent.TileType<AcceleratorT1Tile>(),
                 ModContent.TileType<AcceleratorT2Tile>(),
                 ModContent.TileType<ProfanedCrucible>(),
-                ModContent.TileType<BotanicPlanter>(),
-                ModContent.TileType<SilvaBasin>(),
                 ModContent.TileType<DraedonsForge>(),
                 ModContent.TileType<CosmicAnvil>(),
                 ModContent.TileType<DraedonsForgeold>(),

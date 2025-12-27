@@ -1845,7 +1845,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 ModContent.ItemType<NanoblackReaper>(),
                 ModContent.ItemType<MeleeTypeNanoblackReaper>(),
                 ModContent.ItemType<RainbowPartyCannon>(),
-                ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>(),
+                ModContent.ItemType<TriactisTruePaladinianMageHammerofMight>(),
                 ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>(),
                 ModContent.ItemType<SomaPrime>(),
                 ModContent.ItemType<SomaPrimeOld>(),
@@ -1891,7 +1891,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             else
                 SendBattleText(16);
 
-            DeathAshParticle.CreateAshesFromNPC(NPC);
+            DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
             SoundEngine.PlaySound(GiveUpSound, NPC.position);
             // Increase the player's SCal kill count
             if (Main.player[NPC.target].CIMod().LegacyScal_PlayerKillCount < 5)

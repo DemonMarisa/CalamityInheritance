@@ -95,7 +95,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             NPCID.Sets.ShimmerTownTransform[Type] = false;
             NPC.Happiness
                 .SetBiomeAffection<BrimstoneCragsBiome>(AffectionLevel.Like)
-                .SetNPCAffection(ModContent.NPCType<SEAHOE>(), AffectionLevel.Like)
+                .SetNPCAffection(ModContent.NPCType<SeaKing>(), AffectionLevel.Like)
                 .SetNPCAffection(NPCID.Wizard, AffectionLevel.Like);
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
@@ -264,7 +264,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                     list.Add(Language.GetTextValue($"{DialogueRoute}.BloodMoon2"));
                 }
             }
-            int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SEAHOE>());
+            int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SeaKing>());
             if (seahoe != -1)
             {
                 list.Add(Language.GetTextValue($"{DialogueRoute}.ScalSeahoeChat"));
@@ -611,7 +611,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void ItemShop_List()
         {
             var ItemShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption"))
-                .Add(new Item(ModContent.ItemType<AmidiasSpark>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
+                .Add(new Item(ModContent.ItemType<IlmerisSpark>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
                 .Add(new Item(ItemID.FlyingCarpet) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
                 .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
@@ -643,7 +643,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void WineShop_List()
         {
             NPCShop shop = new(Type, Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt"));
-            shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), CalamityConditions.PotionSellingConfig, Condition.HappyEnough, Condition.Hardmode)
+            shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), Condition.HappyEnough, Condition.Hardmode)
                 .AddWithCustomValue(ModContent.ItemType<GrapeBeer>(), Item.buyPrice(silver: 30), Condition.Hardmode)
                 .AddWithCustomValue(ModContent.ItemType<RedWine>(), Item.buyPrice(gold: 1), Condition.Hardmode)
                 .AddWithCustomValue(ModContent.ItemType<Whiskey>(), Item.buyPrice(gold: 2), Condition.Hardmode)
@@ -713,7 +713,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         {
             if (NPC.life <= 0)
             {
-                DeathAshParticle.CreateAshesFromNPC(NPC);
+                DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
                 NPC.position = NPC.Center;
                 NPC.width = NPC.height = 50;
                 NPC.position.X -= NPC.width / 2;

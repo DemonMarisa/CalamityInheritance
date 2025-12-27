@@ -1,10 +1,7 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using LAP.Core.Utilities;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

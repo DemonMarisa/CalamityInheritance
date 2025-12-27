@@ -80,6 +80,9 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );
+
+        public int OwnerPlayer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 30));
@@ -114,7 +117,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.lifeRegen += 2;
 
             //下方由阴阳石继承
-            calPlayer.aSpark = true;
+            usPlayer.aSpark = true;
             calPlayer.gShell = true;
             usPlayer.FungalCarapace = true;
             player.endurance += 0.15f; //加强5%

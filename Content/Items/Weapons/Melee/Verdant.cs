@@ -1,11 +1,6 @@
-﻿using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

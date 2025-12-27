@@ -1,4 +1,5 @@
-﻿using CalamityMod.Graphics.Metaballs;
+﻿using LAP.Assets.Effects;
+using LAP.Core.MetaBallsSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -7,11 +8,10 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance.ExtraTextures.Metaballs
 {
-    public class ShizukuStarMetaball : Metaball
+    public class ShizukuStarMetaball : BaseMetaBall
     {
         public class ShizukuStarParticle
         {
@@ -31,24 +31,9 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
                 Size *= 0.96f;
             }
         }
-        public static Asset<Texture2D> LayerAsset {  get; private set; }
+        public override Texture2D BgTexture => CITexturesRegister.ShizukuBG.Value;
         public static List<ShizukuStarParticle> Particles { get; private set; } = new();
-        public override bool AnythingToDraw => Particles.Any();
-        public override IEnumerable<Texture2D> Layers
-        {
-            get
-            {
-                yield return LayerAsset.Value;
-            }
-        }
-        public override MetaballDrawLayer DrawContext => MetaballDrawLayer.AfterProjectiles;
         public override Color EdgeColor => Color.Lerp(Color.White,Color.Aqua,0.75f);
-        public override void Load()
-        {
-            if (Main.netMode == NetmodeID.Server)
-                return;
-            LayerAsset = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/{GetType().Name}" + "_Layer", AssetRequestMode.ImmediateLoad);
-        }
         public override void Update()
         {
             for(int i = 0;i<Particles.Count;i++)
@@ -56,11 +41,7 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
             Particles.RemoveAll(p => p.Size <= 2f);
         }
         public static void SpawnParticle(Vector2 pos, Vector2 vel, float size) => Particles.Add(new(size, vel, pos));
-        public override Vector2 CalculateManualOffsetForLayer(int layerIndex)
-        {
-            return Vector2.UnitX * Main.GlobalTimeWrappedHourly * 0.05f;
-        }
-        public override void DrawInstances()
+        public override void PrepareRenderTarget()
         {
             Texture2D tex = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/{GetType().Name}" + "_Texture").Value;
             foreach (ShizukuStarParticle particle in Particles)
@@ -71,6 +52,20 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
                 Main.spriteBatch.Draw(tex, drawPos, null, Color.White, 0f, orig, scale, SpriteEffects.None, 0f);
             }
         }
+        public override void PrepareShader()
+        {
+            Main.graphics.GraphicsDevice.Textures[0] = AlphaTexture;
+            Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
 
+            Main.graphics.GraphicsDevice.Textures[1] = BgTexture;
+            Main.graphics.GraphicsDevice.SamplerStates[1] = SamplerState.PointWrap;
+
+            Effect shader = LAPShaderRegister.MetaballShader.Value;
+            shader.Parameters["renderTargetSize"].SetValue(AlphaTexture.Size());
+            shader.Parameters["bakcGroundSize"].SetValue(BgTexture.Size());
+            shader.Parameters["edgeColor"].SetValue(EdgeColor.ToVector4());
+            shader.Parameters["uTime"].SetValue(Vector2.UnitX * Main.GlobalTimeWrappedHourly * 0.05f);
+            shader.CurrentTechnique.Passes[0].Apply();
+        }
     }
 }

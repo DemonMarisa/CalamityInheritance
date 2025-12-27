@@ -1,10 +1,11 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
+using CalamityMod.Systems.Collections;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Localization;
@@ -22,6 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 14;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashnew1>()] = false;
         }
 
         public bool Slashing = false;

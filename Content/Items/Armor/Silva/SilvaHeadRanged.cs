@@ -1,12 +1,11 @@
-﻿using CalamityMod.Items.Armor.Silva;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {

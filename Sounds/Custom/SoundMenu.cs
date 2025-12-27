@@ -4,6 +4,7 @@ namespace CalamityInheritance.Sounds.Custom
 {
     public partial class CISoundMenu
     {
+        public static string ASSoundRoute => "CalamityInheritance/Sounds/AbilitySounds";
         public static string SoundRoute => "CalamityInheritance/Sounds/Custom";
         public static string ItemSoundRoute => "CalamityInheritance/Sounds/Item";
         public static string CelestusSound => $"{SoundRoute}/Celestus";
@@ -106,6 +107,8 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
         #endregion
         public static readonly SoundStyle Pipes = new($"{SoundRoute}/Pipes");
-        
+        public static readonly SoundStyle SilvaActivation = new ($"{ASSoundRoute}/SilvaActivation");
+        public static readonly SoundStyle SilvaDispel = new($"{ASSoundRoute}/SilvaDispel");
+
     }
 }

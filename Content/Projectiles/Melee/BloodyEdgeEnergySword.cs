@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 using CalamityMod.Projectiles.Healing;
 using CalamityMod.Projectiles;
 using CalamityInheritance.Dusts;
+using CalamityInheritance.Content.Projectiles.Melee.Explosion;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -276,17 +277,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             // 绘制暗淡的、较小的部分
             Main.EntitySpriteDraw(sparkleTexture, drawPos, null, smallColor, MathHelper.PiOver2 + rotation, origin, scaleLeftRight * 0.6f, dir);
             Main.EntitySpriteDraw(sparkleTexture, drawPos, null, smallColor, 0f + rotation, origin, scaleUpDown * 0.6f, dir);
-        }
-        public void OnHitHealEffect(int damage)
-        {
-            int heal = (int)Math.Round(damage * 0.025);
-            if (heal > 100)
-                heal = 100;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<ReaverHealOrb>(), 3000f);
         }
     }
 }

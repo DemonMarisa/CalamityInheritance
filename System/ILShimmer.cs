@@ -68,11 +68,6 @@ namespace CalamityInheritance.System
             {
                 return !Condition.DownedCultist.IsMet();
             }
-            //战旗与纹章 
-            if (type.SameItem<SamuraiBadge>() || type.SameItem<WarbanneroftheSun>())
-            {
-                return !DownedBossSystem.downedProvidence;
-            }
             //克希洛克与黄天
             if (type.SameItem<AncientXerocMask>() || type.SameItem<EmpyreanMask>())
             {

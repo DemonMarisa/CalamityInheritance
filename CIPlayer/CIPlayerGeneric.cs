@@ -23,6 +23,9 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Content.Achievements;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using LAP.Core.Utilities;
+using CalamityMod.Systems.Collections;
+using LAP.Core.IDSets;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -137,6 +140,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AncinetGodSlayerDashReset = false;
 
         public float LifeMaxPercentBoost = 0f;
+        public bool RegenatorLegacy = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -173,6 +177,7 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             StoredTargetIndex = -1;
             StoredDamage = -1;
+            RegenatorLegacy = false;// 再生护符
             if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
         }
@@ -283,7 +288,7 @@ namespace CalamityInheritance.CIPlayer
                 double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
                 double deltaAngle = spread / 8f;
                 double offsetAngle;
-                int shrapnelDamage = Player.ApplyArmorAccDamageBonusesTo(Player.CalcIntDamage<MeleeDamageClass>(1500));
+                int shrapnelDamage = Player.CalcIntDamage<MeleeDamageClass>(1500);
                 if (Player.whoAmI == Main.myPlayer)
                 {
                     for (int i = 0; i < 4; i++)
@@ -309,7 +314,6 @@ namespace CalamityInheritance.CIPlayer
                 {
                     var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
                     int astralStarDamage = (int)Player.GetBestClassDamage().ApplyTo(320);
-                    astralStarDamage = Player.ApplyArmorAccDamageBonusesTo(astralStarDamage);
                     int starAmt = 5;
                     for (int n = 0; n < starAmt; n++)
                     {
@@ -505,7 +509,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (item.CountsAsClass<TrueMeleeDamageClass>() && SMushroom && Player.whoAmI == Main.myPlayer)
             {
-                if (CalamityLists.MushroomWeaponIDs.Contains(item.type) && Player.whoAmI == Main.myPlayer)
+                if (LAPIDSet.MushroomWeaponIDs.Contains(item.type) && Player.whoAmI == Main.myPlayer)
                 {
                     if (Player.itemAnimation == (int)(Player.itemAnimationMax * 0.1) ||
                         Player.itemAnimation == (int)(Player.itemAnimationMax * 0.3) ||

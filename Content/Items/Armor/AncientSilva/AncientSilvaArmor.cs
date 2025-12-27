@@ -1,8 +1,7 @@
 ﻿using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
@@ -12,7 +11,6 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
     [AutoloadEquip(EquipType.Body)]
     public class AncientSilvaArmor : CIArmor, ILocalizedModType
     {
-        
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

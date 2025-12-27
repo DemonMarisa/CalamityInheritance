@@ -3,12 +3,14 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
+using CalamityMod.Tiles.FurnitureWulfrum;
+using CalamityMod.Tiles.FurnitureNavystone.FurnitureAncientNavystone;
+using CalamityMod.Tiles.FurnitureStatigel;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
-    public class AcceleratorT1Tile: ModTile
+    public class AcceleratorT1Tile : ModTile
     {
         public override void SetStaticDefaults()
         {

@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.Systems.Collections;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,7 +31,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         // A "slash" is only present during 2 specific frames (ones with a slash effect) right before they transition to the next frame.
         // Note: This bool is unused. Murasama formerly only dealt damage when on these frames, but it created a few issues with player usability.
         public bool Slashing => CurrentFrame % 7 == 0 && Projectile.frameCounter % 3 == 2;
-
+        public override void SetStaticDefaults()
+        {
+            CalamityProjectileSets.ShouldNotBeReflected[Projectile.type] = true;
+        }
         public override void SetDefaults()
         {
             Projectile.width = 236;

@@ -1,8 +1,5 @@
 ﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -11,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class AncientClasper: ModProjectile, ILocalizedModType
+    public class AncientClasper : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
 

@@ -6,10 +6,11 @@ using CalamityInheritance.Utilities;
 using Terraria.Audio;
 using Terraria.ID;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.BaseClass;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class ExoFlailProj : BaseWhipProjectile, ILocalizedModType
+    public class ExoFlailProj : CIBaseWhip, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public int Counter = 12;
@@ -28,8 +29,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localNPCHitCooldown = 8;
             Projectile.extraUpdates = 1;
         }
-
-        public override Color SpecialDrawColor => default;
         public override int ExudeDustType => CIDustID.DustSandnado;
         public override int WhipDustType => 107;
         public override int HandleHeight => 56;
@@ -39,8 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override int BodyType2SectionHeight => 20;
         public override int TailStartY => 110;
         public override int TailHeight => 50;
-
-        public override void ExtraBehavior()
+        public override void PostAI()
         {
             Player player = Main.player[Projectile.owner];
             if (Counter > 0)

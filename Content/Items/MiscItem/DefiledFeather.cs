@@ -1,6 +1,6 @@
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
+using CalamityMod.Items.Placeables;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;

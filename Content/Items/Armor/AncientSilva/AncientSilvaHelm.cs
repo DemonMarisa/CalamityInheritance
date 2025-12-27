@@ -6,6 +6,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;

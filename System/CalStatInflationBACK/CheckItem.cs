@@ -95,9 +95,9 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             #region 亵渎武器表单的添加
             // 三使徒就这几个了，打表了
             // 风编
-            PostProfanedWeapons.Add(ModContent.ItemType<StormDragoon>());
+            PostProfanedWeapons.Add(ModContent.ItemType<SkytideDragoon>());
             PostProfanedWeapons.Add(ModContent.ItemType<TheStorm>());
-            PostProfanedWeapons.Add(ModContent.ItemType<Thunderstorm>());
+            PostProfanedWeapons.Add(ModContent.ItemType<Volterion>());
             // 虚空
             PostProfanedWeapons.Add(ModContent.ItemType<MirrorBlade>());
             PostProfanedWeapons.Add(ModContent.ItemType<VoidConcentrationStaff>());

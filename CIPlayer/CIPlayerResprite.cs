@@ -349,8 +349,8 @@ namespace CalamityInheritance.CIPlayer
             if (GI<RadiantStar>() != null)
                 IR<RadiantStar>(R.RadiantStarResprite ? CIWeaponsResprite.RadiantAlt : CIWeaponsResprite.RadiantCal);
 
-            if (GI<ShatteredSun>() != null)
-                IR<ShatteredSun>(R.ShatteredSunResprite? CIWeaponsResprite.ShatteredAlt : CIWeaponsResprite.ShatteredCal);
+            if (GI<ShatteredDawn>() != null)
+                IR<ShatteredDawn>(R.ShatteredSunResprite? CIWeaponsResprite.ShatteredAlt : CIWeaponsResprite.ShatteredCal);
             
             if (GI<ScarletDevil>() is not null)
                 IR<ScarletDevil>(R.ScarletDevil ? CIWeaponsResprite.ScarletDevilAlter : CIWeaponsResprite.ScarletDevil);

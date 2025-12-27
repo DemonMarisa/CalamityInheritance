@@ -7,8 +7,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

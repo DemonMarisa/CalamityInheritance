@@ -8,9 +8,6 @@
 光棱破碎者
 宙虹
 曙旼始灵
-冰川核心
-混乱核心
-日光核心
 焚罪飞斧
 渎焚天启、圣火之刃、极乐升天炮、净化激光炮、耀目穿刺者杖和熔岩切碎者
 沸腾之火
@@ -87,14 +84,14 @@ Thunderbolt雷暴云
 蒸海硫火
 腐臭倾泻者
 邪恶收割者
+全部老核弹武器
 邪锋破晓
 破灭魔王剑系列
-宙能，冰雹，死亡之风
 新月链刃
 伽利略短剑
 苍穹飞刀时期
 星龙破空杖
-远古之怒和赤潮矛
+赤潮矛
 深渊护身符
 再生护符
 古元粉末和远古化石
@@ -115,6 +112,8 @@ Thunderbolt雷暴云
 圣耀火花
 驱魔十字架
 震爆弹
+葱茏之锋
+特斯拉药水
 重命名
 39 - 将血橙（Blood Orange）重命名为Sanguine Tangerine。
 40 - 将旧神浆果（Elderberry）重命名为Tainted Cloudberry。
@@ -125,7 +124,7 @@ Thunderbolt雷暴云
 54 - 将龙果（Dragonfruit）重命名为Sacred Strawberry。
 208 - 重命名元素之斧为Legion of Celestia。
 209 - 重命名元素喷射器为Chromatic Eruption。
-210 - 重命名先兆元素为Augur of the Void。
+210 - 重命名先兆元素为Augur of the Void。 √
 211 - 重命名元素射线为Nucleosynthesis。
 212 - 重命名元素短剑为Starburst Shiv。
 264 - 将特斯拉药水重做为饰品并重命名为Tesla's Amulet。
@@ -142,6 +141,24 @@ Thunderbolt雷暴云
 579 - 重做海耀之刃并重命名为Seashine Hilt。
 632 - 重制流明护身符并更名为Diamond of the Deep。
 700 - 将Dark Blue稀有度改为Cosmic Purple，Violet稀有度改为Burnished Auric，更改后的二者都具有特殊的文字效果。
+植物培养器
+闪耀操纵机
+邪恶收割者
+卢克索旧贴图
+熵阔剑
 
 NPC
 海胆
+
+远古之怒 √
+冰川核心 √（没完成）
+混乱核心 √（没完成）
+日光核心 √（没完成）
+暴政 √（没掉落）
+风暴龙骑士 √（没掉落）
+宙能波纹刃 √（没掉落）
+冰雹 √（没掉落）
+死亡之风 √（没掉落）
+再生护符 √（冰灵版）（有修改）
+神吞杖 √（未完成）
+暗夜凝视 √（未完成）

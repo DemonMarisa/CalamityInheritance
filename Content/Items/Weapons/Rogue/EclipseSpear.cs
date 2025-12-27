@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
@@ -65,7 +66,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<NightsGaze>().
+                AddIngredient<haze>().
                 AddIngredient<CoreofSunlight>(12).
                 AddIngredient<CosmiliteBar>(8).
                 AddIngredient<DarksunFragment>(8).

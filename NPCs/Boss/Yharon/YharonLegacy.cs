@@ -20,13 +20,10 @@ using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Vanity;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Pets;
 using CalamityMod.Items.Placeables.Furniture.BossRelics;
-using CalamityMod.Items.Placeables.Furniture.DevPaintings;
 using CalamityMod.Items.Placeables.Furniture.Trophies;
 using CalamityMod.Items.Potions;
 using CalamityMod.Items.SummonItems;
@@ -38,7 +35,6 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.NPCs;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.Tiles.Ores;
 using CalamityMod.World;
 using LAP.Content.Configs;
@@ -984,7 +980,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 normalOnly.Add(ModContent.ItemType<YharonMask>(), 7);
                 normalOnly.Add(ModContent.ItemType<ForgottenDragonEgg>(), 10);
                 normalOnly.Add(ModContent.ItemType<McNuggets>(), 10);
-                normalOnly.Add(ModContent.ItemType<ThankYouPainting>(), ThankYouPainting.DropInt);
             }
 
             // 随机1000-2000龙魂碎片
@@ -1072,7 +1067,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             // Turn into dust on death.
             if (NPC.life <= 0)
-                DeathAshParticle.CreateAshesFromNPC(NPC);
+                DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
         }
         #endregion
         #endregion

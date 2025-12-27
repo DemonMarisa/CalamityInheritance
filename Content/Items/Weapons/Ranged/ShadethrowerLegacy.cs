@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items;

@@ -115,7 +115,6 @@ namespace CalamityInheritance.CIPlayer
                 if (Main.eclipse || Main.dayTime)
                     Player.lifeRegen += darkSunRingDayRegen;
             }
-
             if (AmbrosialAmpouleOld)
             {
                 if (!Player.honey && Player.lifeRegen < 0)
@@ -159,19 +158,22 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientSilvaForceRegen)
             {
-                // 旧林海新增: 生命再生速度无法低于0
-                // 删了旧終灾在场降低回血
-                // 这一段就是魔君能随便站撸終灾的罪魁祸首
                 int lifeRegen = 1;
                 if (Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
                 {
                     // 储存具体的回血进度
                     // 因为回血的数值1 = 0.5HP/s，所以除120
-                    float lifeRegenTimer = Math.Abs((float)(Player.lifeRegen / 120f));
+                    int Source = Player.lifeRegen;
+                    if (Source < -20)
+                    {
+                        Source = -20;
+                    }
+                    float lifeRegenTimer = Math.Abs((float)(Source / 120f));
                     AncientSilvaRegenCounter += lifeRegenTimer;
-
+                    int RengeCount = 0;
                     while (AncientSilvaRegenCounter > 1f)
                     {
+                        RengeCount++;
                         AncientSilvaRegenCounter -= 1f;
                         Player.Heal(lifeRegen);
                     }
@@ -242,6 +244,11 @@ namespace CalamityInheritance.CIPlayer
                     int timer = 50; // 现在固定50帧
                     AncientSilvaRegenTimer = timer;
                 }
+            }
+            if (RegenatorLegacy)
+            {
+                Player.lifeRegenTime += 8;
+                Player.lifeRegen *= 2;
             }
         }
         #endregion

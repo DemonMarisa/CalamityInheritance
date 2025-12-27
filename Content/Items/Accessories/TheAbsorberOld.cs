@@ -9,6 +9,7 @@ using CalamityMod.Items.Placeables;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using System;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {

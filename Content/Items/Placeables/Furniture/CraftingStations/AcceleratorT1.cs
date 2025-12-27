@@ -1,6 +1,7 @@
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items.Placeables.Furniture.CraftingStations;
+using CalamityMod.Items.Placeables.FurnitureNavystone.FurnitureAncientNavystone;
+using CalamityMod.Items.Placeables.FurnitureStatigel;
+using CalamityMod.Items.Placeables.FurnitureWulfrum;
 using Terraria.ID;
 using Terraria.ModLoader;
 

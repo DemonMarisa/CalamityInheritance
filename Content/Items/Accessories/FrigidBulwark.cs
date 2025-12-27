@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items;

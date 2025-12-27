@@ -1,11 +1,13 @@
-﻿using CalamityMod.NPCs.TownNPCs;
-using CalamityMod.NPCs;
+﻿using CalamityInheritance.System.Configs;
 using CalamityMod;
-using Terraria.ModLoader;
-using System.Reflection;
+using CalamityMod.Events;
+using CalamityMod.NPCs;
 using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.TownNPCs;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.System.Configs;
+using System.Reflection;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.CIHook
 {
@@ -19,30 +21,26 @@ namespace CalamityInheritance.Common.CIHook
 
         public static void OnKill_Hook(DevourerofGodsHead self)
         {
-            CalamityGlobalNPC.SetNewBossJustDowned(self.NPC);
-
-            CalamityGlobalNPC.SetNewShopVariable(new int[] { ModContent.NPCType<THIEF>() }, DownedBossSystem.downedDoG);
-
-            // If DoG has not been killed yet, notify players that the holiday moons are buffed
-            if (!DownedBossSystem.downedDoG)
+            if (!BossRushEvent.BossRushActive)
             {
-                string key = "Mods.CalamityMod.Status.Progression.DoGBossText";
-                Color messageColor = Color.Cyan;
-                string key2 = "Mods.CalamityMod.Status.Progression.DoGBossText2";
-                Color messageColor2 = Color.Orange;
-                string key3 = "Mods.CalamityMod.Status.Progression.DargonBossText";
-                Color messageColor3 = Color.Yellow;
+                CalamityGlobalNPC.SetNewBossJustDowned(self.NPC);
+                CalamityGlobalTownNPC.SetNewShopVariable(new int[1] { ModContent.NPCType<Bandit>() }, DownedBossSystem.downedDoG);
+                if (!DownedBossSystem.downedDoG)
+                {
+                    string key = "Mods.CalamityMod.Status.Progression.DoGBossText";
+                    Color cyan = Color.Cyan;
+                    string key2 = "Mods.CalamityMod.Status.Progression.DoGBossText2";
+                    Color orange = Color.Orange;
+                    Color yellow = Color.Yellow;
+                    LAPUtilities.DisplayLocalizedText(key, cyan);
+                    LAPUtilities.DisplayLocalizedText(key2, orange);
+                    if (!CIServerConfig.Instance.SolarEclipseChange)
+                        LAPUtilities.DisplayLocalizedText("Mods.CalamityMod.Status.Progression.DargonBossText", yellow);
+                }
 
-                CalamityUtils.DisplayLocalizedText(key, messageColor);
-                CalamityUtils.DisplayLocalizedText(key2, messageColor2);
-
-                if (!CIServerConfig.Instance.SolarEclipseChange)
-                    CalamityUtils.DisplayLocalizedText(key3, messageColor3);
+                DownedBossSystem.downedDoG = true;
+                CalamityNetcode.SyncWorld();
             }
-
-            // Mark DoG as dead
-            DownedBossSystem.downedDoG = true;
-            CalamityNetcode.SyncWorld();
         }
     }
 }

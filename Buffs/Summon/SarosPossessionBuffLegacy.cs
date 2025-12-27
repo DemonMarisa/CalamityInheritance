@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL;
 
 namespace CalamityInheritance.Buffs.Summon
 {

@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
+using CalamityInheritance.Content.Projectiles.Rogue.Spears;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Ammo;
@@ -92,8 +93,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
 
             if (item.type == ModContent.ItemType<CosmicShiv>())
                 return 0.4f;
-            else if (item.type == ModContent.ItemType<TheEnforcer>())
-                return 0.5f;
             else
                 return base.UseAnimationMultiplier(item, player);
         }
@@ -105,8 +104,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
 
             if (item.type == ModContent.ItemType<CosmicShiv>())
                 return 0.4f;
-            else if (item.type == ModContent.ItemType<TheEnforcer>())
-                return 0.5f;
             else
                 return base.UseTimeMultiplier(item, player);
         }
@@ -240,14 +237,8 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (item.type == ModContent.ItemType<EssenceFlayer>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<TheEnforcer>())
-            {
-                SetCustomMult(item, 0.6f);
-            }
-
             if (item.type == ModContent.ItemType<Murasama>())
                 SetCustomMult(item, 9.0013f);
-
             #endregion
             #region 射手
             if (item.type == ModContent.ItemType<Deathwind>())
@@ -477,7 +468,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 SetCustomMult(item, 45876);
             if (item.type == ModContent.ItemType<NanoblackReaper>())
                 SetCustomMult(item, 2000);
-            if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMightMelee>())
+            if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMight>())
                 SetCustomMult(item, 60000);
             if (item.type == ModContent.ItemType<Sylvestaff>())
                 SetCustomMult(item, 1050);
@@ -499,11 +490,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             {
                 SetCustomMult(item, 17000);
                 item.scale *= 2.5f;
-            }
-            //圣剑翻倍一下就行了，因为有血染等一些玩法
-            if (item.Same<IridescentExcalibur>())
-            {
-                item.LAP().GlobalMult *= 2f;
             }
             //龙破斩谁爱玩玩去（
             //瘟疫需要起码30000的面板

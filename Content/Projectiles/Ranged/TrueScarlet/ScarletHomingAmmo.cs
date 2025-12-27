@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -64,7 +65,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             modifiers.DefenseEffectiveness *= 0f;
-            modifiers.FinalDamage *= 1f / (1f - target.Calamity().dragonFire);
             Player r99Owner = Main.player[Projectile.owner];
             if (r99Owner.ActiveItem().type != ModContent.ItemType<R99>())
                 return;

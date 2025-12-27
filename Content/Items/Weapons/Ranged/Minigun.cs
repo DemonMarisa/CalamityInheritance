@@ -42,7 +42,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
             Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.Calamity().canFirePointBlankShots = true;
         }
 
         public override Vector2? HoldoutOffset()

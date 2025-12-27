@@ -4,9 +4,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items.Placeables;
 using CalamityInheritance.Content.Projectiles.Melee;
-using static System.Net.Mime.MediaTypeNames;
+using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -41,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             int num251 = Main.rand.Next(2, 4);
             for (int num252 = 0; num252 < num251; num252++)
             {
-                Vector2 value15 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                Vector2 value15 = new(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                 while (value15.X == 0f && value15.Y == 0f)
                 {
                     value15 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
@@ -109,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(3))
             {
-                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 59);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 59);
             }
         }
 

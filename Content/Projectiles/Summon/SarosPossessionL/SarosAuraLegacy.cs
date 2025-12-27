@@ -3,10 +3,6 @@ using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -14,10 +10,11 @@ using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Buffs.Summon;
 
-namespace CalamityInheritance.Content.Projectiles.Summon
+namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
 {
     public class SarosAuraLegacy : ModProjectile
     {
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public Player Owner => Main.player[Projectile.owner];
         public ref float AllocatedSlots => ref Projectile.ai[0];
         public ref float GeneralTimer => ref Projectile.ai[1];
@@ -66,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             // Softcap the multiplier after it has exceeded 3x the base value.
             float softcappedDamageMultiplier = damageMultiplier;
             if (softcappedDamageMultiplier > 3f)
-                softcappedDamageMultiplier = ((damageMultiplier - 3f) * 0.1f) + 3f;
+                softcappedDamageMultiplier = (damageMultiplier - 3f) * 0.1f + 3f;
 
             int radiantOrbDamage = (int)(Projectile.damage * softcappedDamageMultiplier);
             int radiantOrbOriginalDamage = (int)(Projectile.originalDamage * softcappedDamageMultiplier);
@@ -109,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 {
                     float angle = MathHelper.Lerp(-MathHelper.ToRadians(20f), MathHelper.ToRadians(20f), i / 2f);
                     Vector2 fireVelocity = Projectile.SafeDirectionTo(target.Center).RotatedBy(angle) * 15f;
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfire>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = radiantOrbOriginalDamage / 2;
                 }
@@ -119,14 +116,14 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             {
                 Vector2 spawnPosition = Projectile.Center + Main.rand.NextVector2Unit() * Main.rand.NextFloat(100f, 360f);
                 Vector2 bootlegRadianceOrbVelocity = Projectile.SafeDirectionTo(target.Center) * 2f;
-                int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, bootlegRadianceOrbVelocity, ModContent.ProjectileType<SarosMicrosun>(), radiantOrbDamage, Projectile.knockBack * 4f, Projectile.owner);
+                int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, bootlegRadianceOrbVelocity, ModContent.ProjectileType<SarosMicrosunLegacy>(), radiantOrbDamage, Projectile.knockBack * 4f, Projectile.owner);
                 if (Main.projectile.IndexInRange(p2))
                     Main.projectile[p2].originalDamage = radiantOrbOriginalDamage;
                 for (int i = 0; i < 3; i++)
                 {
                     float angle = MathHelper.Lerp(-MathHelper.ToRadians(30f), MathHelper.ToRadians(30f), i / 3f);
                     Vector2 fireVelocity = Projectile.SafeDirectionTo(target.Center).RotatedBy(angle) * 19f;
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfire>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = radiantOrbOriginalDamage / 2;
                 }

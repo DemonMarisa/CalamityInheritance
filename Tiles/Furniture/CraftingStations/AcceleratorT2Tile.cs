@@ -5,10 +5,10 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using AshenAltar = CalamityMod.Tiles.Furniture.CraftingStations.AshenAltar;
-using AncientAltar = CalamityMod.Tiles.Furniture.CraftingStations.AncientAltar;
-using MonolithAmalgam = CalamityMod.Tiles.Furniture.CraftingStations.MonolithAmalgam;
 using PlagueInfuser = CalamityMod.Tiles.Furniture.CraftingStations.PlagueInfuser;
 using VoidCondenser = CalamityMod.Tiles.Furniture.CraftingStations.VoidCondenser;
+using CalamityMod.Tiles.FurnitureAncient;
+using CalamityMod.Tiles.FurnitureMonolith;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {

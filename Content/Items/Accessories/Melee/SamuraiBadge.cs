@@ -1,13 +1,10 @@
-﻿using CalamityMod.CalPlayer;
-using CalamityMod;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
 using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
@@ -26,13 +23,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         );
         public override void ExSSD()
         {
-            Type.ShimmerEach<WarbanneroftheSun>();
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.warbannerOfTheSun = true;
-
             float bonus = CalculateBonus(player);
             player.GetAttackSpeed<MeleeDamageClass>() += bonus;
             player.GetDamage<MeleeDamageClass>() += bonus;

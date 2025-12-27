@@ -1,47 +1,53 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Accessories;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Audio;
-using Terraria.ModLoader;
-using CalamityInheritance.CICooldowns;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.StatBuffs;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Typeless;
-using Terraria.ID;
-using CalamityMod.Cooldowns;
+﻿using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
-using CalamityMod.Dusts;
-using CalamityMod.Items.Armor.Silva;
-using Terraria.Graphics.Shaders;
+using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CICooldowns;
+using CalamityInheritance.Content.Achievements;
+using CalamityInheritance.Content.Items.Accessories;
+using CalamityInheritance.Content.Items.Accessories.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.System.Configs;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Accessories.Rogue;
-using CalamityMod.Buffs.Alcohol;
-using CalamityMod.Buffs.Potions;
-using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
-using static CalamityInheritance.Buffs.Statbuffs.ShizukuMoonlight;
-using CalamityInheritance.Content.Achievements;
-using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Core;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.Alcohol;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Buffs.Potions;
+using CalamityMod.Buffs.StatBuffs;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
+using CalamityMod.CalPlayer.Dashes;
+using CalamityMod.Cooldowns;
+using CalamityMod.Dusts;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Armor.Silva;
+using CalamityMod.Items.Potions.Alcohol;
+using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Projectiles.Typeless;
+using CalamityMod.Systems.Collections;
+using LAP.Core.MiscDate;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.Graphics.Shaders;
+using Terraria.ID;
+using Terraria.ModLoader;
+using static CalamityInheritance.Buffs.Statbuffs.ShizukuMoonlight;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -104,119 +110,12 @@ namespace CalamityInheritance.CIPlayer
 
             // 杂项条件与重置
             // ReSet();
-
             // 神殇
             Defiled();
-
             // 恶意
             Malice();
-
-            //融合脑Buff相关
-            AmalgamBuffBuff();
         }
 
-        private void AmalgamBuffBuff()
-        {
-            if (!AmalgamLegacy)
-            {
-                return;
-            }
-            for (int i = 0; i < Player.MaxBuffs; i++)
-            {
-                // 因为一些无限buff的缘故，这里需要排除掉一些存在时间太短的buff，不然会反复闪烁buff存在时间
-                if (Player.buffTime[i] < 30)
-                    continue;
-
-                int hasBuff = Player.buffType[i];
-                #region 孩子们这全是Buff
-                bool wellFedFamily = SameBuffType(hasBuff, BuffID.WellFed) || SameBuffType(hasBuff, BuffID.WellFed2) || SameBuffType(hasBuff, BuffID.WellFed3);
-                bool vanillaBuffs = hasBuff >= BuffID.ObsidianSkin
-                    && hasBuff <= BuffID.Gravitation
-                    || SameBuffType(hasBuff, BuffID.Honey)
-                    || SameBuffType(hasBuff, BuffID.Tipsy)
-                    || SameBuffType(hasBuff, BuffID.SugarRush)
-                    || (hasBuff >= BuffID.Mining && hasBuff <= BuffID.Wrath)
-                    || (hasBuff >= BuffID.Lovestruck && hasBuff <= BuffID.Warmth)
-                    || wellFedFamily;
-
-                bool weaponImbueBuff = SameBuffType(hasBuff, BuffID.WeaponImbueConfetti)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueCursedFlames)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueFire)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueGold)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueIchor)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueNanites)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbuePoison)
-                    || SameBuffType(hasBuff, BuffID.WeaponImbueVenom)
-                    || SameBuffType<WeaponImbueBrimstone>(hasBuff)
-                    || SameBuffType<WeaponImbueCrumbling>(hasBuff)
-                    || SameBuffType<WeaponImbueHolyFlames>(hasBuff);
-
-                bool legacyBuff = SameBuffType<ArmorShattering>(hasBuff)
-                    || SameBuffType<CadancesGrace>(hasBuff)
-                    || SameBuffType<DraconicSurgeBuff>(hasBuff)
-                    || SameBuffType<PenumbraBuff>(hasBuff)
-                    || SameBuffType<HolyWrathBuff>(hasBuff)
-                    || SameBuffType<ProfanedRageBuff>(hasBuff)
-                    || SameBuffType<Revivify>(hasBuff)
-                    || SameBuffType<TitanScale>(hasBuff)
-                    || SameBuffType<YharimPower>(hasBuff)
-                    || SameBuffType<TriumphBuff>(hasBuff)
-                    || SameBuffType<Invincible>(hasBuff);
-
-                bool calamityBuff = SameBuffType<AnechoicCoatingBuff>(hasBuff)
-                    || SameBuffType<Crumbling>(hasBuff)
-                    || SameBuffType<BloodfinBoost>(hasBuff)
-                    || SameBuffType<AstralInjectionBuff>(hasBuff)
-                    || SameBuffType<BaguetteBuff>(hasBuff)
-                    || SameBuffType<BoundingBuff>(hasBuff)
-                    || SameBuffType<CalciumBuff>(hasBuff)
-                    || SameBuffType<GravityNormalizerBuff>(hasBuff)
-                    || SameBuffType<CeaselessHunger>(hasBuff)
-                    || SameBuffType<Omniscience>(hasBuff)
-                    || SameBuffType<ShadowBuff>(hasBuff)
-                    || SameBuffType<Soaring>(hasBuff)
-                    || SameBuffType<TeslaBuff>(hasBuff)
-                    || SameBuffType<SulphurskinBuff>(hasBuff)
-                    || SameBuffType<Zerg>(hasBuff)
-                    || SameBuffType<Zen>(hasBuff);
-
-                bool alcohol = SameBuffType<BloodyMaryBuff>(hasBuff)
-                    || SameBuffType<CaribbeanRumBuff>(hasBuff)
-                    || SameBuffType<CinnamonRollBuff>(hasBuff)
-                    || SameBuffType<MoonshineBuff>(hasBuff)
-                    || SameBuffType<EverclearBuff>(hasBuff)
-                    || SameBuffType<EvergreenGinBuff>(hasBuff)
-                    || SameBuffType<VodkaBuff>(hasBuff)
-                    || SameBuffType<PurpleHazeBuff>(hasBuff)
-                    || SameBuffType<MargaritaBuff>(hasBuff)
-                    || SameBuffType<RedWineBuff>(hasBuff)
-                    || SameBuffType<RumBuff>(hasBuff)
-                    || SameBuffType<MoscowMuleBuff>(hasBuff)
-                    || SameBuffType<ScrewdriverBuff>(hasBuff)
-                    || SameBuffType<TequilaBuff>(hasBuff)
-                    || SameBuffType<TequilaSunriseBuff>(hasBuff)
-                    || SameBuffType<Trippy>(hasBuff)
-                    || SameBuffType<WhiteWineBuff>(hasBuff)
-                    || SameBuffType<WhiskeyBuff>(hasBuff)
-                    || SameBuffType<FireballBuff>(hasBuff)
-                    || SameBuffType<GrapeBeerBuff>(hasBuff);
-
-                bool someCustomBuff = SameBuffType<AbsorberRegen>(hasBuff)
-                    || SameBuffType<TarraLifeRegen>(hasBuff);
-                #endregion
-                if (vanillaBuffs || alcohol || calamityBuff || legacyBuff || weaponImbueBuff || someCustomBuff)
-                {
-                    if (Player.miscCounter % 2 == 0)
-                    {
-                        Player.buffTime[i] += 1;
-                    }
-                    if (!Main.persistentBuff[hasBuff])
-                    {
-                        Main.persistentBuff[hasBuff] = true;
-                    }
-                }
-            }
-        }
         public void FrigidBulwarkBuff()
         {
             if (FrigidBulwark)
@@ -361,7 +260,6 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientAeroWingsPower && AeroFlightPower == 0)
                 calPlayer.infiniteFlight = true;
-
             if (GodlySons)
             {
                 Player.maxMinions += 10;
@@ -430,7 +328,6 @@ namespace CalamityInheritance.CIPlayer
                     //所以现在这些个的buff值都是5的系数了。
                 }
             }
-
             if(AmbrosialImmnue)
             {
                 Player.buffImmune[BuffID.Venom] = true;
@@ -444,6 +341,8 @@ namespace CalamityInheritance.CIPlayer
             }
             if(AmbrosialStats)
                 Player.pickSpeed -= 0.5f;
+            if (RegenatorLegacy)
+                Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.5);
         }
         private void Nanotechs()
         {
@@ -650,7 +549,7 @@ namespace CalamityInheritance.CIPlayer
             // CD
             if (SilvaRebornTimer == 1)
             {
-                SoundEngine.PlaySound(SilvaHeadSummon.DispelSound, Player.Center);
+                SoundEngine.PlaySound(CISoundMenu.SilvaDispel, Player.Center);
                 // 45秒
                 Player.AddCooldown(SilvaRevive.ID, CalamityUtils.SecondsToFrames(90));
             }
@@ -762,8 +661,11 @@ namespace CalamityInheritance.CIPlayer
                 PolarisPhase2 = true;
             if (InvincibleJam)
             {
-                foreach (int debuff in CalamityLists.debuffList)
-                    Player.buffImmune[debuff] = true;
+                for (int i = 0; i < Player.MaxBuffs; i++)
+                {
+                    if (CalamityBuffSets.IsDebuff[i])
+                        Player.buffImmune[i] = true;
+                }
             }
 
             //龙弓左键伤害倍率计算
@@ -1042,7 +944,6 @@ namespace CalamityInheritance.CIPlayer
             if (LoreEaterofWorld || PanelsLoreEaterofWorld)
             {
                 int damage = (int)(15 * Player.GetBestClassDamage().ApplyTo(1));
-                damage = Player.ApplyArmorAccDamageBonusesTo(damage);
                 float knockBack = 1f;
 
                 if (Main.rand.NextBool(15))
@@ -1302,16 +1203,12 @@ namespace CalamityInheritance.CIPlayer
             {
                 const int FramesPerHit = 30;
 
-                // Constantly increment the timer every frame.
-                calPlayer.brimLoreInfernoTimer = (calPlayer.brimLoreInfernoTimer + 1) % FramesPerHit;
-
                 // Only run this code for the client which is wearing the armor.
                 // Brimstone flames is applied every single frame, but direct damage is only dealt twice per second.
                 if (Player.whoAmI == Main.myPlayer)
                 {
                     const int BaseDamage = 50;
                     int damage = (int)(BaseDamage * Player.GetBestClassDamage().ApplyTo(1));
-                    damage = Player.ApplyArmorAccDamageBonusesTo(damage);
                     float range = 300f;
                     IEntitySource entitySource = Player.GetSource_Accessory(Player.HeldItem);
                     for (int i = 0; i < Main.maxNPCs; ++i)
@@ -1323,7 +1220,7 @@ namespace CalamityInheritance.CIPlayer
                         if (Vector2.Distance(Player.Center, Npc.Center) <= range)
                         {
                             Npc.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
-                            if (calPlayer.brimLoreInfernoTimer == 0)
+                            if (Player.miscCounter % 30 == 0)
                                 Projectile.NewProjectileDirect(entitySource, Npc.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), damage, 0f, Player.whoAmI, i);
                         }
                     }

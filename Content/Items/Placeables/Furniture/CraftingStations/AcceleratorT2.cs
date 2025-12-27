@@ -1,7 +1,7 @@
-using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityMod.Items.Placeables.Furniture.CraftingStations;
-using CalamityMod.Projectiles.Summon;
+using CalamityMod.Items.Placeables.FurnitureAncient;
+using CalamityMod.Items.Placeables.FurnitureMonolith;
 using Terraria.ID;
 using Terraria.ModLoader;
 

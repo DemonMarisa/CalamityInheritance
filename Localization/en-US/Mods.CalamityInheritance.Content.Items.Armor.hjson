@@ -844,7 +844,8 @@ AncientSilvaHelm: {
 		+125 max stealth
 		Healing potions are 30% more effective
 		+12 HP/s life regen speed
-		Boosts your natural life regen speed, debuffs can not negate your life regen
+		Boosts your natural life regen speed
+		When life regen below 0, Gain additional life regen, maximum 20 HP/s.
 		Sometimes you will be heal swiftly for a brief time
 		Grants silva invulnerability for 5 seconds if you are reduced to 1 HP.
 		10% of the damage from enemy attacks is absorbed and converted into healing

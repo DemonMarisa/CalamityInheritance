@@ -1,26 +1,29 @@
-using CalamityMod;
-using Terraria;
-using Terraria.ModLoader;
+using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CIPlayer.Dash;
-using System.Reflection;
-using CalamityInheritance.UI;
+using CalamityInheritance.Common.CIHook;
+using CalamityInheritance.Common.EventChange;
+using CalamityInheritance.Common.ModSupport;
+using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Texture;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using Terraria.Graphics.Effects;
-using CalamityInheritance.NPCs.Boss.SCAL.Sky;
-using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
-using CalamityInheritance.Common.ModSupport;
-using CalamityInheritance.NPCs.Boss.Yharon.Sky;
-using CalamityInheritance.Common.CIHook;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
-using Terraria.ModLoader.Config;
-using System.Collections.Generic;
-using System;
-using CalamityInheritance.Common.EventChange;
-using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.NPCs.Boss.SCAL.Sky;
+using CalamityInheritance.NPCs.Boss.Yharon.Sky;
+using CalamityInheritance.Texture;
+using CalamityInheritance.UI;
 using CalamityInheritance.UI.MusicUI;
+using CalamityMod;
+using CalamityMod.Systems.Collections;
+using LAP.Core.IDSets;
+using LAP.Core.MiscDate;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Terraria;
+using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance
 {
@@ -99,30 +102,25 @@ namespace CalamityInheritance
             infernumMode = null;
             ModLoader.TryGetMod("InfernumMode", out infernumMode);
 
-            if (CalamityLists.pierceResistExceptionList != null)
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashnew1>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashold>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<ExoArrowTealExoLore>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<DragonBowFlameRework>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>()] = false;
+
+            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<MurasamaSlashold>());
+            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
+            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
+            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
+
+            if (LAPList.debuffList != null)
             {
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<DragonBowFlameRework>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
-            }
-            if (CalamityLists.projectileDestroyExceptionList != null)
-            {
-                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<MurasamaSlashnew1>());
-                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
-                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
-                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
-                CalamityLists.projectileDestroyExceptionList.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
-            }
-            if (CalamityLists.debuffList != null)
-            {
-                CalamityLists.debuffList.Add(ModContent.BuffType<AbyssalFlames>());
-                CalamityLists.debuffList.Add(ModContent.BuffType<Horror>());
-                CalamityLists.debuffList.Add(ModContent.BuffType<MaliceModeCold>());
-                CalamityLists.debuffList.Add(ModContent.BuffType<MaliceModeHot>());
-                CalamityLists.debuffList.Add(ModContent.BuffType<VulnerabilityHexLegacy>());
+                LAPList.debuffList.Add(ModContent.BuffType<AbyssalFlames>());
+                LAPList.debuffList.Add(ModContent.BuffType<Horror>());
+                LAPList.debuffList.Add(ModContent.BuffType<MaliceModeCold>());
+                LAPList.debuffList.Add(ModContent.BuffType<MaliceModeHot>());
+                LAPList.debuffList.Add(ModContent.BuffType<VulnerabilityHexLegacy>());
             }
             CIResprite.LoadTexture();
             CIWeaponsResprite.LoadTexture();
@@ -185,11 +183,6 @@ namespace CalamityInheritance
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
-            if (CalamityLists.pierceResistExceptionList != null)
-            {
-                CalamityLists.pierceResistExceptionList.Remove(ModContent.ProjectileType<MurasamaSlashnew1>());
-                CalamityLists.pierceResistExceptionList.Add(ModContent.ProjectileType<MurasamaSlashold>());
-            }
             CIResprite.UnloadTexture();
             CIWeaponsResprite.UnloadTexture();
             infernumMode = null;

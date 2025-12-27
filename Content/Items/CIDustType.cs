@@ -70,6 +70,7 @@ namespace CalamityInheritance.Content.Items
         public static readonly int DustSnowCloud = 108;
         public static readonly int DustAspalt = 109;
         public static readonly int DustMushroomSpray113 = 113;
+        public static readonly int BlueRocket = 132;
         public static readonly int DustNimbusRod = 154;
         public static readonly int DustHeatRay = 162;
         public static readonly int DustGoldenShower = 170;

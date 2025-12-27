@@ -1,5 +1,4 @@
-﻿using System;
-using CalamityInheritance.Buffs.Melee;
+﻿using CalamityInheritance.Buffs.Melee;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CICooldowns;
@@ -25,10 +24,12 @@ using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Projectiles.Typeless;
+using CalamityMod.Systems.Collections;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -216,7 +217,7 @@ namespace CalamityInheritance.CIPlayer
                 SilvaRebornTimer = TotalTimer;
             }
 
-            SoundEngine.PlaySound(SilvaHeadSummon.ActivationSound, Player.Center);
+            SoundEngine.PlaySound(CISoundMenu.SilvaActivation, Player.Center);
             DoSilvaHeal();
         }
         #endregion
@@ -234,7 +235,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
             }
             //仅在不佩戴龙魂秘药的时候判定是否佩戴翅膀
-            if (!BuffStatsDraconicSurge && calPlayer.silvaWings)
+            if (!BuffStatsDraconicSurge/* && calPlayer.silvaWings*/)
             {
                 Player.Heal(Player.statLifeMax2 / 2);
                 return;
@@ -359,7 +360,6 @@ namespace CalamityInheritance.CIPlayer
             //计算闪避时提供的射弹伤。
             var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<EclispeMirrorLegacy>()));
             int damage = (int)Player.GetTotalDamage<RogueDamageClass>().ApplyTo(5000);
-            damage = Player.ApplyArmorAccDamageBonusesTo(damage);
 
             int eclipse = Projectile.NewProjectile(source, Player.Center, Vector2.Zero, ModContent.ProjectileType<EclipseMirrorBurst>(), damage, 0, Player.whoAmI);
             if (eclipse.WithinBounds(Main.maxProjectiles))
@@ -402,7 +402,7 @@ namespace CalamityInheritance.CIPlayer
             }
             // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
             // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
-            if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => proj.type != x) && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
+            if (!CalamityProjectileSets.ShouldNotBeReflected[proj.type] && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
             {
                 double dodgeDamageGateValuePercent = 0.05;
                 int dodgeDamageGateValue = (int)Math.Round(Player.statLifeMax2 * dodgeDamageGateValuePercent);
@@ -558,7 +558,6 @@ namespace CalamityInheritance.CIPlayer
                 for (int n = 0; n < 3; n++)
                 {
                     int deificStarDamage = (int)Player.GetBestClassDamage().ApplyTo(130);
-                    deificStarDamage = Player.ApplyArmorAccDamageBonusesTo(deificStarDamage);
 
                     Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, 
                     ProjectileID.StarVeilStar, deificStarDamage, 4f, Player.whoAmI);
@@ -578,7 +577,6 @@ namespace CalamityInheritance.CIPlayer
                 int basicDamage = 500 + 2500 * CIServerConfig.Instance.CalStatInflationBACK.ToInt();
 
                 int totalDamage = (int)Player.GetBestClassDamage().ApplyTo(basicDamage);
-                totalDamage = Player.ApplyArmorAccDamageBonusesTo(totalDamage);
                 for (int i = 0; i < totalStars; i++)
                 {
                     float pPosX = Player.Center.X + Main.rand.NextFloat(-200f, 201f);
@@ -604,7 +602,6 @@ namespace CalamityInheritance.CIPlayer
                 for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
                 {
                     int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(1000);
-                    astralStarsDMG = Player.ApplyArmorAccDamageBonusesTo(astralStarsDMG);
 
                     Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
                     ProjectileID.StarVeilStar, astralStarsDMG, 4f, Player.whoAmI);
@@ -624,26 +621,25 @@ namespace CalamityInheritance.CIPlayer
                 if (randomMessage == 1)
                 {
                     string key1 = "Mods.CalamityInheritance.Status.SCAL1";
-                    CalamityUtils.DisplayLocalizedText(key1, messageColor);
+                    LAPUtilities.DisplayLocalizedText(key1, messageColor);
                 }
                 if (randomMessage == 2)
                 {
                     string key2 = "Mods.CalamityInheritance.Status.SCAL2";
-                    CalamityUtils.DisplayLocalizedText(key2, messageColor);
+                    LAPUtilities.DisplayLocalizedText(key2, messageColor);
                 }
                 if (randomMessage == 3)
                 {
                     string key3 = "Mods.CalamityInheritance.Status.SCAL3";
-                    CalamityUtils.DisplayLocalizedText(key3, messageColor);
+                    LAPUtilities.DisplayLocalizedText(key3, messageColor);
                 }
                 if (randomMessage == 4)
                 {
                     string key4 = "Mods.CalamityInheritance.Status.SCAL4";
-                    CalamityUtils.DisplayLocalizedText(key4, messageColor);
+                    LAPUtilities.DisplayLocalizedText(key4, messageColor);
                 }
                 KillPlayer();
             }
-
             if (GodSlayerMagicSet)
             {
                 if (hurtInfo.Damage > 0)
@@ -656,12 +652,10 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-
             if (ReaverMeleeBlast) //受伤后提供战士永恒套怒气buff
             {
                 Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
             }
-
             if (AncientBloodflareSet)
             {
                 if(hurtInfo.Damage > 400 && AncientAuricHealCooldown == 0)
@@ -672,7 +666,6 @@ namespace CalamityInheritance.CIPlayer
                     AncientAuricHealCooldown =  1200;
                 }
             }
-
             if(AncientAuricSet)
             {
                 //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
@@ -686,7 +679,6 @@ namespace CalamityInheritance.CIPlayer
                     AncientAuricHealCooldown = Main.zenithWorld? 1 : 300;
                 }
             }
-
             if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
             {
                 foreach(Projectile p in Main.ActiveProjectiles)
@@ -705,6 +697,13 @@ namespace CalamityInheritance.CIPlayer
             //魔君套受击后无敌
             if (YharimAuricSet)
                 yharimArmorinvincibility = 60;
+            if (aSpark)
+            {
+                if (CIsponge)
+                    AmidiasSparkHit(200);
+                else
+                    AmidiasSparkHit(15);
+            }
         }
         #endregion
         public void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
@@ -864,9 +863,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.immune = true;
             }
         }
-        public static void SpongeHurtEffect()
+        public void SpongeHurtEffect()
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             #region 真菌壳
             SoundEngine.PlaySound(SoundID.NPCHit45, player.position);
 
@@ -898,24 +897,28 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
-            SoundEngine.PlaySound(SoundID.Item93, player.Center);
+        }
+        #region 火花石
+        public void AmidiasSparkHit(int Damage = 50)
+        {
+            float spread = 45f * 0.0174f;
+            SoundEngine.PlaySound(SoundID.Item93, Player.Center);
             float spread1 = 45f * 0.0174f;
-            double startAngle1 = Math.Atan2(player.velocity.X, player.velocity.Y) - spread1 / 2;
+            double startAngle1 = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread1 / 2;
             double deltaAngle1 = spread / 8f;
             double offsetAngle1;
 
             // Start with base damage, then apply the best damage class you can
-            int sDamage = 50;
-            sDamage = (int)player.GetBestClassDamage().ApplyTo(sDamage);
-            sDamage = player.ApplyArmorAccDamageBonusesTo(sDamage);
+            int sDamage = Damage;
+            sDamage = (int)Player.GetBestClassDamage().ApplyTo(sDamage);
 
-            if (player.whoAmI == Main.myPlayer)
+            if (Player.whoAmI == Main.myPlayer)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle1 = startAngle1 + deltaAngle1 * (i + i * i) / 2f + 32f * i;
-                    int spark1 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
-                    int spark2 = Projectile.NewProjectile(player.GetSource_FromThis(), player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<Spark>(), sDamage, 1.25f, player.whoAmI, 0f, 0f);
+                    int spark1 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
+                    int spark2 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
                     if (spark1.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[spark1].timeLeft = 120;
@@ -929,7 +932,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
         }
-        
+        #endregion
         #region Kill Player
         public void KillPlayer()
         {

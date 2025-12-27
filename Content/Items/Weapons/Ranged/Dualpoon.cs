@@ -11,6 +11,7 @@ using Terraria;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod;
 using CalamityMod.Items.Placeables;
+using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
