@@ -9,6 +9,8 @@ using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -86,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / FireProjectiles)));
                             velocity.X = velocity.X + 3 * Main.rand.NextFloat() - 1.5f;
                             int damage = (int)player.GetBestClassDamage().ApplyTo(100);
-                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstoneHellfireballFriendly2>(), damage, 5f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }
@@ -95,8 +97,8 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<CoreofCalamity>()
-                .AddIngredient<CoreofHavoc>()
+                .AddIngredient<Abaddon>()
+                .AddIngredient<CoreofChaos>(3)
                 .AddIngredient<ScoriaBar>(3)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();

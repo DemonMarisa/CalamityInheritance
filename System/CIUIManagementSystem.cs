@@ -25,35 +25,34 @@ namespace CalamityInheritance.System
                     AstralArcanumUI.UpdateAndDraw(Main.spriteBatch);
                     return true;
                 }, InterfaceScaleType.UI));
+                // Popup GUIs.
+                layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Draedons Popup GUIs", () =>
+                {
+                    DraedonsPanelUIManager.UpdateAndDraw(Main.spriteBatch);
+                    return true;
+                }, InterfaceScaleType.UI));
+
+                // 进入游戏的文字
+                layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Text UI", () =>
+                {
+                    FirstText.Draw(Main.spriteBatch);
+                    return true;
+                }, InterfaceScaleType.UI));
+
+                // Popup GUIs.
+                layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Mode Indicator UI", () =>
+                {
+                    DifficultyModeUI.Draw(Main.spriteBatch);
+                    return true;
+                }, InterfaceScaleType.UI));
+
+                // 音乐盒UI
+                layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Music Choice UI", () =>
+                {
+                    MusicChoiceUI.UpdateAndDraw(Main.spriteBatch);
+                    return true;
+                }, InterfaceScaleType.UI));
             }
-
-            // Popup GUIs.
-            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("Draedons Popup GUIs", () =>
-            {
-                DraedonsPanelUIManager.UpdateAndDraw(Main.spriteBatch);
-                return true;
-            }, InterfaceScaleType.UI));
-
-            // 进入游戏的文字
-            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Text UI", () =>
-            {
-                FirstText.Draw(Main.spriteBatch);
-                return true;
-            }, InterfaceScaleType.UI));
-
-            // Popup GUIs.
-            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Mode Indicator UI", () =>
-            {
-                DifficultyModeUI.Draw(Main.spriteBatch);
-                return true;
-            }, InterfaceScaleType.UI));
-
-            // 音乐盒UI
-            layers.Insert(mouseIndex, new LegacyGameInterfaceLayer("CI Music Choice UI", () =>
-            {
-                MusicChoiceUI.UpdateAndDraw(Main.spriteBatch);
-                return true;
-            }, InterfaceScaleType.UI));
         }
     }
 }

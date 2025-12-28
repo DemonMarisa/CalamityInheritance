@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -72,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             UseCounter++;
             if (UseCounter < recoilani)
             {
-                float progress = EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
+                float progress = LAP.Core.Utilities.EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
                 aniXdistance = MathHelper.Lerp(0, maxXdistance, progress);
             }
             else

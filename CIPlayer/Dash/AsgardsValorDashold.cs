@@ -1,16 +1,17 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Enums;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer.Dash
 {
@@ -73,7 +74,7 @@ namespace CalamityInheritance.CIPlayer.Dash
             // Define damage parameters.
             int dashDamage = AsgardsValor.ShieldSlamDamage;
             hitContext.damageClass = DamageClass.Melee;
-            hitContext.BaseDamage = player.ApplyArmorAccDamageBonusesTo(dashDamage);
+            hitContext.BaseDamage = dashDamage;
             hitContext.BaseKnockback = AsgardsValor.ShieldSlamKnockback;
 
             int Dusts = 12;
@@ -99,7 +100,7 @@ namespace CalamityInheritance.CIPlayer.Dash
             }
 
             int holyExplosionDamage = (int)player.GetBestClassDamage().ApplyTo(60);
-            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<HolyExplosion>(), holyExplosionDamage, 15f, Main.myPlayer, 0f, 0f);
+            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<HolyExplosionold>(), holyExplosionDamage, 15f, Main.myPlayer, 0f, 0f);
             npc.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
         }
     }

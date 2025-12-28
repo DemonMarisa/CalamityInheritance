@@ -92,25 +92,22 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         }
         #region DrawMethod
         //DrawProjWidth
-        public float SetProjWidth(float ratio)
+        public float SetProjWidth(float completionRatio, Vector2 vertexPos)
         {
-            float width = Projectile.width * 0.6f;
-            width *= MathHelper.SmoothStep(0.6f, 1f, Utils.GetLerpValue(0f, 0.3f, ratio, true));
-            return width;
+            return Projectile.width * 0.6f * MathHelper.SmoothStep(0.6f, 1f, Utils.GetLerpValue(0f, 0.3f, completionRatio, clamped: true));
         }
         //DrawTrailColor
-        public Color SetTrailColor(float ratio)
+        public Color SetTrailColor(float completionRatio, Vector2 vertexPos)
         {
-            float hue = Hue % 1f + HueShiftAcrossAfterimages;
-            if (hue >= 0.99f)
-                hue = 0.99f;
+            float num = Hue % 1f + 0.2f;
+            if (num >= 0.99f)
+                num = 0.99f;
+            float lerpValue = Utils.GetLerpValue(2f, 5f, base.Projectile.velocity.Length(), clamped: true);
+            return CalamityUtils.MulticolorLerp(num, CalamityUtils.ExoPalette) * base.Projectile.Opacity * (1f - completionRatio) * Utils.GetLerpValue(0.04f, 0.2f, completionRatio, clamped: true) * lerpValue;
 
-            float velocityOpacityFadeout = Utils.GetLerpValue(2f, 5f, Projectile.velocity.Length(), true);
-            Color c = CalamityUtils.MulticolorLerp(hue, CalamityUtils.ExoPalette) * Projectile.Opacity * (1f - ratio);
-            return c * Utils.GetLerpValue(0.04f, 0.2f, ratio, true) * velocityOpacityFadeout;
         }
         //DrawOffset
-        public Vector2 PrimitiveOffsetFunction(float ratio) => Projectile.Size * 0.5f + Projectile.velocity.SafeNormalize(Vector2.Zero) * Projectile.scale * 2f;
+        public Vector2 PrimitiveOffsetFunction(float completionRatio, Vector2 vertexPos) => Projectile.Size * 0.5f + Projectile.velocity.SafeNormalize(Vector2.Zero) * Projectile.scale * 2f;
         #endregion
         #region AIMethod
         public void DoShooted()

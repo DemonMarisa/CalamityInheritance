@@ -697,13 +697,6 @@ namespace CalamityInheritance.CIPlayer
             //魔君套受击后无敌
             if (YharimAuricSet)
                 yharimArmorinvincibility = 60;
-            if (aSpark)
-            {
-                if (CIsponge)
-                    AmidiasSparkHit(200);
-                else
-                    AmidiasSparkHit(15);
-            }
         }
         #endregion
         public void ModifyHurtInfo_Calamity(ref Player.HurtInfo info)
@@ -931,6 +924,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
+            AmidiasSparkHit(200);
         }
         #endregion
         #region Kill Player

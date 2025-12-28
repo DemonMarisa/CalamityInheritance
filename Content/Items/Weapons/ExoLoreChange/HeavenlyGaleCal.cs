@@ -8,6 +8,7 @@ using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -101,7 +102,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             self.ManipulatePlayerVariables();
 
             // Fire arrows.
-            if (self.ShootDelay > 0f && self.Projectile.FinalExtraUpdate())
+            if (self.ShootDelay > 0f && LAPUtilities.FinalExtraUpdate(self.Projectile))
             {
                 float shootCompletionRatio = 1f - self.ShootDelay / (self.Owner.ActiveItem().useAnimation - 1f);
                 float bowAngularOffset = (float)Math.Sin(MathHelper.TwoPi * shootCompletionRatio) * 0.4f;

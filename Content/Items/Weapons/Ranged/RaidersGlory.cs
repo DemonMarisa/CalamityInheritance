@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.Arrow;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

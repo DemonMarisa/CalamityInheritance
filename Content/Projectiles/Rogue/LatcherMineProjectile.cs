@@ -11,6 +11,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using System.IO;
+using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

@@ -6,6 +6,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.NPCs.Abyss;
+using LAP.Core.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 

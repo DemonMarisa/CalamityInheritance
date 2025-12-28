@@ -8,6 +8,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {
@@ -32,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
             Item.shoot = ModContent.ProjectileType<VanquisherArrowoldMain>();
             Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Arrow;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

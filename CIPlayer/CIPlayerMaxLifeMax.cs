@@ -58,12 +58,6 @@ namespace CalamityInheritance.CIPlayer
                     LifePercentMax *= 2;
             }
             int StatLifeInt = 0;
-            if (EHeartStats)
-            {
-                StatLifeInt += 15;
-                if (EHeartStatsBoost)
-                    StatLifeInt += 25;
-            }
             //避免血量倒扣
             if (LifePercentMax < 0) 
                 LifePercentMax = 0;

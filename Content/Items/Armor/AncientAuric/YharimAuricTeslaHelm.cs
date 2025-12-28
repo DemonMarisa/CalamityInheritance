@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Terraria.Localization;
 using CalamityInheritance.Buffs.Statbuffs;
+using LAP.Core.MiscDate;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -133,7 +134,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 
         private void ImmnueDebuffCalamity(Player player)
         {
-			foreach (int debuff in CalamityLists.debuffList)
+			foreach (int debuff in LAPList.debuffList)
 				player.buffImmune[debuff] = true;
         }
 

@@ -55,18 +55,18 @@ namespace CalamityInheritance.Content.Items.MiscItem
             if (CIServerConfig.Instance.LegendaryitemsRecipes)
                 CreateRecipe().
                     AddIngredient<YharimsCrystalLegendary>().
+                    AddIngredient<AuricTeslaHeadMeleeLegacy>().
+                    AddIngredient<AuricTeslaHeadRangedLegacy>().
+                    AddIngredient<AuricTeslaHeadMagicLegacy>().
+                    AddIngredient<AuricTeslaHeadSummonLegacy>().
+                    AddIngredient<AuricTeslaHeadRogueLegacy>().
+                    AddIngredient<AuricTeslaBodyArmorold>().
+                    AddIngredient<AuricTeslaCuissesold>().
                     AddIngredient<AuricTeslaHeadMelee>().
-                    AddIngredient<AuricTeslaHeadRanged>().
                     AddIngredient<AuricTeslaHeadMagic>().
                     AddIngredient<AuricTeslaHeadSummon>().
                     AddIngredient<AuricTeslaHeadRogue>().
-                    AddIngredient<AuricTeslaBodyArmorold>().
-                    AddIngredient<AuricTeslaCuissesold>().
-                    AddIngredient<AuricTeslaRoyalHelm>().
-                    AddIngredient<AuricTeslaHoodedFacemask>().
-                    AddIngredient<AuricTeslaWireHemmedVisage>().
-                    AddIngredient<AuricTeslaSpaceHelmet>().
-                    AddIngredient<AuricTeslaPlumedHelm>().
+                    AddIngredient<AuricTeslaHeadMelee>().
                     AddIngredient<AuricTeslaBodyArmor>().
                     AddIngredient<AuricTeslaCuisses>().
                     AddIngredient<AncientTarragonHelm>().

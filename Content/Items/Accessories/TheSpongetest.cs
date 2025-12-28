@@ -27,7 +27,7 @@ using CalamityInheritance.Rarity;
 namespace CalamityInheritance.Content.Items.Accessories
 {
 
-    public class TheSpongetest : CIAccessories, ILocalizedModType, IDyeableShaderRenderer
+    public class TheSpongetest : CIAccessories, ILocalizedModType, IModType, IDyeableShaderRenderer
     {
         public override string Texture => (DateTime.Now.Month == 4 && DateTime.Now.Day == 1) ? "CalamityMod/Items/Accessories/TheSpongeReal" : "CalamityMod/Items/Accessories/TheSponge";
 
@@ -47,29 +47,34 @@ namespace CalamityInheritance.Content.Items.Accessories
         // While active, The Sponge gives 30 defense and 10% DR
         public static int ShieldActiveDefense = 30;
         public static float ShieldActiveDamageReduction = 0.3f;
-
         public float RenderDepth => IDyeableShaderRenderer.SpongeShieldDepth;
-
+        public int OwnerPlayer { get; set; }
         public bool ShouldDrawDyeableShader
         {
             get
             {
-                bool result = false;
-                foreach (Player player in Main.ActivePlayers)
+                if (CalamityClientConfig.Instance.EnergyShieldOpacity <= 0f)
                 {
-                    if (player.outOfRange || player.dead)
-                        continue;
-
-                    CalamityPlayer calPlayer = player.Calamity();
-                    CalamityInheritancePlayer usPlayer = player.CIMod();
-
-                    // Do not render the shield if its visibility is off (or it does not exist)
-                    bool isVanityOnly = usPlayer.CIspongeShieldVisible && !usPlayer.CIsponge;
-                    bool shieldExists = isVanityOnly || usPlayer.CISpongeShieldDurability > 0;
-                    bool shouldntDraw = !calPlayer.spongeShieldVisible || calPlayer.drawnAnyShieldThisFrame || !shieldExists;
-                    result |= !shouldntDraw;
+                    return false;
                 }
-                return result;
+                if (OwnerPlayer < 0 || OwnerPlayer >= 255)
+                {
+                    return false;
+                }
+                Player player = Main.player[OwnerPlayer];
+                if (player == null)
+                {
+                    return false;
+                }
+                if (player.outOfRange || player.dead)
+                {
+                    return false;
+                }
+                if (player.Calamity().drawingParameters.SpongeShieldCharge <= 0f)
+                {
+                    return false;
+                }
+                return true;
             }
         }
         protected override BaseSetDefault BaseSD => new
@@ -80,8 +85,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );
-
-        public int OwnerPlayer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void ExSSD()
         {
@@ -117,7 +120,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.lifeRegen += 2;
 
             //下方由阴阳石继承
-            usPlayer.aSpark = true;
+            calPlayer.ilSpark = true;
             calPlayer.gShell = true;
             usPlayer.FungalCarapace = true;
             player.endurance += 0.15f; //加强5%
@@ -222,8 +225,6 @@ namespace CalamityInheritance.Content.Items.Accessories
                 Register();
         }
 
-        // Complex drawcode which draws Sponge shields on ALL players who have it available. Supposedly.
-        // This is applied as IL (On hook) which draws right before Inferno Ring.
         public void DrawDyeableShader(SpriteBatch spriteBatch)
         {
             // TODO -- 控制流分析表明这个钩子不稳定（因为它是从 Rover Drive 复制过来的）。

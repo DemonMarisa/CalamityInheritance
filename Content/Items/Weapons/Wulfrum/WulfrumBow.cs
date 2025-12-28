@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override void AddRecipes()

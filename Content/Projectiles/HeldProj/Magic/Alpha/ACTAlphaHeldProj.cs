@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

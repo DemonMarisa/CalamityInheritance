@@ -300,34 +300,6 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if(EHeartStats)
-            {
-                //Scarlet：改了。
-                //在召唤物开着的时候这buff怎么可能会给这么多
-                //而且尤其是元素之心的基础伤害是150的情况下？
-                //跳跃速度砍了一刀，影响到实际用途了
-                // Player.statLifeMax2 += 15;
-                Player.statManaMax2 += 15;
-                Player.moveSpeed += 0.05f;
-                Player.endurance += 0.05f;
-                Player.GetDamage<GenericDamageClass>() += 0.05f;
-                Player.GetCritChance<GenericDamageClass>() += 5;
-                Player.jumpSpeedBoost += 0.6f;
-                Player.manaCost *=0.95f;
-                if(EHeartStatsBoost) //关闭元素之心的召唤物的情况下
-                {
-                    // Player.statLifeMax2 += 25;  //40(15+25)HP
-                    Player.statManaMax2 += 25;  //40(15+25)魔力
-                    Player.moveSpeed += 0.05f;   //10(5+5)%移速
-                    Player.endurance += 0.05f;  //10(5+5)%免伤
-                    Player.GetDamage<GenericDamageClass>() += 0.05f; //10(5+5)%伤害
-                    Player.GetCritChance<GenericDamageClass>() += 5; //10(5+5)%暴击
-                    Player.jumpSpeedBoost += 1.0f;  //32(12+20)%跳跃速度
-                    Player.manaCost *= 0.90f;       //10(5%→10%)%不耗魔
-                    //由于返回值的原因导致Buff数值反而不能乱写。
-                    //所以现在这些个的buff值都是5的系数了。
-                }
-            }
             if(AmbrosialImmnue)
             {
                 Player.buffImmune[BuffID.Venom] = true;
@@ -370,7 +342,6 @@ namespace CalamityInheritance.CIPlayer
                     nanoTechStackDurability = RaiderStacks;
                     if (modPlayer.cooldowns.TryGetValue(NanotechUI.ID, out var nanoDurability))
                         nanoDurability.timeLeft = nanoTechStackDurability;
-                    InitNanotechSound = 0;
                 }
             }
         }
@@ -586,12 +557,6 @@ namespace CalamityInheritance.CIPlayer
             if (PBGTier3)
                 delePBG.LegendaryComplete3.Complete();
             
-            if (calPlayer.sponge)
-                deleJoke.EquippedCalamitySponge.Complete();
-
-            if (CIConfig.Instance.TheSpongeBarrier)
-                deleJoke.ActivedSpongeBarrier.Complete();
-
             if (CIConditions.DownedLegacyYharonP1.IsMet())
                 ModContent.GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
             

@@ -65,8 +65,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             player.buffImmune[BuffID.OnFire] = true;
             player.noFallDmg = true;
             modPlayer.tracersDust = !hideVisual;
-            modPlayer.elysianWingsDust = !hideVisual;
-            modPlayer.tracersSeraph = true; //免疫金源块
+            modPlayer.seraphTracers = true; //免疫金源块
             modPlayer1.AuricTracersFrames = true; //无敌帧延长
         }
 

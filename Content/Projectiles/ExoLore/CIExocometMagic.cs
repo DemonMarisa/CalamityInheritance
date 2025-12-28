@@ -113,29 +113,11 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.ExoDebuffs();
-
-            int heal = (int)Math.Round(hit.Damage * 0.01);
-            if (heal > 100)
-                heal = 100;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<Exoheal>(), 3000f, 0.05f);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
-
-            int heal = (int)Math.Round(info.Damage * 0.01);
-            if (heal > 100)
-                heal = 100;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<Exoheal>(), 3000f, 0.05f);
         }
 
         public override bool PreDraw(ref Color lightColor)

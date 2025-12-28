@@ -1,5 +1,8 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Core;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -58,7 +61,7 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-        Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() :  ModContent.RarityType<DarkBlue>();
+        Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() :  ModContent.RarityType<DeepBlue>();
         Item.shoot = ModContent.ProjectileType<ACTExcelsusMain>();
         Item.shootSpeed = 18f;
     }

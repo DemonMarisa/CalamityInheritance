@@ -625,3 +625,8 @@ PumplerLegacy: {
 	Tooltip: 右键发射一颗爆炸南瓜
 	DisplayName: 气泵枪[Legacy]
 }
+
+Deathwind: {
+	// DisplayName: Deathwind
+	// Tooltip: ""
+}

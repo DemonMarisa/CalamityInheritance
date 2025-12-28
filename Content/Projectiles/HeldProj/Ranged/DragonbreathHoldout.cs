@@ -4,6 +4,7 @@ using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Placeables.FurnitureOtherworldly;
 using CalamityMod.Items.Weapons.Melee;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;

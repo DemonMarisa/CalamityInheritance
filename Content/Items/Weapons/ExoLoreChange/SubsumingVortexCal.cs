@@ -24,13 +24,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public static Player Fucker => Main.LocalPlayer;
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<SubsumingVortex>();
-        #region Fuck掉原灾的发光贴图
-        public delegate void PostDrawInWorldDelegate(SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI);
-        public static void PostDrawInWorld(PostDrawInWorldDelegate orig, SubsumingVortex self, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            self.Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{CIResprite.CIExtraRoute}/FuckGlowMask").Value);
-        }
-        #endregion
         public const float SmallVortexSpeedFac = 1.3f;
         public const int SmallVortexCounts = 3;
         public const float SmallVortexDamageFac = 0.3f;
@@ -56,11 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public override Vector2? HoldoutOffset(int type)
         {
-            //画师跟写代码的打一架吧，原灾的贴图要-6才能正常手持
-            if (CIRespriteConfig.Instance.FuckAllExo)
-                return Vector2.Zero;
-            else
-                return new Vector2(-6, 0);
+            return new Vector2(-6, 0);
         }
         //We need to fuck the original shoot method, so we can use our own projectile.
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -83,19 +72,6 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             if (player.ownedProjectileCounts[bigVortex] < 1)
                 Projectile.NewProjectile(source, position, velocity, bigVortex, damage, knockback, player.whoAmI);
             return false;
-        }
-    }
-
-    //暂时注释掉了。没啥用。
-    //没删是因为不知道什么时候会用到这个钩子
-    public class FuckSubsumingGlowMask : GlobalItem
-    {
-        public static void Load(Mod mod)
-        {
-            if (!CIRespriteConfig.Instance.FuckAllExo)
-                return;
-            MethodInfo fuckSubsumingGlow = typeof(SubsumingVortex).GetMethod("PostDrawInWorld", BindingFlags.Instance | BindingFlags.Public);
-            MonoModHooks.Add(fuckSubsumingGlow, SubsumingVortexCal.PostDrawInWorld);
         }
     }
 }

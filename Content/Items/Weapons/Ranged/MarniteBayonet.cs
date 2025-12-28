@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
             Item.shoot = ProjectileID.PurificationPowder;
-            Item.Calamity().canFirePointBlankShots = true;
+            
 
             Item.noUseGraphic = true;
             Item.channel = true;

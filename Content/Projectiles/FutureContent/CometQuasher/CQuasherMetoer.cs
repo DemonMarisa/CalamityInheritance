@@ -1,6 +1,7 @@
 using System;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -18,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher
         public static string MeteorName => "CQuasherMeteor";
         public const int SecondMeteor = 2;
         public const int ThirdMeteor = 3;
+        public int Style;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
@@ -36,6 +38,10 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher
         }
         public override void AI()
         {
+            if (Projectile.LAP().FirstFrame)
+            {
+                Style = Main.rand.Next(3);
+            }
             if (Projectile.Center.Y > Projectile.ai[2])
                 Projectile.tileCollide = true;
             else
@@ -95,10 +101,9 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
-            var cgp = Projectile.Calamity();
-            if (cgp.lineColor == SecondMeteor - 1)
+            if (Style == SecondMeteor - 1)
                 tex = ModContent.Request<Texture2D>(MeteorPath + "/" + MeteorName + SecondMeteor.ToString()).Value;
-            if (cgp.lineColor == ThirdMeteor - 1)
+            if (Style == ThirdMeteor - 1)
                 tex = ModContent.Request<Texture2D>(MeteorPath + "/" + MeteorName + ThirdMeteor.ToString()).Value;
             //考虑了一会手动draw了一次
             Vector2 origin = tex.Size() / 2f;

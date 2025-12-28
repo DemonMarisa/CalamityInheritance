@@ -1,13 +1,14 @@
-﻿using CalamityMod.Items.Materials;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
-using CalamityInheritance.System.Configs;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -37,7 +38,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.LostSoulFriendly;
             Item.shootSpeed = 12f;
             Item.useAmmo = Main.zenithWorld ? AmmoID.None: AmmoID.Bullet;
-            Item.Calamity().canFirePointBlankShots = true;
         }
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 22;
         public override bool CanUseItem(Player player)

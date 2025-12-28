@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
             Item.rare = ModContent.RarityType<PureGreen>();
             Item.Calamity().donorItem = true;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

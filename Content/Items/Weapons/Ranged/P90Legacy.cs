@@ -1,3 +1,4 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
@@ -36,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 18f;
             Item.useAmmo = 97;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override Vector2? HoldoutOffset()

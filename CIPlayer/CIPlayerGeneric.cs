@@ -8,23 +8,13 @@ using Terraria.Audio;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Utilities;
-using CalamityMod.NPCs.Yharon;
-using CalamityInheritance.NPCs.Boss.Yharon;
-using CalamityInheritance.World;
-using CalamityInheritance.Core;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Achievements;
-using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using LAP.Core.Utilities;
-using CalamityMod.Systems.Collections;
 using LAP.Core.IDSets;
 
 
@@ -140,15 +130,12 @@ namespace CalamityInheritance.CIPlayer
         public bool AncinetGodSlayerDashReset = false;
 
         public float LifeMaxPercentBoost = 0f;
-        public bool RegenatorLegacy = false;
+        public bool RegenatorLegacy = false; // 再生护符
+        public bool PlagueHive = false;// 瘟疫蜂巢
         #region ResetEffects
         public override void ResetEffects()
         {
             LifeMaxPercentBoost = 0f;
-            //生命上限（们）
-            ResetLifeMax();
-            //贴图切换现已全部包装成函数，并单独分出来在PlayerResprite.cs内
-            RespriteOptions();
             //传颂全部包装
             ResetLore();
             //套装奖励全部封装
@@ -178,6 +165,7 @@ namespace CalamityInheritance.CIPlayer
             StoredTargetIndex = -1;
             StoredDamage = -1;
             RegenatorLegacy = false;// 再生护符
+            PlagueHive = false;// 瘟疫蜂巢
             if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
         }
@@ -433,52 +421,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             #endregion
-        }
-        public override void PostUpdateEquips()
-        {
-            if (AncientAeroSet)
-            {
-                //获取翅膀
-                int wSlot = EquipLoader.GetEquipSlot(Mod, "AncientAeroArmor", EquipType.Wings);
-
-                Player.noFallDmg = true;
-                if (Player.equippedWings == null)
-                {
-                    Player.wingsLogic = wSlot;
-                    Player.wingTime = 1;
-                    Player.wingTimeMax = 1;
-                    Player.equippedWings = Player.armor[1];
-                }
-            }
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            bool isYharonP2 = target.type == ModContent.NPCType<YharonLegacy>() && CIConditions.DownedLegacyYharonP1.IsMet();
-            bool isYharon = target.type == ModContent.NPCType<Yharon>() || isYharonP2;
-            //最后一击、遗产海绵护盾开启、佩戴原灾海绵、世界状态非GFB
-            //要是这么多情况下选择干掉了丛林龙，那也是个神人。
-            if (isYharon && hit.Damage > target.life && CIConfig.Instance.TheSpongeBarrier && Player.Calamity().sponge && !Main.zenithWorld)
-                ModContent.GetInstance<SpongeJoke>().LastHitToYharon.Complete(); 
-
-            if (nanotechold && RaiderStacks < 150 && hit.DamageType == ModContent.GetInstance<RogueDamageClass>())
-            {
-                RaiderStacks++;
-                if (InitNanotechSound <= 0)
-                {
-                    SoundEngine.PlaySound(CISoundMenu.Slasher, Player.Center);
-                    InitNanotechSound = 1;
-                }
-            }
-
-            if (LoreProvidence || PanelsLoreProvidence)
-            {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
-            }
-            if (LoreJungleDragon)
-            {
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
-            }
         }
         public override void Initialize()
         {

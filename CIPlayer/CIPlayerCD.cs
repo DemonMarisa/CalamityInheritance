@@ -166,9 +166,6 @@ namespace CalamityInheritance.CIPlayer
             if (GlobalHealProjCD > 0)
                 GlobalHealProjCD--;
 
-            if (InitNanotechSound > 0)
-                InitNanotechSound--;
-
             if (GlobalGodSlayerHealProjCD > 0)
                 GlobalGodSlayerHealProjCD--;
 

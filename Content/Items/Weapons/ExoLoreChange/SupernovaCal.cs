@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using CalamityMod;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

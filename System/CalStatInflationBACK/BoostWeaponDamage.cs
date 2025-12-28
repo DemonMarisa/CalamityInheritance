@@ -2,11 +2,15 @@
 using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Content.Projectiles.Rogue.Spears;
@@ -19,6 +23,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
+using CalamityMod.Items.Weapons.Typeless;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Terraria;
@@ -174,7 +179,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 item.LAP().GlobalMult *= 1.5f;
             #endregion
             #region 法师
-            if (item.type == ModContent.ItemType<ClamorNoctus>())
+            if (item.type == ModContent.ItemType<AlphaDraconis>())
                 item.LAP().GlobalMult *= 1.4f;
 
             if (item.type == ModContent.ItemType<DarkSpark>())
@@ -319,7 +324,10 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (item.type == ModContent.ItemType<Hypothermia>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<Eradicator>())
+            if (item.type == ModContent.ItemType<Eradicator_Melee>())
+                item.LAP().GlobalMult *= 1.2f;
+
+            if (item.type == ModContent.ItemType<Eradicator_Rogue>())
                 item.LAP().GlobalMult *= 1.2f;
 
             if (item.type == ModContent.ItemType<PlasmaGrenade>())

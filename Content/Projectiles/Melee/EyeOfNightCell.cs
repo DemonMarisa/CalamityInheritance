@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

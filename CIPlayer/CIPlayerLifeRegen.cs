@@ -27,11 +27,6 @@ namespace CalamityInheritance.CIPlayer
             if (AstralArcanumEffect)
             {
                 bool lesserEffect = false;
-                for (int l = 0; l < Player.MaxBuffs; l++)
-                {
-                    int hasBuff = Player.buffType[l];
-                    lesserEffect = CalamityLists.alcoholList.Contains(hasBuff);
-                }
 
                 int defenseBoost = 15;
                 if (lesserEffect)
@@ -125,13 +120,6 @@ namespace CalamityInheritance.CIPlayer
                 }
                 Player.lifeRegenTime += 1;
                 Player.lifeRegen += 2;
-            }
-            //元灵之心
-            if (EHeartStats)
-            {
-                Player.lifeRegen += 2;
-                if(EHeartStatsBoost)
-                Player.lifeRegen += 8;      //5(1+4)HP/s
             }
             //魔君套
             if (AncientAuricSet)

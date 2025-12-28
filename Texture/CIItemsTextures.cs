@@ -10,7 +10,7 @@ namespace CalamityInheritance.Texture
         public static Tex2DWithPath NightsGaze { get; private set; }
         public static void LoadItemTextures()
         {
-            NightsGaze = new Tex2DWithPath($"{TexturesPath}/NightsGaze");
+            NightsGaze = new Tex2DWithPath($"{RoguePath}/NightsGaze");
         }
         public static void UnLoadItemTextures()
         {

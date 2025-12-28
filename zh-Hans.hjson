@@ -51,7 +51,12 @@ Mods: {
 		}
 
 		Projectiles: {
-			Rogue.SupernovaBoomOld.DisplayName: 超新星爆炸
+			Rogue: {
+				SupernovaBoomOld.DisplayName: 超新星爆炸
+				// NightsGazeProjectile.DisplayName: Nights Gaze Projectile
+				// NightsGazeSpark.DisplayName: Nights Gaze Spark
+			}
+
 			ExoSpearProjNor.DisplayName: 圣火之枪
 			ExoSpearTrailNor.DisplayName: 圣火投刀
 			ExoSpearProjNorSteal.DisplayName: 圣火之枪
@@ -86,6 +91,13 @@ Mods: {
 			// ShizukuStarMark.DisplayName: Shizuku Star Mark
 			// DesertMark.DisplayName: Desert Mark
 			// DesertTornado.DisplayName: Desert Tornado
+
+			Summon: {
+				// DOGLaser.DisplayName: D O G Laser
+				// SarosMicrosunLegacy.DisplayName: Saros Microsun Legacy
+			}
+
+			// TeleportRift.DisplayName: Teleport Rift
 		}
 
 		Content/Projectiles/Summon: {
@@ -112,6 +124,61 @@ Mods: {
 			DesertFeather: {
 				DisplayName: 荒漠之羽
 				Tooltip: 曾被用来合成多种沙漠相关物品的材料
+			}
+
+			Accessories: {
+				RegenatorLegacy: {
+					// DisplayName: Regenator Legacy
+					// Tooltip: ""
+				}
+			}
+
+			CoreofChaos: {
+				// DisplayName: Coreof Chaos
+				// Tooltip: ""
+			}
+
+			CoreofEleum: {
+				// DisplayName: Coreof Eleum
+				// Tooltip: ""
+			}
+
+			CoreofSunlight: {
+				// DisplayName: Coreof Sunlight
+				// Tooltip: ""
+			}
+
+			Weapons: {
+				Ranged: {
+					ClockGatlignum: {
+						// DisplayName: Clock Gatlignum
+						// Tooltip: ""
+					}
+
+					StormDragon: {
+						// DisplayName: Storm Dragon
+						// Tooltip: ""
+					}
+				}
+
+				Rogue: {
+					Eradicator_Rogue: {
+						// DisplayName: Eradicator_ Rogue
+						// Tooltip: ""
+					}
+
+					NightsGaze: {
+						// DisplayName: Nights Gaze
+						// Tooltip: ""
+					}
+				}
+
+				Summon: {
+					StaffofDOG: {
+						// DisplayName: Staffof D O G
+						// Tooltip: ""
+					}
+				}
 			}
 		}
 
@@ -170,11 +237,11 @@ Mods: {
 			}
 
 			SpongeJoke: {
-				FriendlyName: 你应该问自己为什么要这么做...
+				FriendlyName: ？
 				Description:
 					'''
-					在灾厄遗产Mod设置中启用化棉留香石护盾的前提下，佩戴原灾化棉留香石击败丛林龙。
-					……你为什么要这么做啊？
+					同时佩戴原灾化棉留香石与遗产化绵留香石击败丛林龙。
+					你为什么要这么做？
 					'''
 			}
 		}

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
 using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

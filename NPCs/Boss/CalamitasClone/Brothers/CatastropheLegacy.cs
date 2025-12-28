@@ -393,7 +393,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
 
         public override void OnKill()
         {
-            DeathAshParticle.CreateAshesFromNPC(NPC);
+            DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
             CalamityNetcode.SyncWorld();
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)

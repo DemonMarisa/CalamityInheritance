@@ -153,7 +153,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             PostExoAndScalWeapons.Add(ModContent.ItemType<Metastasis>());
             #endregion
             #region 魔影
-            PostShadowspecWeapons.Add(ModContent.ItemType<IridescentExcalibur>());
             PostShadowspecWeapons.Add(ModContent.ItemType<HalibutCannon>());
             PostShadowspecWeapons.Remove(ModContent.ItemType<ApotheosisLegacy>());
             PostShadowspecWeapons.Add(ModContent.ItemType<R99>());
@@ -258,7 +257,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         public static void BossAdd()
         {
             // 金龙
-            int dragonfollyType = ModContent.NPCType<Bumblefuck>(); // 获取指定Boss的NPC类型ID
+            int dragonfollyType = ModContent.NPCType<Dragonfolly>(); // 获取指定Boss的NPC类型ID
             var lootItems1 = CIFunction.FindLoots(dragonfollyType, false); // 获取所有掉落物，除了材料
             PostMLWeapons.AddRange(lootItems1.Where(id => !PostMLWeapons.Contains(id)).Distinct());// 添加到掉落物列表并去重
 

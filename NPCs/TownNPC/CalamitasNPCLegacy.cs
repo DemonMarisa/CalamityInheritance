@@ -713,7 +713,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         {
             if (NPC.life <= 0)
             {
-                DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
+                DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
                 NPC.position = NPC.Center;
                 NPC.width = NPC.height = 50;
                 NPC.position.X -= NPC.width / 2;

@@ -41,3 +41,13 @@ BlightedLens: {
 	DisplayName: 枯萎透镜[Legacy]
 	Tooltip: ""
 }
+
+BloodSample: {
+	// DisplayName: Blood Sample
+	// Tooltip: ""
+}
+
+RottenMatter: {
+	// DisplayName: Rotten Matter
+	// Tooltip: ""
+}

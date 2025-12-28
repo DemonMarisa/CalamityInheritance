@@ -48,7 +48,6 @@ namespace CalamityInheritance.Content.Projectiles.Environment
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(),fireFrom.X, fireFrom.Y, velocity.X, velocity.Y, ProjectileID.CultistBossLightningOrbArc, 50, 0f, Projectile.owner, ai0.ToRotation(), ai);
                     Main.projectile[proj].extraUpdates += 6;
                     Main.projectile[proj].friendly = true;
-                    Main.projectile[proj].Calamity().lineColor = 1;
                 }
             }
             else if (Projectile.velocity.Y == 0f)
@@ -57,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Environment
 
                 if (Main.rand.NextBool(3))
                 {
-                    int num199 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 226, 0f, 0f, 100, default, 1f);
+                    int num199 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Electric, 0f, 0f, 100, default, 1f);
                     Main.dust[num199].position.X -= 2f;
                     Main.dust[num199].position.Y += 2f;
                     Main.dust[num199].scale = 0.7f;
@@ -67,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Environment
 
                 if (Main.rand.NextBool(15))
                 {
-                    int num200 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 31, 0f, 0f, 100, default, 1f);
+                    int num200 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Smoke, 0f, 0f, 100, default, 1f);
                     Main.dust[num200].position.X -= 2f;
                     Main.dust[num200].position.Y += 2f;
                     Main.dust[num200].scale = 0.7f;

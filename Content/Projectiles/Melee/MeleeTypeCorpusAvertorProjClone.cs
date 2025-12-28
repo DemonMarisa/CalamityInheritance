@@ -1,11 +1,12 @@
 ﻿using System;
 using CalamityMod;
-using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
+using LAP.Core.Utilities;
+using LAP.Content.Projectiles.LifeStealProj;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -76,26 +77,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            int heal = (int)Math.Round(hit.Damage * 0.05);
-            if (heal > CorpusAvertorLifeStealCap)
-                heal = CorpusAvertorLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, CorpusAvertorLifeStealRange);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ModContent.ProjectileType<StandardHealProj>(), Main.rand.Next(1, 3));
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            int heal = (int)Math.Round(info.Damage * 0.05);
-            if (heal > CorpusAvertorLifeStealCap)
-                heal = CorpusAvertorLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, CorpusAvertorLifeStealRange);
         }
     }
 }

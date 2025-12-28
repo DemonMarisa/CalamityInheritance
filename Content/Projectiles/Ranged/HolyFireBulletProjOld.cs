@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.MaxUpdates = 5;
             Projectile.timeLeft = Lifetime;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
             Projectile.usesLocalNPCImmunity = true;
         }
 

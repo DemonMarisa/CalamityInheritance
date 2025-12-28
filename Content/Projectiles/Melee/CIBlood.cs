@@ -1,12 +1,16 @@
-﻿using CalamityMod.Projectiles;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
+using CalamityMod.Dusts;
+using CalamityMod.Projectiles;
+using LAP.Content.Projectiles.LifeStealProj;
+using LAP.Core.MiscDate;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Dusts;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -35,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int dustType = Main.rand.NextBool(4) ? 182 : (int)CalamityDusts.Brimstone;
+                    int dustType = Main.rand.NextBool(4) ? LAPDustID.DustVampireKnife : LAPDustID.DustLifeDrain;
                     Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
                     Dust crimtameMagic = Dust.NewDustPerfect(dustSpawnPos, dustType);
                     crimtameMagic.scale = Main.rand.NextFloat(0.96f, 1.04f) * MathHelper.Lerp(1f, 1.7f, Time / Lifetime);
@@ -53,8 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (heal > 100)
                 heal = 100;
-
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<NorHealthProj>(), 0, Projectile.knockBack, Projectile.owner, 12f, 1f, heal);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ModContent.ProjectileType<StandardHealProj>(), heal);
         }
     }
 }

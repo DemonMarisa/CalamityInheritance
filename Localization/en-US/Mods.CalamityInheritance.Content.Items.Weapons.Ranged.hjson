@@ -607,3 +607,8 @@ PumplerLegacy: {
 	Tooltip: right click to firing pumpkin grenades
 	DisplayName: Pumpler Legacy
 }
+
+Deathwind: {
+	DisplayName: Deathwind
+	Tooltip: ""
+}

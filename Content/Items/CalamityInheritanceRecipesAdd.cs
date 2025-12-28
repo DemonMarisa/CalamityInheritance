@@ -830,7 +830,7 @@ namespace CalamityInheritance.Content.Items
                 
             //星流大棒
             Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+                AddIngredient(ModContent.ItemType<ElementalRayold>()).
                 AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
                 AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
                 AddIngredient(ModContent.ItemType<UltraLiquidator>()).
@@ -840,7 +840,7 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             Recipe.Create(ModContent.ItemType<VividClarity>()).
-                AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+                AddIngredient(ModContent.ItemType<ElementalRayold>()).
                 AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
                 AddIngredient(ModContent.ItemType<ShadowboltStaff>()).
                 AddIngredient(ModContent.ItemType<UltraLiquidator>()).
@@ -983,7 +983,7 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             Recipe.Create(ModContent.ItemType<SeraphTracers>()).
-                AddRecipeGroup(CIRecipeGroup.AnyTracersElysian).
+                AddIngredient(ModContent.ItemType<FasterGodSlayerTracers>()).
                 AddIngredient<DrewsWings>().
                 AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().

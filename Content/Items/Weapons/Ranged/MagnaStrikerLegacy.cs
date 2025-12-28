@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<OpalStrikeLegacy>();
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.None;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override Vector2? HoldoutOffset()

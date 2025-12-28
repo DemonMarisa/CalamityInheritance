@@ -17,6 +17,7 @@ using static System.Net.Mime.MediaTypeNames;
 using CalamityMod.Sounds;
 using CalamityInheritance.System.Configs;
 using static tModPorter.ProgressUpdate;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {

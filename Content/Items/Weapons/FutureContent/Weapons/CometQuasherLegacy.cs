@@ -47,7 +47,6 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
                 position += Vector2.UnitX * Main.rand.Next(-320, 321);
                 Vector2 velocity = (destination - position).SafeNormalize(Vector2.UnitY) * Item.shootSpeed * Main.rand.NextFloat(0.9f, 1.1f);
                 int proj = Projectile.NewProjectile(player.GetSource_ItemUse(Item), position, velocity, ModContent.ProjectileType<CQuasherMeteor>(), meteorDamage, meteorKnockback, player.whoAmI, 0f, 0.5f + Main.rand.NextFloat() * 0.3f, target.Center.Y);
-                Main.projectile[proj].Calamity().lineColor = Main.rand.Next(3);
                 position = cachedPosition;
             }
         }

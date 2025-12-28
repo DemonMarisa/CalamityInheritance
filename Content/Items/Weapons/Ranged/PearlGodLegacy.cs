@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 12f;
             Item.shoot = ModContent.ProjectileType<PearlGodLegacyHeldProj>();
             Item.useAmmo = AmmoID.Bullet;
-            Item.Calamity().canFirePointBlankShots = true;
+            
             Item.scale = 0.75f;
 
             Item.noUseGraphic = true;

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
@@ -102,13 +103,6 @@ namespace CalamityInheritance
             infernumMode = null;
             ModLoader.TryGetMod("InfernumMode", out infernumMode);
 
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashnew1>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashold>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<ExoArrowTealExoLore>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<DragonBowFlameRework>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>()] = false;
-
             LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<MurasamaSlashold>());
             LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
             LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
@@ -122,12 +116,8 @@ namespace CalamityInheritance
                 LAPList.debuffList.Add(ModContent.BuffType<MaliceModeHot>());
                 LAPList.debuffList.Add(ModContent.BuffType<VulnerabilityHexLegacy>());
             }
-            CIResprite.LoadTexture();
-            CIWeaponsResprite.LoadTexture();
             #region Hook
             HeavenlyGaleProjHook.Load(this);
-            // 日掉原灾归元的发光贴图
-            FuckSubsumingGlowMask.Load(this);
             DOGHook.Load(this);
             // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
             // FlightBarDrawHook.Load();
@@ -183,8 +173,6 @@ namespace CalamityInheritance
             CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
-            CIResprite.UnloadTexture();
-            CIWeaponsResprite.UnloadTexture();
             infernumMode = null;
             Instance = null;
             /*

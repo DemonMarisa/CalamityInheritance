@@ -18,7 +18,7 @@ namespace CalamityInheritance.NPCs
         {
             int type = shop.NpcType;
 
-            if (type == ModContent.NPCType<DILF>())
+            if (type == ModContent.NPCType<Archmage>())
             {
                 shop.AddWithCustomValue(ModContent.ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));
             }

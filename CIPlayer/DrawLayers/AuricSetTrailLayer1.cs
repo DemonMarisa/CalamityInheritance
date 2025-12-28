@@ -21,7 +21,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
         {
             Player drawPlayer = drawInfo.drawPlayer;
 
-            if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.Calamity().AdrenalineTrail || drawPlayer.Calamity().ascendantTrail || drawPlayer.mount.Active)
+            if (drawInfo.shadow != 0f || drawPlayer.dead || drawPlayer.mount.Active)
                 return false;
 
             return drawPlayer.CIMod().AuricSilvaFakeDeath && CIPlayerTrailManager.CanDrawAfterImage;

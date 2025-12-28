@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
             Projectile.timeLeft = 600;
             Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.coldDamage = true;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()

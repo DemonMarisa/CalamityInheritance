@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
             Projectile.aiStyle = ProjAIStyleID.Arrow;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()

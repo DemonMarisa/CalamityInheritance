@@ -55,7 +55,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.width = 120;
             NPC.height = 120;
             NPC.defense = 100;
-			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f, true);
+			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f);
 
 			NPC.LifeMaxNERB(1200000, 1500000);
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
@@ -338,7 +338,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         }
         public override void OnKill()
         {
-            DeathAshParticle.CreateAshesFromNPC(NPC);
+            DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
             SoundEngine.PlaySound(new SoundStyle($"{SupremeCalamitasLegacy.CalScalSoundPath}/BrothersDeath1") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
             for (int j = 0; j < 40; j++)
             {

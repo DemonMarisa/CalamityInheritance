@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                     }
                     if (player.ownedProjectileCounts[ModContent.ProjectileType<SilvaCrystal>()] < 1)
                     {
-                        var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
+                        var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(1600);
 
                         var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
                         if (Main.projectile.IndexInRange(p))

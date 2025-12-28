@@ -4,6 +4,7 @@ using CalamityMod.Dusts;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -80,7 +81,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         {
             if (NPC.life <= 0)
             {
-                DeathAshParticle.CreateAshesFromNPC(NPC);
+                DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
                 for (int i = 0; i < 5; i++)
                 {
                     int dust = Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);

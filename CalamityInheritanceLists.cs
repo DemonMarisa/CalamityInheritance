@@ -218,8 +218,8 @@ namespace CalamityInheritance
                 NPCType<ProfanedGuardianDefender>(),
                 NPCType<ProfanedGuardianHealer>(),
                 NPCType<ProfanedRocks>(),
-                NPCType<Bumblefuck>(),
-                NPCType<Bumblefuck2>(),
+                NPCType<Dragonfolly>(),
+                NPCType<DraconicSwarmer>(),
             ];
             #endregion
             #region 亵渎后包括亵渎
@@ -264,9 +264,6 @@ namespace CalamityInheritance
                 NPCType<DevourerofGodsHead>(),
                 NPCType<DevourerofGodsBody>(),
                 NPCType<DevourerofGodsTail>(),
-                NPCType<CosmicGuardianHead>(),
-                NPCType<CosmicGuardianBody>(),
-                NPCType<CosmicGuardianTail>(),
             };
             #endregion
             #region 巨械

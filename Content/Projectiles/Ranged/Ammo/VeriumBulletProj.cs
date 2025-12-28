@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
             AIType = ProjectileID.Bullet;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
         //byd谁想的残影，我重画了
         public override bool PreDraw(ref Color lightColor)

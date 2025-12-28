@@ -7,13 +7,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Projectiles.Melee.Swords;
+using CalamityInheritance.Texture;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class NeptuneOrb : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => "CalamityMod/Projectiles/Melee/DepthOrb";
+        public override string Texture => CITextureRegistry.DepthOrbLegacy.Path;
 
         public override void SetDefaults()
         {
@@ -33,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.timeLeft % 20 == 19 && Projectile.owner == Main.myPlayer)
             {
                 int splitDamage = Projectile.damage / 2;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 15f, ModContent.ProjectileType<DepthOrb2>(), splitDamage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 15f, ModContent.ProjectileType<DepthOrbLegacy>(), splitDamage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Water, 0f, 0f, 100, default, 0.4f);
             Main.dust[d].noGravity = true;

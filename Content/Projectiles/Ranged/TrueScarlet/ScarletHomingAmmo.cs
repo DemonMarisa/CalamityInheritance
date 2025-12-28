@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                     }
                 }
             }
-            NPC target = Projectile.FindClosestTarget(1800f);
+            NPC target = LAPUtilities.FindClosestTarget(Projectile.Center, 1800f);
             if (target != null)
                 Projectile.HomingNPCBetter(target, 1800f, 18f, 20f, ignoreDist: true);
         }

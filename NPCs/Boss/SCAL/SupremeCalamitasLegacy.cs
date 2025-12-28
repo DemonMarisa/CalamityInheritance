@@ -1891,7 +1891,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             else
                 SendBattleText(16);
 
-            DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
+            DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
             SoundEngine.PlaySound(GiveUpSound, NPC.position);
             // Increase the player's SCal kill count
             if (Main.player[NPC.target].CIMod().LegacyScal_PlayerKillCount < 5)

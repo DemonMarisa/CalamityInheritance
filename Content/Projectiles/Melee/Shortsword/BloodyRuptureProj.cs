@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Melee;
 using System;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityInheritance.Content.Projectiles.Melee.Explosion;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {

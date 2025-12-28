@@ -127,7 +127,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<ElementalDisk>().
+                AddIngredient<ReboundingRainbow>().
                 AddIngredient<MoltenAmputator>().
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Register();
 
             CreateRecipe().
-                AddIngredient<ElementalDisk>().
+                AddIngredient<ReboundingRainbow>().
                 AddIngredient<MoltenAmputator>().
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
@@ -147,13 +147,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 Register();
 
             CreateRecipe().
-                AddIngredient<ElementalDisk>().
+                AddIngredient<ReboundingRainbow>().
                 AddIngredient<MoltenAmputator>().
                 AddIngredient<SubductionSlicer>().
                 AddIngredient<EnchantedAxe>().
                 DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
-                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

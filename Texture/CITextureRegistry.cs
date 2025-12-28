@@ -31,6 +31,7 @@ namespace CalamityInheritance.Texture
             ShizukuBG = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Layer");
             ShizukuStar = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Texture");
             LoadProjTex();
+            LoadItemTextures();
         }
 
         public override void Unload()
@@ -42,6 +43,7 @@ namespace CalamityInheritance.Texture
             ShizukuBG = null;
             ShizukuStar = null;
             UnLoadProjTex();
+            UnLoadItemTextures();
         }
         #endregion
 

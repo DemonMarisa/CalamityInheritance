@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.BaseProjectiles;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -13,8 +14,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Staffs
     [Obsolete]
     public class DeathhailBeamLegacy : BaseLaserbeamProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Magic";
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private Color startingColor = new Color(119, 210, 255);
         private Color secondColor = new Color(247, 119, 255);
@@ -23,9 +24,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Staffs
         public override float Lifetime => 20f;
         public override Color LaserOverlayColor => CalamityUtils.ColorSwap(startingColor, secondColor, 0.9f);
         public override Color LightCastColor => LaserOverlayColor;
-        public override Texture2D LaserBeginTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayStart", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserMiddleTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayMid", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserEndTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserBeginTexture => LAPTextureRegister.UltimaRayStart.Value;
+        public override Texture2D LaserMiddleTexture => LAPTextureRegister.UltimaRayMid.Value;
+        public override Texture2D LaserEndTexture => LAPTextureRegister.UltimaRayEnd.Value;
 
         public override void SetDefaults()
         {

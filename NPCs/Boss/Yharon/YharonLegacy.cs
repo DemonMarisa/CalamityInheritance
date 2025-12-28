@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items;
+﻿using CalamityInheritance.Content.Achievements;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Accessories.Wings;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.TreasureBags;
@@ -1064,10 +1065,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 fieryDust2 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
                 Main.dust[fieryDust2].velocity *= 2f;
             }
-
+            if (Main.LocalPlayer.CIMod().CIsponge && Main.LocalPlayer.Calamity().sponge)
+                ModContent.GetInstance<SpongeJoke>().LastHitToWithCalSpongeYharon.Complete();
             // Turn into dust on death.
             if (NPC.life <= 0)
-                DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
+                DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
         }
         #endregion
         #endregion

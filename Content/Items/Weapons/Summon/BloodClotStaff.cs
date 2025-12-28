@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

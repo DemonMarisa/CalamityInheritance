@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
             Projectile.timeLeft = 900;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

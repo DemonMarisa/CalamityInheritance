@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
             //阴阳石新加
             calPlayer.gShell = true;
-            calPlayer.aSpark = true;
+            calPlayer.ilSpark = true;
             usPlayer.FungalCarapace = true;
             usPlayer.TheAbsorberOld = true;
 
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient<SeaShell>().
-                AddIngredient<AmidiasSpark>().
+                AddIngredient<IlmerisSpark>().
                 AddIngredient<GrandGelatinLegacy>().
                 AddIngredient<CrawCarapace>().
                 AddIngredient<FungalCarapace>().

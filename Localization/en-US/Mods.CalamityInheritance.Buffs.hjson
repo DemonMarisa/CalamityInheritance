@@ -282,3 +282,8 @@ ShizukuMoonlight: {
 	Magic: 100% increased lige regen speed, immnue to Defense Damage
 	DisplayName: Luanr Gloom Frost
 }
+
+DOGSummonBuff: {
+	DisplayName: D O G Summon Buff
+	Description: Mods.CalamityInheritance.Buffs.DOGSummonBuff.Description
+}

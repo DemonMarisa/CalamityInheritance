@@ -10,8 +10,6 @@ namespace CalamityInheritance.CIPlayer
         public bool IfGodHand = false;
         public bool IfCalamitasSigile = false;
         public bool EtherealTalismanLegacy = false;
-        public bool EHeartStats = false;
-        public bool EHeartStatsBoost = false;
         public bool ElemQuiver = false;
         public bool CoreOfTheBloodGod = false;
         public bool FungalCarapace = false;
@@ -28,8 +26,6 @@ namespace CalamityInheritance.CIPlayer
         public bool DeadshotBroochCI = false; //独立出来的神射手徽章加成
         public int statisTimerOld = 0;//虚空饰带的计数器
         public bool nanotechold = false;//发射纳米技术的额外弹幕
-        //音效。
-        public int InitNanotechSound = 0;
         public bool TheAbsorberOld = false;//阴阳石受击回血
         public bool FuckYouBees = false;//降低蜜蜂对玩家的伤害
         public bool AmbrosialAmpouleOld = false;//百草瓶回血
@@ -38,7 +34,6 @@ namespace CalamityInheritance.CIPlayer
         public bool SpeedrunNecklace = false;//速杀项链
         public bool AncientBloodPact = false;//血契
         public bool ElemGauntlet = false;//元素之握
-        public bool FuckEHeart = false;
         public bool NucleogenesisLegacy = false;//核子之源
         public bool AnkhImmnue = false; //占位符
         public bool AsgardsValorImmnue = false; //阿斯加德英勇单独免疫的debuff
@@ -135,9 +130,6 @@ namespace CalamityInheritance.CIPlayer
             SpeedrunNecklace = false;//肃杀项链
             AncientBloodPact = false;//血契
             ElemGauntlet = false;//元素之握
-            EHeartStats = false;
-            EHeartStatsBoost = false;
-            FuckEHeart = false;
             NucleogenesisLegacy = false;//核子
             WearingStatisCurse = false;
 
@@ -186,7 +178,6 @@ namespace CalamityInheritance.CIPlayer
             SMarnite = false;
             SForest = false;
             SForestBuffTimer = 0;
-            InitNanotechSound = 0;
             TheAbsorberOld = false;//阴阳石受击回血
             FuckYouBees = false;//降低蜜蜂对玩家的伤害
             AmbrosialAmpouleOld = false;//百草瓶回血
@@ -194,8 +185,6 @@ namespace CalamityInheritance.CIPlayer
             nanoTechStackDurability = 0;//纳米技术充能进度
             SpeedrunNecklace = false; //肃杀项链
             AncientBloodPact = false;
-            EHeartStats = false;
-            EHeartStatsBoost = false;
             StepToolShadowChairSmallCD = 0;
             AsgardsValorImmnue = false;
             ElysianAegisImmnue = false;

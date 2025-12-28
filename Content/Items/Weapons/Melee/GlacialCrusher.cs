@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if(target.Calamity().gState >= 0)
+            if(target.Calamity().glacialState)
             {
                 modifiers.ModifyHitInfo += (ref NPC.HitInfo hitnfo) =>
                 {
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(target.Calamity().gState>=0)
+            if(target.Calamity().glacialState)
             {
                 SoundEngine.PlaySound(SoundID.NPCHit3);
             }

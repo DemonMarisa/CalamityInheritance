@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
@@ -171,7 +172,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Register();
 
             CreateRecipe().
-            AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+            AddIngredient<ElementalRayold>().
             AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
@@ -184,7 +185,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Register();
 
             CreateRecipe().
-            AddRecipeGroup(CIRecipeGroup.AnyElementalRay).
+            AddIngredient<ElementalRayold>().
             AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().

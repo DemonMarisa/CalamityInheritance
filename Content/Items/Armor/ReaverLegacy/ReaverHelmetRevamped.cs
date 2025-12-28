@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             modPlayer1.ReaverSummoner = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                int baseDamage = player.ApplyArmorAccDamageBonusesTo(80);
+                int baseDamage = 80;
                 var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
                 var source = player.GetSource_ItemUse(Item);
                 if (player.FindBuffIndex(ModContent.BuffType<ReaverSummonSetBuff>()) == -1)

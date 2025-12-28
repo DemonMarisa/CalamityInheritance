@@ -4,7 +4,6 @@ DaedalusEmblem: {
 		'''
 		+1 HP/s life regen speed
 		15% increased ranged damage, 5% increased ranged critical strike chance
-		20% not consumed ammo
 		Greatly increased ranged projectiles speed
 		'''
 }

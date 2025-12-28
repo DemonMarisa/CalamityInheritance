@@ -14,6 +14,7 @@ namespace CalamityInheritance.Texture
         public static Tex2DWithPath DOGworm_Body { get; private set; }
         public static Tex2DWithPath DOGworm_Head { get; private set; }
         public static Tex2DWithPath DOGworm_Tail { get; private set; }
+        public static Tex2DWithPath DepthOrbLegacy { get; private set; }
         public static void LoadProjTex()
         {
             ExcelsusBlue = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusBlue");
@@ -22,9 +23,10 @@ namespace CalamityInheritance.Texture
             ExcelsusMainGlow = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusMainGlow");
             ExcelsusPink = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusPink");
             ExcelsusPinkGlow = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusPinkGlow");
-            DOGworm_Body = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/DOGworm_Body");
-            DOGworm_Head = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/DOGworm_Head");
-            DOGworm_Tail = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/DOGworm_Tail");
+            DOGworm_Body = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Summon/DOGworm_Body");
+            DOGworm_Head = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Summon/DOGworm_Head");
+            DOGworm_Tail = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Summon/DOGworm_Tail");
+            DepthOrbLegacy = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/DepthOrbLegacy");
         }
         public static void UnLoadProjTex()
         {
@@ -37,6 +39,7 @@ namespace CalamityInheritance.Texture
             DOGworm_Body = null;
             DOGworm_Head = null;
             DOGworm_Tail = null;
+            DepthOrbLegacy = null;
         }
     }
 }

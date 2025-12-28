@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<AuguroftheVoid>()
                 .AddIngredient<EventHorizon>()
                 .AddIngredient<TearsofHeaven>()
                 .AddIngredient<AuricBarold>(10)
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Register();
                 
             CreateRecipe()
-                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<AuguroftheVoid>()
                 .AddIngredient<EventHorizon>()
                 .AddIngredient<TearsofHeaven>()
                 .AddIngredient<MiracleMatter>()
@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Register();
 
             CreateRecipe()
-                .AddIngredient<AuguroftheElements>()
+                .AddIngredient<AuguroftheVoid>()
                 .AddIngredient<EventHorizon>()
                 .AddIngredient<TearsofHeaven>()
                 .AddIngredient<AncientMiracleMatter>()

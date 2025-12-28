@@ -187,138 +187,138 @@ Configs: {
 
 	CIRespriteConfig: {
 		SkullmasherResprite: {
-			Label: "[i:CalamityInheritance/Skullmasher]碎颅者贴图切换"
-			Tooltip: 切换碎颅者的贴图
+			// Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
+			// Tooltip: Determines sprite style of Skullmasher
 		}
 
 		EtherealTalismancTexture: {
-			Label: "[i:CalamityInheritance/AncientEtherealTalisman]空灵护符材质"
-			Tooltip: 切换空灵护符的贴图
+			// Label: "[i:CalamityInheritance/AncientEtherealTalisman]Ethereal Talisman Resprite"
+			// Tooltip: Determines sprite style of Ethereal Talisman
 		}
 
 		RampartofDeitiesTexture: {
-			Label: "[i:CalamityInheritance/CIRampartofDeities]神之壁垒材质"
-			Tooltip: 切换神之壁垒的贴图
+			// Label: "[i:CalamityInheritance/CIRampartofDeities]Rampart of Deities Resprite"
+			// Tooltip: Determines sprite style of Rampart of Deities Legacy
 		}
 
 		ArkofCosmosTexture: {
-			Label: "[i:CalamityInheritance/ArkoftheCosmosold]鸿蒙方舟材质"
-			Tooltip: 切换鸿蒙方舟的贴图
+			// Label: "[i:CalamityInheritance/ArkoftheCosmosold]Ark of the Cosmos Legacy Resprite"
+			// Tooltip: Determines sprite style of Ark of the Cosmos Legacy
 		}
 
 		SetAllLegacySprite: {
-			Label: "[i:CalamityInheritance/Death]全部旧版贴图切换"
-			Tooltip: 改变下列全部贴图选择到旧版本
+			// Label: "[i:CalamityInheritance/Death]All Legacy Sprite Setting"
+			// Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
 		}
 
 		WulfumTexture: {
-			Label: "[i:CalamityInheritance/WulfrumPickaxe]钨钢工具材质"
-			Tooltip: 切换钨钢工具的贴图
+			// Label: "[i:CalamityInheritance/WulfrumPickaxe]Wulfum Texture"
+			// Tooltip: Determines sprite style of legacy Wulfrum Tools and Weapons
 		}
 
 		Headers: {
-			Texture: 贴图切换
-			Accessories: 饰品贴图
-			Weapons: 武器贴图
-			Misc: 其他贴图
-			Special: 临时Debug
+			// Texture: Sprites
+			// Accessories: Accessories Header
+			// Weapons: Weapons Header
+			// Misc: Misc Header
+			// Special: Special Header
 		}
 
-		DisplayName: 旧版贴图切换
+		// DisplayName: Legacy Sprite
 
 		P90Resprite: {
-			Label: "[i:CalamityInheritance/P90Legacy]P90贴图切换"
-			Tooltip: 切换P90的贴图
+			// Label: "[i:CalamityInheritance/P90Legacy]P90 Resprite"
+			// Tooltip: Determines sprite style of P90 Legacy
 		}
 
 		GodSlayerKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]苍穹飞刀·盗贼版本贴图切换"
-			Tooltip: 切换苍穹飞刀·盗贼版本的贴图
+			// Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]Empyrean Knives Resprite"
+			// Tooltip: Determines sprite style of Empyrean Knives Legacy Rogue
 		}
 
 		ShadowspecKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]圣光飞刀·盗贼版本贴图切换"
-			Tooltip: 切换圣光飞刀·盗贼版本的贴图
+			// Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]Illustrious Knives Resprite"
+			// Tooltip: Determines sprite style of Illustrious Knives Legacy Rogue
 		}
 
 		TriactisHammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]真·泰阿克提斯之圣骑士魔锤·盗贼版本贴图切换"
-			Tooltip: 切换真·泰阿克提斯之圣骑士魔锤·盗贼版本的贴图
+			// Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]Triactis' Hammer Resprite"
+			// Tooltip: Determines sprite style of Triactis' Hammer
 		}
 
 		PwnagehammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]圣时之锤贴图切换"
-			Tooltip: 切换圣时之锤的贴图
+			// Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]Pwnagehammer Resprite"
+			// Tooltip: Determines sprite style of Pwnagehammer
 		}
 
 		FateGirlSprite: {
-			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]曙纹始灵仆从贴图切换"
-			Tooltip: 切换曙纹始灵仆从的贴图
+			// Label: "[i:CalamityMod/DaawnlightSpiritOrigin]Daawnlight Spirit Origin Minion Resprite"
+			// Tooltip: Determines sprite style of Daawnlight Spirite Origin Minion
 		}
 
 		StellarContemptResprite: {
-			Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]星体击碎者贴图切换"
-			Tooltip: 切换星体击碎者的贴图
+			// Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]Stellar Contempt Resprite"
+			// Tooltip: Determines sprite style of Stellar Contempt
 		}
 
 		HeliumFlashResprite: {
-			Label: "[i:CalamityInheritance/HeliumFlashLegacy]氦闪贴图切换"
-			Tooltip: 切换氦闪的贴图
+			// Label: "[i:CalamityInheritance/HeliumFlashLegacy]Helium Flash Resprite"
+			// Tooltip: Determines sprite style of Helium Flash Legacy
 		}
 
 		DrataliornusResprite: {
-			Label: "[i:CalamityInheritance/DrataliornusLegacy]赤陨霸龙弓贴图切换"
-			Tooltip: 切换赤陨霸龙弓的贴图
+			// Label: "[i:CalamityInheritance/DrataliornusLegacy]Drataliornus Resprite"
+			// Tooltip: Determines sprite style of Drataliornus
 		}
 
 		PhantomHeartResprite: {
-			Tooltip: 切换幻影之心的贴图
-			Label: "[i:CalamityMod/PhantomHeart]幻影之心贴图切换"
+			// Tooltip: Determines sprite style of Phantom Heart
+			// Label: "[i:CalamityMod/PhantomHeart]Phantom Heart Resprite"
 		}
 
 		AngelTreadsResprite: {
-			Label: "[i:CalamityMod/AngelTreads]天使之靴贴图切换"
-			Tooltip: 切换天使之靴的贴图
+			// Label: "[i:CalamityMod/AngelTreads]Angel Treads Resprite"
+			// Tooltip: Determines sprite style of Angel Treads
 		}
 
 		LunarBootsResprite: {
-			Label: "[i:CalamityInheritance/FasterLunarTracers]六翼天使之靴[Legacy]贴图切换"
-			Tooltip: 切换六翼天使之靴[Legacy]的贴图
+			// Label: "[i:CalamityInheritance/FasterLunarTracers]Seraph Tracers Legacy Resprite"
+			// Tooltip: Determines sprite style of Seraph Tracers Legacy
 		}
 
 		MOABResprite: {
-			Label: "[i:CalamityMod/MOAB]气球之母贴图切换"
-			Tooltip: 切换气球之母的贴图
+			// Label: "[i:CalamityMod/MOAB]MOAB Resprite"
+			// Tooltip: Determines sprite style of MOAB
 		}
 
 		EtherealCoreResprite: {
-			Tooltip: 切换飘渺之核的贴图
-			Label: "[i:CalamityMod/EtherealCore]飘渺之核贴图切换"
+			// Tooltip: Determines sprite style of Ethereal Core
+			// Label: "[i:CalamityMod/EtherealCore]Ethereal Core Resprite"
 		}
 
 		CometShardResprite: {
-			Tooltip: 切换彗星碎片的贴图
-			Label: "[i:CalamityMod/CometShard]彗星碎片贴图切换"
+			// Tooltip: Determines sprite style of Comet Shard
+			// Label: "[i:CalamityMod/CometShard]Comet Shard Resprite"
 		}
 
 		DragonfruitResprite: {
-			Tooltip: 切换龙果的贴图
-			Label: "[i:CalamityMod/Dragonfruit]龙果贴图切换"
+			// Tooltip: Determines sprite style of Dragonfruit
+			// Label: "[i:CalamityMod/Dragonfruit]Dragonfruit Resprite"
 		}
 
 		ElderberryResprite: {
-			Tooltip: 切换旧神浆果的贴图
-			Label: "[i:CalamityMod/Elderberry]旧神浆果贴图切换"
+			// Tooltip: Determines sprite style of Elderberry
+			// Label: "[i:CalamityMod/Elderberry]Elderberry Resprite"
 		}
 
 		MiracleFruitResprite: {
-			Tooltip: 切换奇迹之果的贴图
-			Label: "[i:CalamityMod/MiracleFruit]奇迹之果贴图切换"
+			// Tooltip: Determines sprite style of Miracle Fruit
+			// Label: "[i:CalamityMod/MiracleFruit]Miracle Fruit Resprite"
 		}
 
 		BloodOrangeResprite: {
-			Tooltip: 切换血橙的贴图
-			Label: "[i:CalamityMod/BloodOrange]血橙贴图切换"
+			// Tooltip: Determines sprite style of Blood Orange
+			// Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
 		}
 
 		TrueNightShivResprite: {
@@ -352,144 +352,149 @@ Configs: {
 		}
 
 		CrescentMoonResprite: {
-			Tooltip: 切换明月链刃的贴图
-			Label: "[i:CalamityMod/CrescentMoon]明月链刃贴图切换"
+			// Tooltip: Determines sprite style of Crescent Moon
+			// Label: "[i:CalamityMod/CrescentMoon]Crescent Moon Resprite"
 		}
 
 		AegisResprite: {
-			Tooltip: 切换庇护之刃的贴图
-			Label: "[i:CalamityMod/AegisBlade]庇护之刃贴图切换"
+			// Tooltip: Determines sprite style of Aegis Blade
+			// Label: "[i:CalamityMod/AegisBlade]Aegis Blade Resprite"
 		}
 
 		AllElemental: {
-			Label: "[i:CalamityInheritance/ElementalShivold]全部元素物品贴图切换"
-			Tooltip:
+			// Label: "[i:CalamityInheritance/ElementalShivold]All Elemental Items Resprite"
+			/* Tooltip:
 				'''
-				切换元素系列物品的贴图, 如果存在的话
-				需注意的是, 为了与原灾做出区分, 这一选项会优先切换模组内现存的旧版元素物品
-				目前包括:
-				[i:CalamityInheritance/ArkoftheElementsold]元素方舟[Legacy] | [i:CalamityMod/Swordsplosion]爆破剑
-				[i:CalamityInheritance/ElementalShivold]元素短剑[Legacy]
-				[i:CalamityInheritance/MeleeTypeElementalDisk]元素飞盘近战版本[Legacy]
-				[i:CalamityInheritance/ElementalEruptionLegacy]元素喷火器[Legacy]
-				[i:CalamityInheritance/ElementalRayold]元素射线[Revamped]
-				[i:CalamityInheritance/ElementalGauntletold]元素之握[Legacy]
-				[i:CalamityMod/ElementalLance]元素长矛
-				[i:CalamityMod/ElementalBlaster]元素冲击波
-				'''
+				Determines all sprite styles of Elemental Items.
+				Notes that to distinguish from the existing items in Calamity, this options will
+				prioritize switching the Legacy Elemental Items already present within the mod
+				Sprite List:
+				[i:CalamityInheritance/ElementalShivold]Elemental Shiv Legacy
+				[i:CalamityMod/ElementalLance]Elemental Lance
+				[i:CalamityInheritance/MeleeTypeElementalDisk]Elemental Disk Legacy Melee
+				[i:CalamityMod/ElementalBlaster]Elemental Blaster
+				[i:CalamityInheritance/ElementalRayold]Elemental Ray Revamped
+				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
+				''' */
 		}
 
 		AllShivs: {
-			Label: "[i:CalamityInheritance/FlameburstShortsword]全部短剑贴图切换"
-			Tooltip:
+			// Label: "[i:CalamityInheritance/FlameburstShortsword]All Shivs Resprite"
+			/* Tooltip:
 				'''
-				切换所有短剑的贴图, 元素短剑不包括在内
-				包括:
-				[i:CalamityInheritance/LeechingDagger]汲血短剑[Legacy]
-				[i:CalamityInheritance/EutrophicShank]水华刺剑[Legacy]
-				[i:CalamityInheritance/FlameburstShortsword]狱炎短剑[Legacy]
-				[i:CalamityInheritance/AncientShiv]远古短剑[Legacy]
-				[i:CalamityInheritance/NightsStabber]永夜短剑[Legacy]
-				[i:CalamityInheritance/TrueNightsStabber]真永夜短剑[Legacy]
-				[i:CalamityInheritance/ExcaliburShortsword]胜利誓约短剑[Legacy]
-				[i:CalamityInheritance/TrueExcaliburShortsword]真胜利誓约短剑[Legacy]
-				[i:CalamityMod/GalileoGladius]伽利略短剑
-				'''
+				Determines sprite styles of all shivs mod and Calamity present
+				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
+				Sprite list:
+				[i:CalamityInheritance/AncientShiv]Ancient Shiv
+				[i:CalamityInheritance/FlameburstShortsword]Flameburst Shortsword
+				[i:CalamityInheritance/EutrophicShank]Eutrophic Shank
+				[i:CalamityInheritance/LeechingDagger]Leeching Dagger
+				[i:CalamityInheritance/NightsStabber]Night's Stabber
+				[i:CalamityInheritance/TrueNightsStabber]True Night's Stabber
+				[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword
+				[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword
+				[i:CalamityMod/GalileoGladius]Galileo Gladius
+				''' */
 		}
 
 		AllTerra: {
-			Label: "[i:CalamityMod/LivingShard]生命碎片系列贴图切换"
-			Tooltip:
+			// Label: "[i:CalamityMod/LivingShard]All Living Shard Items Resprite"
+			/* Tooltip:
 				'''
-				切换灾厄的生命碎片系列武器的贴图
-				需注意的是不会切换与模组内相同类型的武器
-				包括:
-				[i:CalamityMod/BotanicPiercer]翠芒长枪/泰拉长矛
-				[i:CalamityMod/VernalBolter]煦春弓/泰拉弓
-				[i:CalamityMod/PlantationStaff]苍华之庭/苍华之庭
-				[i:CalamityMod/SproutingArrow]春芽箭/泰拉箭
-				[i:CalamityMod/DryadsTear]树妖之泪/泰拉弹
-				'''
+				Determines sprite styles of all weapons made by Living Shards Calamity present
+				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
+				Sprite list:
+				[i:CalamityMod/BotanicPiercer]Botanic Piercer/ Terra Lance
+				[i:CalamityMod/VernalBolter]Vernal Bolter / Cosmic Bow
+				[i:CalamityMod/PlantationStaff]Plantation Staff/ Plantation Staff
+				[i:CalamityMod/SproutingArrow]Sprouting Arrow / Terra Arrow
+				[i:CalamityMod/DryadsTear]Dryad's Tear / Terra Bullet
+				''' */
 		}
 
 		PrismallineResprite: {
-			Label: "[i:CalamityMod/Prismalline]棱晶飞刀贴图切换"
-			Tooltip: 切换棱晶飞刀的贴图
+			// Label: "[i:CalamityMod/Prismalline]Prismalline Resprite"
+			// Tooltip: Determines sprite style of Prismalline
 		}
 
 		RadiantStarResprite: {
-			Label: "[i:CalamityMod/RadiantStar]光辉星剑贴图切换"
-			Tooltip: 切换光辉星剑的贴图
+			// Label: "[i:CalamityMod/RadiantStar]Radiant Star Resprite"
+			// Tooltip: Determines sprite style of Radiant Star
 		}
 
 		ShatteredSunResprite: {
-			Label: "[i:CalamityMod/ShatteredSun]烈阳贴图切换"
-			Tooltip: 切换阳的贴图
+			// Label: "[i:CalamityMod/ShatteredSun]Shattered Sun Resprite"
+			// Tooltip: Determines sprite style of Shattered Sun
 		}
 
 		FuckAllExo: {
-			Label: "[i:CalamityMod/Exoblade]日掉原灾奇迹物质武器贴图"
-			Tooltip: 把原灾奇迹物质武器贴图全部日掉
+			// Label: "[i:CalamityMod/Exoblade]Miracle Weapon Resprite"
+			/* Tooltip:
+				'''
+				Determines sprite style of some Miracle weapon
+				This need to reloaded the mod due to using hook
+				Currently only resprite [i:CalamityMod/SubsumingVortex]Subsuming Vortex
+				''' */
 		}
 
 		BrinyBaronResprite: {
-			Label: "[i:CalamityInheritance/DukeLegendary]海爵剑[Legendary]贴图切换"
-			Tooltip: 切换海爵剑[Legendary]的贴图
+			// Label: "[i:CalamityInheritance/DukeLegendary]Briny Baron Legendary Resprite"
+			// Tooltip: Determines sprite style of Briny Baron Legendary
 		}
 
 		PlantBowResprite: {
-			Label: "[i:CalamityInheritance/PlanteraLegendary]叶流[Legendary]贴图切换"
-			Tooltip: 切换叶流[Legendary]的贴图
+			// Label: "[i:CalamityInheritance/PlanteraLegendary]Blossom Flux Legendary Resprite"
+			// Tooltip: Determines sprite style of Blossom Flux Legendary
 		}
 
 		Vesu: {
-			Label: "[i:CalamityInheritance/RavagerLegendary]维苏威阿斯[Legendary]贴图切换"
-			Tooltip: 切换维苏威阿斯[Legendary]的贴图
+			// Label: "[i:CalamityInheritance/RavagerLegendary]Vesuvius Legendary Resprite"
+			// Tooltip: Determines sprite style of Vesuvius Legendary
 		}
 
 		SHPC: {
-			Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC[Legendary]贴图切换"
-			Tooltip: 切换SHPC[Legendary]的贴图
+			// Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC Legendary Resprite"
+			// Tooltip: Determines sprite style of SHPC Legendary
 		}
 
 		Mala: {
-			Label: "[i:CalamityInheritance/PBGLegendary]孔雀翎[Legendary]贴图切换"
-			Tooltip: 切换孔雀翎[Legendary]的贴图
+			// Label: "[i:CalamityInheritance/PBGLegendary]Malatche Legendary Resprite"
+			// Tooltip: Determines sprite style of Malatche Legendary
 		}
 
 		MirrorBlade: {
-			Label: "[i:CalamityMod/MirrorBlade]镜之刃贴图切换"
-			Tooltip: 切换镜之刃的贴图
+			// Label: "[i:CalamityMod/MirrorBlade]Mirror Blade Resprite"
+			// Tooltip: Determines sprite style of Mirror Blade
 		}
 
 		PlasmaRod: {
-			Label: "[i:CalamityMod/PlasmaRod]等离子杖贴图切换"
-			Tooltip: 切换等离子杖的贴图
+			// Label: "[i:CalamityMod/PlasmaRod]Plasma Rod Resprite"
+			// Tooltip: Determines sprite style of Plasma Rod
 		}
 
 		StaffofBlushie: {
-			Label: "[i:CalamityMod/StaffofBlushie]狱火蓝链杖贴图切换"
-			Tooltip: 切换狱火蓝链杖的贴图
+			// Label: "[i:CalamityMod/StaffofBlushie]Staff of Blushie Resprite"
+			// Tooltip: Determines sprite style of Staff of Blushie
 		}
 
 		ScarletDevil: {
-			Label: "[i:CalamityMod/ScarletDevil]绯红恶魔贴图切换"
-			Tooltip: 切换绯红恶魔的贴图
+			// Label: "[i:CalamityMod/ScarletDevil]Scarlet Devil Resprite"
+			// Tooltip: Determines sprite style of Scarlet Devil
 		}
 
 		SomaPrime: {
-			Label: "[i:CalamityInheritance/SomaPrimeOld]月神Prime[Legacy]贴图切换"
-			Tooltip: 切换月神Prime[legacy]的贴图
+			// Label: "[i:CalamityInheritance/SomaPrimeOld]Soma Prime[Legacy] Resprite"
+			// Tooltip: Determines sprite style of Soma Prime[Legacy]
 		}
 
 		FrigidBulwarkResprite: {
-			Label: "[i:CalamityInheritance/FrigidBulwark]切换寒霜壁垒的贴图"
-			Tooltip: 切换月神Prime[legacy]的贴图
+			// Label: "[i:CalamityInheritance/FrigidBulwark]Frigid Bulwark Resprite"
+			// Tooltip: Determines sprite style of Frigid Bulwark[Legacy]
 		}
 
 		FrostBarrierResprite: {
-			Label: "[i:CalamityMod/FrostBarrier]切换寒冰屏障的贴图"
-			Tooltip: 切换月神Prime[legacy]的贴图
+			// Label: "[i:CalamityMod/FrostBarrier]Frost Barrier Resprite"
+			// Tooltip: Determines sprite style of Frost Barrier[Legacy]
 		}
 	}
 

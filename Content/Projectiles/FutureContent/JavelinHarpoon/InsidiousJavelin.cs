@@ -1,6 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

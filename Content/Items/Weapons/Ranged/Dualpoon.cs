@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
             Item.shoot = ModContent.ProjectileType<DualpoonProj>();
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override Vector2? HoldoutOffset()

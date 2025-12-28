@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.extraUpdates = 3;
             Projectile.aiStyle = 1;
             AIType = ProjectileID.Stake;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()

@@ -3,6 +3,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.timeLeft = 300;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.arrow = true;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()

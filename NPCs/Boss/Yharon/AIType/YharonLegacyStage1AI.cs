@@ -223,7 +223,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     Vector2 projectileVelocity = NPC.velocity;
                     projectileVelocity.Normalize();
                     int type = ModContent.ProjectileType<FlareDust2>();
-                    int damage = NPC.GetProjectileDamage(type);
+                    int damage = 300;
                     float finalVelocity = 12f;
                     float projectileAcceleration = 1.1f;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, projectileVelocity, type, damage, 0f, Main.myPlayer, finalVelocity, projectileAcceleration);
@@ -268,7 +268,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     int type = ModContent.ProjectileType<FlareBomb>();
-                    int damage = NPC.GetProjectileDamage(type);
+                    int damage = 300;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, type, damage, 0f, Main.myPlayer, NPC.target, 1f);
                 }
             }

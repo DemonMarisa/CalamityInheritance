@@ -23,10 +23,12 @@ using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.System.Configs;
@@ -328,7 +330,7 @@ namespace CalamityInheritance.NPCs
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
-                CIFunction.ArmageddonBagDrop(Loot, ItemMod<BrimstoneWaifuBag>());
+                CIFunction.ArmageddonBagDrop(Loot, ItemMod<BrimstoneElementalBag>());
             }
             if (npc.CheckNPCMod<AquaticScourgeHead>())
             {
@@ -390,7 +392,7 @@ namespace CalamityInheritance.NPCs
             }
             if (npc.CheckNPCMod<ProfanedGuardianCommander> ())
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ItemMod<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
-            if (npc.CheckNPCMod<Bumblefuck>())
+            if (npc.CheckNPCMod<Dragonfolly>())
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDragonfolly, ItemMod<KnowledgeDragonfolly>(), desc: DropHelper.FirstKillText);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<DragonfollyBag>());
@@ -438,7 +440,8 @@ namespace CalamityInheritance.NPCs
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDoG, ItemMod<KnowledgeDevourerofGods>(), desc: DropHelper.FirstKillText);
                 Loot.Add(ItemDropRule.ByCondition(DropHelper.RevAndMaster, ItemMod<AncientMurasama>(), 1));
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<DevourerofGodsBag>());
-                Loot.DropCommonMod<MeleeTypeEradicator>();
+                Loot.DropCommonMod<Eradicator_Melee>();
+                Loot.DropCommonMod<Eradicator_Rogue>();
             }
             if (npc.CheckNPCMod<Yharon>())
             {
@@ -682,9 +685,6 @@ namespace CalamityInheritance.NPCs
             if (npc.CheckNPCMod<SlimeGodCore>())
                 Loot.QuickGFBItemMod<PurifiedJam>();
 
-            if (npc.CheckNPCMod<BrimstoneElemental>())
-                Loot.QuickGFBItemMod<WaifuHeart>(true);
-
             if (npc.CheckNPCMod<Cryogen>())
                 Loot.QuickGFBItemMod<DragonsBreathold>(true);
 
@@ -709,7 +709,7 @@ namespace CalamityInheritance.NPCs
             if (npc.CheckNPCMod<AstrumDeusHead>())
                 Loot.QuickGFBItemMod<ArkoftheCosmosold>(true);
 
-            if (npc.CheckNPCMod<Bumblefuck>())
+            if (npc.CheckNPCMod<Dragonfolly>())
                 Loot.QuickGFBItemMod<DragonSpear>(true);
 
             if (npc.CheckNPCMod<Providence>())

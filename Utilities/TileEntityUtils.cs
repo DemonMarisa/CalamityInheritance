@@ -1,4 +1,5 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -66,43 +67,6 @@ namespace CalamityInheritance.Utilities
             }
             if (player.chest >= 0)
                 player.chest = -1;
-        }
-
-        // Draws the Power Cell item slot in a UI. Used by both the Power Cell Factory and Charging Station.
-        internal static void DrawPowercellSlot(SpriteBatch spriteBatch, Item item, Vector2 drawPosition, float iconScale = 0.7f)
-        {
-            Texture2D slotBackgroundTex = Request<Texture2D>("CalamityMod/UI/DraedonsArsenal/PowerCellSlot_Empty").Value;
-
-            // This check is done twice because the draw order matters. We want to draw the background icon before any text.
-            if (item.stack > 0)
-            {
-                if (item.type == ModContent.ItemType<BloodSample>())
-                {
-                    slotBackgroundTex = Request<Texture2D>("CalamityMod/UI/DraedonsArsenal/PowerCellSlot_Blood").Value;
-                }
-                else
-                {
-                    slotBackgroundTex = Request<Texture2D>("CalamityMod/UI/DraedonsArsenal/PowerCellSlot_Filled").Value;
-                }
-            }
-
-            spriteBatch.Draw(slotBackgroundTex, drawPosition, null, Color.White, 0f, slotBackgroundTex.Size() * 0.5f, iconScale, SpriteEffects.None, 0f);
-            if (item.stack > 0)
-            {
-                float inventoryScale = Main.inventoryScale * iconScale;
-                Vector2 numberOffset = slotBackgroundTex.Size() * 0.2f;
-                numberOffset.X -= 17f;
-                ChatManager.DrawColorCodedStringWithShadow(spriteBatch,
-                    FontAssets.ItemStack.Value,
-                    item.stack.ToString(),
-                    drawPosition + numberOffset * inventoryScale,
-                    Color.White,
-                    0f,
-                    Vector2.Zero,
-                    new Vector2(inventoryScale),
-                    -1f,
-                    inventoryScale);
-            }
         }
     }
 }

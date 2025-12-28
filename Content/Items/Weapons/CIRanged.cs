@@ -14,7 +14,6 @@ namespace CalamityInheritance.Content.Items.Weapons
         }
         public override void SetDefaults()
         {
-            Item.Calamity().canFirePointBlankShots = true;
             base.SetDefaults();
         }
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)

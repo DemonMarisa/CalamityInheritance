@@ -7,6 +7,7 @@ using CalamityMod.Events;
 using CalamityMod.NPCs;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.World;
+using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -338,7 +339,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
 
         public override void ModifyHitByProjectile(Projectile projectile, ref NPC.HitModifiers modifiers)
         {
-            if (CalamityLists.projectileDestroyExceptionList.TrueForAll(x => projectile.type != x) && projectile.extraUpdates < 50)
+            if (LAPList.projectileDestroyExceptionList.TrueForAll(x => projectile.type != x) && projectile.extraUpdates < 50)
             {
                 if (projectile.penetrate == -1 && !projectile.minion)
                 {

@@ -144,3 +144,21 @@ VictideSpearBall.DisplayName: 海胆碎片
 // MarniteThrowSpearProj.DisplayName: Marnite Throw Spear Proj
 // CQuasherMeteor.DisplayName: C Quasher Meteor
 // GalacticaStar.DisplayName: Galactica Star
+
+Excelsus: {
+	// DisplayName: Excelsus
+	// Tooltip: ""
+}
+
+TheEnforcer: {
+	// DisplayName: The Enforcer
+	// Tooltip: ""
+}
+
+// EssenceFlame2.DisplayName: Essence Flame2
+// EutrophicSpark.DisplayName: Eutrophic Spark
+// BloodExplosion.DisplayName: Blood Explosion
+// DepthOrbLegacy.DisplayName: Depth Orb Legacy
+// ExcelsusProj.DisplayName: Excelsus Proj
+// LaserFountain.DisplayName: Laser Fountain
+// EradicatorProj_Rogue.DisplayName: Eradicator Proj_ Rogue

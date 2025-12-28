@@ -8,6 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {

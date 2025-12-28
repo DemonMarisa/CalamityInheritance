@@ -4,6 +4,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
+using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

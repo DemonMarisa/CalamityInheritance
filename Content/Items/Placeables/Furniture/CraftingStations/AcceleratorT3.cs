@@ -34,8 +34,6 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             CreateRecipe().
                 AddIngredient<AcceleratorT2>().
                 AddIngredient<ProfanedCrucible>().
-                AddIngredient<BotanicPlanter>().
-                AddIngredient<EffulgentManipulator>().
                 AddIngredient<AltarOfTheAccursedItem>().
                 AddIngredient<DraedonsForge>().
                 Register();

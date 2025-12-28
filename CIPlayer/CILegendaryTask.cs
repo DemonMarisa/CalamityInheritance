@@ -7,6 +7,7 @@ using CalamityMod;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.Providence;
+using LAP.Core.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

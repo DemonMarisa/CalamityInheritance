@@ -1,4 +1,5 @@
-﻿using LAP.Assets.Effects;
+﻿using CalamityInheritance.Texture;
+using LAP.Assets.Effects;
 using LAP.Core.MetaBallsSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,7 +32,7 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
                 Size *= 0.96f;
             }
         }
-        public override Texture2D BgTexture => CITexturesRegister.ShizukuBG.Value;
+        public override Texture2D BgTexture => CITextureRegistry.ShizukuBG.Value;
         public static List<ShizukuStarParticle> Particles { get; private set; } = new();
         public override Color EdgeColor => Color.Lerp(Color.White,Color.Aqua,0.75f);
         public override void Update()

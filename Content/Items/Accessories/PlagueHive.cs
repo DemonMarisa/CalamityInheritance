@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
+using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -17,21 +18,27 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemRare:ItemRarityID.Cyan,
             itemValue:CIShopValue.RarityPriceCyan
         );
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                AddIngredient<AlchemicalFlask>().
-                AddIngredient(ItemID.HoneyComb).
-                AddTile(TileID.LunarCraftingStation).
-                Register();
-        }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            modPlayer.uberBees = true;
+            modPlayer.toxicHeart = true;
             modPlayer.alchFlask = true;
+            player.CIMod().PlagueHive = true;
+            player.honeyCombItem = Item;
+            player.strongBees = true;
             player.buffImmune[ModContent.BuffType<Plague>()] = true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<ToxicHeart>().
+                AddIngredient<AlchemicalFlask>().
+                AddIngredient(ItemID.HiveBackpack).
+                AddIngredient(ItemID.HoneyComb).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

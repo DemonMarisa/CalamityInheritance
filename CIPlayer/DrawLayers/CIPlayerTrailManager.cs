@@ -23,7 +23,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
         {
             Player player = Main.player[Main.myPlayer];
 
-            if (player.dead || player.Calamity().AdrenalineTrail || player.Calamity().ascendantTrail || player.mount.Active || !player.CIMod().AuricSilvaFakeDeath || player.sleeping.isSleeping)
+            if (player.dead || player.mount.Active || !player.CIMod().AuricSilvaFakeDeath || player.sleeping.isSleeping)
             {
                 orig(self);
                 return;

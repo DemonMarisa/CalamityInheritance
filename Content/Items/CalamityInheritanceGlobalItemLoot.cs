@@ -19,6 +19,8 @@ using CalamityMod.Items.TreasureBags.MiscGrabBags;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -123,7 +125,7 @@ namespace CalamityInheritance.Content.Items
             {
                 if (CheckBag<AquaticScourgeBag>(item.type))
                     GiveSoul(ItemID.SoulofSight);
-                if (CheckBag<BrimstoneWaifuBag>(item.type))
+                if (CheckBag<BrimstoneElementalBag>(item.type))
                     GiveSoul(ItemID.SoulofFright);
                 if (CheckBag<CryogenBag>(item.type))
                     GiveSoul(ItemID.SoulofMight);
@@ -139,7 +141,10 @@ namespace CalamityInheritance.Content.Items
                 loot.LootAdd<SamuraiBadge>(10);
             }
             if (item.type == ModContent.ItemType<DevourerofGodsBag>())
-                loot.LootAdd<MeleeTypeEradicator>(3);
+            {
+                loot.LootAdd<Eradicator_Melee>(3);
+                loot.LootAdd<Eradicator_Rogue>(3);
+            }
 
             if (item.type == ModContent.ItemType<RavagerBag>())
             {

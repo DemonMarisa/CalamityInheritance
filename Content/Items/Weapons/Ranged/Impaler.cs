@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<FlamingStake>();
             Item.shootSpeed = 10f;
             Item.useAmmo = AmmoID.Stake;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

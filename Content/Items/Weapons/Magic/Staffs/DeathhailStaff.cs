@@ -2,7 +2,6 @@
 using CalamityMod.Items;
 using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -11,9 +10,8 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
 {
-    public class DeathhailStaff : ModItem, ILocalizedModType
+    public class DeathhailStaff : CIMagic, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Magic";
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

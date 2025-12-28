@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

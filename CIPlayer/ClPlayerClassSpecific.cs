@@ -112,7 +112,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 SilvaMagicSetLegacyCooldown = 300;
                 SoundEngine.PlaySound(SoundID.Zombie103, proj.Center); //So scuffed, just because zombie sounds werent ported normally
-                int silvaBurstDamage = Player.ApplyArmorAccDamageBonusesTo((float)(800.0 + 0.6 * proj.damage));
+                int silvaBurstDamage = (int)(800 + 0.6f * proj.damage);
                 Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
             }
             //永恒套
@@ -127,7 +127,7 @@ namespace CalamityInheritance.CIPlayer
                     float baseAngleIncrement = 2 * MathHelper.Pi / 16;
                     float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
                     //好像这样伤害还挺低的但我也不知道该不该调整了
-                    int newDamage = Player.ApplyArmorAccDamageBonusesTo(CalamityUtils.DamageSoftCap(15 + 0.15 * proj.damage, 30));
+                    int newDamage = CalamityUtils.DamageSoftCap(15 + 0.15 * proj.damage, 30);
 
                     for (int sporecounts = 0; sporecounts < 16; sporecounts++)
                     {

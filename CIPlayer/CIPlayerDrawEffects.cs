@@ -10,6 +10,7 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityMod.Particles;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.CIPlayer
 {

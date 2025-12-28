@@ -83,7 +83,6 @@ namespace CalamityInheritance.CIPlayer
                     double offsetAngle;
 
                     int damage = (int)Player.GetTotalDamage<RangedDamageClass>().ApplyTo(300f);
-                    damage = Player.ApplyArmorAccDamageBonusesTo(damage);
 
                     if (Player.whoAmI == Main.myPlayer)
                     {

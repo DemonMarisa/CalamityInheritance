@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<DragonsBreathRound>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.Calamity().canFirePointBlankShots = true;
+            
 
             Item.rare = ModContent.RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;

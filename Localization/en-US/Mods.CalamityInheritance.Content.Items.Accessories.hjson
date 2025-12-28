@@ -188,7 +188,8 @@ PlagueHive: {
 		'''
 		All attacks inflict the Plague and grants immunity to the Plague
 		Releases bees when damaged that inflict the Plague
-		Projectiles spawn plague seekers on enemy hits
+		When you have fewer than six Plague Seekers, Projectiles spawn plague seekers on enemy hits
+		Obtain the effects of the Alchemical Flask and Hive Pack
 		'''
 }
 

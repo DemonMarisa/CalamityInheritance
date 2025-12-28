@@ -1,6 +1,8 @@
 ﻿using System;
 using CalamityMod;
 using CalamityMod.Projectiles;
+using LAP.Content.Projectiles.LifeStealProj;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -87,26 +89,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            int heal = (int)Math.Round(hit.Damage * 0.015);
-            if (heal > GodSlayerKnivesLifeStealCap)
-                heal = GodSlayerKnivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, GodSlayerKnivesLifeStealRange);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ModContent.ProjectileType<StandardHealProj>(), -1);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            int heal = (int)Math.Round(info.Damage * 0.015);
-            if (heal > GodSlayerKnivesLifeStealCap)
-                heal = GodSlayerKnivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ProjectileID.VampireHeal, GodSlayerKnivesLifeStealRange);
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -25,7 +25,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             CalamityPlayer modPlayer = player.Calamity();
             if (!modPlayer.deadshotBrooch)
                 player.CIMod().DeadshotBroochCI = true;
-            player.Calamity().rangedAmmoCost *= 0.8f;
             player.GetDamage<RangedDamageClass>() += 0.15f;
             player.GetCritChance<RangedDamageClass>() += 5;
             player.pickSpeed -= 0.15f;

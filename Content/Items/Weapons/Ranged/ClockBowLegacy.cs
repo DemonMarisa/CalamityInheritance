@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 30f;
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = 40;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
         public override void AddRecipes()
         {

@@ -961,3 +961,28 @@ DesertProwlerLegsLegacy: {
 		增加{0}移动速度
 		'''
 }
+
+AuricTeslaHeadMagicLegacy: {
+	// DisplayName: Auric Tesla Head Magic Legacy
+	// Tooltip: ""
+}
+
+AuricTeslaHeadMeleeLegacy: {
+	// DisplayName: Auric Tesla Head Melee Legacy
+	// Tooltip: ""
+}
+
+AuricTeslaHeadRangedLegacy: {
+	// DisplayName: Auric Tesla Head Ranged Legacy
+	// Tooltip: ""
+}
+
+AuricTeslaHeadRogueLegacy: {
+	// DisplayName: Auric Tesla Head Rogue Legacy
+	// Tooltip: ""
+}
+
+AuricTeslaHeadSummonLegacy: {
+	// DisplayName: Auric Tesla Head Summon Legacy
+	// Tooltip: ""
+}

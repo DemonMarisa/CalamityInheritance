@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {

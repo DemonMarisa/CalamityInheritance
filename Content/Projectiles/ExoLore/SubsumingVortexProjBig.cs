@@ -111,25 +111,25 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         }
         #region DrawMethod
         //DrawProjWidth
-        public float SetProjWidth(float ratio)
+        public float SetProjWidth(float completionRatio, Vector2 vertexPos)
         {
             float width = Projectile.width * 0.6f;
-            width *= MathHelper.SmoothStep(0.6f, 1f, Utils.GetLerpValue(0f, 0.3f, ratio, true));
+            width *= MathHelper.SmoothStep(0.6f, 1f, Utils.GetLerpValue(0f, 0.3f, completionRatio, true));
             return width;
         }
         //DrawTrailColor
-        public Color SetTrailColor(float ratio)
+        public Color SetTrailColor(float completionRatio, Vector2 vertexPos)
         {
             float hue = Hue % 1f + HueShiftAcrossAfterimages;
             if (hue >= 0.99f)
                 hue = 0.99f;
 
             float velocityOpacityFadeout = Utils.GetLerpValue(2f, 5f, Projectile.velocity.Length(), true);
-            Color c = CalamityUtils.MulticolorLerp(hue, CalamityUtils.ExoPalette) * Projectile.Opacity * (1f - ratio);
-            return c * Utils.GetLerpValue(0.04f, 0.2f, ratio, true) * velocityOpacityFadeout;
+            Color c = CalamityUtils.MulticolorLerp(hue, CalamityUtils.ExoPalette) * Projectile.Opacity * (1f - completionRatio);
+            return c * Utils.GetLerpValue(0.04f, 0.2f, completionRatio, true) * velocityOpacityFadeout;
         }
         //DrawOffset
-        public Vector2 PrimitiveOffsetFunction(float ratio) => Projectile.Size * 0.5f + Projectile.velocity.SafeNormalize(Vector2.Zero) * Projectile.scale * 2f;
+        public Vector2 PrimitiveOffsetFunction(float completionRatio, Vector2 vertexPos) => Projectile.Size * 0.5f + Projectile.velocity.SafeNormalize(Vector2.Zero) * Projectile.scale * 2f;
         #endregion
         #region AIMethod
         //Expand hitbox, with some visual effect

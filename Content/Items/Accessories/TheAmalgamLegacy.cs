@@ -1,13 +1,14 @@
-using System;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
@@ -23,7 +24,6 @@ namespace CalamityInheritance.Content.Items.Accessories
         public const int FireProjectiles = 2;
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
-        public override string Texture => $"{CIResprite.CalItemsRoute}/Accessories/TheAmalgam";
         //在下面会直接被替换了
         protected override BaseSetDefault BaseSD => new
         (
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / FireProjectiles)));
                             velocity.X = velocity.X + 3 * Main.rand.NextFloat() - 1.5f;
                             int damage = (int)player.GetBestClassDamage().ApplyTo(100);
-                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstoneHellfireballFriendly2>(), damage, 5f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }

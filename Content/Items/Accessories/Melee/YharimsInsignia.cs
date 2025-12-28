@@ -7,6 +7,7 @@ using Terraria;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {

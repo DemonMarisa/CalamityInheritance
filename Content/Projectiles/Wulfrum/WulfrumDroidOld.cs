@@ -9,6 +9,7 @@ using CalamityMod;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {

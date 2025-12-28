@@ -405,3 +405,18 @@ ShadowboltStaffLegacy: {
 	DisplayName: Shadowbolt Staff Legacy
 	Tooltip: ""
 }
+
+AsteroidStaff: {
+	DisplayName: Asteroid Staff
+	Tooltip: ""
+}
+
+DeathhailStaff: {
+	DisplayName: Deathhail Staff
+	Tooltip: ""
+}
+
+WrathoftheAncients: {
+	DisplayName: Wrathofthe Ancients
+	Tooltip: ""
+}

@@ -37,3 +37,13 @@ BlightedLens: {
 	DisplayName: Blighted Lens
 	Tooltip: ""
 }
+
+BloodSample: {
+	DisplayName: Blood Sample
+	Tooltip: ""
+}
+
+RottenMatter: {
+	DisplayName: Rotten Matter
+	Tooltip: ""
+}

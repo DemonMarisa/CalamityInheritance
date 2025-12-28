@@ -1070,7 +1070,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             }
             //无论如何标记这个为真。
             CIDownedBossSystem.DownedCalClone = true;
-            DeathAshParticle.CreateAshesFromNPC(NPC, NPC.velocity);
+            DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
             CalamityNetcode.SyncWorld();
         }
         public static void PingDownedLevi()

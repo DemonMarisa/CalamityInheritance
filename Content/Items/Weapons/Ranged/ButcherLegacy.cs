@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ModContent.ProjectileType<ButcherHeldProj>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

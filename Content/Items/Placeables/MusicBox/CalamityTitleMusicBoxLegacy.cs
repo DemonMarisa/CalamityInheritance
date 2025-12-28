@@ -16,6 +16,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Items.Placeables;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.Placeables.Crags;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {

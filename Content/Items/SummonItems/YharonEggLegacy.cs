@@ -1,24 +1,25 @@
-﻿using CalamityMod.Events;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.NPCs.Boss.CalamitasClone;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.NPCs.Boss.Yharon;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using CalamityMod.Events;
 using CalamityMod.Items.Materials;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.Rarities;
-using CalamityMod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
-using CalamityInheritance.NPCs.Boss.Yharon;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.CIPlayer;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.NPCs.Boss.CalamitasClone;
-using CalamityInheritance.NPCs.Boss.SCAL;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.SummonItems
 {
@@ -39,7 +40,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
-            Item.rare = ModContent.RarityType<DarkBlue>();
+            Item.rare = ModContent.RarityType<DeepBlue>();
         }
 
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)

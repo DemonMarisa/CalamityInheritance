@@ -612,3 +612,13 @@ StellarStrikerLegacy: {
 	// DisplayName: Stellar Striker Legacy
 	// Tooltip: ""
 }
+
+Eradicator_Melee: {
+	// DisplayName: Eradicator_ Melee
+	// Tooltip: ""
+}
+
+UrchinFlail: {
+	// DisplayName: Urchin Flail
+	// Tooltip: ""
+}

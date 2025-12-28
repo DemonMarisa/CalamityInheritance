@@ -12,6 +12,7 @@ using CalamityMod.Sounds;
 using Terraria.Audio;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using LAP.Content.RecipeGroupAdd;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 22f;
             Item.shoot = ModContent.ProjectileType<ChargedBlast>();
             Item.useAmmo = AmmoID.Dart;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override Vector2? HoldoutOffset()

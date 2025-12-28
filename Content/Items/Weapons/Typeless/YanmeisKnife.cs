@@ -1,12 +1,14 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using LAP.Content.RecipeGroupAdd;
+using LAP.Core.MiscDate;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {
@@ -42,14 +44,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 
         public override bool CanUseItem(Player player)
         {
-            if (player.Calamity().KameiBladeUseDelay > 0)
-                return false;
             return base.CanUseItem(player);
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            player.Calamity().KameiBladeUseDelay = 180;
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f);
             return false;
         }
@@ -59,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             CreateRecipe().
                 AddIngredient(ItemID.PsychoKnife).
                 AddIngredient(ItemID.Obsidian, 10).
-                AddRecipeGroup("IronBar", 20).
+                AddRecipeGroup(VanillaRecipeGroups.IronBar, 20).
                 AddIngredient<PlagueCellCanister>(50).
                 AddTile(TileID.MythrilAnvil).
                 Register();

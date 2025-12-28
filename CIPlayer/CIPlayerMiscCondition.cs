@@ -12,8 +12,8 @@ namespace CalamityInheritance.CIPlayer
         public static bool inSpace;
         
         public void ReSet()
-        {
-
+        {            //生命上限（们）
+            ResetLifeMax();
         }
         public static void PreUp()
         {

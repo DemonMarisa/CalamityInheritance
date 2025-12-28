@@ -1,16 +1,12 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityMod.World.CustomConditions;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

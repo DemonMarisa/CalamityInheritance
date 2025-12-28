@@ -6,7 +6,6 @@ using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

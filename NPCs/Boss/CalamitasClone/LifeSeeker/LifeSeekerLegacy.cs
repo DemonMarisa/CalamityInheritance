@@ -126,7 +126,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
                         Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
 
                     int type = ModContent.ProjectileType<BrimstoneBarrage>();
-                    int damage = NPC.GetProjectileDamage(type);
+                    int damage = 300;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, damage, 1f, parent.target, 1f, 0f, projectileSpeed * 2f);
                 }
                 timer = 0;

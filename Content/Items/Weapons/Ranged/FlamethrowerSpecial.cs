@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void SetDefaults()
         {
-            Item.Calamity().canFirePointBlankShots = true;
+            
             base.SetDefaults();
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)

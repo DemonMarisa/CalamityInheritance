@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceDonatorPink;
             Item.rare = ModContent.RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

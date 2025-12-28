@@ -127,7 +127,6 @@ namespace CalamityInheritance.Content.Projectiles
                     {
                         bool fromRight = x > 2;
                         Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.3f), projectile.knockBack, projectile.owner, false, 5f);
-                        CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                     }
 
                 AMRextra = false;
@@ -142,7 +141,6 @@ namespace CalamityInheritance.Content.Projectiles
                     {
                         bool fromRight = x > 3;
                         Projectile proj = CalamityUtils.ProjectileBarrage(source, projectile.Center, projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, projectile.type, (int)(projectile.damage * 0.15f), projectile.knockBack, projectile.owner, false, 5f);
-                        CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                     }
                 }
                 AMRextraTy = false;

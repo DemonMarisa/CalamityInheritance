@@ -28,7 +28,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 30f;
             Item.useAmmo = 40;
-            Item.Calamity().canFirePointBlankShots = true;
         }
     }
 }

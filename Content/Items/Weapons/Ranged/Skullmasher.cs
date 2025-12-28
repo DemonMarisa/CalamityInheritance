@@ -45,14 +45,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 12f;
             Item.useAmmo = 97;
             Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
-            Item.Calamity().canFirePointBlankShots = true;
+            
         }
 
         public override Vector2? HoldoutOffset()
         {
-            if (CIRespriteConfig.Instance.SkullmasherResprite)
+           /* if (CIRespriteConfig.Instance.SkullmasherResprite)
                 return new Vector2(-15, 0);
-            else
+            else */
                 return new Vector2(-40, 0);
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

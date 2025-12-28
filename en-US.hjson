@@ -51,7 +51,12 @@ Mods: {
 		}
 
 		Projectiles: {
-			Rogue.SupernovaBoomOld.DisplayName: Supernova Boom Old
+			Rogue: {
+				SupernovaBoomOld.DisplayName: Supernova Boom Old
+				NightsGazeProjectile.DisplayName: Nights Gaze Projectile
+				NightsGazeSpark.DisplayName: Nights Gaze Spark
+			}
+
 			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor
 			ExoSpearTrailNor.DisplayName: Exo Spear Trail Nor
 			ExoSpearProjNorSteal.DisplayName: Exo Spear Proj Nor Steal
@@ -86,6 +91,13 @@ Mods: {
 			ShizukuStarMark.DisplayName: Shizuku Star Mark
 			DesertMark.DisplayName: Desert Mark
 			DesertTornado.DisplayName: Desert Tornado
+
+			Summon: {
+				DOGLaser.DisplayName: D O G Laser
+				SarosMicrosunLegacy.DisplayName: Saros Microsun Legacy
+			}
+
+			TeleportRift.DisplayName: Teleport Rift
 		}
 
 		Content/Projectiles/Summon: {
@@ -112,6 +124,61 @@ Mods: {
 			DesertFeather: {
 				DisplayName: Desert Feather Legacy
 				Tooltip: Used to craft multiple items related on Desert
+			}
+
+			Accessories: {
+				RegenatorLegacy: {
+					DisplayName: Regenator Legacy
+					Tooltip: ""
+				}
+			}
+
+			CoreofChaos: {
+				DisplayName: Coreof Chaos
+				Tooltip: ""
+			}
+
+			CoreofEleum: {
+				DisplayName: Coreof Eleum
+				Tooltip: ""
+			}
+
+			CoreofSunlight: {
+				DisplayName: Coreof Sunlight
+				Tooltip: ""
+			}
+
+			Weapons: {
+				Ranged: {
+					ClockGatlignum: {
+						DisplayName: Clock Gatlignum
+						Tooltip: ""
+					}
+
+					StormDragon: {
+						DisplayName: Storm Dragon
+						Tooltip: ""
+					}
+				}
+
+				Rogue: {
+					Eradicator_Rogue: {
+						DisplayName: Eradicator_ Rogue
+						Tooltip: ""
+					}
+
+					NightsGaze: {
+						DisplayName: Nights Gaze
+						Tooltip: ""
+					}
+				}
+
+				Summon: {
+					StaffofDOG: {
+						DisplayName: Staffof D O G
+						Tooltip: ""
+					}
+				}
 			}
 		}
 

@@ -8,6 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityInheritance.Dusts;
+using CalamityInheritance.Content.Projectiles.Melee.Explosion;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

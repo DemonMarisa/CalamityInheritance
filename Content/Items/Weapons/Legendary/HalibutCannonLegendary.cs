@@ -30,11 +30,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         internal bool IsDownedWallOfFlesh = Main.hardMode;
         internal bool IsDownedMoonLord = Condition.DownedMoonLord.IsMet();
         internal bool IsDownedPostYharonBoss = (CIDownedBossSystem.DownedLegacyScal || DownedBossSystem.downedCalamitas) && DownedBossSystem.downedExoMechs;
-        public override void AddRecipes()
+        public override void SetStaticDefaults()
         {
             //微光转化……
             Type.ShimmerEach<HalibutCannon>();
-            base.AddRecipes();
         }
         public override void SetDefaults()
         {
@@ -53,7 +52,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.Calamity().canFirePointBlankShots = true;
             Item.UseSound = CISoundMenu.HalibutCannonFire;
         }
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)

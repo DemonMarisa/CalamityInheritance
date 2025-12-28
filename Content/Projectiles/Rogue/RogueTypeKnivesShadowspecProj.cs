@@ -1,8 +1,10 @@
 ﻿using System;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles;
 using CalamityMod.Projectiles.Healing;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -80,28 +82,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
-
-            int heal = (int)Math.Round(hit.Damage * 0.15);
-            if (heal > ShadowknivesLifeStealCap)
-                heal = ShadowknivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0 || target.lifeMax <= 5)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<RoyalHeal>(), ShadowknivesLifeStealRange);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ModContent.ProjectileType<RoyalHealProj>());
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
-
-            int heal = (int)Math.Round(info.Damage * 0.015);
-            if (heal > ShadowknivesLifeStealCap)
-                heal = ShadowknivesLifeStealCap;
-
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f || heal <= 0)
-                return;
-
-            CalamityGlobalProjectile.SpawnLifeStealProjectile(Projectile, Main.player[Projectile.owner], heal, ModContent.ProjectileType<RoyalHeal>(), ShadowknivesLifeStealRange);
         }
         public override bool PreDraw(ref Color lightColor)
         {

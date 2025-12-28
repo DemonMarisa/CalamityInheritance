@@ -20,6 +20,7 @@ using Terraria.GameContent;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Particles;
 using CalamityMod.NPCs.NormalNPCs;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             float rotProgress;
             if (AniProgress <= Halfrecoilani)
             {
-                float progress = EasingHelper.EaseInOutQuad((float)AniProgress / Halfrecoilani);
+                float progress = LAP.Core.Utilities.EasingHelper.EaseInOutQuad((float)AniProgress / Halfrecoilani);
                 // 最多转7度
                 rotProgress = MathHelper.Lerp(0, 7, progress);
                 rotProg = -rotProgress;

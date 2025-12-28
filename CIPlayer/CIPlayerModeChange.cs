@@ -54,7 +54,7 @@ namespace CalamityInheritance.CIPlayer
                 bool immunityAll = cIPlayer.RoDPaladianShieldActive || cIPlayer.TheAbsorberOld || calPlayer.WearingPostMLSummonerSet;
 
                 bool immunityToHotAndCold = Player.magmaStone || Player.frostArmor || calPlayer.fBarrier ||
-                    calPlayer.frostFlare || calPlayer.rampartOfDeities || calPlayer.cryogenSoul || calPlayer.snowman || calPlayer.blazingCore ||
+                    calPlayer.frostFlare || calPlayer.rampartOfDeities || calPlayer.cryogenSoul || calPlayer.blazingCore ||
                     calPlayer.permafrostsConcoction || calPlayer.profanedCrystalBuffs || immunityAll;
 
                 bool immunityToCold = Player.HasBuff(BuffID.Campfire) || Player.resistCold || calPlayer.eskimoSet ||

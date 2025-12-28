@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()
@@ -87,7 +87,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     bool fromRight = x > 3;
                     Projectile proj = CalamityUtils.ProjectileBarrage(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, ModContent.ProjectileType<BetterAMR2>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner, false, 5f);
-                    CalamityUtils.Calamity(proj).pointBlankShotDuration = 0;
                     proj.CalamityInheritance().ignoreDrAndDef = true;
                 }
             }

@@ -3,12 +3,11 @@ using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod;
-using Humanizer;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -37,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             CreateRecipe().
                 AddIngredient<Brimlash>().
-                AddIngredient<CoreofHavoc>(5).
+                AddIngredient<CoreofChaos>(5).
                 AddIngredient(ItemID.FragmentSolar, 10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
@@ -54,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             float damageMult = 0f;
-            if (player.Calamity().brimlashBusterBoost)
+            if (Main.rand.NextBool(3))
                 damageMult = 2f;
             damage += damageMult;
         }
@@ -62,13 +61,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
-            player.Calamity().brimlashBusterBoost = Main.rand.NextBool(3);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
-            player.Calamity().brimlashBusterBoost = Main.rand.NextBool(3);
         }
     }
 }

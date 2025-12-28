@@ -878,6 +878,7 @@
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="Content\Projectiles\Summon\ElementalHeart\" />
 	  <Folder Include="SceneEffect\" />
 	</ItemGroup>
 	<ItemGroup>

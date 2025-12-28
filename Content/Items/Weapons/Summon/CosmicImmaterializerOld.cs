@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             CreateRecipe().
                 AddIngredient<Sirius>().
                 AddIngredient<AncientAncientIceChunk>().
-                AddIngredient<ElementalAxe>().
+                AddIngredient<LegionofCelestia>().
                 AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             CreateRecipe().
                 AddIngredient<Sirius>().
                 AddIngredient<AncientAncientIceChunk>().
-                AddIngredient<ElementalAxe>().
+                AddIngredient<LegionofCelestia>().
                 AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
@@ -102,14 +102,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             CreateRecipe().
                 AddIngredient<Sirius>().
                 AddIngredient<AncientAncientIceChunk>().
-                AddIngredient<ElementalAxe>().
+                AddIngredient<LegionofCelestia>().
                 AddIngredient<SanctifiedSpark>().
                 AddIngredient<EtherealSubjugator>().
                 AddIngredient<Cosmilamp>().
                 AddIngredient<CalamarisLament>().
                 AddIngredient<AncientMiracleMatter>().
                 DisableDecraft().
-                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+                AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile<DraedonsForge>().
                 Register();
         }

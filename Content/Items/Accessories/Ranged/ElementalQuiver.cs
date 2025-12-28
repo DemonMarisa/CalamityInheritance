@@ -27,10 +27,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );
-        public override void ExSSD()
-        {
-            Type.ShimmerEach<CalamityMod.Items.Accessories.ElementalQuiver>(false);
-        }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().IsWearingElemQuiverCal;
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

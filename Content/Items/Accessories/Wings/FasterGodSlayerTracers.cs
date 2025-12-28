@@ -81,8 +81,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             player.buffImmune[BuffID.OnFire] = true;
             player.noFallDmg = true;
             modPlayer.tracersDust = !hideVisual;
-            modPlayer.elysianWingsDust = !hideVisual;
-            modPlayer.tracersElysian = true;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)

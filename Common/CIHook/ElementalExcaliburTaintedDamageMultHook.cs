@@ -2,6 +2,7 @@
 using CalamityMod;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.Projectiles.Melee;
+using LAP.Core.Utilities;
 using System.Reflection;
 using Terraria;
 using Terraria.ModLoader;

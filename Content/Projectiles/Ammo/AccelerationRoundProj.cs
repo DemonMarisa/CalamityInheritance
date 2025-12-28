@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
             Projectile.timeLeft = 600;
             Projectile.extraUpdates = 3;
             AIType = ProjectileID.Bullet;
-            Projectile.Calamity().pointBlankShotDuration = CalamityGlobalProjectile.DefaultPointBlankDuration;
+
         }
 
         public override void AI()
