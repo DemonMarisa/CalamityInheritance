@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.System.Configs;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class ExoJet : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -23,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.timeLeft = 30;
             Projectile.MaxUpdates = 4;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
         }
@@ -58,12 +59,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
     }
 }

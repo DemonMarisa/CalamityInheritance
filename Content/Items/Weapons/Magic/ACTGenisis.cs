@@ -32,22 +32,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 1.5f;
             Item.value = CIShopValue.RarityPricePurple;
-            Item.rare =  CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<AlgtPink>(): ItemRarityID.Purple;
+            Item.rare =  CIConfig.Instance.SpecialRarityColor? RarityType<AlgtPink>(): ItemRarityID.Purple;
             Item.UseSound = CISoundMenu.GenisisFire;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;
-            Item.shoot = ModContent.ProjectileType<ACTGenisisHeldProj>();
+            Item.shoot = ProjectileType<ACTGenisisHeldProj>();
 
             Item.noUseGraphic = true;
             Item.channel = true;
         }
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[ModContent.ProjectileType<ACTGenisisHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<ACTGenisisHeldProj>()] < 1;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ACTGenisisHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ProjectileType<ACTGenisisHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
         }
 

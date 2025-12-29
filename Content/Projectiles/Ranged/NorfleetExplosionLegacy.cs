@@ -3,12 +3,14 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class NorfleetExplosionLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

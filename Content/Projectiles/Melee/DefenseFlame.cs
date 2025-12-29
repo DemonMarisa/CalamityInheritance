@@ -3,13 +3,14 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class DefenseFlame: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -86,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<DefenseBlast2>(), hit.Damage, hit.Knockback, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<DefenseBlast2>(), hit.Damage, hit.Knockback, Main.myPlayer);
             }
         }
 

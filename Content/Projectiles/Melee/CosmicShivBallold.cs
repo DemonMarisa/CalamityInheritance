@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         // TODO -- Please for the love of god refactor this at some point. It is ancient.
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public NPC target = null;
         public const float maxDistanceToTarget = 1540f;
@@ -80,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 int directionSign = Main.rand.NextBool(2).ToDirectionInt();
                 Vector2 spawnPos = new Vector2(target.Center.X + directionSign * 650, Projectile.Center.Y + Main.rand.Next(-500, 501));
                 Vector2 velocity = Vector2.Normalize(target.Center - spawnPos) * 30f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos.X, spawnPos.Y, velocity.X, velocity.Y, ModContent.ProjectileType<CosmicShivBladeold>(), Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPos.X, spawnPos.Y, velocity.X, velocity.Y, ProjectileType<CosmicShivBladeold>(), Projectile.damage / 2, Projectile.knockBack * 0.1f, Projectile.owner);
             }
             int starMax = Main.rand.Next(6, 11); // 6 to 10 stars
             for (int i = -starMax / 2; i < starMax / 2; i++)
@@ -88,9 +89,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 int ySpawnAdditive = Main.rand.Next(-40, 41);
                 Vector2 toSpawn = target.Center - new Vector2(0f, 800f + ySpawnAdditive).RotatedBy(MathHelper.ToRadians(i * 11f / starMax));
                 Vector2 toTarget = Vector2.Normalize(target.Center - toSpawn) * 35f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), toSpawn, toTarget, ModContent.ProjectileType<GalaxyStarold>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), toSpawn, toTarget, ProjectileType<GalaxyStarold>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
             }
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 60);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 60);
         }
         // pretty much entirely from the Oracle circular damage code
         /*

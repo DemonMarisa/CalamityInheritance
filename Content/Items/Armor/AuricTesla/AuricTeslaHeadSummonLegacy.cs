@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.defense = 12; //132
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AuricTeslaBodyArmorold>() && legs.type == ModContent.ItemType<AuricTeslaCuissesold>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AuricTeslaBodyArmorold>() && legs.type == ItemType<AuricTeslaCuissesold>();
 
         public override void ArmorSetShadows(Player player)
         {
@@ -96,24 +96,24 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             if (player.whoAmI == Main.myPlayer)
             {
                 var source = player.GetSource_ItemUse(Item);
-                if (player.FindBuffIndex(ModContent.BuffType<SilvaCrystalBuff>()) == -1)
+                if (player.FindBuffIndex(BuffType<SilvaCrystalBuff>()) == -1)
                 {
-                    player.AddBuff(ModContent.BuffType<SilvaCrystalBuff>(), 3600, true);
+                    player.AddBuff(BuffType<SilvaCrystalBuff>(), 3600, true);
                 }
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<SilvaCrystal>()] < 1)
+                if (player.ownedProjectileCounts[ProjectileType<SilvaCrystal>()] < 1)
                 {
                     var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(1000);
-                    var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
+                    var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = 1000;
                 }
                 if (CIConfig.Instance.GodSlayerWorm)
                 {
-                    player.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 3600, true); 
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<DOGworm_Auric>()] < 1)
+                    player.AddBuff(BuffType<DOGSummonBuff>(), 3600, true); 
+                    if (player.ownedProjectileCounts[ProjectileType<DOGworm_Auric>()] < 1)
                     {
-                        ModItem item = ItemLoader.GetItem(ModContent.ItemType<StaffofDOG>());
-                        int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ModContent.ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
+                        ModItem item = ItemLoader.GetItem(ItemType<StaffofDOG>());
+                        int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
                         Main.projectile[p].originalDamage = StaffofDOG.BaseDamage * 3;
                     }
                 }

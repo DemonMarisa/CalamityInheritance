@@ -92,8 +92,8 @@ namespace CalamityInheritance.CIPlayer.Dash
             hitContext.BaseKnockback = ElysianAegis.ShieldSlamKnockback;
 
             int supremeExplosionDamage = (int)player.GetBestClassDamage().ApplyTo(ElysianAegis.RamExplosionDamage);
-            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<HolyExplosionSupreme>(), supremeExplosionDamage, ElysianAegis.RamExplosionKnockback, Main.myPlayer, 1f, 0f);
-            npc.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<HolyExplosionSupreme>(), supremeExplosionDamage, ElysianAegis.RamExplosionKnockback, Main.myPlayer, 1f, 0f);
+            npc.AddBuff(BuffType<HolyFlames>(), 300);
         }
     }
 }

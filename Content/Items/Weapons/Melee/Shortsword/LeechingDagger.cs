@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Orange;
             Item.value = CIShopValue.RarityPriceOrange;
-            Item.shoot = ModContent.ProjectileType<LeechingDaggerProj>();
+            Item.shoot = ProjectileType<LeechingDaggerProj>();
             Item.shootSpeed = 2;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.DemoniteBar, 5);
             recipe.AddIngredient(ItemID.RottenChunk, 2);
-            recipe.AddIngredient(ModContent.ItemType<RottenMatter>(), 5);
+            recipe.AddIngredient(ItemType<RottenMatter>(), 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }

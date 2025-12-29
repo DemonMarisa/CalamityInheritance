@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using CalamityMod;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -19,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoLightold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public Vector2 InitialCenter;
         public Vector2 Destination;
@@ -144,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/SmallGreyscaleCircle").Value;
+            Texture2D lightTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/SmallGreyscaleCircle").Value;
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 16f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
@@ -179,7 +180,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             SoundEngine.PlaySound(deathSound, Projectile.Center);
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                int projID = ModContent.ProjectileType<ExoSparkold>();
+                int projID = ProjectileType<ExoSparkold>();
                 for (int i = 0; i < 3; i++)
                 {
                     Vector2 vel = Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * 24f;
@@ -193,6 +194,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             target.ExoDebuffs();
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 360);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 360);
     }
 }

@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
             Item.rare = ItemRarityID.Green;
             Item.defense = 1; //8
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientVictideBreastplate>() && legs.type == ModContent.ItemType<AncientVictideLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientVictideBreastplate>() && legs.type == ItemType<AncientVictideLeggings>();
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
@@ -37,18 +37,18 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
             player.maxMinions++;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(ModContent.BuffType<SeaSnailBuff>()) == -1)
+                if (player.FindBuffIndex(BuffType<SeaSnailBuff>()) == -1)
                 {
-                    player.AddBuff(ModContent.BuffType<SeaSnailBuff>(), 3600, true);
+                    player.AddBuff(BuffType<SeaSnailBuff>(), 3600, true);
                 }
                 var source = player.GetSource_ItemUse(Item);
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<VictideSeaSnail>()] < 1)
+                if (player.ownedProjectileCounts[ProjectileType<VictideSeaSnail>()] < 1)
                 {
                     // 08DEC2023: Ozzatron: Victide Sea Snails spawned with Old Fashioned active will retain their bonus damage indefinitely. Oops. Don't care.
                     var baseDamage = 7;
                     var minionDamage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
 
-                    var p = Projectile.NewProjectile(source, player.Center, -Vector2.UnitY, ModContent.ProjectileType<VictideSeaSnail>(), minionDamage, 0f, Main.myPlayer, 0f, 0f);
+                    var p = Projectile.NewProjectile(source, player.Center, -Vector2.UnitY, ProjectileType<VictideSeaSnail>(), minionDamage, 0f, Main.myPlayer, 0f, 0f);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = baseDamage;
                 }

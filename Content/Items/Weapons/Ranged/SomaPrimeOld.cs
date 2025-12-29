@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAmmo = AmmoID.Bullet;
 
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
             
         }

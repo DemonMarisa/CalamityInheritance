@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     public class CelestusBoomerangExoLoreHomeIn : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponPath}/Rogue/Celestusold";
+        public override string Texture => GetInstance<Celestusold>().Texture;
         private bool initialized = false;
         private float Timer = 0f;
         private float Timer2 = 0f;
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             //我在想是不是因为这个无敌帧导致他一个射弹短时间内进行了多判导致c出问题
             Projectile.localNPCHitCooldown = -1;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.alpha = 255;
             Projectile.timeLeft = 600;
             Projectile.velocity *= -1f;
@@ -248,7 +248,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
             OnHitEffects();
         }
 
@@ -264,8 +264,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 0.6f), (float)(Math.Cos(offsetAngle) * 0.6f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 0.6f), (float)(-Math.Cos(offsetAngle) * 0.6f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 0.6f), (float)(Math.Cos(offsetAngle) * 0.6f), ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 0.6f), (float)(-Math.Cos(offsetAngle) * 0.6f), ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
                 }
             }
         }

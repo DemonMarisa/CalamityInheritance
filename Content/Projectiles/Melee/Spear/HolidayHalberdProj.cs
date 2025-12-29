@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.aiStyle = ProjAIStyleID.Spear;
             Projectile.timeLeft = 90;
             Projectile.friendly = true;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             float kb = Projectile.knockBack * 0.5f;
             Vector2 projPos = Projectile.Center + Projectile.velocity;
             Vector2 projVel = Projectile.velocity * 12f;
-            int type = Main.rand.NextBool(3) ? ModContent.ProjectileType<GreenBall>() : ModContent.ProjectileType<RedBall>();
+            int type = Main.rand.NextBool(3) ? ProjectileType<GreenBall>() : ProjectileType<RedBall>();
             if (Projectile.owner == Main.myPlayer)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, type, damage, kb, Projectile.owner, 0f, 0f);
         }

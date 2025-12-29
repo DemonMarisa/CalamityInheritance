@@ -91,20 +91,46 @@ namespace CalamityInheritance.Sounds.Custom
         #endregion
         public static readonly SoundStyle AncientShivProjSpawn = new($"{ItemSoundRoute}/AncientShivSounds/AncientShivProjSpawn") { Volume = 0.9f, Pitch = 0.3f };
         #region  R99
+        //这里用private是为了防止自动补全混乱。如果需要单独调用其中一种音效，直接调用数组其中一个元素就行了
         public static string R99Shield => "/" + "R99/R99Shield";
-        public static readonly SoundStyle R99ShieldHit1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit1");
-        public static readonly SoundStyle R99ShieldHit2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit2");
-        public static readonly SoundStyle R99ShieldCracked1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked1");
-        public static readonly SoundStyle R99ShieldCracked2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked2");
-        public static readonly SoundStyle R99ShieldCracked3 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked3");
-        public static readonly SoundStyle R99ShieldCracked4 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked4");
-        public static readonly SoundStyle R99FleshHit1 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit1");
-        public static readonly SoundStyle R99FleshHit2 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit2");
-        public static readonly SoundStyle R99FleshHit3 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit3");
-        public static readonly SoundStyle R99FleshHit4 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit4");
-        public static readonly SoundStyle R99Fired1 = new($"{SoundRoute}/R99/R99Fired1");
-        public static readonly SoundStyle R99Fired2 = new($"{SoundRoute}/R99/R99Fired2");
-        public static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
+        private static readonly SoundStyle R99ShieldHit1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit1");
+        private static readonly SoundStyle R99ShieldHit2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldOnHit2");
+        private static readonly SoundStyle R99ShieldCracked1 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked1");
+        private static readonly SoundStyle R99ShieldCracked2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked2");
+        private static readonly SoundStyle R99ShieldCracked3 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked3");
+        private static readonly SoundStyle R99ShieldCracked4 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked4");
+        private static readonly SoundStyle R99FleshHit1 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit1");
+        private static readonly SoundStyle R99FleshHit2 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit2");
+        private static readonly SoundStyle R99FleshHit3 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit3");
+        private static readonly SoundStyle R99FleshHit4 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit4");
+        private static readonly SoundStyle R99Fired1 = new($"{SoundRoute}/R99/R99Fired1");
+        private static readonly SoundStyle R99Fired2 = new($"{SoundRoute}/R99/R99Fired2");
+        private static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
+        public static SoundStyle[] R99Fired =
+            [
+                R99Fired1,
+                R99Fired2,
+                R99Fired3
+            ];
+        public static SoundStyle[] R99FleshHit =
+            [
+                R99FleshHit1,
+                R99FleshHit2,
+                R99FleshHit3,
+                R99FleshHit4
+            ];
+        public static SoundStyle[] R99ShieldCracked =
+            [
+                R99ShieldCracked1,
+                R99ShieldCracked2,
+                R99ShieldCracked3,
+                R99ShieldCracked4
+            ];
+        public static SoundStyle[] R99ShieldHit =
+            [
+                R99ShieldHit1,
+                R99ShieldHit2
+            ];
         #endregion
         public static readonly SoundStyle Pipes = new($"{SoundRoute}/Pipes");
         public static readonly SoundStyle SilvaActivation = new ($"{ASSoundRoute}/SilvaActivation");

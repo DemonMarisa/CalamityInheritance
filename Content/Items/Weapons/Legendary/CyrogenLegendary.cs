@@ -19,8 +19,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     //我本人完全看不懂这个代码，如果需要的话可能重写？
     public class CyrogenLegendary: LegendaryWeaponClass
     {
-        public override ClassType WeaponDamageClass => ClassType.Summon;
-        public override int SetRarityColor => ModContent.RarityType<CryogenBlue>();
+        public override ClassType GeneralWeaponClass => ClassType.Summon;
+        public override int SetRarityColor => RarityType<CryogenBlue>();
         public override Color DrawColor => new (30, 144, 255);
         public static readonly float ShootSpeed = 10f;
         public static int baseDamage = 48;
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.UseSound = SoundID.Item30;
             Item.autoReuse = true;
             Item.shootSpeed = ShootSpeed;
-            Item.shoot = ModContent.ProjectileType<CryogenPtr>();
+            Item.shoot = ProjectileType<CryogenPtr>();
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage();
@@ -133,7 +133,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (player.altFunctionUse != 2 && allMinions < player.maxMinions)
             {
                 //给自己发送一个buff
-                player.AddBuff(ModContent.BuffType<CyrogenLegendaryBuff>(), 120, true);
+                player.AddBuff(BuffType<CyrogenLegendaryBuff>(), 120, true);
                 //将鼠标位置赋值
                 position = player.LocalMouseWorld();
                 int p = Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI);

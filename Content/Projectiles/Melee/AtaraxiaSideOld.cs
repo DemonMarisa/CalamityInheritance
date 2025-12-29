@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Individual split projectiles deal 5% damage per hit.
             int numSplits = 6;
-            int splitID = ModContent.ProjectileType<AtaraxiaSplitOld>();
+            int splitID = ProjectileType<AtaraxiaSplitOld>();
             int damage = (int)(Projectile.damage * 0.05f);
             float angleVariance = MathHelper.TwoPi / numSplits;
             Vector2 projVec = new Vector2(4.5f, 0f).RotatedByRandom(MathHelper.TwoPi);

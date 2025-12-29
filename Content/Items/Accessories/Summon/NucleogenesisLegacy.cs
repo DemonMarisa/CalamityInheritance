@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         (
             itemWidth:34,
             itemHeight:32,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
             CIplayer.NucleogenesisLegacy = true;
             player.GetKnockback<SummonDamageClass>() += 3f;
             player.GetDamage<SummonDamageClass>() += 0.50f;
-            player.buffImmune[ModContent.BuffType<Shadowflame>()] = true;
-            player.buffImmune[ModContent.BuffType<Irradiated>()] = true;
+            player.buffImmune[BuffType<Shadowflame>()] = true;
+            player.buffImmune[BuffType<Irradiated>()] = true;
             player.whipRangeMultiplier += 0.20f;
             player.maxMinions += 5;
             player.maxTurrets += 1;

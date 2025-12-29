@@ -76,8 +76,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             target.AddBuff(BuffID.Frostburn, 300);
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override bool PreDraw(ref Color lightColor)

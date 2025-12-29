@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
 
         public override bool CanUseItem(Player player)
         {
-            return !Main.IsItDay() && !NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()) && !BossRushEvent.BossRushActive;
+            return !Main.IsItDay() && !NPC.AnyNPCs(NPCType<CalamitasCloneLegacy>()) && !BossRushEvent.BossRushActive;
         }
         public override bool? UseItem(Player player)
         {

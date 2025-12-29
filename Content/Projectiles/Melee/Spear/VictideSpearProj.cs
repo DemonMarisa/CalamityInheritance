@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         {
             Projectile.width = 56;  
             Projectile.aiStyle = 19;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.timeLeft = 90;
             Projectile.height = 56;
             Projectile.friendly = true;
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
                 CIFunction.DustCircle(Projectile.position, 24, 2f, CIDustID.DustWater, true, 12f);
                 //而后，生成水环
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3,-6)), ModContent.ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, npcindex);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3,-6)), ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, npcindex);
                 Projectile.netUpdate = true;
             }
         }
@@ -123,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         {
             if (!Projectile.CalamityInheritance().ThrownMode)
                 //注：只允许长矛本身击中敌人的时候发射一个弹幕. 或者说别的，我也不知道这个球干嘛的。
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<VictideSpearBall>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ProjectileType<VictideSpearBall>(), Projectile.damage, Projectile.knockBack, Main.myPlayer);
             target.AddBuff(BuffID.Poisoned, 300);
         }
     }

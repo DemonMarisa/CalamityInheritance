@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Yellow;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<PearlGodLegacyHeldProj>();
+            Item.shoot = ProjectileType<PearlGodLegacyHeldProj>();
             Item.useAmmo = AmmoID.Bullet;
             
             Item.scale = 0.75f;
@@ -45,11 +45,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[ModContent.ProjectileType<PearlGodLegacyHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<PearlGodLegacyHeldProj>()] < 1;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<PearlGodLegacyHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<PearlGodLegacyHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
         }
         public override void AddRecipes()

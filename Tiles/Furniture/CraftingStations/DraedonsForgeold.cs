@@ -26,7 +26,7 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             AddMapEntry(Color.Gold, CIFunction.GetText("Tiles.DraedonsForgeold"));
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Anvils, TileID.Furnaces, TileID.WorkBenches, TileID.LunarCraftingStation,
-                TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, ModContent.TileType<DraedonsForge>(), ModContent.TileType<CosmicAnvil>() };
+                TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, TileType<DraedonsForge>(), TileType<CosmicAnvil>() };
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)

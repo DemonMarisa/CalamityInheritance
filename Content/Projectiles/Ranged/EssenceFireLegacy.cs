@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
@@ -9,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class EssenceFireLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -89,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 240);
             target.immune[Projectile.owner] = 1;
         }
     }

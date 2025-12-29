@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TerraShivProj>();
+            Item.shoot = ProjectileType<TerraShivProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -37,9 +37,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ModContent.ItemType<TrueNightsStabber>()).
-                AddIngredient(ModContent.ItemType<TrueExcaliburShortsword>()).
-                AddIngredient(ModContent.ItemType<LivingShard>(),5).
+                AddIngredient(ItemType<TrueNightsStabber>()).
+                AddIngredient(ItemType<TrueExcaliburShortsword>()).
+                AddIngredient(ItemType<LivingShard>(),5).
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddCondition(Condition.NotZenithWorld).
                 AddDecraftCondition(Condition.NotZenithWorld).

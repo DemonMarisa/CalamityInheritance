@@ -228,10 +228,10 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 //击杀射弹
                 Projectile.Kill();
             }
-            target.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 600);
+            target.AddBuff(BuffType<ShizukuMoonlight>(), 600);
             Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
             target.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
-            Owner.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 60);
+            Owner.AddBuff(BuffType<ShizukuMoonlight>(), 60);
             
             
         }
@@ -252,7 +252,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 Vector2 drawPos = drawPosBase - Projectile.velocity * i * 0.45f;
                 Color color = drawColor * (1f - i / 8f);
-                Main.spriteBatch.Draw(tex, drawPos, null, color, Projectile.rotation, orig, Projectile.scale, SpriteEffects.None, 0.1f);
+                Main.spriteBatch.Draw(tex, drawPos, null, color with { A = 50 }, Projectile.rotation, orig, Projectile.scale, SpriteEffects.None, 0.1f);
             }
             return false;
         }

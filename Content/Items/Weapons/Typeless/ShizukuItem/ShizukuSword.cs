@@ -43,8 +43,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 1f;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<ShizukuAqua>();
-            Item.shoot = ModContent.ProjectileType<ShizukuEnergy>();
+            Item.rare = RarityType<ShizukuAqua>();
+            Item.shoot = ProjectileType<ShizukuEnergy>();
             Item.shootSpeed = 12f;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -134,7 +134,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
                 // 保持原速度并应用新方向
                 Vector2 newVelocity = direction * velocity.Length();
 
-                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ModContent.ProjectileType<ShizukuStar>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
+                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ProjectileType<ShizukuStar>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
                 Main.projectile[projectileFire].timeLeft = 160;
                 Main.projectile[projectileFire].DamageType = DamageClass.Melee;
             }
@@ -144,7 +144,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         private static void ShootTarget(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int target = ModContent.ProjectileType<ShizukuSwordHoldout>();
+            int target = ProjectileType<ShizukuSwordHoldout>();
             if  (player.ownedProjectileCounts[target] < 1 && player.statMana > GetManaUsage())
                 Projectile.NewProjectileDirect(source, position, velocity, target, damage, knockback, player.whoAmI);
         }
@@ -159,7 +159,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Typeless/ShizukuItem/{GetType().Name}"+"_GlowMask").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Typeless/ShizukuItem/{GetType().Name}"+"_GlowMask").Value);
         }
         public override void AddRecipes()
         {

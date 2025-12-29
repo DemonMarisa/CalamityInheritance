@@ -91,7 +91,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D texture = Request<Texture2D>(Texture).Value;
 
             int frameHeight = texture.Height / Main.projFrames[Projectile.type];
             int drawStart = frameHeight * Projectile.frame;
@@ -100,7 +100,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (CIGlobalNPC.LegacySCalLament != -1)
             {
                 DrawColor = Color.White;
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/SCalBrimstoneFireblastLegacy_Blue").Value;
+                texture = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/SCalBrimstoneFireblastLegacy_Blue").Value;
             }
             DrawColor *= Projectile.Opacity;
 
@@ -122,7 +122,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (Projectile.Hitbox.Intersects(player.Hitbox))
             {
-                player.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 360);
+                player.AddBuff(BuffType<VulnerabilityHexLegacy>(), 360);
 
                 Color orbcolor = Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f);
                 if (CIGlobalNPC.LegacySCalLament != -1)
@@ -148,7 +148,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (Projectile.ai[2] == 0f)
                 target.ScalDebuffs(240, 360, 0);
             else
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 90);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 90);
         }
 
         public override void OnKill(int timeLeft)
@@ -164,8 +164,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
                 for (int i = 0; i < 8; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), (int)Math.Round(Projectile.damage * 0.75), Projectile.knockBack, Projectile.owner, 0f, 1f, Projectile.ai[2] == 0f ? 0 : 1f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 7f), (float)(-Math.Cos(offsetAngle) * 7f), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), (int)Math.Round(Projectile.damage * 0.75), Projectile.knockBack, Projectile.owner, 0f, 1f, Projectile.ai[2] == 0f ? 0 : 1f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), ProjectileType<BrimstoneBarrageLegacy>(), (int)Math.Round(Projectile.damage * 0.75), Projectile.knockBack, Projectile.owner, 0f, 1f, Projectile.ai[2] == 0f ? 0 : 1f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 7f), (float)(-Math.Cos(offsetAngle) * 7f), ProjectileType<BrimstoneBarrageLegacy>(), (int)Math.Round(Projectile.damage * 0.75), Projectile.knockBack, Projectile.owner, 0f, 1f, Projectile.ai[2] == 0f ? 0 : 1f);
                 }
             }
 

@@ -31,9 +31,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.noMelee = true;
             Item.knockBack = 1f;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item68;
-            Item.shoot = ModContent.ProjectileType<MagicHatOld>();
+            Item.shoot = ProjectileType<MagicHatOld>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
         }

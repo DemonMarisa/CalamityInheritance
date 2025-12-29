@@ -72,8 +72,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (double)(spread / 2f);
                 if (projectile.owner == Main.myPlayer && Main.player[projectile.owner].ownedProjectileCounts[projectile.type] < 200 && Projectile.ai[0] == 1f)
                 {
-                    int projectile2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), ModContent.ProjectileType<ExoGunBlastsplit>(), (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
-                    int projectile3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), ModContent.ProjectileType<ExoGunBlastsplit>(), (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                    int projectile2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(startAngle) * 8.0), (float)(Math.Cos(startAngle) * 8.0), ProjectileType<ExoGunBlastsplit>(), (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
+                    int projectile3 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projectile.Center.X, projectile.Center.Y, (float)((double)(0f - (float)Math.Sin(startAngle)) * 8.0), (float)((double)(0f - (float)Math.Cos(startAngle)) * 8.0), ProjectileType<ExoGunBlastsplit>(), (int)(projectile.damage * 0.5), projectile.knockBack, projectile.owner, 0f, 0f, 0f);
                     Main.projectile[projectile2].DamageType = DamageClass.Default;
                     Main.projectile[projectile3].DamageType = DamageClass.Default;
                 }
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
                 }
             }
             target.immune[Projectile.owner] = 0;
@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
             }
             return true;
         }
@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ModContent.ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<ExoboomoldRanged>(), Projectile.damage / 2, 0, Projectile.owner, 0f, 0f);
                 }
             }
         }

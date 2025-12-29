@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             OnHitEffects(target.Center, hit.Crit);
 
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 300);
+            target.AddBuff(BuffType<MarkedforDeath>(), 300);
 
             target.Calamity().miscDefenseLoss = 25;
         }
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             OnHitEffects(target.Center, true);
 
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 300);
+            target.AddBuff(BuffType<MarkedforDeath>(), 300);
         }
 
         private void OnHitEffects(Vector2 targetPos, bool crit)
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Projectile.owner == Main.myPlayer)
                 {
                     bool fromRight = x > 3;
-                    Projectile proj = CalamityUtils.ProjectileBarrage(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, ModContent.ProjectileType<BetterAMR2>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner, false, 5f);
+                    Projectile proj = CalamityUtils.ProjectileBarrage(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.Center, fromRight, 500f, 500f, 0f, 500f, 10f, ProjectileType<BetterAMR2>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner, false, 5f);
                     proj.CalamityInheritance().ignoreDrAndDef = true;
                 }
             }

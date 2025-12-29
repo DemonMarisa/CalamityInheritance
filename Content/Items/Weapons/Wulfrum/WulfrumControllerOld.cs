@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.rare = ItemRarityID.Blue;
             Item.UseSound = SoundID.Item15; //phaseblade sound effect
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<WulfrumDroidOld>();
+            Item.shoot = ProjectileType<WulfrumDroidOld>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
         }

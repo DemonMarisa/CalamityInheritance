@@ -22,15 +22,14 @@ using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class Supernovaold : RogueWeapon, ILocalizedModType
+    public class Supernovaold : CIRogueClass
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public static readonly SoundStyle ExplosionSound = new("CalamityMod/Sounds/Item/SupernovaBoom") { Volume = 0.8f };
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
         }
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 34;
             Item.height = 36;
@@ -44,21 +43,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item15;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.shoot = ModContent.ProjectileType<SupernovaBombold>();
+            Item.shoot = ProjectileType<SupernovaBombold>();
             Item.shootSpeed = 19f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override float StealthDamageMultiplier => 1.35f;
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Main.projectile[p].Calamity().stealthStrike = player.Calamity().StealthStrikeAvailable();
-            return false;
-        }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/SupernovaoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Rogue/SupernovaoldGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

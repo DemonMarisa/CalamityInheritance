@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override void OnKill(int timeLeft)

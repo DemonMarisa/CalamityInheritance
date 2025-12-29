@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles;
@@ -15,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.JavelinHarpoon
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<InsidiousImpaler>();
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Melee/Spear/InsidiousImpalerLegacy";
+        public override string Texture => GetInstance<InsidiousImpalerLegacy>().Texture;
 
         public override void SetStaticDefaults()
         {
@@ -136,7 +137,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.JavelinHarpoon
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), 120);
+            target.AddBuff(BuffType<SulphuricPoisoning>(), 120);
             target.AddBuff(BuffID.Venom, 60);
         }
     }

@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item11;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<GoldenGunProj>();
+            Item.shoot = ProjectileType<GoldenGunProj>();
             Item.shootSpeed = 12f;
         }
 

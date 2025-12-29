@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     internal class HyperiusSplitOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.ProjRoute}/Ranged/HyperiusBulletProjOld";
+        public override string Texture => GetInstance<HyperiusBulletProjOld>().Texture;
         private Color currentColor = Color.Black;
 
         public override void SetStaticDefaults()

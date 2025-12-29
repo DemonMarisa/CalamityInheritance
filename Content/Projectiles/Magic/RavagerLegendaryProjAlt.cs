@@ -142,19 +142,19 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 case 0:
                     break;
                 case 1:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten2").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten2").Value;
                     break;
                 case 2:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten3").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten3").Value;
                     break;
                 case 3:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten4").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten4").Value;
                     break;
                 case 4:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten5").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten5").Value;
                     break;
                 case 5:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten6").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMolten6").Value;
                     break;
                 default:
                     break;
@@ -165,24 +165,24 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/RavagerLegendaryProjAltGlow").Value;
+            Texture2D tex = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/RavagerLegendaryProjAltGlow").Value;
             switch ((int)Projectile.ai[0])
             {
                 case 0:
                     break;
                 case 1:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow2").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow2").Value;
                     break;
                 case 2:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow3").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow3").Value;
                     break;
                 case 3:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow4").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow4").Value;
                     break;
                 case 4:
                     return;
                 case 5:
-                    tex = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow6").Value;
+                    tex = Request<Texture2D>("CalamityMod/Projectiles/Magic/AsteroidMoltenGlow6").Value;
                     break;
                 default:
                     break;

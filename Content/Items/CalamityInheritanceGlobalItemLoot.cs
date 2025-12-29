@@ -59,10 +59,10 @@ namespace CalamityInheritance.Content.Items
     public class CalamityInheritanceGlobalItemLoot : GlobalItem
     {
         public override bool InstancePerEntity => false;
-        public static bool CheckBag<T>(int type) where T : ModItem => type == ModContent.ItemType<T>();
+        public static bool CheckBag<T>(int type) where T : ModItem => type == ItemType<T>();
         public override void ModifyItemLoot(Item item, ItemLoot loot)
         {
-            if (item.type == ModContent.ItemType<StarterBag>())
+            if (item.type == ItemType<StarterBag>())
             {
                 loot.LootAdd<Death>();
                 loot.LootAdd<Armageddon>();
@@ -73,48 +73,48 @@ namespace CalamityInheritance.Content.Items
                 loot.LootAdd<DraedonsPanel>();
                 loot.LootAdd<CalamityTitleMusicBoxLegacy>();
             }
-            if (item.type == ModContent.ItemType<DesertScourgeBag>())
+            if (item.type == ItemType<DesertScourgeBag>())
             {
                 loot.LootAdd<AquaticDischarge>(4);
             }
-            if (item.type == ModContent.ItemType<DevourerofGodsBag>())
+            if (item.type == ItemType<DevourerofGodsBag>())
                 loot.LootAdd<Skullmasher>(10);
 
-            if (item.type == ModContent.ItemType<OldDukeBag>())
+            if (item.type == ItemType<OldDukeBag>())
             {
                 loot.LootAdd<LeadCore>(1);
                 loot.LootAdd<InsidiousImpalerLegacy>(3);
             }
 
-            if (item.type == ModContent.ItemType<AstrumDeusBag>())
+            if (item.type == ItemType<AstrumDeusBag>())
             {
                 loot.LootAdd<Quasar>(10);
                 loot.LootAdd<AstralBulwark>(1);
             }
-            if (item.type == ModContent.ItemType<YharonBag>())
+            if (item.type == ItemType<YharonBag>())
             {
                 loot.LootAdd<DragonsBreathold>(5);
                 loot.LootAdd<VoidVortexLegacy>(10);
                 loot.LootAdd<YharimsGiftLegacy>(1);
             }
 
-            if (item.type == ModContent.ItemType<CeaselessVoidBag>())
+            if (item.type == ItemType<CeaselessVoidBag>())
                 loot.LootAdd<ArcanumoftheVoid>(1);
 
-            if (item.type == ModContent.ItemType<RavagerBag>())
+            if (item.type == ItemType<RavagerBag>())
                 loot.LootAdd<BloodPactLegacy>(10);
 
-            if (item.type == ModContent.ItemType<LeviathanBag>())
+            if (item.type == ItemType<LeviathanBag>())
             {
                 loot.LootAdd<LeviathanAmbergrisLegacy>(3);//利维坦龙涎香现在掉落概率为1/3
             }
-            if (item.type == ModContent.ItemType<CryogenBag>())
+            if (item.type == ItemType<CryogenBag>())
             {
                 loot.LootAdd<CryoBar>(3, 10, 20); //33%概率，数量10-20
-                loot.LootAdd<GlacialCrusher>(3, 1 ,1);
-                loot.LootAdd<BittercoldStaff>(3, 1 ,1);
+                loot.LootAdd<GlacialCrusher>(3, 1, 1);
+                loot.LootAdd<BittercoldStaff>(3, 1, 1);
             }
-            if (item.type == ModContent.ItemType<PerforatorBag>())
+            if (item.type == ItemType<PerforatorBag>())
             {
                 loot.LootAdd<BloodClotStaff>(3);
             }
@@ -135,36 +135,36 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             #endregion
-            if (item.type == ModContent.ItemType<ProvidenceBag>())
+            if (item.type == ItemType<ProvidenceBag>())
             {
                 loot.LootAdd<PristineFuryLegacy>(4);
                 loot.LootAdd<SamuraiBadge>(10);
             }
-            if (item.type == ModContent.ItemType<DevourerofGodsBag>())
+            if (item.type == ItemType<DevourerofGodsBag>())
             {
                 loot.LootAdd<Eradicator_Melee>(3);
                 loot.LootAdd<Eradicator_Rogue>(3);
             }
 
-            if (item.type == ModContent.ItemType<RavagerBag>())
+            if (item.type == ItemType<RavagerBag>())
             {
-                loot.LootAdd<MeleeTypeCorpusAvertor>(3);
+                loot.LootAdd<MeleeCorpusAvertor>(3);
             }
-            if (item.type == ModContent.ItemType<PlaguebringerGoliathBag>())
+            if (item.type == ItemType<PlaguebringerGoliathBag>())
             {
                 loot.LootAdd<BlightSpewerLegacy>(4);
             }
-            if (item.type == ModContent.ItemType<HiveMindBag>())
+            if (item.type == ItemType<HiveMindBag>())
             {
                 loot.LootAdd<ShadethrowerLegacy>(4);
                 //暗影之雨
                 loot.LootAdd<ShadowdropStaff>(5);
             }
-                
-            if (item.type == ModContent.ItemType<SlimeGodBag>())
+
+            if (item.type == ItemType<SlimeGodBag>())
                 loot.LootAdd<OverloadedBlasterLegacy>(4);
 
-            if (item.type == ModContent.ItemType<AstrumAureusBag>())
+            if (item.type == ItemType<AstrumAureusBag>())
                 loot.LootAdd<AuroraBlazerLegacy>(4);
             switch (item.type)
             {
@@ -175,7 +175,7 @@ namespace CalamityInheritance.Content.Items
                 case ItemID.GolemBossBag:
                     loot.LootAdd<LeadWizard>(10);
                     break;
-                #endregion
+                    #endregion
             }
         }
     }

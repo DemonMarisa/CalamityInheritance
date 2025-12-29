@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -13,6 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     public class MarniteBayonetSpikesProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        public override string Texture => GetInstance<MarniteBayonet>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -24,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<RangedDamageClass>(); ;
+            Projectile.DamageType = GetInstance<RangedDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;

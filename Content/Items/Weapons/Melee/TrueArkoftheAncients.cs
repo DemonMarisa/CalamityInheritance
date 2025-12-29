@@ -32,25 +32,27 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 60;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<EonBeam>();
+            Item.shoot = ProjectileType<EonBeam>();
             Item.shootSpeed = 10f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-
+            /*
             type = Utils.SelectRandom(Main.rand, new int[]
             {
-                ModContent.ProjectileType<EonBeam>(),
-                ModContent.ProjectileType<EonBeamV2>()
+                ProjectileType<EonBeam>(),
+                ProjectileType<EonBeamV2>()
             });
+            */
 
 
-            int beam = Projectile.NewProjectile(source, position, velocity * 0.75f, type, (int)(damage * 0.75), knockback, Main.myPlayer);
-            if (Main.projectile[beam].active)
+            Projectile beam = Projectile.NewProjectileDirect(source, position, velocity * 0.75f, type, (int)(damage * 0.75), knockback, Main.myPlayer);
+            if (beam.active)
             {
-                Main.projectile[beam].localNPCHitCooldown = 14;
-                Main.projectile[beam].penetrate = 2;
+                beam.localNPCHitCooldown = 14;
+                beam.penetrate = 2;
+                beam.ai[1] = Main.rand.Next(1, 3);
             }
 
             int i = Main.myPlayer;
@@ -113,7 +115,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
                 speedX2 = num78 + Main.rand.Next(-80, 81) * 0.02f;
                 speedY2 = num79 + Main.rand.Next(-80, 81) * 0.02f;
-                Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ModContent.ProjectileType<TerraBall>(), damage, adjustedKnockback, i, 0f, Main.rand.Next(5));
+                Projectile.NewProjectile(source, vector2, new Vector2(speedX2, speedY2), ProjectileType<TerraBall>(), damage, adjustedKnockback, i, 0f, Main.rand.Next(5));
             }
 
             return false;
@@ -147,7 +149,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(2))
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                target.AddBuff(BuffType<HolyFlames>(), 300);
             }
         }
 
@@ -155,7 +157,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(2))
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                target.AddBuff(BuffType<HolyFlames>(), 300);
             }
         }
         public override void AddRecipes()

@@ -34,9 +34,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<LatcherMineProjectile>();
+            Item.shoot = ProjectileType<LatcherMineProjectile>();
             Item.shootSpeed = 10f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

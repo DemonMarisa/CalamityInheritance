@@ -132,7 +132,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             if (Projectile.velocity.Y >= -16f)
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
+                target.AddBuff(BuffType<Dragonfire>(), 180);
         }
 
     }

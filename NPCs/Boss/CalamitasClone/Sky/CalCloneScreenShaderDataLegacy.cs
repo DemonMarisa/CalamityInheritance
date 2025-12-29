@@ -22,7 +22,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
 
         private void UpdateIndex()
         {
-            int SCalType = ModContent.NPCType<CalamitasCloneLegacy>();
+            int SCalType = NPCType<CalamitasCloneLegacy>();
             if (CalCloneIndex >= 0 && Main.npc[CalCloneIndex].active && Main.npc[CalCloneIndex].type == SCalType)
             {
                 return;

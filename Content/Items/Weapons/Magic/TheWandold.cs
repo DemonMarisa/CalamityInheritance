@@ -40,9 +40,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = SoundID.Item102;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.shoot = ModContent.ProjectileType<SparkInfernalold>();
+            Item.shoot = ProjectileType<SparkInfernalold>();
             Item.shootSpeed = 24f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override Vector2? HoldoutOrigin()

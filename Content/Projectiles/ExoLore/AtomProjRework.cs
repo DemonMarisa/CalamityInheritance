@@ -2,8 +2,6 @@ using System;
 using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Ranged;
-using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -44,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.timeLeft = SlowdownTime;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
         #region 多人同步
@@ -150,7 +148,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             pDist = 24f / pDist;
             pDistVec.X *= pDist;
             pDistVec.Y *= pDist;
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), realPos, pDistVec, ModContent.ProjectileType<AtomDuplicateRework>(), Projectile.damage, 0f, Owner.whoAmI, default, default, target.whoAmI);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), realPos, pDistVec, ProjectileType<AtomDuplicateRework>(), Projectile.damage, 0f, Owner.whoAmI, default, default, target.whoAmI);
         }
 
         //直接从敌怪左右侧生成
@@ -166,7 +164,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             tarDist.X *= playerDist;
             tarDist.Y *= playerDist;
             //速度？我不需要速度.
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), horizon, tarDist, ModContent.ProjectileType<AtomDuplicateRework>(), Projectile.damage * 2, Projectile.knockBack, Owner.whoAmI, 0f, 0f, target.whoAmI);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), horizon, tarDist, ProjectileType<AtomDuplicateRework>(), Projectile.damage * 2, Projectile.knockBack, Owner.whoAmI, 0f, 0f, target.whoAmI);
             //只让内层循环自增
             AnotherIncre++;
             //FlipX == -1, 表射弹生成在目标左侧, AnotherIncre -1 0 1-> 上 中 下
@@ -193,7 +191,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             dist = 24f / dist;
             stealthDist.X *= dist;
             stealthDist.Y *= dist;
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), stealthPos, stealthDist, ModContent.ProjectileType<AtomDuplicateRework>(), Projectile.damage, 0f, Owner.whoAmI, default, default, target.whoAmI);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), stealthPos, stealthDist, ProjectileType<AtomDuplicateRework>(), Projectile.damage, 0f, Owner.whoAmI, default, default, target.whoAmI);
             StealthIncre++; 
             //同上
             if (StealthIncre > 1 && FlipY == -1)

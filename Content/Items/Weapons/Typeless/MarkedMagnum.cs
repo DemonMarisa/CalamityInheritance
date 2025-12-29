@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = false;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<MarkRound>();
+            Item.shoot = ProjectileType<MarkRound>();
         }
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
         {

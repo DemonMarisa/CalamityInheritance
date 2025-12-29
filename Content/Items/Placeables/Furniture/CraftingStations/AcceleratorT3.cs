@@ -26,8 +26,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.createTile = ModContent.TileType<AcceleratorT3Tile>();
-            Item.rare = ModContent.RarityType<PureRed>();    
+            Item.createTile = TileType<AcceleratorT3Tile>();
+            Item.rare = RarityType<PureRed>();    
         }
         public override void AddRecipes()
         {

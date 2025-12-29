@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<TriumphBuff>();
+            Item.buffType = BuffType<TriumphBuff>();
             Item.buffTime = CalamityUtils.SecondsToFrames(240f);
         }
 

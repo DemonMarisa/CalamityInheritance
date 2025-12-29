@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 5f;
             Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = RarityType<MaliceChallengeDrop>();
             Item.UseSound = SoundID.Item31;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.BulletHighVelocity;

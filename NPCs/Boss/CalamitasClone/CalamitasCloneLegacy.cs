@@ -131,9 +131,9 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             NPCID.Sets.TrailingMode[NPC.type] = 1;
             if (!Main.dedServ)
             {
-                P1GlowTexture = ModContent.Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Glow", AssetRequestMode.AsyncLoad);
-                P2Texture = ModContent.Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2", AssetRequestMode.AsyncLoad);
-                P2GlowTexture = ModContent.Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2_Glow", AssetRequestMode.AsyncLoad);
+                P1GlowTexture = Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Glow", AssetRequestMode.AsyncLoad);
+                P2Texture = Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2", AssetRequestMode.AsyncLoad);
+                P2GlowTexture = Request<Texture2D>($"{Gen}/CalamitasCloneLegacy_Phase2_Glow", AssetRequestMode.AsyncLoad);
             }
 
             NPCID.Sets.BossBestiaryPriority.Add(Type);
@@ -230,8 +230,8 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             else if (NPC.rotation > MathHelper.TwoPi)
                 NPC.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
 
-            isCloneSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<LifeSeekerLegacy>());
-            isCloneBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<CataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<CatastropheLegacy>());
+            isCloneSeekerAlive = NPC.AnyNPCs(NPCType<LifeSeekerLegacy>());
+            isCloneBrotherAlive = NPC.AnyNPCs(NPCType<CataclysmLegacy>()) || NPC.AnyNPCs(NPCType<CatastropheLegacy>());
 
             if (initialized == false)
             {
@@ -452,7 +452,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation); // 基础方向根据旋转角度
                     direction = direction.SafeNormalize(Vector2.UnitX);
 
-                    int projType = ModContent.ProjectileType<BrimstoneLaser>();
+                    int projType = ProjectileType<BrimstoneLaser>();
                     // 偏移向量
                     Vector2 offset = new Vector2(0, 50).RotatedBy(NPC.rotation);
                     Vector2 projectileVelocity = direction * 12.5f;
@@ -483,7 +483,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 {
                     if (attacktimer % dashFireCD == 0)
                     {
-                        int type = ModContent.ProjectileType<BrimstoneHellblastLegacy>();
+                        int type = ProjectileType<BrimstoneHellblastLegacy>();
                         Vector2 fireballVelocity = NPC.velocity * 0.005f;
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, fireballVelocity, type, fireDamage, 0f, Main.myPlayer, 0f, 0f, 1f);
                     }
@@ -552,7 +552,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                     // 使用旋转角度计算方向
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation); // 基础方向根据旋转角度
                     direction = direction.SafeNormalize(Vector2.UnitX);
-                    int projType = ModContent.ProjectileType<HellfireballReborn>();
+                    int projType = ProjectileType<HellfireballReborn>();
                     // 偏移向量
                     Vector2 offset = new Vector2(0, 50).RotatedBy(NPC.rotation);
                     Vector2 projectileVelocity = direction * 12.5f;
@@ -664,15 +664,15 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             {
                 if (summonTwoBrother == true)
                 {
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + NPC.width, (int)NPC.Center.Y, ModContent.NPCType<CataclysmLegacy>(), NPC.whoAmI);
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - NPC.width, (int)NPC.Center.Y, ModContent.NPCType<CatastropheLegacy>(), NPC.whoAmI, 0, 15f);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + NPC.width, (int)NPC.Center.Y, NPCType<CataclysmLegacy>(), NPC.whoAmI);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - NPC.width, (int)NPC.Center.Y, NPCType<CatastropheLegacy>(), NPC.whoAmI, 0, 15f);
                 }
                 else
                 {
                     if (SpawnWho)
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + NPC.width, (int)NPC.Center.Y + NPC.height, ModContent.NPCType<CataclysmLegacy>(), NPC.whoAmI);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X + NPC.width, (int)NPC.Center.Y + NPC.height, NPCType<CataclysmLegacy>(), NPC.whoAmI);
                     else
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - NPC.width, (int)NPC.Center.Y - NPC.height, ModContent.NPCType<CatastropheLegacy>(), NPC.whoAmI, 0, 15f);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X - NPC.width, (int)NPC.Center.Y - NPC.height, NPCType<CatastropheLegacy>(), NPC.whoAmI, 0, 15f);
                 }
             }
             SpawnDust();
@@ -690,7 +690,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 int seekerDistance = 180;
                 for (int i = 0; i < seekerAmt; i++)
                 {
-                    int spawn = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + (Math.Sin(i * seekerSpread) * seekerDistance)), (int)(NPC.Center.Y + (Math.Cos(i * seekerSpread) * seekerDistance)), ModContent.NPCType<LifeSeekerLegacy>(), NPC.whoAmI, 0, 0, 0, -1);
+                    int spawn = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + (Math.Sin(i * seekerSpread) * seekerDistance)), (int)(NPC.Center.Y + (Math.Cos(i * seekerSpread) * seekerDistance)), NPCType<LifeSeekerLegacy>(), NPC.whoAmI, 0, 0, 0, -1);
                     Main.npc[spawn].ai[0] = i * seekerSpread;
                 }
             }
@@ -729,7 +729,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             }
             if (Main.netMode != NetmodeID.MultiplayerClient)
             {
-                int type = ModContent.ProjectileType<BrimstoneHellblast2>();
+                int type = ProjectileType<BrimstoneHellblast2>();
                 //发起弹幕炼狱的时候应该干掉所有激光
                 float projSpeed = 4f;
                 if (currentPhase > 4f)
@@ -743,14 +743,14 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                             // 左右两侧
                             float distance = Main.rand.NextBool() ? -1000f : 1000f;
                             float velocity = (distance == -1000f ? 4f : -4f);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distance, player.position.Y, velocity, 0f, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), fireDamage, 0f, Main.myPlayer, 0f, 2f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distance, player.position.Y, velocity, 0f, ProjectileType<SCalBrimstoneFireblastLegacy>(), fireDamage, 0f, Main.myPlayer, 0f, 2f, 1f);
                         }
                         else
                         {
                             SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.Center);
                             // 上方
                             float spread = Main.rand.Next(-1000, 1000);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + spread, player.position.Y - 1000f, 0f, 5f, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), fireDamage, 0f, Main.myPlayer, 0f, 2f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + spread, player.position.Y - 1000f, 0f, 5f, ProjectileType<SCalBrimstoneFireblastLegacy>(), fireDamage, 0f, Main.myPlayer, 0f, 2f, 1f);
                         }
                     }
                 }
@@ -795,7 +795,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 Projectile proj = Main.projectile[x];
                 if (!proj.active)
                     continue;
-                if (proj.type != ModContent.ProjectileType<BrimstoneLaserSplit>())
+                if (proj.type != ProjectileType<BrimstoneLaserSplit>())
                     continue;
                 if (proj.timeLeft > 10)
                     proj.timeLeft = 10;
@@ -810,14 +810,14 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 Projectile projectile = Main.projectile[x];
                 if (projectile.active)
                 {
-                    if (projectile.type == ModContent.ProjectileType<BrimstoneHellblast2>() ||
-                        projectile.type == ModContent.ProjectileType<BrimstoneBarrageLegacy>() ||
-                        projectile.type == ModContent.ProjectileType<BrimstoneWaveLegacy>())
+                    if (projectile.type == ProjectileType<BrimstoneHellblast2>() ||
+                        projectile.type == ProjectileType<BrimstoneBarrageLegacy>() ||
+                        projectile.type == ProjectileType<BrimstoneWaveLegacy>())
                     {
                         if (projectile.timeLeft > 60)
                             projectile.timeLeft = 60;
                     }
-                    else if (projectile.type == ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>() || projectile.type == ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>())
+                    else if (projectile.type == ProjectileType<SCalBrimstoneFireblastLegacy>() || projectile.type == ProjectileType<SCalBrimstoneGigablastLegacy>())
                     {
                         projectile.ai[1] = 1f;
 
@@ -926,6 +926,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             float colorLerpAmt = 0.5f;
             int afterimageAmt = 7;
 
+
             if (CalamityClientConfig.Instance.Afterimages)
             {
                 for (int i = 1; i < afterimageAmt; i += 2)
@@ -977,7 +978,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             if (hurtInfo.Damage > 0)
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180, true);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 180, true);
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
@@ -1009,47 +1010,47 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<CalamitasCloneBag>()));
-            CIFunction.ArmageddonBagDrop(npcLoot, ModContent.ItemType<CalamitasCloneBag>());
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<CalamitasCloneBag>()));
+            CIFunction.ArmageddonBagDrop(npcLoot, ItemType<CalamitasCloneBag>());
             var normalOnly = npcLoot.DefineNormalOnlyDropSet();
             {
                 // Items
                 int[] items = new int[]
                 {
-                    ModContent.ItemType<Oblivion>(),
-                    ModContent.ItemType<Animosity>(),
-                    ModContent.ItemType<LashesofChaos>(),
-                    ModContent.ItemType<EntropysVigil>()
+                    ItemType<Oblivion>(),
+                    ItemType<Animosity>(),
+                    ItemType<LashesofChaos>(),
+                    ItemType<EntropysVigil>()
                 };
                 normalOnly.Add(DropHelper.CalamityStyle(DropHelper.NormalWeaponDropRateFraction, items));
 
                 // Equipment
-                normalOnly.Add(DropHelper.PerPlayer(ModContent.ItemType<VoidofCalamity>()));
-                normalOnly.Add(ModContent.ItemType<ChaosStone>(), DropHelper.NormalWeaponDropRateFraction);
-                normalOnly.Add(ModContent.ItemType<Regenerator>(), 10);
+                normalOnly.Add(DropHelper.PerPlayer(ItemType<VoidofCalamity>()));
+                normalOnly.Add(ItemType<ChaosStone>(), DropHelper.NormalWeaponDropRateFraction);
+                normalOnly.Add(ItemType<Regenerator>(), 10);
 
                 // Materials
-                normalOnly.Add(ModContent.ItemType<EssenceofHavoc>(), 1, 8, 10);
-                normalOnly.Add(ModContent.ItemType<AshesofCalamity>(), 1, 25, 30);
+                normalOnly.Add(ItemType<EssenceofHavoc>(), 1, 8, 10);
+                normalOnly.Add(ItemType<AshesofCalamity>(), 1, 25, 30);
 
                 // Vanity
-                normalOnly.Add(ModContent.ItemType<CalamitasCloneMask>(), 7);
-                var calVanity = ItemDropRule.Common(ModContent.ItemType<HoodOfCalamity>(), 10);
-                calVanity.OnSuccess(ItemDropRule.Common(ModContent.ItemType<RobesOfCalamity>()));
+                normalOnly.Add(ItemType<CalamitasCloneMask>(), 7);
+                var calVanity = ItemDropRule.Common(ItemType<HoodOfCalamity>(), 10);
+                calVanity.OnSuccess(ItemDropRule.Common(ItemType<RobesOfCalamity>()));
                 normalOnly.Add(calVanity);
             }
             npcLoot.Add(ItemID.BrokenHeroSword, 1, 2, 2);
 
-            npcLoot.Add(ModContent.ItemType<CalamitasCloneTrophy>(), 10);
+            npcLoot.Add(ItemType<CalamitasCloneTrophy>(), 10);
 
             // Relic
-            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ModContent.ItemType<CalCloneRelic>());
+            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ItemType<CalCloneRelic>());
 
             // GFB Ashes of Annihilation drop
-            npcLoot.DefineConditionalDropSet(DropHelper.GFB).Add(ModContent.ItemType<AshesofAnnihilation>(), 1, 6, 9, true);
+            npcLoot.DefineConditionalDropSet(DropHelper.GFB).Add(ItemType<AshesofAnnihilation>(), 1, 6, 9, true);
 
             // Lore
-            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ModContent.ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
+            npcLoot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitasClone, ItemType<KnowledgeCalamitasClone>(), desc: DropHelper.FirstKillText);
         }
 
         public override void OnKill()

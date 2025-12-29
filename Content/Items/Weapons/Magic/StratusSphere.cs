@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.height = 24;
             Item.useTime = 45;
             Item.useAnimation = 45;
-            Item.shoot = ModContent.ProjectileType<StratusSphereHold>();
+            Item.shoot = ProjectileType<StratusSphereHold>();
             Item.shootSpeed = 3.5f;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.mana = 30;
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.channel = true;
             Item.noMelee = true;
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
         public override void OnConsumeMana(Player player, int manaConsumed) => player.statMana += manaConsumed;
 
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<StratusSphereHold>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity, ProjectileType<StratusSphereHold>(), damage, knockback, player.whoAmI);
             return false;
         }
         public override void AddRecipes()

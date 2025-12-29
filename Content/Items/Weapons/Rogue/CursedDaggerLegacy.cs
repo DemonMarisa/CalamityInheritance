@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 34;
             Item.damage = 34;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 16;
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.height = 34;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<CursedDaggerProjLegacy>();
+            Item.shoot = ProjectileType<CursedDaggerProjLegacy>();
             Item.shootSpeed = ShootSpeed;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo src, Vector2 pos, Vector2 vel, int type, int dmg, float kb)

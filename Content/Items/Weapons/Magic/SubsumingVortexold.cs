@@ -46,10 +46,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<EnormousConsumingVortexold>();
+            Item.shoot = ProjectileType<EnormousConsumingVortexold>();
             Item.shootSpeed = 7f;
         }
         public override bool CanUseItem(Player player)
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, (Texture2D)ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Magic/SubsumingVortexoldGlow"));
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, (Texture2D)Request<Texture2D>($"{Generic.WeaponPath}/Magic/SubsumingVortexoldGlow"));
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
-                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 4, ModContent.ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 4, ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             }
             else
             {

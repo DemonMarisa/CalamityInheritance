@@ -33,9 +33,9 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         { 
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),10)
+            .AddIngredient(ItemType<PerennialBar>(),10)
             .AddIngredient(ItemID.JungleSpores, 8)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
+            .AddIngredient(ItemType<EssenceofEleum>(), 2)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

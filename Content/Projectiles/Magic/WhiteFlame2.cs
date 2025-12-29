@@ -10,13 +10,14 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using static CalamityInheritance.Utilities.CIFunction;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class WhiteFlameAltLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 64;
@@ -51,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 360);
+            target.AddBuff(BuffType<HolyFlames>(), 360);
         }
     }
 }

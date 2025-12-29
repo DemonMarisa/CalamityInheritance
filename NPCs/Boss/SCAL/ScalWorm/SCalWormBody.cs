@@ -187,7 +187,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             if (NPC.spriteDirection == 1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
 
-            Texture2D texture2D15 = NPC.localAI[3] / 2f % 2f == 0f ? ModContent.Request<Texture2D>($"{ScalImagePath}/SCalWormBodyAlt").Value : TextureAssets.Npc[NPC.type].Value;
+            Texture2D texture2D15 = NPC.localAI[3] / 2f % 2f == 0f ? Request<Texture2D>($"{ScalImagePath}/SCalWormBodyAlt").Value : TextureAssets.Npc[NPC.type].Value;
             Vector2 vector11 = new Vector2(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / 2);
 
             Vector2 vector43 = NPC.Center - Main.screenPosition;
@@ -197,7 +197,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
 
             if (NPC.localAI[3] / 2f % 2f == 0f)
             {
-                texture2D15 = ModContent.Request<Texture2D>($"{ScalImagePath}/SCalWormBodyAltGlow").Value;
+                texture2D15 = Request<Texture2D>($"{ScalImagePath}/SCalWormBodyAltGlow").Value;
                 Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
                 spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = 1;
             Projectile.timeLeft = 300;
             Projectile.tileCollide = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
         public override bool OnTileCollide(Vector2 oldVelocity) => false;
 

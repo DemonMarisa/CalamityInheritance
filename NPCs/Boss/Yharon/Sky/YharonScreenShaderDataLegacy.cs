@@ -22,7 +22,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
 
         private void UpdateIndex()
         {
-            int YharonType = ModContent.NPCType<YharonLegacy>();
+            int YharonType = NPCType<YharonLegacy>();
             if (YharonIndex >= 0 && Main.npc[YharonIndex].active && Main.npc[YharonIndex].type == YharonType)
             {
                 return;

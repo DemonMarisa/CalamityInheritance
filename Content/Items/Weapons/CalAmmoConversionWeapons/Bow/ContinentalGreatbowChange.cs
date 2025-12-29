@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<ContinentalGreatbow>();
+            return item.type == ItemType<ContinentalGreatbow>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

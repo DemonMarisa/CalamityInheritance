@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
-            Item.createTile = ModContent.TileType<IronHeartTiles>();
+            Item.createTile = TileType<IronHeartTiles>();
             Item.rare = ItemRarityID.Blue;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return true;
             if (player.altFunctionUse != 2)
             {
-                CIWorld world = ModContent.GetInstance<CIWorld>();
+                CIWorld world = GetInstance<CIWorld>();
                 world.UpdateIronHeart();
                 return true;
             }

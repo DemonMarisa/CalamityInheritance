@@ -37,18 +37,18 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
         {
             target.AddBuff(BuffID.BetsysCurse, 180);
             target.AddBuff(BuffID.Ichor, 180);
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 180);
-            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 180);
-            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 180);
+            target.AddBuff(BuffType<MarkedforDeath>(), 180);
+            target.AddBuff(BuffType<ArmorCrunch>(), 180);
+            target.AddBuff(BuffType<ArmorCrunch>(), 180);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffID.BetsysCurse, 180);
             target.AddBuff(BuffID.Ichor, 180);
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 180);
-            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 180);
-            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 180);
+            target.AddBuff(BuffType<MarkedforDeath>(), 180);
+            target.AddBuff(BuffType<ArmorCrunch>(), 180);
+            target.AddBuff(BuffType<ArmorCrunch>(), 180);
         }
 
         public override Color? GetAlpha(Color lightColor)

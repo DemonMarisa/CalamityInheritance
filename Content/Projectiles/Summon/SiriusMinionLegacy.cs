@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer modPlayer = player.CIMod();
 
-            bool correctMinion = Projectile.type == ModContent.ProjectileType<SiriusMinionLegacy>();
+            bool correctMinion = Projectile.type == ProjectileType<SiriusMinionLegacy>();
             if (correctMinion)
             {
                 if (player.dead)
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.timeLeft = 2;
                 }
             }
-            player.AddBuff(ModContent.BuffType<SiriusBuffLegacy>(), 3600);
+            player.AddBuff(BuffType<SiriusBuffLegacy>(), 3600);
 
             Projectile.minionSlots = Projectile.ai[0];
             Lighting.AddLight(Projectile.Center, 0.5f, 0.5f, 5f);
@@ -144,7 +144,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     velocity.Y *= targetDist;
                     float damageMult = ((float)Math.Log(Projectile.ai[0], MathHelper.E)) + 1f;
 
-                    int beam = Projectile.NewProjectile(Projectile.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<SiriusBeam>(), (int)(Projectile.damage * damageMult), Projectile.knockBack, Projectile.owner);
+                    int beam = Projectile.NewProjectile(Projectile.GetSource_FromThis(), source, velocity, ProjectileType<SiriusBeam>(), (int)(Projectile.damage * damageMult), Projectile.knockBack, Projectile.owner);
                     if (Main.projectile.IndexInRange(beam))
                         Main.projectile[beam].originalDamage = (int)(Projectile.originalDamage * damageMult);
                     Main.projectile[beam].penetrate = (int)Projectile.ai[0];

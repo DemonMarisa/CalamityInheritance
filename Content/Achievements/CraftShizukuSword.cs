@@ -10,11 +10,11 @@ namespace CalamityInheritance.Content.Achievements
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(Terraria.Achievements.AchievementCategory.Collector);
-            AddItemPickupCondition(ModContent.ItemType<ShizukuSword>());
+            AddItemPickupCondition(ItemType<ShizukuSword>());
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<CraftDoubleArk>());
+            yield return new After(GetInstance<CraftDoubleArk>());
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CalamityInheritance.CIPlayer
 
                 if (!Main.bloodMoon && currentBloodMoon)
                 {
-                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ModContent.ItemType<KnowledgeBloodMoon>(), 1);
+                    Player.QuickSpawnItem(Player.GetSource_GiftOrReward(), ItemType<KnowledgeBloodMoon>(), 1);
                     CIDownedBossSystem.DownedBloodMoon = true;
                     currentBloodMoon = false;
                 }

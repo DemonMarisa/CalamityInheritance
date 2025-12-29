@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 { 
                     SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
                     Vector2 newVel = new(Projectile.velocity.X * 0.1f * MathHelper.PiOver2, Projectile.velocity.Y * 0.1f * MathHelper.PiOver2);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVel ,ModContent.ProjectileType<Iceberg>(), Projectile.damage/5, Projectile.knockBack, Main.myPlayer, Projectile.ai[0], -1f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, newVel , ProjectileType<Iceberg>(), Projectile.damage/5, Projectile.knockBack, Main.myPlayer, Projectile.ai[0], -1f);
                 }
                 Projectile.rotation +=0.4f;
                 Projectile.velocity *=1.01f;
@@ -115,11 +115,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<GlacialState>(), 60);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<GlacialState>(), 60);
         }
 
         public void TrailDustHoming()

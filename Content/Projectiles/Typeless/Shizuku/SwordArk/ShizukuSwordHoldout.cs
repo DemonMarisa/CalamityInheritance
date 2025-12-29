@@ -128,9 +128,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             GlowingFadingTimer += 1f;
             if (GlowingFadingTimer > 20f)
                 GlowingFadingTimer = 20f;
-            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] < 1)
+            if (Owner.ownedProjectileCounts[ProjectileType<ShizukuStarHoldout>()] < 1)
             {
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Owner.Center, Projectile.velocity, ModContent.ProjectileType<ShizukuStarHoldout>(), Projectile.damage, 0f, Owner.whoAmI);
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Owner.Center, Projectile.velocity, ProjectileType<ShizukuStarHoldout>(), Projectile.damage, 0f, Owner.whoAmI);
                 proj.DamageType = DamageClass.Magic;
             }
         }

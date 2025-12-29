@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
 
-            Item.shoot = ModContent.ProjectileType<WulfrumStaffHoldOut>();
+            Item.shoot = ProjectileType<WulfrumStaffHoldOut>();
             Item.shootSpeed = 9f;
 
             Item.noUseGraphic = true;
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         {
             if (Main.zenithWorld)
             {
-                Item.rare = ModContent.RarityType<IchikaBlack>();
+                Item.rare = RarityType<IchikaBlack>();
                 Item.value = CIShopValue.RarityPricePureRed;
                 Item.UseSound = CISoundID.SoundFart;
                 Item.useStyle = ItemUseStyleID.Shoot;
@@ -63,13 +63,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
                 Item.UseSound = CISoundID.SoundStaffDiamond;
                 Item.useStyle = ItemUseStyleID.Shoot;
             }
-            return player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<WulfrumStaffHoldOut>()] < 1;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if(player.ownedProjectileCounts[ModContent.ProjectileType<WulfrumStaffHoldOut>()] < 1)
-                Projectile.NewProjectileDirect(projSource, position, velocity, ModContent.ProjectileType<WulfrumStaffHoldOut>(), damage, knockback, player.whoAmI);
+            if(player.ownedProjectileCounts[ProjectileType<WulfrumStaffHoldOut>()] < 1)
+                Projectile.NewProjectileDirect(projSource, position, velocity, ProjectileType<WulfrumStaffHoldOut>(), damage, knockback, player.whoAmI);
             return false;
         }
 

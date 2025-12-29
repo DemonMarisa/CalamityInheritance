@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.alpha = ((Projectile.ai[1] <= 5f) ? 255 : 0);
             if (Projectile.ai[1] % 6f == 0f && Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.05f, ModContent.ProjectileType<ExoFlailEnergy>(), (int)(Projectile.damage * 0.1f), Projectile.owner, 0, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.05f, ProjectileType<ExoFlailEnergy>(), (int)(Projectile.damage * 0.1f), Projectile.owner, 0, 0f);
             }
         }
 
@@ -137,14 +137,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float startAngle = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
                 if (Projectile.ai[1] >= 11f)
                 {
-                    Explode(Projectile.Center, startAngle, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
-                    Explode(Projectile.Center, startAngle, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
-                    Explode(Projectile.Center, startAngle, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
+                    Explode(Projectile.Center, startAngle, 8, 12f, ProjectileType<ExoFlailEnergy>(), 0.1f);
+                    Explode(Projectile.Center, startAngle, 8, 8f, ProjectileType<ExoFlailEnergy>(), 0.15f);
+                    Explode(Projectile.Center, startAngle, 8, 4f, ProjectileType<ExoFlailEnergy>(), 0.2f);
                     //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 else
                 {
-                    Explode(Projectile.Center, startAngle, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
+                    Explode(Projectile.Center, startAngle, 8, 4f, ProjectileType<ExoFlailEnergy>(), 0.2f);
                     //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 }
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
@@ -154,9 +154,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else
             {
                 float startAngle2 = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
-                Explode(Projectile.Center, startAngle2, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
-                Explode(Projectile.Center, startAngle2, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
-                Explode(Projectile.Center, startAngle2, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
+                Explode(Projectile.Center, startAngle2, 8, 12f, ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(Projectile.Center, startAngle2, 8, 8f, ProjectileType<ExoFlailEnergy>(), 0.15f);
+                Explode(Projectile.Center, startAngle2, 8, 4f, ProjectileType<ExoFlailEnergy>(), 0.2f);
                 //Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Exoboom>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
             }
@@ -166,8 +166,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             Vector2 mountedCenter = Main.player[Projectile.owner].MountedCenter;
             _ = Color.Transparent;
-            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Chain").Value;
-            Texture2D texture2 = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Base").Value;
+            Texture2D texture = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Chain").Value;
+            Texture2D texture2 = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ExoFlailProj2_Base").Value;
             Vector2 vector = Projectile.Center;
             Rectangle? sourceRectangle = null;
             Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);

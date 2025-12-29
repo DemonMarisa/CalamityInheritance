@@ -18,11 +18,11 @@ namespace CalamityInheritance.NPCs
         {
             int type = shop.NpcType;
 
-            if (type == ModContent.NPCType<Archmage>())
+            if (type == NPCType<Archmage>())
             {
-                shop.AddWithCustomValue(ModContent.ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));
+                shop.AddWithCustomValue(ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));
             }
-            if (type == ModContent.NPCType<Bandit>())
+            if (type == NPCType<Bandit>())
             {
                 shop.ShopHelper<BouncingBetty>(Item.buyPrice(gold: 25), Condition.DownedMechBossAny);
                 shop.ShopHelper<SylvanSlasher>(Item.buyPrice(platinum: 1), Condition.DownedMoonLord);
@@ -30,9 +30,9 @@ namespace CalamityInheritance.NPCs
             }
             if (type == NPCID.ArmsDealer)
             {
-                shop.AddWithCustomValue(ModContent.ItemType<MagnumRounds>(), Item.buyPrice(gold: 10))
-                .AddWithCustomValue(ModContent.ItemType<GrenadeRounds>(), Item.buyPrice(gold: 25))
-                .AddWithCustomValue(ModContent.ItemType<ExplosiveShells>(), Item.buyPrice(gold: 50));
+                shop.AddWithCustomValue(ItemType<MagnumRounds>(), Item.buyPrice(gold: 10))
+                .AddWithCustomValue(ItemType<GrenadeRounds>(), Item.buyPrice(gold: 25))
+                .AddWithCustomValue(ItemType<ExplosiveShells>(), Item.buyPrice(gold: 50));
             }
         }
         #endregion

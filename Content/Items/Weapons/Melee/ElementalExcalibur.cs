@@ -39,9 +39,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 112;
             Item.height = 112;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.shoot = ModContent.ProjectileType<ElementalExcaliburBeam>();
+            Item.shoot = ProjectileType<ElementalExcaliburBeam>();
             Item.shootSpeed = 6f;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                Item.shoot = ModContent.ProjectileType<ElementalExcaliburBeam>();
+                Item.shoot = ProjectileType<ElementalExcaliburBeam>();
                 Item.shootSpeed = 12f;
             }
 
@@ -141,7 +141,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+            target.AddBuff(BuffType<MiracleBlight>(), 600);
 
             if (!target.canGhostHeal || player.moonLeech)
                 return;
@@ -153,7 +153,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+            target.AddBuff(BuffType<MiracleBlight>(), 600);
 
             if (player.moonLeech)
                 return;

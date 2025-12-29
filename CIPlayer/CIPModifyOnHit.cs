@@ -21,7 +21,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore )&& target.type == ModContent.NPCType<ReaperShark>())
+                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore )&& target.type == NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }
@@ -68,7 +68,7 @@ namespace CalamityInheritance.CIPlayer
             #region 暴伤乘区
             float totalCritsBuff = 0f;
             //氦闪爆伤加成
-            if (Player.ActiveItem().type == ModContent.ItemType<HeliumFlashLegacy>())
+            if (Player.ActiveItem().type == ItemType<HeliumFlashLegacy>())
             {
                 int chanceToSupreCrit = (int)Player.GetTotalCritChance<MagicDamageClass>() - 100 + 4;
                 if (Main.rand.Next(1, 101) <= chanceToSupreCrit && chanceToSupreCrit > 1)
@@ -128,7 +128,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
+                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore) && target.type == NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }
@@ -137,7 +137,7 @@ namespace CalamityInheritance.CIPlayer
             if (SilvaMeleeSetLegacy)
             {
                 //Main.NewText($"触发判定", 255, 255, 255);
-                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>())
+                if (Main.rand.NextBool(4) && item.DamageType == DamageClass.Melee || item.DamageType == GetInstance<TrueMeleeDamageClass>())
                 {
                     modifiers.FinalDamage *= 5;
                 }
@@ -145,10 +145,10 @@ namespace CalamityInheritance.CIPlayer
 
             if (CIConfig.Instance.silvastun == true)
             {
-                if (item.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
+                if (item.DamageType == GetInstance<TrueMeleeDamageClass>() && SilvaStunDebuffCooldown <= 0 && SilvaMeleeSetLegacy && Main.rand.NextBool(4))
                 {
                     //Main.NewText($"触发眩晕im", 255, 255, 255);
-                    target.AddBuff(ModContent.BuffType<SilvaStun>(), 20);
+                    target.AddBuff(BuffType<SilvaStun>(), 20);
                     SilvaStunDebuffCooldown = 1800;
                 }
             }
@@ -165,7 +165,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityInheritancePlayer modPlayer = Player.CIMod();
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if ((modPlayer.SCalLore || modPlayer.PanelsSCalLore) && target.type == ModContent.NPCType<ReaperShark>())
+                if ((modPlayer.SCalLore || modPlayer.PanelsSCalLore) && target.type == NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }

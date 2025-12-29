@@ -5,12 +5,14 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class ElementalShivoldProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<ElementalShivold>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -22,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
@@ -32,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<ElementBallShivold>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ProjectileType<ElementBallShivold>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
 
         public override void SetVisualOffsets()

@@ -39,13 +39,13 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #endregion
             #region 注册材质
             // 经验条
-            Texture2D LevelBar = ModContent.Request<Texture2D>($"{LevelImagePath}/LevelBar").Value;
+            Texture2D LevelBar = Request<Texture2D>($"{LevelImagePath}/LevelBar").Value;
             // 右侧加成用的边缘
-            Texture2D LevelBoostBorder = ModContent.Request<Texture2D>($"{LevelImagePath}/LevelBoostBorder").Value;
+            Texture2D LevelBoostBorder = Request<Texture2D>($"{LevelImagePath}/LevelBoostBorder").Value;
             // 左侧进度边缘
-            Texture2D LevelBorder = ModContent.Request<Texture2D>($"{LevelImagePath}/LevelBorder").Value;
+            Texture2D LevelBorder = Request<Texture2D>($"{LevelImagePath}/LevelBorder").Value;
             // 左侧最上方文字下划线
-            Texture2D LevelHead = ModContent.Request<Texture2D>($"{LevelImagePath}/LevelHead").Value;
+            Texture2D LevelHead = Request<Texture2D>($"{LevelImagePath}/LevelHead").Value;
             #endregion
 
             #region 绘制最上面的文字

@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = CommonCalamitySounds.PlasmaBoltSound;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<RainbowBlast>();
+            Item.shoot = ProjectileType<RainbowBlast>();
             Item.shootSpeed = 18f;
         }
 

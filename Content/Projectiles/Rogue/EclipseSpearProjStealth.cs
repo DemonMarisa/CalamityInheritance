@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.extraUpdates = 4;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 // 生成一个爆炸并Kill掉
                 RainDownSpears();
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
                 Projectile.Kill();
             }
         }
@@ -131,7 +131,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 OnHitSparks();
                 //击中一次，产生一次爆炸
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
             }
             SoundEngine.PlaySound(CISoundMenu.EclipseSpearBoom, npc.Center);
         }
@@ -189,7 +189,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 speed.X *= tarDist;
                 speed.Y *= tarDist;
                 //生崽
-                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ModContent.ProjectileType<EclipseSpearSmall>(), Projectile.damage / 5, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), pPos, speed, ProjectileType<EclipseSpearSmall>(), Projectile.damage / 5, Projectile.knockBack, Projectile.owner);
             }
         }
         public override bool PreDraw(ref Color lightColor)

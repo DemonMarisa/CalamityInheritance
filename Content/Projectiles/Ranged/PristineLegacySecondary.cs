@@ -1,6 +1,7 @@
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -10,10 +11,10 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class PristineLegacySecondary : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private int dust1 = (int)CalamityDusts.ProfanedFire;
-        private int dust2 = ModContent.DustType<HolyFireDust>();
+        private int dust2 = DustType<HolyFireDust>();
 
         public override void SetDefaults()
         {
@@ -95,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 240);
+            target.AddBuff(BuffType<HolyFlames>(), 240);
         }
     }
 }

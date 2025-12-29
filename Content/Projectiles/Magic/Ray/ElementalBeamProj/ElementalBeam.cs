@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public int Time = 0;
         public ref float Timer => ref Projectile.ai[0];
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");
@@ -38,8 +39,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             if (Projectile.localAI[1] >= 40f && Projectile.owner == Main.myPlayer)
             {
                 Projectile.localAI[1] = 0f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ElementalRayMarkVortex>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ElementalRayMarkStar>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ElementalRayMarkVortex>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ElementalRayMarkStar>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 9f)
@@ -65,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<ElementalMix>(), 90);
+            target.AddBuff(BuffType<ElementalMix>(), 90);
         }
     }
 }

@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 82;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<DragonRageProj>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<DragonRageProj>();
             Item.shootSpeed = 14f;
         }
 

@@ -27,8 +27,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 13));
             //我要转微光bro
             ItemID.Sets.AnimatesAsSoul[Type] = false;
-            Type.ShimmetTo<Murasamaold>();
-            CIFunction.ShimmetTo<MurasamaNeweffect>(ModContent.ItemType<Murasama>());
+            Type.ShimmerTo<Murasamaold>();
+            CIFunction.ShimmerTo<MurasamaNeweffect>(ItemType<Murasama>());
             Item.ResearchUnlockCount = 1;
         }
 
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 134;
             Item.width = 56;
             Item.damage = 2001;
-            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Item.DamageType = GetInstance<TrueMeleeDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -48,9 +48,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
-            Item.shoot = ModContent.ProjectileType<MurasamaSlashnew1>();
+            Item.shoot = ProjectileType<MurasamaSlashnew1>();
             Item.shootSpeed = 24f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
 
@@ -65,12 +65,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (IDUnlocked(Main.LocalPlayer))
             {
                 //0 = 6 frames, 8 = 3 frames]
-                texture = ModContent.Request<Texture2D>(Texture).Value;
+                texture = Request<Texture2D>(Texture).Value;
                 spriteBatch.Draw(texture, position, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13), Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             }
             else
             {
-                texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaSheathed").Value;
+                texture = Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, position, null, Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             }
 
@@ -83,12 +83,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             if (IDUnlocked(Main.LocalPlayer))
             {
-                texture = ModContent.Request<Texture2D>(Texture).Value;
+                texture = Request<Texture2D>(Texture).Value;
                 spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13), lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
             else
             {
-                texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaSheathed").Value;
+                texture = Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaSheathed").Value;
                 spriteBatch.Draw(texture, Item.position - Main.screenPosition, null, lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             }
             return false;
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (!IDUnlocked(Main.LocalPlayer))
                 return;
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Melee/MurasamaGlow").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 2, 13, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 

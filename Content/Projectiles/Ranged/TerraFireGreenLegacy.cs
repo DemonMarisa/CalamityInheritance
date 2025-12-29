@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -10,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
 
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 12;

@@ -1,32 +1,23 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
-using CalamityMod;
-using static CalamityInheritance.Utilities.CIFunction;
-using static tModPorter.ProgressUpdate;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using Mono.Cecil;
-using static System.Net.Mime.MediaTypeNames;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Particles;
-using CalamityMod.NPCs.NormalNPCs;
 using LAP.Core.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class PearlGodLegacyHeldProj : BaseHeldProj, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        public override string Texture => GetInstance<PearlGodLegacy>().Texture;
         public float rotProg;
         public override float OffsetX => -21;
         public override float OffsetY => 0;
@@ -146,7 +137,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     Main.projectile[bullet2].extraUpdates += spread;
                 }
 
-                int shockblast = Projectile.NewProjectile(source, firepos, velocity, ModContent.ProjectileType<ShockblastRoundLegacy>(), damage, knockback, Owner.whoAmI, 0f, spread);
+                int shockblast = Projectile.NewProjectile(source, firepos, velocity, ProjectileType<ShockblastRoundLegacy>(), damage, knockback, Owner.whoAmI, 0f, spread);
                 Main.projectile[shockblast].extraUpdates += spread;
 
                 spread++;
@@ -170,7 +161,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    int bigShockblast = Projectile.NewProjectile(source, Projectile.Center + offset, velocity, ModContent.ProjectileType<ShockblastRoundLegacy>(), damage * 2, knockback * 2f, Owner.whoAmI, 0f, 10f);
+                    int bigShockblast = Projectile.NewProjectile(source, Projectile.Center + offset, velocity, ProjectileType<ShockblastRoundLegacy>(), damage * 2, knockback * 2f, Owner.whoAmI, 0f, 10f);
                     Main.projectile[bigShockblast].extraUpdates += 9;
                 }
 
@@ -205,9 +196,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Color blinkColor = new Color(255, 255, 255, alpha);
             #endregion
             #region 材质注册
-            Texture2D laserTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/WeaponsTextures/PearlGodAimLaser").Value;
+            Texture2D laserTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/WeaponsTextures/PearlGodAimLaser").Value;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
-            Texture2D Glowtexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/HeldProj/Ranged/PearlGodLegacyHeldProjGlow").Value;
             #endregion
 
             Vector2 offset = new Vector2(10, 7 * player.direction).RotatedBy(Projectile.rotation);
@@ -230,8 +220,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 
             Vector2 drawBasePosition = (Projectile.Center) - Main.screenPosition;
             SpriteEffects BaseflipSprite = (player.direction * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipVertically : SpriteEffects.None;
-            Main.EntitySpriteDraw(texture, drawBasePosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
-            Main.EntitySpriteDraw(Glowtexture, drawBasePosition, null, Color.White, Projectile.rotation, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
+            Main.EntitySpriteDraw(texture, drawBasePosition, null, Color.White, Projectile.rotation, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2);
             return false;

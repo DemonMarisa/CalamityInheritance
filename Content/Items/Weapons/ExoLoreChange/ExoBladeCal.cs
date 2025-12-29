@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class ExoBladeCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Exoblade>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<Exoblade>();
        
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class ExtraBeams : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExobladeProj>() || entity.type == ModContent.ProjectileType<Exoboom>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExobladeProj>() || entity.type == ProjectileType<Exoboom>();
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             
@@ -45,18 +45,18 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 pCounts += Main.rand.NextBool(i) ? 1 : 0;
             
             //大爆炸生成的数量需要缩水至少一半, 因为无敌帧的原因他可以造成双判->三判
-            if (projectile.type == ModContent.ProjectileType<Exoboom>())
+            if (projectile.type == ProjectileType<Exoboom>())
                 pCounts /=2;
 
             //给CD，这里CD是必要的，不然这个刀片会无限生成多个光束
             //如果是斩击爆炸，直接绕过这个CD
-            if ((player.CIMod().PanelsLoreExo || player.CIMod().LoreExo)&& (player.CIMod().GlobalFireDelay == 0 || projectile.type == ModContent.ProjectileType<Exoboom>()) && projectile.owner == Main.myPlayer)
+            if ((player.CIMod().PanelsLoreExo || player.CIMod().LoreExo)&& (player.CIMod().GlobalFireDelay == 0 || projectile.type == ProjectileType<Exoboom>()) && projectile.owner == Main.myPlayer)
             {
                 for (int j = 0; j < pCounts; j++) 
                 {
                     float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
                     Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), target.Center, vel, ModContent.ProjectileType<Exobeam>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
+                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), target.Center, vel, ProjectileType<Exobeam>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
                     Main.projectile[p].DamageType = DamageClass.Melee;
                     Main.projectile[p].scale *= 0.9f;
                     //启用星流传颂的时候，星流束会+1判，但我们这里只想让星流束打三判。因此给二判。
@@ -69,14 +69,14 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class ExoBladeSlasherProj : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExobeamSlash>() || entity.type == ModContent.ProjectileType<ExobeamSlashCreator>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExobeamSlash>() || entity.type == ProjectileType<ExobeamSlashCreator>();
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             Player p = Main.player[projectile.owner];
             var mp = p.CIMod();
 
             //手持原版的耀界，生成时将其设定为魔法伤害
-            if ((mp.LoreExo || mp.PanelsLoreExo) && p.ActiveItem().type == ModContent.ItemType<VividClarity>() && projectile.owner == Main.myPlayer)
+            if ((mp.LoreExo || mp.PanelsLoreExo) && p.ActiveItem().type == ItemType<VividClarity>() && projectile.owner == Main.myPlayer)
                 projectile.DamageType = DamageClass.Magic;
         }
     }
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class ExoBladeBeam : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<Exobeam>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<Exobeam>();
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             var mp = Main.player[projectile.owner].CIMod();

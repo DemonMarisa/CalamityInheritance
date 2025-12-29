@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class BrimstoneFireFriendlyLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 7;
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 240);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 240);
         }
     }
 }

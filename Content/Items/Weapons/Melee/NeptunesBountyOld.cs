@@ -32,11 +32,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<NeptuneOrb>();
+            Item.shoot = ProjectileType<NeptuneOrb>();
             Item.shootSpeed = 12f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
@@ -49,12 +49,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+            target.AddBuff(BuffType<CrushDepth>(), 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+            target.AddBuff(BuffType<CrushDepth>(), 300);
         }
 
         public override void AddRecipes()

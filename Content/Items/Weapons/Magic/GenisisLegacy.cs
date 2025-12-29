@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;
-            Item.shoot = ModContent.ProjectileType<AlphaRayYShape>();
+            Item.shoot = ProjectileType<AlphaRayYShape>();
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-5, 0);

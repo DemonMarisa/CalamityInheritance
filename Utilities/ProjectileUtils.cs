@@ -5,8 +5,10 @@ using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Utilities
@@ -445,7 +447,7 @@ namespace CalamityInheritance.Utilities
             if(ProjID.HasValue)
                 Projectile.NewProjectile(src, position, direction * randomSpeed, (int)ProjID, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             else
-                Projectile.NewProjectile(src, position, direction * randomSpeed, ModContent.ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
+                Projectile.NewProjectile(src, position, direction * randomSpeed, ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             player.CIMod().GlobalHealProjCD = CD;
         }
         /// <summary>
@@ -568,7 +570,8 @@ namespace CalamityInheritance.Utilities
         }
         public static bool LegalTarget(this NPC target, Projectile proj) => target != null && target.CanBeChasedBy(proj);
         public static Player GetProjOwner(this Projectile proj) => Main.player[proj.owner];
-        public static bool IsOwnedProj<T>(this Player player, int count = 1) where T : ModProjectile => IsOwnedProj(player, ModContent.ProjectileType<T>(), count);
+        public static bool IsOwnedProj<T>(this Player player, int count = 1) where T : ModProjectile => IsOwnedProj(player, ProjectileType<T>(), count);
         public static bool IsOwnedProj(this Player player, int Type, int count = 1) => player.ownedProjectileCounts[Type] < count;
+        public static Texture2D GetTexture(this Projectile proj) => TextureAssets.Projectile[proj.type].Value;
     }
 }

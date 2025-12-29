@@ -9,11 +9,11 @@ namespace CalamityInheritance.Content.Achievements
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(Terraria.Achievements.AchievementCategory.Slayer);
-            AddNPCKilledCondition(ModContent.NPCType<CalamitasCloneLegacy>());
+            AddNPCKilledCondition(NPCType<CalamitasCloneLegacy>());
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<CraftDoubleArk>());
+            yield return new After(GetInstance<CraftDoubleArk>());
         }
 
     }

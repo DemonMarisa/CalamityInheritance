@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 20f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.value = CIShopValue.RarityPriceDonatorPink;
         }
 
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             //转为羸弱诅咒
-            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 300);
+            target.AddBuff(BuffType<VulnerabilityHex>(), 300);
             int damageRan = Main.rand.Next(195); //0 to 194
             if (damageRan >= 50 && damageRan <= 99) //25%
             {
@@ -81,7 +81,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 300);
             int damageRan = Main.rand.Next(195); //0 to 194
             if (damageRan >= 50 && damageRan <= 99) //25%
             {

@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ElementalBeamMain>();
+            Item.shoot = ProjectileType<ElementalBeamMain>();
             Item.shootSpeed = 6f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Vector2 shootVelocity = velocity;
             Vector2 shootPosition = position + shootVelocity * 12f;
             Projectile.NewProjectile(source, shootPosition, shootVelocity, type, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity, ModContent.ProjectileType<ElementalBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity, ProjectileType<ElementalBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
         }
         public override void AddRecipes()

@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             NPC Target = LAPUtilities.FindClosestTarget(Projectile ,1800f, Owner.LocalMouseWorld());
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
-            if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ModContent.ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuSwordHoldout>()] > 0)
+            if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ProjectileType<ShizukuSwordHoldout>()] > 0)
                 Projectile.timeLeft = 3;
             //控制射弹运动，在鼠标指针位置更新
             Vector2 topHead = Owner.LocalMouseWorld();
@@ -80,9 +80,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         private void DrawMark(NPC target)
         {
-            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarMark>()] < 1)
+            if (Owner.ownedProjectileCounts[ProjectileType<ShizukuStarMark>()] < 1)
             {
-                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ModContent.ProjectileType<ShizukuStarMark>(), 0, 0f, Owner.whoAmI, target.whoAmI);
+                Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, ProjectileType<ShizukuStarMark>(), 0, 0f, Owner.whoAmI, target.whoAmI);
                 proj.DamageType = DamageClass.Magic;
                 proj.originalDamage = Projectile.damage;
             }
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 if (ShootStarTimer % 20 is 0)
                 {
                     //每次发射消耗20点魔力值
-                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, dire * 23f, ModContent.ProjectileType<ShizukuStar>(), (int)(Projectile.damage * 1.5f), 0f, Owner.whoAmI);
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, dire * 23f, ProjectileType<ShizukuStar>(), (int)(Projectile.damage * 1.5f), 0f, Owner.whoAmI);
                     proj.DamageType = DamageClass.Magic;
                     SoundStyle starToss = Utils.SelectRandom(Main.rand, ShizukuSounds.StarToss.ToArray());
                     SoundEngine.PlaySound(starToss with { MaxInstances = 0, Volume = 0.6f}, Projectile.Center);

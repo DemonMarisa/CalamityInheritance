@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.TreasureBags
         {
             Item.width = 24;
             Item.height = 24;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() : ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
             //有意为之
             Item.value = CIShopValue.RarityPricePureRed;
             Item.consumable = true;
@@ -47,22 +47,22 @@ namespace CalamityInheritance.Content.Items.TreasureBags
             // Weapons
             itemLoot.Add(DropHelper.CalamityStyle(new Fraction(16, 18), new int[]
             {
-                ModContent.ItemType<DragonSword>(),
-                ModContent.ItemType<BurningSkyLegacy>(),
-                ModContent.ItemType<AncientDragonsBreath>(),
-                ModContent.ItemType<ChickenCannonLegacy>(),
-                ModContent.ItemType<DragonStaff>(),
-                ModContent.ItemType<YharonSonStaff>(),
-                ModContent.ItemType<DragonSpear>(),
+                ItemType<DragonSword>(),
+                ItemType<BurningSkyLegacy>(),
+                ItemType<AncientDragonsBreath>(),
+                ItemType<ChickenCannonLegacy>(),
+                ItemType<DragonStaff>(),
+                ItemType<YharonSonStaff>(),
+                ItemType<DragonSpear>(),
                 // 原灾武器
-                ModContent.ItemType<DragonRage>(),
-                ModContent.ItemType<TheBurningSky>(),
-                ModContent.ItemType<ChickenCannon>(),
-                ModContent.ItemType<DragonsBreath>(),
-                ModContent.ItemType<PhoenixFlameBarrage>(),
-                ModContent.ItemType<YharonsKindleStaff>(),
-                ModContent.ItemType<TheFinalDawn>(),
-                ModContent.ItemType<Wrathwing>(),
+                ItemType<DragonRage>(),
+                ItemType<TheBurningSky>(),
+                ItemType<ChickenCannon>(),
+                ItemType<DragonsBreath>(),
+                ItemType<PhoenixFlameBarrage>(),
+                ItemType<YharonsKindleStaff>(),
+                ItemType<TheFinalDawn>(),
+                ItemType<Wrathwing>(),
             }));
 
             //给点钱

@@ -33,11 +33,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.damage = 200;
             Item.knockBack = 4f;
             Item.useTime = Item.useAnimation = 10;
-            Item.shoot = ModContent.ProjectileType<SarosAuraLegacy>();
+            Item.shoot = ProjectileType<SarosAuraLegacy>();
             Item.shootSpeed = 10f;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override void HoldItem(Player player)

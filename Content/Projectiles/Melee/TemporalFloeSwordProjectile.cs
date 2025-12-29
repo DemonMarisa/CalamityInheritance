@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             minuteAngle *= -1f; //correction because pain
             Vector2 minuteVector = minuteAngle.ToRotationVector2() * projSpeed;
 
-            int projType = ModContent.ProjectileType<TemporalFloeNumberTwo>();
+            int projType = ProjectileType<TemporalFloeNumberTwo>();
             int dmg = Projectile.damage / 2;
             float kback = Projectile.knockBack * 0.5f;
 
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffType<GlacialState>(), 30);
             target.AddBuff(BuffID.Frostburn, 180);
         }
     }

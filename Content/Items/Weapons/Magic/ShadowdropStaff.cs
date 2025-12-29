@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item66;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<AuraRain>();
+            Item.shoot = ProjectileType<AuraRain>();
             Item.shootSpeed = 14f;
         }
 

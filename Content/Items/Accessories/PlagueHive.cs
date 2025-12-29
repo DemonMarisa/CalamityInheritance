@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.CIMod().PlagueHive = true;
             player.honeyCombItem = Item;
             player.strongBees = true;
-            player.buffImmune[ModContent.BuffType<Plague>()] = true;
+            player.buffImmune[BuffType<Plague>()] = true;
         }
 
         public override void AddRecipes()

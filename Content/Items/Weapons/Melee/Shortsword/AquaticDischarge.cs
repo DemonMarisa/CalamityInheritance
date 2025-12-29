@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void SetDefaults()
         {
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Item.DamageType = GetInstance<TrueMeleeDamageClass>();
             Item.useTurn = false;
             Item.useAnimation = 18;
             Item.useTime = 18;
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.noUseGraphic = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<AquaticDischargeProj>();
+            Item.shoot = ProjectileType<AquaticDischargeProj>();
             Item.shootSpeed = 2f;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;

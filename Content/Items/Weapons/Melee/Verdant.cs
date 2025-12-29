@@ -36,12 +36,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noUseGraphic = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<VerdantYoyo>();
+            Item.shoot = ProjectileType<VerdantYoyo>();
             Item.shootSpeed = 16f;
 
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

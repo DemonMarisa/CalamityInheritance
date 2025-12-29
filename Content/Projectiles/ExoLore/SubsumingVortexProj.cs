@@ -11,13 +11,14 @@ using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class SubsumingVortexProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         #region Typedef
         public ref float Hue => ref Projectile.ai[0];
         public ref float AttackTimer => ref Projectile.ai[1];
@@ -57,13 +58,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             DoGeneric();
             DoShooted();
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<MiracleBlight>(), 300);
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI) => behindProjectiles.Add(index);
         public override bool PreDraw(ref Color lightColor)
         {
             //Draw Shader.
             Main.spriteBatch.EnterShaderRegion(BlendState.Additive);
-            Texture2D worleyNoise = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
+            Texture2D worleyNoise = Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
             float spinRotation = Main.GlobalTimeWrappedHourly * 5.2f;
 
             Main.spriteBatch.EnterShaderRegion();
@@ -102,8 +103,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             float num = Hue % 1f + 0.2f;
             if (num >= 0.99f)
                 num = 0.99f;
-            float lerpValue = Utils.GetLerpValue(2f, 5f, base.Projectile.velocity.Length(), clamped: true);
-            return CalamityUtils.MulticolorLerp(num, CalamityUtils.ExoPalette) * base.Projectile.Opacity * (1f - completionRatio) * Utils.GetLerpValue(0.04f, 0.2f, completionRatio, clamped: true) * lerpValue;
+            float lerpValue = Utils.GetLerpValue(2f, 5f, Projectile.velocity.Length(), clamped: true);
+            return CalamityUtils.MulticolorLerp(num, CalamityUtils.ExoPalette) * Projectile.Opacity * (1f - completionRatio) * Utils.GetLerpValue(0.04f, 0.2f, completionRatio, clamped: true) * lerpValue;
 
         }
         //DrawOffset

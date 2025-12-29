@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             if (CalamityPlayer.areThereAnyDamnBosses)
             { return; }
             // Completely remove movement restrictions if you're yeeting with the profaned spear
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<RelicOfDeliveranceSpear>()] <= 0)
+            if (player.ownedProjectileCounts[ProjectileType<RelicOfDeliveranceSpear>()] <= 0)
             {
                 if (player.velocity.X > 5f)
                 {

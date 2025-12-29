@@ -32,9 +32,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<BloodBoilerFireLegacy>();
+            Item.shoot = ProjectileType<BloodBoilerFireLegacy>();
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-5, 0);

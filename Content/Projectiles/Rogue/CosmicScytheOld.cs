@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = 400;
             Projectile.alpha = 100;
             Projectile.penetrate = 5;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;

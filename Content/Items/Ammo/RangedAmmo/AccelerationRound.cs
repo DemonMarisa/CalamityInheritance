@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
             Item.knockBack = 1.25f;
             Item.value = Item.sellPrice(copper: 2);
             Item.rare = ItemRarityID.Green;
-            Item.shoot = ModContent.ProjectileType<AccelerationRoundProj>();
+            Item.shoot = ProjectileType<AccelerationRoundProj>();
             Item.shootSpeed = 1f;
             Item.ammo = AmmoID.Bullet;
         }

@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 40;
             Projectile.timeLeft = 85;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override bool PreDraw(ref Color lightColor)

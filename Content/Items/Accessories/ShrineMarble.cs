@@ -33,14 +33,14 @@ namespace CalamityInheritance.Content.Items.Accessories
             p.SMarble = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(ModContent.BuffType<SMarbleSwordBuff>()) == -1)
+                if (player.FindBuffIndex(BuffType<SMarbleSwordBuff>()) == -1)
                 {
-                    player.AddBuff(ModContent.BuffType<SMarbleSwordBuff>(), 3600, true);
+                    player.AddBuff(BuffType<SMarbleSwordBuff>(), 3600, true);
                 }
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<ShrineMarbleSword>()] < 1)
+                if (player.ownedProjectileCounts[ProjectileType<ShrineMarbleSword>()] < 1)
                 {
-                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ModContent.ProjectileType<ShrineMarbleSword>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
-                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ModContent.ProjectileType<ShrineMarbleSwordClone>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSword>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSwordClone>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
                 }
             }
         }

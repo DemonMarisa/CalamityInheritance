@@ -139,7 +139,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen = 4;
                 Player.lifeRegenTime = 0;
             }
-            if (Player.HeldItem.type == ModContent.ItemType<ShizukuSword>())
+            if (Player.HeldItem.type == ItemType<ShizukuSword>())
             {
                 if (Player.lifeRegen < 0)
                     Player.lifeRegen = 1;
@@ -210,7 +210,7 @@ namespace CalamityInheritance.CIPlayer
                             dust.noGravity = true;
                         }
                     }
-                    Player.AddBuff(ModContent.BuffType<SilvaPrice>(), 2);
+                    Player.AddBuff(BuffType<SilvaPrice>(), 2);
                     int healAmt = AncientAuricSet ? 50 : 3;
                     int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
 

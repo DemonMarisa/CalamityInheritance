@@ -40,8 +40,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Red;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
-            Item.shoot = ModContent.ProjectileType<HadopelagicEchoSoundwave>();
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.shoot = ProjectileType<HadopelagicEchoSoundwave>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override Vector2? HoldoutOffset()
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 .AddIngredient<DepthCells>(20)
                 .AddIngredient<Lumenyl>(20)
                 .AddIngredient<AuricBarold>()
-                .AddTile(ModContent.TileType<CosmicAnvil>())
+                .AddTile(TileType<CosmicAnvil>())
                 .Register();
 
             CreateRecipe()
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 .AddIngredient<DepthCells>(20)
                 .AddIngredient<Lumenyl>(20)
                 .AddIngredient<AuricBar>(5)
-                .AddTile(ModContent.TileType<CosmicAnvil>())
+                .AddTile(TileType<CosmicAnvil>())
                 .Register();
         }
     }

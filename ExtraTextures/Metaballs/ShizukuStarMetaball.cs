@@ -44,7 +44,7 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
         public static void SpawnParticle(Vector2 pos, Vector2 vel, float size) => Particles.Add(new(size, vel, pos));
         public override void PrepareRenderTarget()
         {
-            Texture2D tex = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/{GetType().Name}" + "_Texture").Value;
+            Texture2D tex = Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/{GetType().Name}" + "_Texture").Value;
             foreach (ShizukuStarParticle particle in Particles)
             {
                 Vector2 drawPos = particle.Center - Main.screenPosition;

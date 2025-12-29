@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items;
 using CalamityMod.Particles;
 using CalamityInheritance.Particles;
 using Terraria.ID;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -16,14 +17,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class LumiStrikerBack : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 34;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.penetrate = -1;
             Projectile.MaxUpdates = 3;
             Projectile.usesIDStaticNPCImmunity = true;

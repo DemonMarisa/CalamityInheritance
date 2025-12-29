@@ -5,13 +5,14 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class MeowFireLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

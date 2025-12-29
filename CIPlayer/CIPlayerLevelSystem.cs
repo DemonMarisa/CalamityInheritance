@@ -127,7 +127,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (summonPool >= CalculateRequiredExp(summonLevel) && summonLevel < maxLevel)
             {
-                Celebration(summonLevel == 14 ? ModContent.ProjectileType<SummonLevelFirework_Final>() : ModContent.ProjectileType<SummonLevelFirework>());
+                Celebration(summonLevel == 14 ? ProjectileType<SummonLevelFirework_Final>() : ProjectileType<SummonLevelFirework>());
                 summonLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(summonLevel, 3);
@@ -135,7 +135,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (roguePool >= CalculateRequiredExp(rogueLevel) && rogueLevel < maxLevel)
             {
-                Celebration(rogueLevel == 14 ? ModContent.ProjectileType<RogueLevelFirework_Final>() : ModContent.ProjectileType<RogueLevelFirework>());
+                Celebration(rogueLevel == 14 ? ProjectileType<RogueLevelFirework_Final>() : ProjectileType<RogueLevelFirework>());
                 rogueLevel++;
                 levelUpCD = 60;
                 SendMessageOnPlayer(rogueLevel, 4);
@@ -243,7 +243,7 @@ namespace CalamityInheritance.CIPlayer
 
             #region 每个职业的判定
             // 战士
-            bool isTrueMelee = hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>() || hit.DamageType == ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>();
+            bool isTrueMelee = hit.DamageType == GetInstance<TrueMeleeDamageClass>() || hit.DamageType == GetInstance<TrueMeleeNoSpeedDamageClass>();
             bool isMelee = hit.DamageType == DamageClass.Melee || hit.DamageType == DamageClass.MeleeNoSpeed || isTrueMelee;
             // 射手
             bool isRanged = proj.CountsAsClass<RangedDamageClass>();

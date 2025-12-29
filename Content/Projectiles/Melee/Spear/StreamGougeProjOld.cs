@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.aiStyle = ProjAIStyleID.Spear;
             Projectile.timeLeft = 90;
             Projectile.friendly = true;
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             Vector2 projPos = Projectile.Center + Projectile.velocity;
             Vector2 projVel = Projectile.velocity * 15f;
             if (Projectile.owner == Main.myPlayer)
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, ModContent.ProjectileType<EssenceBeam>(), damage * 3, kb, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), projPos, projVel, ProjectileType<EssenceBeam>(), damage * 3, kb, Projectile.owner, 0f, 0f);
 
             SoundEngine.PlaySound(SoundID.Item20, Projectile.Center);
             //粒子
@@ -141,7 +141,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 300);
         }
     }
 }

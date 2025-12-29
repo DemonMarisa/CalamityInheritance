@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     int flame = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velo, ProjectileID.CursedDartFlame, Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
                     if (flame.WithinBounds(Main.maxProjectiles))
                     {
-                        Main.projectile[flame].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                        Main.projectile[flame].DamageType = GetInstance<RogueDamageClass>();
                         Main.projectile[flame].usesLocalNPCImmunity = true;
                         Main.projectile[flame].localNPCHitCooldown = 10;
                     }
@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 int flame = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, Main.rand.NextBool(2) ? ProjectileID.CursedFlameFriendly : ProjectileID.CursedDartFlame, Projectile.damage, Projectile.knockBack * 0.5f, Projectile.owner);
                 if (flame.WithinBounds(Main.maxProjectiles))
                 {
-                    Main.projectile[flame].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    Main.projectile[flame].DamageType = GetInstance<RogueDamageClass>();
                     Main.projectile[flame].usesLocalNPCImmunity = true;
                     Main.projectile[flame].localNPCHitCooldown = 10;
                 }

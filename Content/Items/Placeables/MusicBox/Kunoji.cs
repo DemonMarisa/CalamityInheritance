@@ -13,13 +13,13 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/Kunojihousing"), ModContent.ItemType<Kunoji>(), ModContent.TileType<KunojiTile>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/Kunojihousing"), ItemType<Kunoji>(), TileType<KunojiTile>());
 			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults() {
-			Item.DefaultToMusicBox(ModContent.TileType<KunojiTile>(), 0);
-			Item.rare = ModContent.RarityType<IchikaBlack>();
+			Item.DefaultToMusicBox(TileType<KunojiTile>(), 0);
+			Item.rare = RarityType<IchikaBlack>();
 		}
 
         public override void AddRecipes()

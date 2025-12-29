@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<Alluvion>();
+            return item.type == ItemType<Alluvion>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -41,15 +41,15 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                         {
                             case 0:
                             case 5:
-                                newType = ModContent.ProjectileType<TyphoonArrow>();
+                                newType = ProjectileType<TyphoonArrow>();
                                 break;
                             case 1:
                             case 4:
-                                newType = ModContent.ProjectileType<MiniSharkron>();
+                                newType = ProjectileType<MiniSharkron>();
                                 break;
                             case 2:
                             case 3:
-                                newType = ModContent.ProjectileType<TorrentialArrow>();
+                                newType = ProjectileType<TorrentialArrow>();
                                 break;
                         }
                         int proj = Projectile.NewProjectile(spawnSource, source.X + offset.X, source.Y + offset.Y, velocity.X, velocity.Y, newType, (int)(damage * 2.3f), knockback, player.whoAmI);

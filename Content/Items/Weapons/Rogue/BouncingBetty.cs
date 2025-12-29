@@ -10,16 +10,15 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class BouncingBetty : RogueWeapon, ILocalizedModType
+    public class BouncingBetty : CIRogueClass
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public const int BaseDamage = 52;
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 99;
         }
 
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.damage = BaseDamage;
             Item.noMelee = true;
@@ -36,9 +35,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.height = 22;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<BouncingBettyProjectile>();
+            Item.shoot = ProjectileType<BouncingBettyProjectile>();
             Item.shootSpeed = 16f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

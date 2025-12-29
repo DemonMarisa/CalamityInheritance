@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         }
         public override void AI()
         {
-            bool ifSummon = Projectile.type == ModContent.ProjectileType<ShrineMarbleSword>();
+            bool ifSummon = Projectile.type == ProjectileType<ShrineMarbleSword>();
             Player p = Main.player[Projectile.owner];
             var modPlayer = p.CIMod();
             if (!modPlayer.SMarble)

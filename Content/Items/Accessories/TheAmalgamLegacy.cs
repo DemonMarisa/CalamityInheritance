@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().amalgam;
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ModContent.ItemType<TheAmalgam>());
+            Item.CloneDefaults(ItemType<TheAmalgam>());
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 if (player.whoAmI == Main.myPlayer)
                 {
                     int seawaterDamage = (int)player.GetBestClassDamage().ApplyTo(50);
-                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, 0f, ModContent.ProjectileType<PoisonousSeawater>(), seawaterDamage, 5f, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, 0f, ProjectileType<PoisonousSeawater>(), seawaterDamage, 5f, player.whoAmI, 0f, 0f);
                 }
             }
             int seaCounter = 0;
@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             {
                                 if (player.whoAmI == Main.myPlayer)
                                 {
-                                    Projectile.NewProjectileDirect(source, tryGetNPC.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
+                                    Projectile.NewProjectileDirect(source, tryGetNPC.Center, Vector2.Zero, ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
                                 }
                             }
                         }
@@ -120,7 +120,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (player.whoAmI == Main.myPlayer)
                     {
                         int damage = (int)player.GetBestClassDamage().ApplyTo(30);
-                        Projectile fire = CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ModContent.ProjectileType<StandingFire>(), damage, 5f, player.whoAmI);
+                        Projectile fire = CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ProjectileType<StandingFire>(), damage, 5f, player.whoAmI);
                         if (fire.whoAmI.WithinBounds(Main.maxProjectiles))
                         {
                             fire.usesLocalNPCImmunity = true;
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / FireProjectiles)));
                             velocity.X = velocity.X + 3 * Main.rand.NextFloat() - 1.5f;
                             int damage = (int)player.GetBestClassDamage().ApplyTo(100);
-                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(source, spawn, velocity, ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }
@@ -164,8 +164,8 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public static void SummonMinion(CalamityInheritancePlayer usPlayer, CalamityPlayer calPlayer, Player player, bool hideVisual)
         {
-            int pType = ModContent.ProjectileType<FungalClumpLegacyMinion>();
-            int buffType = ModContent.BuffType<FungalClumpLegacyBuff>();
+            int pType = ProjectileType<FungalClumpLegacyMinion>();
+            int buffType = BuffType<FungalClumpLegacyBuff>();
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(buffType) == -1)

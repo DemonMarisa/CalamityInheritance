@@ -32,9 +32,9 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.UseSound = SoundID.Item72;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ShadowBeam>();
+            Item.shoot = ProjectileType<ShadowBeam>();
             Item.shootSpeed = 6f;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
         public override void AddRecipes()
         {

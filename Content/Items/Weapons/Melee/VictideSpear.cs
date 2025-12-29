@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 46;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
-            Item.shoot = ModContent.ProjectileType<VictideSpearProj>();
+            Item.shoot = ProjectileType<VictideSpearProj>();
             Item.shootSpeed = 4f;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -43,13 +43,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             if (player.altFunctionUse == 2)
             {
                 Item.useStyle = ItemUseStyleID.Swing;
-                int thrown = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VictideSpearProj>(), damage, knockback, player.whoAmI);
+                int thrown = Projectile.NewProjectile(source, position, velocity, ProjectileType<VictideSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[thrown].CalamityInheritance().ThrownMode = true;
             }
             else
             {
                 Item.useStyle = ItemUseStyleID.Shoot;
-                int notThrown = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VictideSpearProj>(), damage, knockback, player.whoAmI);
+                int notThrown = Projectile.NewProjectile(source, position, velocity, ProjectileType<VictideSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[notThrown].CalamityInheritance().ThrownMode = false;
             }
             return false;

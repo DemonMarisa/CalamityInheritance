@@ -12,13 +12,13 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         {
             ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla
             ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox; // recorded music boxes transform into the basic form in shimmer
-            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/Tyrant"), ModContent.ItemType<TyrantPart1>(), ModContent.TileType<TyrantPart1Tile>());
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/Tyrant"), ItemType<TyrantPart1>(), TileType<TyrantPart1Tile>());
             Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
         {
-            Item.DefaultToMusicBox(ModContent.TileType<TyrantPart1Tile>(), 0);
+            Item.DefaultToMusicBox(TileType<TyrantPart1Tile>(), 0);
         }
     }
 }

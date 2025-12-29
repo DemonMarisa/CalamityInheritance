@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item10;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
-            Item.shoot = ModContent.ProjectileType<TriploonProj>();
+            Item.shoot = ProjectileType<TriploonProj>();
         }
 
         public override Vector2? HoldoutOffset()

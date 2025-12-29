@@ -78,5 +78,8 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         public bool MarkSameBossDown { get; set; } // 同类boss击败一次即可
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(false)]
+        public bool CrateLootsBack { get; set; } // 同类boss击败一次即可
     }
 }

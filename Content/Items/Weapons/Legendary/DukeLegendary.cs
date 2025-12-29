@@ -20,8 +20,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class DukeLegendary: LegendaryWeaponClass
     {
         public int baseDamage = 75;
-        public override ClassType WeaponDamageClass => ClassType.Melee;
-        public override int SetRarityColor => ModContent.RarityType<DukeAqua>();
+        public override ClassType GeneralWeaponClass => ClassType.Melee;
+        public override int SetRarityColor => RarityType<DukeAqua>();
         public override Color DrawColor => Color.SkyBlue;
         public override void ExSSD()
         {
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.shootSpeed = 9f;
-            Item.shoot = ModContent.ProjectileType<Razorwind>();
+            Item.shoot = ProjectileType<Razorwind>();
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = CISoundID.SoundWeaponSwing;
         }
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage() + Generic.GenericLegendBuff();
@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             {
                 Vector2 speed = player.CIMod().DukeTier1 ? velocity * 2f : velocity;
                 int realDamage = (int)(damage * 0.8f);
-                Projectile.NewProjectile(source, position, speed, ModContent.ProjectileType<DukeLegendaryRazor>(), realDamage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, speed, ProjectileType<DukeLegendaryRazor>(), realDamage, knockback, player.whoAmI);
                 if (player.CIMod().DukeTier2)
                 {
                     //遍历最近的NPC
@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                             Vector2 realSpeed = new Vector2(Item.shootSpeed * 3, 0f).RotatedBy(MathHelper.PiOver2 * j);
                             // 直接让其从天上降落。
                             // bro两倍伤害我靠
-                            Projectile.NewProjectile(source, pos, realSpeed, ModContent.ProjectileType<DukeLegendaryRazorClone>(), (int)(damage * 0.25f), knockback, player.whoAmI);
+                            Projectile.NewProjectile(source, pos, realSpeed, ProjectileType<DukeLegendaryRazorClone>(), (int)(damage * 0.25f), knockback, player.whoAmI);
                         }
                         player.CIMod().GlobalFireDelay = 10;
                     }
@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (player.altFunctionUse == 2)
             {
                 damage = (int)(damage * 0.8f);
-                type = ModContent.ProjectileType<DukeLegendaryRazor>();
+                type = ProjectileType<DukeLegendaryRazor>();
             }
 
             else
@@ -146,13 +146,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = player.GetSource_ItemUse(Item);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             var source = player.GetSource_ItemUse(Item);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<DukeLegendaryBubble>(), Item.damage, Item.knockBack, player.whoAmI);
         }
 
         public override void UseAnimation(Player player)

@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Achievements
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<GetMalaLegendary>());
+            yield return new After(GetInstance<GetMalaLegendary>());
         }
     }
 }

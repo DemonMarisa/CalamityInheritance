@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
 
             if (Projectile.ai[1] % 2f == 0)
-                CalamityUtils.MagnetSphereHitscan(Projectile, 1500f, 10f, 8f, 10, ModContent.ProjectileType<CosmicBoltLegacy>());
+                CalamityUtils.MagnetSphereHitscan(Projectile, 1500f, 10f, 8f, 10, ProjectileType<CosmicBoltLegacy>());
         }
 
         public override void OnKill(int timeLeft)

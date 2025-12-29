@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 41;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override void UpdateEquip(Player player)
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         }
         public static string GetSpecial(int mode)
         {
-            var modItme = ItemLoader.GetItem(ModContent.ItemType<GodSlayerChestplateold>());
+            var modItme = ItemLoader.GetItem(ItemType<GodSlayerChestplateold>());
             string getValue = mode switch
             {
                 1 => "OnlyReborn",

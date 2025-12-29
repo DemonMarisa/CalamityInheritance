@@ -45,11 +45,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.UseSound = CISoundID.SoundWeaponSwing;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ExoSpearProj>();
+            Item.shoot = ProjectileType<ExoSpearProj>();
             Item.shootSpeed = 16f;
         }
         public override float StealthDamageMultiplier => 0.5f;
@@ -60,14 +60,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 if (!player.Calamity().StealthStrikeAvailable())
                 {
-                    Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
-                    Projectile.NewProjectileDirect(source, position, -velocity * 1.2f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, velocity * 1.5f, ProjectileType<ExoSpearProj>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 1.2f, ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
                 }
                 SoundEngine.PlaySound(ThrowSound1, player.Center);
                 if (player.Calamity().StealthStrikeAvailable()) //setting the stealth strike
                 {
-                    Projectile.NewProjectileDirect(source, position, -velocity * 2.6f, ModContent.ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
-                    int stealth = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, -velocity * 2.6f, ProjectileType<ExoSpearBack>(), damage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity, ProjectileType<ExoSpearStealthProj>(), damage, knockback, player.whoAmI);
                     SoundEngine.PlaySound(ThrowSound2, player.Center);
                     if (stealth.WithinBounds(Main.maxProjectiles))
                     {
@@ -78,10 +78,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             }
             else
             {
-                Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity * 1.5f, ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
                 if (player.Calamity().StealthStrikeAvailable())
                 {
-                    int stealth = Projectile.NewProjectile(source, position, velocity * 1.5f, ModContent.ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
+                    int stealth = Projectile.NewProjectile(source, position, velocity * 1.5f, ProjectileType<ExoSpearProjNor>(), damage, knockback, player.whoAmI);
                     if (stealth.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[stealth].Calamity().stealthStrike = true;
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/ExoTheApostleGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Rogue/ExoTheApostleGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

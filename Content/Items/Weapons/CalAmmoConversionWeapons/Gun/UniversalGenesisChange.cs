@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<UniversalGenesis>();
+            return item.type == ItemType<UniversalGenesis>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
                 Vector2 gunTip = position + shootDirection * item.scale * 100f;
                 gunTip.Y -= 10f;
                 float tightness = 1f;
-                type = ModContent.ProjectileType<UniversalGenesisStarcaller>();
+                type = ProjectileType<UniversalGenesisStarcaller>();
                 for (float i = -tightness * 5f; i <= tightness * 5f; i += tightness * 2f)
                 {
                     Vector2 perturbedSpeed = shootVelocity.RotatedBy(MathHelper.ToRadians(i));
@@ -60,7 +60,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
                     yDist *= travelDist;
                     float xVel = xDist + Main.rand.NextFloat(-0.6f, 0.6f);
                     float yVel = yDist + Main.rand.NextFloat(-0.6f, 0.6f);
-                    int star = Projectile.NewProjectile(source, spawnPos.X, spawnPos.Y, xVel, yVel, ModContent.ProjectileType<UniversalGenesisStar>(), starDmg, knockback, player.whoAmI, i, 1f);
+                    int star = Projectile.NewProjectile(source, spawnPos.X, spawnPos.Y, xVel, yVel, ProjectileType<UniversalGenesisStar>(), starDmg, knockback, player.whoAmI, i, 1f);
                     Main.projectile[star].extraUpdates = 2;
                     Main.projectile[star].localNPCHitCooldown = 30;
                 }

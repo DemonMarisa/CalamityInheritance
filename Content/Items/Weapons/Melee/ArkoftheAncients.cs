@@ -1,4 +1,5 @@
 ﻿using System;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
 using LAP.Content.RecipeGroupAdd;
@@ -32,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 50;
             Item.value = CIShopValue.RarityPriceLightPurple;
             Item.rare = ItemRarityID.LightPurple;
-            Item.shoot = ModContent.ProjectileType<Projectiles.Melee.EonBeam>();
+            Item.shoot = ProjectileType<EonBeam>();
             Item.shootSpeed = 10f;
         }
 
@@ -40,12 +41,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             type = Utils.SelectRandom(Main.rand, new int[]
             {
-                ModContent.ProjectileType<Projectiles.Melee.EonBeam>(),
+                ProjectileType<EonBeam>(),
                 ProjectileID.EnchantedBeam
             });
 
             int beam = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer);
-            if (Main.projectile[beam].type == ModContent.ProjectileType<Projectiles.Melee.EonBeam>())
+            if (Main.projectile[beam].type == ProjectileType<EonBeam>())
                 Main.projectile[beam].penetrate = 2;
 
             if (Main.projectile[beam].type == ProjectileID.EnchantedBeam)
@@ -133,7 +134,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(2))
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                target.AddBuff(BuffType<HolyFlames>(), 300);
             }
         }
 
@@ -141,7 +142,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (Main.rand.NextBool(2))
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                target.AddBuff(BuffType<HolyFlames>(), 300);
             }
         }
         public override void AddRecipes()

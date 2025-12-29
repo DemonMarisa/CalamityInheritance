@@ -508,8 +508,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     CIGlobalNPC.Arena.Width = width;
                     CIGlobalNPC.Arena.Height = 320000;
 
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X + width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X - width * 0.5f, target.Center.Y + 100f, 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X + width * 0.5f, target.Center.Y + 100f, 0f, 0f, ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), target.Center.X - width * 0.5f, target.Center.Y + 100f, 0f, 0f, ProjectileType<YharonArenaProj>(), 1000, 0f, Main.myPlayer);
                 }
                 NPC.netUpdate = true;
             }
@@ -763,7 +763,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             // 材质
             Texture2D texture = TextureAssets.Npc[NPC.type].Value;
-            Texture2D glowTexture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/Yharon/YharonLegacyGlow").Value;
+            Texture2D glowTexture = Request<Texture2D>("CalamityInheritance/NPCs/Boss/Yharon/YharonLegacyGlow").Value;
             // 绘制中心
             Vector2 halfSize = new(texture.Width / 2, texture.Height / Main.npcFrameCount[NPC.type] / 2);
 
@@ -936,10 +936,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             // Spawn the SCal NPC directly where the boss was
             if (!BossRushEvent.BossRushActive)
-                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 1);
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 1);
+            CIWorld world = GetInstance<CIWorld>();
             if(world.Armageddon)
-                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<YharonTreasureBagsLegacy>(), 5);
+                player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 5);
 
             CIDownedBossSystem.DownedLegacyYharonP1 = true;
             CalamityNetcode.SyncWorld();
@@ -949,7 +949,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             // Boss bag
-            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<YharonBag>()));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<YharonBag>()));
 
             // Normal drops: Everything that would otherwise be in the bag
             var normalOnly = npcLoot.DefineNormalOnlyDropSet();
@@ -957,59 +957,59 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // Weapons
                 int[] weapons = new int[]
                 {
-                    ModContent.ItemType<DragonRage>(),
-                    ModContent.ItemType<TheBurningSky>(),
-                    ModContent.ItemType<DragonsBreath>(),
-                    ModContent.ItemType<ChickenCannon>(),
-                    ModContent.ItemType<PhoenixFlameBarrage>(),
-                    ModContent.ItemType<YharonsKindleStaff>(), // Yharon Kindle Staff
-                    ModContent.ItemType<Wrathwing>(), // Infernal Spear
-                    ModContent.ItemType<TheFinalDawn>(),
+                    ItemType<DragonRage>(),
+                    ItemType<TheBurningSky>(),
+                    ItemType<DragonsBreath>(),
+                    ItemType<ChickenCannon>(),
+                    ItemType<PhoenixFlameBarrage>(),
+                    ItemType<YharonsKindleStaff>(), // Yharon Kindle Staff
+                    ItemType<Wrathwing>(), // Infernal Spear
+                    ItemType<TheFinalDawn>(),
 
-                    ModContent.ItemType<DragonSword>(),
-                    ModContent.ItemType<BurningSkyLegacy>(),
-                    ModContent.ItemType<AncientDragonsBreath>(),
-                    ModContent.ItemType<ChickenCannonLegacy>(),
-                    ModContent.ItemType<DragonStaff>(),
-                    ModContent.ItemType<DragonSpear>(),
-                    ModContent.ItemType<YharonSonStaff>(),
+                    ItemType<DragonSword>(),
+                    ItemType<BurningSkyLegacy>(),
+                    ItemType<AncientDragonsBreath>(),
+                    ItemType<ChickenCannonLegacy>(),
+                    ItemType<DragonStaff>(),
+                    ItemType<DragonSpear>(),
+                    ItemType<YharonSonStaff>(),
                 };
                 normalOnly.Add(DropHelper.CalamityStyle(DropHelper.NormalWeaponDropRateFraction, weapons));
-                normalOnly.Add(ModContent.ItemType<YharimsCrystalLegendary>(), 1);
+                normalOnly.Add(ItemType<YharimsCrystalLegendary>(), 1);
 
                 // Vanity
-                normalOnly.Add(ModContent.ItemType<YharonMask>(), 7);
-                normalOnly.Add(ModContent.ItemType<ForgottenDragonEgg>(), 10);
-                normalOnly.Add(ModContent.ItemType<McNuggets>(), 10);
+                normalOnly.Add(ItemType<YharonMask>(), 7);
+                normalOnly.Add(ItemType<ForgottenDragonEgg>(), 10);
+                normalOnly.Add(ItemType<McNuggets>(), 10);
             }
 
             // 随机1000-2000龙魂碎片
-            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<YharonSoulFragment>(), 1, 1000, 2000));
+            npcLoot.Add(DropHelper.PerPlayer(ItemType<YharonSoulFragment>(), 1, 1000, 2000));
 
             // Equipment
-            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<YharimsGift>()));
-            npcLoot.Add(DropHelper.PerPlayer(ModContent.ItemType<DrewsWings>()));
+            npcLoot.Add(DropHelper.PerPlayer(ItemType<YharimsGift>()));
+            npcLoot.Add(DropHelper.PerPlayer(ItemType<DrewsWings>()));
 
             // Trophy (always directly from boss, never in bag)
-            npcLoot.Add(ModContent.ItemType<YharonTrophy>(), 10);
+            npcLoot.Add(ItemType<YharonTrophy>(), 10);
 
             // Relic
-            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ModContent.ItemType<YharonRelic>());
+            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ItemType<YharonRelic>());
 
             // GFB Egg drop
             // He is the dragon of rebirth afterall
             var GFBOnly = npcLoot.DefineConditionalDropSet(DropHelper.GFB);
             {
-                GFBOnly.Add(ModContent.ItemType<YharonEgg>(), hideLootReport: true);
+                GFBOnly.Add(ItemType<YharonEgg>(), hideLootReport: true);
             }
 
             // Lore
-            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyYharonP2, ModContent.ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
+            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyYharonP2, ItemType<KnowledgeYharon>(), desc: DropHelper.FirstKillText);
         }
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ModContent.ItemType<OmegaHealingPotion>();
+            potionType = ItemType<OmegaHealingPotion>();
         }
         public override void OnKill()
         {
@@ -1020,7 +1020,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             // If Yharon has not been killed yet, notify players of Auric Ore
             if (!CIDownedBossSystem.DownedLegacyYharonP2)
             {
-                CalamityUtils.SpawnOre(ModContent.TileType<AuricOre>(), 2E-05, 0.75f, 0.9f, 10, 20);
+                CalamityUtils.SpawnOre(TileType<AuricOre>(), 2E-05, 0.75f, 0.9f, 10, 20);
 
                 string key = "Mods.CalamityInheritance.Boss.Text.DownedYharon";
                 Color messageColor = Color.Gold;
@@ -1066,7 +1066,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 Main.dust[fieryDust2].velocity *= 2f;
             }
             if (Main.LocalPlayer.CIMod().CIsponge && Main.LocalPlayer.Calamity().sponge)
-                ModContent.GetInstance<SpongeJoke>().LastHitToWithCalSpongeYharon.Complete();
+                GetInstance<SpongeJoke>().LastHitToWithCalSpongeYharon.Complete();
             // Turn into dust on death.
             if (NPC.life <= 0)
                 DeathAshParticle.CreateAshesFromNPC(NPC, Vector2.Zero);
@@ -1092,7 +1092,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             if (hurtInfo.Damage > 0)
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 180, true);
+                target.AddBuff(BuffType<Dragonfire>(), 180, true);
         }
         public override bool CanHitPlayer(Player target, ref int cooldownSlot)
         {

@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
             Item.UseSound = null;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<MagnumRound>();
-            Item.useAmmo = ModContent.ItemType<MagnumRounds>();
+            Item.shoot = ProjectileType<MagnumRound>();
+            Item.useAmmo = ItemType<MagnumRounds>();
             if (CalamityPlayer.areThereAnyDamnBosses)
                 Item.CalamityInheritance().timesUsed = 3;
         }
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<LightningHawk>());
+            recipe.AddIngredient(ItemType<LightningHawk>());
             recipe.AddIngredient(ItemID.LunarBar, 15);
             recipe.AddIngredient(ItemID.IllegalGunParts);
             recipe.AddTile(TileID.LunarCraftingStation);

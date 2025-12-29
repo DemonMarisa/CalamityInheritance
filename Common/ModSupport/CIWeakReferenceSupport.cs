@@ -82,7 +82,7 @@ namespace CalamityInheritance.Common.ModSupport
             => bossChecklist.Call("LogBoss", hostMod, name, difficulty, downed, npcTypes, extraInfo);
         private static void BossChecklistSupport()
         {
-            CalamityInheritance cI = ModContent.GetInstance<CalamityInheritance>();
+            CalamityInheritance cI = GetInstance<CalamityInheritance>();
             Mod bossChecklist = cI.bossChecklist;
             if (bossChecklist is null)
                 return;
@@ -98,10 +98,10 @@ namespace CalamityInheritance.Common.ModSupport
             {
                 string entryName = "CalCloneLegacy";
                 BossChecklistProgressionValues.TryGetValue(entryName, out float order);
-                int type = ModContent.NPCType<CalamitasCloneLegacy>();
+                int type = NPCType<CalamitasCloneLegacy>();
                 List<int> summons = new List<int>() {
-                    ModContent.ItemType<EyeofDesolationLegacy>() };
-                List<int> collection = new List<int>() { ModContent.ItemType<CalamitasCloneBag>() , ModContent.ItemType<CalCloneRelic>()};
+                    ItemType<EyeofDesolationLegacy>() };
+                List<int> collection = new List<int>() { ItemType<CalamitasCloneBag>() , ItemType<CalCloneRelic>()};
                 AddBoss(bossChecklist, cI, entryName, order, DownedCalCloneLegacy, type, new Dictionary<string, object>()
                 {
                     ["displayName"] = GetDisplayName(entryName),
@@ -116,10 +116,10 @@ namespace CalamityInheritance.Common.ModSupport
             {
                 string entryName = "PostEclipseYharon";
                 BossChecklistProgressionValues.TryGetValue(entryName, out float order);
-                int type = ModContent.NPCType<YharonLegacy>();
+                int type = NPCType<YharonLegacy>();
                 List<int> summons = new List<int>() {
-                    ModContent.ItemType<YharonEggLegacy>() };
-                List<int> collection = new List<int>() { ModContent.ItemType<YharonTreasureBagsLegacy>() };
+                    ItemType<YharonEggLegacy>() };
+                List<int> collection = new List<int>() { ItemType<YharonTreasureBagsLegacy>() };
                 AddBoss(bossChecklist, cI, entryName, order, DownedPostEclipseYharon, type, new Dictionary<string, object>()
                 {
                     ["displayName"] = GetDisplayName(entryName),
@@ -134,23 +134,23 @@ namespace CalamityInheritance.Common.ModSupport
             {
                 string entryName = "Scal";
                 BossChecklistProgressionValues.TryGetValue(entryName, out float order);
-                int type = ModContent.NPCType<SupremeCalamitasLegacy>();
+                int type = NPCType<SupremeCalamitasLegacy>();
                 List<int> summons = new List<int>() {
-                    ModContent.ItemType<EyeofExtinction>() };
+                    ItemType<EyeofExtinction>() };
                 List<int> collection = new List<int>() 
                 {
-                    ModContent.ItemType<ScalRelic>(),
-                    ModContent.ItemType<SupremeCalamitasTrophy>(),
-                    ModContent.ItemType<SupremeCataclysmTrophy>(),
-                    ModContent.ItemType<SupremeCatastropheTrophy>(),
-                    ModContent.ItemType<AshenHorns>(),
-                    ModContent.ItemType<SCalMask>(),
-                    ModContent.ItemType<SCalRobes>(),
-                    ModContent.ItemType<SCalBoots>(),
-                    ModContent.ItemType<LoreCalamitas>(),
-                    ModContent.ItemType<LoreCynosure>(),
-                    ModContent.ItemType<BrimstoneJewel>(),
-                    ModContent.ItemType<Levi>(),
+                    ItemType<ScalRelic>(),
+                    ItemType<SupremeCalamitasTrophy>(),
+                    ItemType<SupremeCataclysmTrophy>(),
+                    ItemType<SupremeCatastropheTrophy>(),
+                    ItemType<AshenHorns>(),
+                    ItemType<SCalMask>(),
+                    ItemType<SCalRobes>(),
+                    ItemType<SCalBoots>(),
+                    ItemType<LoreCalamitas>(),
+                    ItemType<LoreCynosure>(),
+                    ItemType<BrimstoneJewel>(),
+                    ItemType<Levi>(),
                 };
                 AddBoss(bossChecklist, cI, entryName, order, DownedScal, type, new Dictionary<string, object>()
                 {

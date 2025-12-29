@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceLightRed;
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item34;
-            Item.shoot = ModContent.ProjectileType<FlameBeamTip>();
+            Item.shoot = ProjectileType<FlameBeamTip>();
             Item.autoReuse = true;
             Item.shootSpeed = 32f;
         }
@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             }
             else
             {
-                Projectile.NewProjectile(source,position,velocity,ModContent.ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
-                Projectile.NewProjectile(source,position,-velocity,ModContent.ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source,position,velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source,position,-velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
             }
             return false;
         }

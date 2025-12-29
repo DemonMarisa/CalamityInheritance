@@ -1,4 +1,5 @@
 ﻿using System;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using CalamityMod;
 using Terraria;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class HeliumFlashBlastLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private static int Lifetime = 42;
         private static float ExplosionRadius = 240.0f;

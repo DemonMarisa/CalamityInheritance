@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
+            return body.type == ItemType<ReaverScaleMailRevamped>() && legs.type == ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -62,9 +62,9 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),10)
+            .AddIngredient(ItemType<PerennialBar>(),10)
             .AddIngredient(ItemID.JungleSpores, 8)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 2)
+            .AddIngredient(ItemType<EssenceofEleum>(), 2)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

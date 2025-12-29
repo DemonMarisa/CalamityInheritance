@@ -11,20 +11,20 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
     public class HowToSaveMiracleSummonWeapon : GlobalItem
     {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<CosmicImmaterializer>();
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ItemType<CosmicImmaterializer>();
         public override bool CanUseItem(Item item, Player player)
         {
             if (player.CheckExoLore())
             {
                 //目前这里的改法是……直接复制了一份射弹。
                 //我不清楚到底怎么改。 
-                item.shoot = ModContent.ProjectileType<SaveCosmic>();
+                item.shoot = ProjectileType<SaveCosmic>();
                 if (player.ownedProjectileCounts[item.shoot] <= 0 && player.maxMinions > 10f)
                     return true;
             }
             else
             {
-                item.shoot = ModContent.ProjectileType<CosmicEnergySpiral>();
+                item.shoot = ProjectileType<CosmicEnergySpiral>();
                 if (player.maxMinions > 10f && player.ownedProjectileCounts[item.shoot] <= 0)
                     return true;
             }

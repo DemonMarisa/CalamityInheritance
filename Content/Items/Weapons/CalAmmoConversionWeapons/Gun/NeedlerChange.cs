@@ -15,13 +15,13 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<Needler>();
+            return item.type == ItemType<Needler>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (CIConfig.Instance.AmmoConversion == true)
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<NeedlerProj>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<NeedlerProj>(), damage, knockback, player.whoAmI);
                 return false;
             }
             else

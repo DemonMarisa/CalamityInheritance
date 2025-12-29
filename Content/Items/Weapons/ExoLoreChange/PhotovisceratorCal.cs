@@ -48,14 +48,14 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         }
         public static bool Shoot_Hook(Photoviscerator self, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorHoldout>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<PhotovisceratorHoldout>()] < 1)
                 Projectile.NewProjectile(source, position, Vector2.Zero, type, 0, 0f, player.whoAmI);
 
             if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ModContent.ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
+                    Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
                     holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
                 }
             }
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class PhotovisceratorCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Photoviscerator>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<Photoviscerator>();
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Ranged.PhotovisceratorChange") : null;
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class PhotovisceratorProj : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExoFlareCluster>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExoFlareCluster>();
         //干掉原本的AI，我们重写一个
         public Color sparkColor;
         public int Time = 0;
@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 //在行程路径上生成若干星流碎片
                 //不好孩子们，星流碎片被这个b白面团挡完了
                 if (Time % 10 == 0)
-                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity * 0.1f, ModContent.ProjectileType<PhotovisceratorCrystal>(), projectile.damage / 10, projectile.knockBack, projectile.owner);
+                    Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity * 0.1f, ProjectileType<PhotovisceratorCrystal>(), projectile.damage / 10, projectile.knockBack, projectile.owner);
             }
             sparkColor = Main.rand.Next(4) switch
             {

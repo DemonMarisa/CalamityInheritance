@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //干掉了timeLeft，我们会手动处死这个射弹，不用担心
             Projectile.extraUpdates = 1;
             Projectile.alpha = 0;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);

@@ -46,9 +46,9 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             Item.noMelee = true;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
 
-            Item.shoot = ModContent.ProjectileType<PulseRifleShotOld>();
+            Item.shoot = ProjectileType<PulseRifleShotOld>();
             Item.shootSpeed = 5f;
             
             ChargeItem.UsesCharge = true;
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             float SpeedX = velocity.X + Main.rand.Next(-1, 2) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-1, 2) * 0.05f;
 
-            Projectile.NewProjectile(source, position, new Vector2(SpeedX, SpeedY), ModContent.ProjectileType<PulseRifleShotOld>(), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, new Vector2(SpeedX, SpeedY), ProjectileType<PulseRifleShotOld>(), damage, knockback, player.whoAmI, 0f, 0f);
             return false;
         }
 

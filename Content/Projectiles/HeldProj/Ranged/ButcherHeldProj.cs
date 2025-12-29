@@ -19,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<ButcherLegacy>();
         public Player Owner => Main.player[Projectile.owner];
+        public override string Texture => GetInstance<ButcherLegacy>().Texture;
         public override void SetDefaults()
         {
             Projectile.width = 66;

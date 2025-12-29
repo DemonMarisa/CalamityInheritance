@@ -163,7 +163,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 // int fireballReleaseRate = morePowerfulMeteors ? 4 : 7;
                 int fireballReleaseRate = currentPhase > 5 ? 3 : 7;
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + NPC.velocity * 3f, NPC.velocity, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + NPC.velocity * 3f, NPC.velocity, ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer >= splittingMeteorRiseTime + splittingMeteorBombTime)
                 SelectNextAttack();
@@ -308,16 +308,16 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         NPC.velocity.Y /= 3f;
                     NPC.velocity.Y -= 3f;
                     SoundEngine.PlaySound(ShortRoarSound, NPC.Center);
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
                     if (Main.rand.NextBool())
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
                     DoFireRing(300, 300, NPC.target, 1f);
                 }
                 if (attacktimer == followPlayerTime + firedelay)
                 {
                     // 扔一个龙卷
                     if (Main.netMode != NetmodeID.MultiplayerClient)
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
                 }
             }
             if (attacktimer > totalfire)
@@ -334,7 +334,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 for (int i = 0; i < totalProjectiles; i++)
                 {
                     Vector2 flareRotationAmt = new Vector2(0f, -velocity).RotatedBy(radians * i);
-                    int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, flareRotationAmt, ModContent.ProjectileType<FlareBomb>(), damage, 0f, Main.myPlayer, ai0, ai1);
+                    int proj = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, flareRotationAmt, ProjectileType<FlareBomb>(), damage, 0f, Main.myPlayer, ai0, ai1);
                     Main.projectile[proj].timeLeft = timeLeft;
                 }
             }
@@ -387,7 +387,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
                 int fireballReleaseRate = 6;
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, ModContent.ProjectileType<FlareDust2>(), 515, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, ProjectileType<FlareDust2>(), 515, 0f, Main.myPlayer, 0f, 0f);
                 
                 if (NPC.Distance(target.Center) > 4000f)
                     attacktimer = TotalTimer;
@@ -445,11 +445,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     // 扔一个龙卷
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<BigFlare2>(), 0, 0f, Main.myPlayer, 1f, NPC.target + 1);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
                         DoFireRing(300, 300, NPC.target, 1f);
                     }
                 }
@@ -485,7 +485,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 {
                     float angle = MathHelper.TwoPi * i / totalFlameVortices;
                     Vector2 SpawnPos = target.Center + angle.ToRotationVector2() * 1780f;
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)SpawnPos.X, (int)SpawnPos.Y, ModContent.NPCType<DetonatingFlare>());
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)SpawnPos.X, (int)SpawnPos.Y, NPCType<DetonatingFlare>());
                 }
             }
             if (attackTimer > flameVortexSpawnDelay && attackTimer % 7 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
@@ -493,10 +493,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 frameType = (float)YharonFrameType.Normal;
                 float horizontalOffset = (attackTimer - flameVortexSpawnDelay) / 7f * 205f + 260f;
                 Vector2 fireballSpawnPosition = NPC.Center + new Vector2(horizontalOffset, -90f);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(-0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(-0.18f) * -20f, ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
 
                 fireballSpawnPosition = NPC.Center + new Vector2(-horizontalOffset, -90f);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(0.18f) * -20f, ModContent.ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), fireballSpawnPosition, Vector2.UnitY.RotatedBy(0.18f) * -20f, ProjectileType<YharonFireballLegacy>(), 100, 0f, Main.myPlayer);
             }
             if (attackTimer > flameVortexSpawnDelay + totalFlameWaves * 7)
                 SelectNextAttack();

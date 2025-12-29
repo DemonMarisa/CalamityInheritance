@@ -42,12 +42,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.knockBack = 5f;
             Item.UseSound = CISoundID.SoundFlamethrower;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PristineFireLegacy>();
+            Item.shoot = ProjectileType<PristineFireLegacy>();
             Item.shootSpeed = 11f;
             Item.useAmmo = AmmoID.Gel;
 
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = RarityType<Turquoise>();
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-25, -10);
@@ -79,34 +79,34 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 {
                     float SpeedX = velocity.X + Main.rand.NextFloat(-1.25f, 1.25f);
                     float SpeedY = velocity.Y + Main.rand.NextFloat(-1.25f, 1.25f);
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<PristineLegacySecondary>(), (int)(damage * 0.8f), knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<PristineLegacySecondary>(), (int)(damage * 0.8f), knockback, player.whoAmI);
                 }
             }
             else
             {
                 damage = (int)(damage * 0.94);
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PristineFireLegacy>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<PristineFireLegacy>(), damage, knockback, player.whoAmI);
             }
             return false;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frameI, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
             spriteBatch.Draw(texture, position, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4), Color.White, 0f, origin, scale, SpriteEffects.None, 0);
             return false;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacy_Animated").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4), lightColor, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
             return false;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacyGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PristineFuryLegacyGlow").Value;
             spriteBatch.Draw(texture, Item.position - Main.screenPosition, Item.GetCurrentFrame(ref frame, ref frameCounter, 5, 4, false), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
         public override void AddRecipes()

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.width = 10;
             Projectile.height= 18;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.ignoreWater = true;
             Projectile.friendly = true;
             Projectile.penetrate = 1;

@@ -2,13 +2,14 @@
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
     public class GodslayerDartMount : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public int hasfirecount = 0;
         public int firedely = 2;
         public int mountdartfirerelay = 3;
@@ -44,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
             if (firedely == 0 && hasfirecount < 8)
             {
-                Projectile.NewProjectile(source, armPosition, direction * 32f, ModContent.ProjectileType<GodSlayerDart>(), Projectile.damage, 2f, Projectile.owner, 1, 0f);
+                Projectile.NewProjectile(source, armPosition, direction * 32f, ProjectileType<GodSlayerDart>(), Projectile.damage, 2f, Projectile.owner, 1, 0f);
                 firedely = 3;
                 hasfirecount++;
                 Projectile.netUpdate = true;

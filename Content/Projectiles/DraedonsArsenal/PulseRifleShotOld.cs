@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using System;
 using Terraria.Audio;
 using Terraria.ID;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal
     public class PulseRifleShotOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.DraedonsArsenal";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private int dust1 = 27; //purple
         private int dust2 = 173; //shortlived purple

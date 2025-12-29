@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
     public class ShrineMarbleSwordClone: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.ProjRoute}/Typeless/ShrineMarbleSword";
+        public override string Texture => GetInstance<ShrineMarbleSword>().Texture;
         public double rotation = 0;
         public override void SetStaticDefaults()
         {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         }
         public override void AI()
         {
-            bool ifSummon = Projectile.type == ModContent.ProjectileType<ShrineMarbleSwordClone>();
+            bool ifSummon = Projectile.type == ProjectileType<ShrineMarbleSwordClone>();
             Player p = Main.player[Projectile.owner];
             var modPlayer = p.CIMod();
             if (!modPlayer.SMarble)

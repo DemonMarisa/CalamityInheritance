@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-			CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 15f, 30f, 5, ModContent.ProjectileType<VictideShell>());
+			CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 15f, 30f, 5, ProjectileType<VictideShell>());
 
         }
 

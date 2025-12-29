@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CorossiveFlamesLegacy>();
+            Item.shoot = ProjectileType<CorossiveFlamesLegacy>();
             Item.shootSpeed = 7.5f;
             Item.useAmmo = AmmoID.Gel;
         }

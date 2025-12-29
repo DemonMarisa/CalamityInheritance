@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 double offsetY = offsetHyp * Math.Sin(offsetRotation);
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X + (float)offsetX, Projectile.Center.Y + (float)offsetY, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<ApothJawsLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.rotation, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X + (float)offsetX, Projectile.Center.Y + (float)offsetY, Projectile.velocity.X, Projectile.velocity.Y, ProjectileType<ApothJawsLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.rotation, 0f);
                 }
                 offsetRotation = Math.Atan2(38, 48) + Projectile.rotation;
                 offsetX = offsetHyp * Math.Cos(offsetRotation);
@@ -49,15 +49,15 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X + Projectile.width / 2 + (float)offsetX, Projectile.position.Y + Projectile.height / 2 + (float)offsetY, Projectile.velocity.X, Projectile.velocity.Y, ModContent.ProjectileType<ApothJawsLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.rotation, 1f);     
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X + Projectile.width / 2 + (float)offsetX, Projectile.position.Y + Projectile.height / 2 + (float)offsetY, Projectile.velocity.X, Projectile.velocity.Y, ProjectileType<ApothJawsLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, Projectile.rotation, 1f);     
                 }
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 600, true);
-            target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 600, true);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 600, true);
+            target.AddBuff(BuffType<ArmorCrunch>(), 600, true);
             
         }
     }

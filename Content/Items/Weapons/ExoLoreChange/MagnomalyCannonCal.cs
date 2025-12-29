@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class MagnomalyCannonCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<MagnomalyCannon>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<MagnomalyCannon>();
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
         }
@@ -26,13 +26,13 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             if (player.CheckExoLore())
             {
-                item.shoot = ModContent.ProjectileType<MagnomalyRocketExoLore>();
+                item.shoot = ProjectileType<MagnomalyRocketExoLore>();
                 item.useAnimation = item.useTime = 67;
                 item.UseSound = CISoundMenu.MagnomalyShootSound.WithVolumeScale(0.8f);
             }
             else
             {
-                item.shoot = ModContent.ProjectileType<MagnomalyRocket>();
+                item.shoot = ProjectileType<MagnomalyRocket>();
                 item.useAnimation = item.useTime = 15;
                 item.UseSound = SoundID.Item11;
             }

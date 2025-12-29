@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.GalacticStar
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Projectile.DamageType != DamageClass.Ranged)
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+                target.AddBuff(BuffType<HolyFlames>(), 180);
         }
         public override bool PreDraw(ref Color lightColor)
         {

@@ -112,7 +112,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (baseColor == Color.White)
                 return false;
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
+            Texture2D texture = Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
             return false;

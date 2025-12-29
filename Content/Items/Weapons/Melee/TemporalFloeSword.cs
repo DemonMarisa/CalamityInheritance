@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 60;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TemporalFloeSwordProjectile>();
+            Item.shoot = ProjectileType<TemporalFloeSwordProjectile>();
             Item.shootSpeed = 16f;
         }
 
@@ -66,13 +66,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<GlacialState>(), 60);
             target.AddBuff(BuffID.Frostburn, 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<GlacialState>(), 60);
             target.AddBuff(BuffID.Frostburn, 300);
         }
     }

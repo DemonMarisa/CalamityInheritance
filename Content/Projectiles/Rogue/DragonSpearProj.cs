@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.penetrate = 1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.timeLeft = 300;
         }
         public override bool? CanHitNPC(NPC target) => Projectile.localAI[0] > 10f;
@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             target.AddBuff(BuffID.Daybreak, 360);
             for (int j = 0; j < 3; j++)
             {
-                Vector2 fireBallSpeed = new Vector2(0 , -26f).RotatedBy(Main.rand.NextFloat(-0.6f + j/10, 0.7f + j/10)) * 1.1f; Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, fireBallSpeed, ModContent.ProjectileType<DragonSpearFlare>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Vector2 fireBallSpeed = new Vector2(0 , -26f).RotatedBy(Main.rand.NextFloat(-0.6f + j/10, 0.7f + j/10)) * 1.1f; Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, fireBallSpeed, ProjectileType<DragonSpearFlare>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
            
         }

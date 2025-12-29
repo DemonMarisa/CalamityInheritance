@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 5f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<SporeKnifeProj>();
+            Item.shoot = ProjectileType<SporeKnifeProj>();
             Item.shootSpeed = 1.6f;
             Item.rare = ItemRarityID.Green;
             Item.value = CIShopValue.RarityPriceGreen;

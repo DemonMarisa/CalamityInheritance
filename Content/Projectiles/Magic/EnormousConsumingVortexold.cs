@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             float xStartingAcceleration = Utils.NextFloat(Main.rand, 0.001f, 0.04f) * Utils.ToDirectionInt(Utils.NextBool(Main.rand, 2));
             float yStartingAcceleration = Utils.NextFloat(Main.rand, 0.001f, 0.04f) * Utils.ToDirectionInt(Utils.NextBool(Main.rand, 2));
-            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, Utils.RotatedByRandom(Vector2.UnitY, 6.2831854820251465) * Utils.NextFloat(Main.rand, 9f, 13f), ModContent.ProjectileType<SubsumingTentacle>(), (int)(Projectile.damage * 0.6), Projectile.knockBack * 0.6f, this.Projectile.owner, xStartingAcceleration, yStartingAcceleration, 0f).tileCollide = false;
+            Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, Utils.RotatedByRandom(Vector2.UnitY, 6.2831854820251465) * Utils.NextFloat(Main.rand, 9f, 13f), ProjectileType<SubsumingTentacle>(), (int)(Projectile.damage * 0.6), Projectile.knockBack * 0.6f, this.Projectile.owner, xStartingAcceleration, yStartingAcceleration, 0f).tileCollide = false;
         }
 
         public void TargetingMovement()
@@ -155,7 +155,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         velocity2 = Utils.RotatedByRandom(Projectile.DirectionTo(closestTarget.Center), 0.4);
                     }
                     velocity2 *= Utils.NextFloat(Main.rand, 3f, 5f);
-                    Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, velocity2, ModContent.ProjectileType<Vortex>(), (int)(Projectile.damage * 0.7), this.Projectile.knockBack, this.Projectile.owner, 0f, Utils.NextFloat(Main.rand, 0.5f, 1.8f), 0f);
+                    Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(null), Projectile.Center, velocity2, ProjectileType<Vortex>(), (int)(Projectile.damage * 0.7), this.Projectile.knockBack, this.Projectile.owner, 0f, Utils.NextFloat(Main.rand, 0.5f, 1.8f), 0f);
                 }
             }
         }
@@ -176,12 +176,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Vector2 drawOffset = Vector2.UnitX.RotatedBy(rotation) * 30f * offsetFactor * drawScale;
                 Vector2 drawPosition = Projectile.Center + drawOffset - Main.screenPosition;
                 Color colorToDraw = Main.hslToRgb((i / (float)vortexesToDraw + Time / 40f) % 1f, 1f, 0.75f);
-                Main.EntitySpriteDraw((Texture2D)ModContent.Request<Texture2D>(Texture),
+                Main.EntitySpriteDraw((Texture2D)Request<Texture2D>(Texture),
                                  drawPosition,
                                  null,
                                  colorToDraw * 0.7f,
                                  rotation,
-                                 ModContent.Request<Texture2D>(Texture).Size() * 0.5f,
+                                 Request<Texture2D>(Texture).Size() * 0.5f,
                                  drawScale,
                                  SpriteEffects.None,
                                  0f);

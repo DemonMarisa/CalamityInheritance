@@ -10,15 +10,14 @@ using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class IchorSpearLegacy : RogueWeapon, ILocalizedModType
+    public class IchorSpearLegacy : CIRogueClass
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
             Type.ShimmerEach<IchorSpear>(false);
         }
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 52;
             Item.damage = 96;
@@ -32,20 +31,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.height = 52;
             Item.value = CIShopValue.RarityPriceLightRed;
             Item.rare = ItemRarityID.LightRed;
-            Item.shoot = ModContent.ProjectileType<IchorSpearProjLegacy>();
+            Item.shoot = ProjectileType<IchorSpearProjLegacy>();
             Item.shootSpeed = 20f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
-
-        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            bool isStealth = player.CheckStealth();
-            int stealth = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Main.projectile[stealth].Calamity().stealthStrike = isStealth;
-            Main.projectile[stealth].usesLocalNPCImmunity = isStealth;
-            return false;
-        }
-
         public override void AddRecipes()
         {
             CreateRecipe().

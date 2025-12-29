@@ -102,9 +102,9 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher
         {
             Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
             if (Style == SecondMeteor - 1)
-                tex = ModContent.Request<Texture2D>(MeteorPath + "/" + MeteorName + SecondMeteor.ToString()).Value;
+                tex = Request<Texture2D>(MeteorPath + "/" + MeteorName + SecondMeteor.ToString()).Value;
             if (Style == ThirdMeteor - 1)
-                tex = ModContent.Request<Texture2D>(MeteorPath + "/" + MeteorName + ThirdMeteor.ToString()).Value;
+                tex = Request<Texture2D>(MeteorPath + "/" + MeteorName + ThirdMeteor.ToString()).Value;
             //考虑了一会手动draw了一次
             Vector2 origin = tex.Size() / 2f;
             Vector2 baseDrawPosition = Projectile.Center - Main.screenPosition;

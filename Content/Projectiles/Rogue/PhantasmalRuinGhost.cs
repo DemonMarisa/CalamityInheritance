@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = false;
             Projectile.timeLeft = 240;
             Projectile.extraUpdates = 1;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
         public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.timeLeft > 239)
                 return false;
 
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
             return false;

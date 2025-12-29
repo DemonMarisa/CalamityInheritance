@@ -10,11 +10,11 @@ namespace CalamityInheritance.Content.Achievements
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(AchievementCategory.Collector);
-            AddItemPickupCondition(ModContent.ItemType<StepToolShadows>());
+            AddItemPickupCondition(ItemType<StepToolShadows>());
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<CraftScarletGun>());
+            yield return new After(GetInstance<CraftScarletGun>());
         }
     }
 }

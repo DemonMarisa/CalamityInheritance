@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoFlareClusterold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public const float MinDistanceFromTarget = 45f;
         public const float MaxDistanceFromTarget = 1350f;
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 if (Main.netMode != NetmodeID.Server)
                 {
-                    int projID = ModContent.ProjectileType<ExoFlareold>();
+                    int projID = ProjectileType<ExoFlareold>();
                     int flareDamage = (int)(0.6f * Projectile.damage);
                     float flareKB = Projectile.knockBack;
                     for (int i = 0; i < 4; i++)
@@ -88,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+            target.AddBuff(BuffType<MiracleBlight>(), 600);
         }
     }
 }

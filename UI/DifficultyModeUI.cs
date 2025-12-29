@@ -25,12 +25,12 @@ namespace CalamityInheritance.UI
         public static int FrameCount = 0;
         public static void Load()
         {
-            BG = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorArea", AssetRequestMode.ImmediateLoad).Value;
-            Arma = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorArma", AssetRequestMode.ImmediateLoad).Value;
-            Death = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorDeath", AssetRequestMode.ImmediateLoad).Value;
-            Malice = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorMalice", AssetRequestMode.ImmediateLoad).Value;
-            Rev = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorRev", AssetRequestMode.ImmediateLoad).Value;
-            Rune = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorRune", AssetRequestMode.ImmediateLoad).Value;
+            BG = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorArea", AssetRequestMode.ImmediateLoad).Value;
+            Arma = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorArma", AssetRequestMode.ImmediateLoad).Value;
+            Death = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorDeath", AssetRequestMode.ImmediateLoad).Value;
+            Malice = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorMalice", AssetRequestMode.ImmediateLoad).Value;
+            Rev = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorRev", AssetRequestMode.ImmediateLoad).Value;
+            Rune = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/ModeIndicatorRune", AssetRequestMode.ImmediateLoad).Value;
         }
 
         public static void Unload()
@@ -66,7 +66,7 @@ namespace CalamityInheritance.UI
 
         public static void DrawCalamityUI(SpriteBatch spriteBatch)
         {
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             // 右上角为锚点绘制
             float yCenter = 80;
             float xCenter = Main.screenWidth - 450;
@@ -91,8 +91,8 @@ namespace CalamityInheritance.UI
 
         public static void DrawInfernumModeUI(SpriteBatch spriteBatch)
         {
-            CIWorld world = ModContent.GetInstance<CIWorld>();
-            Texture2D outerAreaTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumBG").Value;
+            CIWorld world = GetInstance<CIWorld>();
+            Texture2D outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumBG").Value;
 
             count++;
             if (count > int.MaxValue)
@@ -102,11 +102,11 @@ namespace CalamityInheritance.UI
                 FrameCount++;
 
             if (world.Armageddon && world.Defiled)
-                outerAreaTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledArmaBG").Value;
+                outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledArmaBG").Value;
             else if (world.Defiled)
-                outerAreaTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledBG").Value;
+                outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledBG").Value;
             else if (world.Armageddon)
-                outerAreaTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumArmaBG").Value;
+                outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumArmaBG").Value;
 
             float pulseRate = 11f;
 

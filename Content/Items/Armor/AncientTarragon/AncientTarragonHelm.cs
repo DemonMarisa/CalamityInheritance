@@ -21,13 +21,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
         {
             Item.width = 18;
             Item.height = 18;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 20; //90
         }
         
 
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientTarragonBreastplate>() && legs.type == ModContent.ItemType<AncientTarragonLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientTarragonBreastplate>() && legs.type == ItemType<AncientTarragonLeggings>();
         
         public override void ArmorSetShadows(Player player)
         {

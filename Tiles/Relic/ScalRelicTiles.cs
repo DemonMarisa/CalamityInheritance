@@ -14,6 +14,6 @@ namespace CalamityInheritance.Tiles.Relic
     {
         public override string RelicTextureName => "CalamityInheritance/Tiles/Relic/ScalRelicTiles";
 
-        public override int AssociatedItem => ModContent.ItemType<ScalRelic>();
+        public override int AssociatedItem => ItemType<ScalRelic>();
     }
 }

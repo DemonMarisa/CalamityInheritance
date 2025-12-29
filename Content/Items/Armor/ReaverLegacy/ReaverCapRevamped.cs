@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
+            return body.type == ItemType<ReaverScaleMailRevamped>() && legs.type == ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)

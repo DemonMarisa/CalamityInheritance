@@ -170,42 +170,42 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #endregion
 
             #region 什么嘛……不就是打表吗
-            Texture2D LoreAS = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreAquaticScourge").Value;
-            Texture2D LoreAureus = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreAstrumAureus").Value;
-            Texture2D LoreDeus = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreAstrumDeus").Value;
-            Texture2D LoreBoC = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreBOC").Value;
-            Texture2D LoreBrimmy = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreBrimstoneElemental").Value;
-            Texture2D LoreCalClone = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreCalamitasClone").Value;
-            Texture2D LoreSCal = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreCalamity").Value;
-            Texture2D LoreCrab = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreCrabulon").Value;
-            Texture2D LoreCryo = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreCryogen").Value;
-            Texture2D LoreDS = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreDesertScourge").Value;
-            Texture2D LoreDestroyer = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreDestroyer").Value;
-            Texture2D LoreDoG = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreDOG").Value;
-            Texture2D LoreDuke = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreDukeFish").Value;
-            Texture2D LoreEoC = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreEOC").Value;
-            Texture2D LoreEoW = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreEOW").Value;
-            Texture2D LoreExo = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreExoMech").Value;
-            Texture2D LoreGolem = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreGolem").Value;
-            Texture2D LoreHive = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreHiveMind").Value;
-            Texture2D LoreKS = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreKingSlime").Value;
-            Texture2D LoreLA = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreLAndA").Value;
-            Texture2D LoreCultist = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreLunaticCultist").Value;
-            Texture2D LoreML = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreMoonLord").Value;
-            Texture2D LoreOD = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreOldNuke").Value;
-            Texture2D LorePerf = ModContent.Request<Texture2D>($"{LoreImagePath}/LorePerforators").Value;
-            Texture2D LorePBG = ModContent.Request<Texture2D>($"{LoreImagePath}/LorePlaguebringerGoliath").Value;
-            Texture2D LorePlant = ModContent.Request<Texture2D>($"{LoreImagePath}/LorePlentera").Value;
-            Texture2D LorePolter = ModContent.Request<Texture2D>($"{LoreImagePath}/LorePolterghast").Value;
-            Texture2D LoreProvi = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreProvidence").Value;
-            Texture2D LoreQB = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreQueenBee").Value;
-            Texture2D LoreRavager = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreRavager").Value;
-            Texture2D LoreSkele = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreSkeletron").Value;
-            Texture2D LorePrime = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreSkeletronPrime").Value;
-            Texture2D LoreSG = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreSlimeGod").Value;
-            Texture2D LoreTwins = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreTwins").Value;
-            Texture2D LoreWoF = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreWOF").Value;
-            Texture2D LoreYharon = ModContent.Request<Texture2D>($"{LoreImagePath}/LoreYharon").Value;
+            Texture2D LoreAS = Request<Texture2D>($"{LoreImagePath}/LoreAquaticScourge").Value;
+            Texture2D LoreAureus = Request<Texture2D>($"{LoreImagePath}/LoreAstrumAureus").Value;
+            Texture2D LoreDeus = Request<Texture2D>($"{LoreImagePath}/LoreAstrumDeus").Value;
+            Texture2D LoreBoC = Request<Texture2D>($"{LoreImagePath}/LoreBOC").Value;
+            Texture2D LoreBrimmy = Request<Texture2D>($"{LoreImagePath}/LoreBrimstoneElemental").Value;
+            Texture2D LoreCalClone = Request<Texture2D>($"{LoreImagePath}/LoreCalamitasClone").Value;
+            Texture2D LoreSCal = Request<Texture2D>($"{LoreImagePath}/LoreCalamity").Value;
+            Texture2D LoreCrab = Request<Texture2D>($"{LoreImagePath}/LoreCrabulon").Value;
+            Texture2D LoreCryo = Request<Texture2D>($"{LoreImagePath}/LoreCryogen").Value;
+            Texture2D LoreDS = Request<Texture2D>($"{LoreImagePath}/LoreDesertScourge").Value;
+            Texture2D LoreDestroyer = Request<Texture2D>($"{LoreImagePath}/LoreDestroyer").Value;
+            Texture2D LoreDoG = Request<Texture2D>($"{LoreImagePath}/LoreDOG").Value;
+            Texture2D LoreDuke = Request<Texture2D>($"{LoreImagePath}/LoreDukeFish").Value;
+            Texture2D LoreEoC = Request<Texture2D>($"{LoreImagePath}/LoreEOC").Value;
+            Texture2D LoreEoW = Request<Texture2D>($"{LoreImagePath}/LoreEOW").Value;
+            Texture2D LoreExo = Request<Texture2D>($"{LoreImagePath}/LoreExoMech").Value;
+            Texture2D LoreGolem = Request<Texture2D>($"{LoreImagePath}/LoreGolem").Value;
+            Texture2D LoreHive = Request<Texture2D>($"{LoreImagePath}/LoreHiveMind").Value;
+            Texture2D LoreKS = Request<Texture2D>($"{LoreImagePath}/LoreKingSlime").Value;
+            Texture2D LoreLA = Request<Texture2D>($"{LoreImagePath}/LoreLAndA").Value;
+            Texture2D LoreCultist = Request<Texture2D>($"{LoreImagePath}/LoreLunaticCultist").Value;
+            Texture2D LoreML = Request<Texture2D>($"{LoreImagePath}/LoreMoonLord").Value;
+            Texture2D LoreOD = Request<Texture2D>($"{LoreImagePath}/LoreOldNuke").Value;
+            Texture2D LorePerf = Request<Texture2D>($"{LoreImagePath}/LorePerforators").Value;
+            Texture2D LorePBG = Request<Texture2D>($"{LoreImagePath}/LorePlaguebringerGoliath").Value;
+            Texture2D LorePlant = Request<Texture2D>($"{LoreImagePath}/LorePlentera").Value;
+            Texture2D LorePolter = Request<Texture2D>($"{LoreImagePath}/LorePolterghast").Value;
+            Texture2D LoreProvi = Request<Texture2D>($"{LoreImagePath}/LoreProvidence").Value;
+            Texture2D LoreQB = Request<Texture2D>($"{LoreImagePath}/LoreQueenBee").Value;
+            Texture2D LoreRavager = Request<Texture2D>($"{LoreImagePath}/LoreRavager").Value;
+            Texture2D LoreSkele = Request<Texture2D>($"{LoreImagePath}/LoreSkeletron").Value;
+            Texture2D LorePrime = Request<Texture2D>($"{LoreImagePath}/LoreSkeletronPrime").Value;
+            Texture2D LoreSG = Request<Texture2D>($"{LoreImagePath}/LoreSlimeGod").Value;
+            Texture2D LoreTwins = Request<Texture2D>($"{LoreImagePath}/LoreTwins").Value;
+            Texture2D LoreWoF = Request<Texture2D>($"{LoreImagePath}/LoreWOF").Value;
+            Texture2D LoreYharon = Request<Texture2D>($"{LoreImagePath}/LoreYharon").Value;
             #endregion
 
             // 这里是与设置相关，便于调试的设置
@@ -220,25 +220,25 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // 案例绘制
             #region 按钮绘制
             // 按钮开始时的材质
-            Texture2D buttonTextureTrue = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrue").Value;
+            Texture2D buttonTextureTrue = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrue").Value;
             // 按钮开启时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrueHover").Value;
+            Texture2D buttonTextureTrueHover = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonTrueHover").Value;
             // 按钮关闭时的材质
-            Texture2D buttonTextureFalse = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalse").Value;
+            Texture2D buttonTextureFalse = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalse").Value;
             // 按钮关闭时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalseHover").Value;
+            Texture2D buttonTextureFalseHover = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonFalseHover").Value;
             // 按钮不可用时的材质
-            Texture2D buttonTextureUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonUnAvailable").Value;
+            Texture2D buttonTextureUnAvailable = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogButtonUnAvailable").Value;
             // lore不可用时的材质
-            Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogLoreUnAvailable").Value;
+            Texture2D loreTextureUnAvailable = Request<Texture2D>($"{DraedonGenericUI}/DraedonsLogLoreUnAvailable").Value;
             // lore悬停时的材质
-            Texture2D loreTextureOutLine = ModContent.Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLine").Value;
+            Texture2D loreTextureOutLine = Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLine").Value;
             // lore不可用时的悬停材质
-            Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLineUnAvailable").Value;
+            Texture2D loreTextureOutLineUnAvailable = Request<Texture2D>($"{DraedonGenericUI}/Lore/LoreOutLineUnAvailable").Value;
             // 如果不想或者懒得新建存储，可以直接用这个透明材质
-            Texture2D InvisibleUI = ModContent.Request<Texture2D>($"{DraedonGenericUI}/InvisibleUI").Value;
+            Texture2D InvisibleUI = Request<Texture2D>($"{DraedonGenericUI}/InvisibleUI").Value;
             // 血书页的材质
-            Texture2D PageBlood = ModContent.Request<Texture2D>($"{DraedonGenericUI}/PageBlood").Value;
+            Texture2D PageBlood = Request<Texture2D>($"{DraedonGenericUI}/PageBlood").Value;
             #endregion
             DrawUIData genericBtonData = GetDrawBtnData(xResolutionScale, yResolutionScale, 0.65f, spriteBatch, buttonTextureTrue, buttonTextureTrueHover, buttonTextureFalse, buttonTextureFalseHover, buttonTextureUnAvailable, mouseRectangle, false);
 
@@ -352,22 +352,22 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 右侧界面的中心位置
                 // 305
 
-                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>($"{DraedonGenericUI}/PanelLore" + draedonsLoreChoice).Value;
+                Texture2D loreTexturePanelVer = Request<Texture2D>($"{DraedonGenericUI}/PanelLore" + draedonsLoreChoice).Value;
    
                 CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
 
                 // 下划线贴图
-                Texture2D loreTextLineTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextLine").Value;
+                Texture2D loreTextLineTexture = Request<Texture2D>($"{DraedonGenericUI}/TextLine").Value;
 
                 // 下划线贴图
-                Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextLineShort").Value;
+                Texture2D loreTextLineShortTexture = Request<Texture2D>($"{DraedonGenericUI}/TextLineShort").Value;
 
                 CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, 305, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
                 #endregion
                 #region 绘制文字
                 // 背景贴图
                 // 用于文字背景，暂时无用
-                Texture2D bgTexture = ModContent.Request<Texture2D>($"{DraedonGenericUI}/TextHoverTip").Value;
+                Texture2D bgTexture = Request<Texture2D>($"{DraedonGenericUI}/TextHoverTip").Value;
 
                 // 获取文字
                 string TileText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreT" + TextDisplayID);

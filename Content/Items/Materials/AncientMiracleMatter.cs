@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Materials
             Item.height = 80;
             Item.maxStack = 1;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = RarityType<PureRed>();
         }
 
         public void DrawBackAfterimage(SpriteBatch spriteBatch, Vector2 baseDrawPosition, Rectangle frame, float baseScale)

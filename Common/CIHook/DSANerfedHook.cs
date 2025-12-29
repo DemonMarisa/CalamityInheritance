@@ -35,7 +35,7 @@ namespace CalamityInheritance.Common.CIHook
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ModContent.ItemType<DimensionalSoulArtifact>();
+            return entity.type == ItemType<DimensionalSoulArtifact>();
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 vectorBruh -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
                 Vector2 newCenter = player.RotatedRelativePoint(Main.player[Projectile.owner].position + vectorBruh, true) + Projectile.velocity;
                 int moonDamage = (int)(Projectile.damage * 0.5f);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), newCenter.X, newCenter.Y, 0f, 0f, ModContent.ProjectileType<ExoFlailEnergy>(), moonDamage, 0f, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), newCenter.X, newCenter.Y, 0f, 0f, ProjectileType<ExoFlailEnergy>(), moonDamage, 0f, Projectile.owner, 0f, 0f);
                 Counter = 12;
             }
         }
@@ -97,15 +97,15 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float startAngle = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
                 if (Projectile.ai[1] >= 11f)
                 {
-                    Explode(Projectile.Center, startAngle, 8, 12f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
-                    Explode(Projectile.Center, startAngle, 8, 8f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.15f);
-                    Explode(Projectile.Center, startAngle, 8, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.2f);
+                    Explode(Projectile.Center, startAngle, 8, 12f, ProjectileType<ExoFlailEnergy>(), 0.1f);
+                    Explode(Projectile.Center, startAngle, 8, 8f, ProjectileType<ExoFlailEnergy>(), 0.15f);
+                    Explode(Projectile.Center, startAngle, 8, 4f, ProjectileType<ExoFlailEnergy>(), 0.2f);
                 }
             }
             else
             {
                 float startAngle2 = MathHelper.ToRadians(Main.rand.Next(3600) / 10);
-                Explode(target.Center, startAngle2, 6, 4f, ModContent.ProjectileType<ExoFlailEnergy>(), 0.1f);
+                Explode(target.Center, startAngle2, 6, 4f, ProjectileType<ExoFlailEnergy>(), 0.1f);
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
             }
             target.ExoDebuffs();

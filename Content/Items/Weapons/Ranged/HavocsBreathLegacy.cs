@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<BrimstoneFireFriendlyLegacy>();
+            Item.shoot = ProjectileType<BrimstoneFireFriendlyLegacy>();
             Item.shootSpeed = 8.5f;
             Item.useAmmo = AmmoID.Gel;
         }

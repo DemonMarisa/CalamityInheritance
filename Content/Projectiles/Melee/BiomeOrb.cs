@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             bool holy = player.ZoneHallow;
             if (astral)
             {
-                dustType = ModContent.DustType<AstralOrange>();
+                dustType = DustType<AstralOrange>();
                 color = new Color(255, 127, 80, Projectile.alpha);
             }
             else if (jungle)
@@ -170,7 +170,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             int debuffTime = 90;
             if (astral)
             {
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), debuffTime);
+                target.AddBuff(BuffType<AstralInfectionDebuff>(), debuffTime);
             }
             else if (jungle)
             {
@@ -178,11 +178,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (snow)
             {
-                target.AddBuff(ModContent.BuffType<GlacialState>(), debuffTime / 3);
+                target.AddBuff(BuffType<GlacialState>(), debuffTime / 3);
             }
             else if (beach)
             {
-                target.AddBuff(ModContent.BuffType<CrushDepth>(), debuffTime);
+                target.AddBuff(BuffType<CrushDepth>(), debuffTime);
             }
             else if (dungeon)
             {
@@ -190,23 +190,23 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (desert)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), debuffTime);
+                target.AddBuff(BuffType<HolyFlames>(), debuffTime);
             }
             else if (glow)
             {
-                target.AddBuff(ModContent.BuffType<TemporalSadness>(), debuffTime / 3);
+                target.AddBuff(BuffType<TemporalSadness>(), debuffTime / 3);
             }
             else if (hell)
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), debuffTime);
+                target.AddBuff(BuffType<BrimstoneFlames>(), debuffTime);
             }
             else if (holy)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), debuffTime);
+                target.AddBuff(BuffType<HolyFlames>(), debuffTime);
             }
             else
             {
-                target.AddBuff(ModContent.BuffType<ArmorCrunch>(), debuffTime);
+                target.AddBuff(BuffType<ArmorCrunch>(), debuffTime);
             }
         }
     }

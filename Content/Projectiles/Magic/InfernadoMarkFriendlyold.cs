@@ -1,4 +1,5 @@
 ﻿using System;
+using LAP.Assets.TextureRegister;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class InfernadoMarkFriendlyold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public static readonly SoundStyle FlareSound = new("CalamityMod/Sounds/Custom/Yharon/YharonInfernado");
 
@@ -138,7 +139,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         break;
                     }
                 }
-                int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projTileX * 16 + 8, projTileY * 16 + 540, 0f, 0f, ModContent.ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
+                int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projTileX * 16 + 8, projTileY * 16 + 540, 0f, 0f, ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
                 Main.projectile[infernado].netUpdate = true;
             }
         }
@@ -189,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                             break;
                         }
                     }
-                    int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projTileX * 16 + 8, projTileY * 16 - 24, 0f, 0f, ModContent.ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
+                    int infernado = Projectile.NewProjectile(Projectile.GetSource_FromThis(), projTileX * 16 + 8, projTileY * 16 - 24, 0f, 0f, ProjectileType<InfernadoFriendlyold>(), Projectile.damage, Projectile.knockBack * 30f, Main.myPlayer, 16f, 16f);
                     Main.projectile[infernado].netUpdate = true;
                 }
             }

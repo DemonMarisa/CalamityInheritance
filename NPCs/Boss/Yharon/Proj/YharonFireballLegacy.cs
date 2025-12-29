@@ -105,12 +105,12 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             {
                 for (int x = 0; x < 3; x++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, speedX, -50f, ModContent.ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, speedX, -50f, ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                     speedX += 3f;
                 }
                 for (int x = 0; x < 2; x++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speedX2, -75f, ModContent.ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speedX2, -75f, ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                     speedX2 += 10f;
                 }
             }
@@ -132,7 +132,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
+            target.AddBuff(BuffType<Dragonfire>(), 180);
         }
     }
 }

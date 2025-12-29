@@ -10,12 +10,12 @@ namespace CalamityInheritance.System
     {
         public override void PostSetupContent()
         {
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashnew1>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashold>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<ExoArrowTealExoLore>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<DragonBowFlameRework>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>()] = false;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<MurasamaSlashnew1>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<MurasamaSlashold>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<ExoArrowTealExoLore>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<DragonBowFlameRework>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<RogueFallenHammerProjClone>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<RogueFallenHammerProj>()] = false;
         }
     }
 }

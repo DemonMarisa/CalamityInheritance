@@ -46,7 +46,7 @@ namespace CalamityInheritance.Tiles.Vanity
         {
             int xFrameOffset = Main.tile[i, j].TileFrameX;
             int yFrameOffset = Main.tile[i, j].TileFrameY;
-            Texture2D glowmask = ModContent.Request<Texture2D>("CalamityInheritance/Tiles/Vanity/IronHeartTilesGlow").Value;
+            Texture2D glowmask = Request<Texture2D>("CalamityInheritance/Tiles/Vanity/IronHeartTilesGlow").Value;
             Vector2 drawOffest = Main.drawToScreen ? Vector2.Zero : new Vector2(Main.offScreenRange);
             Vector2 drawPosition = new Vector2(i * 16 - Main.screenPosition.X, j * 16 - Main.screenPosition.Y) + drawOffest;
             Color drawColour = Color.White;

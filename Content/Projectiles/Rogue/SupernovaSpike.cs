@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 2;
             Projectile.aiStyle = ProjAIStyleID.Nail;
             AIType = ProjectileID.NailFriendly;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 5;
         }
@@ -61,9 +61,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Visuals(Projectile, ref currentColor);
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 180);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<MiracleBlight>(), 180);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 180);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 180);
 
         internal static void Visuals(Projectile projectile, ref Color c)
         {

@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f, 0f);
             SoundEngine.PlaySound(SoundID.Item62, Projectile.position);
             Projectile.penetrate--;
             if (Projectile.penetrate <= 0)
@@ -86,14 +86,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnKill(int timeLeft)
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 1f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 1f, 0f);
             SoundEngine.PlaySound(SoundID.Item62, Projectile.position);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 2;
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<ChargedDartExplosion>(), Projectile.damage / 4, Projectile.knockBack, Projectile.owner, 0f, 0f);
         }
     }
 }

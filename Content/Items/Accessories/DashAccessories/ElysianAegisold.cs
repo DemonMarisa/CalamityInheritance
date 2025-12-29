@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         (
             itemWidth:48,
             itemHeight:42,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen,
             itemDefense:18
         );
@@ -49,8 +49,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             usPlayer.ElysianLegacyOn = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true;
-            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
-            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
+            player.buffImmune[BuffType<HolyFlames>()] = true;
+            player.buffImmune[BuffType<BrimstoneFlames>()] = true;
 
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;

@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Projectiles;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
@@ -9,7 +10,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
     public class CataclysmFire : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetStaticDefaults()
         {
@@ -76,7 +77,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 180);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 180);
         }
     }
 }

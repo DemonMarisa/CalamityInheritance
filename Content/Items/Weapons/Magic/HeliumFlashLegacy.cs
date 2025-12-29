@@ -41,8 +41,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item73;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
-            Item.shoot = ModContent.ProjectileType<VolatileStarcoreLegacy>();
+            Item.rare = RarityType<CatalystViolet>();
+            Item.shoot = ProjectileType<VolatileStarcoreLegacy>();
             Item.shootSpeed = 21f;
         }
 

@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmetTo<Minigun>();
+            Type.ShimmerTo<Minigun>();
         }
         
         public override void SetDefaults()
@@ -34,10 +34,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.UseSound = CISoundID.SoundChainGun;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<KingsbaneHoldoutReal>();
+            Item.shoot = ProjectileType<KingsbaneHoldoutReal>();
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>():ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>() : RarityType<CatalystViolet>();
 
             Item.channel = true;
             Item.noUseGraphic = true;
@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile holdout = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<KingsbaneHoldoutReal>(), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile holdout = Projectile.NewProjectileDirect(source, position, velocity, ProjectileType<KingsbaneHoldoutReal>(), damage, knockback, player.whoAmI, 0f, 0f);
             holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
 
             return false;

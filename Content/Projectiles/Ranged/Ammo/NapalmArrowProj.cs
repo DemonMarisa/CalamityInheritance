@@ -13,6 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityInheritance/Content/Items/Ammo/RangedAmmo/NapalmArrow";
+        public override string GlowTexture => base.GlowTexture;
         public override void SetDefaults()
         {
             Projectile.width = 10;
@@ -106,7 +107,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
                 for (int i = 0; i < 3; i++)
                 {
                     Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f, 0.1f);
-                    int flames = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<TotalityFire>(), (int)(Projectile.damage * 0.3), 0f, Projectile.owner);
+                    int flames = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<TotalityFire>(), (int)(Projectile.damage * 0.3), 0f, Projectile.owner);
                     if (flames.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[flames].DamageType = DamageClass.Ranged;

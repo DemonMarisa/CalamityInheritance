@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.owner == Main.myPlayer)
             {
                 var source = Projectile.GetSource_FromThis();
-                CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 800f, 800f, 0f, 800f, 10f, ModContent.ProjectileType<HyperiusSplitOld>(), (int)(Projectile.damage * 0.6), 1f, Projectile.owner, true);
+                CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 800f, 800f, 0f, 800f, 10f, ProjectileType<HyperiusSplitOld>(), (int)(Projectile.damage * 0.6), 1f, Projectile.owner, true);
             }
         }
 

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             AIType = 156;
             Projectile.ignoreWater = true;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.penetrate = 10;
             Projectile.extraUpdates = 5;
             Projectile.timeLeft = 600;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 300);
             target.immune[Projectile.owner] = 2;
         }
 

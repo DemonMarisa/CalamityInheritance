@@ -42,6 +42,7 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
     public const float SideIdleSlowSpeed = 0.9f;
     public const short SideFadeInTime = 50;
     #endregion
+    public override string Texture => GetInstance<Excelsus>().Texture;
     public override void SetStaticDefaults()
     {
         Item.ResearchUnlockCount = 1;
@@ -61,14 +62,14 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         Item.UseSound = SoundID.Item1;
         Item.autoReuse = true;
         Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-        Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() :  ModContent.RarityType<DeepBlue>();
-        Item.shoot = ModContent.ProjectileType<ACTExcelsusMain>();
+        Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>() : RarityType<DeepBlue>();
+        Item.shoot = ProjectileType<ACTExcelsusMain>();
         Item.shootSpeed = 18f;
     }
 
     public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
     {
-        Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/ACTExcelsusGlow").Value);
+        Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Texture}Glow").Value);
     }
 
     public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -80,9 +81,9 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         {
             pType = i switch
             {
-                0 => ModContent.ProjectileType<ACTExcelsusMain>(), 
-                1 => ModContent.ProjectileType<ACTExcelsusPink>(), 
-                _ => ModContent.ProjectileType<ACTExcelsusBlue>(),
+                0 => ProjectileType<ACTExcelsusMain>(), 
+                1 => ProjectileType<ACTExcelsusPink>(), 
+                _ => ProjectileType<ACTExcelsusBlue>(),
             };
             //处理转角即可
             float speedX = velocity.X;
@@ -97,13 +98,13 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
     public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
     {
         var source = player.GetSource_ItemUse(Item);
-        Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<LaserFountain>(), 0, 0, player.whoAmI);
+        Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<LaserFountain>(), 0, 0, player.whoAmI);
     }
 
     public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
     {
         var source = player.GetSource_ItemUse(Item);
-        Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<LaserFountain>(), 0, 0, player.whoAmI);
+        Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<LaserFountain>(), 0, 0, player.whoAmI);
     }
     //总控射弹属性刷新
     public static void GlobalResetProj(Projectile projectile)

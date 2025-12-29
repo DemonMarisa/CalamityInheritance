@@ -46,7 +46,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ModContent.ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
                 fireCD = 60; 
             }
             //永恒套的近战爆炸攻击
@@ -61,14 +61,14 @@ namespace CalamityInheritance.CIPlayer
                 if (ReaverBlastCooldown <= 0)
                 {
                     SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode, proj.Center);
-                    Projectile.NewProjectile(meleeReaverSrc, proj.Center, Vector2.Zero, ModContent.ProjectileType<ReaverBlast>(),
+                    Projectile.NewProjectile(meleeReaverSrc, proj.Center, Vector2.Zero, ProjectileType<ReaverBlast>(),
                                             BlastDamage, 0.15f, Player.whoAmI);
                     ReaverBlastCooldown = 10;
                 }
             }
 
             //这个应该是泰坦药水的真近战标记
-            if (ifTrueMelee || proj.type == ModContent.ProjectileType<StepToolShadowChair>())
+            if (ifTrueMelee || proj.type == ProjectileType<StepToolShadowChair>())
                 BuffStatsTitanScaleTrueMelee = 600;
         }
         public void RangedOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
@@ -78,8 +78,8 @@ namespace CalamityInheritance.CIPlayer
 
             if (DesertProwler && hit.Crit && proj.CountsAsClass<RangedDamageClass>())
             {
-                int mark = ModContent.ProjectileType<DesertMark>();
-                bool noTornado = Player.ownedProjectileCounts[mark] < 1 && Player.ownedProjectileCounts[ModContent.ProjectileType<DesertTornado>()] < 1;
+                int mark = ProjectileType<DesertMark>();
+                bool noTornado = Player.ownedProjectileCounts[mark] < 1 && Player.ownedProjectileCounts[ProjectileType<DesertTornado>()] < 1;
                 if (noTornado && Main.rand.NextBool(10))
                     Projectile.NewProjectile(Player.GetSource_FromThis(), proj.Center, Vector2.Zero, mark, hit.Damage, 0f, Player.whoAmI);
             }
@@ -100,7 +100,7 @@ namespace CalamityInheritance.CIPlayer
                 int weaponDamage = hit.Damage;
                 int finalDamage = 400 + weaponDamage / 4;
 
-                int projectileTypes = ModContent.ProjectileType<GodSlayerOrb>();
+                int projectileTypes = ProjectileType<GodSlayerOrb>();
                 float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(12f, 16f);
@@ -113,17 +113,17 @@ namespace CalamityInheritance.CIPlayer
                 SilvaMagicSetLegacyCooldown = 300;
                 SoundEngine.PlaySound(SoundID.Zombie103, proj.Center); //So scuffed, just because zombie sounds werent ported normally
                 int silvaBurstDamage = (int)(800 + 0.6f * proj.damage);
-                Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ModContent.ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
+                Projectile.NewProjectile(source, proj.Center, Vector2.Zero, ProjectileType<SilvaBurst>(), silvaBurstDamage, 8f, Player.whoAmI);
             }
             //永恒套
             if (ReaverMageBurst)
             {
                 if (ReaverMageBurst) //击发时提供法术增强buff
-                    Player.AddBuff(ModContent.BuffType<ReaverMagePower>(), 180);
+                    Player.AddBuff(BuffType<ReaverMagePower>(), 180);
 
                 if (ReaverBurstCooldown <= 0)
                 {
-                    int[] projectileTypes = [ModContent.ProjectileType<CISporeGas>(), ModContent.ProjectileType<CISporeGas2>(), ModContent.ProjectileType<CISporeGas3>()];
+                    int[] projectileTypes = [ProjectileType<CISporeGas>(), ProjectileType<CISporeGas2>(), ProjectileType<CISporeGas3>()];
                     float baseAngleIncrement = 2 * MathHelper.Pi / 16;
                     float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
                     //好像这样伤害还挺低的但我也不知道该不该调整了
@@ -164,7 +164,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 if (NucleogenesisLegacy)
                 {
-                    Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, Vector2.Zero, ModContent.ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
+                    Projectile.NewProjectile(proj.GetSource_FromThis(), proj.Center, Vector2.Zero, ProjectileType<ApparatusExplosion>(), (int)(proj.damage * 0.25f), 4f, proj.owner);
                     summonProjCooldown = 25;
                 }
             }
@@ -178,7 +178,7 @@ namespace CalamityInheritance.CIPlayer
                 int weaponDamage = hit.Damage;
                 int finalDamage = 400 + weaponDamage / 4;
 
-                int projectileTypes = ModContent.ProjectileType<GodSlayerPhantom>();
+                int projectileTypes = ProjectileType<GodSlayerPhantom>();
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
                 float randomSpeed = Main.rand.NextFloat(6f, 8f);
@@ -193,7 +193,7 @@ namespace CalamityInheritance.CIPlayer
                 //寻找玩家身上拥有的所有射弹数
                 foreach (Projectile pointerProj in Main.ActiveProjectiles)
                 {
-                    if (pointerProj.type != ModContent.ProjectileType<CryogenPtr>())
+                    if (pointerProj.type != ProjectileType<CryogenPtr>())
                         continue;
                     if (pointerProj.owner != Player.whoAmI)
                         continue;
@@ -225,7 +225,7 @@ namespace CalamityInheritance.CIPlayer
                     if (AncientAstralCritsCount == AncientAstralHelm.RogueCritsTimes)
                     {
                         SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = 0.7f }, Player.Center);
-                        Player.AddBuff(ModContent.BuffType<AncientAstralBuff>(), 300); //5秒
+                        Player.AddBuff(BuffType<AncientAstralBuff>(), 300); //5秒
                         CIFunction.DustCircle(Player.Center, 18f, 1.8f, DustID.HallowedWeapons, false, 8f);
                     }
                     AncientAstralCritsCD = 60; //一个非常微弱的CD
@@ -253,7 +253,7 @@ namespace CalamityInheritance.CIPlayer
                         Vector2 source = new Vector2(target.Center.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
                         Vector2 velocity = (target.Center- source) / 40f;
 
-                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ModContent.ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.05), 3f, proj.owner);
+                        Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.05), 3f, proj.owner);
                     }
                 }
                 //固定生成一个治疗量为10的射弹。
@@ -286,10 +286,10 @@ namespace CalamityInheritance.CIPlayer
                     ];
                     foreach (var addBuffToTarget in shouldAdd)
                     {
-                        addBuffToTarget.AddBuff(ModContent.BuffType<GodSlayerInferno>(), duration);
-                        addBuffToTarget.AddBuff(ModContent.BuffType<BrimstoneFlames>(), duration);
-                        addBuffToTarget.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), duration);
-                        addBuffToTarget.AddBuff(ModContent.BuffType<Irradiated>(), duration);
+                        addBuffToTarget.AddBuff(BuffType<GodSlayerInferno>(), duration);
+                        addBuffToTarget.AddBuff(BuffType<BrimstoneFlames>(), duration);
+                        addBuffToTarget.AddBuff(BuffType<SulphuricPoisoning>(), duration);
+                        addBuffToTarget.AddBuff(BuffType<Irradiated>(), duration);
                         addBuffToTarget.AddBuff(BuffID.Ichor, duration);
                         addBuffToTarget.AddBuff(BuffID.BetsysCurse, duration);
                     }
@@ -338,7 +338,7 @@ namespace CalamityInheritance.CIPlayer
                     Vector2 sparkSpeed = Main.rand.NextBool(2) ? new(Main.rand.NextFloat(-50f, 0f), Main.rand.NextFloat(-50f, 0f)) : new(Main.rand.NextFloat(1f, 51f), Main.rand.NextFloat(0f, 51f));
                     sparkSpeed.Normalize();
                     sparkSpeed *= Main.rand.NextFloat(30f, 61f) * 0.1f;
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, sparkSpeed.X, sparkSpeed.Y, ModContent.ProjectileType<ShrineMarniteProj>(), (int)(hit.Damage * 0.15f), 0f, Player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), target.Center.X, target.Center.Y, sparkSpeed.X, sparkSpeed.Y, ProjectileType<ShrineMarniteProj>(), (int)(hit.Damage * 0.15f), 0f, Player.whoAmI, 0f, 0f);
                 }
                 SparkTimer = 10;
             }
@@ -353,15 +353,15 @@ namespace CalamityInheritance.CIPlayer
             if (ifMelee || ifTrueMelee || ifRogue || p.CountsAsClass<SummonMeleeSpeedDamageClass>())
             {
                 if (BuffStatsArmorShatter)
-                    CalamityUtils.Inflict246DebuffsNPC(tar, ModContent.BuffType<Crumbling>());
+                    CalamityUtils.Inflict246DebuffsNPC(tar, BuffType<Crumbling>());
             }
             if (ifMelee || ifTrueMelee)
             {
                 if (ElemGauntlet)
                 {
-                    tar.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
-                    tar.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
-                    tar.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
+                    tar.AddBuff(BuffType<ElementalMix>(), 300, false);
+                    tar.AddBuff(BuffType<BrimstoneFlames>(), 300, false);
+                    tar.AddBuff(BuffType<GodSlayerInferno>(), 300, false);
                     tar.AddBuff(BuffID.Frostburn2, 300);
                     tar.AddBuff(BuffID.CursedInferno, 300);
                     tar.AddBuff(BuffID.Inferno, 300);
@@ -373,14 +373,14 @@ namespace CalamityInheritance.CIPlayer
                 if (NucleogenesisLegacy)
                 {
                     tar.AddBuff(BuffID.Electrified, 120);
-                    tar.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
-                    tar.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300, false);
-                    tar.AddBuff(ModContent.BuffType<Irradiated>(), 300, false);
-                    tar.AddBuff(ModContent.BuffType<Shadowflame>(), 300, false);
+                    tar.AddBuff(BuffType<HolyFlames>(), 300, false);
+                    tar.AddBuff(BuffType<AstralInfectionDebuff>(), 300, false);
+                    tar.AddBuff(BuffType<Irradiated>(), 300, false);
+                    tar.AddBuff(BuffType<Shadowflame>(), 300, false);
                 }
             }
             //北辰鹦哥鱼的射弹计数器
-            if (p.type == ModContent.ProjectileType<PolarStarLegacy>())
+            if (p.type == ProjectileType<PolarStarLegacy>())
                 PolarisBoostCounter += 1;
 
             #region Lore
@@ -390,16 +390,16 @@ namespace CalamityInheritance.CIPlayer
                 tar.AddBuff(BuffID.CursedInferno, 90);
                 
             if (LoreProvidence || PanelsLoreProvidence)
-                tar.AddBuff(ModContent.BuffType<HolyInferno>(), 180, false);
+                tar.AddBuff(BuffType<HolyInferno>(), 180, false);
 
             if (BuffStatsHolyWrath)
-                tar.AddBuff(ModContent.BuffType<HolyFlames>(), 180, false);
+                tar.AddBuff(BuffType<HolyFlames>(), 180, false);
 
             if (YharimsInsignia)
-                tar.AddBuff(ModContent.BuffType<HolyFlames>(), 120, false);
+                tar.AddBuff(BuffType<HolyFlames>(), 120, false);
 
             if (BuffStatsDraconicSurge && Main.zenithWorld)
-                tar.AddBuff(ModContent.BuffType<Dragonfire>(), 360, false);
+                tar.AddBuff(BuffType<Dragonfire>(), 360, false);
             #endregion
         }
     }

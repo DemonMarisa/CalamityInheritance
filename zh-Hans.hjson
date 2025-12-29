@@ -82,7 +82,12 @@ Mods: {
 			YharonFireball2Legacy.DisplayName: 龙炎弹
 			YharonFireballLegacy.DisplayName: 龙炎弹
 			MoonPlaceholder.DisplayName: Moon Placeholder
-			// Melee.AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
+
+			Melee: {
+				// AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
+				// CrescentMoonFlailLegacy.DisplayName: Crescent Moon Flail Legacy
+			}
+
 			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
 			// SarosAuraLegacy.DisplayName: Saros Aura Legacy
 			// ShizukuSword.DisplayName: Shizuku Sword
@@ -98,6 +103,7 @@ Mods: {
 			}
 
 			// TeleportRift.DisplayName: Teleport Rift
+			// OldLordClaymoreLegacyProj.DisplayName: Old Lord Claymore Legacy Proj
 		}
 
 		Content/Projectiles/Summon: {
@@ -171,11 +177,113 @@ Mods: {
 						// DisplayName: Nights Gaze
 						// Tooltip: ""
 					}
+
+					ExorcismLegacy: {
+						// DisplayName: Exorcism Legacy
+						// Tooltip: ""
+					}
+
+					BouncingBetty: {
+						// DisplayName: Bouncing Betty
+						// Tooltip: ""
+					}
+
+					IchorSpearLegacy: {
+						// DisplayName: Ichor Spear Legacy
+						// Tooltip: ""
+					}
+
+					OricGemstone: {
+						// DisplayName: Oric Gemstone
+						// Tooltip: ""
+					}
+
+					PhantasmalRuinold: {
+						// DisplayName: Phantasmal Ruinold
+						// Tooltip: ""
+					}
+
+					RogueScourgeoftheCosmos: {
+						// DisplayName: Rogue Scourgeofthe Cosmos
+						// Tooltip: ""
+					}
+
+					RogueShadowspecKnives: {
+						// DisplayName: Rogue Shadowspec Knives
+						// Tooltip: ""
+					}
+
+					SpearofDestinyLegacy: {
+						// DisplayName: Spearof Destiny Legacy
+						// Tooltip: ""
+					}
+
+					StepToolShadows: {
+						// DisplayName: Step Tool Shadows
+						// Tooltip: ""
+					}
+
+					Supernovaold: {
+						// DisplayName: Supernovaold
+						// Tooltip: ""
+					}
 				}
 
 				Summon: {
 					StaffofDOG: {
 						// DisplayName: Staffof D O G
+						// Tooltip: ""
+					}
+
+					SunSpiriteStaffLegacy: {
+						// DisplayName: Sun Spirite Staff Legacy
+						// Tooltip: ""
+					}
+				}
+
+				Melee: {
+					CrescentMoonLegacy: {
+						// DisplayName: Crescent Moon Legacy
+						// Tooltip: ""
+					}
+
+					GalileoGladiusLegacy: {
+						// DisplayName: Galileo Gladius Legacy
+						// Tooltip: ""
+					}
+
+					BladecrestOathswordLegacy: {
+						// DisplayName: Bladecrest Oathsword Legacy
+						// Tooltip: ""
+					}
+
+					CatastropheClaymore: {
+						// DisplayName: Catastrophe Claymore
+						// Tooltip: ""
+					}
+
+					Devastation: {
+						// DisplayName: Devastation
+						// Tooltip: ""
+					}
+
+					DevilsDevastationLegacy: {
+						// DisplayName: Devils Devastation Legacy
+						// Tooltip: ""
+					}
+
+					ExaltedOathbladeLegacy: {
+						// DisplayName: Exalted Oathblade Legacy
+						// Tooltip: ""
+					}
+
+					ForbiddenOathbladeLegacy: {
+						// DisplayName: Forbidden Oathblade Legacy
+						// Tooltip: ""
+					}
+
+					OldLordClaymoreLegacy: {
+						// DisplayName: Old Lord Claymore Legacy
 						// Tooltip: ""
 					}
 				}

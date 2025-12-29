@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<ElementalShivoldProj>();
+            Item.shoot = ProjectileType<ElementalShivoldProj>();
             Item.shootSpeed = 2.4f;
             Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;

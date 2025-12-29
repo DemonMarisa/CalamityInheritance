@@ -6,13 +6,16 @@ using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoGladProj : ModProjectile, ILocalizedModType
     {
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-       public override void SetDefaults()
+
+        public override void SetDefaults()
         {
             Projectile.width = 10;
             Projectile.height = 10;
@@ -100,12 +103,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 for (int i = 0; i < numSwords; ++i)
                 {
-                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 900f, Main.rand.NextFloat(24f, 30f), ModContent.ProjectileType<ExoGladiusBeam>(), swordDmg, swordKB, Projectile.owner);
+                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 900f, Main.rand.NextFloat(24f, 30f), ProjectileType<ExoGladiusBeam>(), swordDmg, swordKB, Projectile.owner);
                 }
 
                 for (int n = 0; n < spearAmt; n++)
                 {
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, -1000f, -800f, 29f, ModContent.ProjectileType<ExoGladSpears>(), swordDmg, swordKB, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, -1000f, -800f, 29f, ProjectileType<ExoGladSpears>(), swordDmg, swordKB, Projectile.owner);
                 }
                 if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
@@ -113,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     ExoGladiusProj.GiveImmue(player, 60, 45);
                     for (int j = 0; j < comet; ++j)
                     {
-                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, 500f, 800f, 25f, ProjectileType<ExoGladComet>(), swordDmg, swordKB, Projectile.owner);
                     }
 
                 }

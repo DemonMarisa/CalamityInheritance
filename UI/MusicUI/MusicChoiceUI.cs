@@ -39,14 +39,14 @@ namespace CalamityInheritance.UI.MusicUI
         public static bool turnOffAll = false;
         public static void Load()
         {
-            CircleTextures = ModContent.Request<Texture2D>($"{Path}/baseCircle", AssetRequestMode.ImmediateLoad).Value;
-            ArrowTextures = ModContent.Request<Texture2D>($"{Path}/Arrow", AssetRequestMode.ImmediateLoad).Value;
-            CircleHightLightTextures = ModContent.Request<Texture2D>($"{Path}/CircleHighLight", AssetRequestMode.ImmediateLoad).Value;
-            MusicBoxTextures = ModContent.Request<Texture2D>($"{Path}/MusicBoxVer", AssetRequestMode.ImmediateLoad).Value;
-            NorTextures = ModContent.Request<Texture2D>($"{Path}/NorVer", AssetRequestMode.ImmediateLoad).Value;
-            PianoTextures = ModContent.Request<Texture2D>($"{Path}/PianoVer", AssetRequestMode.ImmediateLoad).Value;
-            TurnOffTextures = ModContent.Request<Texture2D>($"{Path}/EffectOff", AssetRequestMode.ImmediateLoad).Value;
-            TurnOnTextures = ModContent.Request<Texture2D>($"{Path}/EffectOn", AssetRequestMode.ImmediateLoad).Value;
+            CircleTextures = Request<Texture2D>($"{Path}/baseCircle", AssetRequestMode.ImmediateLoad).Value;
+            ArrowTextures = Request<Texture2D>($"{Path}/Arrow", AssetRequestMode.ImmediateLoad).Value;
+            CircleHightLightTextures = Request<Texture2D>($"{Path}/CircleHighLight", AssetRequestMode.ImmediateLoad).Value;
+            MusicBoxTextures = Request<Texture2D>($"{Path}/MusicBoxVer", AssetRequestMode.ImmediateLoad).Value;
+            NorTextures = Request<Texture2D>($"{Path}/NorVer", AssetRequestMode.ImmediateLoad).Value;
+            PianoTextures = Request<Texture2D>($"{Path}/PianoVer", AssetRequestMode.ImmediateLoad).Value;
+            TurnOffTextures = Request<Texture2D>($"{Path}/EffectOff", AssetRequestMode.ImmediateLoad).Value;
+            TurnOnTextures = Request<Texture2D>($"{Path}/EffectOn", AssetRequestMode.ImmediateLoad).Value;
         }
 
         public static void Unload()
@@ -130,10 +130,10 @@ namespace CalamityInheritance.UI.MusicUI
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
             // 判定碰撞
             Rectangle Rect = new Rectangle(
-                (int)(Pos.X - MusicChoiceUI.CircleTextures.Width * Scale / 2),
-                (int)(Pos.Y - MusicChoiceUI.CircleTextures.Height * Scale / 2),
-                (int)(MusicChoiceUI.CircleTextures.Width * Scale),
-                (int)(MusicChoiceUI.CircleTextures.Height * Scale));
+                (int)(Pos.X - CircleTextures.Width * Scale / 2),
+                (int)(Pos.Y - CircleTextures.Height * Scale / 2),
+                (int)(CircleTextures.Width * Scale),
+                (int)(CircleTextures.Height * Scale));
             // 判定悬停
             IsHovering = Rect.Intersects(mouseRectangle);
             float progress2 = (float)SecondFadeTime / (float)SecondFadeTimeMax;

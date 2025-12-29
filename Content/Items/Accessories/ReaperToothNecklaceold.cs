@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:44,
             itemHeight:50,
-            itemRare:ModContent.RarityType<AbsoluteGreen>(),
+            itemRare: RarityType<AbsoluteGreen>(),
             itemValue:CIShopValue.RarityPriceAbsoluteGreen
         );
 

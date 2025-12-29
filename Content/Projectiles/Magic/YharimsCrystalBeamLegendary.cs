@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             //给判定，如果发现自己的射弹连自己都不是，我们直接干掉这个包括水晶在内的射弹。
             Projectile hostCrystal = Main.projectile[(int)Projectile.ai[OwnerIndex]];
-            if (Projectile.type != ModContent.ProjectileType<YharimsCrystalBeamLegendary>() || !hostCrystal.active || hostCrystal.type != ModContent.ProjectileType<YharimsCrystalPrismLegendary>())
+            if (Projectile.type != ProjectileType<YharimsCrystalBeamLegendary>() || !hostCrystal.active || hostCrystal.type != ProjectileType<YharimsCrystalPrismLegendary>())
             {
                 Projectile.Kill();
                 return;
@@ -227,7 +227,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     // DoDragonUpgrade(target, src);
             }
         }
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<Dragonfire>(), 180);
 
         //决定目标hitbox与射弹hitbox接触时的行为
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

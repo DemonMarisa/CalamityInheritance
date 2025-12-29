@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.UseSound = CISoundID.SoundPotions;
             Item.rare = ItemRarityID.LightRed;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<CadancesGrace>();
+            Item.buffType = BuffType<CadancesGrace>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
             Item.value = CIShopValue.RarityPriceLightRed;
         }

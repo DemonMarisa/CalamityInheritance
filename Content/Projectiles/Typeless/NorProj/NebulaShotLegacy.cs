@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.NorProj
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 90);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 90);
         }
     }
 }

@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
         }
     }
 }

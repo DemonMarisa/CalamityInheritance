@@ -12,13 +12,13 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         {
             ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla
             ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox; // recorded music boxes transform into the basic form in shimmer
-            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/RequiemsOfACruelWorld"), ModContent.ItemType<RequiemsOfACruelWorld>(), ModContent.TileType<RequiemsOfACruelWorldTile>());
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/RequiemsOfACruelWorld"), ItemType<RequiemsOfACruelWorld>(), TileType<RequiemsOfACruelWorldTile>());
             Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()
         {
-            Item.DefaultToMusicBox(ModContent.TileType<RequiemsOfACruelWorldTile>(), 0);
+            Item.DefaultToMusicBox(TileType<RequiemsOfACruelWorldTile>(), 0);
         }
     }
 }

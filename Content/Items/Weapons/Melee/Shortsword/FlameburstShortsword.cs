@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<FlameburstShortswordProj>();
+            Item.shoot = ProjectileType<FlameburstShortswordProj>();
             Item.shootSpeed = 2.6f;
             Item.noMelee = true;
             Item.value = CIShopValue.RarityPriceOrange;

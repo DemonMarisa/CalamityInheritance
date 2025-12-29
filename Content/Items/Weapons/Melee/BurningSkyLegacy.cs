@@ -35,8 +35,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 64;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<BurningMeteor>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<BurningMeteor>();
             Item.shootSpeed = 35f;
         }
 
@@ -86,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 num79 *= num80;
                 float speedX4 = num78 + Main.rand.Next(-1000, 1001) * 0.02f;
                 float speedY5 = num79 + Main.rand.Next(-1000, 1001) * 0.02f;
-                Projectile.NewProjectile(source,vector2.X, vector2.Y, speedX4, speedY5, ModContent.ProjectileType<BurningMeteor>(), damage, knockback, i, 0f, Main.rand.Next(10));
+                Projectile.NewProjectile(source,vector2.X, vector2.Y, speedX4, speedY5, ProjectileType<BurningMeteor>(), damage, knockback, i, 0f, Main.rand.Next(10));
             }
             return false;
         }

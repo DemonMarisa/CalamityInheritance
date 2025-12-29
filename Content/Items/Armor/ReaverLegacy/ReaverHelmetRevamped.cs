@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<ReaverScaleMailRevamped>() && legs.type == ModContent.ItemType<ReaverCuissesRevamped>();
+            return body.type == ItemType<ReaverScaleMailRevamped>() && legs.type == ItemType<ReaverCuissesRevamped>();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -52,13 +52,13 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
                 int baseDamage = 80;
                 var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
                 var source = player.GetSource_ItemUse(Item);
-                if (player.FindBuffIndex(ModContent.BuffType<ReaverSummonSetBuff>()) == -1)
+                if (player.FindBuffIndex(BuffType<ReaverSummonSetBuff>()) == -1)
                 {
-                    player.AddBuff(ModContent.BuffType<ReaverSummonSetBuff>(), 3600, true);
+                    player.AddBuff(BuffType<ReaverSummonSetBuff>(), 3600, true);
                 }
-                if (player.ownedProjectileCounts[ModContent.ProjectileType<ReaverOrbOld>()] < 1)
+                if (player.ownedProjectileCounts[ProjectileType<ReaverOrbOld>()] < 1)
                 {
-                    Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
+                    Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
                 }
             }
             player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.6f;
@@ -77,9 +77,9 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ModContent.ItemType<PerennialBar>(),5)
+            .AddIngredient(ItemType<PerennialBar>(),5)
             .AddIngredient(ItemID.JungleSpores, 4)
-            .AddIngredient(ModContent.ItemType<EssenceofEleum>(), 1)
+            .AddIngredient(ItemType<EssenceofEleum>(), 1)
             .AddTile(TileID.MythrilAnvil)
             .Register();
         }

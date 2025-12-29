@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Potions
 
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(ModContent.BuffType<Invincible>(), CalamityWorld.death ? 300 : 600);
+            player.AddBuff(BuffType<Invincible>(), CalamityWorld.death ? 300 : 600);
             player.AddBuff(BuffID.PotionSickness, player.pStone ? 1500 : 1800);
             return true;
         }

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
                 if (Projectile.owner == Main.myPlayer)
                 {
                     int damage = (int)Main.player[Projectile.owner].GetTotalDamage<MeleeDamageClass>().ApplyTo(350f);
-                    int laserShot = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, SpeedX, SpeedY, ModContent.ProjectileType<NebulaShot>(), damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    int laserShot = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, SpeedX, SpeedY, ProjectileType<NebulaShot>(), damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                     if (laserShot.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[laserShot].DamageType = DamageClass.Melee;

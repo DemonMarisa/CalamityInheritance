@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
             Item.knockBack = 6.75f;
             Item.UseSound = SoundID.Item88;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<Asteroid>();
+            Item.shoot = ProjectileType<Asteroid>();
             Item.shootSpeed = 20f;
 
             Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;

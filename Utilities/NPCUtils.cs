@@ -62,7 +62,7 @@ namespace CalamityInheritance.Utilities
             if (target.type == NPCID.EaterofWorldsBody || target.type == NPCID.EaterofWorldsHead || target.type == NPCID.EaterofWorldsTail)
                 isBoss = true;
             //史莱姆神守卫
-            if (target.type == ModContent.NPCType<EbonianPaladin>() || target.type == ModContent.NPCType<SplitEbonianPaladin>() || target.type == ModContent.NPCType<CrimulanPaladin>() || target.type == ModContent.NPCType<SplitCrimulanPaladin>())
+            if (target.type == NPCType<EbonianPaladin>() || target.type == NPCType<SplitEbonianPaladin>() || target.type == NPCType<CrimulanPaladin>() || target.type == NPCType<SplitCrimulanPaladin>())
                 isBoss = true;
             //最后的判定：如果我们把部分boss仆从，本身不是boss但也是boss一部分也算上的话，那就算上去
             if (!ignoreMinions)
@@ -70,10 +70,10 @@ namespace CalamityInheritance.Utilities
                 //临时建立一个数组
                 int[] array =
                 [
-                    ModContent.NPCType<AresTeslaCannon>(),
-                    ModContent.NPCType<AresGaussNuke>(),
-                    ModContent.NPCType<AresLaserCannon>(),
-                    ModContent.NPCType<AresPlasmaFlamethrower>()
+                    NPCType<AresTeslaCannon>(),
+                    NPCType<AresGaussNuke>(),
+                    NPCType<AresLaserCannon>(),
+                    NPCType<AresPlasmaFlamethrower>()
                 ];
                 //遍历数组
                 for (int i = 0; i < array.Length; i++)
@@ -273,7 +273,7 @@ namespace CalamityInheritance.Utilities
         public static bool IsNotMaterial(Item item, bool dontNeedCheck = true)
         {
             if (item.ModItem != null)
-                if (item.ModItem.Mod != Calamity && item.ModItem.Mod != ModContent.GetInstance<CalamityInheritance>())
+                if (item.ModItem.Mod != Calamity && item.ModItem.Mod != GetInstance<CalamityInheritance>())
                     return false;
             if (dontNeedCheck)
                 return true;
@@ -326,7 +326,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="spawnSound">Sound to play when spawn, it play on used player's position</param>
         public static void SpawnBossUsingItem<BossType>(Player player, in SoundStyle? spawnSound = null) where BossType : ModNPC
         {
-            SpawnBossUsingItem(player, ModContent.NPCType<BossType>(), spawnSound);
+            SpawnBossUsingItem(player, NPCType<BossType>(), spawnSound);
         }
         #endregion
 
@@ -353,13 +353,13 @@ namespace CalamityInheritance.Utilities
         /// <summary>
         /// 掉落模组物品, Rule: Common
         /// </summary>
-        public static void DropCommonMod<T>(this NPCLoot loot, int chance = 3, int dropMin = 1, int dropMax = 1) where T : ModItem => ModifyDropCommon(loot, ModContent.ItemType<T>(), chance, dropMin, dropMax);
+        public static void DropCommonMod<T>(this NPCLoot loot, int chance = 3, int dropMin = 1, int dropMax = 1) where T : ModItem => ModifyDropCommon(loot, ItemType<T>(), chance, dropMin, dropMax);
         /// <summary>
         /// 掉落原版物品, Rule: Common
         /// </summary>
         public static void DropCommonVanilla(this NPCLoot loot, int itemID, int chance = 3, int dropMin = 1, int dropMax = 1) => ModifyDropCommon(loot, itemID, chance, dropMin, dropMax);
         public static void ModifyDropCommon(NPCLoot loot, int itemID, int chance, int dropMin, int dropMax) => loot.Add(itemID, chance, dropMin, dropMax);
-        public static bool CheckNPCMod<T>(this NPC npc) where T : ModNPC => CheckNPCSame(npc, ModContent.NPCType<T>());
+        public static bool CheckNPCMod<T>(this NPC npc) where T : ModNPC => CheckNPCSame(npc, NPCType<T>());
         public static bool CheckNPCID(this NPC npc, int npcID) => CheckNPCSame(npc, npcID);
         public static bool CheckNPCSame(NPC npc, int npcID) => npc.type == npcID;
     }

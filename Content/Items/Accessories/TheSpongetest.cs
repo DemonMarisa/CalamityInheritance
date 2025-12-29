@@ -81,7 +81,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:20,
             itemHeight:20,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );
@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Items.Accessories
 
             CalamityPlayer calPlayer = player.Calamity();
             calPlayer.spongeShieldVisible = !hideVisual;
-            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true;
+            player.buffImmune[BuffType<ArmorCrunch>()] = true;
             usPlayer.CIspongeHurtHeal = true;
             //百草瓶继承
             calPlayer.aAmpoule = true;
@@ -165,7 +165,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             // Will not render a shield if the April Fool's sprite is active.
             if (Texture == "CalamityMod/Items/Accessories/TheSponge")
             {
-                Texture2D tex = ModContent.Request<Texture2D>("CalamityMod/Items/Accessories/TheSpongeShield").Value;
+                Texture2D tex = Request<Texture2D>("CalamityMod/Items/Accessories/TheSpongeShield").Value;
                 spriteBatch.Draw(tex, Item.Center - Main.screenPosition + new Vector2(0f, 0f), Main.itemAnimations[Item.type].GetFrame(tex), Color.Cyan * 0.5f, 0f, new Vector2(tex.Width / 2f, (tex.Height / 30f) * 0.8f), 1f, SpriteEffects.None, 0);
             }
         }
@@ -197,7 +197,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     wantedScale,
                     drawOffset
                 );
-                Texture2D tex = ModContent.Request<Texture2D>("CalamityMod/Items/Accessories/TheSpongeShield").Value;
+                Texture2D tex = Request<Texture2D>("CalamityMod/Items/Accessories/TheSpongeShield").Value;
                 CalamityUtils.DrawInventoryCustomScale(
                     spriteBatch,
                     texture: tex,
@@ -308,7 +308,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 calPlayer.drawnAnyShieldThisFrame = true;
 
                 // Fetch shield noise overlay texture (this is the polygons fed to the shader)
-                NoiseTex ??= ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/GreyscaleGradients/TechyNoise");
+                NoiseTex ??= Request<Texture2D>("CalamityInheritance/ExtraTextures/GreyscaleGradients/TechyNoise");
                 Vector2 pos = player.MountedCenter + player.gfxOffY * Vector2.UnitY - Main.screenPosition;
                 Texture2D tex = NoiseTex.Value;
                 Main.spriteBatch.Draw(tex, pos, null, Color.White, 0, tex.Size() / 2f, scale, 0, 0);

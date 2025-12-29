@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             var modPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<AncientClasper>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<AncientClasper>()] > 0)
             {
                 modPlayer.IsAncientClasper= true;
             }

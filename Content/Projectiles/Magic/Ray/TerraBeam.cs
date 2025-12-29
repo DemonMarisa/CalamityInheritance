@@ -1,4 +1,5 @@
 ﻿using System;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public int Time = 0;
         public ref float Timer => ref Projectile.ai[0];
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");
@@ -37,8 +38,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             if (Projectile.localAI[1] >= 40f && Projectile.owner == Main.myPlayer)
             {
                 Projectile.localAI[1] = 0f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<TerraOrb2>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<TerraOrb>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<TerraOrb2>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<TerraOrb>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 9f)

@@ -1,8 +1,7 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -20,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float WeaponRotation => 0;
         public override float AimResponsiveness => 0.25f;
         //你小子甚至不愿意整一个路径而是创建新的图片
-        public override string Texture => $"{Generic.WeaponPath}/Magic/GenisisLegacy";
+        public override string Texture => GetInstance<GenisisLegacy>().Texture;
         public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
@@ -50,14 +49,14 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             if (Projectile.ai[2] == 0f)
             {
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection * 0.001f, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection * 0.001f, ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1f, 0f, 0f);
                 Projectile.ai[2]++;
             }
             if (attackTimer % 30 == 0)
             {
                 SoundEngine.PlaySound(CISoundMenu.GenisisFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection * 0.001f, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection * 0.001f, ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1f, 0f, 0f);
             }
         }
         #region 删除条件

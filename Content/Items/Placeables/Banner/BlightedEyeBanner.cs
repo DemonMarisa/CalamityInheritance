@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Banner
             Item.consumable = true;
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(0, 0, 10, 0);
-            Item.createTile = ModContent.TileType<BlightedEyeBannerTile>();
+            Item.createTile = TileType<BlightedEyeBannerTile>();
             Item.placeStyle = 75;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.Utilities;
@@ -10,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoFireold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public bool ProducedAcceleration = false;
 
@@ -80,6 +81,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             target.ExoDebuffs();
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 300);
     }
 }

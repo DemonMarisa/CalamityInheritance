@@ -262,8 +262,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             //T3时提供自定义的减益: 失温虹吸, 作为月后等级的霜冻
             if (Owner.CIMod().ColdDivityTier3)
             {
-                target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
-                Owner.AddBuff(ModContent.BuffType<CryoDrain>(), 60);
+                target.AddBuff(BuffType<CryoDrain>(), 300);
+                Owner.AddBuff(BuffType<CryoDrain>(), 60);
             }
             int cir = 0;
             foreach (Projectile proj in Main.ActiveProjectiles)
@@ -321,7 +321,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 
                 int dmg = EXdamage / 8;
 
-                if (target.HasBuff(ModContent.BuffType<CryoDrain>()))
+                if (target.HasBuff(BuffType<CryoDrain>()))
                     dmg = EXdamage / 4;
 
                 if (Projectile.CalamityInheritance().PingWhipStrike)
@@ -333,7 +333,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
+            target.AddBuff(BuffType<CryoDrain>(), 300);
             if (Idle)
             {
                 AttackTimer = 300;

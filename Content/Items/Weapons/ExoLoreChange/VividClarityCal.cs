@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class VividClarityCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<VividClarity>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<VividClarity>();
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             var usPlayer = player.CIMod();
@@ -29,9 +29,9 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
-                item.shoot = ModContent.ProjectileType<VividClarityBeamCal>();
+                item.shoot = ProjectileType<VividClarityBeamCal>();
             else
-                item.shoot = ModContent.ProjectileType<VividBeam>();
+                item.shoot = ProjectileType<VividBeam>();
             return true;
         }
     }

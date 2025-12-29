@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class FabBoltOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 4;

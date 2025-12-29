@@ -38,14 +38,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.knockBack = 0f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.UseSound = SoundID.Item60;
-            Item.shoot = ModContent.ProjectileType<CosmicEnergySpiralOld>();
+            Item.shoot = ProjectileType<CosmicEnergySpiralOld>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Summon/CosmicImmaterializerOldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Summon/CosmicImmaterializerOldGlow").Value);
         }
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0 && player.maxMinions >= 10;
 

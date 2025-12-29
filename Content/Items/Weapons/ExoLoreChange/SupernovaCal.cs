@@ -14,10 +14,10 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class SupernovaCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Supernova>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<Supernova>();
         public override bool CanUseItem(Item item, Player player)
         {
-            int proj = ModContent.ProjectileType<SupernovaBomb>();
+            int proj = ProjectileType<SupernovaBomb>();
             if (Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo)
             {
                 item.shoot = proj;
@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class SupernovaHugeBoom : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<SupernovaStealthBoom>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<SupernovaStealthBoom>();
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             var usPlayer = Main.player[projectile.owner].CIMod();
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         {
             Player player = Main.player[projectile.owner];
             //被击杀的时候会朝玩家方向发射一个额外的超新星。
-            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && projectile.owner == Main.myPlayer && player.ActiveItem().type == ModContent.ItemType<Supernova>())
+            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && projectile.owner == Main.myPlayer && player.ActiveItem().type == ItemType<Supernova>())
             {
                 //距离向量
                 Vector2 distVec = player.Center - projectile.Center;
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 distVec.X *= dist;
                 distVec.Y *= dist;
                 //追加一个超新星
-                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, distVec, ModContent.ProjectileType<SupernovaBomb>(), projectile.damage, projectile.knockBack, projectile.owner);
+                Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, distVec, ProjectileType<SupernovaBomb>(), projectile.damage, projectile.knockBack, projectile.owner);
             }
         }
     }

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 if (player.whoAmI == Main.myPlayer)
                 {
                     int seawaterDamage = (int)player.GetBestClassDamage().ApplyTo(50);
-                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, 0f, ModContent.ProjectileType<PoisonousSeawater>(), seawaterDamage, 5f, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, 0f, ProjectileType<PoisonousSeawater>(), seawaterDamage, 5f, player.whoAmI, 0f, 0f);
                 }
             }
             int seaCounter = 0;
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             {
                                 if (player.whoAmI == Main.myPlayer)
                                 {
-                                    Projectile.NewProjectileDirect(source, tryGetNPC.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
+                                    Projectile.NewProjectileDirect(source, tryGetNPC.Center, Vector2.Zero, ProjectileType<DirectStrike>(), auraDamage, 0f, player.whoAmI, l);
                                 }
                             }
                         }

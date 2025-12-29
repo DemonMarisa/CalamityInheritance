@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public static Player Fucker => Main.LocalPlayer;
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<SubsumingVortex>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<SubsumingVortex>();
         public const float SmallVortexSpeedFac = 1.3f;
         public const int SmallVortexCounts = 3;
         public const float SmallVortexDamageFac = 0.3f;
@@ -57,8 +57,8 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             //Check if using lore.
             bool isLore = player.CheckExoLore();
             //if using lore, switch the proj.
-            int altVortex = isLore ? ModContent.ProjectileType<SubsumingVortexProjBig>() : ModContent.ProjectileType<ExoVortex2>();
-            int bigVortex = isLore ? ModContent.ProjectileType<SubsumingVortexProjGiant>() : ModContent.ProjectileType<EnormousConsumingVortex>();
+            int altVortex = isLore ? ProjectileType<SubsumingVortexProjBig>() : ProjectileType<ExoVortex2>();
+            int bigVortex = isLore ? ProjectileType<SubsumingVortexProjGiant>() : ProjectileType<EnormousConsumingVortex>();
             if (player.altFunctionUse != 2)
             {
                 for (int i = 0; i < SmallVortexCounts; i++)

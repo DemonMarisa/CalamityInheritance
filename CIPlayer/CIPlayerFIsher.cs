@@ -51,7 +51,7 @@ namespace CalamityInheritance.CIPlayer
 
                             if (calPlayer.ZoneAstral)
                             {
-                                rareItemList.Add(ModContent.ItemType<PolarisParrotfishLegacy>());
+                                rareItemList.Add(ItemType<PolarisParrotfishLegacy>());
                             }
                             if (rareItemList.Any())
                             {

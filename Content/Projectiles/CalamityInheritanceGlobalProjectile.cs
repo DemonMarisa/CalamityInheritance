@@ -1,18 +1,12 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -67,20 +61,20 @@ namespace CalamityInheritance.Content.Projectiles
                         {
                             int damage = (int)player.GetTotalDamage<RogueDamageClass>().ApplyTo(60);
                             //这里被平方增长了
-                            int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhotosyntheticShard>(), damage, 0f, projectile.owner);
+                            int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<PhotosyntheticShard>(), damage, 0f, projectile.owner);
                             Main.projectile[newProjectileId].DamageType = DamageClass.Generic;
                         }
                     }
                     //给了孔雀翎一个特判
                     if (usPlayer.nanotechold)
                     {
-                        int actualTimer = projectile.type == ModContent.ProjectileType<PBGLegendaryBeam>() ? 90 : 30;
+                        int actualTimer = projectile.type == ProjectileType<PBGLegendaryBeam>() ? 90 : 30;
                         Vector2 setVel = projectile.velocity.SafeNormalize(Vector2.Zero);
                         if (Main.player[projectile.owner].miscCounter % actualTimer == 0 && projectile.FinalExtraUpdate())
                         {
                             if (projectile.owner == Main.myPlayer)
                             {
-                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ModContent.ProjectileType<NanotechOldProj>(), (int)(projectile.damage * 0.05), 0f, projectile.owner);
+                                int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<NanotechOldProj>(), (int)(projectile.damage * 0.05), 0f, projectile.owner);
                                 //确保这个东西指定为全局伤害
                                 Main.projectile[p].DamageType = DamageClass.Generic;
                                 Main.projectile[p].alpha = 255;

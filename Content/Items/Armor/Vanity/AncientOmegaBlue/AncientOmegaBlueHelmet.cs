@@ -18,14 +18,14 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
         {
             Item.width = 28;
             Item.height = 20;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.vanity = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<AncientOmegaBlueLeggings>() && legs.type == ModContent.ItemType<AncientOmegaBlueChestplate>();
+            return body.type == ItemType<AncientOmegaBlueLeggings>() && legs.type == ItemType<AncientOmegaBlueChestplate>();
         }
 
         public override void ArmorSetShadows(Player player)

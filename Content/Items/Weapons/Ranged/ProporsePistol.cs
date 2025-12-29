@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
             Item.shootSpeed = 10f;
-            Item.shoot = ModContent.ProjectileType<ProBolt>();
+            Item.shoot = ProjectileType<ProBolt>();
             
         }
 
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position.X, position.Y - 5, velocity.X, velocity.Y, ModContent.ProjectileType<ProBolt>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position.X, position.Y - 5, velocity.X, velocity.Y, ProjectileType<ProBolt>(), damage, knockback, player.whoAmI);
             return false;
         }
         public override void UseItemFrame(Player player)

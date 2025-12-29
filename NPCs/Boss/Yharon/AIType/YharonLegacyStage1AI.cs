@@ -222,7 +222,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 {
                     Vector2 projectileVelocity = NPC.velocity;
                     projectileVelocity.Normalize();
-                    int type = ModContent.ProjectileType<FlareDust2>();
+                    int type = ProjectileType<FlareDust2>();
                     int damage = 300;
                     float finalVelocity = 12f;
                     float projectileAcceleration = 1.1f;
@@ -267,7 +267,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    int type = ModContent.ProjectileType<FlareBomb>();
+                    int type = ProjectileType<FlareBomb>();
                     int damage = 300;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, type, damage, 0f, Main.myPlayer, NPC.target, 1f);
                 }
@@ -297,8 +297,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     SoundEngine.PlaySound(RoarSound, NPC.Center);
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, NPC.direction * 4, 8f, ModContent.ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)NPC.direction * 4, 8f, ModContent.ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, NPC.direction * 4, 8f, ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, -(float)NPC.direction * 4, 8f, ProjectileType<Flare>(), 0, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 NPC.netUpdate = true;
@@ -340,7 +340,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 {
                     canLookTarget = false;
                     if (attacktimer % fireNPC == 0f)
-                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<DetonatingFlare>(), NPC.whoAmI);
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<DetonatingFlare>(), NPC.whoAmI);
                     if (attacktimer % flareDustSpawnDivisor == 0f)
                     {
                         if (AttackStyle == 0)
@@ -384,7 +384,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                         if (i >= spaceStart && spacesMade < totalSpaces)
                             spacesMade++;
                         else
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, Vector2.Zero, ModContent.ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, ai0, i * offsetAngle);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, Vector2.Zero, ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, ai0, i * offsetAngle);
                     }
                     break;
 
@@ -395,7 +395,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                     for (int i = 0; i < totalProjectiles; i++)
                     {
                         Vector2 fireSpitFaceDirection = spinningPoint.RotatedBy(radians * i) * projectileVelocity;
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, fireSpitFaceDirection, ModContent.ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, 2f, 0f);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), firePos, fireSpitFaceDirection, ProjectileType<FlareDust>(), projectileDamage, 0f, Main.myPlayer, 2f, 0f);
                     }
 
                     float newRadialOffset = (int)aiVariableUsed / (timer / 4) % 2f == 0f ? radialOffset : -radialOffset;

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:26,
             itemHeight:26,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD() => Type.ShimmerEach<BloodflareCore>();

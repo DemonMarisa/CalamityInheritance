@@ -41,9 +41,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                     byte a2 = (byte)(100f * (b2 / 255f));
                     color = new Color(b2, b2, b2, a2);
                 }
-                Texture2D baseTexture = ModContent.Request<Texture2D>(Texture).Value;
+                Texture2D baseTexture = Request<Texture2D>(Texture).Value;
                 Rectangle frame = new Rectangle(0, 0, baseTexture.Width, baseTexture.Height);
-                Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
+                Main.EntitySpriteDraw(Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
             }
         }
 
@@ -58,8 +58,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             return new Color(0, 0, 0, 0);
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
     }
 }

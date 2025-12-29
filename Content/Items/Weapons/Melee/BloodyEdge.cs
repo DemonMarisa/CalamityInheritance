@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 60;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<BloodyEdgeEnergySword>();
+            Item.shoot = ProjectileType<BloodyEdgeEnergySword>();
             Item.noMelee = true;
             Item.shootsEveryUse = true;
             Item.autoReuse = true;
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 60);
+            target.AddBuff(BuffType<BurningBlood>(), 60);
 
             if (!target.canGhostHeal || player.moonLeech)
                 return;

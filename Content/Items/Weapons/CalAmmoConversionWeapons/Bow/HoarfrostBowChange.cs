@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<HoarfrostBow>();
+            return item.type == ItemType<HoarfrostBow>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                     float SpeedX = velocity.X + Main.rand.Next(-25, 26) * 0.05f;
                     float SpeedY = velocity.Y + Main.rand.Next(-25, 26) * 0.05f;
 
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<MistArrow>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<MistArrow>(), damage, knockback, player.whoAmI);
                 }
                 return false;
             }

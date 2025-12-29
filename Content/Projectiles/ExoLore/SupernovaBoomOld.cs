@@ -226,7 +226,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Projectile.damage = 1;
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 300);
 
         public override bool? CanDamage() => damageFrame ? null : false;
     }

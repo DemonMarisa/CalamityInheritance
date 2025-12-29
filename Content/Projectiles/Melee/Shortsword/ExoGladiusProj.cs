@@ -10,12 +10,14 @@ using Terraria.ModLoader;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class ExoGladiusProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<ExoGladius>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -29,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -38,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<ExoGladProj>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ProjectileType<ExoGladProj>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
         public override void SetVisualOffsets()
         {
@@ -63,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<ElementalMix>(), 300);
+            target.AddBuff(BuffType<ElementalMix>(), 300);
             SpawnMeteor(Main.player[Projectile.owner]);
             GiveImmue(Main.player[Projectile.owner], 45, 45);
         }
@@ -79,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/Shortsword/ExoGladiusGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Melee/Shortsword/ExoGladiusGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -94,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 if (player.CIMod().GlobalFireDelay <= 0)
                 {
                     int damage = player.GetWeaponDamage(player.ActiveItem()) * 2;
-                    CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 25f, ModContent.ProjectileType<ExoGladComet>(), damage, 15f, player.whoAmI);
+                    CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 25f, ProjectileType<ExoGladComet>(), damage, 15f, player.whoAmI);
                     player.CIMod().GlobalFireDelay = 3;
                 }
             }

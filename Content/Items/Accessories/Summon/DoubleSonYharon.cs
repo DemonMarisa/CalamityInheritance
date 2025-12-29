@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         (
             itemWidth:28,
             itemHeight:28,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet,
             itemDefense:5
         );

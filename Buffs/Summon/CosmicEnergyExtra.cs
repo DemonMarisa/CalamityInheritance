@@ -20,7 +20,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             var modPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<SaveCosmic>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<SaveCosmic>()] > 0)
             {
                 modPlayer.CosmicEnergyExtra = true;
             }

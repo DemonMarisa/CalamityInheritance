@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
         {
             Item.width = 18;
             Item.height = 18;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 45;
         }

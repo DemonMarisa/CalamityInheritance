@@ -1,5 +1,6 @@
 using System;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
     public class R99HeldProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectile.Ranged";
-        public override string Texture => $"{Generic.WeaponPath}/Ranged/Scarlet/R99";
+        public override string Texture => GetInstance<R99>().Texture;
         public Player Owner => Main.player[Projectile.owner];
         public const float OffsetX = 0f;
         public const float OffsetY = 0f;
@@ -101,13 +102,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
             if (AttackTimer % 1 == 0)
             {
                 // PlayFireDust(tipPos);
-                SoundStyle[] R99Sound =
-                [
-                    CISoundMenu.R99Fired1,
-                    CISoundMenu.R99Fired2,
-                    CISoundMenu.R99Fired3
-                ];
-                SoundStyle choose1 = Utils.SelectRandom(Main.rand, R99Sound);
+                SoundStyle choose1 = Utils.SelectRandom(Main.rand, CISoundMenu.R99Fired);
                 Vector2 offset = new(0, -13);
                 if (AttackTimer % 2 == 0)
                 {
@@ -124,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                     Vector2 firePos = new((Projectile.Center + offset).X + dynamicCalibra.X, (Projectile.Center + offset).Y + yetAnotherOffset * i + dynamicCalibra.Y);
                     if (Proj is ProjectileID.ChlorophyteBullet)
                     {
-                        Projectile.NewProjectileDirect(src, greenPos, fireDir * shootSpeed, ModContent.ProjectileType<R99ChlorophyteBullet>(), damage, kb, Projectile.owner);
+                        Projectile.NewProjectileDirect(src, greenPos, fireDir * shootSpeed, ProjectileType<R99ChlorophyteBullet>(), damage, kb, Projectile.owner);
                         //break出去，只发射一个。
                         break;
                     }

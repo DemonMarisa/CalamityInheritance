@@ -149,7 +149,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             var modPlayer = Owner.CIMod();
 
-            bool correctMinion = Projectile.type == ModContent.ProjectileType<FungalClumpMinion>();
+            bool correctMinion = Projectile.type == ProjectileType<FungalClumpMinion>();
             if (!modPlayer.FungalClumpLegacySummon)
             {
                 Projectile.active = false;
@@ -287,7 +287,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (!getProj.active || getProj.owner != Owner.whoAmI || !getProj.minion || i == Projectile.whoAmI)
                     continue;
                 //与灾厄同类的仆从做距离处理
-                bool similarType = getProj.type == ModContent.ProjectileType<FungalClumpMinion>();
+                bool similarType = getProj.type == ProjectileType<FungalClumpMinion>();
                 float distBetween = (getProj.Center - Projectile.Center).Length();
                 if (similarType && distBetween < Projectile.width)
                 {

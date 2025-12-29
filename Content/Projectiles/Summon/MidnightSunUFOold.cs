@@ -57,8 +57,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.velocity.Y = Main.rand.NextFloat(3f, 5f) * Main.rand.NextBool(2).ToDirectionInt();
                 Projectile.localAI[0] = 1f;
             }
-            bool isProperProjectile = Projectile.type == ModContent.ProjectileType<MidnightSunUFOold>();
-            player.AddBuff(ModContent.BuffType<MidnightSunBuffOld>(), 3600);
+            bool isProperProjectile = Projectile.type == ProjectileType<MidnightSunUFOold>();
+            player.AddBuff(BuffType<MidnightSunBuffOld>(), 3600);
             if (isProperProjectile)
             {
                 if (player.dead)
@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     {
                         // 伤害再/2是因为生成后莫名其妙伤害翻倍
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Bottom, Projectile.DirectionTo(potentialTarget.Center).RotatedByRandom(0.15f) * 25f,
-                            ModContent.ProjectileType<MidnightSunLaserold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                            ProjectileType<MidnightSunLaserold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                     float acceleration = 0.35f;
                     for (int index = 0; index < Main.projectile.Length; index++)
@@ -150,7 +150,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         {
                             SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
                             int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, (Projectile.velocity.ToRotation() + MathHelper.PiOver2).ToRotationVector2(),
-                                ModContent.ProjectileType<MidnightSunBeamold>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner,
+                                ProjectileType<MidnightSunBeamold>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner,
                                 radiansToSpinPerFrame, Projectile.whoAmI);
                             Projectile.ai[1] = 1f;
                         }

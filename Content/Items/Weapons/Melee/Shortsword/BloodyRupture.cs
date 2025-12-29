@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<BloodyRuptureProj>();
+            Item.shoot = ProjectileType<BloodyRuptureProj>();
             Item.shootSpeed = 2.1f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.CrimtaneBar, 5);
             recipe.AddIngredient(ItemID.Vertebrae, 2);
-            recipe.AddIngredient(ModContent.ItemType<BloodSample>(), 5);
+            recipe.AddIngredient(ItemType<BloodSample>(), 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
         }

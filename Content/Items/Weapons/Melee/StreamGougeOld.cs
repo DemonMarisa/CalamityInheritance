@@ -42,8 +42,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 100;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<StreamGougeProjOld>();
+            Item.rare = RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<StreamGougeProjOld>();
             Item.shootSpeed = 25f;
         }
 
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Vector2 origin = new Vector2(50f, 48f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/StreamGougeOldGlow").Value, Item.Center - Main.screenPosition, null, Color.White, rotation, origin, 1f, SpriteEffects.None, 0f);
+            Main.EntitySpriteDraw(Request<Texture2D>($"{Generic.WeaponPath}/Melee/StreamGougeOldGlow").Value, Item.Center - Main.screenPosition, null, Color.White, rotation, origin, 1f, SpriteEffects.None, 0f);
         }
         public override void AddRecipes()
         {

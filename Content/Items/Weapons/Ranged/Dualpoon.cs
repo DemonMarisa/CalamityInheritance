@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item10;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
-            Item.shoot = ModContent.ProjectileType<DualpoonProj>();
+            Item.shoot = ProjectileType<DualpoonProj>();
             
         }
 

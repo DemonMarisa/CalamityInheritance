@@ -140,27 +140,27 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (astral)
             {
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 1200);
-                player.AddBuff(ModContent.BuffType<GravityNormalizerBuff>(), 600);
-                int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ModContent.ProjectileType<AstralStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                target.AddBuff(BuffType<AstralInfectionDebuff>(), 1200);
+                player.AddBuff(BuffType<GravityNormalizerBuff>(), 600);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileType<AstralStar>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (jungle)
             {
-                target.AddBuff(ModContent.BuffType<Plague>(), 1200);
+                target.AddBuff(BuffType<Plague>(), 1200);
                 player.AddBuff(BuffID.Thorns, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.Leaf, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (snow)
             {
-                target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+                target.AddBuff(BuffType<GlacialState>(), 30);
                 player.AddBuff(BuffID.Warmth, 600);
                 Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.IceBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
             else if (beach)
             {
-                target.AddBuff(ModContent.BuffType<CrushDepth>(), 1200);
+                target.AddBuff(BuffType<CrushDepth>(), 1200);
                 player.AddBuff(BuffID.Wet, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity * 0.25f, ProjectileID.FlaironBubble, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
@@ -198,28 +198,28 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (desert)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 1200);
+                target.AddBuff(BuffType<HolyFlames>(), 1200);
                 player.AddBuff(BuffID.Endurance, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.BlackBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (glow)
             {
-                target.AddBuff(ModContent.BuffType<TemporalSadness>(), 30);
+                target.AddBuff(BuffType<TemporalSadness>(), 30);
                 player.AddBuff(BuffID.Spelunker, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.Mushroom, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (hell)
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 1200);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 1200);
                 player.AddBuff(BuffID.Inferno, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.BallofFire, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[proj].DamageType = DamageClass.Melee;
             }
             else if (holy)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 1200);
+                target.AddBuff(BuffType<HolyFlames>(), 1200);
                 player.AddBuff(BuffID.Heartreach, 600);
                 int proj = Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.RainbowCrystalExplosion, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 if (proj.WithinBounds(Main.maxProjectiles))
@@ -263,7 +263,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else
             {
-                target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 1200);
+                target.AddBuff(BuffType<ArmorCrunch>(), 1200);
                 player.AddBuff(BuffID.DryadsWard, 600);
                 Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.TerrarianBeam, Projectile.damage, Projectile.knockBack, Projectile.owner);
             }

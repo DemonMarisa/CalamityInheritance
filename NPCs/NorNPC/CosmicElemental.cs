@@ -44,7 +44,7 @@ namespace CalamityInheritance.NPCs.NorNPC
             NPC.HitSound = SoundID.NPCHit7;
             NPC.DeathSound = SoundID.NPCDeath6;
             Banner = NPC.type;
-            BannerItem = ModContent.ItemType<CosmicElementalBanner>();
+            BannerItem = ItemType<CosmicElementalBanner>();
             NPC.Calamity().VulnerableToSickness = false;
         }
 

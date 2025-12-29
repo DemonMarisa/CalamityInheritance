@@ -42,7 +42,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
         {
             get
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacyYharon) || Main.npc[CIGlobalNPC.LegacyYharon].type != ModContent.NPCType<YharonLegacy>())
+                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacyYharon) || Main.npc[CIGlobalNPC.LegacyYharon].type != NPCType<YharonLegacy>())
                     return int.MaxValue;
 
                 // Release a moderate amount of cinders normally.
@@ -53,7 +53,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
         {
             get
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacyYharon) || Main.npc[CIGlobalNPC.LegacyYharon].type != ModContent.NPCType<YharonLegacy>())
+                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacyYharon) || Main.npc[CIGlobalNPC.LegacyYharon].type != NPCType<YharonLegacy>())
                     return 0f;
 
                 // Move moderately quickly usually.
@@ -67,7 +67,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
 
             static Color selectCinderColor()
             {
-                if (!NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>()))
+                if (!NPC.AnyNPCs(NPCType<YharonLegacy>()))
                     return Color.Transparent;
 
                 return Color.Lerp(Color.LightYellow, Color.Yellow, Main.rand.NextFloat(0.2f, 0.9f));
@@ -104,7 +104,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
             // Draw cinders.
-            Texture2D cinderTexture = ModContent.Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
+            Texture2D cinderTexture = Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
             for (int i = 0; i < Cinders.Count; i++)
             {
                 Vector2 drawPosition = Cinders[i].Center - Main.screenPosition;

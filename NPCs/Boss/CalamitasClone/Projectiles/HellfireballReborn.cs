@@ -69,13 +69,13 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<HellfireExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<HellfireExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 240);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 240);
         }
 
         public override bool PreDraw(ref Color lightColor)

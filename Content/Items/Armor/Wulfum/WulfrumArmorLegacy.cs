@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<WulfrumArmorLegacy>()] = ModContent.ItemType<ANewWulfrumArmor>();
+            ItemID.Sets.ShimmerTransformToItem[ItemType<WulfrumArmorLegacy>()] = ItemType<ANewWulfrumArmor>();
             Item.ResearchUnlockCount = 1;
         }
 

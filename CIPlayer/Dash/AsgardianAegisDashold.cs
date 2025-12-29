@@ -113,8 +113,8 @@ namespace CalamityInheritance.CIPlayer.Dash
 
             // On-hit Cosmic Dash Explosion
             int explosionDamage = (int)player.GetBestClassDamage().ApplyTo(AsgardianAegis.RamExplosionDamage);
-            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<CosmicDashExplosion>(), explosionDamage, AsgardianAegis.RamExplosionKnockback, Main.myPlayer, 3f, 0f);
-            npc.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
+            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<CosmicDashExplosion>(), explosionDamage, AsgardianAegis.RamExplosionKnockback, Main.myPlayer, 3f, 0f);
+            npc.AddBuff(BuffType<GodSlayerInferno>(), 300);
         }
     }
 }

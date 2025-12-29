@@ -1,5 +1,4 @@
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Rogue.Spears;
 using CalamityInheritance.Rarity;
@@ -34,15 +33,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 3.5f;
             Item.useAnimation = Item.useTime = 22;
             Item.autoReuse = true;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.shootSpeed = 16f;
-            Item.shoot = ModContent.ProjectileType<EclipseSpearProj>();
+            Item.shoot = ProjectileType<EclipseSpearProj>();
 
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -50,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             if (ifStealth)
             {
                 SoundEngine.PlaySound(CISoundMenu.EclipseSpearAttackStealth, player.Center);
-                type = ModContent.ProjectileType<EclipseSpearProjStealth>();
+                type = ProjectileType<EclipseSpearProjStealth>();
             }
             else
                 SoundEngine.PlaySound(CISoundMenu.EclipseSpearAttackNor, player.Center);
@@ -59,9 +58,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Main.projectile[p].Calamity().stealthStrike = ifStealth;
 
             if (!ifStealth)
-                Projectile.NewProjectile(source, position, -velocity, ModContent.ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, -velocity, ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
             else
-                Projectile.NewProjectile(source, position, -velocity * 1.5f, ModContent.ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, -velocity * 1.5f, ProjectileType<EclipseSpearBack>(), damage, knockback, player.whoAmI);
             return false;
         }
         public override void AddRecipes()

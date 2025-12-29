@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.noFallDmg = true;
-            if (player.armor[0].type == ModContent.ItemType<AncientAeroHelm>() &&
-                player.armor[1].type == ModContent.ItemType<AncientAeroArmor>() && 
-                player.armor[2].type == ModContent.ItemType<AncientAeroLeggings>())
+            if (player.armor[0].type == ItemType<AncientAeroHelm>() &&
+                player.armor[1].type == ItemType<AncientAeroArmor>() && 
+                player.armor[2].type == ItemType<AncientAeroLeggings>())
             {
                 player.CIMod().AncientAeroWingsPower = true;
             }

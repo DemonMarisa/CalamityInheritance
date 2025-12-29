@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         {
             Item.width = 18;
             Item.height = 18;
-            Item.rare =ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 20;
         }

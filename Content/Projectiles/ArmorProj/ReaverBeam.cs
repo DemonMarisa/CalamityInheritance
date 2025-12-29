@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Particles;
+using LAP.Assets.TextureRegister;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -9,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
     public class ReaverBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 			Item.damage = 1145;
 			Item.knockBack = 14.1919810f;
 			Item.value = 314159274;
-			Item.rare = ModContent.RarityType<MurasamRed>();
+			Item.rare = RarityType<MurasamRed>();
 			Item.shootSpeed = 15f;
 			Item.height = 78;
 			Item.DamageType = DamageClass.Generic;
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.useTime = 5;
 			Item.autoReuse = false;
-			Item.shoot = ModContent.ProjectileType<AncientMurasamaProj>();		
+			Item.shoot = ProjectileType<AncientMurasamaProj>();		
 		}
 	}
 }

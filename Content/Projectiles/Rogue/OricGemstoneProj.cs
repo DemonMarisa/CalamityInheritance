@@ -1,4 +1,5 @@
 using System;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using LAP.Core.Utilities;
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     public class OricGemstoneProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/OricGemstone";
+        public override string Texture => GetInstance<OricGemstone>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
@@ -29,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.height = 34;
             Projectile.penetrate = 8;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.aiStyle = ProjAIStyleID.ThrownProjectile;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
@@ -129,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 pathToTravel.Y *= speedMult;
                 int petal = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, pathToTravel, ProjectileID.FlowerPetal, Projectile.damage, 0f, Projectile.owner);
                 if (petal.WithinBounds(Main.maxProjectiles))
-                    Main.projectile[petal].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    Main.projectile[petal].DamageType = GetInstance<RogueDamageClass>();
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

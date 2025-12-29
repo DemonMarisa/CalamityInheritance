@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Achievements
             LegendaryComplete1 = AddCondition("Condition1");
             LegendaryComplete2 = AddCondition("Condition2");
             LegendaryComplete3 = AddCondition("Condition3");
-            var pickUpCondition = AddItemPickupCondition(ModContent.ItemType<PBGLegendary>());
+            var pickUpCondition = AddItemPickupCondition(ItemType<PBGLegendary>());
             Achievement.UseTracker
             (
                 new CustomTrack
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Achievements
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<DownedYharonP2>());
+            yield return new After(GetInstance<DownedYharonP2>());
         }
     }
     

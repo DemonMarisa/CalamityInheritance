@@ -39,25 +39,25 @@ namespace CalamityInheritance.Core
             bool cIAnahitaSpawns = spawnInfo.Player.CIMod().cIdisableAnahitaSpawns;
 
             if (cIAnahitaSpawns)
-                pool.Remove(ModContent.NPCType<LeviathanStart>());
+                pool.Remove(NPCType<LeviathanStart>());
 
             // 腐巢生成
             bool cIHiveSpawns = spawnInfo.Player.CIMod().cIdisableHiveCystSpawns;
 
             if (cIHiveSpawns)
-                pool.Remove(ModContent.NPCType<HiveTumor>());
+                pool.Remove(NPCType<HiveTumor>());
 
             // 宿主生成
             bool cIPerfSpawns = spawnInfo.Player.CIMod().cIdisablePerfCystSpawns;
 
             if (cIPerfSpawns)
-                pool.Remove(ModContent.NPCType<PerforatorCyst>());
+                pool.Remove(NPCType<PerforatorCyst>());
 
             // 海灾生成
             bool cIASSpawns = spawnInfo.Player.CIMod().cIdisableNaturalScourgeSpawns;
 
             if (cIASSpawns)
-                pool.Remove(ModContent.NPCType<AquaticScourgeHead>());
+                pool.Remove(NPCType<AquaticScourgeHead>());
         }
     }
 }

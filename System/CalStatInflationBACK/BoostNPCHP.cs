@@ -81,7 +81,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                     npc.lifeMax = (int)(npc.lifeMax * 2.2f);
                     npc.life = (int)(npc.life * 2.2f);
                 }
-                if (npc.type == ModContent.NPCType<Yharon>())
+                if (npc.type == NPCType<Yharon>())
                 {
                     npc.lifeMax = (int)(npc.lifeMax * 2.8f);
                     npc.life = (int)(npc.life * 2.8f);

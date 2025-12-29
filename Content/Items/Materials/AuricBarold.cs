@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Materials
         {
             if (!Main.dedServ)
             {
-                GlowTexture = ModContent.Request<Texture2D>($"{Texture}_Glow");
+                GlowTexture = Request<Texture2D>($"{Texture}_Glow");
             }
         }
 
@@ -45,9 +45,9 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<AuricBarLegacyTile>());
+            Item.DefaultToPlaceableTile(TileType<AuricBarLegacyTile>());
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame)

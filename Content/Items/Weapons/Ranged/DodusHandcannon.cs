@@ -35,12 +35,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             // Reduce volume to 30% so it stops destroying people's ears.
             Item.UseSound = CommonCalamitySounds.LargeWeaponFireSound with { Volume = 0.3f };
 
-            Item.shoot = ModContent.ProjectileType<HighExplosivePeanutShell>();
+            Item.shoot = ProjectileType<HighExplosivePeanutShell>();
             Item.shootSpeed = 13f;
             Item.useAmmo = AmmoID.Bullet;
 
             Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.rare = RarityType<PureGreen>();
             Item.Calamity().donorItem = true;
             
         }

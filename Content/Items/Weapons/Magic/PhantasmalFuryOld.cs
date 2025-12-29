@@ -35,9 +35,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.UseSound = SoundID.Item43;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PhantasmalFuryProjOld>();
+            Item.shoot = ProjectileType<PhantasmalFuryProjOld>();
             Item.shootSpeed = 12f;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
         public override bool CanUseItem(Player player)
         {

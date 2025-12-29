@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Achievements
         {
             ForceKilledCondition = AddCondition();
             Achievement.SetCategory(AchievementCategory.Slayer);
-            var killed = AddNPCKilledCondition(ModContent.NPCType<YharonLegacy>());
+            var killed = AddNPCKilledCondition(NPCType<YharonLegacy>());
             Achievement.UseTracker
             (
                 new CustomTrack
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Achievements
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<DownedScal>());
+            yield return new After(GetInstance<DownedScal>());
         }
 
     }

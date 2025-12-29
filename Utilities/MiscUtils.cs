@@ -118,24 +118,24 @@ namespace CalamityInheritance.Utilities
             
             if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
             {
-                ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<T>()] = result;
-                ItemID.Sets.ShimmerTransformToItem[result] = ModContent.ItemType<T>();
+                ItemID.Sets.ShimmerTransformToItem[ItemType<T>()] = result;
+                ItemID.Sets.ShimmerTransformToItem[result] = ItemType<T>();
             }
         }
-        public static void ShimmetTo<T>(this int origin, bool ifDontNeedConfigControl = true) where T : ModItem
+        public static void ShimmerTo<T>(this int origin, bool ifDontNeedConfigControl = true) where T : ModItem
         {
             if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
             {
-                ItemID.Sets.ShimmerTransformToItem[origin] = ModContent.ItemType<T>();
+                ItemID.Sets.ShimmerTransformToItem[origin] = ItemType<T>();
             }
         }
         public static void ShopHelper<T>(this NPCShop shop, int value, Condition condition) where T: ModItem
         {
-            shop.AddWithCustomValue(ModContent.ItemType<T>(), value, condition);
+            shop.AddWithCustomValue(ItemType<T>(), value, condition);
         }
         public static RecipeGroup CreateGroupTwoItem<T>(this int showOnRecipe) where T: ModItem
         {
-            return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ModContent.ItemType<T>());
+            return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ItemType<T>());
         }
         public static void NameHelper(this RecipeGroup group, string name)
         {
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Utilities
         {
             int frames = seconds * 60;
             if (!player.HasBuff<T>())
-                player.AddBuff(ModContent.BuffType<T>(), frames);
+                player.AddBuff(BuffType<T>(), frames);
         }
         /// <summary>
         /// 可以直接用Color的发光，为啥要求用Vector3啊
@@ -164,7 +164,7 @@ namespace CalamityInheritance.Utilities
         {
             Lighting.AddLight(position, color.ToVector3());
         }
-        public static void LootAdd<T>(this ItemLoot itemLoot, int dropRate = 1, int dropMin = 1, int dropMax = 1) where T : ModItem => LootCommon(itemLoot, ModContent.ItemType<T>(), dropRate, dropMin, dropMax);
+        public static void LootAdd<T>(this ItemLoot itemLoot, int dropRate = 1, int dropMin = 1, int dropMax = 1) where T : ModItem => LootCommon(itemLoot, ItemType<T>(), dropRate, dropMin, dropMax);
         public static void LootAdd(this ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => LootCommon(itemLoot, lootItem, dropRate, dropMin, dropMax);
         public static void LootCommon(ItemLoot itemLoot, int lootItem, int dropRate = 1, int dropMin = 1, int dropMax = 1) => itemLoot.Add(lootItem, dropRate, dropMin, dropMax);
         #region RecipeHelper
@@ -180,7 +180,7 @@ namespace CalamityInheritance.Utilities
             return (int)player.GetDamage(damageclass).ApplyTo(baseDamage);
         }
         public static bool Same(this Item item, int itemID) => item.type == itemID;
-        public static bool Same<T>(this Item item) where T :ModItem => Same(item, ModContent.ItemType<T>());
+        public static bool Same<T>(this Item item) where T :ModItem => Same(item, ItemType<T>());
         public static bool ActiveWrath()
         {
             bool isAcitve = ModLoader.TryGetMod("NoxusBoss", out Mod mod);
@@ -208,11 +208,11 @@ namespace CalamityInheritance.Utilities
                 }
                 catch (Exception ex)
                 {
-                    ModContent.GetInstance<CalamityInheritance>().Logger.Warn($"Skipped assembly:{type.FullName}: {ex.Message}");
+                    GetInstance<CalamityInheritance>().Logger.Warn($"Skipped assembly:{type.FullName}: {ex.Message}");
                 }
             }
             if(result.Count is 0)
-                ModContent.GetInstance<CalamityInheritance>().Logger.Warn($"NoClassName:{targetClassName}");
+                GetInstance<CalamityInheritance>().Logger.Warn($"NoClassName:{targetClassName}");
             return result;
         }
     }

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:48,
             itemHeight:48,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ModContent.ItemType<BloodPactLegacy>()).
+                AddIngredient(ItemType<BloodPactLegacy>()).
                 AddIngredient<BloodyWormScarf>().
                 AddIngredient<FleshTotem>().
                 AddIngredient<CosmiliteBar>(5).

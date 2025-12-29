@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
@@ -13,6 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
     public class ACTAlphaHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
+        public override string Texture => GetInstance<GenisisLegacy>().Texture;
         public override float OffsetX => 20;
         public override float OffsetY => 0;
         public override float BaseOffsetY => 0;
@@ -47,14 +49,14 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             if (Projectile.ai[2] == 0f)
             {
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
                 Projectile.ai[2]++;
             }
             if (attackTimer % 20 == 0)
             {
                 SoundEngine.PlaySound(CISoundMenu.GenisisFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + fireOffset, Projdirection, ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 1.5f, 0f, 0f);
             }
         }
         #region 删除条件

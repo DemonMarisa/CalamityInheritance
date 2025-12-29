@@ -48,8 +48,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             CalamityGlobalProjectile modProj = Projectile.Calamity();
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
             //set up minion buffs and bools
-            bool hatExists = Projectile.type == ModContent.ProjectileType<MagicHatOld>();
-            player.AddBuff(ModContent.BuffType<MagicHatBuffOld>(), 3600);
+            bool hatExists = Projectile.type == ProjectileType<MagicHatOld>();
+            player.AddBuff(BuffType<MagicHatBuffOld>(), 3600);
             if (hatExists)
             {
                 if (player.dead)
@@ -149,11 +149,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                         {
                             int projType = Utils.SelectRandom(Main.rand, new int[]
                             {
-                                ModContent.ProjectileType<MagicUmbrellaOld>(),
-                                ModContent.ProjectileType<MagicRifleOld>(),
-                                ModContent.ProjectileType<MagicHammerOld>(),
-                                ModContent.ProjectileType<MagicAxeOld>(),
-                                ModContent.ProjectileType<MagicBirdOld>()
+                                ProjectileType<MagicUmbrellaOld>(),
+                                ProjectileType<MagicRifleOld>(),
+                                ProjectileType<MagicHammerOld>(),
+                                ProjectileType<MagicAxeOld>(),
+                                ProjectileType<MagicBirdOld>()
                             });
                             float velocityX = Main.rand.NextFloat(-10f, 10f);
                             float velocityY = Main.rand.NextFloat(-15f, -8f);

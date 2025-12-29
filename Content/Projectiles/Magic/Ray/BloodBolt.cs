@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Dusts;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
@@ -9,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class BloodBolt : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];

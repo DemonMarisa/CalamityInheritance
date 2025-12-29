@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Pink;
             Item.UseSound = CISoundID.SoundCurseFlamesAttack;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<DemonicPitchforkProjLegacy>();
+            Item.shoot = ProjectileType<DemonicPitchforkProjLegacy>();
             Item.shootSpeed = 16f;
         }
         public override void AddRecipes()

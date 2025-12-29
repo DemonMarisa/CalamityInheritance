@@ -22,11 +22,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Summon,
             Rogue
         }
-        public virtual ClassType WeaponDamageClass { get; }
+        public virtual ClassType GeneralWeaponClass { get; }
         public virtual int SetRarityColor { get; }
         public virtual Color DrawColor { get; }
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.{WeaponDamageClass}";
-        public string GeneralLegendItemTextPath => Generic.WeaponTextPath + WeaponDamageClass + "." + GetType().Name;
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.{GeneralWeaponClass}";
+        public string GeneralLegendItemTextPath => Generic.WeaponTextPath + GeneralWeaponClass + "." + GetType().Name;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             Item.DamageType = GetNeedDamageClass;
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? SetRarityColor : ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? SetRarityColor : RarityType<MaliceChallengeDrop>();
             ExSD();
         }
 
@@ -86,13 +86,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             get
             {
-                return WeaponDamageClass switch
+                return GeneralWeaponClass switch
                 {
                     ClassType.Melee => DamageClass.Melee,
                     ClassType.Ranged => DamageClass.Ranged,
                     ClassType.Magic => DamageClass.Magic,
                     ClassType.Summon => DamageClass.Summon,
-                    ClassType.Rogue => ModContent.GetInstance<RogueDamageClass>(),
+                    ClassType.Rogue => GetInstance<RogueDamageClass>(),
                     _ => DamageClass.Generic,
                 };
             }
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             get
             {
-                return WeaponDamageClass switch
+                return GeneralWeaponClass switch
                 {
                     ClassType.Melee => ContentSamples.CreativeHelper.ItemGroup.MeleeWeapon,
                     ClassType.Ranged => ContentSamples.CreativeHelper.ItemGroup.RangedWeapon,

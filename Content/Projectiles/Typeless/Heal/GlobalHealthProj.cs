@@ -3,6 +3,7 @@ using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
@@ -15,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
         public ref float HealAmt => ref Projectile.ai[2];
         public Player Healer => Main.player[Projectile.owner];
         #endregion
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 24;

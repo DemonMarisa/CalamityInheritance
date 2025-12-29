@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D texture = Request<Texture2D>(Texture).Value;
             float offset = 0;
             if (Projectile.spriteDirection == -1)
                 offset = MathHelper.PiOver4;

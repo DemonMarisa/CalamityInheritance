@@ -45,7 +45,7 @@ namespace CalamityInheritance.Tiles.BaseTiles
             if (!Main.dedServ)
             {
                 // Cache the extra texture displayed on the pedestal
-                RelicTexture = ModContent.Request<Texture2D>(RelicTextureName);
+                RelicTexture = Request<Texture2D>(RelicTextureName);
             }
         }
 

@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffType<GlacialState>(), 30);
         }
     }
 }

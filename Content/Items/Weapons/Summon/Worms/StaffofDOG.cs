@@ -24,10 +24,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
             Item.noMelee = true;
             Item.knockBack = 2f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.UseSound = SoundID.Item113;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<DOGworm>();
+            Item.shoot = ProjectileType<DOGworm>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
         }
@@ -36,14 +36,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
         {
             foreach (Projectile p in Main.ActiveProjectiles)
             {
-                if (p.active & p.type == ModContent.ProjectileType<DOGworm>())
+                if (p.active & p.type == ProjectileType<DOGworm>())
                     return false;
             }
             return true;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<DOGworm>(), 2, 1, player.whoAmI, 1);
+            Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.Zero, ProjectileType<DOGworm>(), 0, 1, player.whoAmI);
             return false;
         }
     }

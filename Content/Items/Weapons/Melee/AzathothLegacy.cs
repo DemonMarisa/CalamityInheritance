@@ -38,11 +38,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noUseGraphic = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<AzathothYoyoLegacy>();
+            Item.shoot = ProjectileType<AzathothYoyoLegacy>();
             Item.shootSpeed = 24f;
 
             Item.autoReuse = true;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
             Item.value = CIShopValue.RarityPriceDonatorPink;
         }

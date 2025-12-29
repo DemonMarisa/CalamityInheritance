@@ -62,9 +62,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             float colorValue = Main.rand.Next(90, 111) * 0.01f;
             colorValue *= Main.essScale;
             Lighting.AddLight(Projectile.Center, 1.2f * colorValue, 0.8f * colorValue, 0f);
-            bool ifHasMinion = Projectile.type == ModContent.ProjectileType<SonYharon>();
+            bool ifHasMinion = Projectile.type == ProjectileType<SonYharon>();
             //给buff
-            player.AddBuff(ModContent.BuffType<SonYharonBuff>(), 1200);
+            player.AddBuff(BuffType<SonYharonBuff>(), 1200);
             if (ifHasMinion)
             {
                 if (player.dead) usPlayer.OwnSonYharon = false;

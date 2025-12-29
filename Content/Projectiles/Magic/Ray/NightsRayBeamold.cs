@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using System;
 using Terraria.ModLoader;
 using Terraria;
@@ -18,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             get => Projectile.ai[1] == 1f;
             set => Projectile.ai[1] = value.ToInt();
         }
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -37,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             if (Projectile.localAI[1] >= 29f && Projectile.owner == Main.myPlayer)
             {
                 Projectile.localAI[1] = 0f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<NightOrbold>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<NightOrbold>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
 
             if (InitialDamage == 0f)

@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items.Weapons.Wulfrum;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
@@ -23,6 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public override float WeaponRotation => 20;
         public override float AimResponsiveness => 0.25f;
         // public override string TexturePath => "Wulfrum/WulfrumStaff";
+        public override string Texture => GetInstance<WulfrumStaff>().Texture;
         public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
@@ -76,27 +78,27 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
                 {
                     int[] pType =
                     [
-                        ModContent.ProjectileType<GalaxyStarold>(),
-                        ModContent.ProjectileType<ProfanedNuke>(),
-                        ModContent.ProjectileType<ExoFlareClusterold>(),
-                        ModContent.ProjectileType<ChickenRound>(),
-                        ModContent.ProjectileType<Celestus2>(),
-                        ModContent.ProjectileType<DragonRageProj>(),
-                        ModContent.ProjectileType<PhantasmalRuinProjold>(),
-                        ModContent.ProjectileType<RogueTypeHammerGalaxySmasherProjClone>(),
-                        ModContent.ProjectileType<RogueTypeHammerStellarContemptProjClone>(),
-                        ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>(),
-                        ModContent.ProjectileType<SupernovaBombold>(),
-                        ModContent.ProjectileType<CIVividBeamExoLore>(),
-                        ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(),
-                        ModContent.ProjectileType<DragonsBreathRound>(),
+                        ProjectileType<GalaxyStarold>(),
+                        ProjectileType<ProfanedNuke>(),
+                        ProjectileType<ExoFlareClusterold>(),
+                        ProjectileType<ChickenRound>(),
+                        ProjectileType<Celestus2>(),
+                        ProjectileType<DragonRageProj>(),
+                        ProjectileType<PhantasmalRuinProjold>(),
+                        ProjectileType<RogueGalaxySmasherProjClone>(),
+                        ProjectileType<RogueStellarContemptProjClone>(),
+                        ProjectileType<RogueFallenHammerProjClone>(),
+                        ProjectileType<SupernovaBombold>(),
+                        ProjectileType<CIVividBeamExoLore>(),
+                        ProjectileType<SoulEdgeSoulLegacyLarge>(),
+                        ProjectileType<DragonsBreathRound>(),
                     ];
                     int randomProjectileType = pType[Main.rand.Next(pType.Length)];
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * 9f, randomProjectileType, Projectile.damage, Projectile.knockBack, Projectile.owner);
                 }
 
                 SoundEngine.PlaySound(SoundID.Item43, Projectile.Center);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * 9f, ModContent.ProjectileType<WulfrumBoltOld>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, firedirection * 9f, ProjectileType<WulfrumBoltOld>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
 
         }

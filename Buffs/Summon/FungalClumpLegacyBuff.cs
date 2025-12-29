@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.Summon
         {
             var usPlayer = player.CIMod();
             bool minion = usPlayer.FungalClumpLegacySummonBuff;
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<FungalClumpLegacyMinion>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<FungalClumpLegacyMinion>()] > 0)
             {
                 minion = true;
             }

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<MountedScannerSummonLegacy>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<MountedScannerSummonLegacy>()] > 0)
             {
                 modPlayer.mountedScanner = true;
             }

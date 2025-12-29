@@ -35,15 +35,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>() : ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>() : RarityType<DeepBlue>();
             Item.Calamity().donorItem = true;
-            Item.shoot = ModContent.ProjectileType<ACTKarasawaHoldout>();
+            Item.shoot = ProjectileType<ACTKarasawaHoldout>();
             Item.shootSpeed = 1f;
             Item.useAmmo = AmmoID.None;
             Item.channel = true;
         }
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 46;
-        public override bool CanUseItem(Player player) => player.ownedProjectileCounts[ModContent.ProjectileType<ACTKarasawaHoldout>()] < 1;
+        public override bool CanUseItem(Player player) => !player.HasProj(Item.shoot);
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);

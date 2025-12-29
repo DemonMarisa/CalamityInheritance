@@ -12,8 +12,8 @@ namespace CalamityInheritance.Rarity
         {
             -2 => ItemRarityID.Red,
             -1 => ItemRarityID.Purple,
-            +1 => ModContent.RarityType<AbsoluteGreen>(),
-            +2 => ModContent.RarityType<DeepBlue>     (),
+            +1 => RarityType<AbsoluteGreen>(),
+            +2 => RarityType<DeepBlue>(),
             _  => Type,
         };
     }

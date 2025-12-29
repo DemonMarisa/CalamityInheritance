@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         (
             itemWidth:38,
             itemHeight:38,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet
         );
         public override void UpdateAccessory(Player player, bool hideVisual)

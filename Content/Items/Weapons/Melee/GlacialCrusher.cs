@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.damage = 125;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 5f;
-            Item.shoot = ModContent.ProjectileType<Iceberg>();
+            Item.shoot = ProjectileType<Iceberg>();
             Item.shootSpeed = 12f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)

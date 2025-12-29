@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = false;
             Projectile.timeLeft = Lifetime;
             Projectile.extraUpdates = 1;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -56,11 +56,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     if (Projectile.Calamity().stealthStrike)
                     {
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ModContent.ProjectileType<PhantasmalRuinGhost>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<PhantasmalRuinGhost>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                     }
                     else
                     {
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, 0f, Main.rand.NextFloat(-2, 2), ModContent.ProjectileType<LostSoulFriendly>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 1f);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, 0f, Main.rand.NextFloat(-2, 2), ProjectileType<LostSoulFriendly>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 1f);
                     }
                 }
             }
@@ -69,9 +69,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 bool ss = Projectile.Calamity().stealthStrike;
                 int soulDamage = (int)(Projectile.damage * 0.7f);
-                int projID = ss ? ModContent.ProjectileType<PhantasmalRuinGhost>() : ModContent.ProjectileType<LostSoulFriendly>();
-                int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
-                Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                int projID = ss ? ProjectileType<PhantasmalRuinGhost>() : ProjectileType<LostSoulFriendly>();
+                int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
+                Main.projectile[soul].DamageType = GetInstance<RogueDamageClass>();
                 int damage = (int)(Projectile.damage * 0.25f);
                 float kb = Projectile.knockBack * (ss ? 1f : 0.25f);
                 Vector2 velocity = ss
@@ -119,10 +119,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<SoulEdgeSoulLegacySmall>() };
+                int[] projectileTypes = { ProjectileType<SoulEdgeSoulLegacyMedium>(), ProjectileType<SoulEdgeSoulLegacyLarge>(), ProjectileType<SoulEdgeSoulLegacySmall>() };
                 int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
                 int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, randomProjectileType, (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
-                Main.projectile[newProjectileId].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                Main.projectile[newProjectileId].DamageType = GetInstance<RogueDamageClass>();
             }
         }
     }

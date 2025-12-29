@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             bool vortex = player.ZoneTowerVortex;
             if (astral)
             {
-                dustType = ModContent.DustType<AstralOrange>();
+                dustType = DustType<AstralOrange>();
                 color = new Color(255, 127, 80, Projectile.alpha);
             }
             else if (jungle)
@@ -210,19 +210,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             if (astral)
             {
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 600);
+                target.AddBuff(BuffType<AstralInfectionDebuff>(), 600);
             }
             else if (jungle)
             {
-                target.AddBuff(ModContent.BuffType<Plague>(), 600);
+                target.AddBuff(BuffType<Plague>(), 600);
             }
             else if (snow)
             {
-                target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+                target.AddBuff(BuffType<GlacialState>(), 30);
             }
             else if (beach)
             {
-                target.AddBuff(ModContent.BuffType<CrushDepth>(), 600);
+                target.AddBuff(BuffType<CrushDepth>(), 600);
             }
             else if (dungeon)
             {
@@ -230,23 +230,23 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (desert)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 600);
+                target.AddBuff(BuffType<HolyFlames>(), 600);
             }
             else if (glow)
             {
-                target.AddBuff(ModContent.BuffType<TemporalSadness>(), 30);
+                target.AddBuff(BuffType<TemporalSadness>(), 30);
             }
             else if (hell)
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 600);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 600);
             }
             else if (holy)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 600);
+                target.AddBuff(BuffType<HolyFlames>(), 600);
             }
             else
             {
-                target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 600);
+                target.AddBuff(BuffType<ArmorCrunch>(), 600);
             }
         }
     }

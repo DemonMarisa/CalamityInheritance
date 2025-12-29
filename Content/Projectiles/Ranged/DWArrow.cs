@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -49,13 +50,12 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture;
             if (Projectile.localAI[1] == 0f)
                 Projectile.localAI[1] = Main.rand.Next(1, 3);
             ModProjectile DWArrow = ProjectileLoader.GetProjectile(ModContent.ProjectileType<DWArrow>());

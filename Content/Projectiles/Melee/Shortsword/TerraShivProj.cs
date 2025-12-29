@@ -6,12 +6,14 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class TerraShivProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<TerraShiv>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -44,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ModContent.ProjectileType<ShortTerraBeam>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ProjectileType<ShortTerraBeam>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
         public override void ExtraBehavior()
         {

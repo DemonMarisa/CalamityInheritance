@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.UseSound = CommonCalamitySounds.LargeWeaponFireSound;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.Calamity().donorItem = true;
             
         }
@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 for (int i = 0; i < 35; i++)
                 {
                     Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f))  * Main.rand.NextFloat(0.8f, 1.1f);
-                    int newP = Projectile.NewProjectile(source, new Vector2(position.X + 10f, position.Y), spread, ModContent.ProjectileType<MineralMortarProjectile>(), damage / 3, knockback, player.whoAmI);
+                    int newP = Projectile.NewProjectile(source, new Vector2(position.X + 10f, position.Y), spread, ProjectileType<MineralMortarProjectile>(), damage / 3, knockback, player.whoAmI);
                     Main.projectile[newP].velocity *= 1.1f;
                     Main.projectile[newP].extraUpdates = 1;
                     Main.projectile[newP].netUpdate = true;
@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (CIConfig.Instance.AmmoConversion == true)
             {
-                type = ModContent.ProjectileType<BetterAMR>();
+                type = ProjectileType<BetterAMR>();
                 Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer, 0f, 0f);
                 proj.CalamityInheritance().ignoreDrAndDef = true;
             }
@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 if (type == ProjectileID.Bullet)
                 {
-                    Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<BetterAMR>(), damage, knockback, Main.myPlayer, 0f, 0f);
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, ProjectileType<BetterAMR>(), damage, knockback, Main.myPlayer, 0f, 0f);
                     proj.CalamityInheritance().ignoreDrAndDef = true;
                 }
                 else

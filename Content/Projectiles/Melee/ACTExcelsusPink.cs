@@ -190,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 color = new Color(255, 255, 255, 100);
             }
             Vector2 origin = new Vector2(39f, 46f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ACTExcelsusPinkGlow").Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ACTExcelsusPinkGlow").Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -198,7 +198,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //追踪情况下标记为True
             if (Projectile.ai[0] == (int)DoStyle.IsHoming)
                 AlreadyHit = true;     
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
         }
     }
 }

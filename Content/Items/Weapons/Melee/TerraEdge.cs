@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 58;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TerraEdgeEnergySword>();
+            Item.shoot = ProjectileType<TerraEdgeEnergySword>();
             Item.shootSpeed = 3f;
             Item.noMelee = true; // This is set the sword itself doesn't deal damage (only the projectile does).
             Item.shootsEveryUse = true; // This makes sure Player.ItemAnimationJustStarted is set when swinging.
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
 
             Vector2 beamVelocity = Vector2.Normalize(velocity) * 16f;
-            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TerraEdgeBeam>(), (int)(damage * 1.5f), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, beamVelocity, ProjectileType<TerraEdgeBeam>(), (int)(damage * 1.5f), knockback, player.whoAmI);
 
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 

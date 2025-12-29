@@ -70,8 +70,8 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             {
                 Projectile.frame = 0;
             }
-            bool correctMinion = Projectile.type == ModContent.ProjectileType<WulfrumDroidOld>();
-            player.AddBuff(ModContent.BuffType<WulfrumDroidOldBuff>(), 3600);
+            bool correctMinion = Projectile.type == ProjectileType<WulfrumDroidOld>();
+            player.AddBuff(BuffType<WulfrumDroidOldBuff>(), 3600);
             if (correctMinion)
             {
                 if (player.dead)
@@ -205,7 +205,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Vector2 velocity = targetVector - Projectile.Center;
             velocity.Normalize();
             velocity *= 10f;
-            int bolt = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<WulfrumBoltMinion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            int bolt = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<WulfrumBoltMinion>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             Main.projectile[bolt].originalDamage = Projectile.originalDamage;
             Main.projectile[bolt].netUpdate = true;
             Projectile.netUpdate = true;

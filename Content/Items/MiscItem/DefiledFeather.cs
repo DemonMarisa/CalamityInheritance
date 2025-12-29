@@ -14,13 +14,13 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 8));
             Item.ResearchUnlockCount = 1;
-            Type.ShimmetTo<Rock>(true);
+            Type.ShimmerTo<Rock>(true);
         }
         public override void SetDefaults()
         {
             Item.width = 40;
             Item.height = 50;
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = RarityType<PureRed>();
         }
         public override bool CanUseItem(Player player) => false;
     }

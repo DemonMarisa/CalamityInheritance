@@ -26,23 +26,23 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public override void SetStaticDefaults()
         {
             ItemID.Sets.CanGetPrefixes[Type] = false;
-            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/TheTaleofaCruelWorld/TheTaleofaCruelWorldNor"), ModContent.ItemType<CalamityTitleMusicBoxLegacy>(), ModContent.TileType<CalamityTitleMusicBoxTitle>());
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/TheTaleofaCruelWorld/TheTaleofaCruelWorldNor"), ItemType<CalamityTitleMusicBoxLegacy>(), TileType<CalamityTitleMusicBoxTitle>());
             Item.ResearchUnlockCount = 1;
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
 
         public override void SetDefaults()
         {
-            Item.DefaultToMusicBox(ModContent.TileType<CalamityTitleMusicBoxTitle>(), 0);
+            Item.DefaultToMusicBox(TileType<CalamityTitleMusicBoxTitle>(), 0);
             Item.consumable = false;
         }
         public override void AddRecipes()
         {
             CreateRecipe().
             AddIngredient(ItemID.MusicBox).
-                AddIngredient(ModContent.ItemType<BrimstoneSlag>(), 12).
-                AddIngredient(ModContent.ItemType<EssenceofHavoc>(), 3).
-                AddTile(ModContent.TileType<AshenAltar>()).
+                AddIngredient(ItemType<BrimstoneSlag>(), 12).
+                AddIngredient(ItemType<EssenceofHavoc>(), 3).
+                AddTile(TileType<AshenAltar>()).
                 Register();
         }
         public override bool AltFunctionUse(Player player) => true;

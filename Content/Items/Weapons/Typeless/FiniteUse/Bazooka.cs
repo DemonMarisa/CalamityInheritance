@@ -34,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
             Item.UseSound = null;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<GrenadeRound>();
-            Item.useAmmo = ModContent.ItemType<GrenadeRounds>();
+            Item.shoot = ProjectileType<GrenadeRound>();
+            Item.useAmmo = ItemType<GrenadeRounds>();
             if (CalamityPlayer.areThereAnyDamnBosses)
                 Item.CalamityInheritance().timesUsed = 2;
         }

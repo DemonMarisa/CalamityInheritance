@@ -11,13 +11,14 @@ using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class CIVividBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private bool initialized = false;
         public override void SetDefaults()
@@ -116,10 +117,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             {
                     SummonLasers();
             }
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
             target.AddBuff(BuffID.Frostburn, 300);
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
         }
 
         private void SummonLasers()
@@ -128,11 +129,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             switch (Projectile.ai[1])
             {
                 case 0f:
-                    CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 100f, 400f, 640f, 12f, ModContent.ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 100f, 400f, 640f, 12f, ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 1f:
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 2f:
@@ -143,8 +144,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                     break;
             }

@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
             player.GetCritChance<RogueDamageClass>() += Crits;
             player.moveSpeed -= MoveSpeed;
             player.lifeRegen += RegenSpeed.ToInnerLifeRegen();
-            player.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = true;
+            player.buffImmune[BuffType<AstralInfectionDebuff>()] = true;
             player.buffImmune[BuffID.Rabies] = true;
         }
 

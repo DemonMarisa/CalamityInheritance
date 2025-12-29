@@ -34,12 +34,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<IchikaBlack>() : ModContent.RarityType<BlueGreen>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<IchikaBlack>() : RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.autoReuse = true;
             Item.UseSound = CISoundID.SoundGrenadeLanucher;
             Item.shootSpeed = 22f;
-            Item.shoot = ModContent.ProjectileType<ProfanedNuke>();
+            Item.shoot = ProjectileType<ProfanedNuke>();
             Item.useAmmo = AmmoID.Rocket;
         }
 
@@ -53,12 +53,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 for (int i = 0; i < 12 ; i++)
                 {
                     Vector2 spreading = new Vector2(velocity.X, 0).RotatedByRandom(180f);
-                    Projectile.NewProjectile(source, position, spreading, ModContent.ProjectileType<ProfanedNuke>(), damage, knockback);
+                    Projectile.NewProjectile(source, position, spreading, ProjectileType<ProfanedNuke>(), damage, knockback);
                 }
                 return false;
             }
             else
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ProfanedNuke>(), damage, knockback);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<ProfanedNuke>(), damage, knockback);
             return false;
         }
     }

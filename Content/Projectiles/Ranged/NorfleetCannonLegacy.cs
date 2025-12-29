@@ -1,14 +1,11 @@
 ﻿using System;
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Ranged;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
@@ -16,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class NorfleetCannonLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{Generic.WeaponPath}/Ranged/NorfleetLegacy";
+        public override string Texture => GetInstance<NorfleetLegacy>().Texture;
 
         public override void SetDefaults()
         {
@@ -99,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         float variation = (1f + Projectile.localAI[0]) * 3f;
                         Vector2 position = playerPosition + Utils.RandomVector2(Main.rand, -variation, variation);
                         Vector2 speed = Projectile.velocity * shootSpeed * Main.rand.NextFloat(0.6f, 1.2f);
-                        type = ModContent.ProjectileType<NorfleetCometLegacy>();
+                        type = ProjectileType<NorfleetCometLegacy>();
                         speed.X += Main.rand.NextFloat(-1.5f, 1.5f);
                         speed.Y += Main.rand.NextFloat(-1.5f, 1.5f);
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner);

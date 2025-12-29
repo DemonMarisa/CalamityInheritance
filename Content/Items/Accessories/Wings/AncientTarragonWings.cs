@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         (
             itemWidth:22,
             itemHeight:38,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD()
@@ -30,9 +30,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (player.armor[0].type == ModContent.ItemType<AncientTarragonHelm>() &&
-                player.armor[1].type == ModContent.ItemType<AncientTarragonBreastplate>() &&
-                player.armor[2].type == ModContent.ItemType<AncientTarragonLeggings>())
+            if (player.armor[0].type == ItemType<AncientTarragonHelm>() &&
+                player.armor[1].type == ItemType<AncientTarragonBreastplate>() &&
+                player.armor[2].type == ItemType<AncientTarragonLeggings>())
             {
                 player.lifeRegen += 2; //1HP/s
                 player.statDefense += 10; //10

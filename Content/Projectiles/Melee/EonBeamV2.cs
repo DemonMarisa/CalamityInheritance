@@ -11,12 +11,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class EonBeamV2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Beam");
-        }
 
-
+        public override string Texture => GenericProjRoute.InvisProjRoute;
+        public ref float UseTexture => ref Projectile.ai[1];
         public override void SetDefaults()
         {
             Projectile.width = 20;
@@ -25,7 +22,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 500;
-
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.extraUpdates = 1;
@@ -34,14 +30,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
-
-            int num36 = Main.rand.Next(3);
-            int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, num36 switch
-            {
-                0 => 15,
-                1 => 57,
-                _ => 58,
-            }, 0f, 0f, 100, default(Color), 1.25f);
+            int dustID = Main.rand.Next(3) switch { 0 => 15, 1 => 57, _ => 58 };
+            int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, dustID, 0f, 0f, 100, default, 1.25f);
             Dust dust59 = Main.dust[num225];
             Dust dust3 = dust59;
             dust3.velocity *= 0.1f;
@@ -64,8 +54,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
 			if (Projectile.timeLeft > 490)
 				return false;
-
-			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+            UseTexture = MathHelper.Clamp(UseTexture, 1f, 4f);
+            Texture2D tex = Request<Texture2D>($"{Texture}_{(int)UseTexture}").Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
             return false;
         }
@@ -82,10 +72,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.ai[0] != 1f) //excludes True Ark of the Ancients
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 120);
                 target.AddBuff(BuffID.Frostburn, 120);
-                target.AddBuff(ModContent.BuffType<Plague>(), 120);
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+                target.AddBuff(BuffType<Plague>(), 120);
+                target.AddBuff(BuffType<HolyFlames>(), 120);
             }
         }
     }

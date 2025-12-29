@@ -25,10 +25,10 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 29; //96
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<GodSlayerChestplateold>() && legs.type == ItemType<GodSlayerLeggingsold>();
 
         public override void ArmorSetShadows(Player player)
         {

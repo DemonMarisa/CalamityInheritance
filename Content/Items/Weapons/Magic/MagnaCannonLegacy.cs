@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = SoundID.Item117;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<MagnaBlastLegacy>();
+            Item.shoot = ProjectileType<MagnaBlastLegacy>();
         }
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<SonYharon>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<SonYharon>()] > 0)
             {
                 usPlayer.OwnSonYharon = true;
             }

@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         (
             itemWidth:28,
             itemHeight:32,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eTalisman;

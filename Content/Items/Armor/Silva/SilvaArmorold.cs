@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             Item.height = 24;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 44;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override void UpdateEquip(Player player)
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             CreateRecipe().
                 AddIngredient<PlantyMush>(12).
                 AddIngredient<EffulgentFeather>(10).
-                AddIngredient(ModContent.ItemType<DarksunFragment>(), 10).
+                AddIngredient(ItemType<DarksunFragment>(), 10).
                 AddIngredient<LeadCore>().
                 AddTile<CosmicAnvil>().
                 Register();

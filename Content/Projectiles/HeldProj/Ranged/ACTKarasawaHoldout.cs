@@ -118,7 +118,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             float ChargePercent = Math.Clamp(Projectile.ai[0] / 450f, 0f, 1f);
             float sightsSize = 33f;
             float halfAngle = (1f - ChargePercent * 0.965f) * 2.0943952f / 2f;
-            Texture2D texture = ModContent.Request<Texture2D>(Texture, (ReLogic.Content.AssetRequestMode)2).Value;
+            Texture2D texture = Request<Texture2D>(Texture, (ReLogic.Content.AssetRequestMode)2).Value;
             Color sightsColor = Color.Lerp(Color.DodgerBlue, Color.Red, Math.Clamp((Projectile.ai[0] - 300f) / 150f, 0f, 1f)) * 0.8f;
             Effect spreadVFX = Filters.Scene["CalamityMod:SpreadTelegraph"].GetShader().Shader;
             spreadVFX.Parameters["centerOpacity"].SetValue(0.45f);
@@ -285,7 +285,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 {
                     Vector2 vel = Projectile.velocity.SafeNormalize(Vector2.UnitY) * 5f;
                     //byd还有高手啊？
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), tip - vel * 20f, vel, ModContent.ProjectileType<ACTKarasawaBoom>(), (int)(Projectile.damage / 6.25f * multiplier), Projectile.knockBack, Plr.whoAmI, Math.Clamp((AttackCharge - 300f) / 150f, 0f, 1f), AttackCharge >= 450f ? 0f : -1f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), tip - vel * 20f, vel, ProjectileType<ACTKarasawaBoom>(), (int)(Projectile.damage / 6.25f * multiplier), Projectile.knockBack, Plr.whoAmI, Math.Clamp((AttackCharge - 300f) / 150f, 0f, 1f), AttackCharge >= 450f ? 0f : -1f);
                 }
                 //光效
                 if (!Main.dedServ)

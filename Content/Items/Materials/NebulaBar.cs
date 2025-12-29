@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Materials
 			
 		public override void SetDefaults()
 		{
-			Item.DefaultToPlaceableTile(ModContent.TileType<NebulaBarTile>());
+			Item.DefaultToPlaceableTile(TileType<NebulaBarTile>());
 			Item.value = CIShopValue.RarityPriceCyan;
 			Item.rare = ItemRarityID.Cyan;
 		}

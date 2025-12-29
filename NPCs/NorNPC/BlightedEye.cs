@@ -37,7 +37,7 @@ namespace CalamityInheritance.NPCs.NorNPC
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             Banner = NPC.type;
-            BannerItem = ModContent.ItemType<BlightedEyeBanner>();
+            BannerItem = ItemType<BlightedEyeBanner>();
             NPC.Calamity().VulnerableToHeat = true;
             NPC.Calamity().VulnerableToCold = true;
             NPC.Calamity().VulnerableToSickness = true;
@@ -80,6 +80,6 @@ namespace CalamityInheritance.NPCs.NorNPC
             target.AddBuff(BuffID.Weak, 180, true);
         }
 
-        public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ModContent.ItemType<BlightedLens>(), 2);
+        public override void ModifyNPCLoot(NPCLoot npcLoot) => npcLoot.Add(ItemType<BlightedLens>(), 2);
     }
 }

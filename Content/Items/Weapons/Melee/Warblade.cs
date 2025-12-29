@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<WarCleave>(), 180);
+            target.AddBuff(BuffType<WarCleave>(), 180);
         }
     }
 }

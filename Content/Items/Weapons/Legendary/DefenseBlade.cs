@@ -16,8 +16,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DefenseBlade: LegendaryWeaponClass
     {
-        public override ClassType WeaponDamageClass => ClassType.Melee;
-        public override int SetRarityColor => ModContent.RarityType<GolemPurple>();
+        public override ClassType GeneralWeaponClass => ClassType.Melee;
+        public override int SetRarityColor => RarityType<GolemPurple>();
         public override Color DrawColor => new(145, 115, 177);
  
         public int baseDamage = 75;
@@ -43,11 +43,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 Item.noMelee = false;
                 Item.useTurn = false;
                 Item.UseSound = SoundID.Item73;
-                Item.shoot = ModContent.ProjectileType<DefenseBeam>();
+                Item.shoot = ProjectileType<DefenseBeam>();
             }
             else
             {
-                Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+                Item.DamageType = GetInstance<TrueMeleeDamageClass>();
                 Item.noMelee = false;
                 Item.useTurn = true;
                 Item.UseSound = SoundID.Item1;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getDmg = LegendaryDamage() + Generic.GenericLegendBuffInt();
@@ -100,8 +100,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt(1000)) / (float)baseDamage);
             damage *= Buff;
         }
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
-        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ModContent.ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo) => Projectile.NewProjectile(player.GetSource_ItemUse(Item), target.Center, Vector2.Zero, ProjectileType<DefenseBlast>(), Item.damage, Item.knockBack, Main.myPlayer);
         public static float LegendaryDamage()
         {
             int dmgBuff = 0;

@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override void AI()
         {
-            if (Owner.ownedProjectileCounts[ModContent.ProjectileType<ShizukuStarHoldout>()] > 0 && Target.CanBeChasedBy() && Target.active && !Target.dontTakeDamage)
+            if (Owner.ownedProjectileCounts[ProjectileType<ShizukuStarHoldout>()] > 0 && Target.CanBeChasedBy() && Target.active && !Target.dontTakeDamage)
                 Projectile.timeLeft = 2;
             //缓动
             Projectile.rotation += MathHelper.ToRadians(1);
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     Vector2 targetPos = Owner.Center + curAngle.ToRotationVector2() * rad;
                     Vector2 direction = (targetPos - Owner.Center).SafeNormalize(Vector2.UnitX);
                     Vector2 velocity = 12f * direction;
-                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Owner.Center, velocity, ModContent.ProjectileType<ShizukuDagger>(), Projectile.originalDamage, 12f, Owner.whoAmI, ai1: Target.whoAmI);
+                    Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Owner.Center, velocity, ProjectileType<ShizukuDagger>(), Projectile.originalDamage, 12f, Owner.whoAmI, ai1: Target.whoAmI);
                     proj.DamageType = DamageClass.Magic;
                     proj.timeLeft = 6000;
                     proj.CalamityInheritance().ProjNewAI[1] = curAngle;
@@ -70,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public override bool PreDraw(ref Color lightColor)
         {
             LAPUtilities.ReSetToBeginShader();
-            Texture2D mark = ModContent.Request<Texture2D>($"CalamityInheritance/Content/Projectiles/Typeless/Shizuku/SwordArk/{GetType().Name}").Value;
+            Texture2D mark = Request<Texture2D>($"CalamityInheritance/Content/Projectiles/Typeless/Shizuku/SwordArk/{GetType().Name}").Value;
             float scale = 2f - Projectile.scale;
             scale /= 3;
             Vector2 drawPos = Projectile.Center - Main.screenPosition;

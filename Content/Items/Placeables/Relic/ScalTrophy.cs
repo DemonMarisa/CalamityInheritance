@@ -21,8 +21,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Relic
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<PureRed>();
-            Item.createTile = ModContent.TileType<ScalTrophyTiles>();
+            Item.rare = RarityType<PureRed>();
+            Item.createTile = TileType<ScalTrophyTiles>();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         (
             itemWidth:28,
             itemHeight:32,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );

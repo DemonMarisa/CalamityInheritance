@@ -20,7 +20,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<SupremeCalamitasLegacy>();
+            public override int NPCType => NPCType<SupremeCalamitasLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase1");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -30,7 +30,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<SupremeCalamitasLegacy>();
+            public override int NPCType => NPCType<SupremeCalamitasLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase2");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -40,7 +40,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<SupremeCalamitasLegacy>();
+            public override int NPCType => NPCType<SupremeCalamitasLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasPhase3");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -50,7 +50,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<SupremeCalamitasLegacy>();
+            public override int NPCType => NPCType<SupremeCalamitasLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasDefeat_LongFade");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;

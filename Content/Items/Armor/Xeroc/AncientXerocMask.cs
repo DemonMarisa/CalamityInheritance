@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             Item.defense = 10; //50
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientXerocPlateMail>() && legs.type == ModContent.ItemType<AncientXerocCuisses>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientXerocPlateMail>() && legs.type == ItemType<AncientXerocCuisses>();
 
         public override void ArmorSetShadows(Player player)
         {
@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
 
             else if (player.statLife <= (player.statLifeMax2 * 0.25f) && player.statLife > (player.statLifeMax2 * 0.15f))
             {
-                player.AddBuff(ModContent.BuffType<AncientXerocMadness>(), 2);
+                player.AddBuff(BuffType<AncientXerocMadness>(), 2);
                 player.GetDamage<GenericDamageClass>() += 0.40f;
                 player.GetCritChance<GenericDamageClass>() += 40;
                 player.manaCost *= 0.10f;
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
             }
             else if (player.statLife <= (player.statLifeMax2 * 0.15f))
             {
-                player.AddBuff(ModContent.BuffType<AncientXerocShame>(), 2);
+                player.AddBuff(BuffType<AncientXerocShame>(), 2);
                 player.GetDamage<GenericDamageClass>() -= 0.40f;
                 player.GetCritChance<GenericDamageClass>() -= 40;
             }

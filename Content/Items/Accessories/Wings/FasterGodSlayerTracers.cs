@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         (
             itemWidth:36,
             itemHeight:32,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
@@ -40,16 +40,16 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if ((player.armor[0].type == ModContent.ItemType<AncientGodSlayerHelm>() ||
-                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadMeleeold>() ||
-                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadRangedold>() ||
-                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadMagicold>() ||
-                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadSummonold>() ||
-                 player.armor[0].type == ModContent.ItemType<GodSlayerHeadRogueold>()) &&
-                (player.armor[1].type == ModContent.ItemType<AncientGodSlayerChestplate>() ||
-                 player.armor[1].type == ModContent.ItemType<GodSlayerChestplateold>()) &&
-                (player.armor[2].type == ModContent.ItemType<AncientGodSlayerLeggings>() ||
-                 player.armor[2].type == ModContent.ItemType<GodSlayerLeggingsold>()))
+            if ((player.armor[0].type == ItemType<AncientGodSlayerHelm>() ||
+                 player.armor[0].type == ItemType<GodSlayerHeadMeleeold>() ||
+                 player.armor[0].type == ItemType<GodSlayerHeadRangedold>() ||
+                 player.armor[0].type == ItemType<GodSlayerHeadMagicold>() ||
+                 player.armor[0].type == ItemType<GodSlayerHeadSummonold>() ||
+                 player.armor[0].type == ItemType<GodSlayerHeadRogueold>()) &&
+                (player.armor[1].type == ItemType<AncientGodSlayerChestplate>() ||
+                 player.armor[1].type == ItemType<GodSlayerChestplateold>()) &&
+                (player.armor[2].type == ItemType<AncientGodSlayerLeggings>() ||
+                 player.armor[2].type == ItemType<GodSlayerLeggingsold>()))
             {
                 player.wingTime += 2.0f;
             }

@@ -120,7 +120,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                             for (int i = 0; i < numProj + 1; i++)
                             {
                                 Vector2 perturbedSpeed = Projectile.velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numProj - 1)));
-                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed * 0.5f, ModContent.ProjectileType<ElementalExcaliburBeam>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.5f, Projectile.owner, 0f, 0f);
+                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed * 0.5f, ProjectileType<ElementalExcaliburBeam>(), (int)(Projectile.damage * 0.5), Projectile.knockBack * 0.5f, Projectile.owner, 0f, 0f);
                             }
                         }
                         Projectile.Kill();
@@ -225,7 +225,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     {
                         Projectile.localAI[1] = 1f;
                         if (Main.myPlayer == Projectile.owner)
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + Projectile.velocity, Projectile.velocity, ModContent.ProjectileType<ElementalExcaliburBeam>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner, 10f, 0f);
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + Projectile.velocity, Projectile.velocity, ProjectileType<ElementalExcaliburBeam>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner, 10f, 0f);
                     }
 
                     break;
@@ -243,7 +243,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+            target.AddBuff(BuffType<MiracleBlight>(), 600);
 
             if (Projectile.ai[0] == 7f)
             {
@@ -257,7 +257,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+            target.AddBuff(BuffType<MiracleBlight>(), 600);
 
             if (Projectile.ai[0] == 7f)
             {
@@ -382,7 +382,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                         if (Projectile.owner == Main.myPlayer)
                         {
                             var source = Projectile.GetSource_FromThis();
-                            CalamityUtils.ProjectileBarrage(source, Projectile.Center, Projectile.Center, fromRight, 500f, 500f, 0f, 500f, 5f, ModContent.ProjectileType<ElementalExcaliburBeam>(), (int)(Projectile.damage * 0.2), Projectile.knockBack * 0.2f, Projectile.owner, false, 0f).ai[0] = 5f;
+                            CalamityUtils.ProjectileBarrage(source, Projectile.Center, Projectile.Center, fromRight, 500f, 500f, 0f, 500f, 5f, ProjectileType<ElementalExcaliburBeam>(), (int)(Projectile.damage * 0.2), Projectile.knockBack * 0.2f, Projectile.owner, false, 0f).ai[0] = 5f;
                         }
                     }
 

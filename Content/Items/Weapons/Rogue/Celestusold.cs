@@ -42,10 +42,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.damage = 600;
             Item.knockBack = 6f;
             Item.useAnimation = Item.useTime = 19;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
             Item.shootSpeed = SetProjSpeed;
-            Item.shoot = ModContent.ProjectileType<CelestusBoomerang>();
+            Item.shoot = ProjectileType<CelestusBoomerang>();
 
             Item.width = 106;
             Item.height = 94;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override bool CanUseItem(Player player)
         {
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             bool canStealth = player.Calamity().StealthStrikeAvailable();
             bool onLore = player.CheckExoLore();
-            int pTypeLore = canStealth ? ModContent.ProjectileType<CelestusBoomerangExoLoreSteal>() : ModContent.ProjectileType<CelestusBoomerangExoLore>(); 
+            int pTypeLore = canStealth ? ProjectileType<CelestusBoomerangExoLoreSteal>() : ProjectileType<CelestusBoomerangExoLore>(); 
             if (onLore)
             {
                 int t = Projectile.NewProjectile(source, position, velocity, pTypeLore, damage, knockback, player.whoAmI);
@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 direction.Normalize();
                 Vector2 newVelocity = direction * velocity.Length();
 
-                int p = Projectile.NewProjectile(source, firePos, newVelocity, ModContent.ProjectileType<CelestusBoomerangExoLore>(), (int)(damage * 0.8f), knockback * 0.5f, player.whoAmI);
+                int p = Projectile.NewProjectile(source, firePos, newVelocity, ProjectileType<CelestusBoomerangExoLore>(), (int)(damage * 0.8f), knockback * 0.5f, player.whoAmI);
                 //允许其吃潜伏
                 if (canStealth)
                 {
@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value);
         }
 
         public override void AddRecipes()

@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
     public class AlphaWingmanHeldProj2 : BaseHeldProjMagic, ILocalizedModType
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<WingmanLegacy>();
+        public override string Texture => GetInstance<WingmanLegacy>().Texture;
         public enum BehaviorType
         {
             FollowMouse,
@@ -128,7 +129,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 // 使用一号位存储的数据
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI), 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ProjectileType<AlphaBeamEx>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI), 1f);
                 Projectile.CalamityInheritance().ProjNewAI[0] = Main.projectile[p].whoAmI;
             }
         }
@@ -323,7 +324,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
             baseColor.A = Auxiliarycolor.A = 0;
 
             // 纹理
-            Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
+            Texture2D mainTexture = Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);
             DrawMainBeam(mainTexture, baseColor, beamRotation, laserLength, Scale, Laser);

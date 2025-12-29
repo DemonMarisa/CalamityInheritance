@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:64,
             itemHeight:62,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet,
             itemDefense:18
         );
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void AddRecipes()
         {
             CreateRecipe(). //
-                AddIngredient(ModContent.ItemType<FrigidBulwark>()).
+                AddIngredient(ItemType<FrigidBulwark>()).
                 AddIngredient<CosmiliteBar>(10).
                 AddRecipeGroup(CIRecipeGroup.AnyDeificAmulet).
                 AddIngredient<AscendantSpiritEssence>(4).

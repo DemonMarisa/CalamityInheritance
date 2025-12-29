@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
              Item.value = CIShopValue.RarityPriceOrange;
              Item.defense = 5;
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientAeroArmor>() && legs.type == ModContent.ItemType<AncientAeroLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientAeroArmor>() && legs.type == ItemType<AncientAeroLeggings>();
         public override void UpdateEquip(Player p)
         {
             p.moveSpeed += 0.1f;

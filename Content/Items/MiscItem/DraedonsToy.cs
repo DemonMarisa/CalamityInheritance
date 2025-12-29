@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
             Item.maxStack = 1;
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.rare = ModContent.RarityType<MurasamRed>();
+            Item.rare = RarityType<MurasamRed>();
         }
         public override bool CanUseItem(Player player)
         {

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.DamageType = DamageClass.Ranged;
             Item.channel = true;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ButcherHeldProj>();
+            Item.shoot = ProjectileType<ButcherHeldProj>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
             
@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ButcherHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ProjectileType<ButcherHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f);
             return false;
         }
 

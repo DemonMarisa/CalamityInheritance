@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.extraUpdates = 4;
             Projectile.timeLeft = 720;
             Projectile.usesLocalNPCImmunity = true;
@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default(Vector2));
                     vector.X *= ProjSpeed;
                     vector.Y *= ProjSpeed;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ModContent.ProjectileType<ExoSpearTrail>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ProjectileType<ExoSpearTrail>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -231,7 +231,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
             }
             target.ExoDebuffs();
             OnHitEffects(target.Center);
@@ -276,7 +276,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                     Vector2 randomizedVelocity = direction * randomSpeed;
 
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
 
                 }
 
@@ -285,15 +285,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 switch (randomChoice)
                 {
                     case 0:
-                        CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                         break;
 
                     case 1:
-                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                         break;
 
                     case 2:
-                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                         break;
                 }
             }

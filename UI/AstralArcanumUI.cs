@@ -34,7 +34,7 @@ namespace CalamityInheritance.UI
 
         public static void Load(Mod mod)
         {
-            CircleTextures = ModContent.Request<Texture2D>("CalamityInheritance/UI/MiscTextures/AstralArcanumCircles", AssetRequestMode.ImmediateLoad).Value;
+            CircleTextures = Request<Texture2D>("CalamityInheritance/UI/MiscTextures/AstralArcanumCircles", AssetRequestMode.ImmediateLoad).Value;
         }
 
         public static void Unload()

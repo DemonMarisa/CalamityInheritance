@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         (
             itemWidth:46,
             itemHeight:46,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet
         );
 

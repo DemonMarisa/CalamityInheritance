@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 return;
 
             // Spawn a Helium Flash on impact
-            int type = ModContent.ProjectileType<HeliumFlashBlastLegacy>();
+            int type = ProjectileType<HeliumFlashBlastLegacy>();
             int damage = (int)(HeliumFlashLegacy.ExplosionDamageMultiplier * Projectile.damage);
             float kb = 9.5f;
             Projectile.NewProjectile(Projectile.GetSource_FromThis(),

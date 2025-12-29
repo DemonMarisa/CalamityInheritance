@@ -1,4 +1,5 @@
 using System;
+using LAP.Assets.TextureRegister;
 using System.Runtime.Intrinsics.Arm;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ChickenNukeExplosion: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = ChickenRound.ExplosionHitboxW;

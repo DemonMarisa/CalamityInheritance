@@ -26,24 +26,24 @@ namespace CalamityInheritance.CIPlayer
     {
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (nanotechold && RaiderStacks < 150 && hit.DamageType == ModContent.GetInstance<RogueDamageClass>())
+            if (nanotechold && RaiderStacks < 150 && hit.DamageType == GetInstance<RogueDamageClass>())
             {
                 RaiderStacks++;
             }
             if (LoreProvidence || PanelsLoreProvidence)
             {
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 420, false);
+                target.AddBuff(BuffType<HolyFlames>(), 420, false);
             }
             if (LoreJungleDragon)
             {
-                target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
+                target.AddBuff(BuffType<Dragonfire>(), 300, false);
             }
             if (PlagueHive)
             {
-                target.AddBuff(ModContent.BuffType<Plague>(), 360);
+                target.AddBuff(BuffType<Plague>(), 360);
                 if (Player.HasProjCount<PlagueBeeSmall>() < 6)
                 {
-                    int Type = ModContent.ProjectileType<PlagueBeeSmall>();
+                    int Type = ProjectileType<PlagueBeeSmall>();
                     for (int i = 0; i < 6; i++)
                     {
                         Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Main.rand.NextVector2Circular(0.25f, 0.25f), Type, 45, 1, Player.whoAmI);
@@ -58,18 +58,18 @@ namespace CalamityInheritance.CIPlayer
                 return;
             Player player = Main.LocalPlayer;
             int weaponDamage = player.HeldItem.damage;
-            if (GodSlayerMelee && fireCD <= 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == ModContent.GetInstance<TrueMeleeDamageClass>()))
+            if (GodSlayerMelee && fireCD <= 0 && (hit.DamageType == DamageClass.Melee || hit.DamageType == GetInstance<TrueMeleeDamageClass>()))
             {
                 int finalDamage = 500 + weaponDamage / 2;
                 Vector2 getSpwanPos = new(Player.Center.Y, Player.Center.X);
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
-                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ModContent.ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
+                Projectile.NewProjectile(Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
                 fireCD = 60;
             }
             //T2庇护: 物品击中敌人时使自己免疫防损
-            if (item.type == ModContent.ItemType<DefenseBlade>() && hit.Damage > 5 && DefendTier2 && Player.whoAmI == Main.myPlayer)
+            if (item.type == ItemType<DefenseBlade>() && hit.Damage > 5 && DefendTier2 && Player.whoAmI == Main.myPlayer)
             {
-                Player.AddBuff(ModContent.BuffType<DefenderBuff>(), 60);
+                Player.AddBuff(BuffType<DefenderBuff>(), 60);
             }
             //熟练度
 
@@ -135,9 +135,9 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaFakeDeath)
-                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ModContent.ProjectileType<SilvaOrbLegacy>());
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ProjectileType<SilvaOrbLegacy>());
                 if (GodSlayerMagicSet)
-                    CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ModContent.ProjectileType<GodSlayerHealOrbLegacy>());
+                    CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ProjectileType<GodSlayerHealOrbLegacy>());
             }
         }
         #endregion

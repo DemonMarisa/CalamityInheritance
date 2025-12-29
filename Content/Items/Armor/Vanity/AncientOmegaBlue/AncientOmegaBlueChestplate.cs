@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
         {
             Item.width = 28;
             Item.height = 20;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.vanity = true;
         }

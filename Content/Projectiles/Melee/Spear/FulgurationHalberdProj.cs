@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 40;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.aiStyle = ProjAIStyleID.Spear;
             Projectile.timeLeft = 90;
             Projectile.friendly = true;
@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 300);
+            target.AddBuff(BuffType<BurningBlood>(), 300);
         }
     }
 }

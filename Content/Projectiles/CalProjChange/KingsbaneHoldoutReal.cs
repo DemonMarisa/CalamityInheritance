@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.CalProjChange
                     dust3.scale = Main.rand.NextFloat(1.3f, 2.2f);
                     Owner.Calamity().GeneralScreenShakePower = 1.85f;
                     //Owner.velocity += -Projectile.velocity * fullRevShots * (Main.zenithWorld ? 0.028f : 0.013f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), tipPosition + Projectile.velocity * 5 + Main.rand.NextVector2Circular(7, 7), shootVelocity.RotatedByRandom(MathHelper.ToRadians(4f)), ModContent.ProjectileType<AuricBullet>(), (int)(Projectile.damage * 0.9f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), tipPosition + Projectile.velocity * 5 + Main.rand.NextVector2Circular(7, 7), shootVelocity.RotatedByRandom(MathHelper.ToRadians(4f)), ProjectileType<AuricBullet>(), (int)(Projectile.damage * 0.9f), Projectile.knockBack, Projectile.owner);
                     SoundEngine.PlaySound(SoundID.Item40 with { PitchVariance = 0.4f }, Projectile.Center);
                     //SoundEngine.PlaySound(Kingsbane.AuricFire with { PitchVariance = 0.4f }, Projectile.Center);
                     //fullRevShots--;

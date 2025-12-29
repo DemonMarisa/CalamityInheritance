@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         {
             Projectile.height = Projectile.width = 25;
             Projectile.aiStyle = ProjAIStyleID.Spear;    
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.friendly = true;
             Projectile.timeLeft = 90;
             Projectile.penetrate = -1;

@@ -208,7 +208,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             if (Main.myPlayer == Projectile.owner)
             {
                 float projSpeed = 6f;
-                int projType = ModContent.ProjectileType<MagicBulletOld>();
+                int projType = ProjectileType<MagicBulletOld>();
                 if (Main.rand.NextBool(6))
                 {
                     SoundEngine.PlaySound(SoundID.Item20 with { Volume = SoundID.Item20.Volume * 0.1f }, Projectile.position);

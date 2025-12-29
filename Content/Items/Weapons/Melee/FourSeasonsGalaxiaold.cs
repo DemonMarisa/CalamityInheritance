@@ -34,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 70;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<Galaxia>();
+            Item.rare = RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<Galaxia>();
             Item.shootSpeed = 24f;
         }
 
@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             if (astral)
             {
-                player.AddBuff(ModContent.BuffType<GravityNormalizerBuff>(), 600);
+                player.AddBuff(BuffType<GravityNormalizerBuff>(), 600);
             }
             else if (jungle)
             {

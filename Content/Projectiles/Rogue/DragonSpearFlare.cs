@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void SetDefaults()
         {
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.penetrate = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;

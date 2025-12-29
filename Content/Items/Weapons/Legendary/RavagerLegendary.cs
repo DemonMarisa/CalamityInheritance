@@ -17,9 +17,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class RavagerLegendary: LegendaryWeaponClass
     {
-        public override ClassType WeaponDamageClass => ClassType.Magic;
+        public override ClassType GeneralWeaponClass => ClassType.Magic;
         public override Color DrawColor => Color.HotPink;
-        public override int SetRarityColor => ModContent.RarityType<BetsyPink>();
+        public override int SetRarityColor => RarityType<BetsyPink>();
         public override void ExSSD()
         {
             Item.staff[Item.type] = true;
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.UseSound = SoundID.Item88;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
-            Item.shoot = ModContent.ProjectileType<RavagerLegendaryProjAlt>();
+            Item.shoot = ProjectileType<RavagerLegendaryProjAlt>();
         }
 
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             // 以下，用于比较复杂的计算
             int boostPercent = (int)((LegendaryBuff() + Generic.GenericLegendBuff()));

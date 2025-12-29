@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         (
             itemWidth:30,
             itemHeight:30,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD()
@@ -31,14 +31,14 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
             modPlayer1.BraveBadge = true;
             bool helm =
-                player.armor[0].type == ModContent.ItemType<TarragonHeadMelee>() ||
-                player.armor[0].type == ModContent.ItemType<AncientTarragonHelm>();
+                player.armor[0].type == ItemType<TarragonHeadMelee>() ||
+                player.armor[0].type == ItemType<AncientTarragonHelm>();
             bool chest = 
-                player.armor[1].type == ModContent.ItemType<TarragonBreastplate>() ||
-                player.armor[1].type == ModContent.ItemType<AncientTarragonBreastplate>();
+                player.armor[1].type == ItemType<TarragonBreastplate>() ||
+                player.armor[1].type == ItemType<AncientTarragonBreastplate>();
             bool legs = 
-                player.armor[2].type == ModContent.ItemType<TarragonLeggings>() ||
-                player.armor[2].type == ModContent.ItemType<AncientTarragonLeggings>();
+                player.armor[2].type == ItemType<TarragonLeggings>() ||
+                player.armor[2].type == ItemType<AncientTarragonLeggings>();
             if (helm && chest && legs)
             {
                 player.GetCritChance<MeleeDamageClass>() += 10;

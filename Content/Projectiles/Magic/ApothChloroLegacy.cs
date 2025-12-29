@@ -1,4 +1,5 @@
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class ApothChloroLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 10;
@@ -53,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 600, true);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 600, true);
         }
     }
 }

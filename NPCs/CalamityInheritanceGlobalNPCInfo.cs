@@ -65,29 +65,29 @@ namespace CalamityInheritance.NPCs
                     }
                 }
             }
-            ResetSavedIndex(ref LegacyCalamitasClone, ModContent.NPCType<CalamitasCloneLegacy>());
-            ResetSavedIndex(ref LegacyCalamitasCloneP2, ModContent.NPCType<CalamitasCloneLegacy>());
-            ResetSavedIndex(ref LegacyCatalysmClone, ModContent.NPCType<CataclysmLegacy>());
-            ResetSavedIndex(ref LegacyCatastropheClone, ModContent.NPCType<CatastropheLegacy>());
+            ResetSavedIndex(ref LegacyCalamitasClone, NPCType<CalamitasCloneLegacy>());
+            ResetSavedIndex(ref LegacyCalamitasCloneP2, NPCType<CalamitasCloneLegacy>());
+            ResetSavedIndex(ref LegacyCatalysmClone, NPCType<CataclysmLegacy>());
+            ResetSavedIndex(ref LegacyCatastropheClone, NPCType<CatastropheLegacy>());
 
-            ResetSavedIndex(ref LegacySCalWorm, ModContent.NPCType<SCalWormHead>());
-            ResetSavedIndex(ref LegacySCalCataclysm, ModContent.NPCType<SupremeCataclysmLegacy>());
-            ResetSavedIndex(ref LegacySCalCatastrophe, ModContent.NPCType<SupremeCatastropheLegacy>());
-            ResetSavedIndex(ref LegacySCal, ModContent.NPCType<SupremeCalamitasLegacy>());
-            ResetSavedIndex(ref LegacySCalGrief, ModContent.NPCType<SupremeCalamitasLegacy>());
-            ResetSavedIndex(ref LegacySCalLament, ModContent.NPCType<SupremeCalamitasLegacy>());
-            ResetSavedIndex(ref LegacySCalEpiphany, ModContent.NPCType<SupremeCalamitasLegacy>());
-            ResetSavedIndex(ref LegacySCalAcceptance, ModContent.NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalWorm, NPCType<SCalWormHead>());
+            ResetSavedIndex(ref LegacySCalCataclysm, NPCType<SupremeCataclysmLegacy>());
+            ResetSavedIndex(ref LegacySCalCatastrophe, NPCType<SupremeCatastropheLegacy>());
+            ResetSavedIndex(ref LegacySCal, NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalGrief, NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalLament, NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalEpiphany, NPCType<SupremeCalamitasLegacy>());
+            ResetSavedIndex(ref LegacySCalAcceptance, NPCType<SupremeCalamitasLegacy>());
 
-            ResetSavedIndex(ref LegacyYharon, ModContent.NPCType<YharonLegacy>());
-            ResetSavedIndex(ref LegacyYharonStage2FadeIn, ModContent.NPCType<YharonLegacy>());
-            ResetSavedIndex(ref LegacyYharonStage2, ModContent.NPCType<YharonLegacy>());
+            ResetSavedIndex(ref LegacyYharon, NPCType<YharonLegacy>());
+            ResetSavedIndex(ref LegacyYharonStage2FadeIn, NPCType<YharonLegacy>());
+            ResetSavedIndex(ref LegacyYharonStage2, NPCType<YharonLegacy>());
         }
         #endregion
 
         public override void PostAI(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<DevourerofGodsHead>())
+            if (npc.type == NPCType<DevourerofGodsHead>())
                 MiscFlagReset.PlayDogLegacyMusic = true;
         }
     }

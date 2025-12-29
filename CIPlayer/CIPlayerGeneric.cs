@@ -166,7 +166,7 @@ namespace CalamityInheritance.CIPlayer
             StoredDamage = -1;
             RegenatorLegacy = false;// 再生护符
             PlagueHive = false;// 瘟疫蜂巢
-            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
+            if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
         }
 
@@ -270,7 +270,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (GodSlayerMelee && hurtInfo.Damage > 80)
             {
-                var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<GodSlayerHeadMeleeold>()));
+                var source = Player.GetSource_Accessory(FindAccessory(ItemType<GodSlayerHeadMeleeold>()));
                 SoundEngine.PlaySound(SoundID.Item73, Player.Center);
                 float spread = 45f * 0.0174f;
                 double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
@@ -282,8 +282,8 @@ namespace CalamityInheritance.CIPlayer
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 32f), (float)(Math.Cos(offsetAngle) * 32f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 32f), (float)(-Math.Cos(offsetAngle) * 32f), ModContent.ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 32f), (float)(Math.Cos(offsetAngle) * 32f), ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 32f), (float)(-Math.Cos(offsetAngle) * 32f), ProjectileType<GodSlayerDart>(), shrapnelDamage, 5f, Player.whoAmI, 1f, 0f);
                     }
                 }
             }
@@ -300,19 +300,19 @@ namespace CalamityInheritance.CIPlayer
 
                 if (AstralBulwark)
                 {
-                    var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<AstralBulwark>()));
+                    var source = Player.GetSource_Accessory(FindAccessory(ItemType<AstralBulwark>()));
                     int astralStarDamage = (int)Player.GetBestClassDamage().ApplyTo(320);
                     int starAmt = 5;
                     for (int n = 0; n < starAmt; n++)
                     {
-                        CalamityUtils.ProjectileRain(source , Player.Center, 400f, 100f, 500f, 800f, 29f, ModContent.ProjectileType<AstralStar>(), astralStarDamage , 5f, Player.whoAmI);
+                        CalamityUtils.ProjectileRain(source , Player.Center, 400f, 100f, 500f, 800f, 29f, ProjectileType<AstralStar>(), astralStarDamage , 5f, Player.whoAmI);
                     }
                 }
 
                 if (FungalCarapace)
                 {
                     CalamityPlayer modPlayer = Player.Calamity();
-                    var source = Player.GetSource_Accessory(modPlayer.FindAccessory(ModContent.ItemType<FungalCarapace>()));
+                    var source = Player.GetSource_Accessory(modPlayer.FindAccessory(ItemType<FungalCarapace>()));
                     if (hurtInfo.Damage > 0)
                     {
                         // 播放声音

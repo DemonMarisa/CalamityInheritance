@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //命中敌人给debuff
-            target.AddBuff(ModContent.BuffType<CryoDrain>(), 300);
+            target.AddBuff(BuffType<CryoDrain>(), 300);
             SpawnDust(Projectile, 20);
             base.OnHitNPC(target, hit, damageDone);
         }

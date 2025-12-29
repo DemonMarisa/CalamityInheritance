@@ -37,16 +37,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.maxStack = 9999;
             Item.value = Item.sellPrice(0, 0, 0, 5);
             Item.rare = ItemRarityID.Blue;
-            Item.shoot = ModContent.ProjectileType<WulfrumKnifeProjOld>();
+            Item.shoot = ProjectileType<WulfrumKnifeProjOld>();
             Item.shootSpeed = 12f;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.Calamity().StealthStrikeAvailable())
             {
-                int p = Projectile.NewProjectile(source, position, velocity * 1.3f, ModContent.ProjectileType<WulfrumKnifeProjOld>(), damage, knockback, player.whoAmI);
+                int p = Projectile.NewProjectile(source, position, velocity * 1.3f, ProjectileType<WulfrumKnifeProjOld>(), damage, knockback, player.whoAmI);
                 Projectile proj = Main.projectile[p];
                 if (p.WithinBounds(Main.maxProjectiles))
                 {

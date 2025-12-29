@@ -33,7 +33,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ArenaTile
             {
                 if (!SCalSky.RitualDramaProjectileIsPresent)
                 {
-                    if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                    if (!NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                     {
                         WorldGen.KillTile(i, j, false, false, false);
                         if (!Main.tile[i, j].HasTile && Main.netMode != NetmodeID.SinglePlayer)

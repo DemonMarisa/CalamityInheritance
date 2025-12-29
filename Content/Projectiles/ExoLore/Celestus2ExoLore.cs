@@ -5,12 +5,14 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class Celestus2ExoLore : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
+        public override string Texture => GetInstance<Celestus2>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6;
@@ -29,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
             Projectile.timeLeft = 85;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
 
@@ -59,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -54,8 +54,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             {
                 NPC.buffImmune[k] = true;
             }
-            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
-            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
+            NPC.buffImmune[BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
             NPC.buffImmune[BuffID.OnFire3] = false;
@@ -73,7 +73,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            int associatedNPCType = NPCType<SupremeCalamitasLegacy>();
             bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
@@ -107,7 +107,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
                 {
                     SoundEngine.PlaySound(BrimstoneShotSound, NPC.position);
                     int damage = expertMode ? 150 : 200; //600 500
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ModContent.ProjectileType<BrimstoneBarrageLegacy>(), damage, 1f, NPC.target);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, direction.X, direction.Y, ProjectileType<BrimstoneBarrageLegacy>(), damage, 1f, NPC.target);
                 }
                 timer = 0;
             }
@@ -120,7 +120,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 
             Player player = Main.player[NPC.target];
 
-            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<SupremeCalamitasLegacy>())];
+            NPC parent = Main.npc[NPC.FindFirstNPC(NPCType<SupremeCalamitasLegacy>())];
             double deg = NPC.ai[1];
             double rad = deg * (Math.PI / 180);
             double dist = 300;
@@ -211,7 +211,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
 			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SoulSeeker/SoulSeekerSupremeLegacyGlow").Value;
+			texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SoulSeeker/SoulSeekerSupremeLegacyGlow").Value;
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
 			if (!LAPConfig.Instance.PerformanceMode)

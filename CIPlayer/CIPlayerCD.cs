@@ -49,6 +49,7 @@ namespace CalamityInheritance.CIPlayer
         public int AncientAuricDashCache = 0;
         public int AncientGodSlayerBuffCounter = 0;
         public int AncientGodSlayerBuffCD = 0;
+        public int GalileoGladiusCounter = 0;
         #region 林海复活
         // 用于计时
         public int SilvaRebornTimer = 0;
@@ -174,6 +175,8 @@ namespace CalamityInheritance.CIPlayer
 
             if (!Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount <= 0)
                 AncinetGodSlayerDodgeCount = 3;
+            if (GalileoGladiusCounter > 0) 
+                GalileoGladiusCounter--;
             return;
         }
     }

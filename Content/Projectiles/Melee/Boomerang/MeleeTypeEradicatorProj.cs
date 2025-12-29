@@ -17,6 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Boomerang
     public class MeleeTypeEradicatorProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<Eradicator_Melee>().Texture;
         public static readonly float ChasingRange = 60000f;
         public static readonly float ChasingSpeed = 24f;
         private static float RotationIncrement = 0.15f;
@@ -70,14 +71,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Boomerang
                     {
                         int damage = (int)(Projectile.damage * 0.8f);
                         Vector2 vel = LAPUtilities.GetVector2(Projectile.Center, npc.Center) * 9f;
-                        Projectile proj = LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<NebulaShotLegacy>(), damage, Projectile.knockBack, Projectile.owner, DamageClass.Melee);
+                        Projectile proj = LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, vel, ProjectileType<NebulaShotLegacy>(), damage, Projectile.knockBack, Projectile.owner, DamageClass.Melee);
                     }
                 }
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
 
             // Spawn sparks; taken from Despair stone then adapted to a projectile
             Vector2 particleSpawnDisplacement;
@@ -109,7 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Boomerang
 
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 180);
 
         public override bool PreDraw(ref Color lightColor)
         {

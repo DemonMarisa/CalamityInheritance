@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:26,
             itemHeight:26,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen,
             itemDefense:12
         );
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             usPlayer.AstralBulwark = true;
             usPlayer.AstralArcanumEffect = true;
             usPlayer.projRef = true;
-            player.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = true;
+            player.buffImmune[BuffType<AstralInfectionDebuff>()] = true;
         }
 
         public override void AddRecipes()

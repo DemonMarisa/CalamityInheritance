@@ -21,7 +21,7 @@ public class AncientBloodflareCuisses : CIArmor, ILocalizedModType
         Item.width = 18;
         Item.height = 18;
         Item.value = CIShopValue.RarityPriceBlueGreen;
-        Item.rare= ModContent.RarityType<BlueGreen>();
+        Item.rare= RarityType<BlueGreen>();
         Item.defense = 20;
     }
     

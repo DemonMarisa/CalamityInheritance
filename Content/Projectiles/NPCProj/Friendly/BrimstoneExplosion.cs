@@ -39,9 +39,9 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 2;
-            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), 600, false);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 600, false);
-            target.AddBuff(ModContent.BuffType<Horror>(), 600, false);
+            target.AddBuff(BuffType<AbyssalFlames>(), 600, false);
+            target.AddBuff(BuffType<VulnerabilityHexLegacy>(), 600, false);
+            target.AddBuff(BuffType<Horror>(), 600, false);
         }
     }
 }

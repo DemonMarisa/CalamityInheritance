@@ -7,13 +7,14 @@ using System;
 using CalamityMod;
 using CalamityInheritance.Content.Items;
 using System.IO;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ExoSpearBack : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public bool ProducedAcceleration = false;
 
@@ -24,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.height = 24;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.penetrate = -1;
             Projectile.MaxUpdates = 3;
             Projectile.usesIDStaticNPCImmunity = true;
@@ -58,6 +59,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             target.ExoDebuffs();
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 300);
     }
 }

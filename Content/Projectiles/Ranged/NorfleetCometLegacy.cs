@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<NorfleetExplosionLegacy>(), (int)(Projectile.damage * 0.3), Projectile.knockBack * 0.1f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<NorfleetExplosionLegacy>(), (int)(Projectile.damage * 0.3), Projectile.knockBack * 0.1f, Projectile.owner);
             }
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
             Projectile.ExpandHitboxBy(144);

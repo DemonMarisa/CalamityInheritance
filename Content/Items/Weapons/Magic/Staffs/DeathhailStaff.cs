@@ -30,10 +30,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.UseSound = SoundID.Item12;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<DeathhailBeam>();
+            Item.shoot = ProjectileType<DeathhailBeam>();
             Item.shootSpeed = 18f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

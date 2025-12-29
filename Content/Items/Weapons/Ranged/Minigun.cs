@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 22f;
             Item.useAmmo = AmmoID.Bullet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override Vector2? HoldoutOffset()
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<CosmiliteBar>(12).
                 AddIngredient<AscendantSpiritEssence>(5).
                 AddDecraftCondition(CalamityConditions.DownedYharon).
-                AddCustomShimmerResult(ModContent.ItemType<ACTMinigun>()).
+                AddCustomShimmerResult(ItemType<ACTMinigun>()).
                 AddTile<CosmicAnvil>().
                 Register();
         }

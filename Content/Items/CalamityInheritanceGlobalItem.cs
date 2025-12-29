@@ -36,8 +36,8 @@ namespace CalamityInheritance.Content.Items
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;
-            bool type = player.HeldItem.type == ModContent.ItemType<R99>();
-            string r99TypeName = ModContent.GetInstance<R99>().GetType().Name;
+            bool type = player.HeldItem.type == ItemType<R99>();
+            string r99TypeName = GetInstance<R99>().GetType().Name;
             if (item.type is ItemID.ChlorophyteBullet && type)
             {
                 string path = CIFunction.GetTextValue($"Content.Items.Weapons.Ranged.{r99TypeName}.EnhancedBullet");
@@ -60,18 +60,18 @@ namespace CalamityInheritance.Content.Items
         {
             var mplr = player.CIMod();
             //微光湖附近, 全传奇武器
-            mplr.DukeTier1          = SetShimmeUpgrade(mplr.DukeTier1,          ModContent.ItemType<DukeLegendary>(),       ref player, DustID.Water);
-            mplr.BetsyTier1         = SetShimmeUpgrade(mplr.BetsyTier1,         ModContent.ItemType<RavagerLegendary>(),    ref player, DustID.Meteorite);
-            mplr.PBGTier1           = SetShimmeUpgrade(mplr.PBGTier1,           ModContent.ItemType<PBGLegendary>(),        ref player, DustID.TerraBlade);
-            mplr.PlanteraTier1      = SetShimmeUpgrade(mplr.PlanteraTier1,      ModContent.ItemType<PlanteraLegendary>(),   ref player, DustID.DryadsWard);
-            mplr.ColdDivityTier1    = SetShimmeUpgrade(mplr.ColdDivityTier1,    ModContent.ItemType<CyrogenLegendary>(),    ref player, DustID.Ice);
-            mplr.DestroyerTier1     = SetShimmeUpgrade(mplr.DestroyerTier1,     ModContent.ItemType<DestroyerLegendary>(),  ref player, DustID.Silver);
-            mplr.DefendTier1        = SetShimmeUpgrade(mplr.DefendTier1,        ModContent.ItemType<DefenseBlade>(),        ref player, DustID.GoldCoin);
+            mplr.DukeTier1          = SetShimmeUpgrade(mplr.DukeTier1, ItemType<DukeLegendary>(),       ref player, DustID.Water);
+            mplr.BetsyTier1         = SetShimmeUpgrade(mplr.BetsyTier1, ItemType<RavagerLegendary>(),    ref player, DustID.Meteorite);
+            mplr.PBGTier1           = SetShimmeUpgrade(mplr.PBGTier1, ItemType<PBGLegendary>(),        ref player, DustID.TerraBlade);
+            mplr.PlanteraTier1      = SetShimmeUpgrade(mplr.PlanteraTier1, ItemType<PlanteraLegendary>(),   ref player, DustID.DryadsWard);
+            mplr.ColdDivityTier1    = SetShimmeUpgrade(mplr.ColdDivityTier1, ItemType<CyrogenLegendary>(),    ref player, DustID.Ice);
+            mplr.DestroyerTier1     = SetShimmeUpgrade(mplr.DestroyerTier1, ItemType<DestroyerLegendary>(),  ref player, DustID.Silver);
+            mplr.DefendTier1        = SetShimmeUpgrade(mplr.DefendTier1, ItemType<DefenseBlade>(),        ref player, DustID.GoldCoin);
 
             //海爵剑T3: 佩戴蠕虫围巾召唤老猪
-            if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(ModContent.NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
+            if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<DukeLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<DukeLegendary>(), 1))
                 {
                     LegendaryUpgradeTint(DustID.Water, player);
                     mplr.DukeTier3 = true;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items
             }
             if (!mplr.YharimsKilledExo && DownedBossSystem.downedExoMechs)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<YharimsCrystalLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<YharimsCrystalLegendary>(), 1))
                 {
                     mplr.YharimsKilledExo = true;
                     LegendaryUpgradeTint(DustID.GoldCoin, player);
@@ -87,7 +87,7 @@ namespace CalamityInheritance.Content.Items
             }
             if (!mplr.YharimsKilledScal && DownedBossSystem.downedCalamitas)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<YharimsCrystalLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<YharimsCrystalLegendary>(), 1))
                 {
                     mplr.YharimsKilledScal = true;
                     LegendaryUpgradeTint(DustID.GemRuby, player);
@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Items
 
         public override bool? UseItem(Item item, Player player)
         {
-            int SHPC = ModContent.ItemType<DestroyerLegendary>();
+            int SHPC = ItemType<DestroyerLegendary>();
             var cplr = player.Calamity();
             var mplr = player.CIMod();
             //SHPCT2: 月总在场时饮用葡萄汁
@@ -128,7 +128,7 @@ namespace CalamityInheritance.Content.Items
             //叶柳T2：于丛林处食用黄金菜肴
             if (item.type == ItemID.GoldenDelight && Main.LocalPlayer.ZoneJungle && !player.CIMod().PlanteraTier2 && Condition.DownedMoonLord.IsMet())
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<PlanteraLegendary>(), 1))
                 {
                     player.CIMod().PlanteraTier2 = true;
                     LegendaryUpgradeTint(DustID.DryadsWard, player);
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Content.Items
             //寒冰神性T2: 雪原饮用温暖药水
             if (Main.LocalPlayer.ZoneSnow && !player.CIMod().ColdDivityTier2 && item.type == ItemID.WarmthPotion)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<CyrogenLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<CyrogenLegendary>(), 1))
                 {
                     player.CIMod().ColdDivityTier2 = true;
                     LegendaryUpgradeTint(DustID.Ice, player);
@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Items
             }
 
             //SHPCT3: 召唤噬魂花……在吃下两个魔力上限物品后
-            if (item.type == ModContent.ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !mplr.DestroyerTier3)
+            if (item.type == ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !mplr.DestroyerTier3)
             {
                 if (CIFunction.FindInventoryItem(ref player, SHPC, 1))
                 {
@@ -154,36 +154,36 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
-            if ((item.type == ModContent.ItemType<YharonEgg>()|| item.type == ModContent.ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
+            if ((item.type == ItemType<YharonEgg>()|| item.type == ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PlanteraLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<PlanteraLegendary>(), 1))
                 {
                     mplr.PlanteraTier3 = true;
                     LegendaryUpgradeTint(DustID.DryadsWard, player);
                 }
             }
             //庇护之刃T3: 防御力大于320点时召唤神明吞噬者
-            if (item.type == ModContent.ItemType<CosmicWorm>() && !mplr.DefendTier3 && player.statDefense >= 320)
+            if (item.type == ItemType<CosmicWorm>() && !mplr.DefendTier3 && player.statDefense >= 320)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<DefenseBlade>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<DefenseBlade>(), 1))
                 {
                     mplr.DefendTier3 = true;
                     LegendaryUpgradeTint(DustID.Gold, player);
                 }
             }
             //孔雀翎T3：佩戴神圣护符召唤一次神吞
-            if (item.type == ModContent.ItemType<CosmicWorm>() && !mplr.PBGTier3 && (mplr.deificAmuletEffect || player.Calamity().dAmulet))
+            if (item.type == ItemType<CosmicWorm>() && !mplr.PBGTier3 && (mplr.deificAmuletEffect || player.Calamity().dAmulet))
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<PBGLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<PBGLegendary>(), 1))
                 {
                     mplr.PBGTier3 = true;
                     LegendaryUpgradeTint(DustID.TerraBlade, player);
                 }
             }
             //寒冰神性T3: 在雪原地表召唤亵渎天神
-            if (item.type == ModContent.ItemType<ProfanedCore>() && !mplr.ColdDivityTier3 && Main.LocalPlayer.ZoneSnow)
+            if (item.type == ItemType<ProfanedCore>() && !mplr.ColdDivityTier3 && Main.LocalPlayer.ZoneSnow)
             {
-                if (CIFunction.FindInventoryItem(ref player, ModContent.ItemType<CyrogenLegendary>(), 1))
+                if (CIFunction.FindInventoryItem(ref player, ItemType<CyrogenLegendary>(), 1))
                 {
                     mplr.ColdDivityTier3 = true;
                     LegendaryUpgradeTint(DustID.Ice, player);
@@ -200,13 +200,13 @@ namespace CalamityInheritance.Content.Items
         public override bool AltFunctionUse(Item item, Player player)
         {
             //冰灵传奇物品的一些我自己都看不懂的东西, 我从灾厄那复制的
-            if (player.ActiveItem().type == ModContent.ItemType<CyrogenLegendary>())
+            if (player.ActiveItem().type == ItemType<CyrogenLegendary>())
             {
                 bool canContinue = true;
                 int count = 0;
                 foreach (Projectile p in Main.ActiveProjectiles)
                 {
-                    if (p.type == ModContent.ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
+                    if (p.type == ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
                     {
                         if (p.ai[1] > 1f)
                         {
@@ -235,7 +235,7 @@ namespace CalamityInheritance.Content.Items
                             if (Main.projectile.Length == Main.maxProjectiles)
                                 break;
                             int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(CyrogenLegendary.baseDamage);
-                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
+                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
                             // Main.projectile[projj].originalDamage = item.damage;
 
                             angle += angleVariance;
@@ -262,13 +262,13 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.HandOfCreation)
                 usPlayer.IfGodHand = true;
 
-            if (item.type == ModContent.ItemType<SigilofCalamitas>())
+            if (item.type == ItemType<SigilofCalamitas>())
                 usPlayer.IfCalamitasSigile = true;
             
-            if (item.type == ModContent.ItemType<BloodyWormScarf>())
+            if (item.type == ItemType<BloodyWormScarf>())
                 usPlayer.IsWearingBloodyScarf = true;
 
-            if (item.type == ModContent.ItemType<ElementalQuiver>())
+            if (item.type == ItemType<ElementalQuiver>())
                 usPlayer.IsWearingElemQuiverCal = true;
 
             usPlayer.ReaperToothNecklaceEquipper = item.SameType<ReaperToothNecklace>();
@@ -352,22 +352,22 @@ namespace CalamityInheritance.Content.Items
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
             #region 补正饰品挖矿速度
-            if (item.type == ModContent.ItemType<AncientFossil>())
+            if (item.type == ItemType<AncientFossil>())
             {
                 player.pickSpeed -= 0.25f; //补正
             }
-            if (item.type == ModContent.ItemType<SpelunkersAmulet>())
+            if (item.type == ItemType<SpelunkersAmulet>())
             {
                 player.pickSpeed -= 0.05f;
             }
-            if (item.type == ModContent.ItemType<ArchaicPowder>())
+            if (item.type == ItemType<ArchaicPowder>())
             {
                 player.pickSpeed -= 0.05f;
             }
             #endregion
             #region 用于召唤位的叠加
             //是否佩戴了斯塔提斯诅咒?
-            if (item.type == ModContent.ItemType<StatisCurse>())
+            if (item.type == ItemType<StatisCurse>())
             {
                 //是否佩戴了原灾的核子之源？如果是，那就补正斯塔提斯诅咒的栏位    
                 player.maxMinions += player.Calamity().nucleogenesis ? 3 : 0;
@@ -375,13 +375,13 @@ namespace CalamityInheritance.Content.Items
                 player.CIMod().WearingStatisCurse = true;
             }
             //是否佩戴占星?
-            if (item.type == ModContent.ItemType<StarTaintedGenerator>())
+            if (item.type == ItemType<StarTaintedGenerator>())
             {
                 //如果佩戴了核子之源？补正两个栏位
                 player.maxMinions += player.Calamity().nucleogenesis ? 2 : 0;
             }
             //是否佩戴斯塔提斯祝福?
-            if (item.type == ModContent.ItemType<StatisBlessing>())
+            if (item.type == ItemType<StatisBlessing>())
             {
                 //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
                 player.maxMinions += (player.CIMod().WearingStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
@@ -431,7 +431,7 @@ namespace CalamityInheritance.Content.Items
                         // God Slayer Ranged Shrapnel: 100%, soft cap starts at 800 base damage
                         int shrapnelRoundDamage = CalamityUtils.DamageSoftCap(damage * 2, 1500);
 
-                        Projectile.NewProjectile(source, position, velocity * 1.25f, ModContent.ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
+                        Projectile.NewProjectile(source, position, velocity * 1.25f, ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
                     }
                 }
             }
@@ -447,7 +447,7 @@ namespace CalamityInheritance.Content.Items
                         // This is intentionally extremely low because this effect can be grossly overpowered with sniper rifles and the like.
                         int bloodsplosionDamage = CalamityUtils.DamageSoftCap(damage * 0.8, 1200);
 
-                        Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);
+                        Projectile.NewProjectile(source, position, velocity, ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);
                     }
                 }
             }
@@ -459,7 +459,7 @@ namespace CalamityInheritance.Content.Items
                     usPlayer.ReaverRocketFires = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
-                        Projectile.NewProjectile(source, position, velocity * 0.001f, ModContent.ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(source, position, velocity * 0.001f, ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
                     }
                 }
             }
@@ -470,9 +470,9 @@ namespace CalamityInheritance.Content.Items
         {
             if (CIConfig.Instance.TurnoffCorner)
             {
-                if (item.ModItem != null && item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>())
+                if (item.ModItem != null && item.ModItem.Mod == GetInstance<CalamityInheritance>())
                 {
-                    Texture2D iconTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Mark").Value;
+                    Texture2D iconTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/Mark").Value;
                     Vector2 iconPosition = position + new Vector2(4f, 4f);
                     float iconScale = 0.45f;
 
@@ -580,7 +580,7 @@ namespace CalamityInheritance.Content.Items
         public override void UpdateEquip(Item item, Player player)
         {
             #region 挖矿速度补正(原灾)
-            if (item.type == ModContent.ItemType<ReaverHeadExplore>())
+            if (item.type == ItemType<ReaverHeadExplore>())
             {
                 player.pickSpeed -= 0.2f; //补正成40%
             }
@@ -947,7 +947,7 @@ namespace CalamityInheritance.Content.Items
     }
     public static class GeneralExtendedHelper
     {
-        public static bool SameType<T>(this Item item) where T : ModItem => SameType(item, ModContent.ItemType<T>());
+        public static bool SameType<T>(this Item item) where T : ModItem => SameType(item, ItemType<T>());
         public static bool SameType(this Item item, int type) => item.type == type;
     }
 }

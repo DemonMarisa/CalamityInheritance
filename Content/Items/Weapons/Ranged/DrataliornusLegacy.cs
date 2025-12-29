@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.reuseDelay = 120;  //左键受击后120帧内玩家无法再次使用龙弓
             Item.useLimitPerAnimation = 2;
             Item.UseSound = SoundID.Item5;
-            Item.shoot = ModContent.ProjectileType<DragonBow>();
+            Item.shoot = ProjectileType<DragonBow>();
             Item.value = CIShopValue.RarityPricePureRed;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useTurn = false;
             Item.useAmmo = AmmoID.Arrow;
             Item.autoReuse = true;
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.rare = RarityType<PureRed>();
         }
         /*为啥我不能在SetDefaults里设置武器的暴击率啊?*/
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 6;
@@ -113,7 +113,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 int numFlames = 5;
                 if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaFakeDeath) //佩戴金源射手时
                 numFlames = 10;
-                int flameID = ModContent.ProjectileType<DragonBowFlameRework>();
+                int flameID = ProjectileType<DragonBowFlameRework>();
                 int flameDamage = (int)(damage * RightClickDamageRatio);
                 //直接增加伤害倍率, 即0.65f(右键倍率) + 经过穿甲计算后的倍率, 对于20穿甲的玩家, 这一倍率是0.99≈1f, 即取武器本身的伤害
                 //对于30穿甲则取1.15f别率.
@@ -136,7 +136,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             else
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<DragonBow>(), 0, 0f, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<DragonBow>(), 0, 0f, player.whoAmI);
             }
 
             return false;

@@ -60,39 +60,39 @@ namespace CalamityInheritance.UI.QolPanelTotal
             bool DownedBrimmy = DownedBossSystem.downedBrimstoneElemental;
             bool DownedPerf = DownedBossSystem.downedPerforator;
             #region 材质
-            Texture2D LoreBloodMoon = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreBloodMoon").Value;
-            Texture2D LoreAstralInfection = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreAstralInfection").Value;
-            Texture2D LoreBrimstoneCrag = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreBrimstoneCrag").Value;
-            Texture2D LoreCorruption = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreCorruption").Value;
-            Texture2D LoreCrimson = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreCrimson").Value;
-            Texture2D LoreDragonfolly = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreDragonfolly").Value;
-            Texture2D LoreMech = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreMech").Value;
-            Texture2D LoreOcean = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreOcean").Value;
-            Texture2D LoreProfanedGuardians = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreProfanedGuardians").Value;
-            Texture2D LoreSentinels = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreSentinels").Value;
-            Texture2D LoreSulphurSea = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreSulphurSea").Value;
-            Texture2D LoreUnderWorld = ModContent.Request<Texture2D>($"{MiscLoreImagePath}/LoreUnderWorld").Value;
+            Texture2D LoreBloodMoon = Request<Texture2D>($"{MiscLoreImagePath}/LoreBloodMoon").Value;
+            Texture2D LoreAstralInfection = Request<Texture2D>($"{MiscLoreImagePath}/LoreAstralInfection").Value;
+            Texture2D LoreBrimstoneCrag = Request<Texture2D>($"{MiscLoreImagePath}/LoreBrimstoneCrag").Value;
+            Texture2D LoreCorruption = Request<Texture2D>($"{MiscLoreImagePath}/LoreCorruption").Value;
+            Texture2D LoreCrimson = Request<Texture2D>($"{MiscLoreImagePath}/LoreCrimson").Value;
+            Texture2D LoreDragonfolly = Request<Texture2D>($"{MiscLoreImagePath}/LoreDragonfolly").Value;
+            Texture2D LoreMech = Request<Texture2D>($"{MiscLoreImagePath}/LoreMech").Value;
+            Texture2D LoreOcean = Request<Texture2D>($"{MiscLoreImagePath}/LoreOcean").Value;
+            Texture2D LoreProfanedGuardians = Request<Texture2D>($"{MiscLoreImagePath}/LoreProfanedGuardians").Value;
+            Texture2D LoreSentinels = Request<Texture2D>($"{MiscLoreImagePath}/LoreSentinels").Value;
+            Texture2D LoreSulphurSea = Request<Texture2D>($"{MiscLoreImagePath}/LoreSulphurSea").Value;
+            Texture2D LoreUnderWorld = Request<Texture2D>($"{MiscLoreImagePath}/LoreUnderWorld").Value;
             #endregion
             #region 按钮材质
             // 案例绘制
             // 按钮开始时的材质
-            Texture2D buttonTextureTrue = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrue").Value;
+            Texture2D buttonTextureTrue = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrue").Value;
             // 按钮开启时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureTrueHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrueHover").Value;
+            Texture2D buttonTextureTrueHover = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonTrueHover").Value;
             // 按钮关闭时的材质
-            Texture2D buttonTextureFalse = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalse").Value;
+            Texture2D buttonTextureFalse = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalse").Value;
             // 按钮关闭时，鼠标悬停悬停的材质，用于过度
-            Texture2D buttonTextureFalseHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalseHover").Value;
+            Texture2D buttonTextureFalseHover = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonFalseHover").Value;
             // 按钮不可用时的材质
-            Texture2D buttonTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonUnAvailable").Value;
+            Texture2D buttonTextureUnAvailable = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogButtonUnAvailable").Value;
             // lore不可用时的材质
-            Texture2D loreTextureUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogLoreUnAvailable").Value;
+            Texture2D loreTextureUnAvailable = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogLoreUnAvailable").Value;
             // lore悬停时的材质
-            Texture2D loreTextureOutLine = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLine").Value;
+            Texture2D loreTextureOutLine = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLine").Value;
             // lore不可用时的悬停材质
-            Texture2D loreTextureOutLineUnAvailable = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLineUnAvailable").Value;
+            Texture2D loreTextureOutLineUnAvailable = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/Lore/LoreOutLineUnAvailable").Value;
             // 如果不想或者懒得新建存储，可以直接用这个透明材质
-            Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
+            Texture2D InvisibleUI = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
             #endregion
             float xResolutionScale = 0.8f;
             float yResolutionScale = 0.8f;
@@ -146,22 +146,22 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 右侧界面的中心位置
                 // 305
 
-                Texture2D loreTexturePanelVer = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore" + draedonsLoreChoice).Value;
+                Texture2D loreTexturePanelVer = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/PanelLore" + draedonsLoreChoice).Value;
 
                 CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice, ref PanelLore1, 0.98f);
 
                 // 下划线贴图
-                Texture2D loreTextLineTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
+                Texture2D loreTextLineTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLine").Value;
 
                 // 下划线贴图
-                Texture2D loreTextLineShortTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLineShort").Value;
+                Texture2D loreTextLineShortTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextLineShort").Value;
 
                 CIFunction.DrawImage(spriteBatch, loreTextLineShortTexture, null, 1f, 1.12f, 1f, 305, GetLorePos(3, 4, true).LoreBtnY - 12, false, ref Any);
                 #endregion
                 #region 绘制文字
                 // 背景贴图
                 // 用于文字背景，暂时无用
-                Texture2D bgTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextHoverTip").Value;
+                Texture2D bgTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/TextHoverTip").Value;
 
                 // 获取文字
                 string TileText = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LoreT" + TextDisplayID);
@@ -171,7 +171,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
                 CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 340, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, 23, 400f, 1.4f);
                 #endregion
-                Texture2D EndOfDataSet = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/MiscText/EndOfDataSet").Value;
+                Texture2D EndOfDataSet = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/MiscText/EndOfDataSet").Value;
 
                 // 绘制数据结束提示
                 float drawPositionX = Main.screenWidth * 0.5f;

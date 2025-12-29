@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
     public class GodSlayerHealOrbLegacy : BaseHealProj, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void ExSD()
         {
             Projectile.width = 4;

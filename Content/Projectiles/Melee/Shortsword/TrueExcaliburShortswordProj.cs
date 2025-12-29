@@ -6,12 +6,14 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class TrueExcaliburShortswordProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<TrueExcaliburShortsword>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -25,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -46,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ModContent.ProjectileType<ShortExcaliburBeam>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 4f, ProjectileType<ShortExcaliburBeam>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
         public override void ExtraBehavior()
         {

@@ -1,5 +1,6 @@
 using System;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ProfanedNukeDust: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 46;
@@ -58,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 getTimerCount++;
             }
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<HolyFlames>(), 120);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<HolyFlames>(), 120);
     }
 }

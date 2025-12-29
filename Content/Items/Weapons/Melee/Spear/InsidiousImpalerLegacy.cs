@@ -38,11 +38,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.knockBack = 8f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<InsidiousImpalerProjLegacy>();
+            Item.shoot = ProjectileType<InsidiousImpalerProjLegacy>();
             Item.shootSpeed = 5f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool isUpdateToNew = false;
-            int thrownSpear = ModContent.ProjectileType<Insidiousjavelin>();
+            int thrownSpear = ProjectileType<Insidiousjavelin>();
             if (player.altFunctionUse == 2 && isUpdateToNew)
             {
                 Projectile.NewProjectile(source, position, velocity, thrownSpear, damage, knockback, player.whoAmI);

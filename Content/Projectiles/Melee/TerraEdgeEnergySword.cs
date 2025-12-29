@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.penetrate = 3; // 投射物可以穿透并击中3个敌人
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 // Original Excalibur color: Color.Gold, Color.White
                 Color dustColor = Color.Lerp(Color.SpringGreen, Color.ForestGreen, Main.rand.NextFloat() * 0.3f);
-                Terraria.Dust coloredDust = Terraria.Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.GreenTorch, dustVelocity * 1f, 100, dustColor, 0.4f);
+                Terraria.Dust coloredDust = Dust.NewDustPerfect(Projectile.Center + dustRotation.ToRotationVector2() * (Main.rand.NextFloat() * 80f * Projectile.scale + 20f * Projectile.scale), DustID.GreenTorch, dustVelocity * 1f, 100, dustColor, 0.4f);
                 coloredDust.fadeIn = 0.4f + Main.rand.NextFloat() * 0.15f;
                 coloredDust.noGravity = true;
             }
@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Main.rand.NextFloat() * 2f < Projectile.Opacity)
             {
                 // Original Excalibur color: Color.White
-                Terraria.Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SpringGreen * Projectile.Opacity, 1.2f * Projectile.Opacity);
+                Dust.NewDustPerfect(dustPosition, DustID.TintableDustLighted, dustVelocity, 100, Color.SpringGreen * Projectile.Opacity, 1.2f * Projectile.Opacity);
             }
 
             Projectile.scale *= Projectile.ai[2]; // Set the scale of the projectile to the scale of the item.
@@ -150,7 +150,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float coneRotation2 = coneRotation - MathHelper.PiOver4 * Projectile.ai[0] * backOfTheSwing;
 
                 // Uncomment this line for a visual representation of the cone. The dusts are not perfect, but it gives a general idea.
-                Terraria.Dust.NewDustPerfect(Projectile.Center + coneRotation2.ToRotationVector2() * coneLength, DustID.Enchanted_Pink, Vector2.Zero);
+                Dust.NewDustPerfect(Projectile.Center + coneRotation2.ToRotationVector2() * coneLength, DustID.Enchanted_Pink, Vector2.Zero);
 
                 if (targetHitbox.IntersectsConeSlowMoreAccurate(Projectile.Center, coneLength, coneRotation2, maximumAngle))
                 {
@@ -186,7 +186,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             // 设置目标的受击方向为远离玩家的方向，以确保击退效果的方向正确。
             hit.HitDirection = Main.player[Projectile.owner].Center.X < target.Center.X ? 1 : -1;
 
-            Player player = Main.player[base.Projectile.owner];
+            Player player = Main.player[Projectile.owner];
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
                 int healAmount = Main.rand.Next(3) + 2;

@@ -61,14 +61,14 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 int rand2 = Main.rand.Next(-50, 51);
                 Vector2 targetDir = Projectile.Center + new Vector2(rand, rand2);
                 if (Projectile.ai[1] > 40)
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(),Projectile.Center, CalamityUtils.SafeDirectionTo(Projectile, targetDir, null) * 12f, ModContent.ProjectileType<Crescent>(), Projectile.damage / 2, 0.4f, Projectile.owner, Projectile.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(),Projectile.Center, CalamityUtils.SafeDirectionTo(Projectile, targetDir, null) * 12f, ProjectileType<Crescent>(), Projectile.damage / 2, 0.4f, Projectile.owner, Projectile.whoAmI);
 
                 if (Projectile.ai[1] > 46)
                 {
                     Projectile.ai[1] = 0;
                     roundsGone++;
                 }
-                if (roundsGone > 4 && Main.player[Projectile.owner].ownedProjectileCounts[ModContent.ProjectileType<Crescent>()] == 0)
+                if (roundsGone > 4 && Main.player[Projectile.owner].ownedProjectileCounts[ProjectileType<Crescent>()] == 0)
                     Projectile.Kill();
             }
 

@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<PlantareGreen>() : ModContent.RarityType<PureRed>();
-            Item.createTile = ModContent.TileType<DemonshadeTile>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<PlantareGreen>() : RarityType<PureRed>();
+            Item.createTile = TileType<DemonshadeTile>();
         }
 
         public override void AddRecipes()

@@ -12,8 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
     public class WulfrumKnifeProjOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponPath}/Wulfrum/WulfrumKnifeOld";
-
+        public override string Texture => GetInstance<WulfrumKnifeOld>().Texture;
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -23,12 +22,12 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
             Projectile.aiStyle = 2;
             Projectile.timeLeft = 600;
             AIType = ProjectileID.ThrowingKnife;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
@@ -37,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
         {
             if (Main.rand.NextBool(2))
             {
-                Item.NewItem(Projectile.GetSource_DropAsItem(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height, ModContent.ItemType<WulfrumKnifeOld>());
+                Item.NewItem(Projectile.GetSource_DropAsItem(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height, ItemType<WulfrumKnifeOld>());
             }
         }
     }

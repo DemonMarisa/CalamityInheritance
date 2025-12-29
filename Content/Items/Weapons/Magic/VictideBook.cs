@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item17;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CoralSpike>();
+            Item.shoot = ProjectileType<CoralSpike>();
             Item.shootSpeed = 16f;
         }
 

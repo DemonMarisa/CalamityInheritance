@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (Projectile.owner == Main.myPlayer)
                 {
                     for (int k = 0; k < projectiles; k++)
-                        Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, -baseVel.RotatedByRandom(0.9f) * Main.rand.NextFloat(0.6f, 0.7f), ModContent.ProjectileType<ChargedBlastLegacy2>(), (int)(Projectile.damage * (Projectile.ai[2] > 0 ? 0.3f : 0.5f)), Projectile.knockBack * 0.8f, Main.myPlayer, 0, 0, Projectile.ai[2]);
+                        Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, -baseVel.RotatedByRandom(0.9f) * Main.rand.NextFloat(0.6f, 0.7f), ProjectileType<ChargedBlastLegacy2>(), (int)(Projectile.damage * (Projectile.ai[2] > 0 ? 0.3f : 0.5f)), Projectile.knockBack * 0.8f, Main.myPlayer, 0, 0, Projectile.ai[2]);
                 }
                 for (int k = 0; k < 3; k++)
                 {
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (baseColor == Color.White)
                 return false;
-            Texture2D texture = ModContent.Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
+            Texture2D texture = Request<Texture2D>("CalamityMod/Particles/DrainLineBloom").Value;
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], (baseColor * 0.7f) with { A = 0 }, 1, texture);
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, baseColor with { A = 0 }, Projectile.rotation, texture.Size() * 0.5f, Projectile.scale, SpriteEffects.None, 0);
             return false;

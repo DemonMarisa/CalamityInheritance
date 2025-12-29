@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 600);
+            target.AddBuff(BuffType<CrushDepth>(), 600);
         }
 
         public override Color? GetAlpha(Color lightColor)

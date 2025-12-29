@@ -11,13 +11,14 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class CIBlood : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];
@@ -57,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (heal > 100)
                 heal = 100;
-            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ModContent.ProjectileType<StandardHealProj>(), heal);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ProjectileType<StandardHealProj>(), heal);
         }
     }
 }

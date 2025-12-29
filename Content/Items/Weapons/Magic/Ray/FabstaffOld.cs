@@ -33,10 +33,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.noMelee = true;
             Item.knockBack = 5f;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<FabRayOld>();
+            Item.shoot = ProjectileType<FabRayOld>();
             Item.shootSpeed = 6f;
 
             Item.Calamity().devItem = true;
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             CreateRecipe()
                 .AddIngredient<Necroplasm>(100)
                 .AddIngredient<ShadowspecBar>(50)
-                .AddTile(ModContent.TileType<DraedonsForge>())
+                .AddTile(TileType<DraedonsForge>())
                 .Register();
 
             CreateRecipe().

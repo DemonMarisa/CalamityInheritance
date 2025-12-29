@@ -171,7 +171,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
                 for (int i = 0; i < 3; i++)
                 {
                     Vector2 perturbedSpeed = LAPUtilities.GetVector2(Projectile.Center, target.Center).RotatedBy(MathHelper.Lerp(-0.15f, 0.15f, i / 2f)) * 18f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ModContent.ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 }
                 ChargeBeginPos = target.Center + -Projectile.velocity.SafeNormalize(Vector2.UnitX) * 300;
             }
@@ -195,7 +195,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
                     for (int i = 0; i < 3; i++)
                     {
                         Vector2 perturbedSpeed = LAPUtilities.GetVector2(Projectile.Center, target.Center).RotatedBy(MathHelper.Lerp(-0.15f, 0.15f, i / 2f)) * 18f;
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ModContent.ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                 }
                 if (Projectile.Center.Distance(target.Center) < 24)
@@ -238,7 +238,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             }
             else
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
                 AttackStateTimer = 0;
                 AttackType = 2;
             }
@@ -256,13 +256,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
                 }
                 Projectile.velocity = LAPUtilities.GetVector2(Projectile.Center, target.Center) * 18f;
                 ChargeBeginPos = target.Center - vel;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
             }
             if (Projectile.Center.Distance(ChargeBeginPos) < 48)
             {
 
                 ChargeCount++;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
                 AttackStateTimer = 0;
                 if (ChargeCount > 12)
                 {

@@ -24,11 +24,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.width = 18;
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
             Item.defense = 20; //80
         }
         
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientBloodflareBodyArmor>() && legs.type == ModContent.ItemType<AncientBloodflareCuisses>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientBloodflareBodyArmor>() && legs.type == ItemType<AncientBloodflareCuisses>();
         public override void UpdateArmorSet(Player player)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();

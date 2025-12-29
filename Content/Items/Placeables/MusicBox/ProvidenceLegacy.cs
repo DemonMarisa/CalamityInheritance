@@ -10,12 +10,12 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/ProvidenceLegacy"), ModContent.ItemType<ProvidenceLegacy>(), ModContent.TileType<ProvidenceLegacyBox>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/ProvidenceLegacy"), ItemType<ProvidenceLegacy>(), TileType<ProvidenceLegacyBox>());
 			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults() {
-			Item.DefaultToMusicBox(ModContent.TileType<ProvidenceLegacyBox>(), 0);
+			Item.DefaultToMusicBox(TileType<ProvidenceLegacyBox>(), 0);
 		}
 
         public override void AddRecipes()
