@@ -1,4 +1,5 @@
-﻿using LAP.Assets.TextureRegister;
+﻿using CalamityMod.Projectiles.Magic;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture
@@ -15,6 +16,7 @@ namespace CalamityInheritance.Texture
         public static Tex2DWithPath DOGworm_Head { get; private set; }
         public static Tex2DWithPath DOGworm_Tail { get; private set; }
         public static Tex2DWithPath DepthOrbLegacy { get; private set; }
+        private static string ProjPath = "CalamityInheritance/Texture/Projectiles";
         public static void LoadProjTex()
         {
             ExcelsusBlue = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusBlue");

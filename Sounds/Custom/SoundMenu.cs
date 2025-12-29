@@ -60,6 +60,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle KarasawaEnergyPulse = new($"{KarasawaSound}/KarasawaEnergyPulse") { MaxInstances = 0, IsLooped = false };
         public static readonly SoundStyle KarasawaLaunch = new($"{KarasawaSound}/KarasawaLaunch", 2) { MaxInstances = 0, PitchVariance = 0.1f };
         public static readonly SoundStyle KarasawaChargeFailed = new($"{KarasawaSound}/KarasawaChargeFailed") { MaxInstances = 2 };
+        public static readonly SoundStyle LaserRifleFire = new($"{SoundRoute}/{nameof(LaserRifleFire)}");
         #region ����
         public static readonly SoundStyle IronHeartDeath = new($"{IronHeartSound}/IronHeartDeath") { Volume = 0.6f, Pitch = 0.9f };
         public static readonly SoundStyle IronHeartBigHurt = new($"{IronHeartSound}/IronHeartBigHurt") { Volume = 0.9f, Pitch = 0.7f };
@@ -69,6 +70,8 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle EclipseSpearAttackNor = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearAttackNor") { Volume = 0.9f, Pitch = 0.3f };
         public static readonly SoundStyle EclipseSpearAttackStealth = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearAttackStealth") { Volume = 0.9f, Pitch = 0.7f };
         public static readonly SoundStyle EclipseSpearBoom = new($"{ItemSoundRoute}/EclipseSpear/EclipseSpearBoom") { Volume = 0.9f, Pitch = 0.7f };
+        public static readonly SoundStyle GaussRifleFired = new SoundStyle($"{ItemSoundRoute}/GaussRifleSound/MechGaussRifle");
+        public static readonly SoundStyle HeavyGaussRifleFired = new SoundStyle($"{ItemSoundRoute}/GaussRifleSound/LargeMechGaussRifle");
         #endregion
         #region ����Ͷì
         public static readonly SoundStyle LumiShardHit = new($"{ItemSoundRoute}/LumiSpear/LumiShardHit") { Volume = 0.9f, Pitch = 0.3f };

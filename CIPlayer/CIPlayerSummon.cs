@@ -17,6 +17,7 @@ namespace CalamityInheritance.CIPlayer
         public bool FungalClumpLegacySummonBuff = false;
         public bool FungalClumpLegacySummon = false;
         public bool SunSpiritMinionLegacy = false;
+        public bool DazzlingStabberMinionLegacy = false;
         #endregion
         public void ReSetSummon()
         {
@@ -34,6 +35,7 @@ namespace CalamityInheritance.CIPlayer
             FungalClumpLegacySummon = false;
             FungalClumpLegacySummonBuff = false;
             SunSpiritMinionLegacy = false;
+            DazzlingStabberMinionLegacy = false;
             #endregion
         }
     } 

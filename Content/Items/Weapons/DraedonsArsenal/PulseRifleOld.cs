@@ -30,8 +30,6 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 
         public override void SetDefaults()
         {
-            CalamityGlobalItem ChargeItem = Item.Calamity();
-
             Item.width = 62;
             Item.height = 22;
             Item.DamageType = DamageClass.Ranged;
@@ -50,10 +48,6 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 
             Item.shoot = ProjectileType<PulseRifleShotOld>();
             Item.shootSpeed = 5f;
-            
-            ChargeItem.UsesCharge = true;
-            ChargeItem.MaxCharge = 250f;
-            ChargeItem.ChargePerUse = 0.24f;
             
         }
 

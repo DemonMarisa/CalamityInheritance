@@ -292,3 +292,8 @@ SunSpiritBuff: {
 	DisplayName: Sun Spirit Buff
 	Description: Mods.CalamityInheritance.Buffs.SunSpiritBuff.Description
 }
+
+DazzlingStabberBuffLegacy: {
+	DisplayName: Dazzling Stabber Buff Legacy
+	Description: Mods.CalamityInheritance.Buffs.DazzlingStabberBuffLegacy.Description
+}
