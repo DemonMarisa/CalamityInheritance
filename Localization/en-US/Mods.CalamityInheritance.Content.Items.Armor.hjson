@@ -21,7 +21,7 @@ AuricTeslaCuissesold: {
 		'''
 }
 
-AuricTeslaHeadMagic: {
+AuricTeslaHeadMagicLegacy: {
 	DisplayName: Auric Tesla Wire-Hemmed Visage Legacy
 	Tooltip:
 		'''
@@ -62,7 +62,7 @@ AuricTeslaHeadMagic: {
 		'''
 }
 
-AuricTeslaHeadMelee: {
+AuricTeslaHeadMeleeLegacy: {
 	DisplayName: Auric Tesla Royal Helm Legacy
 	Tooltip:
 		'''
@@ -106,7 +106,7 @@ AuricTeslaHeadMelee: {
 		'''
 }
 
-AuricTeslaHeadRanged: {
+AuricTeslaHeadRangedLegacy: {
 	DisplayName: Auric Tesla Hooded Facemask Legacy
 	Tooltip:
 		'''
@@ -148,7 +148,7 @@ AuricTeslaHeadRanged: {
 		'''
 }
 
-AuricTeslaHeadRogue: {
+AuricTeslaHeadRogueLegacy: {
 	DisplayName: Auric Tesla Plumed Helm Legacy
 	Tooltip:
 		'''
@@ -193,7 +193,7 @@ AuricTeslaHeadRogue: {
 		'''
 }
 
-AuricTeslaHeadSummon: {
+AuricTeslaHeadSummonLegacy: {
 	DisplayName: Auric Tesla Space Helmet Legacy
 	Tooltip:
 		'''
@@ -1016,29 +1016,4 @@ DesertProwlerLegsLegacy: {
 		{0} increased movement speed
 		Grants immnuity to Wind Pushed
 		'''
-}
-
-AuricTeslaHeadMagicLegacy: {
-	DisplayName: Auric Tesla Head Magic Legacy
-	Tooltip: ""
-}
-
-AuricTeslaHeadMeleeLegacy: {
-	DisplayName: Auric Tesla Head Melee Legacy
-	Tooltip: ""
-}
-
-AuricTeslaHeadRangedLegacy: {
-	DisplayName: Auric Tesla Head Ranged Legacy
-	Tooltip: ""
-}
-
-AuricTeslaHeadRogueLegacy: {
-	DisplayName: Auric Tesla Head Rogue Legacy
-	Tooltip: ""
-}
-
-AuricTeslaHeadSummonLegacy: {
-	DisplayName: Auric Tesla Head Summon Legacy
-	Tooltip: ""
 }

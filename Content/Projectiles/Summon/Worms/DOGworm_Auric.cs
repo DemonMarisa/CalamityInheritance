@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Texture;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Texture;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,12 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Worms
 {
-    public class Segment(Vector2 pos, float rot)
-    {
-        public Vector2 Pos = pos;
-        public float Rot = rot;
-    }
-    public class DOGworm : ModProjectile, ILocalizedModType
+    public class DOGworm_Auric : ModProjectile, ILocalizedModType
     {
         public override string Texture => CITextureRegistry.DOGworm_Head.Path;
         public new string LocalizationCategory => "Content.Projectiles.Summon";
@@ -50,6 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 5;
             Projectile.DamageType = DamageClass.Summon;
+            Projectile.minionSlots = 4;
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -66,11 +63,12 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         }
         public override void AI()
         {
+            Owner.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 2, true);
             Projectile.Center += Projectile.velocity;
-            if (!Projectile.LAP().FirstFrame)
+            if (Projectile.LAP().FirstFrame)
             {
                 Projectile.velocity = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 6;
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 14; i++)
                 {
                     Segment segment = new(Projectile.Center, Projectile.rotation);
                     Segments.Add(segment);
@@ -123,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         public void PlayerFollowMovement(Player owner)
         {
             AttackType = 0;
-            Projectile.extraUpdates = 0;
+            Projectile.extraUpdates = 1;
             // If any attack was in use previously, send a net update now that attack mode is off.
             if (AttackStateTimer != 0)
             {

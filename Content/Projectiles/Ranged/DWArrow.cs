@@ -58,14 +58,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Texture2D texture;
             if (Projectile.localAI[1] == 0f)
                 Projectile.localAI[1] = Main.rand.Next(1, 3);
+            ModProjectile DWArrow = ProjectileLoader.GetProjectile(ModContent.ProjectileType<DWArrow>());
             switch (Projectile.localAI[1])
             {
-
                 case 2f:
-                    texture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Ranged/DWArrow2").Value;
+                    texture = ModContent.Request<Texture2D>($"{DWArrow.Texture}" + 2).Value;
                     break;
                 default:
-                    texture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Ranged/DWArrow").Value;
+                    texture = ModContent.Request<Texture2D>($"{DWArrow.Texture}").Value;
                     break;
             }
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);

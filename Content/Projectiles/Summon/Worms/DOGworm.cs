@@ -11,7 +11,12 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Worms
 {
-    public class DOGworm_Auric : ModProjectile, ILocalizedModType
+    public class Segment(Vector2 pos, float rot)
+    {
+        public Vector2 Pos = pos;
+        public float Rot = rot;
+    }
+    public class DOGworm : ModProjectile, ILocalizedModType
     {
         public override string Texture => CITextureRegistry.DOGworm_Head.Path;
         public new string LocalizationCategory => "Content.Projectiles.Summon";
@@ -19,6 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         public int AttackStateTimer;
         public int AttackType;
         public Vector2 HoverPos;
+        public bool FirstFrame;
         public ref float SpawnDust => ref Projectile.ai[0];
         public Player Owner => Main.player[Projectile.owner];
         public enum AttackState : byte
@@ -46,7 +52,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 5;
             Projectile.DamageType = DamageClass.Summon;
-            Projectile.minionSlots = 4;
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -63,16 +68,17 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         }
         public override void AI()
         {
-            Owner.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 3600, true);
+            Owner.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 2, true);
             Projectile.Center += Projectile.velocity;
-            if (!Projectile.LAP().FirstFrame)
+            if (Projectile.LAP().FirstFrame)
             {
                 Projectile.velocity = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 6;
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     Segment segment = new(Projectile.Center, Projectile.rotation);
                     Segments.Add(segment);
                 }
+                FirstFrame = false;
             }
             if (SpawnDust != 0)
             {
@@ -121,22 +127,23 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         public void PlayerFollowMovement(Player owner)
         {
             AttackType = 0;
-            Projectile.extraUpdates = 0;
+            Projectile.extraUpdates = 1;
             // If any attack was in use previously, send a net update now that attack mode is off.
             if (AttackStateTimer != 0)
             {
                 AttackStateTimer = 0;
                 Projectile.netUpdate = true;
             }
-            if (Owner.miscCounter % 180 == 0)
+            if (Owner.miscCounter % 240 == 0)
             {
+                if (Projectile.FinalExtraUpdate())
                 HoverFilp = -HoverFilp;
                 HoverPos = new Vector2(Main.rand.Next(200, 256) * HoverFilp, Main.rand.Next(-96, 96));
             }
             else if (Projectile.Center.Distance(Owner.Center) > 200)
             {
                 Vector2 Target = Owner.Center + HoverPos;
-                Projectile.HomingTarget(Target, -1, 24f, 100f);
+                Projectile.HomingTarget(Target, -1, 12f, 100f);
             }
             else if (Projectile.Center.Distance(Owner.Center) > 500)
             {
@@ -253,6 +260,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
                 for (int i = 0; i < Segments.Count; i++)
                 {
                     Segments[i].Pos = Projectile.Center;
+                    Segments[i].Rot = Projectile.rotation;
                 }
                 Projectile.velocity = LAPUtilities.GetVector2(Projectile.Center, target.Center) * 18f;
                 ChargeBeginPos = target.Center - vel;
@@ -260,7 +268,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             }
             if (Projectile.Center.Distance(ChargeBeginPos) < 48)
             {
-
                 ChargeCount++;
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
                 AttackStateTimer = 0;

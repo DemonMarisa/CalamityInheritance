@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears
             Item.shootSpeed = 30f;
             Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
             Item.rare = ModContent.RarityType<PureGreen>();
-            Item.DamageType = RogueDamageClass.Instance;
+            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
         }
 
         public override float StealthDamageMultiplier => 1.22f;

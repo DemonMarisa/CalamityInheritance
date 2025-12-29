@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             {
                 if (Main.keyState.IsKeyDown(Keys.LeftAlt))
                 {
-                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.AuricTeslaHeadRanged.Details");
+                    string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Armor.AuricTeslaHeadRangedLegacy.Details");
                     tooltips.Add(new TooltipLine(Mod, "Details", Details));
                 }
             }

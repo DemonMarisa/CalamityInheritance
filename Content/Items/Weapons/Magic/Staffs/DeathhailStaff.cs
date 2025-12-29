@@ -24,8 +24,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
             Item.damage = 328;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 16;
-            Item.useTime = 11;
-            Item.useAnimation = 22;
+            Item.useTime = 5;
+            Item.useAnimation = 5;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
