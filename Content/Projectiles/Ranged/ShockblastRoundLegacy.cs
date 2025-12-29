@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ShockblastLegacy>(), Projectile.damage / 2, 0f, Projectile.owner, 0f, Projectile.ai[1]);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ShockblastLegacy>(), Projectile.damage / 2, 0f, Projectile.owner, 0f, Projectile.ai[1]);
                 Main.projectile[proj].scale = (Projectile.ai[1] * 0.5f) + 1f;
             }
             return true;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ShockblastLegacy>(), Projectile.damage / 2, 0f, Projectile.owner, 0f, Projectile.ai[1]);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ShockblastLegacy>(), Projectile.damage / 2, 0f, Projectile.owner, 0f, Projectile.ai[1]);
                 Main.projectile[proj].scale = (Projectile.ai[1] * 0.5f) + 1f;
             }
 
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (i == 2)
                     direction = new Vector2(12f, 0).RotatedBy(rot).RotatedBy(MathHelper.ToRadians(-angleoffset));
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<BlueHealProj>(), 0, 0f, player.whoAmI, 0, 0, healAmt);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ProjectileType<BlueHealProj>(), 0, 0f, player.whoAmI, 0, 0, healAmt);
             }
 
             player.CIMod().GlobalHealProjCD = CD;

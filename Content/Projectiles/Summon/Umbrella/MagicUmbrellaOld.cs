@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             float num637 = 0.05f;
             for (int num638 = 0; num638 < Main.projectile.Length; num638++)
             {
-                bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicUmbrella>();
+                bool flag23 = Main.projectile[num638].type == ProjectileType<MagicUmbrella>();
                 if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner &&
                     flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < Projectile.width)
                 {
@@ -273,7 +273,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -295,7 +295,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ModContent.ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
                 }
             }
         }

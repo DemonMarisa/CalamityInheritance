@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item60;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<TerraBeamMain>();
+            Item.shoot = ProjectileType<TerraBeamMain>();
             Item.shootSpeed = 6f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Vector2 shootVelocity = velocity;
             Vector2 shootPosition = position + shootVelocity * 12f;
             Projectile.NewProjectile(source, shootPosition, shootVelocity, type, damage, knockback, player.whoAmI);
-            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity, ModContent.ProjectileType<TerraBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity, ProjectileType<TerraBeam>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             return false;
         }
 

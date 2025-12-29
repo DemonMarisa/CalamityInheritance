@@ -10,31 +10,31 @@ namespace CalamityInheritance.Content.Items
     {
         public static void DConsumeMatter(Recipe recipe, int type, ref int amount)
         {
-            if (type == ModContent.ItemType<AncientMiracleMatter>())
+            if (type == ItemType<AncientMiracleMatter>())
             {
                 amount = 0;
             }
         }
         public static void DConsumeMatter(Recipe recipe, int type, ref int amount, bool isDecrafting)
         {
-            if (type == ModContent.ItemType<AncientMiracleMatter>())
+            if (type == ItemType<AncientMiracleMatter>())
                 amount = 0;
         }
         public static void DontConsumeExoWeapons(Recipe recipe, int type, ref int amount, bool isDecrafting)
         {
-            if (type == ModContent.ItemType<HeavenlyGaleold>())
+            if (type == ItemType<HeavenlyGaleold>())
             {
                 amount = 0;
             }
         }
         public static void DontConsumePostDOGMaterials(Recipe recipe, int type, ref int amount, bool isDecrafting)
         {
-            if (type == ModContent.ItemType<YharonSoulFragment>())
+            if (type == ItemType<YharonSoulFragment>())
             {
                 amount = 0;
             }
 
-            if (type == ModContent.ItemType<AscendantSpiritEssence>())
+            if (type == ItemType<AscendantSpiritEssence>())
             {
                 amount = 0;
             }
@@ -42,8 +42,8 @@ namespace CalamityInheritance.Content.Items
 
         public static void IfDragonBow(Recipe recipe, int type, ref int amount, bool isDecrafting)
         {
-            if(type == ModContent.ItemType<HeavenlyGaleold>()) amount = 0;
-            if(type == ModContent.ItemType<AscendantSpiritEssence>()) amount = 0;
+            if(type == ItemType<HeavenlyGaleold>()) amount = 0;
+            if(type == ItemType<AscendantSpiritEssence>()) amount = 0;
         }
     }
 }

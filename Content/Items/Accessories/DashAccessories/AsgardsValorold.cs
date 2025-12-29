@@ -40,8 +40,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.statLifeMax2 += 20;
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true; //出于不知名原因，阿斯加德英勇不免疫地狱之火
-            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
-            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true; //以及硫磺火
+            player.buffImmune[BuffType<HolyFlames>()] = true;
+            player.buffImmune[BuffType<BrimstoneFlames>()] = true; //以及硫磺火
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             { 

@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             Item.width = 54;
             Item.height = 90;
-            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Item.DamageType = GetInstance<TrueMeleeDamageClass>();
             Item.damage = 1000;
             Item.knockBack = 9f;
             Item.useAnimation = 15;
@@ -54,9 +54,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item101;
             Item.channel = true;
-            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.shoot = ModContent.ProjectileType<ExoFlailProj>();
+            Item.shoot = ProjectileType<ExoFlailProj>();
             Item.shootSpeed = 24f;
         }
         public override bool MeleePrefix() => true;
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
                 if (hitCount >= 5)
                 {
-                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
                     hitCount = 0;
                 }
                 else
@@ -79,13 +79,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             else
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<ExoFlailProj2>(), damage, knockback, player.whoAmI, 0f);
             }
             return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/ExoFlailGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Melee/ExoFlailGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

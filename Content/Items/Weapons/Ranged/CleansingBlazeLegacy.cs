@@ -36,10 +36,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = CISoundID.SoundFlamethrower;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<EssenceFireLegacy>();
+            Item.shoot = ProjectileType<EssenceFireLegacy>();
             Item.shootSpeed = 14f;
             Item.useAmmo = AmmoID.Gel;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

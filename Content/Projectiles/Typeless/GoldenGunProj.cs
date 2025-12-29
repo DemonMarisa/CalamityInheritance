@@ -1,6 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
     public class GoldenGunProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetStaticDefaults()
         {

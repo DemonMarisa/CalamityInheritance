@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.useTime = 10;
             Item.useAnimation = 10;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.noMelee = true;
             Item.knockBack = 1f;
             Item.value = CIShopValue.RarityPriceDonatorPink;

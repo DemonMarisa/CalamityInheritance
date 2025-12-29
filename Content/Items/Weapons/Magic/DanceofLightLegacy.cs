@@ -33,10 +33,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item105;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<WhiteFlameLegacy>();
+            Item.shoot = ProjectileType<WhiteFlameLegacy>();
             Item.shootSpeed = 30f;
         }
 
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 AddIngredient(ItemID.LunarFlareBook).
                 AddIngredient<WrathoftheAncients>().
                 AddIngredient<ShadowspecBar>(5).
-                AddTile(ModContent.TileType<DraedonsForge>()).
+                AddTile(TileType<DraedonsForge>()).
                 Register();
         }
 

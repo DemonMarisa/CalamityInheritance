@@ -1,0 +1,65 @@
+﻿using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria;
+using Microsoft.Xna.Framework;
+using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+
+namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
+{
+    public class RogueGalaxySmasher : RogueWeapon, ILocalizedModType
+    {
+        public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
+        {
+            Item.width = 86;
+            Item.height = 72;
+            Item.DamageType = GetInstance<RogueDamageClass>();
+            Item.damage = 325;
+            Item.knockBack = 9f;
+            Item.useAnimation = 13;
+            Item.useTime = 13;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
+            Item.rare = RarityType<DeepBlue>();
+            Item.value = CIShopValue.RarityPriceDeepBlue;
+            Item.shoot = ProjectileType<RogueGalaxySmasherProj>();
+            Item.shootSpeed = 20f;
+        }
+        public override float StealthDamageMultiplier => 0.9f;
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            bool stealth = player.CheckStealth();
+            if (!stealth)
+                return true;
+
+            int t = Projectile.NewProjectile(source, position, velocity ,type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
+            Main.projectile[t].Calamity().stealthStrike = true;
+            return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<RogueStellarContempt>().
+                AddIngredient<CosmiliteBar>(10).
+                AddTile<CosmicAnvil>().
+                Register();
+        }
+    }
+}

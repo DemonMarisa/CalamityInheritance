@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 6;
         }
@@ -126,7 +126,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float speedMult = Main.rand.NextFloat(3, 6);
                     Vector2 vector1 = new Vector2(Projectile.Center.X - player.Center.X, Projectile.Center.Y - player.Center.Y);
                     vector1.Normalize();
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), player.Center.X, player.Center.Y, -vector1.X * speedMult, -vector1.Y * speedMult, ModContent.ProjectileType<SylvanSlash>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), player.Center.X, player.Center.Y, -vector1.X * speedMult, -vector1.Y * speedMult, ProjectileType<SylvanSlash>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
                 }
             }
         }
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float speedMult = Main.rand.NextFloat(3, 6);
                     Vector2 vector1 = new Vector2(Projectile.Center.X - player.Center.X, Projectile.Center.Y - player.Center.Y);
                     vector1.Normalize();
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), player.Center.X, player.Center.Y, -vector1.X * speedMult, -vector1.Y * speedMult, ModContent.ProjectileType<SylvanSlash>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), player.Center.X, player.Center.Y, -vector1.X * speedMult, -vector1.Y * speedMult, ProjectileType<SylvanSlash>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
                 }
             }
         }

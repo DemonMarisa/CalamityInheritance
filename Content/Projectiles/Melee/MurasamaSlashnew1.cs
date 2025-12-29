@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 14;
-            CalamityProjectileSets.ShouldNotBeReflected[ModContent.ProjectileType<MurasamaSlashnew1>()] = false;
+            CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<MurasamaSlashnew1>()] = false;
         }
 
         public bool Slashing = false;
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 6;
             Projectile.frameCounter = 0;

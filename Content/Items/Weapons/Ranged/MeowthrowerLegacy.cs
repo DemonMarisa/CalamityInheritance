@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceLightRed;
             Item.rare = ItemRarityID.LightRed;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<MeowFireLegacy>();
+            Item.shoot = ProjectileType<MeowFireLegacy>();
             Item.shootSpeed = 5.5f;
             Item.useAmmo = 23;
         }
@@ -55,10 +55,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 switch (Main.rand.Next(3))
                 {
                     case 1:
-                        type = ModContent.ProjectileType<MeowFireLegacy>();
+                        type = ProjectileType<MeowFireLegacy>();
                         break;
                     case 2:
-                        type = ModContent.ProjectileType<MeowFireLegacy2>();
+                        type = ProjectileType<MeowFireLegacy2>();
                         break;
                     default:
                         break;

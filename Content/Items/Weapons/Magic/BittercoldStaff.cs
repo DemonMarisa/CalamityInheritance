@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Pink;
             Item.value = CIShopValue.RarityPricePink;
             Item.UseSound = SoundID.Item46;
-            Item.shoot = ModContent.ProjectileType<IceRain>();
+            Item.shoot = ProjectileType<IceRain>();
             Item.shootSpeed = 14f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

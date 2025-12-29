@@ -5,7 +5,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class ExoArrowTeal : ModProjectile, ILocalizedModType
     {

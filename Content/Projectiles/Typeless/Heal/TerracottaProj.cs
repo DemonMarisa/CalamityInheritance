@@ -4,12 +4,13 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
     public class TerracottaProj : BaseHealProj, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void ExSD()
         {
             Projectile.width = 4;

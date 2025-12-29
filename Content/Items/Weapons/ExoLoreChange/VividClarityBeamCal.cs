@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 SummonLasers();
                 SummonBeam();
             }
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -116,7 +116,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 SummonLasers();
                 SummonBeam();
             }
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         private void SummonLasers()
@@ -125,11 +125,11 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             switch (Projectile.ai[1])
             {
                 case 0f:
-                    CalamityUtils.ProjectileRain(source, Projectile.Center, 320f, 100f, 400f, 640f, 6f, ModContent.ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, Projectile.Center, 320f, 100f, 400f, 640f, 6f, ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 1f:
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 2f:
@@ -140,8 +140,8 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                     for (int i = 0; i < 4; i++)
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
                     }
                     break;
             }
@@ -169,7 +169,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             //一次生成三个射弹
             for (int i = 0; i < 3; i++)
             {
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ModContent.ProjectileType<Exobeam>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner, 0f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ProjectileType<Exobeam>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner, 0f);
                 Main.projectile[p].DamageType = DamageClass.Magic;
             }
         }

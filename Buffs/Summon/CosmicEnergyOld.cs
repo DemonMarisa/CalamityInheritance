@@ -17,7 +17,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<CosmicEnergySpiralOld>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<CosmicEnergySpiralOld>()] > 0)
             {
                 modPlayer.cosmicEnergy = true;
             }

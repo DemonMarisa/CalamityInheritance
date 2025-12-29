@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityPlayer modPlayer = player.Calamity();
-            player.buffImmune[ModContent.BuffType<AstralInfectionDebuff>()] = true;
+            player.buffImmune[BuffType<AstralInfectionDebuff>()] = true;
             modPlayer.hideOfDeus = true;
         }
     }

@@ -55,7 +55,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             {
                 item.LAP().UseCICalStatInflation = true;
                 item.LAP().WeaponTier = AllWeaponTier.PostOldDuke;
-                if (item.type == ModContent.ItemType<InsidiousImpalerLegacy>())
+                if (item.type == ItemType<InsidiousImpalerLegacy>())
                 {
                     item.LAP().UseCustomStatInflationMult = true;
                     item.LAP().StatInflationMult = 1.4f;
@@ -96,7 +96,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (!CIServerConfig.Instance.CalStatInflationBACK)
                 return base.UseAnimationMultiplier(item, player);
 
-            if (item.type == ModContent.ItemType<CosmicShiv>())
+            if (item.type == ItemType<CosmicShiv>())
                 return 0.4f;
             else
                 return base.UseAnimationMultiplier(item, player);
@@ -107,7 +107,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (!CIServerConfig.Instance.CalStatInflationBACK)
                 return base.UseTimeMultiplier(item, player);
 
-            if (item.type == ModContent.ItemType<CosmicShiv>())
+            if (item.type == ItemType<CosmicShiv>())
                 return 0.4f;
             else
                 return base.UseTimeMultiplier(item, player);
@@ -117,7 +117,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         {
             if (!CIServerConfig.Instance.CalStatInflationBACK)
                 return;
-            if (item.type == ModContent.ItemType<Earth>())
+            if (item.type == ItemType<Earth>())
             {
                 scale = 2.5f;
             }
@@ -140,14 +140,14 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         public static void ProfanedBlance(Item item)
         {
             #region 射手
-            if (item.type == ModContent.ItemType<TelluricGlare>())
+            if (item.type == ItemType<TelluricGlare>())
                 item.LAP().GlobalMult *= 3f;
             #endregion
             #region 法师
-            if (item.type == ModContent.ItemType<PlasmaRifle>())
+            if (item.type == ItemType<PlasmaRifle>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<ThePrince>())
+            if (item.type == ItemType<ThePrince>())
                 item.LAP().GlobalMult *= 1.5f;
             #endregion
         }
@@ -156,62 +156,62 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         public static void PolterghastBlance(Item item)
         {
             #region 战士
-            if (item.type == ModContent.ItemType<NeptunesBounty>())
+            if (item.type == ItemType<NeptunesBounty>())
                 item.LAP().GlobalMult *= 1.3f;
             #endregion
             #region 射手
-            if (item.type == ModContent.ItemType<ClaretCannon>())
+            if (item.type == ItemType<ClaretCannon>())
                 item.LAP().GlobalMult *= 1.6f;
 
-            if (item.type == ModContent.ItemType<SulphuricAcidCannon>())
+            if (item.type == ItemType<SulphuricAcidCannon>())
                 item.LAP().GlobalMult *= 1.7f;
 
-            if (item.type == ModContent.ItemType<DodusHandcannon>())
+            if (item.type == ItemType<DodusHandcannon>())
                 item.LAP().GlobalMult *= 1.6f;
 
-            if (item.type == ModContent.ItemType<TheMaelstrom>())
+            if (item.type == ItemType<TheMaelstrom>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<BloodBoiler>())
+            if (item.type == ItemType<BloodBoiler>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<HalleysInferno>())
+            if (item.type == ItemType<HalleysInferno>())
                 item.LAP().GlobalMult *= 1.5f;
             #endregion
             #region 法师
-            if (item.type == ModContent.ItemType<AlphaDraconis>())
+            if (item.type == ItemType<AlphaDraconis>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<DarkSpark>())
+            if (item.type == ItemType<DarkSpark>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<ShadowboltStaff>())
+            if (item.type == ItemType<ShadowboltStaff>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<DeathhailStaff>())
+            if (item.type == ItemType<DeathhailStaff>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<VenusianTrident>())
+            if (item.type == ItemType<VenusianTrident>())
                 item.LAP().GlobalMult *= 1.6f;
 
-            if (item.type == ModContent.ItemType<PhantasmalFuryOld>())
+            if (item.type == ItemType<PhantasmalFuryOld>())
                 SetCustomMult(item, 3f);
             #endregion
             #region 召唤
-            if (item.type == ModContent.ItemType<Sirius>())
+            if (item.type == ItemType<Sirius>())
                 item.LAP().GlobalMult *= 3.5f;
 
-            if (item.type == ModContent.ItemType<SiriusLegacy>())
+            if (item.type == ItemType<SiriusLegacy>())
                 item.LAP().GlobalMult *= 3.5f;
             #endregion
             #region 盗贼
-            if (item.type == ModContent.ItemType<Valediction>())
+            if (item.type == ItemType<Valediction>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<NightsGaze>())
+            if (item.type == ItemType<NightsGaze>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<PhantasmalRuinold>())
+            if (item.type == ItemType<PhantasmalRuinold>())
                 SetCustomMult(item, 1.2f);
             #endregion
         }
@@ -221,119 +221,119 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         {
             #region 战士
 
-            if (item.type == ModContent.ItemType<EmpyreanKnives>())
+            if (item.type == ItemType<EmpyreanKnives>())
                 SetCustomMult(item, 5f);
 
-            if (item.type == ModContent.ItemType<PrismaticBreaker>())
+            if (item.type == ItemType<PrismaticBreaker>())
                 SetCustomMult(item, 5.6f);
 
-            if (item.type == ModContent.ItemType<Excelsus>())
+            if (item.type == ItemType<Excelsus>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<GalaxySmasher>())
+            if (item.type == ItemType<GalaxySmasher>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<ScourgeoftheCosmos>())
+            if (item.type == ItemType<ScourgeoftheCosmos>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<TheObliterator>())
+            if (item.type == ItemType<TheObliterator>())
                 SetCustomMult(item, 2.5f);
 
-            if (item.type == ModContent.ItemType<EssenceFlayer>())
+            if (item.type == ItemType<EssenceFlayer>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<Murasama>())
+            if (item.type == ItemType<Murasama>())
                 SetCustomMult(item, 9.0013f);
             #endregion
             #region 射手
-            if (item.type == ModContent.ItemType<Deathwind>())
+            if (item.type == ItemType<Deathwind>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<Alluvion>())
+            if (item.type == ItemType<Alluvion>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<AntiMaterielRifle>())
+            if (item.type == ItemType<AntiMaterielRifle>())
                 SetCustomMult(item, 5.2f);
 
-            if (item.type == ModContent.ItemType<ThePack>())
+            if (item.type == ItemType<ThePack>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<Starmageddon>())
+            if (item.type == ItemType<Starmageddon>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<Starmada>())
+            if (item.type == ItemType<Starmada>())
                 item.LAP().GlobalMult *= 1.3f;
 
-            if (item.type == ModContent.ItemType<CleansingBlaze>())
+            if (item.type == ItemType<CleansingBlaze>())
                 item.LAP().GlobalMult *= 1.3f;
 
-            if (item.type == ModContent.ItemType<PulseRifle>())
+            if (item.type == ItemType<PulseRifle>())
                 item.LAP().GlobalMult *= 1.3f;
 
-            if (item.type == ModContent.ItemType<Karasawa>())
+            if (item.type == ItemType<Karasawa>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<RubicoPrime>())
+            if (item.type == ItemType<RubicoPrime>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<Ultima>())
+            if (item.type == ItemType<Ultima>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<UniversalGenesis>())
+            if (item.type == ItemType<UniversalGenesis>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<ACTMinigun>())
+            if (item.type == ItemType<ACTMinigun>())
                 SetCustomMult(item, 2.2f);
             #endregion
             #region 法师
 
-            if (item.type == ModContent.ItemType<RecitationoftheBeast>())
+            if (item.type == ItemType<RecitationoftheBeast>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<FaceMelter>())
+            if (item.type == ItemType<FaceMelter>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<IceBarrage>())
+            if (item.type == ItemType<IceBarrage>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<ACTAlphaRay>())
+            if (item.type == ItemType<ACTAlphaRay>())
                 item.LAP().GlobalMult *= 0.8f;
 
             #endregion
             #region 召唤
 
-            if (item.type == ModContent.ItemType<SarosPossession>())
+            if (item.type == ItemType<SarosPossession>())
                 item.LAP().GlobalMult *= 1.6f;
 
-            if (item.type == ModContent.ItemType<CorvidHarbringerStaff>())
+            if (item.type == ItemType<CorvidHarbringerStaff>())
                 item.LAP().GlobalMult *= 1.4f;
 
-            if (item.type == ModContent.ItemType<CosmicViperEngine>())
+            if (item.type == ItemType<CosmicViperEngine>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<EndoHydraStaff>())
+            if (item.type == ItemType<EndoHydraStaff>())
                 item.LAP().GlobalMult *= 1.5f;
             #endregion
             #region 盗贼
-            if (item.type == ModContent.ItemType<Penumbra>())
+            if (item.type == ItemType<Penumbra>())
                 item.LAP().GlobalMult *= 2f;
 
-            if (item.type == ModContent.ItemType<EclipsesFall>())
+            if (item.type == ItemType<EclipsesFall>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<Hypothermia>())
+            if (item.type == ItemType<Hypothermia>())
                 item.LAP().GlobalMult *= 1.5f;
 
-            if (item.type == ModContent.ItemType<Eradicator_Melee>())
+            if (item.type == ItemType<Eradicator_Melee>())
                 item.LAP().GlobalMult *= 1.2f;
 
-            if (item.type == ModContent.ItemType<Eradicator_Rogue>())
+            if (item.type == ItemType<Eradicator_Rogue>())
                 item.LAP().GlobalMult *= 1.2f;
 
-            if (item.type == ModContent.ItemType<PlasmaGrenade>())
+            if (item.type == ItemType<PlasmaGrenade>())
                 item.LAP().GlobalMult *= 1.8f;
 
-            if (item.type == ModContent.ItemType<RogueTypeHammerGalaxySmasher>())
+            if (item.type == ItemType<RogueGalaxySmasher>())
                 SetCustomMult(item, 1.5f);
             #endregion
         }
@@ -341,18 +341,18 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         #region 金源
         public static void AuricBlance(Item item)
         {
-            if (item.type == ModContent.ItemType<VoidVortex>())
+            if (item.type == ItemType<VoidVortex>())
                 SetCustomMult(item, 8f);
-            if (item.type == ModContent.ItemType<YharimsCrystal>())
+            if (item.type == ItemType<YharimsCrystal>())
                 SetCustomMult(item, 9f);
             #region 战士
-            if (item.type == ModContent.ItemType<ArkoftheCosmos>())
+            if (item.type == ItemType<ArkoftheCosmos>())
                 SetCustomMult(item, 9f);
 
-            if (item.type == ModContent.ItemType<ArkoftheCosmosold>())
+            if (item.type == ItemType<ArkoftheCosmosold>())
                 SetCustomMult(item, 3.57857142f);
 
-            if (item.type == ModContent.ItemType<Ataraxia>())
+            if (item.type == ItemType<Ataraxia>())
             {
                 item.LAP().GlobalMult *= 1.4f;
                 item.useTurn = false;
@@ -363,23 +363,23 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 SetCustomMult(item, 12f);
             }
 
-            if (item.type == ModContent.ItemType<TheOracle>())
+            if (item.type == ItemType<TheOracle>())
                 SetCustomMult(item, 7.5f);
 
-            if (item.type == ModContent.ItemType<MurasamaNeweffect>())
+            if (item.type == ItemType<MurasamaNeweffect>())
                 SetCustomMult(item, 9.995502248f);
 
-            if (item.type == ModContent.ItemType<Murasamaold>())
+            if (item.type == ItemType<Murasamaold>())
                 SetCustomMult(item, 9.995502248f);
             #endregion
             #region 射手
-            if (item.type == ModContent.ItemType<TyrannysEndOld>())
+            if (item.type == ItemType<TyrannysEndOld>())
                 SetCustomMult(item, 3f);
             #endregion
             #region 法师
-            if (item.type == ModContent.ItemType<VoidVortexLegacy>())
+            if (item.type == ItemType<VoidVortexLegacy>())
                 SetCustomMult(item, 2.4f);
-            if (item.type == ModContent.ItemType<HadopelagicEcho>())
+            if (item.type == ItemType<HadopelagicEcho>())
                 SetCustomMult(item, 2f);
             #endregion
         }
@@ -390,7 +390,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             //初始满暴
             if (item.type == ItemID.Zenith)
                 crit += 96;
-            if (item.type == ModContent.ItemType<ArkoftheCosmos>())
+            if (item.type == ItemType<ArkoftheCosmos>())
                 crit += 31;
         }
         #endregion
@@ -399,86 +399,86 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         {
             #region 遗产
             // 归元旋涡
-            if (item.type == ModContent.ItemType<SubsumingVortexold>())
+            if (item.type == ItemType<SubsumingVortexold>())
                 SetCustomMult(item, 1085);
             // 耀界之光
-            if (item.type == ModContent.ItemType<VividClarityOld>())
+            if (item.type == ItemType<VividClarityOld>())
                 SetCustomMult(item, 1250);
             // 星流短剑
-            if (item.type == ModContent.ItemType<ExoGladius>())
+            if (item.type == ItemType<ExoGladius>())
                 SetCustomMult(item, 3600);
             // 星流之刃
-            if (item.type == ModContent.ItemType<Exoblade>())
+            if (item.type == ItemType<Exoblade>())
                 SetCustomMult(item, 5175);
             // 链刃
-            if (item.type == ModContent.ItemType<ExoFlail>())
+            if (item.type == ItemType<ExoFlail>())
                 SetCustomMult(item, 6125);
             // 磁极异变
-            if (item.type == ModContent.ItemType<MagnomalyCannon>())
+            if (item.type == ItemType<MagnomalyCannon>())
                 SetCustomMult(item, 2200);
             // 天堂之风
-            if (item.type == ModContent.ItemType<HeavenlyGaleold>())
+            if (item.type == ItemType<HeavenlyGaleold>())
                 SetCustomMult(item, 708);
             // 星火解离者
-            if (item.type == ModContent.ItemType<Photovisceratorold>())
+            if (item.type == ItemType<Photovisceratorold>())
                 SetCustomMult(item, 1300);
             // 星神之杀
-            if (item.type == ModContent.ItemType<Celestusold>())
+            if (item.type == ItemType<Celestusold>())
                 SetCustomMult(item, 1054);
             // 超新星
-            if (item.type == ModContent.ItemType<Supernovaold>())
+            if (item.type == ItemType<Supernovaold>())
                 SetCustomMult(item, 5200);
             // 弧光
-            if (item.type == ModContent.ItemType<ExoTheApostle>())
+            if (item.type == ItemType<ExoTheApostle>())
                 SetCustomMult(item, 10000);
             // 归墟
-            if (item.type == ModContent.ItemType<CosmicImmaterializerOld>())
+            if (item.type == ItemType<CosmicImmaterializerOld>())
                 SetCustomMult(item, 2400);
             // 热寂
-            if (item.type == ModContent.ItemType<CelestialObliterator>())
+            if (item.type == ItemType<CelestialObliterator>())
                 SetCustomMult(item, 600);
             #endregion
             // 星火解离者
-            if (item.type == ModContent.ItemType<Photoviscerator>())
+            if (item.type == ItemType<Photoviscerator>())
                 SetCustomMult(item, 2300);
             // 天堂之风
-            if (item.type == ModContent.ItemType<HeavenlyGale>())
+            if (item.type == ItemType<HeavenlyGale>())
                 SetCustomMult(item, 800);
             // 星神之杀
-            if (item.type == ModContent.ItemType<Celestus>())
+            if (item.type == ItemType<Celestus>())
                 SetCustomMult(item, 1222);
             // 超新星
-            if (item.type == ModContent.ItemType<Supernova>())
+            if (item.type == ItemType<Supernova>())
                 SetCustomMult(item, 22000);
             // 星流刀
-            if (item.type == ModContent.ItemType<Exoblade>())
+            if (item.type == ItemType<Exoblade>())
                 SetCustomMult(item, 3000);
             // 旋涡
-            if (item.type == ModContent.ItemType<SubsumingVortex>())
+            if (item.type == ItemType<SubsumingVortex>())
                 SetCustomMult(item, 1165);
             // 耀界
-            if (item.type == ModContent.ItemType<VividClarity>())
+            if (item.type == ItemType<VividClarity>())
                 SetCustomMult(item, 1450);
             // 归墟
-            if (item.type == ModContent.ItemType<CosmicImmaterializer>())
+            if (item.type == ItemType<CosmicImmaterializer>())
                 SetCustomMult(item, 1800);
         }
         #endregion
         #region 魔影
         public static void ShadowspecBlance(Item item)
         {
-            if (item.type == ModContent.ItemType<Eternity>())
+            if (item.type == ItemType<Eternity>())
                 SetCustomMult(item, 5000);
-            if (item.type == ModContent.ItemType<Apotheosis>())
+            if (item.type == ItemType<Apotheosis>())
                 SetCustomMult(item, 9999);
             //这玩意菜的有点逆天了
-            if (item.type == ModContent.ItemType<ScarletDevil>())
+            if (item.type == ItemType<ScarletDevil>())
                 SetCustomMult(item, 45876);
-            if (item.type == ModContent.ItemType<NanoblackReaper>())
+            if (item.type == ItemType<NanoblackReaper>())
                 SetCustomMult(item, 2000);
-            if (item.type == ModContent.ItemType<TriactisTruePaladinianMageHammerofMight>())
+            if (item.type == ItemType<TriactisTruePaladinianMageHammerofMight>())
                 SetCustomMult(item, 60000);
-            if (item.type == ModContent.ItemType<Sylvestaff>())
+            if (item.type == ItemType<Sylvestaff>())
                 SetCustomMult(item, 1050);
             if (item.Same<TheDanceofLight>())
                 SetCustomMult(item, 6000);
@@ -512,41 +512,41 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 SetCustomMult(item, 2500);
             #region 遗产魔影
             //这个需要两倍
-            if (item.type == ModContent.ItemType<FabstaffOld>())
+            if (item.type == ItemType<FabstaffOld>())
                 SetCustomMult(item, 2890);
-            if (item.type == ModContent.ItemType<SomaPrimeOld>())
+            if (item.type == ItemType<SomaPrimeOld>())
                 SetCustomMult(item, 2400);
-            if (item.type == ModContent.ItemType<CrystylCrusherLegacy>())
+            if (item.type == ItemType<CrystylCrusherLegacy>())
                 SetCustomMult(item, 2000);
-            if (item.type == ModContent.ItemType<Animus>())
+            if (item.type == ItemType<Animus>())
                 SetCustomMult(item, 10000);
-            if (item.type == ModContent.ItemType<AzathothLegacy>())
+            if (item.type == ItemType<AzathothLegacy>())
                 SetCustomMult(item, 1000);
             //这个不需要补强了，回血效率问题
-            if (item.type == ModContent.ItemType<RogueTypeKnivesShadowspec>())
+            if (item.type == ItemType<RogueShadowspecKnives>())
                 SetCustomMult(item, 2000);
             //很难想象这个东西居然是需要加强的
             //800 -> 1000
-            if (item.Same<MeleeTypeNanoblackReaper>())
+            if (item.Same<MeleeNanoblackReaper>())
                 SetCustomMult(item, 1000);
             //同样不需要补强，强度足够了，还有武器特性问题
-            if (item.type == ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>())
+            if (item.type == ItemType<RogueTriactisHammer>())
                 SetCustomMult(item, 5800);
             //为啥开数值膨胀之后面板比没开低了？
             //不对，这jb的是原版神吞书我草
             //无敌了
             //if (item.type == ModContent.ItemType<Apotheosis>())
             //圣神之象需要翻4倍
-            if (item.type == ModContent.ItemType<ApotheosisLegacy>())
+            if (item.type == ItemType<ApotheosisLegacy>())
                 SetCustomMult(item, 2480);
-            if (item.type == ModContent.ItemType<SvantechnicalLegacy>())
+            if (item.type == ItemType<SvantechnicalLegacy>())
                 SetCustomMult(item, 720);
-            if (item.type == ModContent.ItemType<TemporalUmbrellaOld>())
+            if (item.type == ItemType<TemporalUmbrellaOld>())
                 SetCustomMult(item, 1000);
             //光之舞不需要
-            if (item.type == ModContent.ItemType<DanceofLightLegacy>())
+            if (item.type == ItemType<DanceofLightLegacy>())
                 SetCustomMult(item, 480);
-            if (item.type == ModContent.ItemType<StepToolShadows>())
+            if (item.type == ItemType<StepToolShadows>())
                 SetCustomMult(item, 5141);
             if (item.Same<ShizukuSword>())
                 SetCustomMult(item, 5000);
@@ -558,24 +558,24 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         #region 弹药
         public static void AmmoChange(Item item)
         {
-            if (item.type == ModContent.ItemType<ElysianArrow>())
+            if (item.type == ItemType<ElysianArrow>())
                 SetCustomMult(item, 20);
-            if (item.type == ModContent.ItemType<BloodfireArrow>())
+            if (item.type == ItemType<BloodfireArrow>())
                 SetCustomMult(item, 40);
-            if (item.type == ModContent.ItemType<VanquisherArrow>())
+            if (item.type == ItemType<VanquisherArrow>())
                 SetCustomMult(item, 33);
-            if (item.type == ModContent.ItemType<HolyFireBullet>())
+            if (item.type == ItemType<HolyFireBullet>())
                 SetCustomMult(item, 27);
-            if (item.type == ModContent.ItemType<BloodfireBullet>())
+            if (item.type == ItemType<BloodfireBullet>())
                 SetCustomMult(item, 40);
-            if (item.type == ModContent.ItemType<GodSlayerSlug>())
+            if (item.type == ItemType<GodSlayerSlug>())
                 SetCustomMult(item, 42);
 
-            if (item.type == ModContent.ItemType<HolyFireBulletOld>())
+            if (item.type == ItemType<HolyFireBulletOld>())
                 SetCustomMult(item, 27);
-            if (item.type == ModContent.ItemType<VanquisherArrowold>())
+            if (item.type == ItemType<VanquisherArrowold>())
                 SetCustomMult(item, 33);
-            if (item.type == ModContent.ItemType<ElysianArrowOld>())
+            if (item.type == ItemType<ElysianArrowOld>())
                 SetCustomMult(item, 20);
         }
         #endregion
@@ -583,28 +583,28 @@ namespace CalamityInheritance.System.CalStatInflationBACK
         #region 龙一龙二改变
         public static void YharonBlance(Item item)
         {
-            if (item.type == ModContent.ItemType<DragonSword>())
+            if (item.type == ItemType<DragonSword>())
                 SetCustomMult(item, 1005);
 
-            if (item.type == ModContent.ItemType<BurningSkyLegacy>())
+            if (item.type == ItemType<BurningSkyLegacy>())
                 SetCustomMult(item, 652);
 
-            if (item.type == ModContent.ItemType<DragonsBreathold>())
+            if (item.type == ItemType<DragonsBreathold>())
                 SetCustomMult(item, 256);
 
-            if (item.type == ModContent.ItemType<AncientDragonsBreath>())
+            if (item.type == ItemType<AncientDragonsBreath>())
                 SetCustomMult(item, 500);
 
-            if (item.type == ModContent.ItemType<DragonRage>())
+            if (item.type == ItemType<DragonRage>())
                 SetCustomMult(item, 2200);
 
-            if (item.type == ModContent.ItemType<DragonStaff>())
+            if (item.type == ItemType<DragonStaff>())
                 SetCustomMult(item, 200);
 
-            if (item.type == ModContent.ItemType<PhoenixFlameBarrage>())
+            if (item.type == ItemType<PhoenixFlameBarrage>())
                 SetCustomMult(item, 220);
 
-            if (item.type == ModContent.ItemType<YharonSonStaff>())
+            if (item.type == ItemType<YharonSonStaff>())
                 SetCustomMult(item, 320);
         }
         #endregion

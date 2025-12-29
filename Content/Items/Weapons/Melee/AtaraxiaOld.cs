@@ -36,10 +36,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.UseSound = CISoundID.SoundWeaponSwing;
 
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.Calamity().donorItem = true;
 
-            Item.shoot = ModContent.ProjectileType<AtaraxiaMainOld>();
+            Item.shoot = ProjectileType<AtaraxiaMainOld>();
             Item.shootSpeed = 9f;
         }
 
@@ -50,12 +50,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             SoundEngine.PlaySound(SoundID.Item60, position);
 
             // Center projectile
-            int centerID = ModContent.ProjectileType<AtaraxiaMainOld>();
+            int centerID = ProjectileType<AtaraxiaMainOld>();
             int centerDamage = damage;
             Projectile.NewProjectile(source, position, velocity, centerID, centerDamage, knockback, player.whoAmI, 0f, 0f);
 
             // Side projectiles (these deal 75% damage)
-            int sideID = ModContent.ProjectileType<AtaraxiaSideOld>();
+            int sideID = ProjectileType<AtaraxiaSideOld>();
             int sideDamage = (int)(0.85f * centerDamage);
             Vector2 originalVelocity = velocity;
             velocity.Normalize();
@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         // On-hit, tosses out five homing projectiles. This is not like Holy Collider.
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<Shadowflame>(), 480);
+            target.AddBuff(BuffType<Shadowflame>(), 480);
             OnHitEffects(player, target.Center);
         }
 
@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             SoundEngine.PlaySound(fire with { Volume = 0.5f, Pitch = 0.9f, PitchVariance = 0.2f, MaxInstances = -1 }, player.Center);
             // Individual true melee homing missiles deal 10% of the weapon's base damage.
             int numSplits = 5;
-            int trueMeleeID = ModContent.ProjectileType<AtaraxiaHoming>();
+            int trueMeleeID = ProjectileType<AtaraxiaHoming>();
             int trueMeleeDamage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(0.1f * Item.damage);
             float angleVariance = MathHelper.TwoPi / numSplits;
             float spinOffsetAngle = MathHelper.Pi / (2f * numSplits);

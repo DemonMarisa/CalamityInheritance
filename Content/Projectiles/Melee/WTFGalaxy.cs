@@ -9,13 +9,14 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class WTFGalaxy: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/MeleeTypeHammerGalaxySmasherLegacyProj";
+        public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
 
         private const float RotationIncrement = 0.22f;
         private const int Lifetime = 240;
@@ -82,14 +83,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // Applies God Slayer Inferno on contact.
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 240);
             OnHitEffect(target.Center);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             // Applies God Slayer Inferno on contact.
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 240);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 240);
             OnHitEffect(target.Center);
         }
 
@@ -124,7 +125,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
 
             // Three death lasers (aka "Nebula Shots") swarm the target.
-            int laserID = ModContent.ProjectileType<NebulaShot>();
+            int laserID = ProjectileType<NebulaShot>();
             int laserDamage = (int)(0.2f * Projectile.damage);
             float laserKB = 2.5f;
             int numLasers = 3;

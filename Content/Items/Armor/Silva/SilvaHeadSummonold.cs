@@ -27,10 +27,10 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                 Item.width = 28;
                 Item.height = 24;
                 Item.value = CIShopValue.RarityPriceDeepBlue;
-                Item.rare = ModContent.RarityType<DeepBlue>();
+                Item.rare = RarityType<DeepBlue>();
                 Item.defense = 13; //110
             }
-            public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<SilvaArmorold>() && legs.type == ModContent.ItemType<SilvaLeggingsold>();
+            public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<SilvaArmorold>() && legs.type == ItemType<SilvaLeggingsold>();
             public override void ArmorSetShadows(Player player)
             {
                 player.armorEffectDrawShadow = true;
@@ -48,15 +48,15 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                 if (player.whoAmI == Main.myPlayer)
                 {
                     var source = player.GetSource_ItemUse(Item);
-                    if (player.FindBuffIndex(ModContent.BuffType<SilvaCrystalBuff>()) == -1)
+                    if (player.FindBuffIndex(BuffType<SilvaCrystalBuff>()) == -1)
                     {
-                        player.AddBuff(ModContent.BuffType<SilvaCrystalBuff>(), 3600, true);
+                        player.AddBuff(BuffType<SilvaCrystalBuff>(), 3600, true);
                     }
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<SilvaCrystal>()] < 1)
+                    if (player.ownedProjectileCounts[ProjectileType<SilvaCrystal>()] < 1)
                     {
                         var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(1600);
 
-                        var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
+                        var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
                         if (Main.projectile.IndexInRange(p))
                             Main.projectile[p].originalDamage = 1500;
                     }
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
                 CreateRecipe().
                     AddIngredient<PlantyMush>(6).
                     AddIngredient<EffulgentFeather>(5).
-                    AddIngredient(ModContent.ItemType<DarksunFragment>(), 10).
+                    AddIngredient(ItemType<DarksunFragment>(), 10).
                     AddTile<CosmicAnvil>().
                     Register();
             }

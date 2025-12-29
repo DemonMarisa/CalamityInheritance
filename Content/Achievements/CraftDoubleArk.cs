@@ -10,8 +10,8 @@ namespace CalamityInheritance.Content.Achievements
     {
         public override void SetStaticDefaults()
         {
-            var oldOne = AddItemPickupCondition(ModContent.ItemType<ArkoftheCosmos>());
-            var newOne = AddItemPickupCondition(ModContent.ItemType<ArkoftheCosmosold>());
+            var oldOne = AddItemPickupCondition(ItemType<ArkoftheCosmos>());
+            var newOne = AddItemPickupCondition(ItemType<ArkoftheCosmosold>());
             Achievement.SetCategory(AchievementCategory.Collector);
             Achievement.UseTracker
             (
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Achievements
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<CraftMemeChair>());
+            yield return new After(GetInstance<CraftMemeChair>());
         }
     }
 }

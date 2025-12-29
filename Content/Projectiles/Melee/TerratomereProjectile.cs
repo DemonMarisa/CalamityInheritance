@@ -45,8 +45,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Player player = Main.player[base.Projectile.owner];
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            Player player = Main.player[Projectile.owner];
+            target.AddBuff(BuffType<GlacialState>(), 30);
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
                 int healAmount = Main.rand.Next(1) + 1;

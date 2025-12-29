@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using CalamityMod;
 
@@ -7,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
     public class ElementalOrbVortex : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void AI()
         {
-            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<ElementalBoltVortex>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ProjectileType<ElementalBoltVortex>());
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

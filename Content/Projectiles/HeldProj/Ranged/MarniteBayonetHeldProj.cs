@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -12,6 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
     public class MarniteBayonetHeldProj : BaseHeldProj, ILocalizedModType
     {
+        public override string Texture => GetInstance<MarniteBayonet>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public int maxXdistance = 8;
         public float aniXdistance = 0;

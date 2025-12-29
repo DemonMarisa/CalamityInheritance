@@ -130,8 +130,8 @@ namespace CalamityInheritance.CIPlayer
                     Player.statDefense += 20;
             }
         }
-        internal static int GetModBuff<R>() where R : ModBuff => ModContent.BuffType<R>();
-        internal bool SameBuffType<T>(int hasType) where T : ModBuff => SameBuffType(hasType, ModContent.BuffType<T>());
+        internal static int GetModBuff<R>() where R : ModBuff => BuffType<R>();
+        internal bool SameBuffType<T>(int hasType) where T : ModBuff => SameBuffType(hasType, BuffType<T>());
         internal bool SameBuffType(int buffType, int alterType) => buffType == alterType;
         public void Buffs()
         {
@@ -160,7 +160,7 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
             //庇护之刃T3: 你的防御力将会被转化为伤害加成
-            if (player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && DefendTier3)
+            if (player.ActiveItem().type == ItemType<DefenseBlade>() && DefendTier3)
             {
                 //获取当前
                 int getDef = Player.statDefense;
@@ -170,7 +170,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetDamage<MeleeDamageClass>() += (float)getRatio;
 
             }
-            if (Player.ActiveItem().type == ModContent.ItemType<SubsumingVortex>() && Player.altFunctionUse != 2 && BuffSubsumingVortexFireRate > 0)
+            if (Player.ActiveItem().type == ItemType<SubsumingVortex>() && Player.altFunctionUse != 2 && BuffSubsumingVortexFireRate > 0)
             {
                 Player.GetAttackSpeed<MagicDamageClass>() += 0.10f;
                 Player.manaCost -= 0.10f;
@@ -220,7 +220,7 @@ namespace CalamityInheritance.CIPlayer
             
             if (AnimusDamage > 1f)
             {
-                if (Player.ActiveItem().type != ModContent.ItemType<Animus>())
+                if (Player.ActiveItem().type != ItemType<Animus>())
                     AnimusDamage = 1f;
             }
 
@@ -265,10 +265,10 @@ namespace CalamityInheritance.CIPlayer
                 Player.maxMinions += 10;
 				if (Player.whoAmI == Main.myPlayer)
 				{
-					if (Player.FindBuffIndex(ModContent.BuffType<SonYharonBuff>()) == -1)
-						Player.AddBuff(ModContent.BuffType<SonYharonBuff>(), 3600, true);
-					if (Player.ownedProjectileCounts[ModContent.ProjectileType<SonYharon>()] < 2)
-						Projectile.NewProjectile(Player.GetSource_FromThis(),Player.Center, Vector2.Zero, ModContent.ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
+					if (Player.FindBuffIndex(BuffType<SonYharonBuff>()) == -1)
+						Player.AddBuff(BuffType<SonYharonBuff>(), 3600, true);
+					if (Player.ownedProjectileCounts[ProjectileType<SonYharon>()] < 2)
+						Projectile.NewProjectile(Player.GetSource_FromThis(),Player.Center, Vector2.Zero, ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
 				}
             }
             if (DarkSunRings)
@@ -321,7 +321,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer modPlayer = Player.Calamity();
             if(nanotechold)
             {
-                Player.AddCooldown(NanotechUI.ID, Content.Items.Accessories.Rogue.NanotechOld.nanotechDMGStack);
+                Player.AddCooldown(NanotechUI.ID, NanotechOld.nanotechDMGStack);
                 
                 if (nanoTechStackDurability >= 0 && nanoTechStackDurability < 150)
                 {
@@ -445,7 +445,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetCritChance<RangedDamageClass>() += (int)((1f - Player.stealth) * 5f);
             }
             #region 林海效果
-            bool triggerSilvaFakeDeath = Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(ModContent.BuffType<SilvaRevival>());
+            bool triggerSilvaFakeDeath = Player.HasCooldown(SilvaRevive.ID) || Player.HasBuff(BuffType<SilvaRevival>());
             //林海自起后的效果
             if (triggerSilvaFakeDeath)
                 DoSilvaFakeDeathEffect();
@@ -548,8 +548,8 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             Item item = Player.HeldItem;
-            var delePBG = ModContent.GetInstance<GetMalaLegendary>();
-            var deleJoke = ModContent.GetInstance<SpongeJoke>();
+            var delePBG = GetInstance<GetMalaLegendary>();
+            var deleJoke = GetInstance<SpongeJoke>();
             if (PBGTier1)
                 delePBG.LegendaryComplete1.Complete();
             if (PBGTier2)
@@ -558,15 +558,15 @@ namespace CalamityInheritance.CIPlayer
                 delePBG.LegendaryComplete3.Complete();
             
             if (CIConditions.DownedLegacyYharonP1.IsMet())
-                ModContent.GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
+                GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
             
             bool lastHitToSCal = CIServerConfig.Instance.CalStatInflationBACK;
             bool isNotBothDowned = (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedExoMechs) || (DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs) || (!DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs);
             //非双王后世界，数值膨胀
             if (lastHitToSCal && isNotBothDowned)
-                ModContent.GetInstance<DownedScal>().ForceKilledCondition.Complete();
+                GetInstance<DownedScal>().ForceKilledCondition.Complete();
 
-            if (item.type == ModContent.ItemType<ShizukuSword>())
+            if (item.type == ItemType<ShizukuSword>())
             {
                 Player.GetDamage<GenericDamageClass>() += 0.15f;
                 Player.GetAttackSpeed<GenericDamageClass>() += 0.15f;
@@ -588,12 +588,12 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //T3维苏威阿斯：使用时为自己提供+2HP/s生命恢复速度，并提高10%伤害。
-            if (Player.ActiveItem().type == ModContent.ItemType<RavagerLegendary>() && BetsyTier3)
+            if (Player.ActiveItem().type == ItemType<RavagerLegendary>() && BetsyTier3)
             {
-                Player.AddBuff(ModContent.BuffType<VolcanoBuff>(), 120);
+                Player.AddBuff(BuffType<VolcanoBuff>(), 120);
             }
 
-            if (Player.ActiveItem().type != ModContent.ItemType<DefenseBlade>())
+            if (Player.ActiveItem().type != ItemType<DefenseBlade>())
             {
                 if (DefenseBoost > 0f || DefendTier1Timer > 0)
                 {
@@ -607,11 +607,11 @@ namespace CalamityInheritance.CIPlayer
                 int realDefense = (int)(b * DefenseBoost);
                 Player.statDefense += realDefense;  
             }
-            if (!BuffPolarisBoost || Player.ActiveItem().type != ModContent.ItemType<PolarisParrotfishLegacy>())
+            if (!BuffPolarisBoost || Player.ActiveItem().type != ItemType<PolarisParrotfishLegacy>())
             {
                 BuffPolarisBoost = false;
-                if (Player.FindBuffIndex(ModContent.BuffType<PolarisBuffLegacy>()) > -1)
-                    Player.ClearBuff(ModContent.BuffType<PolarisBuffLegacy>());
+                if (Player.FindBuffIndex(BuffType<PolarisBuffLegacy>()) > -1)
+                    Player.ClearBuff(BuffType<PolarisBuffLegacy>());
 
                 PolarisBoostCounter = 0;
                 PolarisPhase2 = false;
@@ -634,7 +634,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             //龙弓左键伤害倍率计算
-            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
+            if (Player.ownedProjectileCounts[ProjectileType<DragonBow>()] != 0)
             {
                 float armorPeneBoost = Player.GetTotalArmorPenetration<RangedDamageClass>();
                 int totalArmor = Player.GetCurrentDefense();
@@ -647,7 +647,7 @@ namespace CalamityInheritance.CIPlayer
             }           
             
             //玩家佩戴创造之手，挥舞板凳时，提供30%伤害与暴击概率
-            if (Player.ActiveItem().type == ModContent.ItemType<StepToolShadows>() && IfGodHand)
+            if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
             {
                 Player.GetDamage<RogueDamageClass>() += 0.30f;
                 Player.GetCritChance<RogueDamageClass>() += 30;
@@ -661,8 +661,8 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult = NanotechOld.nanotechDMGBoost;
                 Player.GetDamage<GenericDamageClass>() *= 1 + RaiderStacks / 150f * damageMult;
             }
-            if (Player.ownedProjectileCounts[ModContent.ProjectileType<RogueTypeHammerTriactisTruePaladinianMageHammerofMightProjClone>()] == 1 && 
-                Player.ActiveItem().type == ModContent.ItemType<ExoTheApostle>()) 
+            if (Player.ownedProjectileCounts[ProjectileType<RogueTriactisHammerProjClone>()] == 1 && 
+                Player.ActiveItem().type == ItemType<ExoTheApostle>()) 
             {
                 Player.GetDamage<RogueDamageClass>() *= 2;
             }
@@ -686,7 +686,7 @@ namespace CalamityInheritance.CIPlayer
                     if (SForestBuffTimer < 120)
                         SForestBuffTimer++;
                     else
-                        Player.AddBuff(ModContent.BuffType<ShrineForestBuff>(), 6);
+                        Player.AddBuff(BuffType<ShrineForestBuff>(), 6);
                 }
                 else SForestBuffTimer -= 1;
             }
@@ -767,10 +767,10 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.buffImmune[BuffID.CursedInferno] = true; //是的, 就是这么少
                 Player.buffImmune[BuffID.ShadowFlame] = true;
-                Player.buffImmune[ModContent.BuffType<Nightwither>()] = true;
+                Player.buffImmune[BuffType<Nightwither>()] = true;
                 Player.buffImmune[BuffID.Daybreak] = true;
-                Player.buffImmune[ModContent.BuffType<WhisperingDeath>()] = true;
-                Player.buffImmune[ModContent.BuffType<WeakPetrification>()] = true;
+                Player.buffImmune[BuffType<WhisperingDeath>()] = true;
+                Player.buffImmune[BuffType<WeakPetrification>()] = true;
             }
             if(AsgardsValorImmnue)
             {
@@ -790,7 +790,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffID.WindPushed] = true;
                 Player.buffImmune[BuffID.Stoned] = true;
                 Player.buffImmune[BuffID.Daybreak] = true;
-                Player.buffImmune[ModContent.BuffType<SearingLava>()] = true;
+                Player.buffImmune[BuffType<SearingLava>()] = true;
             }
             if (ElysianAegis)
             {
@@ -800,7 +800,7 @@ namespace CalamityInheritance.CIPlayer
                 if (ElysianGuard)
                 {
                     if (Player.whoAmI == Main.myPlayer)
-                        Player.AddBuff(ModContent.BuffType<ElysianGuard>(), 2, false);
+                        Player.AddBuff(BuffType<ElysianGuard>(), 2, false);
 
                     float shieldBoostInitial = shieldInvinc;
                     shieldInvinc -= 0.08f;
@@ -900,7 +900,7 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.ZoneGlowshroom || Player.ZoneDirtLayerHeight || Player.ZoneRockLayerHeight)
                 {
                     if (Main.myPlayer == Player.whoAmI)
-                        Player.AddBuff(ModContent.BuffType<Mushy>(), 2);
+                        Player.AddBuff(BuffType<Mushy>(), 2);
 
                     Player.moveSpeed -= 0.1f;
                 }
@@ -917,7 +917,7 @@ namespace CalamityInheritance.CIPlayer
 
                     for (int i = 0; i < Main.maxProjectiles; i++)
                     {
-                        if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].type == ModContent.ProjectileType<TheDeadlyMicrobeProjectile>())
+                        if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].type == ProjectileType<TheDeadlyMicrobeProjectile>())
                             defualtProj++;
                     }
 
@@ -964,7 +964,7 @@ namespace CalamityInheritance.CIPlayer
                                     {
                                         for (int k = 0; k < Main.maxProjectiles; k++)
                                         {
-                                            if (Main.projectile[k].active && Main.projectile[k].owner == Player.whoAmI && Main.projectile[k].type == ModContent.ProjectileType<TheDeadlyMicrobeProjectile>() && (center - Main.projectile[k].Center).Length() < 48f)
+                                            if (Main.projectile[k].active && Main.projectile[k].owner == Player.whoAmI && Main.projectile[k].type == ProjectileType<TheDeadlyMicrobeProjectile>() && (center - Main.projectile[k].Center).Length() < 48f)
                                             {
                                                 ifBounce = false;
                                                 break;
@@ -974,7 +974,7 @@ namespace CalamityInheritance.CIPlayer
                                         if (ifBounce && Main.myPlayer == Player.whoAmI)
                                         {
                                             IEntitySource entitySource = Player.GetSource_ItemUse(Player.HeldItem);
-                                            Projectile.NewProjectile(entitySource, center.X, center.Y, 0f, 0f, ModContent.ProjectileType<TheDeadlyMicrobeProjectile>(), damage, knockBack, Player.whoAmI, 0f, 0f);
+                                            Projectile.NewProjectile(entitySource, center.X, center.Y, 0f, 0f, ProjectileType<TheDeadlyMicrobeProjectile>(), damage, knockBack, Player.whoAmI, 0f, 0f);
                                         }
                                     }
                                 }
@@ -1184,9 +1184,9 @@ namespace CalamityInheritance.CIPlayer
 
                         if (Vector2.Distance(Player.Center, Npc.Center) <= range)
                         {
-                            Npc.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+                            Npc.AddBuff(BuffType<BrimstoneFlames>(), 120);
                             if (Player.miscCounter % 30 == 0)
-                                Projectile.NewProjectileDirect(entitySource, Npc.Center, Vector2.Zero, ModContent.ProjectileType<DirectStrike>(), damage, 0f, Player.whoAmI, i);
+                                Projectile.NewProjectileDirect(entitySource, Npc.Center, Vector2.Zero, ProjectileType<DirectStrike>(), damage, 0f, Player.whoAmI, i);
                         }
                     }
                 }
@@ -1212,8 +1212,8 @@ namespace CalamityInheritance.CIPlayer
                     Player.endurance += 0.2f;
                     Player.statDefense += 30;
                     Player.Calamity().decayEffigy = true;
-                    Player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true;
-                    Player.buffImmune[ModContent.BuffType<CrushDepth>()] = true;
+                    Player.buffImmune[BuffType<SulphuricPoisoning>()] = true;
+                    Player.buffImmune[BuffType<CrushDepth>()] = true;
                     Player.lifeRegen += 3;
                 }
                 if (!calPlayer.ZoneAbyss || !calPlayer.ZoneSulphur)
@@ -1238,7 +1238,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.75);
                 Player.GetDamage<GenericDamageClass>() *= 1.05f;
-                Player.buffImmune[ModContent.BuffType<IcarusFolly>()] = true;
+                Player.buffImmune[BuffType<IcarusFolly>()] = true;
             }
 
             if (LoreDevourer || PanelsLoreDevourer)

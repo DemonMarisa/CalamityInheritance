@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
              var mp = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<ShrineMarbleSword>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<ShrineMarbleSword>()] > 0)
             {
                 mp.SMarbleSword= true;
             }

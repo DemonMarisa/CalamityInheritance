@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Player player = Main.player[Projectile.owner];
             if (Projectile.owner == Main.myPlayer)
             {
-                player.AddBuff(ModContent.BuffType<PolarisBuffLegacy>(), 480);
+                player.AddBuff(BuffType<PolarisBuffLegacy>(), 480);
             }
         }
 
@@ -166,7 +166,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 {
                     for (int k = 0; k < projectiles; k++)
                     {
-                        int split = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, Main.rand.Next(-10, 11) * 2f, Main.rand.Next(-10, 11) * 2f, ModContent.ProjectileType<ChargedBlastLegacy2>(),
+                        int split = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, Main.rand.Next(-10, 11) * 2f, Main.rand.Next(-10, 11) * 2f, ProjectileType<ChargedBlastLegacy2>(),
                         (int)(Projectile.damage * 0.85), (int)(Projectile.knockBack * 0.5), Main.myPlayer, 0f, 0f);
                     }
                 }

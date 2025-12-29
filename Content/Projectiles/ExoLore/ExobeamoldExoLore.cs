@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -12,6 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class ExobeamoldExoLore : ModProjectile, ILocalizedModType
     {
+        public override string Texture => GetInstance<Exobeamold>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         private int counter = 0;
 
@@ -152,15 +154,15 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             switch (randomChoice)
             {
                 case 0:
-                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, 25f, ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 1:
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 2:
-                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ProjectileType<CIExocomet>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
                     break;
             }
         }

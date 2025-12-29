@@ -25,11 +25,11 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 			Item.width = 18;
 			Item.height = 18;
 			Item.value = CIShopValue.RarityMaliceDrop;
-			Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+			Item.rare = RarityType<MaliceChallengeDrop>();
 			Item.defense = 100; //150
 		}
 
-		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<YharimAuricTeslaBodyArmor>() && legs.type == ModContent.ItemType<YharimAuricTeslaCuisses>();
+		public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<YharimAuricTeslaBodyArmor>() && legs.type == ItemType<YharimAuricTeslaCuisses>();
 		public override void UpdateArmorSet(Player player)
 		{
 			var modPlayer = player.CIMod();
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 						modPlayer.AncientAuricDashCounter += 1;
 						modPlayer.AncientAuricDashCache = 30;
 					}
-					player.AddBuff(ModContent.BuffType<yharimOfPerun>(), 1800);
+					player.AddBuff(BuffType<yharimOfPerun>(), 1800);
 
 				}
 				player.dash = 0;

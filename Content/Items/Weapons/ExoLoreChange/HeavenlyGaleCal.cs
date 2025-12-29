@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class HeavenlyGaleCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<HeavenlyGale>();
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ItemType<HeavenlyGale>();
         public override void ModifyTooltips(Item item, List<TooltipLine> o)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Ranged.HeavenlyGaleChange") : null;
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class HeavenlyGaleCrystalArrow : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExoCrystalArrow>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExoCrystalArrow>();
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             var usPlayer = Main.player[projectile.owner].CIMod();
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class HeavenlyGaleCrystalStrike : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<ExoLightningBolt>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExoLightningBolt>();
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             var usPlayer = Main.player[projectile.owner].CIMod();
@@ -127,7 +127,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                         Item heldItem = self.Owner.ActiveItem();
                         self.Owner.PickAmmo(heldItem, out int projectileType, out float shootSpeed, out int damage, out float knockback, out _);
                         damage = (int)(damage * damageFactor);
-                        projectileType = ModContent.ProjectileType<ExoCrystalArrow>();
+                        projectileType = ProjectileType<ExoCrystalArrow>();
 
                         bool createLightning = self.ChargeTimer / HeavenlyGale.MaxChargeTime >= HeavenlyGale.ChargeLightningCreationThreshold;
                         Vector2 arrowVelocity = arrowDirection * shootSpeed;

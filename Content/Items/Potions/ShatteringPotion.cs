@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<ArmorShattering>();
+            Item.buffType = BuffType<ArmorShattering>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
             Item.value = CIShopValue.RarityPriceYellow;
         }

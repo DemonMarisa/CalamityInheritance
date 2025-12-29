@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using System;
 using Terraria.ModLoader;
 using Terraria;
@@ -50,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<ElementalMix>(), 180);
+            target.AddBuff(BuffType<ElementalMix>(), 180);
         }
         public override bool PreDraw(ref Color lightColor)
         {

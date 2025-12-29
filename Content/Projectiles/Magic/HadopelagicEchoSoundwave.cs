@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 600);
+            target.AddBuff(BuffType<CrushDepth>(), 600);
             target.AddBuff(BuffID.Ichor, 300);
             target.AddBuff(BuffID.Electrified, 600);
             Projectile.velocity *= 0.85f;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if (echoCooldown <= 0)
             {
                 echoCooldown = 60;
-                int echoID = ModContent.ProjectileType<HadopelagicEcho2>();
+                int echoID = ProjectileType<HadopelagicEcho2>();
                 int echoDamage = (int)(0.2f * Projectile.damage);
                 float echoKB = Projectile.knockBack / 3;
                 int echos = 5;

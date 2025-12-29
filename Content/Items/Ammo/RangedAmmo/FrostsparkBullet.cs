@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
             Item.knockBack = 1.25f;
             Item.value = 600;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<FrostsparkBulletProj>();
+            Item.shoot = ProjectileType<FrostsparkBulletProj>();
             Item.shootSpeed = 14f;
             Item.ammo = AmmoID.Bullet;
         }

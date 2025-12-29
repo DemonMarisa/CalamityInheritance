@@ -5,12 +5,13 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class AuroraFireLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private const int framesBeforeTurning = 70;
         private bool initialized = false;
@@ -56,8 +57,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 int dustType = Utils.SelectRandom(Main.rand, new int[]
                 {
-                    ModContent.DustType<AstralBlue>(),
-                    ModContent.DustType<AstralOrange>()
+                    DustType<AstralBlue>(),
+                    DustType<AstralOrange>()
                 });
                 for (int i = 0; i < 5; i++)
                 {
@@ -75,12 +76,12 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 240);
+            target.AddBuff(BuffType<AstralInfectionDebuff>(), 240);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 240);
+            target.AddBuff(BuffType<AstralInfectionDebuff>(), 240);
         }
     }
 }

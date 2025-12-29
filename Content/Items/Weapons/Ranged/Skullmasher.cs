@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
             Item.useAmmo = 97;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = RarityType<MaliceChallengeDrop>();
             
         }
 
@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 300);
+            target.AddBuff(BuffType<MarkedforDeath>(), 300);
 
             target.Calamity().miscDefenseLoss = 25;
         }
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 {
                     float speedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
                     float speedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
-                    Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), ModContent.ProjectileType<AMRShot>(), damage, knockback, player.whoAmI);
+                    Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), ProjectileType<AMRShot>(), damage, knockback, player.whoAmI);
                 }
                 if (CIConfig.Instance.AmmoConversion == false)
                 {
@@ -83,9 +83,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     Projectile proj = Projectile.NewProjectileDirect(source, position, new Vector2(speedX, speedY), type, damage, knockback, player.whoAmI);
                     if (type == ProjectileID.Bullet)
                     {
-                        type = ModContent.ProjectileType<AMRShot>();
+                        type = ProjectileType<AMRShot>();
                     }
-                    if (type != ModContent.ProjectileType<AMRShot>())
+                    if (type != ProjectileType<AMRShot>())
                     {
                         proj.CalamityInheritance().AMRextra = true;
                     }

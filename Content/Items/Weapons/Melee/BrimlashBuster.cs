@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.value = CIShopValue.RarityPriceRed;
             Item.rare = ItemRarityID.Red;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<BrimlashBusterProj>();
+            Item.shoot = ProjectileType<BrimlashBusterProj>();
         }
         public override void AddRecipes()
         {
@@ -60,12 +60,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 300);
         }
     }
 }

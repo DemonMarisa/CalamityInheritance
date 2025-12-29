@@ -25,7 +25,7 @@ namespace CalamityInheritance.Buffs.Summon
         public override void Update(Player player, ref int buffIndex)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<SiriusMinionLegacy>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<SiriusMinionLegacy>()] > 0)
             {
                 modPlayer.siriusLegacy = true;
             }

@@ -25,8 +25,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.createTile = ModContent.TileType<Tiles.Furniture.CraftingStations.DraedonsForgeold>();
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.createTile = TileType<Tiles.Furniture.CraftingStations.DraedonsForgeold>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override void AddRecipes()
@@ -36,10 +36,10 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             recipe.AddRecipeGroup("HardmodeAnvil");
             recipe.AddIngredient(ItemID.LunarCraftingStation);
             recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddIngredient(ModContent.ItemType<CosmiliteBar>(), 5);
-            recipe.AddIngredient(ModContent.ItemType<NightmareFuel>(), 20);
-            recipe.AddIngredient(ModContent.ItemType<EndothermicEnergy>(), 20);
-            recipe.AddIngredient(ModContent.ItemType<DarksunFragment>(), 20);
+            recipe.AddIngredient(ItemType<CosmiliteBar>(), 5);
+            recipe.AddIngredient(ItemType<NightmareFuel>(), 20);
+            recipe.AddIngredient(ItemType<EndothermicEnergy>(), 20);
+            recipe.AddIngredient(ItemType<DarksunFragment>(), 20);
             recipe.Register();
         }
     }

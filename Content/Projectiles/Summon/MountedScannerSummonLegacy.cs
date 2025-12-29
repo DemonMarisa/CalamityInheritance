@@ -69,8 +69,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public void GrantBuffs(Player player)
         {
-            bool isCorrectProjectile = Projectile.type == ModContent.ProjectileType<MountedScannerSummonLegacy>();
-            player.AddBuff(ModContent.BuffType<MountedScannerLegacyBuff>(), 3600);
+            bool isCorrectProjectile = Projectile.type == ProjectileType<MountedScannerSummonLegacy>();
+            player.AddBuff(BuffType<MountedScannerLegacyBuff>(), 3600);
             if (isCorrectProjectile)
             {
                 if (player.dead)
@@ -102,7 +102,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             if (Time % LaserFireRate == LaserFireRate - 1f)
             {
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.SafeDirectionTo(target.Center, Vector2.UnitY), ModContent.ProjectileType<MountedScannerLaserLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, Projectile.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.SafeDirectionTo(target.Center, Vector2.UnitY), ProjectileType<MountedScannerLaserLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, Projectile.whoAmI);
 
                 SoundEngine.PlaySound(CommonCalamitySounds.LaserCannonSound, Projectile.Center);
             }

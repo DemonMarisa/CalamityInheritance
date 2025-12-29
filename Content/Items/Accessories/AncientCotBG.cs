@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:48,
             itemHeight:48,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override void UpdateAccessory(Player player, bool hideVisual)

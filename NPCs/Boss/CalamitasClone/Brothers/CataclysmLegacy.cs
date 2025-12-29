@@ -60,7 +60,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = value;
             if (!Main.dedServ)
             {
-                GlowMask = ModContent.Request<Texture2D>($"{Gen}/CataclysmLegacy_Glow", AssetRequestMode.AsyncLoad);
+                GlowMask = Request<Texture2D>($"{Gen}/CataclysmLegacy_Glow", AssetRequestMode.AsyncLoad);
             }
         }
         #endregion
@@ -197,7 +197,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
                     Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation); // 基础方向根据旋转角度
                     direction = direction.SafeNormalize(Vector2.UnitX);
 
-                    int projType = ModContent.ProjectileType<CataclysmFire>();
+                    int projType = ProjectileType<CataclysmFire>();
                     // 偏移向量
                     Vector2 offset = new Vector2(0, 50).RotatedBy(NPC.rotation);
                     Vector2 projectileVelocity = direction * 6.5f;
@@ -384,7 +384,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
             if (hurtInfo.Damage > 0)
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120, true);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 120, true);
         }
 
         public override void OnKill()
@@ -394,7 +394,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
         }
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ModContent.ItemType<HavocsBreathLegacy>(), 4);
+            npcLoot.Add(ItemType<HavocsBreathLegacy>(), 4);
         }
         #endregion
     }

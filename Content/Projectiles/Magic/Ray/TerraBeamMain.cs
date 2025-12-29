@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Projectiles.BaseProjectiles;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -15,12 +16,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public override float MaxLaserLength => 1500f;
         public override float Lifetime => 30f;
         public override Color LightCastColor => Color.White;
-        public override Texture2D LaserBeginTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayStart", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserMiddleTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayMid", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserEndTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserBeginTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayStart", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserMiddleTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayMid", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserEndTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
 
         public ref float ShardCooldown => ref Projectile.ai[1];
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 20;
@@ -99,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             float lengthFromStart = Projectile.Distance(target.Center);
 
             int totalShards = (int)MathHelper.Lerp(1, 3, MathHelper.Clamp(lengthFromStart / MaxLaserLength * 1.5f, 0f, 1f));
-            int shardType = ModContent.ProjectileType<PhotosyntheticShard>();
+            int shardType = ProjectileType<PhotosyntheticShard>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             for (int i = 0; i < totalShards; i++)
             {

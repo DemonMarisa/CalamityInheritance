@@ -110,7 +110,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                 {
                     SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Item/DeadSunRicochet") with { Pitch = -0.65f, Volume = 1.8f }, NPC.Center);
                     Vector2 direction = baseDirection.RotatedBy(MathHelper.TwoPi / 4 * i);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * 2f, ModContent.ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneDarts, 0f, Main.myPlayer);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, direction * 2f, ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneDarts, 0f, Main.myPlayer);
                 }
             }
         }

@@ -30,12 +30,12 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles =
             [
-                ModContent.TileType<AshenAltar>(),
-                ModContent.TileType<AncientAltar>(),
-                ModContent.TileType<MonolithAmalgam>(),
-                ModContent.TileType<PlagueInfuser>(),
-                ModContent.TileType<VoidCondenser>(),
-                ModContent.TileType<AcceleratorT1Tile>()
+                TileType<AshenAltar>(),
+                TileType<AncientAltar>(),
+                TileType<MonolithAmalgam>(),
+                TileType<PlagueInfuser>(),
+                TileType<VoidCondenser>(),
+                TileType<AcceleratorT1Tile>()
             ];
         }
 

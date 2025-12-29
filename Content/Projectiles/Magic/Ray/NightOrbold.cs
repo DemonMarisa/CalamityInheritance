@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 using Terraria;
 
@@ -7,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class NightOrbold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -23,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 
         public override void AI()
         {
-            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<NightBoltold>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ProjectileType<NightBoltold>());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 66;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<CrystalDust>();
+            Item.shoot = ProjectileType<CrystalDust>();
             Item.shootSpeed = 3f;
         }
 

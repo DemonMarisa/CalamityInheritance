@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.width = 72;
             Item.damage = 400;
             Item.noMelee = true;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.noUseGraphic = true;
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -35,9 +35,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.height = 72;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() : ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.shoot = ModContent.ProjectileType<DragonSpearProj>();
+            Item.shoot = ProjectileType<DragonSpearProj>();
             Item.shootSpeed = 28f;
         }
 

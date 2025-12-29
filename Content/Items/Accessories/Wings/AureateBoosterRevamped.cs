@@ -30,13 +30,13 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if((player.armor[0].type == ModContent.ItemType<ReaverCapRevamped>()        ||
-                player.armor[0].type == ModContent.ItemType<ReaverHelmRevamped>()       ||
-                player.armor[0].type == ModContent.ItemType<ReaverHelmetRevamped>()     ||
-                player.armor[0].type == ModContent.ItemType<ReaverMaskRevamped>()       ||
-                player.armor[0].type == ModContent.ItemType<ReaverVisageRevamped>())    &&
-                player.armor[1].type == ModContent.ItemType<ReaverScaleMailRevamped>()  &&//这个判定给我看呆了
-                player.armor[2].type == ModContent.ItemType<ReaverCuissesRevamped>())
+            if((player.armor[0].type == ItemType<ReaverCapRevamped>()        ||
+                player.armor[0].type == ItemType<ReaverHelmRevamped>()       ||
+                player.armor[0].type == ItemType<ReaverHelmetRevamped>()     ||
+                player.armor[0].type == ItemType<ReaverMaskRevamped>()       ||
+                player.armor[0].type == ItemType<ReaverVisageRevamped>())    &&
+                player.armor[1].type == ItemType<ReaverScaleMailRevamped>()  &&//这个判定给我看呆了
+                player.armor[2].type == ItemType<ReaverCuissesRevamped>())
             {
                 player.pickSpeed -= 0.5f;
                 player.fishingSkill += 50;

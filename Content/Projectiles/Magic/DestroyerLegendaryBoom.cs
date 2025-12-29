@@ -2,12 +2,13 @@
 using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class DestroyerLegendaryBoom: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

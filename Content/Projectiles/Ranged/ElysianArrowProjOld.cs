@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     {
                         velocityMult = 1f;
                     }
-                    Mod mod = ModContent.GetInstance<CalamityInheritance>();
+                    Mod mod = GetInstance<CalamityInheritance>();
                     int type = Main.rand.Next(61, 64);
                     int smoke = Gore.NewGore(Projectile.GetSource_Death(), source, default, type, 1f);
                     Gore gore = Main.gore[smoke];
@@ -129,14 +129,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             meteorSpawnY *= meteorSpawnAdjust;
             if (Projectile.owner == Main.myPlayer)
             {
-                int meteor = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, meteorSpawnX, meteorSpawnY, ModContent.ProjectileType<SkyFlareFriendly>(), Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
+                int meteor = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, meteorSpawnX, meteorSpawnY, ProjectileType<SkyFlareFriendly>(), Projectile.damage / 2, 5f, Projectile.owner, 0f, 0f);
                 Main.projectile[meteor].ai[1] = Projectile.position.Y;
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+            target.AddBuff(BuffType<HolyFlames>(), 180);
         }
 
         public override bool PreDraw(ref Color lightColor)

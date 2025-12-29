@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CatastropheBall>();
+            Item.shoot = ProjectileType<CatastropheBall>();
             Item.shootSpeed = 18f;
             Item.useAmmo = AmmoID.Gel;
         }

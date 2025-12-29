@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item44;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<BloodClotMinion>();
+            Item.shoot = ProjectileType<BloodClotMinion>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
         }

@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
             Item.width = 20;
             Item.height = 20;
             Item.consumable = false;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override void UpdateInventory(Player player)
         {

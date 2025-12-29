@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Projectile.width = 16;
             Projectile.height = 16;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<MeleeDamageClass>();
+            Projectile.DamageType = GetInstance<MeleeDamageClass>();
             Projectile.penetrate = 15;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;

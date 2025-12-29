@@ -34,15 +34,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.knockBack = 5.75f;
             Item.UseSound = SoundID.Item73;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<VehemenceOld>();
+            Item.shoot = ProjectileType<VehemenceOld>();
             Item.shootSpeed = 16f;
 
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity , ModContent.ProjectileType<VehemenceOld>(), damage, (int)knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity , ProjectileType<VehemenceOld>(), damage, (int)knockback, player.whoAmI, 0f, 0f);
             player.AddBuff(BuffID.ManaSickness, 600, true);
             return false;
         }

@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
         public override void AI()
         {
-            bool flag64 = Projectile.type == ModContent.ProjectileType<ReaverOrbOld>();
+            bool flag64 = Projectile.type == ProjectileType<ReaverOrbOld>();
             Player player = Main.player[Projectile.owner];
             var modPlayer = player.CIMod();
 
@@ -110,11 +110,11 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 {
                     for (int num252 = 0; num252 < 1; num252++)
                     {
-                        int spore = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X - 4f, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y,ModContent.ProjectileType<ReaverOrbMark>(), Projectile.damage, 1.5f, Projectile.owner, 0f, 0f);
+                        int spore = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X - 4f, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ProjectileType<ReaverOrbMark>(), Projectile.damage, 1.5f, Projectile.owner, 0f, 0f);
                         Main.projectile[spore].minion = true;
                         Main.projectile[spore].minionSlots = 0f;
                         int numberOfProjectiles = Main.rand.Next(6, 8);
-                        int[] projectileTypes = { ModContent.ProjectileType<CISporeGasSummon>(), ModContent.ProjectileType<CISporeGasSummon2>(), ModContent.ProjectileType<CISporeGasSummon3>() };
+                        int[] projectileTypes = { ProjectileType<CISporeGasSummon>(), ProjectileType<CISporeGasSummon2>(), ProjectileType<CISporeGasSummon3>() };
                         float baseAngleIncrement = 2 * MathHelper.Pi / numberOfProjectiles;
                         float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
                         float randomOffset = Main.rand.NextFloat(-MathHelper.ToRadians(2), MathHelper.ToRadians(1));

@@ -4,12 +4,12 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria.Audio;
-
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class DesertMark : ModProjectile
     {
-        public override string Texture => "CalamityMod/Projectiles/InvisibleProj";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -126,7 +126,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.localAI[1] += 1f;
             if (Projectile.localAI[1] == 60f && Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<DesertTornado>(), Projectile.damage, 2f, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<DesertTornado>(), Projectile.damage, 2f, Projectile.owner, 0f, 0f);
             }
             if (Projectile.localAI[1] >= 120f)
             {
@@ -139,7 +139,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             Color color25 = Lighting.GetColor((int)(Projectile.position.X + Projectile.width * 0.5) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
             Vector2 vector38 = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-            Texture2D invis = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D invis = Request<Texture2D>(Texture).Value;
             Rectangle rectangle11 = invis.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
             Color alpha5 = Projectile.GetAlpha(color25);
             Vector2 origin7 = rectangle11.Size() / 2f;

@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.FiniteUse
             if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 90;
-                SoundEngine.PlaySound(new SoundStyle("CalamityInheritance/Sounds/Item/BazookaRocket"), base.Projectile.position);
+                SoundEngine.PlaySound(new SoundStyle("CalamityInheritance/Sounds/Item/BazookaRocket"), Projectile.position);
             }
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 30f)

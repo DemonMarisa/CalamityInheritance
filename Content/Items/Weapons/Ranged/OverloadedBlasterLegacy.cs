@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
             Item.shootSpeed = 6.5f;
-            Item.shoot = ModContent.ProjectileType<SlimeBoltLegacy>();
+            Item.shoot = ProjectileType<SlimeBoltLegacy>();
             Item.useAmmo = AmmoID.Gel;
         }
 

@@ -45,25 +45,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = CISoundID.SoundLaserDestroyer;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;
-            Item.shoot = ModContent.ProjectileType<ACTAlphaHeldProj>();
-            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<AlgtPink>() : ModContent.RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<ACTAlphaHeldProj>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<AlgtPink>() : RarityType<DeepBlue>();
 
             Item.noUseGraphic = true;
             Item.channel = true;
         }
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[ModContent.ProjectileType<ACTAlphaHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<ACTAlphaHeldProj>()] < 1;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<ACTAlphaHeldProj>()] < 1)
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<ACTAlphaHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            if (player.ownedProjectileCounts[ProjectileType<ACTAlphaHeldProj>()] < 1)
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<ACTAlphaHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
 
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<AlphaWingmanHeldProj>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<AlphaWingmanHeldProj>()] < 1)
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AlphaWingmanHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 1f);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<AlphaWingmanHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 1f);
             }
             return false;
         }

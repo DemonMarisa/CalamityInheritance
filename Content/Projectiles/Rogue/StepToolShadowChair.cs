@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             Projectile.width = 900;
             Projectile.height = 900;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 90000;
@@ -98,17 +98,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             SpawnChair();//无视CD生成椅子
 
             //掠夺鲨、神长、地守和终灾会被直接秒杀.别问我为什么.
-            if(target.type == ModContent.NPCType<ReaperShark>() || 
-               target.type == ModContent.NPCType<DevourerofGodsHead>() ||
-               target.type == ModContent.NPCType<DevourerofGodsBody>() ||
-               target.type == ModContent.NPCType<DevourerofGodsTail>() ||
-               target.type == ModContent.NPCType<SupremeCalamitas>() ||
+            if(target.type == NPCType<ReaperShark>() || 
+               target.type == NPCType<DevourerofGodsHead>() ||
+               target.type == NPCType<DevourerofGodsBody>() ||
+               target.type == NPCType<DevourerofGodsTail>() ||
+               target.type == NPCType<SupremeCalamitas>() ||
                target.type == NPCID.DungeonGuardian)
             target.life /= 2;
 
             //无视敌怪的防御数据，每次真“近战”a击中时必定扣除其固定点血量, 代码是这么写的.
             
-            target.AddBuff(ModContent.BuffType<StepToolDebuff>(), 1145); //梯凳驾到
+            target.AddBuff(BuffType<StepToolDebuff>(), 1145); //梯凳驾到
         }
         private void SpawnChair()
         {
@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 velocity = new Vector2(0f, speed);
                 velocity = velocity.RotatedBy(angle * i * Main.rand.NextFloat(0.9f,1.1f));
                 //生成小椅子
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<StepToolShadowChairSmall>(), Projectile.damage, Projectile.knockBack / 4f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<StepToolShadowChairSmall>(), Projectile.damage, Projectile.knockBack / 4f, Projectile.owner);
             }
             //给小凳子的生成加了等同于无敌帧的cd，不然打蠕虫怪的时候电脑会爆炸
             Main.player[Projectile.owner].CIMod().StepToolShadowChairSmallCD = 9;

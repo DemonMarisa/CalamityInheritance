@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 30;
             Item.useAmmo = AmmoID.Gel;
             Item.shootSpeed = 5f;
-            Item.shoot = ModContent.ProjectileType<SparkSpreaderFireLegacy>();
+            Item.shoot = ProjectileType<SparkSpreaderFireLegacy>();
 
             Item.width = 52;
             Item.height = 20;

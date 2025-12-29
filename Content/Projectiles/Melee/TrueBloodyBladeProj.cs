@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             // 生成 Dust
-            int dustIndex = Terraria.Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Terra);
+            int dustIndex = Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Terra);
             Main.dust[dustIndex].noGravity = true;
 
             // 调用自定义粒子 TrueBloodyProjSpark
@@ -69,10 +69,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 60);
+            target.AddBuff(BuffType<BurningBlood>(), 60);
             target.AddBuff(BuffID.Ichor, 60);
 
-            Player player = Main.player[base.Projectile.owner];
+            Player player = Main.player[Projectile.owner];
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
                 int healAmount = Main.rand.Next(2) + 1;

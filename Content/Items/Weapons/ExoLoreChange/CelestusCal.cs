@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class CelestusCal : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<Celestus>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<Celestus>();
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string t = Main.LocalPlayer.CIMod().PanelsLoreExo || Main.LocalPlayer.CIMod().LoreExo ? Language.GetTextValue($"{Generic.WeaponTextPath}Rogue.CelestusChange") : null;
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         const int Timer = 1;
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ModContent.ProjectileType<CelestusMiniScythe>();
+        public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<CelestusMiniScythe>();
         //我直接干掉了原本的AI，自己写一个
         public override bool PreAI(Projectile projectile)
         {

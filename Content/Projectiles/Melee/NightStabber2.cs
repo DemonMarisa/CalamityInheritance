@@ -9,12 +9,14 @@ using System;
 using CalamityInheritance.Utilities;
 using Terraria.Audio;
 using CalamityInheritance.Content.Items;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class NightStabber2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 4;

@@ -10,12 +10,13 @@ using Terraria.Audio;
 using CalamityInheritance.Sounds.Custom;
 using LAP.Core.Utilities;
 
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class BlueAura : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public int MaxDistance = 450;
         public bool BeginReturn = false;
@@ -30,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.width = 20;
             Projectile.height = 20;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
@@ -107,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
 
-            if (owner.HeldItem.type != ModContent.ItemType<AncientShiv>() || !Owner.LAP().MouseLeft)
+            if (owner.HeldItem.type != ItemType<AncientShiv>() || !Owner.LAP().MouseLeft)
             {
                 BeginReturn = true;
             }

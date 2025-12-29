@@ -86,8 +86,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
 
         public void VerifyIdentityOfCaller()
         {
-            Owner.AddBuff(ModContent.BuffType<SarosPossessionBuffLegacy>(), 3600);
-            bool isCorrectProjectile = Projectile.type == ModContent.ProjectileType<SarosAuraLegacy>();
+            Owner.AddBuff(BuffType<SarosPossessionBuffLegacy>(), 3600);
+            bool isCorrectProjectile = Projectile.type == ProjectileType<SarosAuraLegacy>();
             if (isCorrectProjectile)
             {
                 if (Owner.dead)
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
                 {
                     float angle = MathHelper.Lerp(-MathHelper.ToRadians(20f), MathHelper.ToRadians(20f), i / 2f);
                     Vector2 fireVelocity = Projectile.SafeDirectionTo(target.Center).RotatedBy(angle) * 15f;
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = radiantOrbOriginalDamage / 2;
                 }
@@ -116,14 +116,14 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
             {
                 Vector2 spawnPosition = Projectile.Center + Main.rand.NextVector2Unit() * Main.rand.NextFloat(100f, 360f);
                 Vector2 bootlegRadianceOrbVelocity = Projectile.SafeDirectionTo(target.Center) * 2f;
-                int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, bootlegRadianceOrbVelocity, ModContent.ProjectileType<SarosMicrosunLegacy>(), radiantOrbDamage, Projectile.knockBack * 4f, Projectile.owner);
+                int p2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), spawnPosition, bootlegRadianceOrbVelocity, ProjectileType<SarosMicrosunLegacy>(), radiantOrbDamage, Projectile.knockBack * 4f, Projectile.owner);
                 if (Main.projectile.IndexInRange(p2))
                     Main.projectile[p2].originalDamage = radiantOrbOriginalDamage;
                 for (int i = 0; i < 3; i++)
                 {
                     float angle = MathHelper.Lerp(-MathHelper.ToRadians(30f), MathHelper.ToRadians(30f), i / 3f);
                     Vector2 fireVelocity = Projectile.SafeDirectionTo(target.Center).RotatedBy(angle) * 19f;
-                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ModContent.ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, fireVelocity, ProjectileType<SarosSunfireLegacy>(), radiantOrbDamage / 2, Projectile.knockBack, Projectile.owner);
                     if (Main.projectile.IndexInRange(p))
                         Main.projectile[p].originalDamage = radiantOrbOriginalDamage / 2;
                 }
@@ -134,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
 
         public override void PostDraw(Color lightColor)
         {
-            Texture2D currentTexture = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D currentTexture = Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(currentTexture,
                 Projectile.Center - Main.screenPosition,
                 null,

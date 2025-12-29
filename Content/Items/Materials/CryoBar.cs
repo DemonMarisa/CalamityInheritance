@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Materials
 
         public override void SetDefaults()
         {
-            Item.DefaultToPlaceableTile(ModContent.TileType<CryoBarTile>());
+            Item.DefaultToPlaceableTile(TileType<CryoBarTile>());
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
         }

@@ -57,14 +57,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
+            target.AddBuff(BuffType<Dragonfire>(), 180);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 0;
 
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 180);
+            target.AddBuff(BuffType<Dragonfire>(), 180);
         }
 
         public override Color? GetAlpha(Color lightColor) => new Color(250, 25, 0, Projectile.alpha);

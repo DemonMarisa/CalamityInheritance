@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Achievements
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(Terraria.Achievements.AchievementCategory.Collector);
-            AddItemPickupCondition(ModContent.ItemType<R99>());
+            AddItemPickupCondition(ItemType<R99>());
         }
         public override Position GetDefaultPosition()
         {

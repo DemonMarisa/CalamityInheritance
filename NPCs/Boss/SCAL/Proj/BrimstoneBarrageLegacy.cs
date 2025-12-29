@@ -94,7 +94,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (Projectile.Hitbox.Intersects(player.Hitbox))
             {
-                player.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 240);
+                player.AddBuff(BuffType<VulnerabilityHexLegacy>(), 240);
                 Color orbcolor = Main.rand.NextBool() ? Color.Red : Color.Lerp(Color.Red, Color.Magenta, 0.5f);
                 if (CIGlobalNPC.LegacySCalLament != -1)
                     orbcolor = Main.rand.NextBool() ? Color.Blue : Color.Lerp(Color.Blue, Color.DeepSkyBlue, 0.5f);
@@ -114,7 +114,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (Projectile.ai[2] == 0f)
                 player.ScalDebuffs(180, 240, 0);
             else
-                player.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 30);
+                player.AddBuff(BuffType<BrimstoneFlames>(), 30);
         }
         public override bool PreDraw(ref Color lightColor)
         {
@@ -128,7 +128,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (CIGlobalNPC.LegacySCalLament != -1)
             {
                 DrawColor = Color.White;
-                texture = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneBarrageLegacy_blue").Value;
+                texture = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Proj/BrimstoneBarrageLegacy_blue").Value;
             }
 
             DrawColor *= Projectile.Opacity;

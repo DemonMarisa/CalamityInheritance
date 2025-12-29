@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 18;
             Item.knockBack = 2f;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<AuroraFireLegacy>();
+            Item.shoot = ProjectileType<AuroraFireLegacy>();
             Item.shootSpeed = 7.5f;
             Item.useAmmo = AmmoID.Gel;
 
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/AuroraBlazerLegacyGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Ranged/AuroraBlazerLegacyGlow").Value);
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

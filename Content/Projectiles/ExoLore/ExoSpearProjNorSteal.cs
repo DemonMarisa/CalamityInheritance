@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 		private int penetrates = 5;
 
 		private int teleportticks = 32;
-
+        public override string Texture => GetInstance<ExoSpearProj>().Texture;
 		public override void SetStaticDefaults()
 		{
 			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
@@ -40,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 			Projectile.penetrate = -1;
 			Projectile.friendly = true;
 			Projectile.tileCollide = false;
-			Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+			Projectile.DamageType = GetInstance<RogueDamageClass>();
 			Projectile.extraUpdates = 4;
 			Projectile.timeLeft = 720;
 			Projectile.usesLocalNPCImmunity = true;
@@ -74,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 					Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default);
 					vector.X *= ProjSpeed;
 					vector.Y *= ProjSpeed;
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ProjectileType<ExoSpearTrailNor>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
 				}
 			}
 		}
@@ -121,8 +122,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 				Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default);
 				if (Projectile.owner == Main.myPlayer)
 				{
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
-					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrailNor>(), (int)((double)Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ProjectileType<ExoSpearTrailNor>(), (int)((double)((ModProjectile)this).Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
+					Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ProjectileType<ExoSpearTrailNor>(), (int)((double)Projectile.damage * 0.075), ((ModProjectile)this).Projectile.knockBack, ((ModProjectile)this).Projectile.owner, 0f, 0f);
 					increment = 0;
 				}
 				splits++;

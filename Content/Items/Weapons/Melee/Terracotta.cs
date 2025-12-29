@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = player.GetSource_ItemUse(Item);
-            Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<TerracottaExplosion>(), hit.Damage, hit.Knockback, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<TerracottaExplosion>(), hit.Damage, hit.Knockback, player.whoAmI);
             if (target.life >= 0)
                 return;
 
@@ -50,14 +50,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 float randomSpeedX = Main.rand.Next(3);
                 float randomSpeedY = Main.rand.Next(3, 5);
-                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, randomSpeedX * i, -randomSpeedY, ModContent.ProjectileType<TerracottaProj>(), 0, 0f, player.whoAmI, player.whoAmI);
+                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, randomSpeedX * i, -randomSpeedY, ProjectileType<TerracottaProj>(), 0, 0f, player.whoAmI, player.whoAmI);
             }
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hit)
         {
             var source = player.GetSource_ItemUse(Item);
-            Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ModContent.ProjectileType<TerracottaExplosion>(), hit.Damage, hit.Knockback, player.whoAmI);
+            Projectile.NewProjectile(source, target.Center.X, target.Center.Y, 0f, 0f, ProjectileType<TerracottaExplosion>(), hit.Damage, hit.Knockback, player.whoAmI);
             if (target.statLife >= 0)
                 return;
 
@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 float randomSpeedX = Main.rand.Next(3);
                 float randomSpeedY = Main.rand.Next(3, 5);
-                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, randomSpeedX * i, -randomSpeedY, ModContent.ProjectileType<TerracottaProj>(), 0, 0f, player.whoAmI, player.whoAmI);
+                Projectile.NewProjectile(source, target.Center.X, target.Center.Y, randomSpeedX * i, -randomSpeedY, ProjectileType<TerracottaProj>(), 0, 0f, player.whoAmI, player.whoAmI);
             }
         }
 

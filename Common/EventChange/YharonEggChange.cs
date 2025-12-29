@@ -21,7 +21,7 @@ namespace CalamityInheritance.Common.EventChange
     public class YharonEggChange : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<YharonEgg>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<YharonEgg>();
         public override bool CanUseItem(Item item, Player player)
         {
             if(!CIServerConfig.Instance.SolarEclipseChange)

@@ -28,12 +28,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.knockBack = 1f;
             Item.UseSound = SoundID.Item90;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<MidnightSunBeaconProjold>();
+            Item.shoot = ProjectileType<MidnightSunBeaconProjold>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
 
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

@@ -30,7 +30,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
             NPCID.Sets.TrailingMode[NPC.type] = 1;
             if (!Main.dedServ)
             {
-                GlowTexture = ModContent.Request<Texture2D>(Texture + "_Glow", AssetRequestMode.AsyncLoad);
+                GlowTexture = Request<Texture2D>(Texture + "_Glow", AssetRequestMode.AsyncLoad);
             }
 
             NPCID.Sets.BossBestiaryPriority.Add(Type);
@@ -88,7 +88,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
         public override void AI()
         {
             bool death = CalamityWorld.death || BossRushEvent.BossRushActive;
-            if (!NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()))
+            if (!NPC.AnyNPCs(NPCType<CalamitasCloneLegacy>()))
             {
                 NPC.life = 0;
                 NPC.HitEffect();
@@ -97,7 +97,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
             }
 
 
-            NPC parent = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<CalamitasCloneLegacy>())];
+            NPC parent = Main.npc[NPC.FindFirstNPC(NPCType<CalamitasCloneLegacy>())];
 
             if (start)
             {
@@ -125,7 +125,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
                     for (int d = 0; d < 3; d++)
                         Dust.NewDust(NPC.position, NPC.width, NPC.height, (int)CalamityDusts.Brimstone, 0f, 0f, 100, default, 2f);
 
-                    int type = ModContent.ProjectileType<BrimstoneBarrage>();
+                    int type = ProjectileType<BrimstoneBarrage>();
                     int damage = 300;
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, damage, 1f, parent.target, 1f, 0f, projectileSpeed * 2f);
                 }
@@ -210,7 +210,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.LifeSeeker
 
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120, true);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 120, true);
         }
 
         public override void HitEffect(NPC.HitInfo hit)

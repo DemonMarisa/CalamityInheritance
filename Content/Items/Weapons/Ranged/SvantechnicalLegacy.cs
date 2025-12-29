@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.knockBack = 3.5f;
 
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
 
             Item.ArmorPenetration = 500;

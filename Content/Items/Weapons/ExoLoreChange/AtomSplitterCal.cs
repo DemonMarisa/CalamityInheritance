@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             CISoundMenu.AtomToss3
         ];
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ModContent.ItemType<TheAtomSplitter>();
+        public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<TheAtomSplitter>();
         public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage)
         {
             if (player.CheckExoLore())
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             bool stealth = player.Calamity().StealthStrikeAvailable();
             if (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo)
             {
-                int s = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<AtomProjRework>(), damage, knockback, player.whoAmI, -1f);
+                int s = Projectile.NewProjectile(source, position, velocity, ProjectileType<AtomProjRework>(), damage, knockback, player.whoAmI, -1f);
                 Main.projectile[s].Calamity().stealthStrike = stealth;
             }
             else

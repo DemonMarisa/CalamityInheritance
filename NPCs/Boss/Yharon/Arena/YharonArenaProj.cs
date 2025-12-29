@@ -73,7 +73,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
                     if (Projectile.ai[1] >= Main.projFrames[Projectile.type])
                         Projectile.ai[1] = 0;
 
-                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - Projectile.height * (i + 1), 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
+                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - Projectile.height * (i + 1), 0f, 0f, ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
                     Main.projectile[proj].frame = (int)Projectile.ai[1];
                 }
                 for (int i = 0; i < 12; i++)
@@ -82,7 +82,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
                     if (Projectile.ai[1] >= Main.projFrames[Projectile.type])
                         Projectile.ai[1] = 0;
 
-                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y + Projectile.height * (i + 1), 0f, 0f, ModContent.ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
+                    var proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y + Projectile.height * (i + 1), 0f, 0f, ProjectileType<YharonArenaProj>(), 1000, 0, -1, 1);
                     Main.projectile[proj].frame = (int)Projectile.ai[1];
                 }
                 hasSpawn = true;
@@ -101,7 +101,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
         
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 600);
+            target.AddBuff(BuffType<Dragonfire>(), 600);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.LAP().UseCICalStatInflation = true;
             Item.LAP().WeaponTier = AllWeaponTier.PostDOG;
         }
@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 }
                 mouseDistance = (float)Math.Sqrt(mouseXDist * mouseXDist + mouseYDist * mouseYDist);
                 mouseDistance = flameSpeed / mouseDistance;
-                Projectile.NewProjectile(source, realPlayerPos, Vector2.Zero, ModContent.ProjectileType<EssenceFlame2>(), essenceDamage, 0f, i, 0f, Main.rand.Next(3));
+                Projectile.NewProjectile(source, realPlayerPos, Vector2.Zero, ProjectileType<EssenceFlame2>(), essenceDamage, 0f, i, 0f, Main.rand.Next(3));
             }
         }
 
@@ -128,7 +128,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 }
                 mouseDistance = (float)Math.Sqrt(mouseXDist * mouseXDist + mouseYDist * mouseYDist);
                 mouseDistance = flameSpeed / mouseDistance;
-                Projectile.NewProjectile(source, realPlayerPos, Vector2.Zero, ModContent.ProjectileType<EssenceFlame2>(), essenceDamage, 0f, i, 0f, Main.rand.Next(3));
+                Projectile.NewProjectile(source, realPlayerPos, Vector2.Zero, ProjectileType<EssenceFlame2>(), essenceDamage, 0f, i, 0f, Main.rand.Next(3));
             }
         }
 

@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             Player r99Owner = Main.player[Projectile.owner];
-            if (r99Owner.ActiveItem().type != ModContent.ItemType<R99>())
+            if (r99Owner.ActiveItem().type != ItemType<R99>())
                 return;
             ref int isShooted = ref r99Owner.CIMod().R99Shooting;
             ref int targetIndex = ref r99Owner.CIMod().R99TargetWhoAmI;
@@ -89,35 +89,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[Projectile.owner];
-            if (player.ActiveItem().type == ModContent.ItemType<R99>())
+            if (player.ActiveItem().type == ItemType<R99>())
             {
-                //处理声音
-                //大残
-                SoundStyle[] R99HitShield =
-                [
-                    CISoundMenu.R99ShieldHit1,
-                    CISoundMenu.R99ShieldHit2
-
-                ];
-                //一丝
-                SoundStyle[] R99FleshHit =
-                [
-                    CISoundMenu.R99FleshHit1,
-                    CISoundMenu.R99FleshHit2,
-                    CISoundMenu.R99FleshHit3,
-                    CISoundMenu.R99FleshHit4
-                ];
-                //碎甲
-                SoundStyle[] R99ShieldCracked =
-                [
-                    CISoundMenu.R99ShieldCracked1,
-                    CISoundMenu.R99ShieldCracked2,
-                    CISoundMenu.R99ShieldCracked3,
-                    CISoundMenu.R99ShieldCracked4
-                ];
-                SoundStyle crackedShield = Utils.SelectRandom(Main.rand, R99ShieldCracked);
-                SoundStyle hitSoundShield = Utils.SelectRandom(Main.rand, R99HitShield);
-                SoundStyle fleshHit = Utils.SelectRandom(Main.rand, R99FleshHit);
+                SoundStyle crackedShield = Utils.SelectRandom(Main.rand, CISoundMenu.R99ShieldCracked);
+                SoundStyle hitSoundShield = Utils.SelectRandom(Main.rand, CISoundMenu.R99ShieldHit);
+                SoundStyle fleshHit = Utils.SelectRandom(Main.rand, CISoundMenu.R99FleshHit);
                 ref int shootedTime = ref player.CIMod().R99Shooting;
                 ref int soundDelay = ref player.CIMod().GlobalSoundDelay;
                 ref int targetIndex = ref player.CIMod().R99TargetWhoAmI;

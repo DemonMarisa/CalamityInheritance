@@ -75,6 +75,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             target.ExoDebuffs();
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 180);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 180);
     }
 }

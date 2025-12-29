@@ -18,9 +18,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class PBGLegendary: LegendaryWeaponClass
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
-        public override ClassType WeaponDamageClass => ClassType.Rogue;
+        public override ClassType GeneralWeaponClass => ClassType.Rogue;
+        public override bool WeaponPrefix() => true;
+        public override bool RangedPrefix() => false;
         public override Color DrawColor => new(0, 255, 127);
-        public override int SetRarityColor => ModContent.RarityType<PBGLime>();
+        public override int SetRarityColor => RarityType<PBGLime>();
         public int BaseDamage = 30;
         public int baseDamage = 30;
         public override void ExSD()
@@ -36,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.knockBack = 1.25f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PBGLegendaryProj>();
+            Item.shoot = ProjectileType<PBGLegendaryProj>();
             Item.shootSpeed = 10f;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -67,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             float getdmg = LegendaryDamage() + Generic.GenericLegendBuff();
@@ -90,9 +92,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             if (!player.Calamity().StealthStrikeAvailable())
             {
                 if (player.altFunctionUse == 2)
-                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PBGLegendaryBolt>(), (int)(damage * 1.75f), knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity, ProjectileType<PBGLegendaryBolt>(), (int)(damage * 1.75f), knockback, player.whoAmI);
                 else
-                    Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PBGLegendaryProj>(), (int)(damage * 1.75f), knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position, velocity, ProjectileType<PBGLegendaryProj>(), (int)(damage * 1.75f), knockback, player.whoAmI);
             }
             else
             {
@@ -101,7 +103,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 for (int j = 1; j <= pNum; j++)
                 {
                     Vector2 spread = new Vector2(velocity.X, velocity.Y).RotatedBy(j / 11f + 0.2f) * j / 5f;
-                    int p = Projectile.NewProjectile(source, position + velocity * 0.1f, velocity + spread, ModContent.ProjectileType<PBGLegendaryBeam>(), dmg, knockback, player.whoAmI, 0f, 0f, -1f);
+                    int p = Projectile.NewProjectile(source, position + velocity * 0.1f, velocity + spread, ProjectileType<PBGLegendaryBeam>(), dmg, knockback, player.whoAmI, 0f, 0f, -1f);
                     Main.projectile[p].Calamity().stealthStrike = true;
                 }
             }

@@ -5,12 +5,14 @@ using Terraria;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
 using CalamityMod.NPCs.Providence;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class ColdheartIcicleProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<ColdheartIcicle>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -21,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -43,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Projectile.damage = 1;
-            if (target.type != NPCID.TargetDummy && target.type != ModContent.NPCType<Providence>())
+            if (target.type != NPCID.TargetDummy && target.type != NPCType<Providence>())
                 target.life -= target.lifeMax * 2 / 100;
             target.checkDead();
             Projectile.netUpdate = true;

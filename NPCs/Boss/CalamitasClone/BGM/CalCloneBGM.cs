@@ -16,7 +16,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<CalamitasCloneLegacy>();
+            public override int NPCType => NPCType<CalamitasCloneLegacy>();
             public override int? MusicModMusic => MusicID.Boss2;
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -29,7 +29,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<CalamitasCloneLegacy>();
+            public override int NPCType => NPCType<CalamitasCloneLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("CalamitasClone");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;

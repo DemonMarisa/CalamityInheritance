@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 106;
             Item.scale *= 3.2f; //这玩意据说比毁灭剑大两倍 - 真的很大.
             Item.damage = 160;
-            Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Item.DamageType = GetInstance<TrueMeleeDamageClass>();
             Item.useTime = 22;
             Item.useAnimation = 22;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 CIFunction.DustCircle(target.Center, 15, 1.4f, DustID.CrimsonTorch, false, 5f);
                 SoundEngine.PlaySound(SoundID.Item74 with {Volume = 0.5f});
             }
-            int fuckYou = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f,0f), ModContent.ProjectileType<FuckYou>(), Item.damage, Item.knockBack, Main.myPlayer);
+            int fuckYou = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f,0f), ProjectileType<FuckYou>(), Item.damage, Item.knockBack, Main.myPlayer);
             SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode with {Volume = 0.5f});
             if(fuckYou.WithinBounds(Main.maxProjectiles))
                 Main.projectile[fuckYou].DamageType = DamageClass.Melee;
@@ -64,8 +64,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                     float getSpeedX = Main.rand.Next(5);
                     float getSpeedY = Main.rand.Next(3,7);
                     offsetSpread = startSpread + alterSpread * ( i + i * i)/2f + 32f * i;
-                    int healProj = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ModContent.ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
-                    int healProjAlter = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ModContent.ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
+                    int healProj = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
+                    int healProjAlter = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
                     Main.projectile[healProj].velocity.X = -getSpeedX;
                     Main.projectile[healProj].velocity.Y = -getSpeedY;
                     Main.projectile[healProjAlter].velocity.X = getSpeedX;

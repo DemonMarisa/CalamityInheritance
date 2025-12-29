@@ -16,9 +16,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     public class DestroyerLegendary: LegendaryWeaponClass
     {
-        public override ClassType WeaponDamageClass => ClassType.Magic;
+        public override ClassType GeneralWeaponClass => ClassType.Magic;
         public override Color DrawColor => new(65, 105, 225);
-        public override int SetRarityColor => ModContent.RarityType<SHPCAqua>();
+        public override int SetRarityColor => RarityType<SHPCAqua>();
         public static readonly int BaseDamage = 17;
         public override void ExSD()
         {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.noMelee = true;
             Item.knockBack = 3.25f;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<LegacySHPCHeldProj>();
+            Item.shoot = ProjectileType<LegacySHPCHeldProj>();
             Item.shootSpeed = 20f;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryBuff() + Generic.GenericLegendBuffInt();
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 Item.useTime = Item.useAnimation = 60;
             }
             Item.mana = player.CIMod().DestroyerTier3 ? 0 : 20;
-            return player.ownedProjectileCounts[ModContent.ProjectileType<LegacySHPCHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<LegacySHPCHeldProj>()] < 1;
         }
 
         public override Vector2? HoldoutOffset()
@@ -95,9 +95,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.altFunctionUse == 2)
-                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             else
-                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 1f, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<LegacySHPCHeldProj>(), damage, knockback, player.whoAmI, 1f, 0f, 0f);
             return false;
         }
         public static int LegendaryBuff()

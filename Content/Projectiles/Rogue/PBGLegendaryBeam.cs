@@ -11,13 +11,14 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class PBGLegendaryBeam: ModProjectile, ILocalizedModType
     {
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         #region 音效
         public static string UsingSound => "CalamityMod/Sounds/Item";
         public static readonly SoundStyle HitSound3 = new($"{UsingSound}/WulfrumKnifeThrowFull") { PitchVariance = 0.4f };
@@ -87,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.alpha = 255;
             Projectile.extraUpdates = 12;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.localNPCHitCooldown = 12;
         }
         //颜色的修改可不会自己同步。

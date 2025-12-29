@@ -64,7 +64,7 @@ namespace CalamityInheritance.UI
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D pageTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
+            Texture2D pageTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogPage").Value;
 
             float progress = EasingHelper.EaseOutExpo(FadeTime / (float)FadeTimeMax);
             float xScale = MathHelper.Lerp(0.004f, 1f, progress);
@@ -124,11 +124,11 @@ namespace CalamityInheritance.UI
 
             float RightarrowScale = 1f;
 
-            Texture2D leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
-            Texture2D rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
+            Texture2D leftArrowTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
+            Texture2D rightArrowTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrow").Value;
 
-            Texture2D leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
-            Texture2D rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+            Texture2D leftArrowTextureBG = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
+            Texture2D rightArrowTextureBG = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowBG").Value;
 
             // 箭头背景的绘制信息
             #region 箭头背景
@@ -172,8 +172,8 @@ namespace CalamityInheritance.UI
                 // 动态切换纹理
                 if (isHovering)
                 {
-                    leftArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
-                    leftArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
+                    leftArrowTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
+                    leftArrowTextureBG = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
                     Main.blockMouse = true;
                 }
 
@@ -209,8 +209,8 @@ namespace CalamityInheritance.UI
 
                 if (isHovering)
                 {
-                    rightArrowTexture = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
-                    rightArrowTextureBG = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
+                    rightArrowTexture = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHover").Value;
+                    rightArrowTextureBG = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/DraedonsLogArrowHoverBG").Value;
                     Main.blockMouse = true;
                 }
 

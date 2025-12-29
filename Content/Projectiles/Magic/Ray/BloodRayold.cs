@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Dusts;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.ModLoader;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         public const int Lifetime = 200;
         public ref float Time => ref Projectile.ai[0];
         public ref float InitialDamage => ref Projectile.ai[1];
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public Player Owner => Main.player[Projectile.owner];
         public override void SetDefaults()
         {
@@ -31,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             if (Projectile.localAI[1] >= 29f && Projectile.owner == Main.myPlayer)
             {
                 Projectile.localAI[1] = 0f;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<BloodOrb>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<BloodOrb>(), (int)(Projectile.damage * 0.6), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
 
             if (InitialDamage == 0f)

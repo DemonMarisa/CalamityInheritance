@@ -23,9 +23,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             Item.height = 24;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 36; //96
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<SilvaArmorold>() && legs.type == ModContent.ItemType<SilvaLeggingsold>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<SilvaArmorold>() && legs.type == ItemType<SilvaLeggingsold>();
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CIMod();
@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             CreateRecipe().
                 AddIngredient<PlantyMush>(6).
                 AddIngredient<EffulgentFeather>(5).
-                AddIngredient(ModContent.ItemType<DarksunFragment>(), 10).
+                AddIngredient(ItemType<DarksunFragment>(), 10).
                 AddTile<CosmicAnvil>().
                 Register();
         }

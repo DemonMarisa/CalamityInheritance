@@ -37,8 +37,8 @@ namespace CalamityInheritance.Utilities
                 _ => false,
             };
         }
-        public static bool ThisBodyPart<T>(this Player player, ArmorPart slot) where T : ModItem => ThisBodyPart(player, slot, ModContent.ItemType<T>());
-        public static bool ThisBodyPart<T>(this Item part, ArmorPart slot) where T : ModItem => ThisBodyPart(part, slot, ModContent.ItemType<T>());
+        public static bool ThisBodyPart<T>(this Player player, ArmorPart slot) where T : ModItem => ThisBodyPart(player, slot, ItemType<T>());
+        public static bool ThisBodyPart<T>(this Item part, ArmorPart slot) where T : ModItem => ThisBodyPart(part, slot, ItemType<T>());
         #region Cooldowns
         // 移除冷却
         public static void RemoveCooldown(this Player player, string id)
@@ -103,10 +103,11 @@ namespace CalamityInheritance.Utilities
             if (!needExtension)
                 return false;
             if (anyBox is NPC.HitInfo hitBox)
-                return hitBox.DamageType == ModContent.GetInstance<T>();
+                return hitBox.DamageType == GetInstance<T>();
             return false;
 
         }
+        public static void AddBuff<T>(this Player player, int timeToAdd, bool quiet = true, bool foodHack = false) where T : ModBuff => player.AddBuff(BuffType<T>(), timeToAdd, quiet, foodHack);
         /// <summary>
         /// 杀了玩家
         /// </summary>
@@ -162,7 +163,7 @@ namespace CalamityInheritance.Utilities
                     Player.KillMeForGood();
                 }
             }
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             if (world.IronHeart)
                 SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
             else

@@ -31,8 +31,8 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
             Item.UseSound = SoundID.Item105;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.shoot = ModContent.ProjectileType<GalacticaStar>();
+            Item.rare = RarityType<BlueGreen>();
+            Item.shoot = ProjectileType<GalacticaStar>();
             Item.shootSpeed = 23f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

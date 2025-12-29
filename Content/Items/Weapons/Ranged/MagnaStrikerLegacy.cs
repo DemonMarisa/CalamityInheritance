@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = CISoundMenu.OpalStriker;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<OpalStrikeLegacy>();
+            Item.shoot = ProjectileType<OpalStrikeLegacy>();
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.None;
             
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int pType = Main.rand.NextBool() ? type : ModContent.ProjectileType<MagnaStrikerProj>();
+            int pType = Main.rand.NextBool() ? type : ProjectileType<MagnaStrikerProj>();
             Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI);
             return false;
         }

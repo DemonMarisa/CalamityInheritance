@@ -31,10 +31,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.maxStack = 1;
-            Item.shoot = ModContent.ProjectileType<NightsGazeProjectile>();
+            Item.shoot = ProjectileType<NightsGazeProjectile>();
             Item.shootSpeed = 30f;
             Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.rare = RarityType<PureGreen>();
             Item.DamageType = RogueDamageClass.Instance;
         }
 

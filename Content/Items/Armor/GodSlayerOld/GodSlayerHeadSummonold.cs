@@ -32,10 +32,10 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 29; //96
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<GodSlayerChestplateold>() && legs.type == ModContent.ItemType<GodSlayerLeggingsold>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<GodSlayerChestplateold>() && legs.type == ItemType<GodSlayerLeggingsold>();
 
         public override void ArmorSetShadows(Player player)
         {
@@ -62,11 +62,11 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             {
                 if (CIConfig.Instance.GodSlayerWorm)
                 {
-                    player.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 3600, true);
-                    if (player.ownedProjectileCounts[ModContent.ProjectileType<DOGworm_Auric>()] < 1)
+                    player.AddBuff(BuffType<DOGSummonBuff>(), 3600, true);
+                    if (player.ownedProjectileCounts[ProjectileType<DOGworm_Auric>()] < 1)
                     {
-                        ModItem item = ItemLoader.GetItem(ModContent.ItemType<StaffofDOG>());
-                        int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ModContent.ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
+                        ModItem item = ItemLoader.GetItem(ItemType<StaffofDOG>());
+                        int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
                         Main.projectile[p].originalDamage = StaffofDOG.BaseDamage * 3;
                     }
                 }

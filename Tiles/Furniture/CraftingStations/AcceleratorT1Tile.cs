@@ -28,9 +28,9 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles =
             [
-                ModContent.TileType<WulfrumLabstation>(),   
-                ModContent.TileType<EutrophicShelf>(),
-                ModContent.TileType<StaticRefiner>(),
+                TileType<WulfrumLabstation>(),
+                TileType<EutrophicShelf>(),
+                TileType<StaticRefiner>(),
             ];
         }
 

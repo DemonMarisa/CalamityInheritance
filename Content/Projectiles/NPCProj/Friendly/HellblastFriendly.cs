@@ -75,9 +75,9 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), 600, false);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), 600, false);
-            target.AddBuff(ModContent.BuffType<Horror>(), 600, false);
+            target.AddBuff(BuffType<AbyssalFlames>(), 600, false);
+            target.AddBuff(BuffType<VulnerabilityHexLegacy>(), 600, false);
+            target.AddBuff(BuffType<Horror>(), 600, false);
         }
 
         public override void OnKill(int timeLeft)
@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.NPCProj.Friendly
             SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BrimstoneExplosion>(), Projectile.damage / 25, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<BrimstoneExplosion>(), Projectile.damage / 25, 0f, Main.myPlayer, 0f, 0f);
             }
         }
     }

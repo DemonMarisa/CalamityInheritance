@@ -34,11 +34,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useTime = 23;
             Item.useAnimation = 23;
             Item.UseSound = CISoundID.SoundWeaponSwing;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
 
             Item.autoReuse = true;
             Item.shootSpeed = 10f;
-            Item.shoot = ModContent.ProjectileType<PhantomLanceProj>();
+            Item.shoot = ProjectileType<PhantomLanceProj>();
         }
 
         public override float StealthDamageMultiplier => 1.75f;

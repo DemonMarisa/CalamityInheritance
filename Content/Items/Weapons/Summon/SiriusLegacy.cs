@@ -41,11 +41,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.damage = 225;
             Item.knockBack = 3f;
             Item.useTime = Item.useAnimation = 10;
-            Item.shoot = ModContent.ProjectileType<SiriusMinionLegacy>();
+            Item.shoot = ProjectileType<SiriusMinionLegacy>();
             Item.shootSpeed = 10f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
 
         public override void HoldItem(Player player)

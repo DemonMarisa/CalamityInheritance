@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<GranitePulse>();
+            Item.shoot = ProjectileType<GranitePulse>();
             Item.shootSpeed = 9f;
         }
 

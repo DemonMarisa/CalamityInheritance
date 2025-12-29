@@ -60,8 +60,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             Projectile.FramesChanger(6,5);
             Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.05f, 0.15f, 0.2f);
-            bool isMinion = Projectile.type == ModContent.ProjectileType<AncientClasper>();
-            player.AddBuff(ModContent.BuffType<AncientClasperBuff>(), 3600);
+            bool isMinion = Projectile.type == ProjectileType<AncientClasper>();
+            player.AddBuff(BuffType<AncientClasperBuff>(), 3600);
             if (isMinion)
             {
                 if (player.dead)
@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             int size = tex.Height / Main.projFrames[Projectile.type];
             int y6 = size * Projectile.frame;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Rectangle?(new Rectangle(0, y6, tex.Width, size)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(tex.Width / 2f, size / 2f), Projectile.scale, SpriteEffects.None, 0);

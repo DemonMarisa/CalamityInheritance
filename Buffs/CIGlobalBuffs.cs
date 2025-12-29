@@ -21,7 +21,7 @@ namespace CalamityInheritance.Buffs
             下面这个效果无论是否开启原版回调都是存在的，我就是看他不爽了
             */
             //3+9 = 12 -> 6 HP/s
-            if (type == ModContent.BuffType<TarraLifeRegen>() && player.CIMod().GodSlayerMelee)
+            if (type == BuffType<TarraLifeRegen>() && player.CIMod().GodSlayerMelee)
                 player.lifeRegen += 9;
             #region 法师buff回调
             if (type == BuffID.MagicPower)
@@ -96,17 +96,17 @@ namespace CalamityInheritance.Buffs
                 {
                     //这里牢灾对生命星云的ban 即使debuff下回血的方法做的非常奇怪，因此这里直接将玩家低于0回血的时候置成一个固定的+1HP/s
                     //哦对了喝酒给了特判
-                    if(player.lifeRegen < 0 && player.HasBuff(ModContent.BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
                     else player.lifeRegen += 2; //2HP/s -> 4HP/s
                 } 
                 else if(type == BuffID.NebulaUpLife2)
                 {
-                    if(player.lifeRegen < 0 && player.HasBuff(ModContent.BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
                     else player.lifeRegen += 4; //4HP/s -> 6HP/s
                 }
                 else if(type == BuffID.NebulaUpLife3)
                 {
-                    if(player.lifeRegen < 0 && player.HasBuff(ModContent.BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
                     else player.lifeRegen += 6; //5HP/s -> 8HP/s
                 }
                 #endregion

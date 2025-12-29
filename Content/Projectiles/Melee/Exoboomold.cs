@@ -5,6 +5,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class Exoboomold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetStaticDefaults()
         {

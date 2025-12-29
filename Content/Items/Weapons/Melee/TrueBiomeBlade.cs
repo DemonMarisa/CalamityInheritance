@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 54;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TrueBiomeOrb>();
+            Item.shoot = ProjectileType<TrueBiomeOrb>();
             Item.shootSpeed = 12f;
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)

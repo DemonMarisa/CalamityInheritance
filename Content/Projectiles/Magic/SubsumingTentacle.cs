@@ -123,12 +123,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     var tentacleShader = GameShaders.Misc["CalamityMod:SubsumingTentacle"];
                     tentacleShader.UseImage0("Images/Misc/Perlin");
 
-                    Vector2 drawPos = Projectile.oldPos[i] + ModContent.Request<Texture2D>(Texture).Size() / 2f - Main.screenPosition + Projectile.gfxOffY * Vector2.UnitY;
+                    Vector2 drawPos = Projectile.oldPos[i] + Request<Texture2D>(Texture).Size() / 2f - Main.screenPosition + Projectile.gfxOffY * Vector2.UnitY;
                     float scale = MathHelper.Lerp(0.05f, 1.3f, i / (float)Projectile.oldPos.Length) * Projectile.scale;
                     scale = MathHelper.Clamp(scale, 0f, 2f);
                     Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / Projectile.oldPos.Length);
 
-                    Main.EntitySpriteDraw((Texture2D)ModContent.Request<Texture2D>(Texture), drawPos, null, color, Projectile.rotation, ModContent.Request<Texture2D>(Texture).Size() / 2f, scale, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw((Texture2D)Request<Texture2D>(Texture), drawPos, null, color, Projectile.rotation, Request<Texture2D>(Texture).Size() / 2f, scale, SpriteEffects.None, 0);
                     tentacleShader.UseSaturation(i / (float)Projectile.oldPos.Length); // A "completion ratio" for the shader. Used to make the entire tentacle appear multi-colored.
                     tentacleShader.UseOpacity(1f / Projectile.oldPos.Length); // A "step value" for the shader. Used to give variance in color at each individual segment.
                     tentacleShader.Apply(null);

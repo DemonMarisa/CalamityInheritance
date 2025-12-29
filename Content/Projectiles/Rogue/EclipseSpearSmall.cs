@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.friendly = true;
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.penetrate = 1;
             Projectile.MaxUpdates = 2;
             Projectile.timeLeft = 75 * Projectile.MaxUpdates;
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             SoundEngine.PlaySound(CISoundMenu.EclipseSpearBoom, npc.Center);
             OnHitSparks();
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<EclipseStealthBoomLegacy>(), Projectile.damage * 2, Projectile.knockBack * Projectile.damage, Projectile.owner);
         }
         public void OnHitSparks()
         {

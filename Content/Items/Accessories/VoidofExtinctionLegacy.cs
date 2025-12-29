@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.voidOfCalamity = true;
             modPlayer.voidOfExtinction = true;
-            player.buffImmune[ModContent.BuffType<BrimstoneFlames>()] = true;
+            player.buffImmune[BuffType<BrimstoneFlames>()] = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.fireWalk = true;
             player.lavaImmune = true;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (player.whoAmI == Main.myPlayer)
                     {
                         int damage = (int)player.GetBestClassDamage().ApplyTo(30);
-                        Projectile fire = CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ModContent.ProjectileType<StandingFire>(), damage, 5f, player.whoAmI);
+                        Projectile fire = CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ProjectileType<StandingFire>(), damage, 5f, player.whoAmI);
                         if (fire.whoAmI.WithinBounds(Main.maxProjectiles))
                         {
                             fire.usesLocalNPCImmunity = true;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                             Vector2 velocity = baseVelocity.RotatedBy(MathHelper.ToRadians(-FireAngleSpread / 2 + (FireAngleSpread * i / FireProjectiles)));
                             velocity.X = velocity.X + 3 * Main.rand.NextFloat() - 1.5f;
                             int damage = (int)player.GetBestClassDamage().ApplyTo(100);
-                            Projectile.NewProjectile(source, spawn, velocity, ModContent.ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
+                            Projectile.NewProjectile(source, spawn, velocity, ProjectileType<BrimstonefireballFriendly>(), damage, 5f, Main.myPlayer, 0f, 0f);
                         }
                     }
                 }

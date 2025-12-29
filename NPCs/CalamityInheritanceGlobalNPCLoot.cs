@@ -88,12 +88,12 @@ namespace CalamityInheritance.NPCs
         public static bool ShouldNotDropThings(NPC npc) => npc.Calamity().newAI[0] == 0f || ((CalamityWorld.death || BossRushEvent.BossRushActive) && npc.Calamity().newAI[0] != 3f);
         public static bool LastAnLStanding()
         {
-            int count = NPC.CountNPCS(ModContent.NPCType<Anahita>()) + NPC.CountNPCS(ModContent.NPCType<Leviathan>());
+            int count = NPC.CountNPCS(NPCType<Anahita>()) + NPC.CountNPCS(NPCType<Leviathan>());
             return count <= 1;
         }
         public static bool ExoCanDropLoot()
         {
-            int count = NPC.CountNPCS(ModContent.NPCType<ThanatosHead>()) + NPC.CountNPCS(ModContent.NPCType<AresBody>()) + NPC.CountNPCS(ModContent.NPCType<AresBody>());
+            int count = NPC.CountNPCS(NPCType<ThanatosHead>()) + NPC.CountNPCS(NPCType<AresBody>()) + NPC.CountNPCS(NPCType<AresBody>());
             return count <= 1;
         }
         #region Modify NPC Loot Main Hook
@@ -141,11 +141,11 @@ namespace CalamityInheritance.NPCs
             const int wulfrumArmorDropRate = 100;
             int[] wulfurm =
             [
-                ModContent.NPCType<WulfrumDrone>(),
-                ModContent.NPCType<WulfrumGyrator>(),
-                ModContent.NPCType<WulfrumHovercraft>(),
-                ModContent.NPCType<WulfrumAmplifier>(),
-                ModContent.NPCType<WulfrumRover>()
+                NPCType<WulfrumDrone>(),
+                NPCType<WulfrumGyrator>(),
+                NPCType<WulfrumHovercraft>(),
+                NPCType<WulfrumAmplifier>(),
+                NPCType<WulfrumRover>()
             ];
             foreach (var wulfrumEnemy in wulfurm)
             {
@@ -380,7 +380,7 @@ namespace CalamityInheritance.NPCs
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedRavager, ItemMod<KnowledgeRavager>(), desc: DropHelper.FirstKillText);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<RavagerBag>());
                 Loot.DropCommonMod<BloodPactLegacy>();
-                Loot.DropCommonMod<MeleeTypeCorpusAvertor>();
+                Loot.DropCommonMod<MeleeCorpusAvertor>();
             }
             if (npc.CheckNPCMod<AstrumDeusHead>())
             {
@@ -677,7 +677,7 @@ namespace CalamityInheritance.NPCs
                 Loot.QuickGFBItemMod<CIRampartofDeities>(true);
 
             if (npc.CheckNPCMod<PerforatorHive>())
-                Loot.QuickGFBItemMod<RogueTypeKnivesEmpyrean>(true);
+                Loot.QuickGFBItemMod<RogueEmpyreanKnives>(true);
 
             if (npc.CheckNPCMod<HiveMind>())
                 Loot.QuickGFBItemMod<EclipseSpear>(true);
@@ -729,7 +729,7 @@ namespace CalamityInheritance.NPCs
 
             if (npc.CheckNPCMod<OldDuke>())
             {
-                Loot.QuickGFBItemMod<MeleeTypeNanoblackReaper>(true);
+                Loot.QuickGFBItemMod<MeleeNanoblackReaper>(true);
                 Loot.DropCommonMod<InsidiousImpalerLegacy>();
                 Loot.DropCommonMod<LeadCore>();
             }
@@ -767,7 +767,7 @@ namespace CalamityInheritance.NPCs
                     Loot.QuickGFBItemMod<DrewsWings>(true);
                     break;
                 case NPCID.SkeletronHead:
-                    Loot.QuickGFBGroupMod<MeleeTypeHammerStellarContemptLegacy>(ItemMod<RogueTypeHammerStellarContempt>());
+                    Loot.QuickGFBGroupMod<MeleeStellarContempt>(ItemMod<RogueStellarContempt>());
                     break;
                 case NPCID.Deerclops:
                     Loot.QuickGFBItemMod<ColdheartIcicle>(true);
@@ -806,8 +806,8 @@ namespace CalamityInheritance.NPCs
         }
 
 
-        public static int ItemMod<T>() where T : ModItem => ModContent.ItemType<T>();
-        public static int ModNPC<T>() where T : ModNPC => ModContent.NPCType<T>();
+        public static int ItemMod<T>() where T : ModItem => ItemType<T>();
+        public static int ModNPC<T>() where T : ModNPC => NPCType<T>();
         public void LegendaryDropHelper(int legendary, ref NPCLoot Loot)
         {
             var dropRule = ItemDropRule.ByCondition(CIDropHelper.MasterDeath, legendary);
@@ -820,7 +820,7 @@ namespace CalamityInheritance.NPCs
     static class ExtendedDropMethods
     {
         public static void QuickGFBItemID(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) => QuickGFB(loot, itemID, justDropOne, chance, minCount, maxCount);
-        public static void QuickGFBItemMod<T>(this NPCLoot loot, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) where T : ModItem => QuickGFB(loot, ModContent.ItemType<T>(), justDropOne, chance, minCount, maxCount);
+        public static void QuickGFBItemMod<T>(this NPCLoot loot, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145) where T : ModItem => QuickGFB(loot, ItemType<T>(), justDropOne, chance, minCount, maxCount);
         public static void QuickGFB(this NPCLoot loot, int itemID, bool justDropOne = false, int chance = 1, int minCount = 1145, int maxCount = 1145)
         {
             var GFB = loot.DefineConditionalDropSet(DropHelper.GFB);
@@ -828,7 +828,7 @@ namespace CalamityInheritance.NPCs
                 minCount = maxCount = 1;
             GFB.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), itemID, chance, minCount, maxCount), hideLootReport: true);
         }
-        public static void QuickGFBGroupMod<T>(this NPCLoot loot, params int[] itemIDs) where T : ModItem => QuickGFBGroup(loot, ModContent.ItemType<T>(), itemIDs);
+        public static void QuickGFBGroupMod<T>(this NPCLoot loot, params int[] itemIDs) where T : ModItem => QuickGFBGroup(loot, ItemType<T>(), itemIDs);
         public static void QuickGFBGroup(this NPCLoot loot, int dropItemIDFirst, params int[] itemIDs)
         {
             var GFB = loot.DefineConditionalDropSet(DropHelper.GFB);

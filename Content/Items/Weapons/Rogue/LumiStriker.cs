@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.height = 86;
             Item.width = 102;
             Item.damage = 90;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.UseSound = SoundID.Item1;
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.knockBack = 16f;
-            Item.shoot = ModContent.ProjectileType<LumiStrikerProj>();
+            Item.shoot = ProjectileType<LumiStrikerProj>();
             Item.shootSpeed = 10f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             else
                 SoundEngine.PlaySound(ThrowSound2);
 
-            Projectile.NewProjectile(source, position, stealth ? -velocity * 1.8f : -velocity * 1.4f, ModContent.ProjectileType<LumiStrikerBack>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, stealth ? -velocity * 1.8f : -velocity * 1.4f, ProjectileType<LumiStrikerBack>(), damage, knockback, player.whoAmI);
             if (!stealth)
                 return false;
                 

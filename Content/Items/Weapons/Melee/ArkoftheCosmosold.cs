@@ -38,9 +38,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 102;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.shoot = ModContent.ProjectileType<EonBeam>();
+            Item.shoot = ProjectileType<EonBeam>();
             Item.shootSpeed = 14f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
@@ -48,24 +48,27 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            /*
             switch (Main.rand.Next(4))
             {
                 case 0:
-                    type = ModContent.ProjectileType<EonBeam>();
+                    type = ProjectileType<EonBeam>();
                     break;
                 case 1:
-                    type = ModContent.ProjectileType<EonBeamV2>();
+                    type = ProjectileType<EonBeamV2>();
                     break;
                 case 2:
-                    type = ModContent.ProjectileType<EonBeamV3>();
+                    type = ProjectileType<EonBeamV3>();
                     break;
                 case 3:
-                    type = ModContent.ProjectileType<EonBeamV4>();
+                    type = ProjectileType<EonBeamV4>();
                     break;
             }
-            int projectile = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, Main.myPlayer);
-            Main.projectile[projectile].timeLeft = 160;
-            Main.projectile[projectile].tileCollide = false;
+            */
+            Projectile proj = Projectile.NewProjectileDirect(source, position, velocity, type, damage, knockback, Main.myPlayer);
+            proj.timeLeft = 160;
+            proj.tileCollide = false;
+            proj.ai[1] = Main.rand.Next(1, 5);
 
             int fireOffset = -100;
             Vector2 mousePos = player.LocalMouseWorld();
@@ -85,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 // 保持原速度并应用新方向
                 Vector2 newVelocity = direction * velocity.Length();
 
-                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ModContent.ProjectileType<Galaxia2>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
+                int projectileFire = Projectile.NewProjectile(source, finalPos, newVelocity, ProjectileType<Galaxia2>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
                 Main.projectile[projectileFire].timeLeft = 160;
             }
             return false;
@@ -138,7 +141,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
             if (astral)
             {
-                player.AddBuff(ModContent.BuffType<GravityNormalizerBuff>(), 600);
+                player.AddBuff(BuffType<GravityNormalizerBuff>(), 600);
             }
             if (jungle)
             {

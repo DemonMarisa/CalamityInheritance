@@ -41,13 +41,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             if (hit.Crit)
             {
-                target.AddBuff(ModContent.BuffType<WarCleave>(), 900);
+                target.AddBuff(BuffType<WarCleave>(), 900);
             }
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hit)
         {
-            target.AddBuff(ModContent.BuffType<WarCleave>(), 900);
+            target.AddBuff(BuffType<WarCleave>(), 900);
         }
     }
 }

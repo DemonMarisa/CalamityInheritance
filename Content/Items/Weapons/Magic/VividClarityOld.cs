@@ -52,9 +52,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.UseSound = UseSound;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CIVividBeam>();
+            Item.shoot = ProjectileType<CIVividBeam>();
             Item.shootSpeed = 12f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
         public override bool CanUseItem(Player player)
         {
@@ -111,7 +111,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 Vector2 velocityVariation = new Vector2(xPos, yPos).SafeNormalize(Vector2.UnitY) * speed;
                 velocityReal = velocityReal.SafeNormalize(velocityVariation) * speed;
 
-                Projectile.NewProjectile(projSource, source, velocityReal, ModContent.ProjectileType<CIVividBeamExoLore>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
+                Projectile.NewProjectile(projSource, source, velocityReal, ProjectileType<CIVividBeamExoLore>(), damage, knockback, player.whoAmI, 0f, Main.rand.Next(3));
 
             }
             else
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Magic/VividClarityOldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Magic/VividClarityOldGlow").Value);
 
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -168,7 +168,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddIngredient<HeliumFlashLegacy>().
             DisableDecraft().
             AddIngredient<AuricBarold>(10).
-            AddTile(ModContent.TileType<DraedonsForgeold>()).
+            AddTile(TileType<DraedonsForgeold>()).
             Register();
 
             CreateRecipe().
@@ -181,7 +181,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddDecraftCondition(CalamityConditions.DownedExoMechs).
             AddIngredient<HeliumFlashLegacy>().
             AddIngredient<MiracleMatter>().
-            AddTile(ModContent.TileType<DraedonsForge>()).
+            AddTile(TileType<DraedonsForge>()).
             Register();
 
             CreateRecipe().
@@ -195,7 +195,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddIngredient<AncientMiracleMatter>().
             AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
             DisableDecraft().
-            AddTile(ModContent.TileType<DraedonsForge>()).
+            AddTile(TileType<DraedonsForge>()).
             Register();
         }
     }

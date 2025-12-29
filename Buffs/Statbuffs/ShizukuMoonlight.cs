@@ -35,7 +35,7 @@ namespace CalamityInheritance.Buffs.Statbuffs
                 string meleePath = dPath + "Magic";
                 tip += "\n" +  meleePath.ToLangValue();
             }
-            rare = ModContent.RarityType<ShizukuAqua>();
+            rare = RarityType<ShizukuAqua>();
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

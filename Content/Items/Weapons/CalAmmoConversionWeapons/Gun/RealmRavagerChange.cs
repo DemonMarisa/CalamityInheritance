@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<RealmRavager>();
+            return item.type == ItemType<RealmRavager>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
                     float SpeedX = velocity.X + (index == 0 ? 0 : Main.rand.Next(-75, 76) * 0.05f);
                     float SpeedY = velocity.Y + (index == 0 ? 0 : Main.rand.Next(-75, 76) * 0.05f);
 
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<RealmRavagerBullet>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<RealmRavagerBullet>(), damage, knockback, player.whoAmI);
                 }
                 return false;
             }

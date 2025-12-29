@@ -177,31 +177,14 @@
 		<None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
 		<None Remove="Content\Projectiles\Melee\ElementBall.png" />
 		<None Remove="Content\Projectiles\Melee\Exobeamold.png" />
-		<None Remove="Content\Projectiles\Melee\Exoboomold.png" />
 		<None Remove="Content\Projectiles\Melee\ExoGladComet.png" />
-		<None Remove="Content\Projectiles\Melee\ExoGladProj.png" />
-		<None Remove="Content\Projectiles\Melee\ExoGladSpears.png" />
 		<None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
 		<None Remove="Content\Projectiles\Melee\Galaxia2.png" />
 		<None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
 		<None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
 		<None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
-		<None Remove="Content\Projectiles\Melee\NightStabber2.png" />
 		<None Remove="Content\Projectiles\Melee\ShortExcaliburBeam.png" />
 		<None Remove="Content\Projectiles\Melee\ShortNightBeam.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\AncientShivProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\BloodyRuptureProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\CosmicShivProjold.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\ElementalShivoldProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\EutrophicShankProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\ExcaliburShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\FlameburstShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\LeechingDaggerProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\NightsStabberProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\SporeKnifeProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TerraShivProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TrueExcaliburShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TrueNightsStabberProj.png" />
 		<None Remove="Content\Projectiles\Melee\ShortTerraBeam.png" />
 		<None Remove="Content\Projectiles\Melee\TerraEdgeBeam.png" />
 		<None Remove="Content\Projectiles\Melee\TerraEdgeEnergySword.png" />
@@ -388,31 +371,14 @@
 		<None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
 		<None Remove="Content\Projectiles\Melee\ElementBall.png" />
 		<None Remove="Content\Projectiles\Melee\Exobeamold.png" />
-		<None Remove="Content\Projectiles\Melee\Exoboomold.png" />
 		<None Remove="Content\Projectiles\Melee\ExoGladComet.png" />
-		<None Remove="Content\Projectiles\Melee\ExoGladProj.png" />
-		<None Remove="Content\Projectiles\Melee\ExoGladSpears.png" />
 		<None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
 		<None Remove="Content\Projectiles\Melee\Galaxia2.png" />
 		<None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
 		<None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
 		<None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
-		<None Remove="Content\Projectiles\Melee\NightStabber2.png" />
 		<None Remove="Content\Projectiles\Melee\ShortExcaliburBeam.png" />
 		<None Remove="Content\Projectiles\Melee\ShortNightBeam.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\AncientShivProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\BloodyRuptureProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\CosmicShivProjold.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\ElementalShivoldProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\EutrophicShankProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\ExcaliburShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\FlameburstShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\LeechingDaggerProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\NightsStabberProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\SporeKnifeProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TerraShivProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TrueExcaliburShortswordProj.png" />
-		<None Remove="Content\Projectiles\Melee\Shortsword\TrueNightsStabberProj.png" />
 		<None Remove="Content\Projectiles\Melee\ShortTerraBeam.png" />
 		<None Remove="Content\Projectiles\Melee\TerraEdgeBeam.png" />
 		<None Remove="Content\Projectiles\Melee\TerraEdgeEnergySword.png" />
@@ -599,31 +565,14 @@
 	  <None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
 	  <None Remove="Content\Projectiles\Melee\ElementBall.png" />
 	  <None Remove="Content\Projectiles\Melee\Exobeamold.png" />
-	  <None Remove="Content\Projectiles\Melee\Exoboomold.png" />
 	  <None Remove="Content\Projectiles\Melee\ExoGladComet.png" />
-	  <None Remove="Content\Projectiles\Melee\ExoGladProj.png" />
-	  <None Remove="Content\Projectiles\Melee\ExoGladSpears.png" />
 	  <None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
 	  <None Remove="Content\Projectiles\Melee\Galaxia2.png" />
 	  <None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
-	  <None Remove="Content\Projectiles\Melee\NightStabber2.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortExcaliburBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortNightBeam.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\AncientShivProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\BloodyRuptureProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\CosmicShivProjold.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\ElementalShivoldProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\EutrophicShankProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\ExcaliburShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\FlameburstShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\LeechingDaggerProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\NightsStabberProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\SporeKnifeProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TerraShivProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueExcaliburShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueNightsStabberProj.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortTerraBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\TerraEdgeBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\TerraEdgeEnergySword.png" />
@@ -810,31 +759,14 @@
 	  <None Remove="Content\Projectiles\Melee\CosmicShivBladeold.png" />
 	  <None Remove="Content\Projectiles\Melee\ElementBall.png" />
 	  <None Remove="Content\Projectiles\Melee\Exobeamold.png" />
-	  <None Remove="Content\Projectiles\Melee\Exoboomold.png" />
 	  <None Remove="Content\Projectiles\Melee\ExoGladComet.png" />
-	  <None Remove="Content\Projectiles\Melee\ExoGladProj.png" />
-	  <None Remove="Content\Projectiles\Melee\ExoGladSpears.png" />
 	  <None Remove="Content\Projectiles\Melee\EyeOfNightCell.png" />
 	  <None Remove="Content\Projectiles\Melee\Galaxia2.png" />
 	  <None Remove="Content\Projectiles\Melee\GalaxyStarold.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashnew1.png" />
 	  <None Remove="Content\Projectiles\Melee\MurasamaSlashold.png" />
-	  <None Remove="Content\Projectiles\Melee\NightStabber2.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortExcaliburBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortNightBeam.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\AncientShivProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\BloodyRuptureProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\CosmicShivProjold.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\ElementalShivoldProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\EutrophicShankProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\ExcaliburShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\FlameburstShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\LeechingDaggerProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\NightsStabberProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\SporeKnifeProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TerraShivProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueExcaliburShortswordProj.png" />
-	  <None Remove="Content\Projectiles\Melee\Shortsword\TrueNightsStabberProj.png" />
 	  <None Remove="Content\Projectiles\Melee\ShortTerraBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\TerraEdgeBeam.png" />
 	  <None Remove="Content\Projectiles\Melee\TerraEdgeEnergySword.png" />
@@ -871,10 +803,10 @@
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityModMusic">
-	    <HintPath>..\..\ModReader\CalamityModMusic\CalamityModMusic.dll</HintPath>
+	    <HintPath>..\ModAssemblies\CalamityModMusic.dll</HintPath>
 	  </Reference>
 	  <Reference Include="LAP">
-	    <HintPath>..\LAP\bin\Release\net8.0\LAP.dll</HintPath>
+	    <HintPath>..\LAP\bin\Debug\net8.0\LAP.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>

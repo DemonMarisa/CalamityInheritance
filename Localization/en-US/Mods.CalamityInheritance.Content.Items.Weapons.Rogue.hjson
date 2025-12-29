@@ -122,7 +122,7 @@ Celestusold: {
 		'''
 }
 
-RogueTypeHammerGalaxySmasher: {
+RogueGalaxySmasher: {
 	DisplayName: Galaxy Smasher Legacy Rogue
 	Tooltip:
 		'''
@@ -133,7 +133,7 @@ RogueTypeHammerGalaxySmasher: {
 		'''
 }
 
-RogueTypeHammerStellarContempt: {
+RogueStellarContempt: {
 	DisplayName: Stellar Contempt Legacy Rogue
 	Tooltip:
 		'''
@@ -143,7 +143,7 @@ RogueTypeHammerStellarContempt: {
 		'''
 }
 
-RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
+RogueTriactisHammer: {
 	DisplayName: Triactis' True Paladinian Mage Hammer of Might Legacy Rogue
 	Tooltip:
 		'''
@@ -155,7 +155,7 @@ RogueTypeHammerTriactisTruePaladinianMageHammerofMight: {
 		'''
 }
 
-RogueTypeHammerTruePaladins: {
+RogueFallenHammer: {
 	DisplayName: True Paladin's Hammer Legacy Rogue
 	Tooltip:
 		'''
@@ -165,7 +165,7 @@ RogueTypeHammerTruePaladins: {
 		'''
 }
 
-RogueTypeKnivesEmpyrean: {
+RogueEmpyreanKnives: {
 	DisplayName: Empyrean Knives Legacy Rogue
 	Tooltip:
 		'''
@@ -177,7 +177,7 @@ RogueTypeKnivesEmpyrean: {
 		'''
 }
 
-RogueTypeKnivesShadowspec: {
+RogueShadowspecKnives: {
 	DisplayName: Illustrious Knives Legacy Rogue
 	Tooltip:
 		'''
@@ -189,7 +189,7 @@ RogueTypeKnivesShadowspec: {
 		'''
 }
 
-RogueTypeScourgeoftheCosmos: {
+RogueScourgeoftheCosmos: {
 	DisplayName: Scourge of the Cosmos Legacy Rogue
 	Tooltip:
 		'''
@@ -199,7 +199,7 @@ RogueTypeScourgeoftheCosmos: {
 		'''
 }
 
-RogueTypeHammerPwnageLegacy: {
+RoguePwnagehammer: {
 	DisplayName: Pwnagehammer Legacy Rogue
 	Tooltip:
 		'''

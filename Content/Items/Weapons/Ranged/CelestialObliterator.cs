@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.rare = CIConfig.Instance.SpecialRarityColor?ModContent.RarityType<SeraphPurple>():ModContent.RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;
@@ -94,8 +94,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     SoundEngine.PlaySound(SoundID.Item38);
                     Vector2 vector2 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 60, default) * 9f;
                     Vector2 vector3 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -60, default) * 9f;
-                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector2.X, vector2.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
-                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector3.X, vector3.Y, ModContent.ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector2.X, vector2.Y, ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector3.X, vector3.Y, ProjectileType<ExoGunBlast>(), damage, knockback, player.whoAmI, 1f, 0f);
                 }
                 else
                 {
@@ -103,15 +103,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     SoundEngine.PlaySound(SoundID.Item38);
                     Vector2 vector4 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), 45, default) * 9f;
                     Vector2 vector5 = Utils.RotatedBy(Vector2.Normalize(new Vector2(SpeedX, SpeedY)), -45, default) * 9f;
-                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector4.X, vector4.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
-                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector5.X, vector5.Y, ModContent.ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector4.X, vector4.Y, ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
+                    Projectile.NewProjectile(source, position.X, position.Y - 6, vector5.X, vector5.Y, ProjectileType<ExoGunBlastsplit>(), damage, knockback, player.whoAmI, 1f, 0f);
                 }
             }
             return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/CelestialObliteratorGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Ranged/CelestialObliteratorGlow").Value);
         }
         public override Vector2? HoldoutOffset()
         {

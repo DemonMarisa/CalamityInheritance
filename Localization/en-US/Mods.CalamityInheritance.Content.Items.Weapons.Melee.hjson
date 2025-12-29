@@ -242,7 +242,7 @@ TerraDiskMeleeLegacy: {
 		'''
 }
 
-MeleeTypeCorpusAvertor: {
+MeleeCorpusAvertor: {
 	DisplayName: Corpus Avertor Legacy Melee
 	Tooltip:
 		'''
@@ -252,7 +252,7 @@ MeleeTypeCorpusAvertor: {
 		'''
 }
 
-MeleeTypeElementalDisk: {
+MeleeElementalDisk: {
 	DisplayName: Elemental Disk Legacy Melee
 	Tooltip:
 		'''
@@ -271,22 +271,22 @@ MeleeTypeEradicator: {
 		'''
 }
 
-MeleeTypeHammerFallenPaladinsLegacy: {
+MeleeFallenHammer: {
 	DisplayName: Fallen Paladin's Hammer Melee Legacy
 	Tooltip: Explodes on enemy hits
 }
 
-MeleeTypeHammerGalaxySmasherLegacy: {
+MeleeGalaxySmasher: {
 	DisplayName: Galaxy Smasher Melee Legacy
 	Tooltip: Explodes and summons death lasers on enemy hits
 }
 
-MeleeTypeHammerStellarContemptLegacy: {
+MeleeStellarContempt: {
 	DisplayName: Stellar Contempt Melee Legacy
 	Tooltip: Lunar flares rain down on enemy hits
 }
 
-MeleeTypeKelvinCatalyst: {
+MeleeKelvinCatalyst: {
 	DisplayName: Kelvin Catalyst Legacy Melee
 	Tooltip:
 		'''
@@ -296,12 +296,12 @@ MeleeTypeKelvinCatalyst: {
 		'''
 }
 
-MeleeTypeMangroveChakram: {
+MeleeMangroveChakram: {
 	DisplayName: Mangrove Chakram Legacy Melee
 	Tooltip: Legacy Mangrove Chakram for Melee class
 }
 
-MeleeTypeNanoblackReaper: {
+MeleeNanoblackReaper: {
 	DisplayName: Nanoblack Reaper Legacy Melee
 	Tooltip:
 		'''
@@ -312,7 +312,7 @@ MeleeTypeNanoblackReaper: {
 		'''
 }
 
-MeleeTypeSubductionSlicer: {
+MeleeSubductionSlicer: {
 	DisplayName: Subduction Slicer Legacy Melee
 	Tooltip:
 		'''
@@ -321,7 +321,7 @@ MeleeTypeSubductionSlicer: {
 		'''
 }
 
-MeleeTypeTerraDisk: {
+MeleeTerraDisk: {
 	DisplayName: Terra Disk Legacy Melee
 	Tooltip:
 		'''
@@ -330,7 +330,7 @@ MeleeTypeTerraDisk: {
 		'''
 }
 
-MeleeTypeHammerPwnageLegacy: {
+MeleePwnagehammer: {
 	Tooltip: Throws a strong hammer
 	DisplayName: Pwnagehammer Legacy
 }

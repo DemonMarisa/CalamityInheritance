@@ -3,12 +3,13 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Magic;
 
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
     public class TerraBolt2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];
@@ -54,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             float lengthFromStart = Projectile.Distance(target.Center);
 
             int totalShards = (int)MathHelper.Lerp(1, 3, MathHelper.Clamp(lengthFromStart / 1200f * 1.5f, 0f, 1f));
-            int shardType = ModContent.ProjectileType<PhotosyntheticShard>();
+            int shardType = ProjectileType<PhotosyntheticShard>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             for (int i = 0; i < totalShards; i++)
             {

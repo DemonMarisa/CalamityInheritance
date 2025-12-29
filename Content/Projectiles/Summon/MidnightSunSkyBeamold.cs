@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override void AI()
         {
             Projectile body = Main.projectile[(int)Projectile.ai[0]];
-            if (body.type != ModContent.ProjectileType<MidnightSunBeaconProjold>() || !body.active)
+            if (body.type != ProjectileType<MidnightSunBeaconProjold>() || !body.active)
                 Projectile.Kill();
 
             if (Projectile.velocity.HasNaNs() || Projectile.velocity == Vector2.Zero)
@@ -141,9 +141,9 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.localAI[1] = 2000f;
             }
 
-            Texture2D laserTailTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamBegin").Value;
-            Texture2D laserBodyTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamMid").Value;
-            Texture2D laserHeadTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamEnd").Value;
+            Texture2D laserTailTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamBegin").Value;
+            Texture2D laserBodyTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamMid").Value;
+            Texture2D laserHeadTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/Laser/MidnightSunBeamEnd").Value;
 
             float laserLength = Projectile.localAI[1];
             Color drawColor = Color.White * 0.9f;

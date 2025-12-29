@@ -4,6 +4,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -15,6 +16,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => $"{GetType().Namespace}.ScarletHomingAmmo".Replace('.', '/');
+        public Player Owner => Main.player[Projectile.owner];
+        private ref int ShootedTime => ref Owner.CIMod().R99Shooting;
+        private ref int ShootedTargetIndex => ref Owner.CIMod().R99TargetWhoAmI;
         public int AttackHit
         {
             get => (int)Projectile.ai[0];
@@ -63,91 +67,56 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                 Projectile.HomingNPCBetter(target, 1800f, 18f, 20f, ignoreDist: true);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
+        { 
             modifiers.DefenseEffectiveness *= 0f;
-            Player r99Owner = Main.player[Projectile.owner];
-            if (r99Owner.ActiveItem().type != ModContent.ItemType<R99>())
+            if (Owner.ActiveItem().type != ItemType<R99>())
                 return;
-            ref int isShooted = ref r99Owner.CIMod().R99Shooting;
-            ref int targetIndex = ref r99Owner.CIMod().R99TargetWhoAmI;
-            if (targetIndex != target.whoAmI)
-                isShooted = 0;
-            else
+            if (ShootedTime > R99.CrackedShieldTime)
             {
-                isShooted += 1;
-                if (isShooted > R99.CrackedShieldTime)
+                if (Main.rand.Next(15) - Projectile.CalamityInheritance().CurR99Chance <= 0)
                 {
-                    if (Main.rand.Next(15) - Projectile.CalamityInheritance().CurR99Chance <= 0)
-                    {
-                        modifiers.FinalDamage *= 600;
-                        Projectile.CalamityInheritance().CurR99Chance = 0;
-                    }
-                    else
-                        Projectile.CalamityInheritance().CurR99Chance += 1;
+                    modifiers.FinalDamage *= 600;
+                    Projectile.CalamityInheritance().CurR99Chance = 0;
                 }
-            } 
+                else
+                    Projectile.CalamityInheritance().CurR99Chance += 1;
+            }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(target, hit, damageDone);
-            Player player = Main.player[Projectile.owner];
-            if (player.ActiveItem().type == ModContent.ItemType<R99>())
+            if (Owner.ActiveItem().type == ItemType<R99>())
             {
-                //处理声音
-                //大残！
-                SoundStyle[] R99HitShield =
-                [
-                    CISoundMenu.R99ShieldHit1,
-                    CISoundMenu.R99ShieldHit2
-
-                ];
-                //碎甲！！
-                SoundStyle[] R99ShieldCracked =
-                [
-                    CISoundMenu.R99ShieldCracked1,
-                    CISoundMenu.R99ShieldCracked2,
-                    CISoundMenu.R99ShieldCracked3,
-                    CISoundMenu.R99ShieldCracked4
-                ];
-                //一丝！！！
-                SoundStyle[] R99FleshHit =
-                [
-                    CISoundMenu.R99FleshHit1,
-                    CISoundMenu.R99FleshHit2,
-                    CISoundMenu.R99FleshHit3,
-                    CISoundMenu.R99FleshHit4
-                ];
-                SoundStyle crackedShield = Utils.SelectRandom(Main.rand, R99ShieldCracked);
-                SoundStyle hitSoundShield = Utils.SelectRandom(Main.rand, R99HitShield);
-                SoundStyle fleshHit = Utils.SelectRandom(Main.rand, R99FleshHit);
-                ref int shootedTime = ref player.CIMod().R99Shooting;
-                ref int soundDelay = ref player.CIMod().GlobalSoundDelay;
-                ref int targetIndex = ref player.CIMod().R99TargetWhoAmI;
+                SoundStyle crackedShield = Utils.SelectRandom(Main.rand, CISoundMenu.R99ShieldCracked);
+                SoundStyle hitSoundShield = Utils.SelectRandom(Main.rand, CISoundMenu.R99ShieldHit);
+                SoundStyle fleshHit = Utils.SelectRandom(Main.rand, CISoundMenu.R99FleshHit);
+                ref int soundDelay = ref Owner.CIMod().GlobalSoundDelay;
                 if (AttackHit == 0f)
                 {
                     for (int i = 0; i < 2; i++)
-                        Dust.NewDust(Projectile.position, 10, 10, shootedTime < R99.CrackedShieldTime ? DustID.CursedTorch: DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
+                        Dust.NewDust(Projectile.Center, 10, 10, ShootedTime < R99.CrackedShieldTime ? DustID.CursedTorch: DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
 
                     AttackHit = 1;
                 }
                 //不是同一个目标就刷新一次攻击总数
-                if (targetIndex == -1)
-                    targetIndex = target.whoAmI;
-                if (targetIndex != target.whoAmI)
+                if (ShootedTargetIndex == -1)
+                    ShootedTargetIndex = target.whoAmI;
+                if (ShootedTargetIndex != target.whoAmI)
                 {
-                    shootedTime = 0;
-                    targetIndex = target.whoAmI;
+                    ShootedTime = 0;
+                    ShootedTargetIndex = target.whoAmI;
+                    return;
                 }
-
+                
+                ShootedTime++;
                 //专门处理碎甲音效
-                if (shootedTime > R99.CrackedShieldTime && shootedTime < R99.FleshHitTime)
+                if (ShootedTime > R99.CrackedShieldTime && ShootedTime < R99.FleshHitTime)
                 {
                     if (Main.zenithWorld)
                         SoundEngine.PlaySound(CISoundMenu.Pipes with { MaxInstances = 0, Volume = 0.85f }, target.Center);
 
                     else
                         SoundEngine.PlaySound(crackedShield with { Volume = 1.15f }, target.Center);
-                    shootedTime = R99.FleshHitTime;
+                    ShootedTime = R99.FleshHitTime;
                     soundDelay = 60;
                 }
                 if (soundDelay != 0)
@@ -155,15 +124,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 
                 soundDelay = 4;
                 //打肉音效
-                if (shootedTime > R99.FleshHitTime)
+                if (ShootedTime > R99.FleshHitTime)
                 {
-                    shootedTime = R99.FleshHitTime;
+                    ShootedTime = R99.FleshHitTime;
                     SoundEngine.PlaySound(fleshHit with { MaxInstances = 0, Volume = 0.75f }, target.Center);
                 }
                 //打甲音效
-                else if (shootedTime < R99.CrackedShieldTime)
+                else if (ShootedTime < R99.CrackedShieldTime)
                 {
-                    shootedTime++;
                     SoundEngine.PlaySound(hitSoundShield with { MaxInstances = 0, Volume = 0.75f }, target.Center);
                 }
             }

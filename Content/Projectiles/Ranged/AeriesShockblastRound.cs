@@ -1,16 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -42,7 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AeriesShockblast>(), Projectile.damage, 0f, Projectile.owner, 0f, Projectile.ai[1]);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<AeriesShockblast>(), Projectile.damage, 0f, Projectile.owner, 0f, Projectile.ai[1]);
                 Main.projectile[proj].scale = (Projectile.ai[1] * 0.5f) + 1f;
             }
             return true;
@@ -82,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<AeriesShockblast>(), Projectile.damage, 0f, Projectile.owner, 0f, Projectile.ai[1]);
+                int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<AeriesShockblast>(), Projectile.damage, 0f, Projectile.owner, 0f, Projectile.ai[1]);
                 Main.projectile[proj].scale = (Projectile.ai[1] * 0.5f) + 1f;
             }
             Player player = Main.player[Projectile.owner];
@@ -104,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 if (i == 2)
                     direction = new Vector2(12f, 0).RotatedBy(rot).RotatedBy(MathHelper.ToRadians(-angleoffset));
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ModContent.ProjectileType<BlueHealProj>(), 0, 0f, player.whoAmI, 0, 0, healAmt);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction, ProjectileType<BlueHealProj>(), 0, 0f, player.whoAmI, 0, 0, healAmt);
             }
 
             player.CIMod().GlobalHealProjCD = CD;

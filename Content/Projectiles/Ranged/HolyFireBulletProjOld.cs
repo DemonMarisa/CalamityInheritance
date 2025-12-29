@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 int blastDamage = (int)(Projectile.damage * HolyFireBulletOld.ExplosionMultiplier);
                 float scale = 0.85f + Main.rand.NextFloat() * 1.15f;
-                int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<FuckYou>(), blastDamage, Projectile.knockBack, Projectile.owner, 0f, scale);
+                int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<FuckYou>(), blastDamage, Projectile.knockBack, Projectile.owner, 0f, scale);
 
                 // Explosions match the bullet's damage type (e.g. ranged or summon)
                 if (boom.WithinBounds(Main.maxProjectiles))
@@ -97,7 +97,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
         }
     }
 }

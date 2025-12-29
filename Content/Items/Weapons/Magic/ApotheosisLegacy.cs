@@ -47,17 +47,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 7f;
             Item.value = CIShopValue.RarityPriceDonatorPink;
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.rare = RarityType<DonatorPink>();
             Item.UseSound = SoundID.Item92;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ApothMarkLegacy>();
+            Item.shoot = ProjectileType<ApothMarkLegacy>();
             Item.shootSpeed = 17f;
             Item.Calamity().devItem = true;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Magic/ApotheosisGlowLegacy").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Magic/ApotheosisGlowLegacy").Value);
         }
 
         public override void AddRecipes()

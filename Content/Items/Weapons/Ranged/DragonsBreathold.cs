@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
-            Type.ShimmetTo<DragonsBreath>();
-            ModContent.ItemType<DragonsBreath>().ShimmetTo<AncientDragonsBreath>();
+            Type.ShimmerTo<DragonsBreath>();
+            ItemType<DragonsBreath>().ShimmerTo<AncientDragonsBreath>();
         }
 
         public override void SetDefaults()
@@ -48,12 +48,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.knockBack = 6.5f;
             // item.UseSound = SoundID.Item38;
-            Item.shoot = ModContent.ProjectileType<DragonsBreathRound>();
+            Item.shoot = ProjectileType<DragonsBreathRound>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
             
 
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
         }
 

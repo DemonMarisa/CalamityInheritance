@@ -18,11 +18,13 @@ using CalamityMod.Sounds;
 using CalamityInheritance.System.Configs;
 using static tModPorter.ProgressUpdate;
 using LAP.Core.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
     public class LegacySHPCHeldProj : BaseHeldProjMagic, ILocalizedModType
     {
+        public override string Texture => GetInstance<DestroyerLegendary>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public float aniXdistance = 0;
         public override float OffsetX => -10 - aniXdistance;
@@ -96,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 
                     float velX = Projdirection.X + Main.rand.Next(-20, 21) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-20, 21) * 0.05f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryLaser>(), Projectile.damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ProjectileType<DestroyerLegendaryLaser>(), Projectile.damage, knockback * 0.5f, player.whoAmI, 0f, 0f);
                 }
                 UseDelay = RightCD;
             }
@@ -122,7 +124,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
                 {
                     float velX = Projdirection.X + Main.rand.Next(-40, 41) * 0.05f;
                     float velY = Projdirection.Y + Main.rand.Next(-40, 41) * 0.05f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ModContent.ProjectileType<DestroyerLegendaryBomb>(), (int)(Projectile.damage * 1.1), knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, new(velX, velY), ProjectileType<DestroyerLegendaryBomb>(), (int)(Projectile.damage * 1.1), knockback, player.whoAmI, 0f, 0f);
                 }
                 UseDelay = LeftCD;
             }

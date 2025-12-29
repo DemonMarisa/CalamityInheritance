@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     {
                         velocityMult = 1f;
                     }
-                    Mod mod = ModContent.GetInstance<CalamityMod.CalamityMod>();
+                    Mod mod = GetInstance<CalamityMod.CalamityMod>();
                     int type = Main.rand.Next(61, 64);
                     int smoke = Gore.NewGore(Projectile.GetSource_FromAI(), source, default, type, 1f);
                     Gore gore = Main.gore[smoke];

@@ -8,12 +8,14 @@ using CalamityMod.Projectiles.Melee;
 using System;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityInheritance.Content.Projectiles.Melee.Explosion;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class BloodyRuptureProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<BloodyRupture>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -25,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -53,14 +55,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<CIBlood>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ProjectileType<CIBlood>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = Projectile.GetSource_FromThis();
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<BloodExplosion>(), Projectile.damage * 2, Projectile.knockBack);
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 300);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<BloodExplosion>(), Projectile.damage * 2, Projectile.knockBack);
+            target.AddBuff(BuffType<BurningBlood>(), 300);
         }
     }
 }

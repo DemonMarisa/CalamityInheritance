@@ -31,8 +31,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
-            Item.createTile = ModContent.TileType<ArmageddonTiles>();
-            Item.rare = ModContent.RarityType<DonatorPink>();
+            Item.createTile = TileType<ArmageddonTiles>();
+            Item.rare = RarityType<DonatorPink>();
         }
         public override bool AltFunctionUse(Player player) => true;
 
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
 
             if (player.altFunctionUse != 2)
             {
-                CIWorld world = ModContent.GetInstance<CIWorld>();
+                CIWorld world = GetInstance<CIWorld>();
                 world.UpdateArmageddon();
             }
             return true;

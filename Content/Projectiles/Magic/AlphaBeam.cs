@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Texture2D mainTexture = TextureAssets.Projectile[Type].Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
             Texture2D headTexture = Main.Assets.Request<Texture2D>("Images/Projectile_927").Value;
-            Texture2D tailTexture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
+            Texture2D tailTexture = Request<Texture2D>("CalamityMod/Projectiles/Healing/EssenceFlame").Value;
 
             DrawGlowEffects(headTexture, Auxiliarycolor, Scale);
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale);

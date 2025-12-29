@@ -1,4 +1,5 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Typeless;
@@ -17,6 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
     public class AquaticDischargeProj : BaseShortswordProjectile
     {
 
+        public override string Texture => GetInstance<AquaticDischarge>().Texture;
         public override void SetDefaults()
         {
             Projectile.Size = new Vector2(16);
@@ -24,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;
             Projectile.hide = true;
@@ -55,7 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Player player = Main.player[Projectile.owner];
             var source = Projectile.GetSource_FromThis();
             int sparkDamage = player.CalcIntDamage<MeleeDamageClass>(0.5f * Projectile.damage);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<GenericElectricSpark>(), sparkDamage, hit.Knockback, Main.myPlayer);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<GenericElectricSpark>(), sparkDamage, hit.Knockback, Main.myPlayer);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -63,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Player player = Main.player[Projectile.owner];
             var source = Projectile.GetSource_FromThis();
             int sparkDamage = player.CalcIntDamage<MeleeDamageClass>(0.5f * Projectile.damage);
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<GenericElectricSpark>(), sparkDamage, Projectile.knockBack, Main.myPlayer);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<GenericElectricSpark>(), sparkDamage, Projectile.knockBack, Main.myPlayer);
         }
     }
 }

@@ -7,8 +7,10 @@ using CalamityInheritance.Content.Items.Placeables.Relic;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.NPCs.Boss.SCAL.ArenaTile;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
@@ -256,9 +258,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.buffImmune[k] = true;
             }
             //梯凳驾到不免疫是理所当然
-            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[BuffType<StepToolDebuff>()] = false;
             //重新添加低温虹吸特判。因为寒冰神性已经够弱了
-            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
+            NPC.buffImmune[BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.OnFire3] = false;
             NPC.buffImmune[BuffID.OnFire] = false;
 
@@ -391,9 +393,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             Player target = Main.player[NPC.target];
 
-            isWormAlive = NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>());
-            isSeekerAlive = NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupremeLegacy>());
-            isBrotherAlive = NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>());
+            isWormAlive = NPC.AnyNPCs(NPCType<SCalWormHead>());
+            isSeekerAlive = NPC.AnyNPCs(NPCType<SoulSeekerSupremeLegacy>());
+            isBrotherAlive = NPC.AnyNPCs(NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(NPCType<SupremeCatastropheLegacy>());
 
             if (!target.Hitbox.Intersects(CIGlobalNPC.Arena))
                 Enraged = true;
@@ -407,7 +409,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
 
             Item targetSelectedItem = target.inventory[target.selectedItem];
-            if (targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>()))
+            if (targetSelectedItem.CountsAsClass(GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(GetInstance<TrueMeleeNoSpeedDamageClass>()))
                 isTrueMelee = true;
             else
                 isTrueMelee = false;
@@ -455,7 +457,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
 
             // 杀了星流飞椅
-            if (target.mount?.Type == ModContent.MountType<DraedonGamerChairMount>())
+            if (target.mount?.Type == MountType<DraedonGamerChairMount>())
                 target.mount.Dismount(target);
 
             // 指定期间无敌
@@ -839,7 +841,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                         SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.position);
                         canFireSplitingFireball = false;
                         Vector2 fireballDirection = new Vector2(player.Center.X - projectileOrigin.X, player.Center.Y - projectileOrigin.Y - 550f).SafeNormalize(Vector2.Zero) * baseSpeed;
-                        Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, fireballDirection, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, fireballDirection, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
                     }
                     else
                     {
@@ -853,7 +855,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                             float speedFactor = 8f + speedBoost;
 
                             Vector2 projvelocity = barrageDirection * speedFactor + new Vector2(speedBoost);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileOrigin, projvelocity, ModContent.ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer );
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileOrigin, projvelocity, ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer );
                         }
                     }
                 }
@@ -961,7 +963,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Vector2 projectileSpawn = NPC.Center + offset;
                     projectileVelocity = projectileVelocity.RotatedBy(MathHelper.PiOver2);
 
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ModContent.ProjectileType<BrimstoneHellblastLegacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ProjectileType<BrimstoneHellblastLegacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
             if (attacktimer > totalFireTime)
@@ -1008,7 +1010,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Vector2 projectileSpawn = NPC.Center/* + projectileVelocity * 8f*/;
                     projectileVelocity = projectileVelocity.RotatedBy(MathHelper.PiOver2);
 
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 2f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, projectileVelocity, ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 2f);
                 }
             }
             if (attacktimer > totalFireTime)
@@ -1067,18 +1069,18 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 if (attacktimer < 300) //blasts from above
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 600) //blasts from left and right
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 900) //blasts from above, left, and right
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 3f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 3f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), BulletHell, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -1098,30 +1100,30 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     // 左右两侧
                     float distance = Main.rand.NextBool() ? -1000f : 1000f;
                     float velocity = (distance == -1000f ? 4f : -4f) * vectorMultiplier;
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distance, player.position.Y, velocity, 0f, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 2f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distance, player.position.Y, velocity, 0f, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 2f);
                 }
                 else
                 {
                     SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.Center);
                     // 上方
                     float spread = Main.rand.Next(-1000, 1000);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + spread, player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 2f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + spread, player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 2f);
                 }
             }
             if (attacktimer % BulletHell2SpawnDelay == 0)
             {
                 if (attacktimer < 300) // 下方
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 600) //左侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 900) //左侧与右侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -1137,27 +1139,27 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (attacktimer % SecondBulletHellGigablastsDelay == 0) // 发射小爆弹
             {
                 SoundEngine.PlaySound(BrimstoneBigShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % SecondBulletHellblastsDelay == 0) // 发射无际裂变
             {
                 SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % BulletHell3SpawnDelay == 0)
             {
                 if (attacktimer < 300) // 下方
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 600) //右侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 900) //左侧与右侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
             if (attacktimer == 890)
@@ -1176,27 +1178,27 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (attacktimer % SecondBulletHellGigablastsDelay == 0) // 发射无际裂变
             {
                 SoundEngine.PlaySound(BrimstoneBigShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % SecondBulletHellblastsDelay == 0) // 发射深渊炙炎
             {
                 SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % BulletHell4SpawnDelay == 0)
             {
                 if (attacktimer < 300) // 下方
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y + 1000f, 0f, -4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 600) //左侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 890) //左侧与右侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -1213,35 +1215,35 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             if (attacktimer % SecondBulletHellGigablastsDelay == 0) // 发射无际裂变
             {
                 SoundEngine.PlaySound(BrimstoneBigShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 5f * vectorMultiplier, ProjectileType<SCalBrimstoneGigablastLegacy>(), BrimstoneGigablast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % SecondBulletHellblastsDelay == 0) // 发射深渊炙炎
             {
                 SoundEngine.PlaySound(BrimstoneFireShotSound, NPC.Center);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 10f * vectorMultiplier, ProjectileType<SCalBrimstoneFireblastLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer % SecondBrimstoneWaveDelay == 0) //projectiles that move in wave pattern
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneWaveLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneWaveLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -5f * vectorMultiplier, 0f, ProjectileType<BrimstoneWaveLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 5f * vectorMultiplier, 0f, ProjectileType<BrimstoneWaveLegacy>(), BrimstoneDarts, 0f, Main.myPlayer, 0f, 0f);
             }
 
             if (attacktimer % BulletHell5SpawnDelay == 0)
             {
                 if (attacktimer < 300) // 上方
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 600) //左侧与右侧
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
                 else if (attacktimer < 900) //左侧与右侧与上方
                 {
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
-                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ModContent.ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + Main.rand.Next(-1000, 1000), player.position.Y - 1000f, 0f, 4f * vectorMultiplier, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + 1000f, player.position.Y + Main.rand.Next(-1000, 1000), -3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X - 1000f, player.position.Y + Main.rand.Next(-1000, 1000), 3.5f * vectorMultiplier, 0f, ProjectileType<BrimstoneHellblast2Legacy>(), AbyssalSoul, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -1256,19 +1258,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int SpawnDelay = 200;
             if (attacktimer == SpawnDelay) // 上方
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceY, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceY, 0f, 1f * vectorMultiplier, ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 0f);
             }
             if (attacktimer == SpawnDelay * 2) // 下方
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceX, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + randomSpread, player.position.Y - distanceX, 0f, 1f * vectorMultiplier, ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 1f);
             }
             if (attacktimer == SpawnDelay * 3) // 左侧
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceY, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 2f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceY, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 2f);
             }
             if (attacktimer == SpawnDelay * 4) // 右侧
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceX, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ModContent.ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 3f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), player.position.X + distanceX, player.position.Y - randomSpread, 0f, 1f * vectorMultiplier, ProjectileType<BrimstoneMonsterLegacy>(), MoonDamage, 0f, Main.myPlayer, 0f, 3f);
             }
         }
         #endregion
@@ -1299,13 +1301,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 for (int x = 0; x < 5; x++)
                 {
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, ModContent.NPCType<SCalWormHeart>(), 0, 0f, 0f, 0f, 0f, 255);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, NPCType<SCalWormHeart>(), 0, 0f, 0f, 0f, 0f, 255);
                     spawnX += spawnXAdd;
-                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, ModContent.NPCType<SCalWormHeart>(), 0, 0f, 0f, 0f, 0f, 255);
+                    NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, NPCType<SCalWormHeart>(), 0, 0f, 0f, 0f, 0f, 255);
                     spawnX2 -= spawnXAdd;
                     spawnY += spawnYAdd;
                 }
-                NPC.SpawnOnPlayer(NPC.FindClosestPlayer(), ModContent.NPCType<SCalWormHead>());
+                NPC.SpawnOnPlayer(NPC.FindClosestPlayer(), NPCType<SCalWormHead>());
             }
             SelectNextAttack();
             canNextPhase = true;
@@ -1319,14 +1321,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 Projectile projectile = Main.projectile[x];
                 if (projectile.active)
                 {
-                    if (projectile.type == ModContent.ProjectileType<BrimstoneHellblast2Legacy>() ||
-                        projectile.type == ModContent.ProjectileType<BrimstoneBarrageLegacy>() ||
-                        projectile.type == ModContent.ProjectileType<BrimstoneWaveLegacy>())
+                    if (projectile.type == ProjectileType<BrimstoneHellblast2Legacy>() ||
+                        projectile.type == ProjectileType<BrimstoneBarrageLegacy>() ||
+                        projectile.type == ProjectileType<BrimstoneWaveLegacy>())
                     {
                         if (projectile.timeLeft > 60)
                             projectile.timeLeft = 60;
                     }
-                    else if (projectile.type == ModContent.ProjectileType<SCalBrimstoneFireblastLegacy>() || projectile.type == ModContent.ProjectileType<SCalBrimstoneGigablastLegacy>())
+                    else if (projectile.type == ProjectileType<SCalBrimstoneFireblastLegacy>() || projectile.type == ProjectileType<SCalBrimstoneGigablastLegacy>())
                     {
                         projectile.ai[1] = 1f;
 
@@ -1349,8 +1351,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.velocity *= 0.95f;
             if(attacktimer == 1)
             {
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, ModContent.NPCType<SupremeCataclysmLegacy>());
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, ModContent.NPCType<SupremeCatastropheLegacy>());
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, NPCType<SupremeCataclysmLegacy>());
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, NPCType<SupremeCatastropheLegacy>());
                 canNextPhase = true;
             }
 
@@ -1369,7 +1371,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 SoundEngine.PlaySound(SoundID.Item74, NPC.position);
                 for (int I = 0; I < 20; I++)
                 {
-                    int FireEye = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + (Math.Sin(I * 18) * 300)), (int)(NPC.Center.Y + (Math.Cos(I * 18) * 300)), ModContent.NPCType<SoulSeekerSupremeLegacy>(), NPC.whoAmI, 0, 0, 0, -1);
+                    int FireEye = NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + (Math.Sin(I * 18) * 300)), (int)(NPC.Center.Y + (Math.Cos(I * 18) * 300)), NPCType<SoulSeekerSupremeLegacy>(), NPC.whoAmI, 0, 0, 0, -1);
                     NPC Eye = Main.npc[FireEye];
                     Eye.ai[0] = I * 18;
                     Eye.ai[3] = I * 18;
@@ -1460,7 +1462,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     Projectile projectile = Main.projectile[x];
                     if (projectile.active)
                     {
-                        if (projectile.type == ModContent.ProjectileType<BrimstoneMonsterLegacy>())
+                        if (projectile.type == ProjectileType<BrimstoneMonsterLegacy>())
                         {
                             if (projectile.timeLeft > 90)
                                 projectile.timeLeft = 90;
@@ -1590,7 +1592,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int right = (int)(CIGlobalNPC.Arena.Center().X / 16 + arenaArea.X * 0.5f);
             int top = (int)(CIGlobalNPC.Arena.Center().Y / 16 - arenaArea.Y * 0.5f);
             int bottom = (int)(CIGlobalNPC.Arena.Center().Y / 16 + arenaArea.Y * 0.5f);
-            int arenaTileType = ModContent.TileType<LegacyArenaTile>();
+            int arenaTileType = TileType<LegacyArenaTile>();
 
             for (int i = left; i <= right; i++)
             {
@@ -1704,22 +1706,22 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 return true;
 
             Texture2D Scal = TextureAssets.Npc[NPC.type].Value;
-            Texture2D ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow").Value;
+            Texture2D ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow").Value;
             // NPC.CIMod().BossNewAI[6]为阶段判定
             if(isSecondPhase == true)
             {
-                Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2").Value;
-                ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow").Value;
+                Scal = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2").Value;
+                ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow").Value;
             }
             // 判定使用蓝色贴图
             if(CIGlobalNPC.LegacySCalLament != -1)
             {
-                Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Blue").Value;
-                ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow_Blue").Value;
+                Scal = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Blue").Value;
+                ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow_Blue").Value;
                 if (isSecondPhase == true)
                 {
-                    Scal = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Blue").Value;
-                    ScalGlow = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow_Blue").Value;
+                    Scal = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Blue").Value;
+                    ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow_Blue").Value;
                 }
             }
 
@@ -1821,65 +1823,65 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #region 击杀与掉落
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ModContent.ItemType<OmegaHealingPotion>();
+            potionType = ItemType<OmegaHealingPotion>();
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ModContent.ItemType<CalamitousEssence>(), 1, 30, 40);
+            npcLoot.Add(ItemType<CalamitousEssence>(), 1, 30, 40);
             //魔影梯凳掉率为0.0005%
-            npcLoot.Add(ModContent.ItemType<StepToolShadows>(), 2000);
+            npcLoot.Add(ItemType<StepToolShadows>(), 2000);
 
             int[] weapons =
             [
-                ModContent.ItemType<AngelicAlliance>(),
-                ModContent.ItemType<Animus>(),
-                ModContent.ItemType<Ozzathoth>(),
-                ModContent.ItemType<AzathothLegacy>(),
-                ModContent.ItemType<CrystylCrusher>(),
-                ModContent.ItemType<DraconicDestruction>(),
-                ModContent.ItemType<Earth>(),
-                ModContent.ItemType<RedSun>(),
-                ModContent.ItemType<IllustriousKnives>(),
-                ModContent.ItemType<RogueTypeKnivesShadowspec>(),
-                ModContent.ItemType<NanoblackReaper>(),
-                ModContent.ItemType<MeleeTypeNanoblackReaper>(),
-                ModContent.ItemType<RainbowPartyCannon>(),
-                ModContent.ItemType<TriactisTruePaladinianMageHammerofMight>(),
-                ModContent.ItemType<RogueTypeHammerTriactisTruePaladinianMageHammerofMight>(),
-                ModContent.ItemType<SomaPrime>(),
-                ModContent.ItemType<SomaPrimeOld>(),
-                ModContent.ItemType<Svantechnical>(),
-                ModContent.ItemType<SvantechnicalLegacy>(),
-                ModContent.ItemType<Sylvestaff>(),
-                ModContent.ItemType<FabstaffOld>(),
-                ModContent.ItemType<StaffofBlushie>(),
-                ModContent.ItemType<Apotheosis>(),
-                ModContent.ItemType<ApotheosisLegacy>(),
-                ModContent.ItemType<TheDanceofLight>(),
-                ModContent.ItemType<DanceofLightLegacy>(),
-                ModContent.ItemType<ScarletDevil>(),
-                ModContent.ItemType<Endogenesis>(),
-                ModContent.ItemType<FlamsteedRing>(),
-                ModContent.ItemType<Eternity>(),
-                ModContent.ItemType<TemporalUmbrella>(),
-                ModContent.ItemType<TemporalUmbrellaOld>(),
+                ItemType<AngelicAlliance>(),
+                ItemType<Animus>(),
+                ItemType<Ozzathoth>(),
+                ItemType<AzathothLegacy>(),
+                ItemType<CrystylCrusher>(),
+                ItemType<DraconicDestruction>(),
+                ItemType<Earth>(),
+                ItemType<RedSun>(),
+                ItemType<IllustriousKnives>(),
+                ItemType<RogueShadowspecKnives>(),
+                ItemType<NanoblackReaper>(),
+                ItemType<MeleeNanoblackReaper>(),
+                ItemType<RainbowPartyCannon>(),
+                ItemType<TriactisTruePaladinianMageHammerofMight>(),
+                ItemType<RogueTriactisHammer>(),
+                ItemType<SomaPrime>(),
+                ItemType<SomaPrimeOld>(),
+                ItemType<Svantechnical>(),
+                ItemType<SvantechnicalLegacy>(),
+                ItemType<Sylvestaff>(),
+                ItemType<FabstaffOld>(),
+                ItemType<StaffofBlushie>(),
+                ItemType<Apotheosis>(),
+                ItemType<ApotheosisLegacy>(),
+                ItemType<TheDanceofLight>(),
+                ItemType<DanceofLightLegacy>(),
+                ItemType<ScarletDevil>(),
+                ItemType<Endogenesis>(),
+                ItemType<FlamsteedRing>(),
+                ItemType<Eternity>(),
+                ItemType<TemporalUmbrella>(),
+                ItemType<TemporalUmbrellaOld>(),
             ];
             // 随机掉一个
             var weaponDropRule = ItemDropRule.OneFromOptions(1, weapons);
             npcLoot.Add(weaponDropRule);
             // 爆裂与利锥
-            npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<VehemencOld>());
-            npcLoot.AddIf(() => CalamityWorld.death, ModContent.ItemType<Levi>());
+            npcLoot.AddIf(() => CalamityWorld.death, ItemType<VehemencOld>());
+            npcLoot.AddIf(() => CalamityWorld.death, ItemType<Levi>());
 
             // 战利品纹章
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrimstoneJewel>()));
-            npcLoot.Add(ModContent.ItemType<ScalTrophy>(), 10);
+            npcLoot.Add(ItemDropRule.Common(ItemType<BrimstoneJewel>()));
+            npcLoot.Add(ItemType<ScalTrophy>(), 10);
 
             // 圣物
-            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ModContent.ItemType<ScalRelic>());
+            npcLoot.DefineConditionalDropSet(DropHelper.RevAndMaster).Add(ItemType<ScalRelic>());
             // Lore
-            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyScal, ModContent.ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
+            npcLoot.AddConditionalPerPlayer(() => !CIDownedBossSystem.DownedLegacyScal, ItemType<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
         }
 
         public override void OnKill()
@@ -1899,7 +1901,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             // Spawn the SCal NPC directly where the boss was
             if (!BossRushEvent.BossRushActive)
-                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y + 12, ModContent.NPCType<CalamitasNPCLegacy>());
+                NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y + 12, NPCType<CalamitasNPCLegacy>());
 
             if (!CIDownedBossSystem.DownedLegacyScal)
             {

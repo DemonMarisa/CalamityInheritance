@@ -30,11 +30,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<CosmicShivProjold>();
+            Item.shoot = ProjectileType<CosmicShivProjold>();
             Item.shootSpeed = 2.4f;
 
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.Calamity().donorItem = true; //Yatagarasu#0001
         }
 
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             CreateRecipe().
                 AddIngredient<ElementalShivold>().
                 AddIngredient<CosmiliteBar>(8).
-                AddTile(ModContent.TileType<CosmicAnvil>()).
+                AddTile(TileType<CosmicAnvil>()).
                 Register();
         }
     }

@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 42;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
-            Item.shoot = ModContent.ProjectileType<VictideSwordProj>();
+            Item.shoot = ProjectileType<VictideSwordProj>();
             Item.shootSpeed = 6f;
         }
 

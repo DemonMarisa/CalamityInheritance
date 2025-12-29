@@ -23,7 +23,7 @@ namespace CalamityInheritance.CIPlayer
         public bool MLG = false; // 恶魔纹章的刷怪增幅
         public void Defiled()
         {
-            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            CIWorld modWorld = GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
             // 神殇
             if (modWorld.Defiled)
@@ -42,7 +42,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            CIWorld modWorld = GetInstance<CIWorld>();
             if (!modWorld.Malice && !CIServerConfig.Instance.WeatherChange)
                 return;
             if (CalamityUtils.AnyBossNPCS())
@@ -146,7 +146,7 @@ namespace CalamityInheritance.CIPlayer
                 Vector2 velocity = new(windVelocity * 0.2f, 3f * Main.rand.NextFloat());
                 // 发射弹幕
                 if (Player.miscCounter % divisor == 0 && Main.rand.NextBool(3))
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint, velocity, ModContent.ProjectileType<IceRain>(), 20, 0f, Player.whoAmI, 2f, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint, velocity, ProjectileType<IceRain>(), 20, 0f, Player.whoAmI, 2f, 0f);
             }
         }
         #endregion
@@ -228,7 +228,7 @@ namespace CalamityInheritance.CIPlayer
                     Vector2 fireTo = new Vector2(spawnPoint.X + 100f * randomVelocity, spawnPoint.Y + 900f);
                     Vector2 ai0 = fireTo - spawnPoint;
                     Vector2 velocity = Vector2.Normalize(ai0) * 12f;
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint.X, spawnPoint.Y, 0f, velocity.Y, ModContent.ProjectileType<LightningMark>(), 0, 0f, Player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), spawnPoint.X, spawnPoint.Y, 0f, velocity.Y, ProjectileType<LightningMark>(), 0, 0f, Player.whoAmI, 0f, 0f);
                 }
             }
         }
@@ -241,7 +241,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 bool affectedByColdWater = Player.wet && !Player.lavaWet && !Player.honeyWet && !Player.arcticDivingGear;
 
-                Player.AddBuff(ModContent.BuffType<MaliceModeCold>(), 2, false);
+                Player.AddBuff(BuffType<MaliceModeCold>(), 2, false);
                 // 增加计时器
                 cIPlayer.maliceModeBlizzardTime++;
                 if (affectedByColdWater)
@@ -274,7 +274,7 @@ namespace CalamityInheritance.CIPlayer
             if (Player.ZoneUnderworldHeight && !immunityToHot)
             {
                 bool affectedByHotLava = Player.lavaWet;
-                Player.AddBuff(ModContent.BuffType<MaliceModeHot>(), 2, false);
+                Player.AddBuff(BuffType<MaliceModeHot>(), 2, false);
                 cIPlayer.maliceModeUnderworldTime++;
                 if (affectedByHotLava)
                     cIPlayer.maliceModeUnderworldTime++;
@@ -303,7 +303,7 @@ namespace CalamityInheritance.CIPlayer
         #region 铁心
         public void IronHeartChange()
         {
-            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            CIWorld modWorld = GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
             if (modWorld.IronHeart)
             {
@@ -318,7 +318,7 @@ namespace CalamityInheritance.CIPlayer
         #region Get Heal Life
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
-            CIWorld modWorld = ModContent.GetInstance<CIWorld>();
+            CIWorld modWorld = GetInstance<CIWorld>();
             if (modWorld.IronHeart)
                 healValue = 0;
         }

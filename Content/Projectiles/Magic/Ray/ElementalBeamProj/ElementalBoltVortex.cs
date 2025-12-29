@@ -1,4 +1,5 @@
 ﻿using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
     public class ElementalBoltVortex : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public const int Lifetime = 150;
         public ref float Time => ref Projectile.ai[0];
@@ -29,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = Projectile.GetSource_FromThis();
-            CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 0f, 600f, 800f, 6f, ModContent.ProjectileType<ElementalBolt>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+            CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 0f, 600f, 800f, 6f, ProjectileType<ElementalBolt>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
         }
     }
 }

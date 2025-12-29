@@ -11,18 +11,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
     public class EonBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Beam");
-        }
-
+        public override string Texture => GenericProjRoute.InvisProjRoute;
+        public ref float UseTexture => ref Projectile.ai[1];
         public override void SetDefaults()
         {
             Projectile.width = 20;
             Projectile.height = 20;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
-            Projectile.tileCollide = false;
             Projectile.penetrate = 3;
             Projectile.timeLeft = 500;
             Projectile.usesLocalNPCImmunity = true;
@@ -33,25 +29,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
-
-            int num36 = Main.rand.Next(3);
-            int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, num36 switch
-            {
-                0 => 15,
-                1 => 57,
-                _ => 58,
-            }, 0f, 0f, 100, default(Color), 1.25f);
+            int dustID = Main.rand.Next(3) switch { 0 => 15, 1 => 57, _ => 58 };
+            int num225 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, dustID, 0f, 0f, 100, default, 1.25f);
             Dust dust59 = Main.dust[num225];
             Dust dust3 = dust59;
             dust3.velocity *= 0.1f;
 
-            Lighting.AddLight(Projectile.Center,
-                             (255 - Projectile.alpha) * 0.3f / 255f,
-                             (255 - Projectile.alpha) * 0.4f / 255f,
-                             (255 - Projectile.alpha) * 1.0f / 255f);
+            Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.3f / 255f, (255 - Projectile.alpha) * 0.4f / 255f, (255 - Projectile.alpha) * 1f / 255f);
             if (Projectile.localAI[1] > 7f)
             {
-                int dType = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, new Color(Main.DiscoR, 100, 255), 1.2f);
+                int dType = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, new Color(53, Main.DiscoG, 255), 1.2f);
                 Main.dust[dType].velocity *= 0.1f;
                 Main.dust[dType].noGravity = true;
             }
@@ -59,15 +46,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(Main.DiscoR, 100, 255, Projectile.alpha);
+            return new Color(53, Main.DiscoG, 255, Projectile.alpha);
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-			if (Projectile.timeLeft > 490)
-				return false;
-
-			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+            if (Projectile.timeLeft > 490)
+                return false;
+            UseTexture = MathHelper.Clamp(UseTexture, 1f, 4f);
+            string path = $"{GetType().Namespace}.{GetType().Name}".Replace(".", "/");
+            Texture2D tex = Request<Texture2D>($"{path}_{(int)UseTexture}").Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
             return false;
         }
@@ -76,18 +64,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             for (int k = 0; k < 7; k++)
             {
-                int dType = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, 0f, 0f, 150, new Color(Main.DiscoR, 100, 255), 1.2f);
+                int dType = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, 0f, 0f, 150, new Color(53, Main.DiscoG, 255), 1.2f);
                 Main.dust[dType].noGravity = true;
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.ai[0] != 1f) //excludes (True) Ark of the Ancients
+            if (Projectile.ai[0] != 1f) //excludes True Ark of the Ancients
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 120);
                 target.AddBuff(BuffID.Frostburn, 120);
-                target.AddBuff(ModContent.BuffType<Plague>(), 120);
-                target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+                target.AddBuff(BuffType<Plague>(), 120);
+                target.AddBuff(BuffType<HolyFlames>(), 120);
             }
         }
     }

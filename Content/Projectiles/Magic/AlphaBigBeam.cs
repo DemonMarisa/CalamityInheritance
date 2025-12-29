@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using LAP.Assets.TextureRegister;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -11,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class AlphaBigBeam : ModProjectile, ILocalizedModType
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<AlphaRayLegacy>();
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

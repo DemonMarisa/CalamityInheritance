@@ -11,8 +11,8 @@ namespace CalamityInheritance.Rarity
         //Scarlet:下方用于带词缀的武器之后的稀有度切换（或者说，品质切换）
         public override int GetPrefixedRarity(int offset, float valueMult) => offset switch
         {
-            -2 => ModContent.RarityType<CatalystViolet> (),
-            -1 => ModContent.RarityType<DonatorPink>    (),
+            -2 => RarityType<CatalystViolet>(),
+            -1 => RarityType<DonatorPink>(),
             _  => Type,
         };
     }

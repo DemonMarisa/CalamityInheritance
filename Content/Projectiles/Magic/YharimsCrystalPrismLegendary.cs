@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     int damage = Projectile.damage;
                     float kb = Projectile.knockBack;
                     for (int b = 0; b < BeamCounts; b++)
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, beamVelocity, ModContent.ProjectileType<YharimsCrystalBeamLegendary>(), damage, kb, Projectile.owner, b, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI));
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, beamVelocity, ProjectileType<YharimsCrystalBeamLegendary>(), damage, kb, Projectile.owner, b, Projectile.GetByUUID(Projectile.owner, Projectile.whoAmI));
                     Projectile.netUpdate = true;
                 }
                 else if (!crystalStillInUse)

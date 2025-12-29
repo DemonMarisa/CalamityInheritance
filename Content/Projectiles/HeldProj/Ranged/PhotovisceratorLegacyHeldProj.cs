@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
@@ -20,6 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
     public class PhotovisceratorLegacyHeldProj : BaseHeldProj, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        public override string Texture => GetInstance<Photovisceratorold>().Texture;
         // X偏移
         public override float OffsetX => -2;
         public override float OffsetY => 0;
@@ -106,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ModContent.ProjectileType<PhotovisceratorCrystal>(), damage / 2, 0f, Projectile.owner);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, mouseToPlayer * 18f, ProjectileType<PhotovisceratorCrystal>(), damage / 2, 0f, Projectile.owner);
             }
         }
         #endregion
@@ -125,7 +127,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 发射主体火焰
                 for (int i = 0; i < 2; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFireold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ProjectileType<ExoFireold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
                 }
                 UseDelay = leftUseCD;
                 BombCounts++;
@@ -143,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                     Vector2 position = Projectile.Center + newVector.ToRotation().ToRotationVector2() * 64f;
                     int yDirection = (i == 0).ToDirectionInt();
                     newVector = newVector.RotatedBy(0.2f * yDirection);
-                    Projectile lightBomb = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), position, newVector, ModContent.ProjectileType<ExoLightold>(), damage, knockback, player.whoAmI);
+                    Projectile lightBomb = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), position, newVector, ProjectileType<ExoLightold>(), damage, knockback, player.whoAmI);
 
                     lightBomb.localAI[1] = yDirection;
                     lightBomb.netUpdate = true;
@@ -167,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 // 消耗弹药
                 Owner.PickAmmo(Owner.ActiveItem(), out _, out float shootSpeed, out int damage, out float knockback, out _, Main.rand.NextFloat() <= AmmoNotConsumeChance);
                 // 发射主体火焰
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ModContent.ProjectileType<ExoFlareClusterold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + offset, mouseToPlayer * 18f, ProjectileType<ExoFlareClusterold>(), (int)(damage * 0.75f), knockback, player.whoAmI, 0f, 0f);
                 UseDelay = rightUseCD;
             }
         }
@@ -175,7 +177,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         #region 绘制
         public override void MorePreDraw(ref Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhotovisceratoroldGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhotovisceratoroldGlow").Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
             Vector2 rotationPoint = texture.Size() * 0.5f;

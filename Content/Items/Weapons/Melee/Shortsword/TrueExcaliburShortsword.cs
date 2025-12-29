@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TrueExcaliburShortswordProj>();
+            Item.shoot = ProjectileType<TrueExcaliburShortswordProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<ExcaliburShortsword>());
+            recipe.AddIngredient(ItemType<ExcaliburShortsword>());
             recipe.AddIngredient(ItemID.ChlorophyteBar,24);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();

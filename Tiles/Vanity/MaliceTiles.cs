@@ -23,9 +23,9 @@ namespace CalamityInheritance.Tiles.Vanity
         {
             if (!Main.dedServ)
             {
-                Glow = ModContent.Request<Texture2D>("CalamityInheritance/Tiles/Vanity/MaliceTilesGlow", AssetRequestMode.AsyncLoad);
+                Glow = Request<Texture2D>("CalamityInheritance/Tiles/Vanity/MaliceTilesGlow", AssetRequestMode.AsyncLoad);
             }
-            RegisterItemDrop(ModContent.ItemType<Malice>());
+            RegisterItemDrop(ItemType<Malice>());
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Width = 5;
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Tiles.Vanity
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<Malice>();
+            player.cursorItemIconID = ItemType<Malice>();
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => true;

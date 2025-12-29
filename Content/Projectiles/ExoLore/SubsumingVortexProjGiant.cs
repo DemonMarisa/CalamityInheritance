@@ -3,6 +3,7 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
 using LAP.Core.Utilities;
@@ -44,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public const float IdealScale = 2.7f;
         const float StartHomingNPCTime = 480f;
         const float SuicideTime = 240f;
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public bool InitSound = false;
 
         public override void SetDefaults()
@@ -152,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                         {
                             float hue = (Time - SubsumingVortex.VortexShootDelay) / 125f;
                             Vector2 vortexVelocity = Projectile.SafeDirectionTo(potentialTarget.Center) * 8f;
-                            Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vortexVelocity, ModContent.ProjectileType<SubsumingVortexProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
+                            Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vortexVelocity, ProjectileType<SubsumingVortexProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
                         }
                         Projectile.netUpdate = true;
                     }
@@ -198,7 +199,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 {
                     float hue = (Time - SubsumingVortex.VortexShootDelay) / 125f;
                     Vector2 vortexVelocity = Projectile.SafeDirectionTo(tar.Center) * 8f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vortexVelocity, ModContent.ProjectileType<SubsumingVortexProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, vortexVelocity, ProjectileType<SubsumingVortexProj>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
                 }
                 Projectile.netUpdate = true;
             }
@@ -306,7 +307,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
                 //改色，或者说改饱和度
                 float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ModContent.ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue); 
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue); 
                 Main.projectile[p].DamageType = DamageClass.Magic;
                 Main.projectile[p].scale *= 0.85f;
                 //2穿, 即2判
@@ -324,7 +325,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override bool PreDraw(ref Color lightColor)
         {
             Main.spriteBatch.EnterShaderRegion(BlendState.Additive);
-            Texture2D worleyNoise = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
+            Texture2D worleyNoise = Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             Vector2 scale = Projectile.Size / worleyNoise.Size() * 2f;
             float spinRotation = Main.GlobalTimeWrappedHourly * 2.4f;

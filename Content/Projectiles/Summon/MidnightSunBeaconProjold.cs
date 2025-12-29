@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             {
                 for (int i = 1; i <= 4; i++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<MidnightSunSkyBeamold>(), Projectile.damage, Projectile.knockBack, Projectile.owner,
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<MidnightSunSkyBeamold>(), Projectile.damage, Projectile.knockBack, Projectile.owner,
                         Projectile.whoAmI, i - 2);
                 }
                 Projectile.ai[1] = MidnightSunSkyBeamold.TrueTimeLeft + 60f;
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             if (Projectile.ai[1] == 1f)
             {
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.UnitY * 30f, ModContent.ProjectileType<MidnightSunUFOold>(), Projectile.damage, Projectile.knockBack,Projectile.owner);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.UnitY * 30f, ProjectileType<MidnightSunUFOold>(), Projectile.damage, Projectile.knockBack,Projectile.owner);
                 Main.projectile[p].originalDamage = Projectile.originalDamage;
                 Projectile.Kill();
             }

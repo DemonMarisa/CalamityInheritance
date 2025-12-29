@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoMark : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -123,7 +124,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.localAI[1] += 1f;
             if (Projectile.localAI[1] == 60f && Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ExoTornado>(), Projectile.damage, 2f, Projectile.owner, 1f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ExoTornado>(), Projectile.damage, 2f, Projectile.owner, 1f, 0f);
             }
             if (Projectile.localAI[1] >= 120f)
             {
@@ -135,7 +136,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             Color color25 = Lighting.GetColor((int)(Projectile.position.X + Projectile.width * 0.5) / 16, (int)((Projectile.position.Y + Projectile.height * 0.5) / 16.0));
             Vector2 vector38 = Projectile.position + new Vector2(Projectile.width, Projectile.height) / 2f + Vector2.UnitY * Projectile.gfxOffY - Main.screenPosition;
-            Texture2D texture2D27 = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D texture2D27 = Request<Texture2D>(Texture).Value;
             Rectangle rectangle11 = texture2D27.Frame(1, Main.projFrames[Projectile.type], 0, Projectile.frame);
             Color alpha5 = Projectile.GetAlpha(color25);
             Vector2 origin7 = rectangle11.Size() / 2f;

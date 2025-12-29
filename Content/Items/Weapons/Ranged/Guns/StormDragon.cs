@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
             Item.noMelee = true;
             Item.knockBack = 3.25f;
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = RarityType<Turquoise>();
             Item.UseSound = SoundID.Item31;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Relic
         public override void SetDefaults()
         {
             // Vanilla has many useful methods like these, use them! This substitutes setting Item.createTile and Item.placeStyle aswell as setting a few values that are common across all placeable items
-            Item.DefaultToPlaceableTile(ModContent.TileType<CalCloneRelicTiles>(), 0);
+            Item.DefaultToPlaceableTile(TileType<CalCloneRelicTiles>(), 0);
 
             Item.width = 48;
             Item.height = 62;

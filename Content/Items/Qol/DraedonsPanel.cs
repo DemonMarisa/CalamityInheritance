@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Qol
         {
             Item.width = 28;
             Item.height = 28;
-            Item.rare = ModContent.RarityType<DarkOrange>();
+            Item.rare = RarityType<DarkOrange>();
             Item.useAnimation = Item.useTime = 20;
             //给予一点reuseDelay以避免玩家无意间二次打开UI
             Item.reuseDelay = 20;

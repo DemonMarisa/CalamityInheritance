@@ -102,14 +102,14 @@ namespace CalamityInheritance.CIPlayer
         }
         public static bool SameType<T>(Item type) where T : ModItem
         {
-            return type.type == ModContent.ItemType<T>();
+            return type.type == ItemType<T>();
         }
         #region 传奇物品特殊效果(T3)
         private void DukeLegendaryBuff(NPC target, NPC.HitInfo hit)
         {
             //海爵剑T3：攻击综合增强属性()
             if (hit.Damage > 5)
-                Player.AddBuff(ModContent.BuffType<DukeBuff>(), 60);
+                Player.AddBuff(BuffType<DukeBuff>(), 60);
         }
 
         private void PBGLegendaryBuff(NPC target, NPC.HitInfo hit)
@@ -117,7 +117,7 @@ namespace CalamityInheritance.CIPlayer
             //T3孔雀翎: 攻击时将在接下来的15秒内提供buff，这个buff将会使你有1/10概率彻底无敌3秒
             if (target.life > 5 && hit.Damage > 50 && GlobalLegendaryT3CD == 0)
             {
-                Player.AddBuff(ModContent.BuffType<PBGBuff>(), 600);
+                Player.AddBuff(BuffType<PBGBuff>(), 600);
                 //给予45秒的CD
                 GlobalLegendaryT3CD = 900;
             }
@@ -125,8 +125,8 @@ namespace CalamityInheritance.CIPlayer
         //庇护之刃T1：射弹击中敌人时，提升1%防御力，最高25%
         public void DefenderBuff(NPC target, NPC.HitInfo hit, Projectile projectile)
         {
-            int proj = ModContent.ProjectileType<DefenseBeam>();
-            if (target.life > 5 && projectile.type == proj || projectile.type == ModContent.ProjectileType<DefenseFlame>() || projectile.type == ModContent.ProjectileType<DefenseBlast>() && DefendTier1)
+            int proj = ProjectileType<DefenseBeam>();
+            if (target.life > 5 && projectile.type == proj || projectile.type == ProjectileType<DefenseFlame>() || projectile.type == ProjectileType<DefenseBlast>() && DefendTier1)
             {
                 DefendTier1Timer = 180;
                 DefenseBoost += 0.01f;
@@ -155,7 +155,7 @@ namespace CalamityInheritance.CIPlayer
         private void RavagerLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             //T2: 在地狱对亵渎天神造成50%伤害
-            if (target.type == ModContent.NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
+            if (target.type == NPCType<Providence>() && !BetsyTier2 && Main.LocalPlayer.ZoneUnderworldHeight)
             {
                 DamagePool += hit.Damage;
                 if (DamagePool >= target.lifeMax * 0.5f)
@@ -176,7 +176,7 @@ namespace CalamityInheritance.CIPlayer
         {
             
             //T2: 用海爵剑给猎魂鲨最后一击
-            if (target.type == ModContent.NPCType<ReaperShark>() && !DukeTier2 && hit.Damage > target.life)
+            if (target.type == NPCType<ReaperShark>() && !DukeTier2 && hit.Damage > target.life)
             {
                 LegendaryUpgradeTint(DustID.Water);
                 //记得清空伤害池子，因为这个是共用的
@@ -188,7 +188,7 @@ namespace CalamityInheritance.CIPlayer
         private void PBGLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
             //T2: 使用孔雀翎对噬魂幽花造成最后一击
-            if (target.type == ModContent.NPCType<Polterghast>() && hit.Damage > target.life && !PBGTier2)
+            if (target.type == NPCType<Polterghast>() && hit.Damage > target.life && !PBGTier2)
             {
                 LegendaryUpgradeTint(CIDustID.DustTerraBlade);
                 PBGTier2 = true;

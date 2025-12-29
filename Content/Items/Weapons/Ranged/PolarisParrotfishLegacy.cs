@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = CommonCalamitySounds.LaserCannonSound;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PolarStarLegacy>();
+            Item.shoot = ProjectileType<PolarStarLegacy>();
             Item.shootSpeed = 17f;
         }
 
@@ -47,17 +47,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 for (int i = 0; i < 8 ; i++)
                 {
                     Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f))  * Main.rand.NextFloat(0.8f, 1.1f);
-                    Projectile.NewProjectile(source, position, spread, ModContent.ProjectileType<PolarStarLegacy>(), damage/3, knockback, player.whoAmI, 0f, Main.rand.NextBool(3)? 2f :1f);
+                    Projectile.NewProjectile(source, position, spread, ProjectileType<PolarStarLegacy>(), damage/3, knockback, player.whoAmI, 0f, Main.rand.NextBool(3)? 2f :1f);
                 }
             }
             if (modPlayer.PolarisPhase3) //追踪
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PolarStarLegacy>(), damage, knockback, player.whoAmI, 0f, 2f);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<PolarStarLegacy>(), damage, knockback, player.whoAmI, 0f, 2f);
                 return false;
             }
             else if (modPlayer.PolarisPhase2) //分裂
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<PolarStarLegacy>(), (int)(damage * 1.25), knockback, player.whoAmI, 0f, 1f);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<PolarStarLegacy>(), (int)(damage * 1.25), knockback, player.whoAmI, 0f, 1f);
                 return false;
             }
             return true;

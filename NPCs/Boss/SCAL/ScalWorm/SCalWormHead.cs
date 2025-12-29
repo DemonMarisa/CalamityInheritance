@@ -74,7 +74,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            int associatedNPCType = NPCType<SupremeCalamitasLegacy>();
             bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
@@ -255,18 +255,18 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
                         int lol;
                         if (i >= 0 && i < minLength && i % 2 == 1)
                         {
-                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<SCalWormBodyWeak>(), NPC.whoAmI);
+                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<SCalWormBodyWeak>(), NPC.whoAmI);
                             Main.npc[lol].localAI[0] += passedVar;
                             passedVar += 36f;
                         }
                         else if (i >= 0 && i < minLength)
                         {
-                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<SCalWormBody>(), NPC.whoAmI);
+                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<SCalWormBody>(), NPC.whoAmI);
                             // localAI[3] �����ĸ��汾�����
                             Main.npc[lol].localAI[3] = i;
                         }
                         else
-                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, ModContent.NPCType<SCalWormTail>(), NPC.whoAmI);
+                            lol = NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<SCalWormTail>(), NPC.whoAmI);
 
                         Main.npc[lol].realLife = NPC.whoAmI;
                         // AI2������RealLife
@@ -287,7 +287,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         // ����Ƿ�Ӧ�ô���
         public void HandleExistenceConditions()
         {
-            bool shouldDespawn = Main.player[NPC.target].dead || !NPC.AnyNPCs(ModContent.NPCType<SCalWormHeart>()) || CIGlobalNPC.LegacySCal < 0 || !Main.npc[CIGlobalNPC.LegacySCal].active;
+            bool shouldDespawn = Main.player[NPC.target].dead || !NPC.AnyNPCs(NPCType<SCalWormHeart>()) || CIGlobalNPC.LegacySCal < 0 || !Main.npc[CIGlobalNPC.LegacySCal].active;
 
             if (shouldDespawn)
             {
@@ -307,7 +307,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             SoundEngine.PlaySound(SepulcherSummonSound, NPC.position);
             for (int i = 0; i < Main.maxNPCs; i++)
             {
-                int[] wormTypes = { NPC.type, ModContent.NPCType<SCalWormBody>(), ModContent.NPCType<SCalWormBodyWeak>(), ModContent.NPCType<SCalWormTail>() };
+                int[] wormTypes = { NPC.type, NPCType<SCalWormBody>(), NPCType<SCalWormBodyWeak>(), NPCType<SCalWormTail>() };
 
                 if (wormTypes.Contains(Main.npc[i].type))
                     Main.npc[i].active = false;
@@ -329,7 +329,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
             spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-            texture2D15 = ModContent.Request<Texture2D>($"CalamityInheritance/NPCs/Boss/SCAL/ScalWorm/SCalWormHeadGlow").Value;
+            texture2D15 = Request<Texture2D>($"CalamityInheritance/NPCs/Boss/SCAL/ScalWorm/SCalWormHeadGlow").Value;
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
             spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);

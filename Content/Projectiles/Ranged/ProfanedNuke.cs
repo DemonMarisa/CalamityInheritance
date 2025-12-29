@@ -48,13 +48,13 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ProfanedNukeDust>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 2f);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ProfanedNukeDust>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 2f);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<ProfanedNukeDust>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 2f);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<ProfanedNukeDust>(), (int)(Projectile.damage * 0.25), Projectile.knockBack, Projectile.owner, 0f, 2f);
         }
         private void FlightAnimation()
         {
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             SummonFlaresTimer++;
             if (SummonFlaresTimer % 12 == 0)
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ModContent.ProjectileType<ProfanedNukeDust>(), Projectile.damage/2, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<ProfanedNukeDust>(), Projectile.damage/2, Projectile.knockBack, Projectile.owner, 0f, 0f);
             if (Math.Abs(Projectile.velocity.X) >= 8f || Math.Abs(Projectile.velocity.Y) >= 8f)
                 SpawnDust();
         }
@@ -199,7 +199,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     {
                         velocityMult = 1f;
                     }
-                    Mod mod = ModContent.GetInstance<CalamityInheritance>();
+                    Mod mod = GetInstance<CalamityInheritance>();
                     int type = Main.rand.Next(61, 64);
                     int smoke = Gore.NewGore(Projectile.GetSource_Death(), source, default, type, 1f);
                     Gore gore = Main.gore[smoke];

@@ -12,12 +12,12 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/NowStopAskingWhere"), ModContent.ItemType<NowStopAskingWhere>(), ModContent.TileType<NowStopAskingWhereBox>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/NowStopAskingWhere"), ItemType<NowStopAskingWhere>(), TileType<NowStopAskingWhereBox>());
 			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults() {
-			Item.DefaultToMusicBox(ModContent.TileType<NowStopAskingWhereBox>(), 0);
+			Item.DefaultToMusicBox(TileType<NowStopAskingWhereBox>(), 0);
 		}
 
         public override void AddRecipes()

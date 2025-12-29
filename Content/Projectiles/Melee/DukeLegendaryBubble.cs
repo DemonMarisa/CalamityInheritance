@@ -10,6 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class DukeLegendaryBubble: ModProjectile, ILocalizedModType
     {
+        public override string Texture => GetInstance<VictideSwordProj>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
         {
@@ -139,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                         break;
                     }
                 }
-                int s = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pTileY * 16 + 8, pTileX * 16 - 32, 0f, 0f, ModContent.ProjectileType<BrinySpout>(), Projectile.damage / 3, 6f, Main.myPlayer, 3f, 7f); //First overload seems to deal with timing, second is segment amount
+                int s = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pTileY * 16 + 8, pTileX * 16 - 32, 0f, 0f, ProjectileType<BrinySpout>(), Projectile.damage / 3, 6f, Main.myPlayer, 3f, 7f); //First overload seems to deal with timing, second is segment amount
                 Main.projectile[s].netUpdate = true;
             }
         }

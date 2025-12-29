@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item41;
             Item.autoReuse = true;
             Item.shootSpeed = 12f;
-            Item.shoot = ModContent.ProjectileType<AeriesShockblastRound>();
+            Item.shoot = ProjectileType<AeriesShockblastRound>();
             Item.useAmmo = AmmoID.Bullet;
         }
 
@@ -44,12 +44,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Vector2 offset = new(0, -10);
             if(CIConfig.Instance.AmmoConversion)
             {
-                Projectile.NewProjectile(source, position + offset, velocity, ModContent.ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position + offset, velocity, ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);
             }
             else
             {
                 if (type == ProjectileID.Bullet)
-                    Projectile.NewProjectile(source, position + offset, velocity, ModContent.ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position + offset, velocity, ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);
                 else
                     Projectile.NewProjectile(source, position + offset, velocity, type, damage, knockback, player.whoAmI);
             }
@@ -74,10 +74,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<CursedCapper>())
+                .AddIngredient(ItemType<CursedCapper>())
                 .AddIngredient(ItemID.FallenStar, 3)
                 .AddIngredient(ItemID.ShroomiteBar, 5)
-                .AddIngredient(ModContent.ItemType<EssenceofSunlight>())
+                .AddIngredient(ItemType<EssenceofSunlight>())
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

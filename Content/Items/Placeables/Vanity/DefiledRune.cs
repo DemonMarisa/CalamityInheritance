@@ -29,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
-            Item.createTile = ModContent.TileType<DefiledRuneTiles>();
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.createTile = TileType<DefiledRuneTiles>();
+            Item.rare = RarityType<PureGreen>();
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return true;
             if (player.altFunctionUse != 2)
             {
-                CIWorld world = ModContent.GetInstance<CIWorld>();
+                CIWorld world = GetInstance<CIWorld>();
                 world.UpdateDefiled();
             }
             return true;

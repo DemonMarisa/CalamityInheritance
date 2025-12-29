@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                         int getProj = Projectile.type;
                         if (Projectile.ai[1] >= 15 + Main.rand.Next(3))
                         {
-                            getProj = ModContent.ProjectileType<FlameBeamTip2>();
+                            getProj = ProjectileType<FlameBeamTip2>();
                         }
 
                         int whatProj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X + Projectile.velocity.X + Projectile.width / 2, Projectile.position.Y + Projectile.velocity.Y + Projectile.height / 2,
@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             target.immune[Projectile.owner] = 8;
             target.AddBuff(BuffID.OnFire3, 300);
-            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * 0f, ModContent.ProjectileType<FuckYou>(), Projectile.damage/2, 0f , Projectile.owner);
+            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * 0f, ProjectileType<FuckYou>(), Projectile.damage/2, 0f , Projectile.owner);
             Main.projectile[proj].DamageType = DamageClass.Magic;
         }
     }

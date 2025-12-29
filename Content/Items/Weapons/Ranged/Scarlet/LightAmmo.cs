@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet
             Item.knockBack = 1.25f;
             Item.value = CIShopValue.RarityPriceWhite;
             Item.shootSpeed = 1f;
-            Item.rare = ModContent.RarityType<TrueScarlet>();
+            Item.rare = RarityType<TrueScarlet>();
             Item.ammo = AmmoID.Bullet;
-            Item.shoot = ModContent.ProjectileType<LightAmmoProj>();
+            Item.shoot = ProjectileType<LightAmmoProj>();
         }
         public override void AddRecipes()
         {

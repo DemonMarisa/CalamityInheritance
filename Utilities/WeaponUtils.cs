@@ -81,18 +81,18 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(BuffID.Frostburn, 300);
             target.AddBuff(BuffID.OnFire, 300);
             target.AddBuff(BuffID.CursedInferno, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<Plague>(), 300);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 300);
+            target.AddBuff(BuffType<Plague>(), 300);
+            target.AddBuff(BuffType<GlacialState>(), 60);
         }
         public static void ScalDebuffs(this Player target, int AbyssalFlamesduration, int VulnerabilityHexLegacyduration, int Horrorduration)
         {
-            target.AddBuff(ModContent.BuffType<AbyssalFlames>(), AbyssalFlamesduration, true);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHexLegacy>(), VulnerabilityHexLegacyduration, true);
+            target.AddBuff(BuffType<AbyssalFlames>(), AbyssalFlamesduration, true);
+            target.AddBuff(BuffType<VulnerabilityHexLegacy>(), VulnerabilityHexLegacyduration, true);
             if (Horrorduration > 1)
-                target.AddBuff(ModContent.BuffType<Horror>(), Horrorduration, true);
+                target.AddBuff(BuffType<Horror>(), Horrorduration, true);
         }
         /// <summary>
         /// 让原版的手持也可以像手持弹幕一样旋转<br/>

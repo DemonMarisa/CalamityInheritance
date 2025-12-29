@@ -37,10 +37,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             Item.knockBack = 7f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<EradicatorProj_Rogue>();
+            Item.rare = RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<EradicatorProj_Rogue>();
             Item.shootSpeed = Speed;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
         }
         public override void AddRecipes()
         {

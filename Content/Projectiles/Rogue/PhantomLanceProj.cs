@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = false;
             Projectile.timeLeft = 300;
             Projectile.extraUpdates = 1;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -63,11 +63,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     if (Projectile.Calamity().stealthStrike)
                         damageMult = 0.7f;
                     int soulDamage = (int)(Projectile.damage * damageMult);
-                    int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhantomLegacy>(), soulDamage, Projectile.knockBack, Projectile.owner);
-                    Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                    int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<PhantomLegacy>(), soulDamage, Projectile.knockBack, Projectile.owner);
+                    Main.projectile[soul].DamageType = GetInstance<RogueDamageClass>();
                     if (soul.WithinBounds(Main.maxProjectiles))
                     {
-                        Main.projectile[soul].DamageType = ModContent.GetInstance<RogueDamageClass>();
+                        Main.projectile[soul].DamageType = GetInstance<RogueDamageClass>();
                         Main.projectile[soul].usesLocalNPCImmunity = true;
                         Main.projectile[soul].localNPCHitCooldown = -2;
                     }

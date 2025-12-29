@@ -45,11 +45,11 @@ namespace CalamityInheritance.CIPlayer
                 //Make sure the lists are in the same order
                 List<int> tankItems = new List<int>()
                 {
-                    ModContent.ItemType<Photovisceratorold>(),
+                    ItemType<Photovisceratorold>(),
                 };
                 List<Texture2D> tankTextures = new List<Texture2D>()
                 {
-                    ModContent.Request<Texture2D>("CalamityInheritance/CIPlayer/DrawLayers/Backpack_Photoviscerator").Value,
+                    Request<Texture2D>("CalamityInheritance/CIPlayer/DrawLayers/Backpack_Photoviscerator").Value,
                 };
                 if (tankItems.Contains(item.type) || drawPlayer.Calamity().plaguebringerCarapace)
                 {

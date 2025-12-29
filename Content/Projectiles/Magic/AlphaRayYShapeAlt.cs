@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     public class AlphaRayYShapeAlt: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

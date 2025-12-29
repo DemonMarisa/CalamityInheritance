@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         (
             itemWidth:28,
             itemHeight:32,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()

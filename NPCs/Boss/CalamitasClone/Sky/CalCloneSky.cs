@@ -61,7 +61,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
 
             static Color selectCinderColor()
             {
-                if (!NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()))
+                if (!NPC.AnyNPCs(NPCType<CalamitasCloneLegacy>()))
                     return Color.Transparent;
 
                 return Color.Lerp(Color.OrangeRed, Color.Red, Main.rand.NextFloat(0.2f, 0.9f));
@@ -104,7 +104,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
             }
 
             // Draw cinders.
-            Texture2D cinderTexture = ModContent.Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
+            Texture2D cinderTexture = Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
             for (int i = 0; i < Cinders.Count; i++)
             {
                 Vector2 drawPosition = Cinders[i].Center - Main.screenPosition;
@@ -120,7 +120,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Sky
         public float SkyStrength = 0f;
         public float GetIntensity()
         {
-            if (!NPC.AnyNPCs(ModContent.NPCType<CalamitasCloneLegacy>()) && SkyStrength > 0f)
+            if (!NPC.AnyNPCs(NPCType<CalamitasCloneLegacy>()) && SkyStrength > 0f)
                 SkyStrength -= 0.02f;
             else if (SkyStrength < 1f)
                 SkyStrength += 0.02f;

@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
@@ -12,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoboomoldRanged : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetStaticDefaults()
         {

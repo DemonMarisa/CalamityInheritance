@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj
             {
                 if (Main.rand.NextBool(8))
                 {
-                    int projID = ModContent.ProjectileType<NightsGazeStar>();
+                    int projID = ProjectileType<NightsGazeStar>();
                     int starDamage = SplitProjDamage;
                     float starKB = 5f;
                     Vector2 velocity = Projectile.velocity;
@@ -56,13 +56,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Nightwither>(), Projectile.timeLeft);
+            target.AddBuff(BuffType<Nightwither>(), Projectile.timeLeft);
             OnHitEffects();
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Nightwither>(), Projectile.timeLeft);
+            target.AddBuff(BuffType<Nightwither>(), Projectile.timeLeft);
             OnHitEffects();
         }
 
@@ -73,8 +73,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj
             float spread = 20f;
             int projectileDamage = SplitProjDamage;
             float kb = 5f;
-            int sparkID = ModContent.ProjectileType<NightsGazeSpark>();
-            int starID = ModContent.ProjectileType<NightsGazeStar>();
+            int sparkID = ProjectileType<NightsGazeSpark>();
+            int starID = ProjectileType<NightsGazeStar>();
             for (int i = 0; i < onHitCount; i++)
             {
                 int projID = Main.rand.NextBool(chanceOfStar) ? starID : sparkID;

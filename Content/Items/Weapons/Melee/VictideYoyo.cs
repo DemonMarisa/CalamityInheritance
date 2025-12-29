@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noUseGraphic = true;
             Item.noMelee = true;
 
-            Item.shoot = ModContent.ProjectileType<VictideYoyoProj>();
+            Item.shoot = ProjectileType<VictideYoyoProj>();
             Item.shootSpeed = 10f;
 
             Item.rare = ItemRarityID.Green;

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCyan;
             Item.rare = ItemRarityID.Cyan;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<CosmicFireLegacy>();
+            Item.shoot = ProjectileType<CosmicFireLegacy>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Gel;
         }

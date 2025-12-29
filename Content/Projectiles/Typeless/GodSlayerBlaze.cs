@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             Projectile.ai[0] += 4f;
             int num462 = 0;
             float scale = 0.7f;
-            int dustType = Main.rand.NextBool(2) ? ModContent.DustType<AstralOrange>() : ModContent.DustType<AstralBlue>();
+            int dustType = Main.rand.NextBool(2) ? DustType<AstralOrange>() : DustType<AstralBlue>();
             if (Projectile.ai[1] == 0f)
             {
                 scale = 1.5f;
@@ -74,9 +74,9 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Projectile.ai[1] == 1f)
-                target.AddBuff(ModContent.BuffType<AstralInfectionDebuff>(), 300);
+                target.AddBuff(BuffType<AstralInfectionDebuff>(), 300);
             else
-                target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300);
+                target.AddBuff(BuffType<GodSlayerInferno>(), 300);
         }
     }
 }

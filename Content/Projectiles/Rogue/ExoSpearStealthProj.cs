@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.penetrate = -1;
             Projectile.friendly = true;
             Projectile.tileCollide = false;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.extraUpdates = 4;
             Projectile.timeLeft = 720;
             Projectile.usesLocalNPCImmunity = true;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Vector2 vector = Utils.RotatedBy(Vector2.Normalize(new Vector2(1f, 1f)), (double)MathHelper.ToRadians(360 / Streams * i + StartAngle), default(Vector2));
                     vector.X *= ProjSpeed;
                     vector.Y *= ProjSpeed;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ModContent.ProjectileType<ExoSpearTrail>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector.X, vector.Y, ProjectileType<ExoSpearTrail>(), Projectile.damage / 12, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }
@@ -149,8 +149,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 vector5 = Utils.RotatedBy(Projectile.velocity, (double)MathHelper.ToRadians(240f), default);
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ModContent.ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector4.X, vector4.Y, ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, vector5.X, vector5.Y, ProjectileType<ExoSpearTrail>(), (int)(Projectile.damage * 0.075), (int)Projectile.knockBack, Projectile.owner, 0f, 0f);
                     increment = 0;
                 }
                 splits++;
@@ -177,7 +177,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void PostDraw(Color lightColor)
         {
-            Texture2D texture = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
+            Texture2D texture = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Rogue/ExoSpearStealthProjGlow").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -270,7 +270,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
                 if (hitCount < 2)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ModContent.ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
             }
         }
 
@@ -291,17 +291,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     for (int i = 0; i < numSwords; ++i)
                     {
-                        CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileBarrage(source, Projectile.Center, targetPos, Main.rand.NextBool(), 1000f, 1400f, 80f, 1400f, Main.rand.NextFloat(24f, 30f), ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                     }
 
                     for (int n = 0; n < spearAmt; n++)
                     {
-                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, -1500f, -800f, 25f, ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                     }
 
                     for (int j = 0; j < comet; ++j)
                     {
-                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ModContent.ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
+                        CalamityUtils.ProjectileRain(source, targetPos, 400f, 0f, 800f, 1500f, 25f, ProjectileType<ExoSpearextraProj>(), swordDmg, swordKB, Projectile.owner);
                     }
                 }
             }

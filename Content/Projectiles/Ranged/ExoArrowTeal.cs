@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Projectiles;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod;

@@ -34,9 +34,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             Item.knockBack = 7f;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CommonCalamitySounds.FlareSound;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.shoot = ModContent.ProjectileType<SonYharon>();
+            Item.shoot = ProjectileType<SonYharon>();
             Item.shootSpeed = 10f;
         }
     }

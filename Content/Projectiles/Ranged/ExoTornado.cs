@@ -116,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Vector2 vector33 = new Vector2(0f, value33.Y - value32.Y);
             vector33.X = vector33.Y * num232;
             new Vector2(value32.X - vector33.X / 2f, value32.Y);
-            Texture2D texture2D23 = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D texture2D23 = Request<Texture2D>(Texture).Value;
             Rectangle rectangle9 = texture2D23.Frame(1, 1, 0, 0);
             Vector2 origin3 = rectangle9.Size() / 2f;
             float num233 = -0.06283186f * num229;

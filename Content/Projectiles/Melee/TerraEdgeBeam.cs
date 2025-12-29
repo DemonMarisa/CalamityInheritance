@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.owner);
 
             // You could also spawn dusts at the enemy position. Here is simple an example:
-            int dustIndex = Terraria.Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Terra);
+            int dustIndex = Dust.NewDust(Main.rand.NextVector2FromRectangle(target.Hitbox), 0, 0, DustID.Terra);
             Main.dust[dustIndex].noGravity = true;
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
@@ -72,11 +72,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 float num796 = Projectile.oldVelocity.X * (30f / num795);
                 float num797 = Projectile.oldVelocity.Y * (30f / num795);
-                int num798 = Terraria.Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
+                int num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.8f);
                 Main.dust[num798].noGravity = true;
                 Terraria.Dust dust = Main.dust[num798];
                 dust.velocity *= 0.5f;
-                num798 = Terraria.Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
+                num798 = Dust.NewDust(new Vector2(Projectile.oldPosition.X - num796, Projectile.oldPosition.Y - num797), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, default, 1.4f);
                 dust = Main.dust[num798];
                 dust.velocity *= 0.05f;
                 num3 = num795;

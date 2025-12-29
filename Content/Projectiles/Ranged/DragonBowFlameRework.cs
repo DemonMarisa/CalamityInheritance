@@ -99,9 +99,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     //如果是追踪射弹，龙尘的伤害取弹幕伤害的1/2，否则取1/4
                     int dDustDamage = Projectile.ai[0] == 2f? Projectile.damage / 2 : Projectile.damage / 4;
                     speed /= 30f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ModContent.ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<DragonDust>(), dDustDamage , Projectile.knockBack * 2f, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<DragonDust>(), dDustDamage , Projectile.knockBack * 2f, Projectile.owner);
                 }
 
                 Projectile.position = Projectile.Center;
@@ -148,7 +148,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 240);
+            target.AddBuff(BuffType<Dragonfire>(), 240);
 
             if (Projectile.ai[0] != 0f && Projectile.owner == Main.myPlayer) //if empowered
             {
@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     Vector2 randomAngle = target.Center + new Vector2(600, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
                     Vector2 speed = target.Center - randomAngle;
                     speed /= 30f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ModContent.ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 
                     Vector2 vel = new Vector2(Main.rand.Next(-400, 401), Main.rand.Next(500, 801));
                     Vector2 pos = target.Center - vel;
@@ -168,14 +168,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     //发射的射弹如果是追踪的,天降的陨石伤害取2.1f，否则取1.7f
                     int skyFlareDamage = Projectile.ai[0] == 2f? (int)(Projectile.damage * 2.1f) : (int)(Projectile.damage * 1.7f);
                     if(Main.rand.NextBool(2))
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ModContent.ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 240);
+            target.AddBuff(BuffType<Dragonfire>(), 240);
 
             if (Projectile.ai[0] != 0f && Projectile.owner == Main.myPlayer) //if empowered
             {
@@ -185,7 +185,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     Vector2 randomAngle = target.Center + new Vector2(600, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
                     Vector2 speed = target.Center - randomAngle;
                     speed /= 30f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ModContent.ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 
                     Vector2 vel = new Vector2(Main.rand.Next(-400, 401), Main.rand.Next(500, 801));
                     Vector2 pos = target.Center - vel;
@@ -194,7 +194,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     vel *= 30f;
                     //发射的射弹如果是追踪的,且并非衍生追踪射弹,天降的陨石伤害取2.4f，否则取1.7f
                     int skyFlareDamage = (Projectile.ai[0] == 2f && Projectile.ai[2] != 1f)? (int)(Projectile.damage * 2.4f) : (int)(Projectile.damage * 1.7f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ModContent.ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }
         }

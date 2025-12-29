@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         #endregion
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 600);
+            target.AddBuff(BuffType<ShizukuMoonlight>(), 600);
             if (Projectile.DamageType == DamageClass.Magic)
             {
                 target.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Melee;
             }
 
-            Owner.AddBuff(ModContent.BuffType<ShizukuMoonlight>(), 60);
+            Owner.AddBuff(BuffType<ShizukuMoonlight>(), 60);
         }
         public override bool PreKill(int timeLeft)
         {

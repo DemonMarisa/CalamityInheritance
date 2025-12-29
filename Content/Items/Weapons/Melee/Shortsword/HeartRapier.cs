@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.knockBack = 5f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<HeartRapierProj>();
+            Item.shoot = ProjectileType<HeartRapierProj>();
             Item.shootSpeed = 3f;
             Item.noMelee = true;
             Item.value = CIShopValue.RarityPriceOrange;

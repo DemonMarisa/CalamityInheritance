@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 64;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TrueBloodyEdgeEnergySword>();
+            Item.shoot = ProjectileType<TrueBloodyEdgeEnergySword>();
             Item.shootSpeed = 11f;
             Item.noMelee = true; // This is set the sword itself doesn't deal damage (only the projectile does).
             Item.shootsEveryUse = true; // This makes sure Player.ItemAnimationJustStarted is set when swinging.
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
 
             Vector2 beamVelocity = Vector2.Normalize(velocity) * 20f;
-            Projectile.NewProjectile(source, position, beamVelocity, ModContent.ProjectileType<TrueBloodyBladeProj>(), (int)(damage * 0.75f), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, beamVelocity, ProjectileType<TrueBloodyBladeProj>(), (int)(damage * 0.75f), knockback, player.whoAmI);
 
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 

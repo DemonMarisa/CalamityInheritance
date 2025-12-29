@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         public override void SetStaticDefaults()
         {
 
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<WulfrumLeggingsLegacy>()] = ModContent.ItemType<ANewWulfrumLeggings>();
+            ItemID.Sets.ShimmerTransformToItem[ItemType<WulfrumLeggingsLegacy>()] = ItemType<ANewWulfrumLeggings>();
             Item.ResearchUnlockCount = 1;
         }
 

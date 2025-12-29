@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.useAmmo = AmmoID.Gel;
             Item.shootSpeed = 14.6f;
-            Item.shoot = ModContent.ProjectileType<HalleysCometLegacy>();
+            Item.shoot = ProjectileType<HalleysCometLegacy>();
 
             Item.width = 84;
             Item.height = 34;
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.noMelee = true;
             Item.UseSound = CISoundID.SoundFlamethrower;
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<PureGreen>();
+            Item.rare = RarityType<PureGreen>();
         }
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 20;
 

@@ -49,10 +49,10 @@ namespace CalamityInheritance.Content.Items.Tools
             Item.useStyle = ItemUseStyleID.Swing;
             Item.shootSpeed = LaserSpeed;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<CrystylCrusherRay>();
+            Item.shoot = ProjectileType<CrystylCrusherRay>();
 
             Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.rare = RarityType<HotPink>();
             Item.Calamity().devItem = true;
         }
 
@@ -76,18 +76,18 @@ namespace CalamityInheritance.Content.Items.Tools
             if (player.Calamity().mouseRight && CanUseItem(player) && player.whoAmI == Main.myPlayer && !Main.mapFullscreen && !Main.blockMouse)
             {
                 //Don't shoot out a visual blade if you already have one out
-                if (Main.projectile.Any(n => n.active && n.type == ModContent.ProjectileType<CrystylCrusherRay>() && n.owner == player.whoAmI))
+                if (Main.projectile.Any(n => n.active && n.type == ProjectileType<CrystylCrusherRay>() && n.owner == player.whoAmI))
                     return;
 
                 int damage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(Item.damage);
                 float kb = player.GetTotalKnockback<MeleeDamageClass>().ApplyTo(Item.knockBack);
-                int p = Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<CrystylCrusherRay>(), damage, kb, player.whoAmI);
+                int p = Projectile.NewProjectile(Item.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<CrystylCrusherRay>(), damage, kb, player.whoAmI);
                 Main.projectile[p].localNPCHitCooldown = 1;
-                Item.shoot = ModContent.ProjectileType<CrystylCrusherRay>();
+                Item.shoot = ProjectileType<CrystylCrusherRay>();
                 Item.tileBoost = int.MinValue;
                 Item.autoReuse = false;
             }
-            else if (player.ownedProjectileCounts[ModContent.ProjectileType<CrystylCrusherRay>()] <= 0)
+            else if (player.ownedProjectileCounts[ProjectileType<CrystylCrusherRay>()] <= 0)
             {
                 Item.shoot = ProjectileID.None;
                 Item.tileBoost = 50;

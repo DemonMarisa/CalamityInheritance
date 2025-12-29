@@ -17,8 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class DragonBow: ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<DrataliornusLegacy>();
-        public override string Texture => $"{Generic.WeaponPath}/Ranged/DrataliornusLegacy";
-
+        public override string Texture => GetInstance<DrataliornusLegacy>().Texture;
         public override void SetDefaults()
         {
             Projectile.width = 64;
@@ -102,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
                     player.PickAmmo(player.ActiveItem(), out type, out scaleFactor, out damage, out knockBack, out _);
 
-                    type = ModContent.ProjectileType<DragonBowFlameRework>();
+                    type = ProjectileType<DragonBowFlameRework>();
                     knockBack = player.GetWeaponKnockback(player.ActiveItem(), knockBack);
 
                     Vector2 playerPosition = player.RotatedRelativePoint(player.MountedCenter, true);

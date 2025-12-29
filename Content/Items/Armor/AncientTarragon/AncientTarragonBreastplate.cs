@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.width = 18;
             Item.height = 18;
             Item.lifeRegen = 3;
-            Item.rare = ModContent.RarityType<BlueGreen>();
+            Item.rare = RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 45;
         }

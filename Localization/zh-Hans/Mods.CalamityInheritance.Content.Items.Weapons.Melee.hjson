@@ -234,7 +234,7 @@ TerraDiskMeleeLegacy: {
 		''' */
 }
 
-MeleeTypeCorpusAvertor: {
+MeleeCorpusAvertor: {
 	DisplayName: 憎恶血刃·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -244,7 +244,7 @@ MeleeTypeCorpusAvertor: {
 		'''
 }
 
-MeleeTypeElementalDisk: {
+MeleeElementalDisk: {
 	DisplayName: 元素飞盘·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -263,22 +263,22 @@ MeleeTypeEradicator: {
 		'''
 }
 
-MeleeTypeHammerFallenPaladinsLegacy: {
+MeleeFallenHammer: {
 	DisplayName: 堕落圣骑士锤[Legacy]
 	Tooltip: 击中敌人时爆炸
 }
 
-MeleeTypeHammerGalaxySmasherLegacy: {
+MeleeGalaxySmasher: {
 	DisplayName: 银河溃灭者[Legacy]
 	Tooltip: 击中敌人时爆炸并释放死亡射线
 }
 
-MeleeTypeHammerStellarContemptLegacy: {
+MeleeStellarContempt: {
 	DisplayName: 星体击碎者[Legacy]
 	Tooltip: 击中敌人时天降月炎射线
 }
 
-MeleeTypeKelvinCatalyst: {
+MeleeKelvinCatalyst: {
 	DisplayName: 冰灵旋刃·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -288,12 +288,12 @@ MeleeTypeKelvinCatalyst: {
 		'''
 }
 
-MeleeTypeMangroveChakram: {
+MeleeMangroveChakram: {
 	DisplayName: 红木环刃·近战版本[Legacy]
 	Tooltip: 近战版本的红木环刃
 }
 
-MeleeTypeNanoblackReaper: {
+MeleeNanoblackReaper: {
 	DisplayName: 纳米黑死神·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -304,7 +304,7 @@ MeleeTypeNanoblackReaper: {
 		'''
 }
 
-MeleeTypeSubductionSlicer: {
+MeleeSubductionSlicer: {
 	DisplayName: 板块斩切者·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -313,7 +313,7 @@ MeleeTypeSubductionSlicer: {
 		'''
 }
 
-MeleeTypeTerraDisk: {
+MeleeTerraDisk: {
 	DisplayName: 泰拉飞盘·近战版本[Legacy]
 	Tooltip:
 		'''
@@ -322,7 +322,7 @@ MeleeTypeTerraDisk: {
 		'''
 }
 
-MeleeTypeHammerPwnageLegacy: {
+MeleePwnagehammer: {
 	Tooltip: 掷出一个强大的锤子
 	DisplayName: 圣时之锤[Legacy]
 }

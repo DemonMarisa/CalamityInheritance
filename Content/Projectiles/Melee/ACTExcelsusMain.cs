@@ -245,13 +245,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 color = new Color(255, 255, 255, 100);
             }
             Vector2 origin = new Vector2(39f, 46f);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ACTExcelsusMainGlow").Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
+            Main.EntitySpriteDraw(Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Melee/ACTExcelsusMainGlow").Value, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(CISoundID.SoundLaser, Projectile.position);
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
             //任何形式的攻击击中但凡一个单位，我们都直接把这个敌怪单位存进去，而且只存一次
             if (ForceTarget == -1)
             {

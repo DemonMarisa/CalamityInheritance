@@ -1,13 +1,8 @@
-﻿using CalamityInheritance.System.Configs;
-using CalamityMod;
+﻿using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ShockblastLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {

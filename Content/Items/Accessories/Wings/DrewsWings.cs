@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         (
             itemWidth:22,
             itemHeight:20,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet
         );
         public override void ExSSD()

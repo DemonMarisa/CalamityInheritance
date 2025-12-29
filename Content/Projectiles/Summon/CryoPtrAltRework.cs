@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override string Texture => $"{GenericProjRoute.ProjRoute}/Summon/CryogenPtr";
-        public override void SetDefaults() => Projectile.CloneDefaults(ModContent.ProjectileType<CryoPtrRework>());
+        public override void SetDefaults() => Projectile.CloneDefaults(ProjectileType<CryoPtrRework>());
         public float FloatyDist = 90f;
         const int NPCStored = 0;
         const int RoundingAI = 1;

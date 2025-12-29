@@ -27,7 +27,7 @@ namespace CalamityInheritance.UI.HealthManaTextures
         {
             string folder = $"{baseFolder}HP";
             CalamityPlayer modPlayer = Main.LocalPlayer.Calamity();
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             if (world.IronHeart) // dozezoze - Chalice gets it's own heart color to make bleed indicator contrast consistent, and also because it looks cool
                 return folder + "IronHeart";
             return string.Empty;
@@ -46,13 +46,13 @@ namespace CalamityInheritance.UI.HealthManaTextures
             // Draw hearts for Classic and Fancy
             if (asset == TextureAssets.Heart || asset == TextureAssets.Heart2 || CompareAssets(asset, fancyFolder + "Heart_Fill") || CompareAssets(asset, fancyFolder + "Heart_Fill_B"))
             {
-                context.texture = ModContent.Request<Texture2D>(LifeTexturePath() + "Heart");
+                context.texture = Request<Texture2D>(LifeTexturePath() + "Heart");
                 context.Draw();
             }
             // Draw health bars
             else if (CompareAssets(asset, barsFolder + "HP_Fill") || CompareAssets(asset, barsFolder + "HP_Fill_Honey"))
             {
-                context.texture = ModContent.Request<Texture2D>(LifeTexturePath() + "Bar");
+                context.texture = Request<Texture2D>(LifeTexturePath() + "Bar");
                 context.Draw();
             }
         }

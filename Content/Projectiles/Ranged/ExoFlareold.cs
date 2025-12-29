@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
@@ -13,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ExoFlareold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public float OffsetSpeed
         {
@@ -64,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile owner = Main.projectile[(int)Projectile.localAI[1]];
 
             // Ensure the owner is the correct projectile.
-            if (owner.type != ModContent.ProjectileType<ExoFlareClusterold>())
+            if (owner.type != ProjectileType<ExoFlareClusterold>())
                 Projectile.Kill();
 
             // Movement around the owner.
@@ -86,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D lightTexture = ModContent.Request<Texture2D>("CalamityInheritance/ExtraTextures/SmallGreyscaleCircle").Value;
+            Texture2D lightTexture = Request<Texture2D>("CalamityInheritance/ExtraTextures/SmallGreyscaleCircle").Value;
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 float colorInterpolation = (float)Math.Cos(Projectile.timeLeft / 16f + Main.GlobalTimeWrappedHourly / 20f + i / (float)Projectile.oldPos.Length * MathHelper.Pi) * 0.5f + 0.5f;
@@ -115,6 +116,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             target.ExoDebuffs();
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 600);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<MiracleBlight>(), 600);
     }
 }

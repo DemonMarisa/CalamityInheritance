@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<AquashardShotgun>();
+            return item.type == ItemType<AquashardShotgun>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
                     float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
                     float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.05f;
 
-                    int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<Aquashard>(), damage, knockback, player.whoAmI);
+                    int projectile = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<Aquashard>(), damage, knockback, player.whoAmI);
                     Main.projectile[projectile].timeLeft = 200;
                 }
                 return false;

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceLime;
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<FallenStarProj>();
+            Item.shoot = ProjectileType<FallenStarProj>();
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.FallenStar;
         }
@@ -55,10 +55,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
                 type = Utils.SelectRandom(Main.rand, new int[]
                 {
-                    ModContent.ProjectileType<AstralStar>(),
+                    ProjectileType<AstralStar>(),
                     ProjectileID.StarCannonStar,
                     ProjectileID.SuperStar,
-                    ModContent.ProjectileType<FallenStarProj>()
+                    ProjectileType<FallenStarProj>()
                 });
                 int star = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
                 if (star.WithinBounds(Main.maxProjectiles))

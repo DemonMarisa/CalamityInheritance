@@ -33,7 +33,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
 
             public override void OnSpawn(Projectile projectile, IEntitySource source)
             {
-                CIWorld world = ModContent.GetInstance<CIWorld>();
+                CIWorld world = GetInstance<CIWorld>();
                 if (BadProj(projectile) && world.Malice)
                     projectile.velocity *= 1.5f;
             }

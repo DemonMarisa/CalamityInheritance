@@ -1,19 +1,17 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class VanquisherArrowoldMain : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowold";
-
+        public override string Texture => GetInstance<VanquisherArrowold>().Texture;
         public override void SetDefaults()
         {
             Projectile.width = 22;
@@ -34,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.timeLeft % 18 == 0)
             {
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.25f, ModContent.ProjectileType<VanquisherArrowSplit>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 0.25f, ProjectileType<VanquisherArrowSplit>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
             }
         }
 
@@ -47,8 +45,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 byte a2 = (byte)(100f * (b2 / 255f));
                 color = new Color(b2, b2, b2, a2);
             }
-            Rectangle frame = new Rectangle(0, 0, ModContent.Request<Texture2D>(Texture).Value.Width, ModContent.Request<Texture2D>(Texture).Value.Height);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
+            Rectangle frame = new Rectangle(0, 0, Request<Texture2D>(Texture).Value.Width, Request<Texture2D>(Texture).Value.Height);
+            Main.EntitySpriteDraw(Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value, Projectile.Center - Main.screenPosition, frame, color, Projectile.rotation, Projectile.Size / 2, 1f, SpriteEffects.None, 0);
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -64,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
         }
     }
 }

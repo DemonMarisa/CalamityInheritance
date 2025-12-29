@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 3;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
 
         public override void AI()
@@ -69,14 +69,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
                     {
                         int damage = (int)(Projectile.damage * 0.8f);
                         Vector2 vel = LAPUtilities.GetVector2(Projectile.Center, npc.Center) * 9f;
-                        Projectile proj = LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, vel, ModContent.ProjectileType<NebulaShotLegacy>(), damage, Projectile.knockBack, Projectile.owner, ModContent.GetInstance<RogueDamageClass>());
+                        Projectile proj = LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, vel, ProjectileType<NebulaShotLegacy>(), damage, Projectile.knockBack, Projectile.owner, GetInstance<RogueDamageClass>());
                     }
                 }
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
 
             // Spawn sparks; taken from Despair stone then adapted to a projectile
             Vector2 particleSpawnDisplacement;
@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
 
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 180);
 
         public override bool PreDraw(ref Color lightColor)
         {

@@ -138,7 +138,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Books
                     for (int i = 0; i < 8; i++)
                     {
                         Vector2 velocity = ((MathHelper.TwoPi * i / 8f) - (MathHelper.Pi / 8f)).ToRotationVector2() * 3f;
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<GraniteEnergy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<GraniteEnergy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                 }
             }

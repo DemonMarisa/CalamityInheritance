@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceOrange;
             Item.rare = ItemRarityID.Orange;
-            Item.shoot = ModContent.ProjectileType<AncientShivProj>();
+            Item.shoot = ProjectileType<AncientShivProj>();
             Item.shootSpeed = 2f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -42,8 +42,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             Projectile.NewProjectile(source, position, velocity.RotatedByRandom(MathHelper.ToRadians(15f)), type, damage, knockback, player.whoAmI);
 
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<BlueAura>()] < 1)
-                Projectile.NewProjectile(source, position, Vector2.Zero, ModContent.ProjectileType<BlueAura>(), damage, knockback, player.whoAmI);
+            if (player.ownedProjectileCounts[ProjectileType<BlueAura>()] < 1)
+                Projectile.NewProjectile(source, position, Vector2.Zero, ProjectileType<BlueAura>(), damage, knockback, player.whoAmI);
             return false;
         }
     }

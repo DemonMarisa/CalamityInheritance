@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 60);
+            target.AddBuff(BuffType<CrushDepth>(), 60);
         }
 
         public override void OnKill(int timeLeft)

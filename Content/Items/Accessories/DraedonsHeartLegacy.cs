@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:26,
             itemHeight:26,
-            itemRare:ModContent.RarityType<PureRed>(),
+            itemRare: RarityType<PureRed>(),
             itemValue:CIShopValue.RarityPricePureRed,
             itemDefense:48
         );

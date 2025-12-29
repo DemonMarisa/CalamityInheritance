@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             FollowMouse,
             ReturnPlayerNearBy,
         }
+        public override string Texture => GetInstance<WingmanLegacy>().Texture;
         public override float OffsetX => 0;
         public override float OffsetY => 0;
         public override float BaseOffsetY => 0;
@@ -133,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             {
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
                 Projectile.CalamityInheritance().ProjNewAI[0] = Main.projectile[p].whoAmI;
             }
         }
@@ -160,7 +161,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             {
                 SoundEngine.PlaySound(CISoundMenu.WingManFire, Projectile.Center);
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ModContent.ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, projectileVelocity, ProjectileType<AlphaBeam>(), Projectile.damage, Projectile.knockBack, Owner.whoAmI, 0f, Projectile.whoAmI, 1f);
                 Projectile.CalamityInheritance().ProjNewAI[0] = Main.projectile[p].whoAmI;
             }
         }
@@ -217,7 +218,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             baseColor.A = Auxiliarycolor.A = 0;
 
             // 纹理
-            Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
+            Texture2D mainTexture = Request<Texture2D>("CalamityInheritance/Content/Projectiles/Magic/AlphaBeam").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
 
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Laser);

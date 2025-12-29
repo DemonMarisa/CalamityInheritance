@@ -78,8 +78,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             {
                 Projectile.frame = 0;
             }
-            bool flag64 = Projectile.type == ModContent.ProjectileType<BloodClotMinion>();
-            player.AddBuff(ModContent.BuffType<BloodClot>(), 3600);
+            bool flag64 = Projectile.type == ProjectileType<BloodClotMinion>();
+            player.AddBuff(BuffType<BloodClot>(), 3600);
             if (flag64)
             {
                 if (player.dead)
@@ -232,7 +232,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 120);
+            target.AddBuff(BuffType<BurningBlood>(), 120);
             Projectile.ai[1] = -1f;
             Projectile.netUpdate = true;
         }

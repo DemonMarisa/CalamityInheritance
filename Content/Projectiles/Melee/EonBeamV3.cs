@@ -16,6 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             // DisplayName.SetDefault("Beam");
         }
 
+        public override string Texture => GenericProjRoute.InvisProjRoute;
         public override void SetDefaults()
         {
             Projectile.width = 20;
@@ -79,10 +80,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 120);
             target.AddBuff(BuffID.Frostburn, 120);
-            target.AddBuff(ModContent.BuffType<Plague>(), 120);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+            target.AddBuff(BuffType<Plague>(), 120);
+            target.AddBuff(BuffType<HolyFlames>(), 120);
         }
     }
 }

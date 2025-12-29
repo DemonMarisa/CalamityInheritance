@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<CorinthPrime>();
+            return item.type == ItemType<CorinthPrime>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
             {
                 if (player.altFunctionUse == 2)
                 {
-                    Projectile.NewProjectile(source, position + Vector2.Normalize(velocity) * 60f, velocity, ModContent.ProjectileType<CorinthPrimeAirburstGrenade>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position + Vector2.Normalize(velocity) * 60f, velocity, ProjectileType<CorinthPrimeAirburstGrenade>(), damage, knockback, player.whoAmI);
                 }
                 else
                 {
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
                     {
                         float SpeedX = velocity.X + Main.rand.Next(-30, 31) * 0.05f;
                         float SpeedY = velocity.Y + Main.rand.Next(-30, 31) * 0.05f;
-                        int proj = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<RealmRavagerBullet>(), damage, knockback, player.whoAmI);
+                        int proj = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<RealmRavagerBullet>(), damage, knockback, player.whoAmI);
                         Main.projectile[proj].extraUpdates += 1;
                     }
                 }

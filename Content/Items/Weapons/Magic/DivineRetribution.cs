@@ -38,13 +38,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.knockBack = 3.5f;
 
             Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
-            Item.rare = ModContent.RarityType<Turquoise>();
+            Item.rare = RarityType<Turquoise>();
             Item.Calamity().donorItem = true;
 
             Item.UseSound = SoundID.Item73;
             Item.autoReuse = true;
             Item.shootSpeed = 19f;
-            Item.shoot = ModContent.ProjectileType<DivineRetributionSpear>();
+            Item.shoot = ProjectileType<DivineRetributionSpear>();
         }
 
 

@@ -7,6 +7,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using System.IO;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -18,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             public int dType;
         }
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponPath}/Legendary/PBGLegendary";
+        public override string Texture => GetInstance<PBGLegendary>().Texture;
         public override void SetDefaults()
         {
             Projectile.width = 12;
@@ -33,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.extraUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 1;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
         public override void SendExtraAI(BinaryWriter writer) => Projectile.DoSyncHandlerWrite(ref writer);
         public override void ReceiveExtraAI(BinaryReader reader) => Projectile.DoSyncHandlerRead(ref reader);

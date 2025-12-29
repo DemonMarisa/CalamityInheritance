@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<VernalBolter>();
+            return item.type == ItemType<VernalBolter>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                     if (!canHit)
                         offset -= velocity;
 
-                    Projectile.NewProjectile(spawnSource, source + offset, velocity, ModContent.ProjectileType<VernalBolt>(), (int)(damage * 1.2), knockback * 1.2f, player.whoAmI);
+                    Projectile.NewProjectile(spawnSource, source + offset, velocity, ProjectileType<VernalBolt>(), (int)(damage * 1.2), knockback * 1.2f, player.whoAmI);
                 }
                 return false;
             }

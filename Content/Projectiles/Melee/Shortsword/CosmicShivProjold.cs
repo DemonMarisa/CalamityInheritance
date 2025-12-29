@@ -6,12 +6,14 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class CosmicShivProjold : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<CosmicShivold>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -23,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
             Projectile.hide = true;
@@ -33,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public override Action<Projectile> EffectBeforePullback => (proj) =>
         {
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ModContent.ProjectileType<CosmicShivBallold>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity * 6f, ProjectileType<CosmicShivBallold>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
         };
 
         public override void SetVisualOffsets()
@@ -62,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 Main.dust[dustID].velocity *= 3f;
                 Main.dust[dustID].scale *= 2f;
             }
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 120);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -73,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 Main.dust[dustID].velocity *= 3f;
                 Main.dust[dustID].scale *= 2f;
             }
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 120);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace CalamityInheritance.Rarity
         public override int GetPrefixedRarity(int offset, float valueMult) => offset switch
         {
             -2 => ItemRarityID.Purple,
-            -1 => ModContent.RarityType<BlueGreen>      (),
-            +1 => ModContent.RarityType<DeepBlue>       (),
-            +2 => ModContent.RarityType<CatalystViolet> (),
+            -1 => RarityType<BlueGreen>(),
+            +1 => RarityType<DeepBlue>(),
+            +2 => RarityType<CatalystViolet>(),
             _  => Type,
         };
     }

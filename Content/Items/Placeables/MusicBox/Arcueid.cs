@@ -12,13 +12,13 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/MoonPrincess"), ModContent.ItemType<Arcueid>(), ModContent.TileType<ArcueidTile>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/MoonPrincess"), ItemType<Arcueid>(), TileType<ArcueidTile>());
 			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults() {
-			Item.DefaultToMusicBox(ModContent.TileType<ArcueidTile>(), 0);
-			Item.rare = ModContent.RarityType<ArcueidColor>();
+			Item.DefaultToMusicBox(TileType<ArcueidTile>(), 0);
+			Item.rare = RarityType<ArcueidColor>();
 		}
 
         public override void AddRecipes()

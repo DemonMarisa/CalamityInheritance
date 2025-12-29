@@ -49,10 +49,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.useAmmo = AmmoID.Gel;
 
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
 
-            Item.shoot = ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>();
+            Item.shoot = ProjectileType<PhotovisceratorLegacyHeldProj>();
             Item.shootSpeed = 18f;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 Item.UseSound = leftClick;
             }
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<PhotovisceratorLegacyHeldProj>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<PhotovisceratorLegacyHeldProj>()] < 1)
                 Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, ai0);
             return false;
         }
@@ -107,7 +107,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.NextFloat() > AmmoNotConsumeChance;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhotovisceratoroldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Ranged/PhotovisceratoroldGlow").Value);
         }
         public override void AddRecipes()
         {

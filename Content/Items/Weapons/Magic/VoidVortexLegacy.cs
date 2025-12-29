@@ -39,10 +39,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 0f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = RarityType<MaliceChallengeDrop>();
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<Climax2>();
+            Item.shoot = ProjectileType<Climax2>();
             Item.shootSpeed = 12f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -90,13 +90,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 CreateRecipe()
                     .AddIngredient<VoltaicClimax>()
                     .AddIngredient<AuricBar>(5)
-                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .AddTile(TileType<CosmicAnvil>())
                     .Register();
 
                 CreateRecipe()
                     .AddIngredient<VoltaicClimax>()
                     .AddIngredient<AuricBarold>()
-                    .AddTile(ModContent.TileType<CosmicAnvil>())
+                    .AddTile(TileType<CosmicAnvil>())
                     .Register();
             }
         }

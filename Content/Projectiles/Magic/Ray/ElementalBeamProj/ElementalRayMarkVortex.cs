@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
@@ -6,7 +7,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
     public class ElementalRayMarkVortex : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bolt");
@@ -25,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
         public override void AI()
         {
-            int shardType = ModContent.ProjectileType<ElementalOrbVortex>();
+            int shardType = ProjectileType<ElementalOrbVortex>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             if (Projectile.timeLeft <= 1)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, shardType, shardDamage, Projectile.knockBack, Projectile.owner);

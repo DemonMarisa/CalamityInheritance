@@ -102,7 +102,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             {
                 Projectile.timeLeft = 85;
             }
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 180);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 180);
         }
     }
 }

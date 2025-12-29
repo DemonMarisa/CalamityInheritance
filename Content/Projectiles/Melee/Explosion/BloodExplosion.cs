@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Explosion
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 60);
+            target.AddBuff(BuffType<BurningBlood>(), 60);
         }
     }
 }

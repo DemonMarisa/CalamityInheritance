@@ -17,9 +17,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
     public class PlanteraLegendary: LegendaryWeaponClass
     {
 
-        public override int SetRarityColor => ModContent.RarityType<PlantareGreen>();
+        public override int SetRarityColor => RarityType<PlantareGreen>();
         public override Color DrawColor => new(85,210,28);
-        public override ClassType WeaponDamageClass => ClassType.Ranged;
+        public override ClassType GeneralWeaponClass => ClassType.Ranged;
         public static readonly int BaseDamage = 8;
         public override void ExSD()
         {
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundBow;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PlanteraLegendaryLeaf>();
+            Item.shoot = ProjectileType<PlanteraLegendaryLeaf>();
             Item.useAmmo = AmmoID.Arrow;
         }
 
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                 t4 = Language.GetTextValue($"{Generic.WeaponTextPath}EmpoweredTooltip.Generic");
             //以下，用于比较复杂的计算
             int boostPercent = LegendaryBuff() + Generic.GenericLegendBuffInt();
@@ -110,13 +110,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                         float piArrowOffset = i - (pCounts - 1) / 2;
                         if (piArrowOffset == 1/2) piArrowOffset += 1/2;
                         Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
-                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
+                        Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                     }
                 }
                 else
                 {
                     float homeAi = player.CIMod().PlanteraTier3 ? 1f : 0f;
-                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                 }
             }
             else
@@ -134,13 +134,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                     for (int i = 0; i < pCounts; i++)
                     {
                         float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
-                        Projectile.NewProjectile(source, position + (i == 0 ? Offset : Offset2), summonP, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
+                        Projectile.NewProjectile(source, position + (i == 0 ? Offset : Offset2), summonP, ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                     }
                 }
                 else 
                 {
                     float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
-                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI ,0f, 0f, homeAi);
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI ,0f, 0f, homeAi);
                 }
             }
             return false;

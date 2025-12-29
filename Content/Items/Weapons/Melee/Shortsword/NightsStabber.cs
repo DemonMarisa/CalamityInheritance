@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Green;
             Item.value = CIShopValue.RarityPriceGreen;
-            Item.shoot = ModContent.ProjectileType<NightsStabberProj>();
+            Item.shoot = ProjectileType<NightsStabberProj>();
             Item.shootSpeed = 2.4f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -35,17 +35,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<SporeKnife>());
-            recipe.AddIngredient(ModContent.ItemType<LeechingDagger>());
-            recipe.AddIngredient(ModContent.ItemType<FlameburstShortsword>());
-            recipe.AddIngredient(ModContent.ItemType<AncientShiv>());
+            recipe.AddIngredient(ItemType<SporeKnife>());
+            recipe.AddIngredient(ItemType<LeechingDagger>());
+            recipe.AddIngredient(ItemType<FlameburstShortsword>());
+            recipe.AddIngredient(ItemType<AncientShiv>());
             recipe.AddTile(TileID.DemonAltar);
             recipe.Register();
             Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ModContent.ItemType<SporeKnife>());
-            recipe2.AddIngredient(ModContent.ItemType<BloodyRupture>());
-            recipe2.AddIngredient(ModContent.ItemType<FlameburstShortsword>());
-            recipe2.AddIngredient(ModContent.ItemType<AncientShiv>());
+            recipe2.AddIngredient(ItemType<SporeKnife>());
+            recipe2.AddIngredient(ItemType<BloodyRupture>());
+            recipe2.AddIngredient(ItemType<FlameburstShortsword>());
+            recipe2.AddIngredient(ItemType<AncientShiv>());
             recipe2.AddTile(TileID.DemonAltar);
             recipe2.Register();
         }

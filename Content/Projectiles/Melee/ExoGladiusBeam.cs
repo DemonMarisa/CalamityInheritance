@@ -6,12 +6,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using CalamityMod;
 using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ExoGladiusBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<ExoGladius>().Texture;
         private int penetrationAmt = 6;
         private Color currentColor = Color.Black;
         public const float maxScale = 1.8f;
@@ -123,8 +125,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             target.AddBuff(BuffID.Frostburn, 300);
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<HolyFlames>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
     }
 }

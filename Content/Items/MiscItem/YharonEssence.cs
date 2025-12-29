@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
         {
             Item.width = 24;
             Item.height = 24;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? ModContent.RarityType<YharonFire>() : ModContent.RarityType<PureRed>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<YharonFire>() : RarityType<PureRed>();
             //有意为之
             Item.value = CIShopValue.RarityPricePureRed;
             Item.consumable = true;
@@ -45,10 +45,10 @@ namespace CalamityInheritance.Content.Items.MiscItem
         public override bool CanRightClick() => true;
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaHelm>(), 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaBodyArmor>(), 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YharimAuricTeslaCuisses>(), 1));
-            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<YharonEggLegacy>()));
+            itemLoot.Add(ItemDropRule.Common(ItemType<YharimAuricTeslaHelm>(), 1));
+            itemLoot.Add(ItemDropRule.Common(ItemType<YharimAuricTeslaBodyArmor>(), 1));
+            itemLoot.Add(ItemDropRule.Common(ItemType<YharimAuricTeslaCuisses>(), 1));
+            itemLoot.Add(ItemDropRule.Common(ItemType<YharonEggLegacy>()));
         }
         public override void AddRecipes()
         {

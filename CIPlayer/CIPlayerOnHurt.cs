@@ -47,7 +47,7 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
 
             // 末日模式
             if (world.Armageddon || SCalLore || PanelsSCalLore)
@@ -83,7 +83,7 @@ namespace CalamityInheritance.CIPlayer
 
             if(AncientBloodPact && Main.rand.NextBool(4))
             {
-                Player.AddBuff(ModContent.BuffType<BloodyBoost>(), 600);
+                Player.AddBuff(BuffType<BloodyBoost>(), 600);
                 damageMult += 1.25;
             }
             // 恶意模式额外受到25%伤害
@@ -126,7 +126,7 @@ namespace CalamityInheritance.CIPlayer
         #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             if (world.IronHeart)
             {
                 KillPlayer();
@@ -167,7 +167,7 @@ namespace CalamityInheritance.CIPlayer
                 return false;
             }
             // 終灾期间玩家死亡计数
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
             {
                 if (LegacyScal_PlayerDeathCount < 60)
                     LegacyScal_PlayerDeathCount++;
@@ -211,9 +211,9 @@ namespace CalamityInheritance.CIPlayer
         public void SilvaReborn(int TotalTimer)
         {
             // 在刚触发时的初始化，判断治疗玩家与添加buff
-            if(!Player.HasBuff(ModContent.BuffType<SilvaRevival>()))
+            if(!Player.HasBuff(BuffType<SilvaRevival>()))
             {
-                Player.AddBuff(ModContent.BuffType<SilvaRevival>(), TotalTimer);
+                Player.AddBuff(BuffType<SilvaRevival>(), TotalTimer);
                 SilvaRebornTimer = TotalTimer;
             }
 
@@ -283,7 +283,7 @@ namespace CalamityInheritance.CIPlayer
                     return;
                 }
             }
-            if (PBGPower && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
+            if (PBGPower && Player.ActiveItem().type == ItemType<PBGLegendary>())
                 calPlayer.contactDamageReduction += 0.25;
             if (FuckYouBees)
             {
@@ -300,7 +300,7 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
 
             // 末日模式禁用闪避
             if (world.Armageddon)
@@ -358,10 +358,10 @@ namespace CalamityInheritance.CIPlayer
             SoundEngine.PlaySound(SoundID.Item68, Player.Center);
 
             //计算闪避时提供的射弹伤。
-            var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<EclispeMirrorLegacy>()));
+            var source = Player.GetSource_Accessory(FindAccessory(ItemType<EclispeMirrorLegacy>()));
             int damage = (int)Player.GetTotalDamage<RogueDamageClass>().ApplyTo(5000);
 
-            int eclipse = Projectile.NewProjectile(source, Player.Center, Vector2.Zero, ModContent.ProjectileType<EclipseMirrorBurst>(), damage, 0, Player.whoAmI);
+            int eclipse = Projectile.NewProjectile(source, Player.Center, Vector2.Zero, ProjectileType<EclipseMirrorBurst>(), damage, 0, Player.whoAmI);
             if (eclipse.WithinBounds(Main.maxProjectiles))
                 Main.projectile[eclipse].DamageType = DamageClass.Generic;
 
@@ -382,10 +382,10 @@ namespace CalamityInheritance.CIPlayer
                 //不要执行下方所有的计算。
                 return;
             }
-            if (PBGPower && Player.ActiveItem().type == ModContent.ItemType<PBGLegendary>())
+            if (PBGPower && Player.ActiveItem().type == ItemType<PBGLegendary>())
                 calPlayer.projectileDamageReduction += 0.25;
             //血神核心专门提供红月免伤, 要注意这个是最优先被计算的。 
-            if (FUCKYOUREDMOON && proj.type == ModContent.ProjectileType<BrimstoneMonsterLegacy>())
+            if (FUCKYOUREDMOON && proj.type == ProjectileType<BrimstoneMonsterLegacy>())
             {
                 if (CotbgCounter <= 0)
                 {
@@ -470,10 +470,10 @@ namespace CalamityInheritance.CIPlayer
                         continue;
                     int duration = CIFunction.SecondsToFrames(8) + hurtInfo.Damage / 3;
           
-                    otherTarget.AddBuff(ModContent.BuffType<GodSlayerInferno>(), duration);
-                    otherTarget.AddBuff(ModContent.BuffType<BrimstoneFlames>(), duration);
-                    otherTarget.AddBuff(ModContent.BuffType<SulphuricPoisoning>(), duration);
-                    otherTarget.AddBuff(ModContent.BuffType<Irradiated>(), duration);
+                    otherTarget.AddBuff(BuffType<GodSlayerInferno>(), duration);
+                    otherTarget.AddBuff(BuffType<BrimstoneFlames>(), duration);
+                    otherTarget.AddBuff(BuffType<SulphuricPoisoning>(), duration);
+                    otherTarget.AddBuff(BuffType<Irradiated>(), duration);
                     otherTarget.AddBuff(BuffID.Ichor, duration);
                     otherTarget.AddBuff(BuffID.BetsysCurse, duration);
                 }
@@ -482,7 +482,7 @@ namespace CalamityInheritance.CIPlayer
             if (EMirror && calPlayer.rogueStealth < calPlayer.rogueStealthMax / 2)
                 calPlayer.rogueStealth += calPlayer.rogueStealthMax / 2;
 
-            if (Player.ActiveItem().type == ModContent.ItemType<DefenseBlade>() && !DefendTier2)
+            if (Player.ActiveItem().type == ItemType<DefenseBlade>() && !DefendTier2)
                 DefenseBladeTier2Task(hurtInfo);
             //这里CD只有取0的时候才会触发cd，这是为了防止再次受击的时候被重置
             if (AncientAeroSet && AeroFlightPower == 0)
@@ -554,7 +554,7 @@ namespace CalamityInheritance.CIPlayer
             //神圣护符落星
             if (deificAmuletEffect)
             {
-                var source = Player.GetSource_Accessory(FindAccessory(ModContent.ItemType<DeificAmulet>()));
+                var source = Player.GetSource_Accessory(FindAccessory(ItemType<DeificAmulet>()));
                 for (int n = 0; n < 3; n++)
                 {
                     int deificStarDamage = (int)Player.GetBestClassDamage().ApplyTo(130);
@@ -608,7 +608,7 @@ namespace CalamityInheritance.CIPlayer
                     
                     if (star.whoAmI.WithinBounds(Main.maxProjectiles))
                     {
-                        star.DamageType = ModContent.GetInstance<RogueDamageClass>(); //:)
+                        star.DamageType = GetInstance<RogueDamageClass>(); //:)
                         star.usesLocalNPCImmunity = true;
                         star.localNPCHitCooldown = 5;
                     }
@@ -648,13 +648,13 @@ namespace CalamityInheritance.CIPlayer
                     SoundEngine.PlaySound(SoundID.Item73, Player.Center);
                     if (Player.whoAmI == Main.myPlayer)
                     {
-                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ModContent.ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
+                        Projectile.NewProjectile(source, Player.Center.X, Player.Center.Y, 0f, 0f, ProjectileType<GodSlayerBlaze>(), 1200, 1f, Player.whoAmI, 0f, 0f);
                     }
                 }
             }
             if (ReaverMeleeBlast) //受伤后提供战士永恒套怒气buff
             {
-                Player.AddBuff(ModContent.BuffType<ReaverMeleeRage>(), 180);
+                Player.AddBuff(BuffType<ReaverMeleeRage>(), 180);
             }
             if (AncientBloodflareSet)
             {
@@ -679,11 +679,11 @@ namespace CalamityInheritance.CIPlayer
                     AncientAuricHealCooldown = Main.zenithWorld? 1 : 300;
                 }
             }
-            if (Player.ownedProjectileCounts[ModContent.ProjectileType<DragonBow>()] != 0)
+            if (Player.ownedProjectileCounts[ProjectileType<DragonBow>()] != 0)
             {
                 foreach(Projectile p in Main.ActiveProjectiles)
                 {
-                    if (p.type == ModContent.ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
+                    if (p.type == ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
                     {
                         p.Kill();
                         break;
@@ -692,7 +692,7 @@ namespace CalamityInheritance.CIPlayer
                 /*玩家受击时飞行时间直接置成50f*/
                 if (Player.wingTime > 50f)
                     Player.wingTime = 50f;
-                Player.AddBuff(ModContent.BuffType<Backfire>(), 180); //3秒
+                Player.AddBuff(BuffType<Backfire>(), 180); //3秒
             }
             //魔君套受击后无敌
             if (YharimAuricSet)
@@ -910,8 +910,8 @@ namespace CalamityInheritance.CIPlayer
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle1 = startAngle1 + deltaAngle1 * (i + i * i) / 2f + 32f * i;
-                    int spark1 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
-                    int spark2 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ModContent.ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
+                    int spark1 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle1) * 5f), (float)(Math.Cos(offsetAngle1) * 5f), ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
+                    int spark2 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle1) * 5f), (float)(-Math.Cos(offsetAngle1) * 5f), ProjectileType<GenericElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 0f);
                     if (spark1.WithinBounds(Main.maxProjectiles))
                     {
                         Main.projectile[spark1].timeLeft = 120;
@@ -980,7 +980,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.KillMeForGood();
                 }
             }
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             if (world.IronHeart)
                 SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
             else
@@ -1028,7 +1028,7 @@ namespace CalamityInheritance.CIPlayer
 
         public static void On_Player_UpdateLifeRegen(On_Player.orig_UpdateLifeRegen orig, Player self)
         {
-            bool isIronHeart = ModContent.GetInstance<CIWorld>().IronHeart;
+            bool isIronHeart = GetInstance<CIWorld>().IronHeart;
             if (isIronHeart)
             {
                 orig(self);

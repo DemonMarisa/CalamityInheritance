@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         (
             itemWidth:60,
             itemHeight:54,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:32
         );
@@ -50,16 +50,16 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             //上述两者共享的debuff免疫单独打表:
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true; //出于某些原因我没有看到阿斯加德本身免疫狱火
-            player.buffImmune[ModContent.BuffType<HolyFlames>()] = true;
+            player.buffImmune[BuffType<HolyFlames>()] = true;
             //阿斯加德庇佑本身免疫弑神怒火
-            player.buffImmune[ModContent.BuffType<GodSlayerInferno>()] = true;
+            player.buffImmune[BuffType<GodSlayerInferno>()] = true;
 
             //所谓的. 更强的"Debuff"
-            player.buffImmune[ModContent.BuffType<ArmorCrunch>()] = true; // 更强的, 碎甲
-            player.buffImmune[ModContent.BuffType<BrainRot>()] = true; // 更强的"流血"
-            player.buffImmune[ModContent.BuffType<BurningBlood>()] = true; // 同上
+            player.buffImmune[BuffType<ArmorCrunch>()] = true; // 更强的, 碎甲
+            player.buffImmune[BuffType<BrainRot>()] = true; // 更强的"流血"
+            player.buffImmune[BuffType<BurningBlood>()] = true; // 同上
             player.buffImmune[BuffID.Venom] = true; // 更强的"剧毒"
-            player.buffImmune[ModContent.BuffType<SulphuricPoisoning>()] = true; // 更强的"剧毒"
+            player.buffImmune[BuffType<SulphuricPoisoning>()] = true; // 更强的"剧毒"
             player.buffImmune[BuffID.Webbed] = true; // 更强的"缓慢"
             player.buffImmune[BuffID.Blackout] = true; // 更强的"黑暗"
 

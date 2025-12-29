@@ -14,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmetTo<ConferenceCall>(false);
+            Type.ShimmerTo<ConferenceCall>(false);
         }
         public override void SetDefaults()
         {

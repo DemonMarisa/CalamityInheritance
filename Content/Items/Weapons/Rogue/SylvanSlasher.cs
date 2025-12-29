@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             Item.width = 72;
             Item.damage = 60;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.channel = true;
@@ -32,8 +32,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.height = 78;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.shoot = ModContent.ProjectileType<SylvanSlashAttack>();
+            Item.rare = RarityType<BlueGreen>();
+            Item.shoot = ProjectileType<SylvanSlashAttack>();
             Item.shootSpeed = 24f;
         }
     }

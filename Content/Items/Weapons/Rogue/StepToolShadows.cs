@@ -18,19 +18,18 @@ using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class StepToolShadows : RogueWeapon, ILocalizedModType
+    public class StepToolShadows : CIRogueClass
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
         }
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 960;
             Item.height = 1120;
             Item.damage = 1145;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.useTime = 30;
             Item.useAnimation = 30;
             Item.knockBack = 114f;
@@ -41,8 +40,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.noUseGraphic = true;
-            Item.shoot = ModContent.ProjectileType<StepToolShadowChair>();
-            Item.rare =  ModContent.RarityType<PureRed>();
+            Item.shoot = ProjectileType<StepToolShadowChair>();
+            Item.rare = RarityType<PureRed>();
             Item.value = CIShopValue.RarityPricePureRed;
         }
 

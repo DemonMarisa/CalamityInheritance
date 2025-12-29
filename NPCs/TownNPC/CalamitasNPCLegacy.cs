@@ -95,7 +95,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             NPCID.Sets.ShimmerTownTransform[Type] = false;
             NPC.Happiness
                 .SetBiomeAffection<BrimstoneCragsBiome>(AffectionLevel.Like)
-                .SetNPCAffection(ModContent.NPCType<SeaKing>(), AffectionLevel.Like)
+                .SetNPCAffection(NPCType<SeaKing>(), AffectionLevel.Like)
                 .SetNPCAffection(NPCID.Wizard, AffectionLevel.Like);
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
@@ -146,7 +146,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 Chat = Main.rand.Next(6, 21);
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs) => !NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>());
+        public override bool CanTownNPCSpawn(int numTownNPCs) => !NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>());
         public override void UpdateLifeRegen(ref int damage)
         {
             NPC.lifeRegen += 1000;
@@ -164,7 +164,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         {
             // Disappear if the SCal boss is active. She's supposed to be the boss.
             // However, this doesn't happen in Boss Rush; the SCal there is a silent puppet created by Xeroc, not SCal herself.
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()) && !BossRushEvent.BossRushActive)
+            if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()) && !BossRushEvent.BossRushActive)
             {
                 NPC.active = false;
                 NPC.netUpdate = true;
@@ -264,7 +264,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                     list.Add(Language.GetTextValue($"{DialogueRoute}.BloodMoon2"));
                 }
             }
-            int seahoe = NPC.FindFirstNPC(ModContent.NPCType<SeaKing>());
+            int seahoe = NPC.FindFirstNPC(NPCType<SeaKing>());
             if (seahoe != -1)
             {
                 list.Add(Language.GetTextValue($"{DialogueRoute}.ScalSeahoeChat"));
@@ -279,8 +279,8 @@ namespace CalamityInheritance.NPCs.TownNPC
             {
                 list.Add(Language.GetTextValue($"{DialogueRoute}.PreDownScal"));
             }
-            bool CalLore = player.InventoryHas(ModContent.ItemType<KnowledgeCalamitas>()) || player.PortableStorageHas(ModContent.ItemType<KnowledgeCalamitas>());
-            bool CeremonialUrnItem = player.InventoryHas(ModContent.ItemType<CeremonialUrn>()) || player.PortableStorageHas(ModContent.ItemType<CeremonialUrn>());
+            bool CalLore = player.InventoryHas(ItemType<KnowledgeCalamitas>()) || player.PortableStorageHas(ItemType<KnowledgeCalamitas>());
+            bool CeremonialUrnItem = player.InventoryHas(ItemType<CeremonialUrn>()) || player.PortableStorageHas(ItemType<CeremonialUrn>());
             if (CalLore)
             {
                 if (Main.rand.NextBool(10))
@@ -298,8 +298,8 @@ namespace CalamityInheritance.NPCs.TownNPC
                 list.Add(Language.GetTextValue($"{DialogueRoute}.ScalUrnChat"));
             }
 
-            int ScalClone = NPC.FindFirstNPC(ModContent.NPCType<CalamitasClone>());
-            int ScalBoss = NPC.FindFirstNPC(ModContent.NPCType<SupremeCalamitas>());
+            int ScalClone = NPC.FindFirstNPC(NPCType<CalamitasClone>());
+            int ScalBoss = NPC.FindFirstNPC(NPCType<SupremeCalamitas>());
             if (ScalClone != -1)
             {
                 return Language.GetTextValue($"{DialogueRoute}.ScalCalCloneChat");
@@ -313,7 +313,7 @@ namespace CalamityInheritance.NPCs.TownNPC
 
         public static void GiveReward(Player player)
         {
-            player.QuickSpawnItem(player.GetSource_GiftOrReward(), ModContent.ItemType<CalamitousEssence>(), 1);
+            player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<CalamitousEssence>(), 1);
         }
 
         //商店与对话
@@ -432,114 +432,114 @@ namespace CalamityInheritance.NPCs.TownNPC
             Condition tierThreeCondition = new($"{DialogueRoute}.DownedAnySentinels", () => DownedBossSystem.downedSignus || DownedBossSystem.downedStormWeaver || DownedBossSystem.downedCeaselessVoid);
 
             var dropsShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalloreShopOption"))
-                .Add(new Item(ModContent.ItemType<KnowledgeKingSlime>()) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.DownedKingSlime)
+                .Add(new Item(ItemType<KnowledgeKingSlime>()) { shopCustomPrice = Item.buyPrice(silver: 25) }, Condition.DownedKingSlime)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDesertScourge)
+                .Add(new Item(ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDesertScourge)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeEyeofCthulhu>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedEyeOfCthulhu)
+                .Add(new Item(ItemType<KnowledgeEyeofCthulhu>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedEyeOfCthulhu)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeCrabulon>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, CalamityConditions.DownedCrabulon)
+                .Add(new Item(ItemType<KnowledgeCrabulon>()) { shopCustomPrice = Item.buyPrice(gold: 1) }, CalamityConditions.DownedCrabulon)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeEaterofWorlds>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedEaterOfWorlds)
+                .Add(new Item(ItemType<KnowledgeEaterofWorlds>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedEaterOfWorlds)
                 //.Add(new Item(ModContent.ItemType<KnowledgeCorruption>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedEaterOfWorlds)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeBrainofCthulhu>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedBrainOfCthulhu)
+                .Add(new Item(ItemType<KnowledgeBrainofCthulhu>()) { shopCustomPrice = Item.buyPrice(silver: 250) }, Condition.DownedBrainOfCthulhu)
                 //.Add(new Item(ModContent.ItemType<KnowledgeCrimson>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.DownedBrainOfCthulhu)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeHiveMind>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedHiveMind)
+                .Add(new Item(ItemType<KnowledgeHiveMind>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedHiveMind)
 
-                .Add(new Item(ModContent.ItemType<KnowledgePerforators>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPerforator)
+                .Add(new Item(ItemType<KnowledgePerforators>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPerforator)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeQueenBee>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedQueenBee)
+                .Add(new Item(ItemType<KnowledgeQueenBee>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedQueenBee)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeSkeletron>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)
+                .Add(new Item(ItemType<KnowledgeSkeletron>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeSlimeGod>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedSlimeGod)
+                .Add(new Item(ItemType<KnowledgeSlimeGod>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedSlimeGod)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeWallofFlesh>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode)
+                .Add(new Item(ItemType<KnowledgeWallofFlesh>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.Hardmode)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedDestroyer)
-                .Add(new Item(ModContent.ItemType<KnowledgeSkeletronPrime>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletronPrime)
-                .Add(new Item(ModContent.ItemType<KnowledgeTwins>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedTwins)
+                .Add(new Item(ItemType<KnowledgeDesertScourge>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedDestroyer)
+                .Add(new Item(ItemType<KnowledgeSkeletronPrime>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedSkeletronPrime)
+                .Add(new Item(ItemType<KnowledgeTwins>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedTwins)
                 //.Add(new Item(ModContent.ItemType<KnowledgeMechs>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMechBossAny)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeCryogen>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ItemType<KnowledgeCryogen>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedCryogen)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeBrimstoneElemental>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedBrimstoneElemental)
+                .Add(new Item(ItemType<KnowledgeBrimstoneElemental>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedBrimstoneElemental)
                 //.Add(new Item(ModContent.ItemType<KnowledgeBrimstoneCrag>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedBrimstoneElemental)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeAquaticScourge>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedAquaticScourge)
+                .Add(new Item(ItemType<KnowledgeAquaticScourge>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, CalamityConditions.DownedAquaticScourge)
                 //.Add(new Item(ModContent.ItemType<KnowledgeSulphurSea>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedAquaticScourge)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeCalamitasClone>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedCalamitasClone)
+                .Add(new Item(ItemType<KnowledgeCalamitasClone>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedCalamitasClone)
 
-                .Add(new Item(ModContent.ItemType<KnowledgePlantera>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedPlantera)
+                .Add(new Item(ItemType<KnowledgePlantera>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedPlantera)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeAstrumAureus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedPlaguebringer)
+                .Add(new Item(ItemType<KnowledgeAstrumAureus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedPlaguebringer)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeLeviathanAnahita>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedLeviathan)
+                .Add(new Item(ItemType<KnowledgeLeviathanAnahita>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedLeviathan)
                 //.Add(new Item(ModContent.ItemType<KnowledgeOcean>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedLeviathan)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeGolem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedGolem)
-                .Add(new Item(ModContent.ItemType<KnowledgeDukeFishron>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedDukeFishron)
-                .Add(new Item(ModContent.ItemType<KnowledgePlaguebringerGoliath>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, CalamityConditions.DownedPlaguebringer)
-                .Add(new Item(ModContent.ItemType<KnowledgeRavager>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedRavager)
+                .Add(new Item(ItemType<KnowledgeGolem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedGolem)
+                .Add(new Item(ItemType<KnowledgeDukeFishron>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedDukeFishron)
+                .Add(new Item(ItemType<KnowledgePlaguebringerGoliath>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, CalamityConditions.DownedPlaguebringer)
+                .Add(new Item(ItemType<KnowledgeRavager>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedRavager)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeAstrumDeus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedAstrumDeus)
+                .Add(new Item(ItemType<KnowledgeAstrumDeus>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedAstrumDeus)
                 //.Add(new Item(ModContent.ItemType<KnowledgeAstralInfection>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedAstrumDeus)
 
-                .Add(new Item(ModContent.ItemType<KnowledgeLunaticCultist>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedCultist)
-                .Add(new Item(ModContent.ItemType<KnowledgeMoonLord>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<KnowledgeProfanedGuardians>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedGuardians)
-                .Add(new Item(ModContent.ItemType<KnowledgeDragonfolly>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedBumblebird)
-                .Add(new Item(ModContent.ItemType<KnowledgeProvidence>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<KnowledgeLunaticCultist>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedCultist)
+                .Add(new Item(ItemType<KnowledgeMoonLord>()) { shopCustomPrice = Item.buyPrice(gold: 75) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<KnowledgeProfanedGuardians>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedGuardians)
+                .Add(new Item(ItemType<KnowledgeDragonfolly>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedBumblebird)
+                .Add(new Item(ItemType<KnowledgeProvidence>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedProvidence)
                 //.Add(new Item(ModContent.ItemType<KnowledgeSentinels>()) { shopCustomPrice = Item.buyPrice(gold: 25) }, tierThreeCondition)
-                .Add(new Item(ModContent.ItemType<KnowledgePolterghast>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedPolterghast)
-                .Add(new Item(ModContent.ItemType<KnowledgeOldDuke>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedOldDuke)
-                .Add(new Item(ModContent.ItemType<KnowledgeDevourerofGods>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<KnowledgeYharon>()) { shopCustomPrice = Item.buyPrice(gold: 250) }, CalamityConditions.DownedYharon)
-                .Add(new Item(ModContent.ItemType<KnowledgeExoMechs>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedExoMechs)
-                .Add(new Item(ModContent.ItemType<KnowledgeCalamitas>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedSupremeCalamitas);
+                .Add(new Item(ItemType<KnowledgePolterghast>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CalamityConditions.DownedPolterghast)
+                .Add(new Item(ItemType<KnowledgeOldDuke>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedOldDuke)
+                .Add(new Item(ItemType<KnowledgeDevourerofGods>()) { shopCustomPrice = Item.buyPrice(gold: 150) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<KnowledgeYharon>()) { shopCustomPrice = Item.buyPrice(gold: 250) }, CalamityConditions.DownedYharon)
+                .Add(new Item(ItemType<KnowledgeExoMechs>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedExoMechs)
+                .Add(new Item(ItemType<KnowledgeCalamitas>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedSupremeCalamitas);
             dropsShop.Register();
         }
         //药水商店
         public void PotionShop_List()
         {
             var PotionShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalPotionShopOption"))
-                .Add(new Item(ModContent.ItemType<CadancePotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<RevivifyPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<TriumphPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<YharimsStimulants>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.Hardmode)
+                .Add(new Item(ItemType<CadancePotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<RevivifyPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<TriumphPotion>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<YharimsStimulants>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.Hardmode)
 
-                .Add(new Item(ModContent.ItemType<ShatteringPotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
-                .Add(new Item(ModContent.ItemType<TitanScalePotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
+                .Add(new Item(ItemType<ShatteringPotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
+                .Add(new Item(ItemType<TitanScalePotion>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedGolem)
 
-                .Add(new Item(ModContent.ItemType<HolyWrathPotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<ProfanedRagePotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<HolyWrathPotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<ProfanedRagePotion>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedMoonLord)
                 //2铂金售价
-                .Add(new Item(ModContent.ItemType<DraconicElixir>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedYharon);
+                .Add(new Item(ItemType<DraconicElixir>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedYharon);
             PotionShop.Register();
         }
         //弹药商店
         public void AmmoShop_List()
         {
             var AmmoShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalAmmoShopOption"))
-                .Add(new Item(ModContent.ItemType<AccelerationRound>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
-                .Add(new Item(ModContent.ItemType<SuperballBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemType<AccelerationRound>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
+                .Add(new Item(ItemType<SuperballBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) })
 
-                .Add(new Item(ModContent.ItemType<NapalmArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<ArcticArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
-                .Add(new Item(ModContent.ItemType<FrostsparkBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
-                .Add(new Item(ModContent.ItemType<VeriumBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ItemType<NapalmArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, Condition.Hardmode)
+                .Add(new Item(ItemType<ArcticArrow>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ItemType<FrostsparkBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
+                .Add(new Item(ItemType<VeriumBullet>()) { shopCustomPrice = Item.buyPrice(copper: 10) }, CalamityConditions.DownedCryogen)
 
-                .Add(new Item(ModContent.ItemType<HyperiusBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedAstrumDeus)
+                .Add(new Item(ItemType<HyperiusBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 1) }, CalamityConditions.DownedAstrumDeus)
 
-                .Add(new Item(ModContent.ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<HolyFireBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<ElysianArrowOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<HolyFireBulletOld>()) { shopCustomPrice = Item.buyPrice(silver: 20) }, CalamityConditions.DownedProvidence)
                 //神后的东西怎么能跟月前的东西一个售价呢
-                .Add(new Item(ModContent.ItemType<GodSlayerSlug>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<VanquisherArrowold>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<VanquisherArrow>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods);
+                .Add(new Item(ItemType<GodSlayerSlug>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<VanquisherArrowold>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<VanquisherArrow>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, CalamityConditions.DownedDevourerOfGods);
             AmmoShop.Register();
         }
         //杂项商店
@@ -556,52 +556,52 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void MiscShop_List()
         {
             var MiscShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption"))
-                .Add(new Item(ModContent.ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver:19, copper: 19) })
-                .Add(new Item(ModContent.ItemType<WulfrumMetalScrap>()) { shopCustomPrice = Item.buyPrice(silver: 5) })
-                .Add(new Item(ModContent.ItemType<EnergyCore>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
-                .Add(new Item(ModContent.ItemType<WulfrumBattery>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
-                .Add(new Item(ModContent.ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
-                .Add(new Item(ModContent.ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
+                .Add(new Item(ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver:19, copper: 19) })
+                .Add(new Item(ItemType<WulfrumMetalScrap>()) { shopCustomPrice = Item.buyPrice(silver: 5) })
+                .Add(new Item(ItemType<EnergyCore>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
+                .Add(new Item(ItemType<WulfrumBattery>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
+                .Add(new Item(ItemType<CrawCarapace>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
+                .Add(new Item(ItemType<GiantShell>()) { shopCustomPrice = Item.buyPrice(gold: 15) })
                 .Add(new Item(ItemID.BlackInk) { shopCustomPrice = Item.buyPrice(gold: 1) })
-                .Add(new Item(ModContent.ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) }, CIConditions.DownedBloodMoon)
+                .Add(new Item(ItemType<BloodOrb>()) { shopCustomPrice = Item.buyPrice(silver: 8) }, CIConditions.DownedBloodMoon)
                 .Add(new Item(ItemID.WarTable) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.Hardmode)
 
-                .Add(new Item(ModContent.ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<EssenceofEleum>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<EssenceofSunlight>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
+                .Add(new Item(ItemType<EssenceofHavoc>()) { shopCustomPrice = Item.buyPrice(silver: 50) }, Condition.Hardmode)
 
-                .Add(new Item(ModContent.ItemType<DepthCells>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
-                .Add(new Item(ModContent.ItemType<Lumenyl>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
+                .Add(new Item(ItemType<DepthCells>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
+                .Add(new Item(ItemType<Lumenyl>()) { shopCustomPrice = Item.buyPrice(gold: 4) }, CIConditions.DownedCalClone)
 
                 //瀚海狂鲨的鳞片出售就9银币，哥们你造15金币说是
-                .Add(new Item(ModContent.ItemType<GrandScale>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera)
+                .Add(new Item(ItemType<GrandScale>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedPlantera)
                 //俺寻思这玩意蘑菇人卖都是50金币啊
                 .Add(new Item(ItemID.Autohammer) { shopCustomPrice = Item.buyPrice(gold: 50) }, Condition.DownedPlantera)
                 //bro正在试图用生命合金完成300%利润差价
-                .Add(new Item(ModContent.ItemType<LifeAlloy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedRavager)
+                .Add(new Item(ItemType<LifeAlloy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedRavager)
 
                 .Add(new Item(ItemID.Gladius) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPolterghast)
                 //下列材料的利润疑似高达200%
-                .Add(new Item(ModContent.ItemType<UnholyEssence>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<Necroplasm>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<Bloodstone>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<ReaperTooth>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPolterghast)
+                .Add(new Item(ItemType<UnholyEssence>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<Necroplasm>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<Bloodstone>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<ReaperTooth>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedPolterghast)
 
-                .Add(new Item(ModContent.ItemType<EndothermicEnergy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
-                .Add(new Item(ModContent.ItemType<NightmareFuel>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<EndothermicEnergy>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<NightmareFuel>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, CalamityConditions.DownedDevourerOfGods)
                 //5金币买入12金币卖出去，你小子 
-                .Add(new Item(ModContent.ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CIConditions.DownedBuffedSolarEclipse)
+                .Add(new Item(ItemType<DarksunFragment>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CIConditions.DownedBuffedSolarEclipse)
                 //化魂神晶利润率高达1000%
-                .Add(new Item(ModContent.ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 45) }, CalamityConditions.DownedDevourerOfGods)
+                .Add(new Item(ItemType<AscendantSpiritEssence>()) { shopCustomPrice = Item.buyPrice(gold: 45) }, CalamityConditions.DownedDevourerOfGods)
                 //你小子龙魂卖的比化魂神晶便宜
-                .Add(new Item(ModContent.ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 60) }, CalamityConditions.DownedYharon)
+                .Add(new Item(ItemType<YharonSoulFragment>()) { shopCustomPrice = Item.buyPrice(gold: 60) }, CalamityConditions.DownedYharon)
 
-                .Add(new Item(ModContent.ItemType<CodebreakerBase>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
-                .Add(new Item(ModContent.ItemType<DecryptionComputer>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)
-                .Add(new Item(ModContent.ItemType<LongRangedSensorArray>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedMechBossAny)
-                .Add(new Item(ModContent.ItemType<AdvancedDisplay>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.DownedGolem)
-                .Add(new Item(ModContent.ItemType<VoltageRegulationSystem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<AuricQuantumCoolingCell>()) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CalamityConditions.DownedYharon);
+                .Add(new Item(ItemType<CodebreakerBase>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
+                .Add(new Item(ItemType<DecryptionComputer>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedSkeletron)
+                .Add(new Item(ItemType<LongRangedSensorArray>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, Condition.DownedMechBossAny)
+                .Add(new Item(ItemType<AdvancedDisplay>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.DownedGolem)
+                .Add(new Item(ItemType<VoltageRegulationSystem>()) { shopCustomPrice = Item.buyPrice(gold: 50) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<AuricQuantumCoolingCell>()) { shopCustomPrice = Item.buyPrice(platinum: 2) }, CalamityConditions.DownedYharon);
             MiscShop.Register();
         }
         //只卖你mod的稀有物品，其它mod等扔给杂项了
@@ -611,70 +611,70 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void ItemShop_List()
         {
             var ItemShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalItemShopOption"))
-                .Add(new Item(ModContent.ItemType<IlmerisSpark>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
+                .Add(new Item(ItemType<IlmerisSpark>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CalamityConditions.DownedDesertScourge)
                 .Add(new Item(ItemID.FlyingCarpet) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
-                .Add(new Item(ModContent.ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<Abaddon>()) { shopCustomPrice = Item.buyPrice(gold: 32) }, Condition.Hardmode)
-                .Add(new Item(ModContent.ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
-                .Add(new Item(ModContent.ItemType<BobbitHook>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedPolterghast)
-                .Add(new Item(ModContent.ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon)
-                .Add(new Item(ModContent.ItemType<HalibutCannonLegendary>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CIConditions.NoInfernumMode);
+                .Add(new Item(ItemType<AncientShiv>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, Condition.DownedSkeletron)
+                .Add(new Item(ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
+                .Add(new Item(ItemType<Abaddon>()) { shopCustomPrice = Item.buyPrice(gold: 32) }, Condition.Hardmode)
+                .Add(new Item(ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
+                .Add(new Item(ItemType<BobbitHook>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedPolterghast)
+                .Add(new Item(ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon)
+                .Add(new Item(ItemType<HalibutCannonLegendary>()) { shopCustomPrice = Item.buyPrice(platinum: 1) }, CIConditions.NoInfernumMode);
             ItemShop.Register();
         }
 
         public void MusicBoxShop_List()
         {
             var MusicShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMusicBoxShopOpt"))
-                .Add(new Item(ModContent.ItemType<CalamityTitleMusicBoxLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<Arcueid>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<BlessingOftheMoon>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ModContent.ItemType<Interlude1MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedCalClone)
-                .Add(new Item(ModContent.ItemType<Interlude2MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedMoonLord)
-                .Add(new Item(ModContent.ItemType<ProvidenceLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedProvidence)
-                .Add(new Item(ModContent.ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
-                .Add(new Item(ModContent.ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedExoMechs)
-                .Add(new Item(ModContent.ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
-                .Add(new Item(ModContent.ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
+                .Add(new Item(ItemType<CalamityTitleMusicBoxLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ItemType<Arcueid>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ItemType<BlessingOftheMoon>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
+                .Add(new Item(ItemType<Interlude1MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedCalClone)
+                .Add(new Item(ItemType<Interlude2MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedMoonLord)
+                .Add(new Item(ItemType<ProvidenceLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedProvidence)
+                .Add(new Item(ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
+                .Add(new Item(ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedExoMechs)
+                .Add(new Item(ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
+                .Add(new Item(ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
             MusicShop.Register();
         }
         public void WineShop_List()
         {
             NPCShop shop = new(Type, Language.GetTextValue($"{DialogueRoute}.ScalWineShoppOpt"));
             shop.AddWithCustomValue(ItemID.LovePotion, Item.buyPrice(silver: 25), Condition.HappyEnough, Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<GrapeBeer>(), Item.buyPrice(silver: 30), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<RedWine>(), Item.buyPrice(gold: 1), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<Whiskey>(), Item.buyPrice(gold: 2), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<Rum>(), Item.buyPrice(gold: 2), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<Tequila>(), Item.buyPrice(gold: 2), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<Fireball>(), Item.buyPrice(gold: 3), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<PurpleHaze>(), Item.buyPrice(gold: 4), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<Vodka>(), Item.buyPrice(gold: 2), Condition.DownedMechBossAll)
-                .AddWithCustomValue(ModContent.ItemType<Screwdriver>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
-                .AddWithCustomValue(ModContent.ItemType<WhiteWine>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
-                .AddWithCustomValue(ModContent.ItemType<EvergreenGin>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
-                .AddWithCustomValue(ModContent.ItemType<CaribbeanRum>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
-                .AddWithCustomValue(ModContent.ItemType<Margarita>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
-                .AddWithCustomValue(ModContent.ItemType<OldFashioned>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ItemType<GrapeBeer>(), Item.buyPrice(silver: 30), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<RedWine>(), Item.buyPrice(gold: 1), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<Whiskey>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<Rum>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<Tequila>(), Item.buyPrice(gold: 2), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<Fireball>(), Item.buyPrice(gold: 3), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<PurpleHaze>(), Item.buyPrice(gold: 4), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<Vodka>(), Item.buyPrice(gold: 2), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ItemType<Screwdriver>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ItemType<WhiteWine>(), Item.buyPrice(gold: 6), Condition.DownedMechBossAll)
+                .AddWithCustomValue(ItemType<EvergreenGin>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ItemType<CaribbeanRum>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ItemType<Margarita>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
+                .AddWithCustomValue(ItemType<OldFashioned>(), Item.buyPrice(gold: 8), Condition.DownedPlantera)
                 .AddWithCustomValue(ItemID.EmpressButterfly, Item.buyPrice(gold: 10), Condition.DownedPlantera)
-                .AddWithCustomValue(ModContent.ItemType<Everclear>(), Item.buyPrice(gold: 3), CalamityConditions.DownedAstrumAureus)
-                .AddWithCustomValue(ModContent.ItemType<BloodyMary>(), Item.buyPrice(gold: 4), CalamityConditions.DownedAstrumAureus, Condition.BloodMoon)
-                .AddWithCustomValue(ModContent.ItemType<StarBeamRye>(), Item.buyPrice(gold: 6), CalamityConditions.DownedAstrumAureus, Condition.TimeNight)
-                .AddWithCustomValue(ModContent.ItemType<Moonshine>(), Item.buyPrice(gold: 2), Condition.DownedGolem)
-                .AddWithCustomValue(ModContent.ItemType<MoscowMule>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
-                .AddWithCustomValue(ModContent.ItemType<CinnamonRoll>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
-                .AddWithCustomValue(ModContent.ItemType<TequilaSunrise>(), Item.buyPrice(gold: 10), Condition.DownedGolem)
+                .AddWithCustomValue(ItemType<Everclear>(), Item.buyPrice(gold: 3), CalamityConditions.DownedAstrumAureus)
+                .AddWithCustomValue(ItemType<BloodyMary>(), Item.buyPrice(gold: 4), CalamityConditions.DownedAstrumAureus, Condition.BloodMoon)
+                .AddWithCustomValue(ItemType<StarBeamRye>(), Item.buyPrice(gold: 6), CalamityConditions.DownedAstrumAureus, Condition.TimeNight)
+                .AddWithCustomValue(ItemType<Moonshine>(), Item.buyPrice(gold: 2), Condition.DownedGolem)
+                .AddWithCustomValue(ItemType<MoscowMule>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
+                .AddWithCustomValue(ItemType<CinnamonRoll>(), Item.buyPrice(gold: 8), Condition.DownedGolem)
+                .AddWithCustomValue(ItemType<TequilaSunrise>(), Item.buyPrice(gold: 10), Condition.DownedGolem)
                 .AddWithCustomValue(ItemID.BloodyMoscato, Item.buyPrice(gold: 1), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
                 .AddWithCustomValue(ItemID.BananaDaiquiri, Item.buyPrice(silver: 75), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
                 .AddWithCustomValue(ItemID.PeachSangria, Item.buyPrice(silver: 50), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
                 .AddWithCustomValue(ItemID.PinaColada, Item.buyPrice(gold: 1), Condition.DownedMoonLord, Condition.NpcIsPresent(NPCID.Stylist))
-                .AddWithCustomValue(ModContent.ItemType<WeightlessCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<VigorousCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<ResilientCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<SpitefulCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
-                .AddWithCustomValue(ModContent.ItemType<OddMushroom>(), Item.buyPrice(1), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<WeightlessCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<VigorousCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<ResilientCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<SpitefulCandle>(), Item.buyPrice(gold: 50), Condition.Hardmode)
+                .AddWithCustomValue(ItemType<OddMushroom>(), Item.buyPrice(1), Condition.Hardmode)
                 .AddWithCustomValue(ItemID.UnicornHorn, Item.buyPrice(0, 2, 50), Condition.HappyEnough, Condition.InHallow)
                 .AddWithCustomValue(ItemID.Milkshake, Item.buyPrice(gold: 5), Condition.HappyEnough, Condition.InHallow, Condition.NpcIsPresent(NPCID.Stylist), Condition.Hardmode)
                 .Register();
@@ -699,7 +699,7 @@ namespace CalamityInheritance.NPCs.TownNPC
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ModContent.ProjectileType<HellblastFriendly>();
+            projType = ProjectileType<HellblastFriendly>();
             attackDelay = 1;
         }
 

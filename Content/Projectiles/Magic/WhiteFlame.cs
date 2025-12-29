@@ -12,6 +12,7 @@ using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using static CalamityInheritance.Utilities.CIFunction;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -19,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
 
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 50;
@@ -92,10 +93,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     }
                     speed.Normalize();
                     speed *= Main.rand.Next(70, 101) * 0.1f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ModContent.ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage, 0f, Projectile.owner, 0f, 0f);
                 }
             }
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 360);
+            target.AddBuff(BuffType<HolyFlames>(), 360);
         }
     }
 }

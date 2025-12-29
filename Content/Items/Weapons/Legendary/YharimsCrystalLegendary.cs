@@ -49,11 +49,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.noUseGraphic = true;
             Item.channel = true;
             Item.knockBack = 0f;
-            Item.shoot = ModContent.ProjectileType<YharimsCrystalPrismLegendary>();
+            Item.shoot = ProjectileType<YharimsCrystalPrismLegendary>();
             Item.shootSpeed = 30f;
 
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<MaliceChallengeDrop>();
+            Item.rare = RarityType<MaliceChallengeDrop>();
         }
         public override bool CanReforge()
         {

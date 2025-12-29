@@ -47,7 +47,7 @@ namespace CalamityInheritance.Tiles.Banner
                 return;
 
             int style = Main.tile[i, j].TileFrameX / 18;
-            int npc = ModContent.NPCType<CosmicElemental>();
+            int npc = NPCType<CosmicElemental>();
             if (npc != -1)
             {
                 Main.SceneMetrics.NPCBannerBuff[npc] = true;

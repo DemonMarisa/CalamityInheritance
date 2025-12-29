@@ -27,18 +27,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet
             Item.autoReuse = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = ModContent.RarityType<TrueScarlet>();
+            Item.rare = RarityType<TrueScarlet>();
             Item.noMelee = true;
             Item.channel = true;
             Item.useAmmo = AmmoID.Bullet;
             Item.noUseGraphic = true;
-            Item.shoot = ModContent.ProjectileType<R99HeldProj>();
+            Item.shoot = ProjectileType<R99HeldProj>();
             //不要给这武器近程设计
             Item.shootSpeed = 12f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<R99HeldProj>(), damage, knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<R99HeldProj>(), damage, knockback, player.whoAmI);
             return false;
         }
         public override void AddRecipes()

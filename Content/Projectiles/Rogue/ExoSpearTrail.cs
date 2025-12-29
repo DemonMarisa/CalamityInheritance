@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.width = 22;
             Projectile.height = 22;
             Projectile.friendly = true;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.timeLeft = 180;
         }
         public override void SendExtraAI(BinaryWriter writer)

@@ -10,13 +10,14 @@ using Terraria.ModLoader;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
     public class NorHealthProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public ref float FlySpeed => ref Projectile.ai[0];
         public ref float Acceleration => ref Projectile.ai[1];
         public ref float HealAmt => ref Projectile.ai[2];

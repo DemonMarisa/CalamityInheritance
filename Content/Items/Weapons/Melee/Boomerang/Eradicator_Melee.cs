@@ -26,8 +26,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
             Item.knockBack = 7f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceDeepBlue;
-            Item.rare = ModContent.RarityType<DeepBlue>();
-            Item.shoot = ModContent.ProjectileType<MeleeTypeEradicatorProj>();
+            Item.rare = RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<MeleeTypeEradicatorProj>();
             Item.shootSpeed = Speed;
             Item.DamageType = DamageClass.MeleeNoSpeed;
         }

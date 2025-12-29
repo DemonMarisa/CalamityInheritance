@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         (
             itemWidth:20,
             itemHeight:22,
-            itemRare:ModContent.RarityType<CatalystViolet>(),
+            itemRare: RarityType<CatalystViolet>(),
             itemValue:CIShopValue.RarityPriceCatalystViolet,
             itemDefense:30
         );   
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (player.whoAmI == Main.myPlayer)
                     {
                         int damage = (int)player.GetBestClassDamage().ApplyTo(175);
-                        int projectile1 = Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<DragonDust>(), damage, 5f, player.whoAmI, 0f, 0f);
+                        int projectile1 = Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<DragonDust>(), damage, 5f, player.whoAmI, 0f, 0f);
                         Main.projectile[projectile1].timeLeft = 60;
                     }
                     dragonTimer = 60;
@@ -56,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     if (player.whoAmI == Main.myPlayer)
                     {
                         int damage = (int)player.GetBestClassDamage().ApplyTo(375);
-                        CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ModContent.ProjectileType<SkyFlareFriendly>(), damage, 9f, player.whoAmI);
+                        CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 22f, ProjectileType<SkyFlareFriendly>(), damage, 9f, player.whoAmI);
                     }
                 }
             }

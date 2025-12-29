@@ -6,12 +6,14 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 using CalamityMod.Projectiles.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
     public class EutrophicShankProj : BaseShortswordProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override string Texture => GetInstance<EutrophicShank>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NoMeleeSpeedVelocityScaling[Projectile.type] = true;
@@ -23,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.scale = 1f;
-            Projectile.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>(); ;
+            Projectile.DamageType = GetInstance<TrueMeleeDamageClass>(); ;
             Projectile.ownerHitCheck = true;
             Projectile.timeLeft = 360;
             Projectile.extraUpdates = 1;
@@ -61,13 +63,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                 Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 12f, ModContent.ProjectileType<EutrophicSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 12f, ProjectileType<EutrophicSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
             };
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = Projectile.GetSource_FromThis();
-            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ModContent.ProjectileType<EutrophicSpark>(), Projectile.damage, Projectile.knockBack);
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<EutrophicSpark>(), Projectile.damage, Projectile.knockBack);
         }
     }
 }

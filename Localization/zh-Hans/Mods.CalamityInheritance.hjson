@@ -232,22 +232,22 @@ Configs: {
 		}
 
 		GodSlayerKnivesResprite: {
-			// Label: "[i:CalamityInheritance/RogueTypeKnivesEmpyrean]Empyrean Knives Resprite"
+			// Label: "[i:CalamityInheritance/RogueEmpyreanKnives]Empyrean Knives Resprite"
 			// Tooltip: Determines sprite style of Empyrean Knives Legacy Rogue
 		}
 
 		ShadowspecKnivesResprite: {
-			// Label: "[i:CalamityInheritance/RogueTypeKnivesShadowspec]Illustrious Knives Resprite"
+			// Label: "[i:CalamityInheritance/RogueShadowspecKnives]Illustrious Knives Resprite"
 			// Tooltip: Determines sprite style of Illustrious Knives Legacy Rogue
 		}
 
 		TriactisHammerResprite: {
-			// Label: "[i:CalamityInheritance/RogueTypeHammerTriactisTruePaladinianMageHammerofMight]Triactis' Hammer Resprite"
+			// Label: "[i:CalamityInheritance/RogueTriactisHammer]Triactis' Hammer Resprite"
 			// Tooltip: Determines sprite style of Triactis' Hammer
 		}
 
 		PwnagehammerResprite: {
-			// Label: "[i:CalamityInheritance/RogueTypeHammerPwnageLegacy]Pwnagehammer Resprite"
+			// Label: "[i:CalamityInheritance/RoguePwnagehammer]Pwnagehammer Resprite"
 			// Tooltip: Determines sprite style of Pwnagehammer
 		}
 
@@ -257,7 +257,7 @@ Configs: {
 		}
 
 		StellarContemptResprite: {
-			// Label: "[i:CalamityInheritance/RogueTypeHammerStellarContempt]Stellar Contempt Resprite"
+			// Label: "[i:CalamityInheritance/RogueStellarContempt]Stellar Contempt Resprite"
 			// Tooltip: Determines sprite style of Stellar Contempt
 		}
 
@@ -371,7 +371,7 @@ Configs: {
 				Sprite List:
 				[i:CalamityInheritance/ElementalShivold]Elemental Shiv Legacy
 				[i:CalamityMod/ElementalLance]Elemental Lance
-				[i:CalamityInheritance/MeleeTypeElementalDisk]Elemental Disk Legacy Melee
+				[i:CalamityInheritance/MeleeElementalDisk]Elemental Disk Legacy Melee
 				[i:CalamityMod/ElementalBlaster]Elemental Blaster
 				[i:CalamityInheritance/ElementalRayold]Elemental Ray Revamped
 				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
@@ -617,6 +617,11 @@ Configs: {
 				开启后，击败灾厄之眼[Legacy]，丛林龙 - 犽绒
 				也会标记灾厄之眼，重生之龙，的状态为被击败
 				'''
+		}
+
+		CrateLootsBack: {
+			// Label: Crate Loots Back
+			// Tooltip: ""
 		}
 	}
 }

@@ -42,7 +42,7 @@ namespace CalamityInheritance.Tiles.MusicBox
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<CalamityTitleMusicBoxLegacy>();
+            player.cursorItemIconID = ItemType<CalamityTitleMusicBoxLegacy>();
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

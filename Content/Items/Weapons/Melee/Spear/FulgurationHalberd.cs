@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
+            Item.shoot = ProjectileType<FulgurationHalberdProj>();
             Item.UseSound = SoundID.Item82;
             Item.shootSpeed = 12f;
         }
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
                 Item.noUseGraphic = true;
                 Item.useTurn = false;
                 Item.useStyle = ItemUseStyleID.Shoot;
-                Item.shoot = ModContent.ProjectileType<FulgurationHalberdProj>();
+                Item.shoot = ProjectileType<FulgurationHalberdProj>();
                 return base.CanUseItem(player);
             }
             else
@@ -79,12 +79,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 300);
+            target.AddBuff(BuffType<BurningBlood>(), 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hit)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 300);
+            target.AddBuff(BuffType<BurningBlood>(), 300);
         }
 
         public override void AddRecipes()

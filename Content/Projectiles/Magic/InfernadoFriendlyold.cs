@@ -129,7 +129,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 300);
+            target.AddBuff(BuffType<Dragonfire>(), 300);
         }
 
         public override Color? GetAlpha(Color lightColor)

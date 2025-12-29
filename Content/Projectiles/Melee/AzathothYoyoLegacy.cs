@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Main.rand.NextBool(MaxUpdates))
             {
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedByRandom(0.2f) * Main.rand.NextFloat(0.32f, 0.55f), ModContent.ProjectileType<CosmicOrbLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedByRandom(0.2f) * Main.rand.NextFloat(0.32f, 0.55f), ProjectileType<CosmicOrbLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             if ((Projectile.position - Main.player[Projectile.owner].position).Length() > 3200f)
                 Projectile.Kill();

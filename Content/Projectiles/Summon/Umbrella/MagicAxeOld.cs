@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             float num637 = 0.05f;
             for (int num638 = 0; num638 < Main.projectile.Length; num638++)
             {
-                bool flag23 = Main.projectile[num638].type == ModContent.ProjectileType<MagicAxe>();
+                bool flag23 = Main.projectile[num638].type == ProjectileType<MagicAxe>();
                 if (num638 != Projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == Projectile.owner && flag23 && Math.Abs(Projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(Projectile.position.Y - Main.projectile[num638].position.Y) < Projectile.width)
                 {
                     if (Projectile.position.X < Main.projectile[num638].position.X)
@@ -244,18 +244,18 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 120);
-            target.AddBuff(ModContent.BuffType<Plague>(), 120);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(BuffType<GlacialState>(), 120);
+            target.AddBuff(BuffType<Plague>(), 120);
+            target.AddBuff(BuffType<HolyFlames>(), 120);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 120);
-            target.AddBuff(ModContent.BuffType<Plague>(), 120);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 120);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(BuffType<GlacialState>(), 120);
+            target.AddBuff(BuffType<Plague>(), 120);
+            target.AddBuff(BuffType<HolyFlames>(), 120);
         }
 
         public override void OnKill(int timeLeft)

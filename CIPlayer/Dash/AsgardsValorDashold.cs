@@ -100,8 +100,8 @@ namespace CalamityInheritance.CIPlayer.Dash
             }
 
             int holyExplosionDamage = (int)player.GetBestClassDamage().ApplyTo(60);
-            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ModContent.ProjectileType<HolyExplosionold>(), holyExplosionDamage, 15f, Main.myPlayer, 0f, 0f);
-            npc.AddBuff(ModContent.BuffType<HolyFlames>(), 180);
+            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<HolyExplosionold>(), holyExplosionDamage, 15f, Main.myPlayer, 0f, 0f);
+            npc.AddBuff(BuffType<HolyFlames>(), 180);
         }
     }
 }

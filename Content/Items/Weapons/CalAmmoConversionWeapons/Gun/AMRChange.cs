@@ -14,13 +14,13 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<AntiMaterielRifle>();
+            return item.type == ItemType<AntiMaterielRifle>();
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (CIConfig.Instance.AmmoConversion == true)
             {
-                type = ModContent.ProjectileType<AMRShot>();
+                type = ProjectileType<AMRShot>();
             }
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

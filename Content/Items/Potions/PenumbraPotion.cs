@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<PenumbraBuff>();
+            Item.buffType = BuffType<PenumbraBuff>();
             Item.buffTime = CalamityUtils.SecondsToFrames(480f);
             Item.value = CIShopValue.RarityPriceLime;
         }

@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
             Item.useTime = 10;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
@@ -50,12 +50,12 @@ namespace CalamityInheritance.Content.Items.SummonItems
 
         public override bool CanUseItem(Player player)
         {
-            return !BossRushEvent.BossRushActive && !NPC.AnyNPCs(ModContent.NPCType<YharonLegacy>()) && player.ZoneJungle;
+            return !BossRushEvent.BossRushActive && !NPC.AnyNPCs(NPCType<YharonLegacy>()) && player.ZoneJungle;
         }
 
         public override bool? UseItem(Player player)
         {
-            int npcType = ModContent.NPCType<YharonLegacy>();
+            int npcType = NPCType<YharonLegacy>();
 
             switch (Main.netMode)
             {

@@ -13,6 +13,6 @@ namespace CalamityInheritance.Tiles.Relic
     {
         public override string RelicTextureName => "CalamityInheritance/Tiles/Relic/CalCloneRelicTiles";
 
-        public override int AssociatedItem => ModContent.ItemType<CalCloneRelic>();
+        public override int AssociatedItem => ItemType<CalCloneRelic>();
     }
 }

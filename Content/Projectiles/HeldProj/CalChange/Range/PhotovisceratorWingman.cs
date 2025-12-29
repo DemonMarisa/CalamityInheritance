@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
 
                 Vector2 firseoffset = new Vector2(20, 0).RotatedBy(Projectile.rotation);
 
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + firseoffset, Projdirection * shootSpeed, ModContent.ProjectileType<PhotovisceratorLaser>(), damage / 2, knockback, Projectile.owner, 0f, Projectile.whoAmI, 1f);
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center + firseoffset, Projdirection * shootSpeed, ProjectileType<PhotovisceratorLaser>(), damage / 2, knockback, Projectile.owner, 0f, Projectile.whoAmI, 1f);
                 Projectile.localAI[0] = Main.projectile[p].whoAmI;
             }
 
@@ -190,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
                 int yDirection = (i == 0).ToDirectionInt();
                 Vector2 bombVel = Projdirection.RotatedBy(0.2f * yDirection);
 
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), bombPos, bombVel * shootSpeed, ModContent.ProjectileType<ExoLight>(), damage / 2, knockback, Projectile.owner, yDirection);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), bombPos, bombVel * shootSpeed, ProjectileType<ExoLight>(), damage / 2, knockback, Projectile.owner, yDirection);
             }
         }
         #endregion
@@ -208,8 +208,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Vector2 rotationPoint = texture.Size() * 0.5f;
             SpriteEffects flipSprite = Projectile.ai[2] == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-            Main.EntitySpriteDraw(texture, drawPosition, null, Projectile.GetAlpha(lightColor), drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/HeldProj/CalChange/Range/PhotovisceratorWingmanGlow").Value, drawPosition, null, Color.White, drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
+            Main.EntitySpriteDraw(texture, drawPosition, null, Color.White, drawRotation, rotationPoint, Projectile.scale * Main.player[Projectile.owner].gravDir, flipSprite);
             return false;
         }
         #endregion
@@ -227,7 +226,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             baseColor.A = Auxiliarycolor.A = 0;
 
             // 纹理
-            Texture2D mainTexture = ModContent.Request<Texture2D>("CalamityInheritance/Content/Projectiles/CalProjChange/PhotovisceratorLaser").Value;
+            Texture2D mainTexture = Request<Texture2D>("CalamityInheritance/Content/Projectiles/CalProjChange/PhotovisceratorLaser").Value;
             Texture2D bloomTexture = Main.Assets.Request<Texture2D>("Images/Extra_197").Value;
 
             DrawBloomEffect(bloomTexture, Auxiliarycolor, beamRotation, laserLength, Scale, Vector2.Zero, Laser);

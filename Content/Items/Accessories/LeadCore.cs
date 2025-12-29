@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[ModContent.BuffType<Irradiated>()] = true;
+            player.buffImmune[BuffType<Irradiated>()] = true;
         }
     }
 }

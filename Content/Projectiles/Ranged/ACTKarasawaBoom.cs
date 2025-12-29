@@ -1,4 +1,5 @@
 ﻿using System;
+using LAP.Assets.TextureRegister;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
@@ -16,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class ACTKarasawaBoom: ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         private Color DustColor;
   
         public override void SetDefaults()
@@ -151,7 +152,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             if (DustColor == Color.Red)
             {
-                target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300);
+                target.AddBuff(BuffType<BrimstoneFlames>(), 300);
             }
             if (Projectile.numHits == 0)
             {

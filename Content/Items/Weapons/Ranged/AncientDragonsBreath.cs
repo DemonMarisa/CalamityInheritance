@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmetTo<DragonsBreathold>();
+            Type.ShimmerTo<DragonsBreathold>();
         }
         public override void SetDefaults()
         {
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 13;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundShoutgunTactical;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.autoReuse = true;
             Item.noMelee = true;
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             for (int i = 0; i < 8; i++)
             {
                 Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(3f)) * Main.rand.NextFloat(0.9f, 1.1f);
-                Projectile.NewProjectile(source, position, spread, ModContent.ProjectileType<DragonsBreathRound>(), damage, knockback, Main.myPlayer);
+                Projectile.NewProjectile(source, position, spread, ProjectileType<DragonsBreathRound>(), damage, knockback, Main.myPlayer);
             }
             return false;
         }

@@ -38,7 +38,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #region 左侧头图绘制
             #region 绘制数据
             // 头图贴图
-            Texture2D HeadPage = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/HeadPageStyle1").Value;
+            Texture2D HeadPage = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/HeadPageStyle1").Value;
             // 绘制位置
             float drawPositionX = Main.screenWidth * 0.5f;
             Vector2 drawPosition = new Vector2(drawPositionX, Main.screenHeight * 0.5f);
@@ -55,15 +55,15 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #region 右侧跳过绘制
             #region 绘制数据
             // 箭头材质与数据应用
-            Texture2D HeadPageArrow = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextArrow").Value;
-            Texture2D HeadPageArrowHover = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextArrowHover").Value;
+            Texture2D HeadPageArrow = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextArrow").Value;
+            Texture2D HeadPageArrowHover = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextArrowHover").Value;
             HeadPageData genericHeadPageData = GetSkipBtnData(
                 spriteBatch, HeadPageArrow, HeadPageArrowHover,
                 1f, false);
             #endregion
             #region 边框的绘制数据
-            Texture2D textOutLine = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextOutLine").Value;
-            Texture2D TextLine = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextLine").Value;
+            Texture2D textOutLine = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextOutLine").Value;
+            Texture2D TextLine = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/HeadPage/TextLine").Value;
             #region 本地化文字
             // 文字
             string fastSkip = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.HeadText");
@@ -74,7 +74,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             int TextOffsetX = 46;
             int PageRightFirstLine = -270;
             #region 绘制最上面的文字
-            Texture2D LevelHead = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/LevelSystem/LevelHead").Value;
+            Texture2D LevelHead = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/LevelSystem/LevelHead").Value;
             CIFunction.DrawTextNoLine(spriteBatch, fastSkip, 1f, 1f, PageRightCenter + 16, -388, 1.4f, TextColor, Color.DarkSlateGray, 400f, 0f);
             NorDrawImage(spriteBatch, LevelHead, PageRightCenter, -364);
             #endregion

@@ -23,9 +23,9 @@ namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
             Item.knockBack = 8f;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<MagnumRound>();
+            Item.shoot = ProjectileType<MagnumRound>();
             Item.shootSpeed = 12f;
-            Item.ammo = ModContent.ItemType<MagnumRounds>(); // CONSIDER -- Would item.type work here instead of a self reference?
+            Item.ammo = ItemType<MagnumRounds>(); // CONSIDER -- Would item.type work here instead of a self reference?
         }
     }
 }

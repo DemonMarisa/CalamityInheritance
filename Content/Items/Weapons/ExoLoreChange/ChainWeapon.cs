@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     public class ChainWeapon : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ModContent.ItemType<TheJailor>();
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.type == ItemType<TheJailor>();
         public override bool AltFunctionUse(Item item, Player player) => player.CIMod().LoreExo || player.CIMod().PanelsLoreExo;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

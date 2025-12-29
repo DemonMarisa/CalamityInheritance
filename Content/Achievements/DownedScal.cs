@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Achievements
         public override void SetStaticDefaults()
         {
             ForceKilledCondition = AddCondition();
-            var killed = AddNPCKilledCondition(ModContent.NPCType<SupremeCalamitasLegacy>());
+            var killed = AddNPCKilledCondition(NPCType<SupremeCalamitasLegacy>());
             Achievement.SetCategory(Terraria.Achievements.AchievementCategory.Slayer);
             Achievement.UseTracker
             (
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Achievements
         }
         public override IEnumerable<Position> GetModdedConstraints()
         {
-            yield return new After(ModContent.GetInstance<DownedCal>());
+            yield return new After(GetInstance<DownedCal>());
         }
 
     }

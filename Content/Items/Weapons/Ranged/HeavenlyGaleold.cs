@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -31,18 +32,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.ResearchUnlockCount = 1;
             ExoArrows =
             [
-                ModContent.ProjectileType<ExoArrowTeal>(),
-                ModContent.ProjectileType<OrangeExoArrow>(),
-                ModContent.ProjectileType<ExoArrowGreen>(),
-                ModContent.ProjectileType<ExoArrowBlue>()
+                ProjectileType<ExoArrowTeal>(),
+                ProjectileType<OrangeExoArrow>(),
+                ProjectileType<ExoArrowGreen>(),
+                ProjectileType<ExoArrowBlue>()
             ];
             ExoArrowsExoLore =
             [
-                ModContent.ProjectileType<ExoArrowTealExoLore>(),
-                ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
-                ModContent.ProjectileType<ExoArrowOrangeExoLore>(),
-                ModContent.ProjectileType<ExoArrowGreenExoLore>(),
-                ModContent.ProjectileType<ExoArrowBlueExoLore>()
+                ProjectileType<ExoArrowTealExoLore>(),
+                ProjectileType<ExoArrowOrangeExoLore>(),
+                ProjectileType<ExoArrowOrangeExoLore>(),
+                ProjectileType<ExoArrowGreenExoLore>(),
+                ProjectileType<ExoArrowBlueExoLore>()
             ];
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -64,7 +65,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.WoodenArrowFriendly;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             
         }
@@ -128,7 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Ranged/HeavenlyGaleoldGlow").Value);
+        => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Ranged/HeavenlyGaleoldGlow").Value);
 
         public override bool CanConsumeAmmo(Item ammo, Player player)
             {

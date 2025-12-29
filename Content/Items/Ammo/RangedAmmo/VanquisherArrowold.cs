@@ -30,15 +30,15 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
             Item.consumable = true;
             Item.knockBack = 3.5f;
             Item.value = Item.sellPrice(silver: 32);
-            Item.shoot = ModContent.ProjectileType<VanquisherArrowoldMain>();
+            Item.shoot = ProjectileType<VanquisherArrowoldMain>();
             Item.shootSpeed = 10f;
             Item.ammo = AmmoID.Arrow;
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>("CalamityInheritance/Content/Items/Ammo/RangedAmmo/VanquisherArrowoldGlow").Value);
         }
 
         public override void AddRecipes()

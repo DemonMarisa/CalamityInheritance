@@ -13,13 +13,14 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Rogue;
 using Mono.Cecil;
 using LAP.Core.Utilities;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class CIVividBeamExoLore : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private bool initialized = false;
         public override void SetDefaults()
@@ -120,7 +121,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 SummonLasers();
             }
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
         public void SummonComet()
         {
@@ -140,7 +141,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 Vector2 mouseToPlayer = (player.Center - player.LocalMouseWorld()).SafeNormalize(Vector2.UnitY);
                 // 方向计算
                 // Proj的ai1和2用于传进去跟踪目标
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -mouseToPlayer.RotatedByRandom(MathHelper.ToRadians(16f)) * 15f, ModContent.ProjectileType<CIExocometMagic>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, Projectile.Center.X, Projectile.Center.Y);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Finalposition, -mouseToPlayer.RotatedByRandom(MathHelper.ToRadians(16f)) * 15f, ProjectileType<CIExocometMagic>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner, 0, Projectile.Center.X, Projectile.Center.Y);
             }
         }
         public void SummonLasers()
@@ -149,16 +150,16 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             switch (Projectile.ai[1])
             {
                 case 0f:
-                    CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 100f, 400f, 640f, 12f, ModContent.ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                    CalamityUtils.ProjectileRain(source, Projectile.Center, 380f, 100f, 400f, 640f, 12f, ProjectileType<VividClarityBeam>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
 
                 case 1f:
                     if (!Main.zenithWorld)
-                        Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ProjectileType<SupernovaBoomOld>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     else
                     {
-                        int i = Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ModContent.ProjectileType<RainbowComet>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                        int i = Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, ProjectileType<RainbowComet>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                         Main.projectile[i].DamageType = DamageClass.Magic;
                     }
                     break;
@@ -172,10 +173,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     {
                         offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
 
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
-                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
-                    int boomType = Main.zenithWorld? ModContent.ProjectileType<RainbowComet>(): ModContent.ProjectileType<SupernovaBoomOld>();
+                    int boomType = Main.zenithWorld? ProjectileType<RainbowComet>() : ProjectileType<SupernovaBoomOld>();
                     int p = Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, boomType, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
             }

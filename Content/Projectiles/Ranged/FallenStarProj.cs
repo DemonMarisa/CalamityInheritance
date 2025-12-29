@@ -80,14 +80,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             Vector2 offsets = new Vector2(0f, Projectile.gfxOffY) - Main.screenPosition;
             Color alpha = Projectile.GetAlpha(lightColor);
             Rectangle spriteRec = new Microsoft.Xna.Framework.Rectangle(0, 0, tex.Width, tex.Height);
             Vector2 spriteOrigin = spriteRec.Size() / 2f;
             SpriteEffects spriteEffects = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-            Texture2D aura = ModContent.Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Ranged/FallenStarAura").Value;
+            Texture2D aura = Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Ranged/FallenStarAura").Value;
             Vector2 drawStart = Projectile.Center + Projectile.velocity;
             Vector2 drawStart2 = Projectile.Center - Projectile.velocity * 0.5f;
             Vector2 spinPoint = new Vector2(0f, -10f);

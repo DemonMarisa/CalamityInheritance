@@ -35,12 +35,12 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
             Item.height = 42;
             Item.rare = ItemRarityID.Orange;
             Item.shootSpeed = 0;
-            Item.shoot = ModContent.ProjectileType<ScarletDevilBullet>();
+            Item.shoot = ProjectileType<ScarletDevilBullet>();
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int Id = ModContent.ItemType<Photovisceratorold>();
+            int Id = ItemType<Photovisceratorold>();
             // MusicEventManger.AddMusicEventEntry("CalamityInheritance/Music/Tyrant", TimeSpan.FromSeconds(110d), () => true, TimeSpan.FromSeconds(5d));
             return false;
         }

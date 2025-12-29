@@ -1,16 +1,12 @@
 using System;
-using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Balancing;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Projectiles;
-using CalamityMod.Projectiles.Healing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {

@@ -12,11 +12,13 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.CIPlayer;
 using Terraria.WorldBuilding;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class CIExocometMagic : ModProjectile, ILocalizedModType
     {
+        public override string Texture => GetInstance<ExoGladComet>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()
         {
@@ -117,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+            target.AddBuff(BuffType<MiracleBlight>(), 300);
         }
 
         public override bool PreDraw(ref Color lightColor)

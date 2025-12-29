@@ -17,7 +17,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<YharonLegacy>();
+            public override int NPCType => NPCType<YharonLegacy>();
             public override int? MusicModMusic => CalamityInheritance.Instance.GetMusicFromMusicMod("YharonPhase1");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -30,7 +30,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<YharonLegacy>();
+            public override int NPCType => NPCType<YharonLegacy>();
             public override int? MusicModMusic => MusicLoader.GetMusicSlot(Mod, "Music/YharonStage2FadeIn");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;
@@ -43,7 +43,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.BGM
         {
             public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;
 
-            public override int NPCType => ModContent.NPCType<YharonLegacy>();
+            public override int NPCType => NPCType<YharonLegacy>();
             public override int? MusicModMusic => MusicLoader.GetMusicSlot(Mod, "Music/YharonStage2");
             public override int VanillaMusic => MusicID.Boss2;
             public override int OtherworldMusic => MusicID.OtherworldlyBoss2;

@@ -31,13 +31,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = CISoundID.SoundShoutgunTactical;
-            Item.rare = CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<YharonFire>() :ModContent.RarityType<DeepBlue>();
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<YharonFire>() : RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.knockBack = 9.5f;
-            Item.shoot = ModContent.ProjectileType<ChickenRound>();
+            Item.shoot = ProjectileType<ChickenRound>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Rocket;
         }

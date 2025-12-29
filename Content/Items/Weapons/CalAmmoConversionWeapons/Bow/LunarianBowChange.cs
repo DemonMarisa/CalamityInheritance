@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation)
         {
-            return item.type == ModContent.ItemType<LunarianBow>();
+            return item.type == ItemType<LunarianBow>();
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                     if (!canHit)
                         offset -= velocity;
 
-                    Projectile.NewProjectile(source, source1 + offset, velocity, ModContent.ProjectileType<LunarBolt>(), damage, knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, source1 + offset, velocity, ProjectileType<LunarBolt>(), damage, knockback, player.whoAmI);
                 }
                 return false;
             }

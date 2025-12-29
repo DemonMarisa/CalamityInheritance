@@ -1,4 +1,5 @@
 ﻿using Terraria.Audio;
+using LAP.Assets.TextureRegister;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -10,7 +11,7 @@ namespace CalamityInheritance.Content.Projectiles.Environment
     public class LightningMark : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Boss.Projectiles";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public static readonly SoundStyle LightningStrikeSound = new("CalamityMod/Sounds/Custom/LightningStrike");
         public override void SetDefaults()
         {

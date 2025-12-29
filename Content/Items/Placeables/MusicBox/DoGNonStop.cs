@@ -10,12 +10,12 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
         public new string LocalizationCategory => $"{Local}.MusicBox";
         public override void SetStaticDefaults() {
 			ItemID.Sets.CanGetPrefixes[Type] = false;
-			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/DoGNonstopRemix"), ModContent.ItemType<DoGNonStop>(), ModContent.TileType<DoGNonStopBox>());
+			MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/DoGNonstopRemix"), ItemType<DoGNonStop>(), TileType<DoGNonStopBox>());
 			Item.ResearchUnlockCount = 1;
 		}
 
 		public override void SetDefaults() {
-			Item.DefaultToMusicBox(ModContent.TileType<DoGNonStopBox>(), 0);
+			Item.DefaultToMusicBox(TileType<DoGNonStopBox>(), 0);
 		}
 
         public override void AddRecipes()

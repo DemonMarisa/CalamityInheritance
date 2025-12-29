@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless
             Item.rare = ItemRarityID.Yellow;
             Item.Calamity().donorItem = true;
             Item.UseSound = SoundID.Item71;
-            Item.shoot = ModContent.ProjectileType<YanmeisKnifeSlash>();
+            Item.shoot = ProjectileType<YanmeisKnifeSlash>();
             Item.shootSpeed = 24f;
         }
 

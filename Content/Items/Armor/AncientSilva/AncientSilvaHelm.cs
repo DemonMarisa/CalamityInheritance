@@ -24,12 +24,12 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
         {
             Item.width = 18;
             Item.height = 18;
-            Item.rare =ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 20; //100
         }
         
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<AncientSilvaArmor>() && legs.type == ModContent.ItemType<AncientSilvaLeggings>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientSilvaArmor>() && legs.type == ItemType<AncientSilvaLeggings>();
 
         public override void UpdateArmorSet(Player player)
         {

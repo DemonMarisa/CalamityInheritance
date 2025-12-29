@@ -65,9 +65,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<Nightwither>(), 120);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<Nightwither>(), 120);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<Nightwither>(), 120);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<Nightwither>(), 120);
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {

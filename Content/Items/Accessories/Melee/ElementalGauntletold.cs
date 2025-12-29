@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         (
             itemWidth:22,
             itemHeight:38,
-            itemRare:ModContent.RarityType<DeepBlue>(),
+            itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:10
         );

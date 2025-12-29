@@ -65,8 +65,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             {
                 NPC.buffImmune[k] = true;
             }
-            NPC.buffImmune[ModContent.BuffType<StepToolDebuff>()] = false;
-            NPC.buffImmune[ModContent.BuffType<CryoDrain>()] = false;
+            NPC.buffImmune[BuffType<StepToolDebuff>()] = false;
+            NPC.buffImmune[BuffType<CryoDrain>()] = false;
             NPC.buffImmune[BuffID.Ichor] = false;
             NPC.buffImmune[BuffID.CursedInferno] = false;
 
@@ -91,7 +91,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
-            int associatedNPCType = ModContent.NPCType<SupremeCalamitasLegacy>();
+            int associatedNPCType = NPCType<SupremeCalamitasLegacy>();
             bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(ContentSamples.NpcBestiaryCreditIdsByNpcNetIds[associatedNPCType], quickUnlock: true);
 
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[]
@@ -117,7 +117,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
             // ���ս����
             Item targetSelectedItem = target.inventory[target.selectedItem];
-            if (targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(ModContent.GetInstance<TrueMeleeNoSpeedDamageClass>()))
+            if (targetSelectedItem.CountsAsClass(GetInstance<TrueMeleeDamageClass>()) || targetSelectedItem.CountsAsClass(GetInstance<TrueMeleeNoSpeedDamageClass>()))
                 acceleration *= 0.5f;
 
             #region Y�ƶ�
@@ -193,14 +193,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                     NPC.ai[1] = 0f;
                     Vector2 vector85 = new Vector2(NPC.Center.X, NPC.Center.Y);
                     float num689 = 8f;
-                    int num691 = ModContent.ProjectileType<BrimstoneWaveLegacy>();
+                    int num691 = ProjectileType<BrimstoneWaveLegacy>();
                     if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         int num695 = Projectile.NewProjectile(NPC.GetSource_FromAI(), vector85.X, vector85.Y, - num689, 0f, num691, projDamage, 0f, Main.myPlayer, 0f, 0f);
                     }
                 }
                 NPC.ai[2] += 1f;
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()))
+                if (!NPC.AnyNPCs(NPCType<SupremeCataclysmLegacy>()))
                 {
                     NPC.ai[2] += 2f;
                 }
@@ -218,8 +218,8 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                         for (int i = 0; i < 8; i++)
                         {
                             offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(Math.Sin(offsetAngle) * num689), (float)(Math.Cos(offsetAngle) * num689), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(-Math.Sin(offsetAngle) * num689), (float)(-Math.Cos(offsetAngle) * num689), ModContent.ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(Math.Sin(offsetAngle) * num689), (float)(Math.Cos(offsetAngle) * num689), ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center.X, NPC.Center.Y, (float)(-Math.Sin(offsetAngle) * num689), (float)(-Math.Cos(offsetAngle) * num689), ProjectileType<BrimstoneBarrageLegacy>(), projDamage, 0f, Main.myPlayer, 0f, 1f);
                         }
                     }
                     for (int dust = 0; dust <= 5; dust++)
@@ -243,7 +243,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         */
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ModContent.ItemType<OmegaHealingPotion>();
+            potionType = ItemType<OmegaHealingPotion>();
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
@@ -256,7 +256,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 
 			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
             if (CIGlobalNPC.LegacySCalLament != -1)
-                texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacy_Blue").Value;
+                texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacy_Blue").Value;
 
             Vector2 vector11 = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
 			Color color36 = Color.White;
@@ -283,9 +283,9 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
 			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow").Value;
+			texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow").Value;
             if (CIGlobalNPC.LegacySCalLament != -1)
-                texture2D15 = ModContent.Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow_BLue").Value;
+                texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCataclysmLegacyGlow_BLue").Value;
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 

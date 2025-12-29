@@ -24,12 +24,12 @@ namespace CalamityInheritance.Texture
         #region 加载卸载
         public override void Load()
         {
-            ShizukuSwordTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Trail");
-            ShizukuSwordGlow = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Glow");
-            ShizukuArkTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuArk_Trail");
-            BaseTrail = ModContent.Request<Texture2D>($"{ExtraTexturesPath}/Trails/BasicTrail");
-            ShizukuBG = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Layer");
-            ShizukuStar = ModContent.Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Texture");
+            ShizukuSwordTrail = Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Trail");
+            ShizukuSwordGlow = Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuSword_Glow");
+            ShizukuArkTrail = Request<Texture2D>($"{ExtraTexturesPath}/Trails/ShizukuArk_Trail");
+            BaseTrail = Request<Texture2D>($"{ExtraTexturesPath}/Trails/BasicTrail");
+            ShizukuBG = Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Layer");
+            ShizukuStar = Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Texture");
             LoadProjTex();
             LoadItemTextures();
         }

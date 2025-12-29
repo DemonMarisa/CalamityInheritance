@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<FlamingStake>();
+            Item.shoot = ProjectileType<FlamingStake>();
             Item.shootSpeed = 10f;
             Item.useAmmo = AmmoID.Stake;
             
@@ -48,11 +48,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             float SpeedY = velocity.Y + Main.rand.Next(-2, 3) * 0.05f;
             if (Main.rand.NextBool(3))
             {
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<ExplodingStake>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<ExplodingStake>(), damage, knockback, player.whoAmI);
             }
             else
             {
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<FlamingStake>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<FlamingStake>(), damage, knockback, player.whoAmI);
             }
             return false;
         }

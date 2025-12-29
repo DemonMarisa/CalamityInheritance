@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item72;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<NightsRayBeamold>();
+            Item.shoot = ProjectileType<NightsRayBeamold>();
             Item.shootSpeed = 6f;
         }
 

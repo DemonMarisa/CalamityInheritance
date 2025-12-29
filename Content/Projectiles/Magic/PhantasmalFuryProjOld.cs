@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if (Projectile.timeLeft % 10 == 0)
             {
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<PhantomLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<PhantomLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
 
             Lighting.AddLight(Projectile.Center, 0.25f, 0.25f, 0.25f);
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 for (int i = 0; i < 8; i++)
                 {
                     Vector2 velocity = (MathHelper.TwoPi * i / 8f).ToRotationVector2() * 3f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<PhantomLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<PhantomLegacy>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 }
             }
         }

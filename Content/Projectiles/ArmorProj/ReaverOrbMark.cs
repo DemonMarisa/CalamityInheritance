@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod;
@@ -8,7 +9,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
     public class ReaverOrbMark : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.ArmorProj";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -26,11 +27,11 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
         {
             NPC target = Projectile.Center.ClosestNPCAt(1500);
             if (!Main.zenithWorld)
-                CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 8f, 0, 5, ModContent.ProjectileType<ReaverBeam>(), 1D, false);
+                CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 8f, 0, 5, ProjectileType<ReaverBeam>(), 1D, false);
             else
             {
                 for (int i = 0; i < 4 ; i++)
-                    CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 16f, 1f, 10, ModContent.ProjectileType<ReaverBeam>(), 1D, false);
+                    CalamityUtils.MagnetSphereHitscan(Projectile, Vector2.Distance(Projectile.Center, target.Center), 16f, 1f, 10, ProjectileType<ReaverBeam>(), 1D, false);
             }
         }
     }

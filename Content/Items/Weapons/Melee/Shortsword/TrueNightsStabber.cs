@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceYellow;
             Item.rare = ItemRarityID.Yellow;
-            Item.shoot = ModContent.ProjectileType<TrueNightsStabberProj>();
+            Item.shoot = ProjectileType<TrueNightsStabberProj>();
             Item.shootSpeed = 2.6f;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<NightsStabber>());
+            recipe.AddIngredient(ItemType<NightsStabber>());
             recipe.AddIngredient(ItemID.SoulofSight, 30);
             recipe.AddIngredient(ItemID.SoulofMight, 30);
             recipe.AddIngredient(ItemID.SoulofFright, 30);

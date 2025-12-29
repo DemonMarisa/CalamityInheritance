@@ -45,7 +45,7 @@ namespace CalamityInheritance.CIPlayer.Dash
             {
                 int scytheDamage = (int)player.GetBestClassDamage().ApplyTo(250);
 
-                int scythe = Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, ModContent.ProjectileType<CosmicScytheOld>(), scytheDamage, 5f, player.whoAmI); ;
+                int scythe = Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<CosmicScytheOld>(), scytheDamage, 5f, player.whoAmI); ;
                 if (scythe.WithinBounds(Main.maxProjectiles))
                 {
                     Main.projectile[scythe].DamageType = DamageClass.Generic;

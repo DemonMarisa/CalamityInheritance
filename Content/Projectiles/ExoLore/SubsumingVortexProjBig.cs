@@ -7,6 +7,7 @@ using CalamityMod.Graphics.Primitives;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Melee;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -20,7 +21,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     public class SubsumingVortexProjBig : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         #region Typedef
         public ref float Hue => ref Projectile.ai[0];
         public ref float AttackTimer => ref Projectile.ai[1];
@@ -61,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             DoShooted();
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<MiracleBlight>(), 300);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<MiracleBlight>(), 300);
         //To make sure it won't block SCal proj.
         public override void OnKill(int timeLeft)
         {
@@ -69,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             int pCounts = Main.rand.Next(1,4);
             float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
             Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
-            int magic = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, vel, ModContent.ProjectileType<ExobeamSlash>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
+            int magic = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, vel, ProjectileType<ExobeamSlash>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
             //标记这个射弹为魔法伤害
             Main.projectile[magic].DamageType = DamageClass.Magic;
             //2判，我们需要2判
@@ -82,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             //Draw Shader.
             Main.spriteBatch.EnterShaderRegion(BlendState.Additive);
-            Texture2D worleyNoise = ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
+            Texture2D worleyNoise = Request<Texture2D>("CalamityMod/ExtraTextures/GreyscaleGradients/BlobbyNoise").Value;
             float spinRotation = Main.GlobalTimeWrappedHourly * 5.2f;
 
             Main.spriteBatch.EnterShaderRegion();

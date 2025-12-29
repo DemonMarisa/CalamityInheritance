@@ -38,9 +38,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = ItemRarityID.Red;
-            Item.shoot = ModContent.ProjectileType<ExoGladiusProj>();
+            Item.shoot = ProjectileType<ExoGladiusProj>();
             Item.shootSpeed = 4f;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.noMelee = true;
             Item.noUseGraphic = true;
         }
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override bool MeleePrefix() => true;
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Melee/Shortsword/ExoGladiusGlow").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Melee/Shortsword/ExoGladiusGlow").Value);
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -62,8 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 
             if (usPlayer.LoreExo == true || usPlayer.PanelsLoreExo)
             {
-                string ExoLoreOn = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword.ExoGladius.ExoLoreOn");
-
+                string ExoLoreOn = Language.GetTextValue($"Mods.CalamityInheritance.Content.Items.Weapons.Melee.Shortsword.{GetType().Name}.ExoLoreOn");
                 tooltips.Add(new TooltipLine(Mod, "ExoLore", ExoLoreOn));
             }
         }

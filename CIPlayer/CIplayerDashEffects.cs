@@ -526,7 +526,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void ModHorizontalMovement()
         {
-            if (Player.mount.Active && Player.mount.Type == ModContent.MountType<RimehoundMount>() && Math.Abs(Player.velocity.X) > Player.mount.RunSpeed / 2f)
+            if (Player.mount.Active && Player.mount.Type == MountType<RimehoundMount>() && Math.Abs(Player.velocity.X) > Player.mount.RunSpeed / 2f)
             {
                 Rectangle damageHitbox = Player.getRect();
 
@@ -542,7 +542,7 @@ namespace CalamityInheritance.CIPlayer
                 DoMountDashDamage(damageHitbox, damage, knockback2, NPCImmuneTime, playerImmuneTime);
             }
 
-            if (Player.mount.Active && Player.mount.Type == ModContent.MountType<OnyxExcavator>() && Math.Abs(Player.velocity.X) > Player.mount.RunSpeed / 2f)
+            if (Player.mount.Active && Player.mount.Type == MountType<OnyxExcavator>() && Math.Abs(Player.velocity.X) > Player.mount.RunSpeed / 2f)
             {
                 Rectangle damageHitbox = Player.getRect();
 

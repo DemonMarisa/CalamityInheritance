@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items
     }
     public static class AccessoriesMethods
     {
-        public static bool SetConflictMod<T>(this int self, Item equipped, Item incoming) where T : ModItem => SetConflict(self, equipped, incoming, ModContent.ItemType<T>());
+        public static bool SetConflictMod<T>(this int self, Item equipped, Item incoming) where T : ModItem => SetConflict(self, equipped, incoming, ItemType<T>());
         public static bool SetConflict(this int self, Item equipped, Item incoming, int alter) => (equipped.type == self && incoming.type == alter) || (equipped.type == alter && incoming.type == self);
     }
 }

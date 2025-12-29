@@ -1,7 +1,8 @@
+
+global using static Terraria.ModLoader.ModContent;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Common.CIHook;
-using CalamityInheritance.Common.EventChange;
 using CalamityInheritance.Common.ModSupport;
 using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
 using CalamityInheritance.Content.Projectiles.Melee;
@@ -10,21 +11,14 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Sky;
 using CalamityInheritance.NPCs.Boss.SCAL.Sky;
 using CalamityInheritance.NPCs.Boss.Yharon.Sky;
-using CalamityInheritance.Texture;
 using CalamityInheritance.UI;
 using CalamityInheritance.UI.MusicUI;
-using CalamityMod;
-using CalamityMod.Systems.Collections;
 using LAP.Core.IDSets;
 using LAP.Core.MiscDate;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
 using Terraria.Graphics.Effects;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance
 {
@@ -103,18 +97,18 @@ namespace CalamityInheritance
             infernumMode = null;
             ModLoader.TryGetMod("InfernumMode", out infernumMode);
 
-            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<MurasamaSlashold>());
-            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<ExoArrowTealExoLore>());
-            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProjClone>());
-            LAPIDSet.ProtectedProj.Add(ModContent.ProjectileType<RogueTypeHammerTruePaladinsProj>());
+            LAPIDSet.ProtectedProj.Add(ProjectileType<MurasamaSlashold>());
+            LAPIDSet.ProtectedProj.Add(ProjectileType<ExoArrowTealExoLore>());
+            LAPIDSet.ProtectedProj.Add(ProjectileType<RogueFallenHammerProjClone>());
+            LAPIDSet.ProtectedProj.Add(ProjectileType<RogueFallenHammerProj>());
 
             if (LAPList.debuffList != null)
             {
-                LAPList.debuffList.Add(ModContent.BuffType<AbyssalFlames>());
-                LAPList.debuffList.Add(ModContent.BuffType<Horror>());
-                LAPList.debuffList.Add(ModContent.BuffType<MaliceModeCold>());
-                LAPList.debuffList.Add(ModContent.BuffType<MaliceModeHot>());
-                LAPList.debuffList.Add(ModContent.BuffType<VulnerabilityHexLegacy>());
+                LAPList.debuffList.Add(BuffType<AbyssalFlames>());
+                LAPList.debuffList.Add(BuffType<Horror>());
+                LAPList.debuffList.Add(BuffType<MaliceModeCold>());
+                LAPList.debuffList.Add(BuffType<MaliceModeHot>());
+                LAPList.debuffList.Add(BuffType<VulnerabilityHexLegacy>());
             }
             #region Hook
             HeavenlyGaleProjHook.Load(this);

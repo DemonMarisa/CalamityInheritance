@@ -1,4 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -13,7 +14,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class BloodBoilerFireLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         private bool playedSound = false;
 
@@ -165,7 +166,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<BurningBlood>(), 240);
+            target.AddBuff(BuffType<BurningBlood>(), 240);
 
             if (!target.canGhostHeal || Main.player[Projectile.owner].moonLeech)
                 return;

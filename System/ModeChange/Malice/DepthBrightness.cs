@@ -16,7 +16,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
         public override void ModifyLightingBrightness(ref float brightness)
         {
             Player player = Main.player[Main.myPlayer];
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
 
             if (player.ZoneUnderworldHeight)
                 return;

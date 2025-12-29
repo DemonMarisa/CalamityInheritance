@@ -11,8 +11,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()
         {
-            ProjectileID.Sets.TrailCacheLength[base.Projectile.type] = 5;
-            ProjectileID.Sets.TrailingMode[base.Projectile.type] = 0;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
         public override void SetDefaults()

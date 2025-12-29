@@ -9,20 +9,19 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class OricGemstone : RogueWeapon, ILocalizedModType
+    public class OricGemstone : CIRogueClass
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 12;
             Item.height = 32;
             Item.damage = 28;
             Item.noMelee = true;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
             Item.noUseGraphic = true;
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Swing;
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Pink;
             Item.value = CIShopValue.RarityPricePink;
-            Item.shoot = ModContent.ProjectileType<OricGemstoneProj>();
+            Item.shoot = ProjectileType<OricGemstoneProj>();
             Item.shootSpeed = 16f;
         }
         public override bool AltFunctionUse(Player player) => true;

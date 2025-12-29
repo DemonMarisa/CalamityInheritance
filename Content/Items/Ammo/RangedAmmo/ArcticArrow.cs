@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
             Item.knockBack = 1.5f;
             Item.value = Item.sellPrice(copper: 12);
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ModContent.ProjectileType<ArcticArrowProj>();
+            Item.shoot = ProjectileType<ArcticArrowProj>();
             Item.shootSpeed = 13f;
             Item.ammo = AmmoID.Arrow;
         }

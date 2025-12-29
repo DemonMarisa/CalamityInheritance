@@ -41,9 +41,9 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
             Item.noMelee = true;
 
             Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ModContent.RarityType<OrangeDraedon>();
+            Item.rare = RarityType<OrangeDraedon>();
 
-            Item.shoot = ModContent.ProjectileType<MountedScannerSummonLegacy>();
+            Item.shoot = ProjectileType<MountedScannerSummonLegacy>();
             Item.shootSpeed = 1f;
 
             modItem.UsesCharge = true;

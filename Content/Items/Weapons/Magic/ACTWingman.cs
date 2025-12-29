@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare =  CIConfig.Instance.SpecialRarityColor ? ModContent.RarityType<AlgtPink>(): ItemRarityID.Yellow;
+            Item.rare =  CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>(): ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
             Item.shootSpeed = 25f;
@@ -42,15 +42,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override bool CanUseItem(Player player)
         {
-            return player.ownedProjectileCounts[ModContent.ProjectileType<WingmanHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<WingmanHeldProj>()] < 1;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<WingmanHeldProj>()] < 1)
-                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<WingmanHeldProj>(), damage, knockback, player.whoAmI);
+            if (player.ownedProjectileCounts[ProjectileType<WingmanHeldProj>()] < 1)
+                Projectile.NewProjectileDirect(source, position, velocity, ProjectileType<WingmanHeldProj>(), damage, knockback, player.whoAmI);
 
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<ChangeDirProj>()] < 1)
-                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<ChangeDirProj>(), damage, knockback, player.whoAmI);
+            if (player.ownedProjectileCounts[ProjectileType<ChangeDirProj>()] < 1)
+                Projectile.NewProjectileDirect(source, position, velocity, ProjectileType<ChangeDirProj>(), damage, knockback, player.whoAmI);
 
             return false;
         }

@@ -30,8 +30,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
-            Item.createTile = ModContent.TileType<MLGRuneTiles>();
-            Item.rare = ModContent.RarityType<PureRed>();
+            Item.createTile = TileType<MLGRuneTiles>();
+            Item.rare = RarityType<PureRed>();
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)

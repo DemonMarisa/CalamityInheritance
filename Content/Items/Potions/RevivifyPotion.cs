@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Potions
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.UseSound = CISoundID.SoundPotions;
             Item.consumable = true;
-            Item.buffType = ModContent.BuffType<Revivify>();
+            Item.buffType = BuffType<Revivify>();
             Item.buffTime = CalamityUtils.SecondsToFrames(180f);
             Item.value = CIShopValue.RarityPriceOrange;
         }

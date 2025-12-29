@@ -25,7 +25,7 @@ namespace CalamityInheritance.System
         }
         public override void PostSetupContent()
         {
-            CalamityInheritance.Calamity.Call("MakeItemExhumable", ModContent.ItemType<DesertFeather>(), ModContent.ItemType<DefiledFeather>());
+            CalamityInheritance.Calamity.Call("MakeItemExhumable", ItemType<DesertFeather>(), ItemType<DefiledFeather>());
         }
     }
     public partial class ILShimmer
@@ -86,7 +86,7 @@ namespace CalamityInheritance.System
     }
     public static class SimpleMethod
     {
-        public static bool SameItem<T>(this int type) where T : ModItem => type == ModContent.ItemType<T>();
+        public static bool SameItem<T>(this int type) where T : ModItem => type == ItemType<T>();
 
     }
 }

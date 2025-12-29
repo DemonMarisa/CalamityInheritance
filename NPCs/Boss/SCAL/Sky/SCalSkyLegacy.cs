@@ -32,7 +32,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         {
             get
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != NPCType<SupremeCalamitasLegacy>())
                     return int.MaxValue;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -48,7 +48,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
                 }
 
                 // Release a good amount of cinders while brothers or Sepulcher-1 are alive. Sepulcher-2 falls into an above case and does not execute this return.
-                if (NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>()))
+                if (NPC.AnyNPCs(NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(NPCType<SupremeCatastropheLegacy>()) || NPC.AnyNPCs(NPCType<SCalWormHead>()))
                     return 4;
 
                 // Release a moderate amount of cinders normally.
@@ -59,7 +59,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         {
             get
             {
-                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != ModContent.NPCType<SupremeCalamitasLegacy>())
+                if (!Main.npc.IndexInRange(CIGlobalNPC.LegacySCal) || Main.npc[CIGlobalNPC.LegacySCal].type != NPCType<SupremeCalamitasLegacy>())
                     return 0f;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -75,7 +75,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
                 }
 
                 // Move a little quickly while brothers or Sepulcher-1 are alive. Sepulcher-2 falls into an above case and does not execute this return.
-                if (NPC.AnyNPCs(ModContent.NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SupremeCatastropheLegacy>()) || NPC.AnyNPCs(ModContent.NPCType<SCalWormHead>()))
+                if (NPC.AnyNPCs(NPCType<SupremeCataclysmLegacy>()) || NPC.AnyNPCs(NPCType<SupremeCatastropheLegacy>()) || NPC.AnyNPCs(NPCType<SCalWormHead>()))
                     return 7.4f;
 
                 // Move moderately quickly usually.
@@ -87,7 +87,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
         {
             static Color selectCinderColor()
             {
-                if (!NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>()))
+                if (!NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
                     return Color.Transparent;
 
                 NPC scal = Main.npc[CIGlobalNPC.LegacySCal];
@@ -139,7 +139,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
             }
 
             // Draw cinders.
-            Texture2D cinderTexture = ModContent.Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
+            Texture2D cinderTexture = Request<Texture2D>("CalamityMod/Skies/CalamitasCinder").Value;
             for (int i = 0; i < Cinders.Count; i++)
             {
                 Vector2 drawPosition = Cinders[i].Center - Main.screenPosition;

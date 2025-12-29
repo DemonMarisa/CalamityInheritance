@@ -37,11 +37,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.knockBack = 5.5f;
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>();
+            Item.shoot = ProjectileType<SoulEdgeSoulLegacyLarge>();
             Item.shootSpeed = 15f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.rare = ModContent.RarityType<AbsoluteGreen>();
+            Item.rare = RarityType<AbsoluteGreen>();
         }
         public override bool CanUseItem(Player player)
         {
@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             int numShots = 2;
             int soulDamage = (int)(damage * 0.8f);
-            int[] projectileTypes = { ModContent.ProjectileType<SoulEdgeSoulLegacyLarge>(), ModContent.ProjectileType<SoulEdgeSoulLegacyMedium>(), ModContent.ProjectileType<SoulEdgeSoulLegacySmall>() };
+            int[] projectileTypes = { ProjectileType<SoulEdgeSoulLegacyLarge>(), ProjectileType<SoulEdgeSoulLegacyMedium>(), ProjectileType<SoulEdgeSoulLegacySmall>() };
             for (int i = 0; i < numShots; ++i)
             {
                 float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.05f;
@@ -77,12 +77,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+            target.AddBuff(BuffType<CrushDepth>(), 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 300);
+            target.AddBuff(BuffType<CrushDepth>(), 300);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Tools
         public override void SetDefaults()
         {
             Item.height = Item.width = 54;
-            Item.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.pick = 225;
             Item.useTime = 5;
             Item.useAnimation = 10;

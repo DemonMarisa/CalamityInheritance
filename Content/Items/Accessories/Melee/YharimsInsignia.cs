@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         (
             itemWidth:22,
             itemHeight:38,
-            itemRare:ModContent.RarityType<BlueGreen>(),
+            itemRare: RarityType<BlueGreen>(),
             itemValue:CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD()

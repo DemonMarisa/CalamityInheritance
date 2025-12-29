@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 62;
             Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
-            Item.shoot = ModContent.ProjectileType<OmegaBiomeOrb>();
+            Item.shoot = ProjectileType<OmegaBiomeOrb>();
             Item.shootSpeed = 15f;
         }
 

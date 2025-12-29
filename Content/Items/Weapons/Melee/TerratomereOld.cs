@@ -34,8 +34,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.height = 66;
             Item.value = CIShopValue.RarityPriceBlueGreen;
-            Item.rare = ModContent.RarityType<BlueGreen>();
-            Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
+            Item.rare = RarityType<BlueGreen>();
+            Item.shoot = ProjectileType<TerratomereProjectile>();
             Item.shootSpeed = 20f;
         }
         public override bool CanUseItem(Player player)
@@ -44,13 +44,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 Item.scale = 0.6f;
                 Item.useStyle = ItemUseStyleID.Swing;
-                Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
+                Item.shoot = ProjectileType<TerratomereProjectile>();
             }
             else
             {
                 Item.scale = 1f;
                 Item.useStyle = ItemUseStyleID.Swing;
-                Item.shoot = ModContent.ProjectileType<TerratomereProjectile>();
+                Item.shoot = ProjectileType<TerratomereProjectile>();
             }
             return true;
         }
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffType<GlacialState>(), 30);
 
             if (!target.canGhostHeal || player.moonLeech)
                 return;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 30);
+            target.AddBuff(BuffType<GlacialState>(), 30);
 
             if (player.moonLeech)
                 return;

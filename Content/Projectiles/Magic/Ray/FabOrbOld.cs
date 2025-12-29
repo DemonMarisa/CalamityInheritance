@@ -1,4 +1,5 @@
 ﻿using Terraria.ModLoader;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using CalamityMod;
 
@@ -7,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
     public class FabOrbOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = 14;
@@ -25,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
         {
             Projectile.ai[0]++;
             if (Projectile.ai[0] % 10 == 0)
-                CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ModContent.ProjectileType<FabBoltOld>());
+                CalamityUtils.MagnetSphereHitscan(Projectile, 300f, 6f, 0f, 5, ProjectileType<FabBoltOld>());
         }
     }
 }

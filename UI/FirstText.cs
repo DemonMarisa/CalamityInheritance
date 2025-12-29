@@ -30,7 +30,7 @@ namespace CalamityInheritance.UI
             if(Main.netMode != NetmodeID.SinglePlayer)
                 return;
 
-            Texture2D InvisibleUI = ModContent.Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
+            Texture2D InvisibleUI = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;
             string key = Language.GetTextValue("Mods.CalamityInheritance.ConfigsMessage.FirstText");
             DrawText(spriteBatch, key, 1.5f, 1.5f, 0, -120, 1f, Color.Gold, Color.DarkGoldenrod, InvisibleUI, 15, 1600f, 1.2f);
         }

@@ -81,23 +81,23 @@ EradicatorProjectileLegacyMelee.DisplayName: 湮灭射线
 MangroveChakramProjectileLegacyMelee.DisplayName: 红木环刃
 CorpusAvertorCloneLegacyMelee.DisplayName: 憎恶血刃
 CorpusAvertorProjLegacyMelee.DisplayName: 憎恶血刃
-MeleeTypeCorpusAvertorProj.DisplayName: 憎恶血刃
-MeleeTypeCorpusAvertorProjClone.DisplayName: 憎恶血刃
-MeleeTypeElementalDiskProj.DisplayName: 元素飞盘
-MeleeTypeElementalDiskProjSplit.DisplayName: 元素飞盘
+MeleeCorpusAvertorProj.DisplayName: 憎恶血刃
+MeleeCorpusAvertorProjClone.DisplayName: 憎恶血刃
+MeleeElementalDiskProj.DisplayName: 元素飞盘
+MeleeElementalDiskProjClone.DisplayName: 元素飞盘
 MeleeTypeEradicatorProj.DisplayName: 红木环刃
-MeleeTypeHammerFallenPaladinsLegacyProj.DisplayName: 堕落圣骑士锤
-MeleeTypeHammerGalaxySmasherLegacyProj.DisplayName: 银河溃灭者
-MeleeTypeHammerStellarContemptLegacyProj.DisplayName: 星体击碎者
-MeleeTypeKelvinCatalystProj.DisplayName: 冰灵旋刃
-MeleeTypeKelvinCatalystProjStar.DisplayName: 冰灵旋刃
-MeleeTypeMangroveChakramProj.DisplayName: 红木环刃
-MeleeTypeNanoblackReaperProj.DisplayName: 纳米黑死神
-MeleeTypeNanoblackReaperProjSplit.DisplayName: 死神碎片
-MeleeTypeSubductionSlicerProj.DisplayName: 板块斩切者
-MeleeTypeTerraDiskProj.DisplayName: 泰拉飞盘
-MeleeTypeTerraDiskProjSplit.DisplayName: 泰拉小飞盘
-MeleeTypeHammerPwnageLegacyProj.DisplayName: 圣时之锤
+MeleeFallenHammerProj.DisplayName: 堕落圣骑士锤
+MeleeGalaxySmasherProj.DisplayName: 银河溃灭者
+MeleeStellarContemptProj.DisplayName: 星体击碎者
+MeleeKelvinCatalystProj.DisplayName: 冰灵旋刃
+MeleeKelvinCatalystProjStar.DisplayName: 冰灵旋刃
+MeleeMangroveChakramProj.DisplayName: 红木环刃
+MeleeNanoblackReaperProj.DisplayName: 纳米黑死神
+MeleeNanoblackBlade.DisplayName: 死神碎片
+MeleeSubductionSlicerProj.DisplayName: 板块斩切者
+MeleeTerraDiskProj.DisplayName: 泰拉飞盘
+MeleeTerraDiskBlade.DisplayName: 泰拉小飞盘
+MeleePwnagehammerProj.DisplayName: 圣时之锤
 Iceberg.DisplayName: 冰球
 BrimlashBusterProj.DisplayName: 硫火爆裂
 BrimlashBusterProjClone.DisplayName: 硫火爆裂
@@ -112,7 +112,7 @@ AquaticBeam.DisplayName: 水溶利刃
 VictideYoyoProj.DisplayName: 胜朝悠悠球
 VictideSwordProj.DisplayName: 胜朝水球
 VictideSpearProj.DisplayName: 胜朝长矛
-MeleeTypeVictideBoomerangProj.DisplayName: 贝壳回旋镖
+MeleeVictideBoomerangProj.DisplayName: 贝壳回旋镖
 VictideSpearWaterRing.DisplayName: 胜朝水环
 DukeLegendarySpout.DisplayName: 海爵风暴
 DukeLegendaryRazor.DisplayName: 海爵旋风
@@ -162,3 +162,15 @@ TheEnforcer: {
 // ExcelsusProj.DisplayName: Excelsus Proj
 // LaserFountain.DisplayName: Laser Fountain
 // EradicatorProj_Rogue.DisplayName: Eradicator Proj_ Rogue
+// CrescentMoonProjLegacy.DisplayName: Crescent Moon Proj Legacy
+// GalileosMoonLegacy.DisplayName: Galileos Moon Legacy
+// GalileosPlanet.DisplayName: Galileos Planet
+// BloodScytheLegacy.DisplayName: Blood Scythe Legacy
+// CatastropheClaymoreSparkle.DisplayName: Catastrophe Claymore Sparkle
+// DemonFork.DisplayName: Demon Fork
+// ExaltedOathBladeProj.DisplayName: Exalted Oath Blade Proj
+// GalaxyBlast.DisplayName: Galaxy Blast
+// GalaxyBlast2.DisplayName: Galaxy Blast2
+// GalaxyBlast3.DisplayName: Galaxy Blast3
+// Oathblade.DisplayName: Oathblade
+// OathswordFlame.DisplayName: Oathsword Flame

@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items
         {
             
             if (item.ModItem != null)
-                if ((item.ModItem.Mod == ModContent.GetInstance<CalamityInheritance>() || item.ModItem.Mod == CalamityInheritance.Calamity) && item.useStyle == ItemUseStyleID.Swing)
+                if ((item.ModItem.Mod == GetInstance<CalamityInheritance>() || item.ModItem.Mod == CalamityInheritance.Calamity) && item.useStyle == ItemUseStyleID.Swing)
                     CIFunction.BetterSwing(player);
             
         }

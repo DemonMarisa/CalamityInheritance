@@ -36,8 +36,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = CISoundID.SoundLaserDestroyer;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;
-            Item.shoot = ModContent.ProjectileType<AlphaBigBeam>();
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.shoot = ProjectileType<AlphaBigBeam>();
+            Item.rare = RarityType<DeepBlue>();
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-5, 0);
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<AlphaRayYShape>(), (int)(damage * 1.6625), knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ProjectileType<AlphaRayYShape>(), (int)(damage * 1.6625), knockback, player.whoAmI);
                 int laserAmt = 3;
                 float SpeedX = velocity.X + Main.rand.NextFloat(-1f, 1f);
                 float SpeedY = velocity.Y + Main.rand.NextFloat(-1f, 1f);

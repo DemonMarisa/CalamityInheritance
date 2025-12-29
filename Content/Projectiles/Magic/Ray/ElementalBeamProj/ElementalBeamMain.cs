@@ -5,6 +5,7 @@ using ReLogic.Content;
 using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
@@ -16,12 +17,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         public override float MaxLaserLength => 1500f;
         public override float Lifetime => 30f;
         public override Color LightCastColor => Color.White;
-        public override Texture2D LaserBeginTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayStart", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserMiddleTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayMid", AssetRequestMode.ImmediateLoad).Value;
-        public override Texture2D LaserEndTexture => ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserBeginTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayStart", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserMiddleTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayMid", AssetRequestMode.ImmediateLoad).Value;
+        public override Texture2D LaserEndTexture => Request<Texture2D>("CalamityMod/ExtraTextures/Lasers/UltimaRayEnd", AssetRequestMode.ImmediateLoad).Value;
 
         public ref float ShardCooldown => ref Projectile.ai[1];
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 20;
@@ -87,11 +88,11 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 float newRotation = MathHelper.ToRadians(j * rotFactor);
                 Vector2 pPos = new Vector2(18f, 0f).RotatedBy(newRotation);
                 Vector2 pVel = new Vector2(18f, 0f).RotatedBy(newRotation);
-                int nP = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pPos, pVel * 0.6f, ModContent.ProjectileType<ElementalNebula>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                int nP = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pPos, pVel * 0.6f, ProjectileType<ElementalNebula>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[nP].scale *= 1.5f;
 
             }
-            int shardType = ModContent.ProjectileType<ElementalNebula>();
+            int shardType = ProjectileType<ElementalNebula>();
             int shardDamage = (int)(Projectile.damage * 0.5);
             for (int i = 0; i < totalShards; i++)
             {
@@ -129,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                     }
                 }
             }
-            target.AddBuff(ModContent.BuffType<ElementalMix>(), 30);
+            target.AddBuff(BuffType<ElementalMix>(), 30);
             int type = ProjectileID.Volcano;
             int boomDamage = (int)(hit.Damage * 1.1);
             int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center, Vector2.Zero, type, boomDamage, hit.Knockback, Projectile.owner, 0f, Main.rand.NextFloat(0.85f, 2f));

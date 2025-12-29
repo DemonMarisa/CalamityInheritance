@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -49,25 +50,19 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 120);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 120);
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture;
             if (Projectile.localAI[1] == 0f)
                 Projectile.localAI[1] = Main.rand.Next(1, 3);
-            switch (Projectile.localAI[1])
+            Texture2D texture = Projectile.localAI[1] switch
             {
-
-                case 2f:
-                    texture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Ranged/DWArrow2").Value;
-                    break;
-                default:
-                    texture = ModContent.Request<Texture2D>("CalamityMod/Projectiles/Ranged/DWArrow").Value;
-                    break;
-            }
+                2f => Request<Texture2D>(Texture + 2).Value,
+                _ => TextureAssets.Projectile[Type].Value,
+            };
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture.Width / 2f, texture.Height / 2f), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }

@@ -34,7 +34,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         }
         public override void AI()
         {
-            CIWorld world = ModContent.GetInstance<CIWorld>();
+            CIWorld world = GetInstance<CIWorld>();
             float followTimer = world.Malice ? 420f : 190f;
             int target = Player.FindClosest(Projectile.Center, 1, 1);
             Projectile.ai[1] += 1f;
@@ -74,7 +74,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 120);
+            target.AddBuff(BuffType<BrimstoneFlames>(), 120);
         }
     }
 }

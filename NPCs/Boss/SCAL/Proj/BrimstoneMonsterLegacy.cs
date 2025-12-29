@@ -115,7 +115,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             float speed = (revenge ? 1.5f : 1.35f) + (speedAdd * 0.25f);
             float minDist = 160f;
 
-            if (NPC.AnyNPCs(ModContent.NPCType<SoulSeekerSupreme>()))
+            if (NPC.AnyNPCs(NPCType<SoulSeekerSupreme>()))
             {
                 inertia *= 1.5f;
                 speed *= 0.5f;
@@ -146,7 +146,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             Color DrawColor = Color.Red;
             DrawColor *= Projectile.Opacity;
 

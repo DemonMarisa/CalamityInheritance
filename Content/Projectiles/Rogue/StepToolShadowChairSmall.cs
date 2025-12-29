@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 420;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
         public override bool? CanHitNPC(NPC target) => Projectile.timeLeft <= 350 &&target.CanBeChasedBy(Projectile);
         public override void AI()
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             //击中时梯凳驾到
-            target.AddBuff(ModContent.BuffType<StepToolDebuff>(), 1145);
+            target.AddBuff(BuffType<StepToolDebuff>(), 1145);
             //生成粒子
            
         }

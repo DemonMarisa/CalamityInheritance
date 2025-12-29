@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.timeLeft % 20 == 19 && Projectile.owner == Main.myPlayer)
             {
                 int splitDamage = Projectile.damage / 2;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 15f, ModContent.ProjectileType<DepthOrbLegacy>(), splitDamage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 15f, ProjectileType<DepthOrbLegacy>(), splitDamage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Water, 0f, 0f, 100, default, 0.4f);
             Main.dust[d].noGravity = true;
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.timeLeft > 295)
                 return false;
 
-            Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
+            Texture2D tex = Request<Texture2D>(Texture).Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<CrushDepth>(), 180);
+            target.AddBuff(BuffType<CrushDepth>(), 180);
         }
     }
 }

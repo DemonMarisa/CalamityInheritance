@@ -29,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
             Item.useTime = 45;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = false;
-            Item.createTile = ModContent.TileType<DeathTiles>();
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.createTile = TileType<DeathTiles>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override bool AltFunctionUse(Player player) => true;
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return true;
             if (player.altFunctionUse != 2)
             {
-                CIWorld world = ModContent.GetInstance<CIWorld>();
+                CIWorld world = GetInstance<CIWorld>();
                 if (!CalamityWorld.death)
                 {
                     if (!CalamityWorld.revenge)

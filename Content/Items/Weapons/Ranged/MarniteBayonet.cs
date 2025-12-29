@@ -58,17 +58,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 Item.UseSound = SoundID.Item41;
                 Item.useAmmo = AmmoID.Bullet;
             }
-            return player.ownedProjectileCounts[ModContent.ProjectileType<MarniteBayonetHeldProj>()] < 1;
+            return player.ownedProjectileCounts[ProjectileType<MarniteBayonetHeldProj>()] < 1;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(source, position, velocity * 0.1f, ModContent.ProjectileType<MarniteBayonetSpikesProj>(), damage * 3, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<MarniteBayonetSpikesProj>(), damage * 3, knockback, player.whoAmI, 0f, 0f, 0f);
             }
             else
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<MarniteBayonetHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<MarniteBayonetHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             }
             return false;
         }

@@ -24,7 +24,7 @@ namespace CalamityInheritance.Common.CIHook
             if (!BossRushEvent.BossRushActive)
             {
                 CalamityGlobalNPC.SetNewBossJustDowned(self.NPC);
-                CalamityGlobalTownNPC.SetNewShopVariable(new int[1] { ModContent.NPCType<Bandit>() }, DownedBossSystem.downedDoG);
+                CalamityGlobalTownNPC.SetNewShopVariable(new int[1] { NPCType<Bandit>() }, DownedBossSystem.downedDoG);
                 if (!DownedBossSystem.downedDoG)
                 {
                     string key = "Mods.CalamityMod.Status.Progression.DoGBossText";

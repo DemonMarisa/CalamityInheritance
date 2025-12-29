@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.height = 50;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
-            Item.shoot = ModContent.ProjectileType<MarniteSpearProj>();
+            Item.shoot = ProjectileType<MarniteSpearProj>();
             Item.shootSpeed = 5f;
         }
         public override bool AltFunctionUse(Player player) => true;
@@ -49,13 +49,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             //右键：投掷
             if (player.altFunctionUse == 2)
             {
-                int thrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteThrowSpearProj>(), damage, knockback, player.whoAmI);
+                int thrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ProjectileType<MarniteThrowSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[thrown].CalamityInheritance().ThrownMode = true;
             }
             //左键：正常矛
             else
             {
-                int notThrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ModContent.ProjectileType<MarniteSpearProj>(), damage, knockback, player.whoAmI);
+                int notThrown = Projectile.NewProjectile(source, position.X, position.Y, velocity.X * 1.35f, velocity.Y * 1.35f, ProjectileType<MarniteSpearProj>(), damage, knockback, player.whoAmI);
                 Main.projectile[notThrown].CalamityInheritance().ThrownMode = false;
             }
             return false;

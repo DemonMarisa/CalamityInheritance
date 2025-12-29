@@ -13,13 +13,14 @@ using Microsoft.Xna.Framework.Graphics;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Projectiles.Rogue;
 using System.IO;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
     public class CelestusBoomerangExoLoreSteal : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => $"{Generic.WeaponPath}/Rogue/Celestusold";
+        public override string Texture => GetInstance<Celestusold>().Texture;
 
         private bool initialized = false;
         private float speed = 25f;
@@ -61,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.MaxUpdates = 3;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
-            Projectile.DamageType = ModContent.GetInstance<RogueDamageClass>();
+            Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.noEnchantmentVisuals = true;
         }
         public override void SendExtraAI(BinaryWriter writer)
@@ -164,7 +165,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if(counter == 12)
             {
                 float randomAngle = Main.rand.NextBool() ? MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f) : -MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f);
-                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(randomAngle), ModContent.ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
+                int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(randomAngle), ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
                 Main.projectile[t].scale *= 0.9f;
                 counter = 0;
             }
@@ -244,8 +245,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ModContent.ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 2f), ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 2f), ProjectileType<Celestus2ExoLore>(), (int)(Projectile.damage * 0.7), Projectile.knockBack, Projectile.owner);
                 }
             }
             SoundStyle[] getSound =
@@ -266,7 +267,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override void PostDraw(Color lightColor)
         {
             Rectangle frame = new Rectangle(0, 0, 106, 94);
-            Main.EntitySpriteDraw(ModContent.Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value,
+            Main.EntitySpriteDraw(Request<Texture2D>($"{Generic.WeaponPath}/Rogue/CelestusoldGlow").Value,
                 Projectile.Center - Main.screenPosition,
                 frame,
                 Color.White,

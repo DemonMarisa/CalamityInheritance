@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemRare:ItemRarityID.Green,
             itemValue:CIShopValue.RarityPriceGreen
         );
-        public override void ExSSD() => CIFunction.ShimmetTo<SeaShell>(ItemID.Seashell);
+        public override void ExSSD() => CIFunction.ShimmerTo<SeaShell>(ItemID.Seashell);
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.ignoreWater = true;

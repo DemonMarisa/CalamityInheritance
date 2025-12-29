@@ -27,20 +27,20 @@ namespace CalamityInheritance.Content.Items.SummonItems
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.maxStack = 1;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
             Item.consumable = false;
             Item.useStyle = ItemUseStyleID.HoldUp;
         }
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(ModContent.NPCType<SupremeCalamitasLegacy>());
+            return !NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>());
         }
 
         public override bool? UseItem(Player player)
         {
             if (player.whoAmI == Main.myPlayer)
             {
-                int npcType = ModContent.NPCType<SupremeCalamitasLegacy>();
+                int npcType = NPCType<SupremeCalamitasLegacy>();
 
                 switch (Main.netMode)
                 {

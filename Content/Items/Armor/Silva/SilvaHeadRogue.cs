@@ -23,9 +23,9 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             Item.height = 24;
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 30; //96
-            Item.rare = ModContent.RarityType<DeepBlue>();
+            Item.rare = RarityType<DeepBlue>();
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ModContent.ItemType<SilvaArmorold>() && legs.type == ModContent.ItemType<SilvaLeggingsold>();
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<SilvaArmorold>() && legs.type == ItemType<SilvaLeggingsold>();
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CIMod();
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             modPlayer.rogueStealthMax += 1.25f;
             modPlayer.wearingRogueArmor = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (player.statLife > (int)(player.statLifeMax2 * 0.5) && player.HeldItem.DamageType == ModContent.GetInstance<RogueDamageClass>() && player.HeldItem.useTime > 3)
+            if (player.statLife > (int)(player.statLifeMax2 * 0.5) && player.HeldItem.DamageType == GetInstance<RogueDamageClass>() && player.HeldItem.useTime > 3)
             {
                 player.GetAttackSpeed<RogueDamageClass>() += 0.1f;
             }
@@ -57,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Armor.Silva
             CreateRecipe().
                 AddIngredient<PlantyMush>(6).
                 AddIngredient<EffulgentFeather>(5).
-                AddIngredient(ModContent.ItemType<DarksunFragment>(), 10).
+                AddIngredient(ItemType<DarksunFragment>(), 10).
                 AddTile<CosmicAnvil>().
                 Register();
         }

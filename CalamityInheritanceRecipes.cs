@@ -27,31 +27,35 @@ namespace CalamityInheritance
         public static RecipeGroup LoreSentinal;
         public static RecipeGroup AnyRottenMatter;
         public static RecipeGroup AnyEradicator;
+        public static RecipeGroup AnyIchorOrCursedFlame;
         public override void AddRecipeGroups()
         {
-            int[] woodSword = [ItemID.WoodenSword, ItemID.WoodenSword, ItemID.AshWoodSword, ItemID.BorealWoodSword, ItemID.EbonwoodSword, ItemID.ShadewoodSword, ItemID.PearlwoodSword, ItemID.PalmWoodSword, ModContent.ItemType<Basher>()];
+            int[] woodSword = [ItemID.WoodenSword, ItemID.WoodenSword, ItemID.AshWoodSword, ItemID.BorealWoodSword, ItemID.EbonwoodSword, ItemID.ShadewoodSword, ItemID.PearlwoodSword, ItemID.PalmWoodSword, ItemType<Basher>()];
             LAPUtilities.CreatRecipeGroup(ref WoodSwordRecipeGroup, PreFix + WoodSwordRecipeGroup, woodSword);
 
-            int[] EvilFlask = [ModContent.ItemType<CorruptFlask>(), ModContent.ItemType<CrimsonFlask>()];
+            int[] EvilFlask = [ItemType<CorruptFlask>(), ItemType<CrimsonFlask>()];
             LAPUtilities.CreatRecipeGroup(ref AnyEvilFlask, PreFix + AnyEvilFlask, EvilFlask);
 
-            int[] DeificAmulet = [ModContent.ItemType<DeificAmulet>(), ModContent.ItemType<DeificAmuletLegacy>()];
+            int[] DeificAmulet = [ItemType<DeificAmulet>(), ItemType<DeificAmuletLegacy>()];
             LAPUtilities.CreatRecipeGroup(ref AnyDeificAmulet, PreFix + AnyDeificAmulet, DeificAmulet);
 
-            int[] Terratomere = [ModContent.ItemType<TerratomereOld>(), ModContent.ItemType<Terratomere>()];
+            int[] Terratomere = [ItemType<TerratomereOld>(), ItemType<Terratomere>()];
             LAPUtilities.CreatRecipeGroup(ref AnyTerratomere, PreFix + AnyTerratomere, Terratomere);
 
-            int[] PhantasmalFury = [ModContent.ItemType<PhantasmalFury>(), ModContent.ItemType<PhantasmalFuryOld>()];
+            int[] PhantasmalFury = [ItemType<PhantasmalFury>(), ItemType<PhantasmalFuryOld>()];
             LAPUtilities.CreatRecipeGroup(ref AnyPhantasmalFury, PreFix + AnyPhantasmalFury, PhantasmalFury);
 
-            int[] loreSentinal = [ModContent.ItemType<LoreStormWeaver>(), ModContent.ItemType<LoreCeaselessVoid>(), ModContent.ItemType<LoreSignus>()];
+            int[] loreSentinal = [ItemType<LoreStormWeaver>(), ItemType<LoreCeaselessVoid>(), ItemType<LoreSignus>()];
             LAPUtilities.CreatRecipeGroup(ref LoreSentinal, PreFix + LoreSentinal, loreSentinal);
 
-            int[] RottenMatter2 = [ModContent.ItemType<RottenMatter>(), ModContent.ItemType<BloodSample>()];
+            int[] RottenMatter2 = [ItemType<RottenMatter>(), ItemType<BloodSample>()];
             LAPUtilities.CreatRecipeGroup(ref AnyRottenMatter, PreFix + AnyRottenMatter, RottenMatter2);
 
-            int[] AnyEradicator2 = [ModContent.ItemType<Eradicator_Rogue>(), ModContent.ItemType<Eradicator_Melee>()];
+            int[] AnyEradicator2 = [ItemType<Eradicator_Rogue>(), ItemType<Eradicator_Melee>()];
             LAPUtilities.CreatRecipeGroup(ref AnyEradicator, PreFix + AnyEradicator, AnyEradicator2);
+
+            int[] cursedFlameAndIchor = [ItemID.Ichor, ItemID.CursedFlame];
+            LAPUtilities.CreatRecipeGroup(ref AnyIchorOrCursedFlame, PreFix + AnyIchorOrCursedFlame, cursedFlameAndIchor);
         }
         public override void Unload()
         {
@@ -63,6 +67,7 @@ namespace CalamityInheritance
             LoreSentinal = null;
             AnyRottenMatter = null;
             AnyEradicator = null;
+            AnyIchorOrCursedFlame = null;
         }
     }
 }

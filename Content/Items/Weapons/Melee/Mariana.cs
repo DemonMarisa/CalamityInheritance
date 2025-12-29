@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 }
                 value15.Normalize();
                 value15 *= Main.rand.Next(70, 101) * 0.1f;
-                Projectile.NewProjectile(source, target.Center, value15 * 2f, ModContent.ProjectileType<MarianaProjectile>(), damage, hit.Knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, target.Center, value15 * 2f, ProjectileType<MarianaProjectile>(), damage, hit.Knockback, player.whoAmI, 0f, 0f);
             }
             for (int num621 = 0; num621 < 30; num621++)
             {
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 }
                 value15.Normalize();
                 value15 *= Main.rand.Next(70, 101) * 0.1f;
-                Projectile.NewProjectile(source, target.Center, value15 * 2f, ModContent.ProjectileType<MarianaProjectile>(), hit.Damage, Item.knockBack, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, target.Center, value15 * 2f, ProjectileType<MarianaProjectile>(), hit.Damage, Item.knockBack, player.whoAmI, 0f, 0f);
             }
             for (int num621 = 0; num621 < 30; num621++)
             {

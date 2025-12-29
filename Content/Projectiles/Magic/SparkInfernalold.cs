@@ -5,12 +5,13 @@ using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
 
+using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class SparkInfernalold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
-        public override string Texture => $"{GenericProjRoute.InvisProjRoute}";
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
@@ -32,12 +33,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Player player = Main.player[Projectile.owner];
 
             int infernadoDamage = (int)player.GetTotalDamage<MagicDamageClass>().ApplyTo(TheWand.BaseDamage);
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<InfernadoMarkFriendlyold>(), infernadoDamage, Projectile.knockBack, Projectile.owner);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<InfernadoMarkFriendlyold>(), infernadoDamage, Projectile.knockBack, Projectile.owner);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 120);
+            target.AddBuff(BuffType<Dragonfire>(), 120);
         }
     }
 }

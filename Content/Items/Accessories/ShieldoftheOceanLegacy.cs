@@ -24,10 +24,10 @@ namespace CalamityInheritance.Content.Items.Accessories
             {
                 player.statDefense += 5;
             }
-            if ((player.armor[0].type == ModContent.ItemType<AncientVictideHeadSummon>() || player.armor[0].type == ModContent.ItemType<AncientVictideHeadRogue>() ||
-                player.armor[0].type == ModContent.ItemType<AncientVictideHeadRanged>() || player.armor[0].type == ModContent.ItemType<AncientVictideHeadMelee>() ||
-                player.armor[0].type == ModContent.ItemType<AncientVictideHeadMagic>()) &&
-                player.armor[1].type == ModContent.ItemType<AncientVictideBreastplate>() && player.armor[2].type == ModContent.ItemType<AncientVictideLeggings>())
+            if ((player.armor[0].type == ItemType<AncientVictideHeadSummon>() || player.armor[0].type == ItemType<AncientVictideHeadRogue>() ||
+                player.armor[0].type == ItemType<AncientVictideHeadRanged>() || player.armor[0].type == ItemType<AncientVictideHeadMelee>() ||
+                player.armor[0].type == ItemType<AncientVictideHeadMagic>()) &&
+                player.armor[1].type == ItemType<AncientVictideBreastplate>() && player.armor[2].type == ItemType<AncientVictideLeggings>())
             {
                 player.moveSpeed += 0.1f;
                 player.lifeRegen += 4;

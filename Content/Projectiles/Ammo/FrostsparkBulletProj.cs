@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
         {
             target.AddBuff(BuffID.OnFire, 240);
             target.AddBuff(BuffID.Frostburn, 240);
-            target.AddBuff(ModContent.BuffType<GlacialState>(), 60);
+            target.AddBuff(BuffType<GlacialState>(), 60);
         }
 
         public override void OnKill(int timeLeft)

@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.rare = ItemRarityID.Lime;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<SpiritFlameCurse>();
+            Item.shoot = ProjectileType<SpiritFlameCurse>();
             Item.shootSpeed = 14f;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             for (int i = 0; i < pCounts; i++)
             {
                 Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(3f))  * Main.rand.NextFloat(0.8f, 1.1f);
-                Projectile.NewProjectile(source, position, spread, ModContent.ProjectileType<SpiritFlameCurse>(), damage / 2 , knockback, Main.myPlayer);
+                Projectile.NewProjectile(source, position, spread, ProjectileType<SpiritFlameCurse>(), damage / 2 , knockback, Main.myPlayer);
             }
             //需注意的是这句话会直接往鼠标指针的方向发射一个，也就是总共8个射弹
             return true;

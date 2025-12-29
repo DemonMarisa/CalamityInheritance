@@ -46,8 +46,8 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
         CalamityPlayer modPlayer = player.Calamity();
         var usPlayer = player.CIMod();
         Lighting.AddLight((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, Main.DiscoR / 255f, Main.DiscoG / 255f, Main.DiscoB / 255f);
-        bool isMinion = Projectile.type == ModContent.ProjectileType<SaveCosmic>();
-        player.AddBuff(ModContent.BuffType<CosmicEnergyExtra>(), 3600);
+        bool isMinion = Projectile.type == ProjectileType<SaveCosmic>();
+        player.AddBuff(BuffType<CosmicEnergyExtra>(), 3600);
         if (isMinion)
         {
             if (player.dead)
@@ -206,7 +206,7 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
                 for (int b = 0; b < blastAmt; b++)
                 {
                     Vector2 velocity = CalamityUtils.RandomVelocity(100f, 70f, 100f);
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ModContent.ProjectileType<CosmicBlast>(), (int)(Projectile.damage * 0.5), 2f, Projectile.owner, target, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<CosmicBlast>(), (int)(Projectile.damage * 0.5), 2f, Projectile.owner, target, 0f);
                 }
                 float speed = 15f;
                 float projXSpeed = projX - Projectile.Center.X;
@@ -215,7 +215,7 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
                 velocityMult = speed / velocityMult;
                 projXSpeed *= velocityMult;
                 projYSpeed *= velocityMult;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, projXSpeed, projYSpeed, ModContent.ProjectileType<CosmicBlastBig>(), Projectile.damage, 3f, Projectile.owner, target, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, projXSpeed, projYSpeed, ProjectileType<CosmicBlastBig>(), Projectile.damage, 3f, Projectile.owner, target, 0f);
                 Projectile.ai[0] = 100f;
             }
         }

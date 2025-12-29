@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPricePink;
-            Item.shoot = ModContent.ProjectileType<ColdheartIcicleProj>();
+            Item.shoot = ProjectileType<ColdheartIcicleProj>();
             Item.shootSpeed = 1.8f;
             Item.noMelee = true;
             Item.noUseGraphic = true;

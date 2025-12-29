@@ -287,3 +287,8 @@ DOGSummonBuff: {
 	DisplayName: D O G Summon Buff
 	Description: Mods.CalamityInheritance.Buffs.DOGSummonBuff.Description
 }
+
+SunSpiritBuff: {
+	DisplayName: Sun Spirit Buff
+	Description: Mods.CalamityInheritance.Buffs.SunSpiritBuff.Description
+}

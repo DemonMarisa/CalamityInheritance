@@ -35,7 +35,7 @@ namespace CalamityInheritance.System
                 Chest getC = Main.chest[i];
                 if (getC?.item.Any(s => s.stack >= 1 && s.type == terminus) ?? false)
                 {
-                    getC.AddItemToShop(new Item(ModContent.ItemType<HalibutCannonLegendary>()));
+                    getC.AddItemToShop(new Item(ItemType<HalibutCannonLegendary>()));
                 }
             }
         }

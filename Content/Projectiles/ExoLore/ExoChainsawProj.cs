@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
-            Texture2D glowmaskTexture = ModContent.Request<Texture2D>($"{TexPath}/PhotonRipperGlowmask").Value;
+            Texture2D glowmaskTexture = Request<Texture2D>($"{TexPath}/PhotonRipperGlowmask").Value;
             Rectangle glowmaskRectangle = glowmaskTexture.Frame(1, 6, 0, Projectile.frame);
             Vector2 origin = texture.Size() * 0.5f;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
@@ -219,7 +219,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     shootReach = 72f;
             }
 
-            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Owner.Center, Projectile.velocity, ModContent.ProjectileType<PrismTooth>(), (int)ToothDamage, 0f, Projectile.owner, shootReach, Projectile.whoAmI, Projectile.ai[2]);
+            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Owner.Center, Projectile.velocity, ProjectileType<PrismTooth>(), (int)ToothDamage, 0f, Projectile.owner, shootReach, Projectile.whoAmI, Projectile.ai[2]);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

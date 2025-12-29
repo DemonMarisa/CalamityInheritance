@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.defense = 44;
-            Item.rare = ModContent.RarityType<CatalystViolet>();
+            Item.rare = RarityType<CatalystViolet>();
         }
 
         public override void UpdateEquip(Player player)
