@@ -1,17 +1,11 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
@@ -31,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             Item.damage = 132;
             Item.useAnimation = 24;
             Item.useTime = 24;
-            Item.useTurn = true;
+            Item.useTurn = false;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 4.25f;
             Item.UseSound = SoundID.Item1;
@@ -44,21 +38,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            float ai2 = 0;
             switch (Main.rand.Next(6))
             {
+                case 0:
+                    ai2 = 0;
+                    break;
                 case 1:
-                    type = ProjectileType<GalaxyBlast>();
+                    ai2 = 1;
                     break;
                 case 2:
-                    type = ProjectileType<GalaxyBlast2>();
-                    break;
-                case 3:
-                    type = ProjectileType<GalaxyBlast3>();
+                    ai2 = 2;
                     break;
                 default:
                     break;
             }
-            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer);
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer, 0, 0, ai2);
             float projSpeed = Item.shootSpeed;
             Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
             float mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
@@ -100,9 +95,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 mouseYDist *= mouseDistance;
                 float speedX4 = mouseXDist + (float)Main.rand.Next(-40, 41) * 0.02f;
                 float speedY5 = mouseYDist + (float)Main.rand.Next(-40, 41) * 0.02f;
-                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(5));
-                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast2>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(3));
-                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast3>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(1));
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(5), 0);
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(3), 1);
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, (float)Main.rand.Next(1), 2);
             }
             return false;
         }

@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -10,9 +12,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
-    public class Excelsus : ModItem, ILocalizedModType
+    public class Excelsus : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
         {
             Item.width = 78;
@@ -52,6 +54,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         {
             var source = player.GetSource_ItemUse(Item);
             Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileType<LaserFountain>(), 0, 0, player.whoAmI);
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<CosmiliteBar>(12).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

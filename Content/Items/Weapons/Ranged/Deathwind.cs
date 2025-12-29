@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 float SpeedY = velocity.Y + Main.rand.Next(-20, 21) * 0.05f;
                 if (CIConfig.Instance.AmmoConversion)
                 {
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<DWArrow>(), (int)(damage * 1.75), knockback, player.whoAmI);
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<DWArrow>(), (int)(damage * 1.25), knockback, player.whoAmI);
                 }
                 else
                 {

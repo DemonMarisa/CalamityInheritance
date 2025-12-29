@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityInheritance.Content.Projectiles.Melee.Swords;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -18,13 +12,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
     public class ForbiddenOathbladeLegacy : GeneralWeaponClass
     {
         public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.width = 74;
             Item.height = 74;
             Item.damage = 110;
-            Item.useAnimation = Item.useTime = 55;
-            Item.useTurn = true;
+            Item.useAnimation = Item.useTime = 25;
+            Item.useTurn = false;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 6.5f;
             Item.UseSound = SoundID.Item1;

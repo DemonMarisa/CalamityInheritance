@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Summon.Worms;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items;
+using LAP.Core.Enums;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -11,7 +13,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
 {
     public class StaffofDOG : ModItem, ILocalizedModType
     {
-        public static int BaseDamage = 100;
+        public static int BaseDamage = 450;
+        public static int minionSlots = 3;
         public new string LocalizationCategory => "Items.Weapons.Summon";
         public override void SetDefaults()
         {
@@ -30,10 +33,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
             Item.shoot = ProjectileType<DOGworm>();
             Item.shootSpeed = 10f;
             Item.DamageType = DamageClass.Summon;
-        }
 
+            Item.LAP().UseCICalStatInflation = true;
+            Item.LAP().WeaponTier = AllWeaponTier.PostDOG;
+        }
         public override bool CanUseItem(Player player)
         {
+            if (player.maxMinions < 3)
+                return false;
+            if ((player.maxMinions - player.slotsMinions) < 3)
+                return false;
             foreach (Projectile p in Main.ActiveProjectiles)
             {
                 if (p.active & p.type == ProjectileType<DOGworm>())
@@ -43,7 +52,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectileDirect(source, Main.MouseWorld, Vector2.Zero, ProjectileType<DOGworm>(), 0, 1, player.whoAmI);
+            int p = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, type, 0, 1, player.whoAmI);
+            Main.projectile[p].originalDamage = Item.damage;
             return false;
         }
     }

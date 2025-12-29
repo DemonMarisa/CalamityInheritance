@@ -630,3 +630,8 @@ Deathwind: {
 	// DisplayName: Deathwind
 	// Tooltip: ""
 }
+
+TelluricGlareLegacy: {
+	// DisplayName: Telluric Glare Legacy
+	// Tooltip: ""
+}

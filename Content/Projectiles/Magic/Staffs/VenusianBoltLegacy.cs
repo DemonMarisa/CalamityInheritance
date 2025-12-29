@@ -1,0 +1,91 @@
+﻿using CalamityInheritance.Content.Projectiles.Typeless;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Magic.Staffs
+{
+    public class VenusianBoltLegacy : ModProjectile, ILocalizedModType
+    {
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.extraUpdates = 1;
+            Projectile.timeLeft = 600;
+            Projectile.DamageType = DamageClass.Magic;
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45);
+            Lighting.AddLight(Projectile.Center, 0.25f, 0.2f, 0f);
+            if (Projectile.wet && !Projectile.lavaWet)
+            {
+                Projectile.Kill();
+            }
+            if (Projectile.localAI[0] == 0f)
+            {
+                SoundEngine.PlaySound(SoundID.Item73, Projectile.Center);
+                Projectile.localAI[0] += 1f;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                int venusDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 100, default, 1.2f);
+                Main.dust[venusDust].noGravity = true;
+                Main.dust[venusDust].velocity *= 0.5f;
+                Main.dust[venusDust].velocity += Projectile.velocity * 0.1f;
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Daybreak, 300);
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            if (Projectile.owner == Main.myPlayer)
+            {
+                int explosionDamage = Projectile.damage;
+                float explosionKB = 6f;
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<VenusianExplosionLegacy>(), explosionDamage, explosionKB, Projectile.owner);
+
+                int cinderDamage = (int)(Projectile.damage * 0.20);
+                float cinderKB = 0f;
+                Vector2 cinderPos = Projectile.oldPosition + 0.5f * Projectile.Size;
+                int numCinders = Main.rand.Next(7, 10);
+                for (int i = 0; i < numCinders; i++)
+                {
+                    Vector2 cinderVel = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                    while (cinderVel.X == 0f && cinderVel.Y == 0f)
+                    {
+                        cinderVel = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                    }
+                    cinderVel.Normalize();
+                    cinderVel *= Main.rand.Next(70, 101) * 0.1f;
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), cinderPos, cinderVel, ProjectileType<FlameLegacy>(), cinderDamage, cinderKB, Projectile.owner);
+                    Main.projectile[p].DamageType = DamageClass.Magic;
+                }
+            }
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
+        }
+    }
+}

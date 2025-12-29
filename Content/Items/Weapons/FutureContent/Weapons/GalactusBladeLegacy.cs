@@ -10,10 +10,6 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
 {
     public class GalactusBladeLegacy : CIMelee, ILocalizedModType
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

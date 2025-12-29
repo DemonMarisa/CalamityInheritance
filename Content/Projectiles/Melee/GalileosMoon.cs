@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -50,12 +51,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
             Projectile.rotation += Projectile.direction * 0.55f;
-            CalamityUtils.HomeInOnNPC(Projectile, true, 250f, 10f, 25f);
+            Projectile.HomeInNPC(1500f, 10f, 25f);
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
 

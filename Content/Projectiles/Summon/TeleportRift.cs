@@ -45,7 +45,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     burstDust.velocity = Main.rand.NextVector2CircularEdge(6f, 6f);
                     burstDust.scale = Main.rand.NextFloat(1.3f, 1.75f);
                 }
-                SoundEngine.PlaySound(SoundID.Item8, Projectile.Center);
                 Projectile.ai[1]++;
             }
             if (Projectile.ai[0] == 0f)

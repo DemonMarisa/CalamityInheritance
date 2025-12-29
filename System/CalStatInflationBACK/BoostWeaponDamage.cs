@@ -112,16 +112,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             else
                 return base.UseTimeMultiplier(item, player);
         }
-
-        public override void ModifyItemScale(Item item, Player player, ref float scale)
-        {
-            if (!CIServerConfig.Instance.CalStatInflationBACK)
-                return;
-            if (item.type == ItemType<Earth>())
-            {
-                scale = 2.5f;
-            }
-        }
         #region 特殊平衡改动
         public static void SetCustomMult(Item item, float mult)
         {
@@ -497,7 +487,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (item.Same<Earth>())
             {
                 SetCustomMult(item, 17000);
-                item.scale *= 2.5f;
             }
             //龙破斩谁爱玩玩去（
             //瘟疫需要起码30000的面板

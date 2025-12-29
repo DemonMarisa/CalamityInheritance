@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             Item.useTime = 34;
             Item.channel = true;
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
+            Item.useTurn = false;
             Item.knockBack = 7f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;

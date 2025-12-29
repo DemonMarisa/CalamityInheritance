@@ -29,7 +29,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.UseSound = CommonCalamitySounds.LaserCannonSound;
             Item.rare = RarityType<MaliceChallengeDrop>();
             Item.value = CIShopValue.RarityMaliceDrop;
-            Item.UseSound = CommonCalamitySounds.LaserCannonSound;
         }
     }
 }

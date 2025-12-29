@@ -1,4 +1,5 @@
 ﻿using LAP.Assets.TextureRegister;
+using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -10,6 +11,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override ProjDamageType UseDamageClass => ProjDamageType.Melee;
+        public float DustType => Projectile.ai[2];
+        public int UseDustID => DustType == 0 ? DustID.DungeonWater : DustType == 1 ? LAPDustID.DustLifeDrain : DustID.ShadowbeamStaff;
         public override void ExSD()
         {
             Projectile.width = 10;
@@ -37,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
                 return;
             }
             bool isInTile = WorldGen.SolidTile(Framing.GetTileSafely((int)Projectile.position.X / 16, (int)Projectile.position.Y / 16));
-            Dust blastDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 1f)];
+            Dust blastDust = Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, UseDustID, 0f, 0f, 0, default, 1f)];
             blastDust.position = Projectile.Center;
             blastDust.velocity = Vector2.Zero;
             blastDust.noGravity = true;
@@ -102,18 +105,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             bool insideTile = WorldGen.SolidTile(Framing.GetTileSafely((int)Projectile.position.X / 16, (int)Projectile.position.Y / 16));
             for (int m = 0; m < 4; m++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 1.5f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, UseDustID, 0f, 0f, 100, default, 1.5f);
             }
             for (int n = 0; n < 4; n++)
             {
-                int killingPeople = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 0, default, 2.5f);
+                int killingPeople = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, UseDustID, 0f, 0f, 0, default, 2.5f);
                 Main.dust[killingPeople].noGravity = true;
                 Main.dust[killingPeople].velocity *= 3f;
                 if (insideTile)
                 {
                     Main.dust[killingPeople].noLight = true;
                 }
-                killingPeople = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 1.5f);
+                killingPeople = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, UseDustID, 0f, 0f, 100, default, 1.5f);
                 Main.dust[killingPeople].velocity *= 2f;
                 Main.dust[killingPeople].noGravity = true;
                 if (insideTile)

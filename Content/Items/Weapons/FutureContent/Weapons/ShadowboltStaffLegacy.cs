@@ -9,10 +9,6 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
 {
     public class ShadowboltStaffLegacy : CIMagic, ILocalizedModType
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

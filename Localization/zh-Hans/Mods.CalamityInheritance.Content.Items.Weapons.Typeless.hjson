@@ -133,3 +133,8 @@ ShizukuSword: {
 		[c/98F5FF:「冰寒明月，映出创造者哀怨如渊之心」]
 		'''
 }
+
+LunicEyeLegacy: {
+	// DisplayName: Lunic Eye Legacy
+	// Tooltip: ""
+}

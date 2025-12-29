@@ -22,14 +22,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             Projectile.DamageType = DamageClass.Melee;
             Projectile.tileCollide = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 60;
         }
 
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.35f / 255f, (255 - Projectile.alpha) * 0.05f / 255f, (255 - Projectile.alpha) * 0.075f / 255f);
 
-            Projectile.velocity *= 0.935f;
+            Projectile.velocity *= 1.02f;
             Projectile.rotation += (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y)) * 0.1f;
             Projectile.Opacity = Utils.GetLerpValue(1f, 6f, Projectile.velocity.Length(), true);
             if (Projectile.Opacity <= 0f)
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 
             // Weakly home in on enemies.
             NPC potentialTarget = Projectile.Center.ClosestNPCAt(540f);
-            if (potentialTarget != null && Projectile.timeLeft >= 480)
+            if (potentialTarget != null)
             {
                 float flySpeed = Projectile.velocity.Length();
                 if (flySpeed < 10f)

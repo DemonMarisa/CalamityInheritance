@@ -116,3 +116,8 @@ ShizukuSword: {
 		[c/98F5FF: The cold, clear moon mirrors the creator’s grief, a sorrow as boundless as the abyss]
 		'''
 }
+
+LunicEyeLegacy: {
+	DisplayName: Lunic Eye Legacy
+	Tooltip: ""
+}

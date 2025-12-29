@@ -82,16 +82,23 @@ namespace CalamityInheritance.System.ModeChange.Malice
             // 加速AI更新频率
             public void AccelerateAIUpdates(On_NPC.orig_UpdateNPC_Inner orig, NPC npc, int index)
             {
-                if (ShouldAccelerate(npc))
+                if (!CIWorld.malice)
                 {
-                    _updateAccumulator += SpeedMultiplier - 1f;
-                    while (_updateAccumulator >= 1f)
-                    {
-                        PerformExtraUpdate(npc);
-                        _updateAccumulator--;
-                    }
+                    orig(npc, index);
                 }
-                orig(npc, index);
+                else
+                {
+                    if (ShouldAccelerate(npc))
+                    {
+                        _updateAccumulator += SpeedMultiplier - 1f;
+                        while (_updateAccumulator >= 1f)
+                        {
+                            PerformExtraUpdate(npc);
+                            _updateAccumulator--;
+                        }
+                    }
+                    orig(npc, index);
+                }
             }
             #endregion
             #region NPC的额外更新实现

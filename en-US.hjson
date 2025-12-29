@@ -104,6 +104,7 @@ Mods: {
 
 			TeleportRift.DisplayName: Teleport Rift
 			OldLordClaymoreLegacyProj.DisplayName: Old Lord Claymore Legacy Proj
+			HolyFireLegacy.DisplayName: Holy Fire Legacy
 		}
 
 		Content/Projectiles/Summon: {
@@ -227,6 +228,11 @@ Mods: {
 						DisplayName: Supernovaold
 						Tooltip: ""
 					}
+
+					MoltenAmputatorLegacy: {
+						DisplayName: Molten Amputator Legacy
+						Tooltip: ""
+					}
 				}
 
 				Summon: {
@@ -284,6 +290,48 @@ Mods: {
 
 					OldLordClaymoreLegacy: {
 						DisplayName: Old Lord Claymore Legacy
+						Tooltip: ""
+					}
+
+					EntropicClaymoreLegacy: {
+						DisplayName: Entropic Claymore Legacy
+						Tooltip: ""
+					}
+
+					TheObliteratorLegacy: {
+						DisplayName: The Obliterator Legacy
+						Tooltip: ""
+					}
+
+					TheOracleLegacy: {
+						DisplayName: The Oracle Legacy
+						Tooltip: ""
+					}
+
+					BurningRevelationLegacy: {
+						DisplayName: Burning Revelation Legacy
+						Tooltip: ""
+					}
+
+					LaceratorLegacy: {
+						DisplayName: Lacerator Legacy
+						Tooltip: ""
+					}
+
+					Excelsus: {
+						DisplayName: Excelsus
+						Tooltip: ""
+					}
+
+					HolyColliderLegacy: {
+						DisplayName: Holy Collider Legacy
+						Tooltip: ""
+					}
+				}
+
+				Magic: {
+					PurgeGuzzlerLegacy: {
+						DisplayName: Purge Guzzler Legacy
 						Tooltip: ""
 					}
 				}

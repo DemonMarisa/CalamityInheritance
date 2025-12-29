@@ -59,6 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.localAI[1] == 0f)
                 Projectile.localAI[1] = Main.rand.Next(1, 3);
             ModProjectile DWArrow = ProjectileLoader.GetProjectile(ModContent.ProjectileType<DWArrow>());
+            Texture2D texture;
             switch (Projectile.localAI[1])
             {
                 case 2f:

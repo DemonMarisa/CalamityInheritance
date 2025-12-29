@@ -803,10 +803,10 @@
 	    <HintPath>..\..\ModReader\CalamityMod\CalamityMod.dll</HintPath>
 	  </Reference>
 	  <Reference Include="CalamityModMusic">
-	    <HintPath>..\ModAssemblies\CalamityModMusic.dll</HintPath>
+	    <HintPath>..\..\ModReader\CalamityModMusic\CalamityModMusic.dll</HintPath>
 	  </Reference>
 	  <Reference Include="LAP">
-	    <HintPath>..\LAP\bin\Debug\net8.0\LAP.dll</HintPath>
+	    <HintPath>..\LAP\bin\Release\net8.0\LAP.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>

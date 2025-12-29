@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using Terraria.ModLoader;
 //特殊稀有度颜色，部分只有特定设置开启的时候才会生效
 namespace CalamityInheritance.Rarity.Special

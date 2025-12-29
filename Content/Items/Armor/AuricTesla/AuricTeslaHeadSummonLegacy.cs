@@ -109,7 +109,6 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
                 if (CIConfig.Instance.GodSlayerWorm)
                 {
-                    player.AddBuff(BuffType<DOGSummonBuff>(), 3600, true); 
                     if (player.ownedProjectileCounts[ProjectileType<DOGworm_Auric>()] < 1)
                     {
                         ModItem item = ItemLoader.GetItem(ItemType<StaffofDOG>());

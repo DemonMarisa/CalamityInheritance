@@ -1,10 +1,14 @@
 ﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Texture;
+using CalamityMod.NPCs;
+using CalamityMod.Projectiles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,14 +28,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         public int AttackStateTimer;
         public int AttackType;
         public Vector2 HoverPos;
-        public bool FirstFrame;
         public ref float SpawnDust => ref Projectile.ai[0];
         public Player Owner => Main.player[Projectile.owner];
-        public enum AttackState : byte
-        {
-            PortalGateCharge,
-            LaserCharge
-        }
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;
@@ -52,6 +50,28 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 5;
             Projectile.DamageType = DamageClass.Summon;
+            Projectile.netUpdate = true;
+            Projectile.minionSlots = 3f;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.WriteVector2(ChargeBeginPos);
+            writer.WriteVector2(HoverPos);
+            writer.WriteVector2(PortalAttackBeginPos);
+            for (int i = 0; i < Segments.Count; i++)
+            {
+                writer.WriteVector2(Segments[i].Pos);
+            }
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            ChargeBeginPos = reader.ReadVector2();
+            HoverPos = reader.ReadVector2();
+            PortalAttackBeginPos = reader.ReadVector2();
+            for (int i = 0; i < Segments.Count; i++)
+            {
+                Segments[i].Pos = reader.ReadVector2();
+            }
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -68,17 +88,19 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         }
         public override void AI()
         {
-            Owner.AddBuff(ModContent.BuffType<DOGSummonBuff>(), 2, true);
+            Projectile.netUpdate = true;
+            Owner.AddBuff(BuffType<DOGSummonBuff>(), 2, true);
+            if (!Owner.HasBuff(BuffType<DOGSummonBuff>()))
+                Projectile.Kill();
             Projectile.Center += Projectile.velocity;
             if (Projectile.LAP().FirstFrame)
             {
                 Projectile.velocity = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 6;
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 14; i++)
                 {
                     Segment segment = new(Projectile.Center, Projectile.rotation);
                     Segments.Add(segment);
                 }
-                FirstFrame = false;
             }
             if (SpawnDust != 0)
             {
@@ -134,31 +156,29 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
                 AttackStateTimer = 0;
                 Projectile.netUpdate = true;
             }
-            if (Owner.miscCounter % 240 == 0)
+            if (Owner.miscCounter % 180 == 0)
             {
-                if (Projectile.FinalExtraUpdate())
                 HoverFilp = -HoverFilp;
                 HoverPos = new Vector2(Main.rand.Next(200, 256) * HoverFilp, Main.rand.Next(-96, 96));
             }
             else if (Projectile.Center.Distance(Owner.Center) > 200)
             {
                 Vector2 Target = Owner.Center + HoverPos;
-                Projectile.HomingTarget(Target, -1, 12f, 100f);
+                LAPUtilities.HomingTarget(Projectile, Target, -1, 24f, 100f);
             }
             else if (Projectile.Center.Distance(Owner.Center) > 500)
             {
                 Vector2 Target = Owner.Center + HoverPos;
-                Projectile.HomingTarget(Target, -1, 35f, 100f);
+                LAPUtilities.HomingTarget(Projectile, Target, -1, 35f, 100f);
             }
             else if (Projectile.Center.Distance(Owner.Center) > 1920)
             {
                 Projectile.extraUpdates = 2;
                 Vector2 Target = Owner.Center;
-                Projectile.HomingTarget(Target, -1, 35f, 35f);
+                LAPUtilities.HomingTarget(Projectile, Target, -1, 35f, 35f);
             }
             else if (Projectile.Center.Distance(Owner.Center) > 3840)
             {
-                Vector2 Target = Owner.Center;
                 Projectile.Center = Owner.Center + Vector2.UnitY * -200;
                 for (int i = 0; i < Segments.Count; i++)
                 {
@@ -174,13 +194,16 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             // 第一帧初始化随机目标位置
             if (AttackStateTimer == 1)
             {
+                SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
                 // 向目标发射激光
                 for (int i = 0; i < 3; i++)
                 {
                     Vector2 perturbedSpeed = LAPUtilities.GetVector2(Projectile.Center, target.Center).RotatedBy(MathHelper.Lerp(-0.15f, 0.15f, i / 2f)) * 18f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                    if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                 }
-                ChargeBeginPos = target.Center + -Projectile.velocity.SafeNormalize(Vector2.UnitX) * 300;
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    ChargeBeginPos = target.Center + -Projectile.velocity.SafeNormalize(Vector2.UnitX) * 300;
             }
             // 有60帧的时间赶往目标
             if (AttackStateTimer > 0 && AttackStateTimer < 60)
@@ -198,11 +221,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             {
                 if (AttackStateTimer == 65)
                 {
+                    SoundEngine.PlaySound(SoundID.Item12, Projectile.Center);
                     // 向目标发射激光
                     for (int i = 0; i < 3; i++)
                     {
                         Vector2 perturbedSpeed = LAPUtilities.GetVector2(Projectile.Center, target.Center).RotatedBy(MathHelper.Lerp(-0.15f, 0.15f, i / 2f)) * 18f;
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                        if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, perturbedSpeed, ProjectileType<DOGLaser>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                 }
                 if (Projectile.Center.Distance(target.Center) < 24)
@@ -232,7 +257,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         {
             if (AttackStateTimer == 1)
             {
-                ChargeBeginPos = target.Center - Vector2.UnitY * 400;
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    ChargeBeginPos = target.Center - Vector2.UnitY * 400;
             }
             if (AttackStateTimer < 120)
             {
@@ -251,25 +277,36 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             }
         }
         public int ChargeCount;
+        public Vector2 PortalAttackBeginPos;
         public void PortalAttack(NPC target)
         {
             if (AttackStateTimer == 1)
             {
-                Vector2 vel = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 300;
-                Projectile.Center = target.Center + vel;
+                PortalAttackBeginPos = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 300;
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    Projectile.Center = target.Center + PortalAttackBeginPos;
                 for (int i = 0; i < Segments.Count; i++)
                 {
                     Segments[i].Pos = Projectile.Center;
-                    Segments[i].Rot = Projectile.rotation;
                 }
                 Projectile.velocity = LAPUtilities.GetVector2(Projectile.Center, target.Center) * 18f;
-                ChargeBeginPos = target.Center - vel;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    ChargeBeginPos = target.Center - PortalAttackBeginPos;
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+            }
+            if (AttackStateTimer <= 2)
+            {
+                for (int i = 0; i < Segments.Count; i++)
+                {
+                    Segments[i].Pos = Projectile.Center;
+                }
             }
             if (Projectile.Center.Distance(ChargeBeginPos) < 48)
             {
                 ChargeCount++;
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
+                if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<TeleportRift>(), 0, 0f, Projectile.owner);
                 AttackStateTimer = 0;
                 if (ChargeCount > 12)
                 {

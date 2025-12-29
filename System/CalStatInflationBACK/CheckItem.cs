@@ -47,8 +47,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
 
         public override void PostAddRecipes()
         {
-            if (CIServerConfig.Instance.CalStatInflationBACK)
-                CategoryWeapons();
+            CategoryWeapons();
         }
 
         public void CategoryWeapons()

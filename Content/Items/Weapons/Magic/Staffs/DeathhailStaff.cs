@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.rare = RarityType<DeepBlue>();
             Item.UseSound = SoundID.Item12;
             Item.autoReuse = true;

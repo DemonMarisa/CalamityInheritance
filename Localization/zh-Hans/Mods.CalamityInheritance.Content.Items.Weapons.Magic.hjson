@@ -450,3 +450,8 @@ WrathoftheAncients: {
 	// DisplayName: Wrathofthe Ancients
 	// Tooltip: ""
 }
+
+VenusianTridentLegacy: {
+	// DisplayName: Venusian Trident Legacy
+	// Tooltip: ""
+}
