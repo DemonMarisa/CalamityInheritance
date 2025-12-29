@@ -166,6 +166,16 @@ Mods: {
 						DisplayName: Storm Dragon
 						Tooltip: ""
 					}
+
+					FetidEmesisLegacy: {
+						DisplayName: Fetid Emesis Legacy
+						Tooltip: ""
+					}
+
+					SepticSkewerLegacy: {
+						DisplayName: Septic Skewer Legacy
+						Tooltip: ""
+					}
 				}
 
 				Rogue: {
@@ -235,6 +245,12 @@ Mods: {
 					}
 				}
 
+					TheOldReaperLegacy: {
+						DisplayName: The Old Reaper Legacy
+						Tooltip: ""
+					}
+				}
+
 				Summon: {
 					StaffofDOG: {
 						DisplayName: Staffof D O G
@@ -243,6 +259,11 @@ Mods: {
 
 					SunSpiriteStaffLegacy: {
 						DisplayName: Sun Spirite Staff Legacy
+						Tooltip: ""
+					}
+
+					DazzlingStabberStaffLegacy: {
+						DisplayName: Dazzling Stabber Staff Legacy
 						Tooltip: ""
 					}
 				}
@@ -332,6 +353,45 @@ Mods: {
 				Magic: {
 					PurgeGuzzlerLegacy: {
 						DisplayName: Purge Guzzler Legacy
+						Tooltip: ""
+					}
+				}
+
+				DraedonsArsenal: {
+					GaussRifle: {
+						DisplayName: Gauss Rifle
+						Tooltip: ""
+					}
+
+					HeavyLaserRifle: {
+						DisplayName: Heavy Laser Rifle
+						Tooltip: ""
+					}
+
+					MatterModulator: {
+						DisplayName: Matter Modulator
+						Tooltip: ""
+					}
+
+					PulsePistolLegacy: {
+						DisplayName: Pulse Pistol Legacy
+						Tooltip: ""
+					}
+
+					Taser: {
+						DisplayName: Taser
+						Tooltip: ""
+					}
+
+					TrackingDisk: {
+						DisplayName: Tracking Disk
+						Tooltip: ""
+					}
+				}
+
+				Magic: {
+					VitriolicViperLegacy: {
+						DisplayName: Vitriolic Viper Legacy
 						Tooltip: ""
 					}
 				}

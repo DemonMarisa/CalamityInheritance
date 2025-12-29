@@ -1,7 +1,4 @@
 using System.ComponentModel;
-using System.Net;
-using Microsoft.CodeAnalysis.CodeRefactorings;
-using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.ModLoader.Config;
 

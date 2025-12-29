@@ -812,6 +812,9 @@
 	<ItemGroup>
 	  <Folder Include="Content\Projectiles\Summon\ElementalHeart\" />
 	  <Folder Include="SceneEffect\" />
+	  <Folder Include="Texture\Items\Weapons\Ranged\" />
+	  <Folder Include="Texture\Projectiles\Magic\" />
+	  <Folder Include="Texture\Projectiles\Ranged\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Krafs.Publicizer" Version="2.3.0">

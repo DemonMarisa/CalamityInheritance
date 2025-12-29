@@ -11,8 +11,8 @@ namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal
 {
     public class PulseRifleShotOld : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Projectiles.DraedonsArsenal";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
+        public new string LocalizationCategory => "Content.Projectiles.DraedonsArsenal";
 
         private int dust1 = 27; //purple
         private int dust2 = 173; //shortlived purple

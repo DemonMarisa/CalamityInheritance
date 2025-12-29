@@ -1,4 +1,5 @@
-﻿using LAP.Assets.TextureRegister;
+﻿using CalamityMod.Projectiles.Magic;
+using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture
