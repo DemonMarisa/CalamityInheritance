@@ -425,3 +425,108 @@ VenusianTridentLegacy: {
 	DisplayName: Venusian Trident Legacy
 	Tooltip: ""
 }
+
+PurgeGuzzlerLegacy: {
+	DisplayName: Purge Guzzler Legacy
+	Tooltip: ""
+}
+
+VitriolicViperLegacy: {
+	DisplayName: Vitriolic Viper Legacy
+	Tooltip: ""
+}
+
+CrescentMoonLegacy: {
+	DisplayName: Crescent Moon Legacy
+	Tooltip: ""
+}
+
+GalileoGladiusLegacy: {
+	DisplayName: Galileo Gladius Legacy
+	Tooltip: ""
+}
+
+BladecrestOathswordLegacy: {
+	DisplayName: Bladecrest Oathsword Legacy
+	Tooltip: ""
+}
+
+CatastropheClaymore: {
+	DisplayName: Catastrophe Claymore
+	Tooltip: ""
+}
+
+Devastation: {
+	DisplayName: Devastation
+	Tooltip: ""
+}
+
+DevilsDevastationLegacy: {
+	DisplayName: Devils Devastation Legacy
+	Tooltip: ""
+}
+
+EntropicClaymoreLegacy: {
+	DisplayName: Entropic Claymore Legacy
+	Tooltip: ""
+}
+
+ExaltedOathbladeLegacy: {
+	DisplayName: Exalted Oathblade Legacy
+	Tooltip: ""
+}
+
+Excelsus: {
+	DisplayName: Excelsus
+	Tooltip: ""
+}
+
+ForbiddenOathbladeLegacy: {
+	DisplayName: Forbidden Oathblade Legacy
+	Tooltip: ""
+}
+
+HolyColliderLegacy: {
+	DisplayName: Holy Collider Legacy
+	Tooltip: ""
+}
+
+OldLordClaymoreLegacy: {
+	DisplayName: Old Lord Claymore Legacy
+	Tooltip: ""
+}
+
+BurningRevelationLegacy: {
+	DisplayName: Burning Revelation Legacy
+	Tooltip: ""
+}
+
+TheObliteratorLegacy: {
+	DisplayName: The Obliterator Legacy
+	Tooltip: ""
+}
+
+TheOracleLegacy: {
+	DisplayName: The Oracle Legacy
+	Tooltip: ""
+}
+
+FetidEmesisLegacy: {
+	DisplayName: Fetid Emesis Legacy
+	Tooltip: ""
+}
+
+SepticSkewerLegacy: {
+	DisplayName: Septic Skewer Legacy
+	Tooltip: ""
+}
+
+DazzlingStabberStaffLegacy: {
+	DisplayName: Dazzling Stabber Staff Legacy
+	Tooltip: ""
+}
+
+SunSpiriteStaffLegacy: {
+	DisplayName: Sun Spirite Staff Legacy
+	Tooltip: ""
+}

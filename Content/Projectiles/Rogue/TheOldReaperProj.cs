@@ -1,4 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class TheOldReaperProj : RogueDamageProj
     {
-        public override string Texture => GetInstance<TheOldReaperLegacy>().Texture;
+        public override string Texture => GetInstance<TheReaperLegacy>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

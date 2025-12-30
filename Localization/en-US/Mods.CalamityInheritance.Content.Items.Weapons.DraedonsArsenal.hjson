@@ -9,3 +9,42 @@ PulseRifleOld: {
 		[c/1FFBFF:I have backed up the schematics in the event of the original's destruction.']
 		'''
 }
+
+MountedScannerLegacy: {
+	DisplayName: Mounted Scanner Legacy
+	Tooltip:
+		'''
+		Summons a powerful scanner module above your head that fires lasers at nearby enemies
+		Requires 1.25 minions to use
+		'''
+}
+
+GaussRifle: {
+	DisplayName: Gauss Rifle
+	Tooltip: ""
+}
+
+HeavyLaserRifle: {
+	DisplayName: Heavy Laser Rifle
+	Tooltip: ""
+}
+
+MatterModulator: {
+	DisplayName: Matter Modulator
+	Tooltip: ""
+}
+
+PulsePistolLegacy: {
+	DisplayName: Pulse Pistol Legacy
+	Tooltip: ""
+}
+
+Taser: {
+	DisplayName: Taser
+	Tooltip: ""
+}
+
+TrackingDisk: {
+	DisplayName: Tracking Disk
+	Tooltip: ""
+}

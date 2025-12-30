@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Projectiles.Rogue.Spears.NightsGazeProj;
 using CalamityInheritance.Texture;
 using CalamityMod;
 using CalamityMod.Items;
@@ -14,7 +15,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue.Spears
 {
-    public class NightsGaze : RogueWeapon
+    public class NightsGaze : CIRogueClass
     {
         public override string Texture =>  CITextureRegistry.NightsGaze.Path;
         public override void SetDefaults()

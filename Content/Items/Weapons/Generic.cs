@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons
     }
     public abstract class CIRogueClass : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.Rogue";
+        public new string LocalizationCategory => "Content.Items.Weapons.Rogue";
         public override bool WeaponPrefix() => true;
         public override bool RangedPrefix() => false;
         public override void ModifyResearchSorting(ref ItemGroup itemGroup) => itemGroup = (ItemGroup)CalamityResearchSorting.RogueWeapon;
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons
             Typeless
         }
         public virtual WeaponDamageType UseDamageClass { get; }
-        public new string LocalizationCategory => $"Items.Weapons.{UseDamageClass}";
+        public new string LocalizationCategory => $"Content.Items.Weapons.{UseDamageClass}";
         public override void SetDefaults()
         {
             Item.DamageType = GetDamageClass();

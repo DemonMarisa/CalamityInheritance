@@ -41,15 +41,6 @@ CosmicImmaterializerOld: {
 		'''
 }
 
-MountedScannerLegacy: {
-	DisplayName: 架式扫射机[Legacy]
-	Tooltip:
-		'''
-		在头顶召唤强大的扫描模块向附近的敌人发射激光
-		每个召唤物消耗1.25召唤栏
-		'''
-}
-
 YharonSonStaff: {
 	DisplayName: 巨龙七星灯[Legacy]
 	Tooltip:
@@ -126,4 +117,19 @@ SiriusLegacy: {
 		必须在快捷栏才可以使用
 		随着消耗的召唤栏数量增加伤害
 		'''
+}
+
+DazzlingStabberStaffLegacy: {
+	// DisplayName: Dazzling Stabber Staff Legacy
+	// Tooltip: ""
+}
+
+SunSpiriteStaffLegacy: {
+	// DisplayName: Sun Spirite Staff Legacy
+	// Tooltip: ""
+}
+
+StaffofDOG: {
+	// DisplayName: Staffof D O G
+	// Tooltip: ""
 }

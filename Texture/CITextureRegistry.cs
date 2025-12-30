@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.ModLoader;
 
@@ -18,6 +19,7 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> BaseTrail{ get; private set; }
         public static Asset<Texture2D> ShizukuBG { get; private set; }
         public static Asset<Texture2D> ShizukuStar { get; private set; }
+        public static Tex2DWithPath StarTrail { get; private set; }
         #endregion
         #endregion
 
@@ -30,6 +32,7 @@ namespace CalamityInheritance.Texture
             BaseTrail = Request<Texture2D>($"{ExtraTexturesPath}/Trails/BasicTrail");
             ShizukuBG = Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Layer");
             ShizukuStar = Request<Texture2D>($"CalamityInheritance/ExtraTextures/Metaballs/ShizukuStarMetaball" + "_Texture");
+            StarTrail = new Tex2DWithPath($"{ExtraTexturesPath}/Trails/StarTrail");
             LoadProjTex();
             LoadItemTextures();
         }
@@ -42,6 +45,7 @@ namespace CalamityInheritance.Texture
             BaseTrail = null;
             ShizukuBG = null;
             ShizukuStar = null;
+            StarTrail = null;
             UnLoadProjTex();
             UnLoadItemTextures();
         }

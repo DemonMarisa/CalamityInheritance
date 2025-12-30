@@ -11,11 +11,10 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon.Worms
 {
-    public class StaffofDOG : ModItem, ILocalizedModType
+    public class StaffofDOG : CISummon, ILocalizedModType
     {
         public static int BaseDamage = 450;
         public static int minionSlots = 3;
-        public new string LocalizationCategory => "Items.Weapons.Summon";
         public override void SetDefaults()
         {
             Item.width = 68;

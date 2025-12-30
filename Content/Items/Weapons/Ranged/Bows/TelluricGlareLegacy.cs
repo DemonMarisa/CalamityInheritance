@@ -1,8 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Bows;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Rarities;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

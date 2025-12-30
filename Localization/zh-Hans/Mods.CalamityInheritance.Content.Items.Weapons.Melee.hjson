@@ -622,3 +622,88 @@ UrchinFlail: {
 	// DisplayName: Urchin Flail
 	// Tooltip: ""
 }
+
+CrescentMoonLegacy: {
+	// DisplayName: Crescent Moon Legacy
+	// Tooltip: ""
+}
+
+GalileoGladiusLegacy: {
+	// DisplayName: Galileo Gladius Legacy
+	// Tooltip: ""
+}
+
+BladecrestOathswordLegacy: {
+	// DisplayName: Bladecrest Oathsword Legacy
+	// Tooltip: ""
+}
+
+CatastropheClaymore: {
+	// DisplayName: Catastrophe Claymore
+	// Tooltip: ""
+}
+
+Devastation: {
+	// DisplayName: Devastation
+	// Tooltip: ""
+}
+
+DevilsDevastationLegacy: {
+	// DisplayName: Devils Devastation Legacy
+	// Tooltip: ""
+}
+
+EntropicClaymoreLegacy: {
+	// DisplayName: Entropic Claymore Legacy
+	// Tooltip: ""
+}
+
+ExaltedOathbladeLegacy: {
+	// DisplayName: Exalted Oathblade Legacy
+	// Tooltip: ""
+}
+
+Excelsus: {
+	// DisplayName: Excelsus
+	// Tooltip: ""
+}
+
+ForbiddenOathbladeLegacy: {
+	// DisplayName: Forbidden Oathblade Legacy
+	// Tooltip: ""
+}
+
+HolyColliderLegacy: {
+	// DisplayName: Holy Collider Legacy
+	// Tooltip: ""
+}
+
+OldLordClaymoreLegacy: {
+	// DisplayName: Old Lord Claymore Legacy
+	// Tooltip: ""
+}
+
+BurningRevelationLegacy: {
+	// DisplayName: Burning Revelation Legacy
+	// Tooltip: ""
+}
+
+TheObliteratorLegacy: {
+	// DisplayName: The Obliterator Legacy
+	// Tooltip: ""
+}
+
+TheOracleLegacy: {
+	// DisplayName: The Oracle Legacy
+	// Tooltip: ""
+}
+
+LaceratorLegacy: {
+	// DisplayName: Lacerator Legacy
+	// Tooltip: ""
+}
+
+OldLordOathswordLegacy: {
+	// DisplayName: Old Lord Oathsword Legacy
+	// Tooltip: ""
+}

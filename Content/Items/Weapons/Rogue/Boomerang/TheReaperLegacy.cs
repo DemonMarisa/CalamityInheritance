@@ -1,5 +1,5 @@
-﻿using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
+﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
+using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
@@ -7,9 +7,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 
-namespace CalamityInheritance.Content.Items.Weapons.Rogue
+namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
-    public class TheOldReaperLegacy : CIRogueClass
+    public class TheReaperLegacy : CIRogueClass
     {
         public override void ExSD()
         {
@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.knockBack = 4f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.shoot = ProjectileType<ReaperProjectile>();
+            Item.shoot = ProjectileType<ReaperProjectileLegacy>();
             Item.shootSpeed = 16f;
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             for (int i = 0; i < 3; i++)
             {
                 Vector2 perturbedspeed = new Vector2(velocity.X + Main.rand.Next(-2, 3), velocity.Y + Main.rand.Next(-2, 3)).RotatedBy(MathHelper.ToRadians(spread));
-                int proj = Projectile.NewProjectile(source, position, perturbedspeed, type, (int)(damage * 0.45), knockback, player.whoAmI);
+                int proj = Projectile.NewProjectile(source, position, perturbedspeed, ProjectileType<ReaperProjectileLegacy>(), (int)(damage * 0.45), knockback, player.whoAmI);
                 if (proj.WithinBounds(Main.maxProjectiles))
                 {
                     Main.projectile[proj].Calamity().stealthStrike = true;

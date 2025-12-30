@@ -1,19 +1,9 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Staffs;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
 {

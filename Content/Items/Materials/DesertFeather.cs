@@ -6,6 +6,7 @@ namespace CalamityInheritance.Content.Items.Materials
 {
     public class DesertFeather : CIMaterials, ILocalizedModType
     {
+        public new string LocalizationCategory => "Content.Items.Materials";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 15;

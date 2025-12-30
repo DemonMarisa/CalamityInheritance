@@ -88,40 +88,47 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            LAPUtilities.ReSetToBeginShader();
-            //LAPUtilities.SetRasterizerState();
-            if (OldPos.Count < 2)
+            if (Projectile.timeLeft > Lifetime - 10)
                 return false;
+            LAPUtilities.ReSetToBeginShader();
             Texture2D texture = LAPTextureRegister.StandardFlow1.Value;
-            List<VertexPositionColorTexture2D> Vertexlist = new List<VertexPositionColorTexture2D>();
-            for (int i = 0; i < OldPos.Count; i++)
-            {
-                // 1. 进度计算优化
-                float progress = (float)i / (OldPos.Count - 1);
-                float width = 96f * MathHelper.Lerp(1f, 0f, progress);
-
-                // 2. 使用前向和后向的中点来平滑法线方向
-                Vector2 direction;
-                if (i == 0) direction = OldPos[i + 1] - OldPos[i];
-                else if (i == OldPos.Count - 1) direction = OldPos[i] - OldPos[i - 1];
-                else direction = OldPos[i + 1] - OldPos[i - 1]; // 取前后点的连线方向，更平滑
-
-                Vector2 normal = direction.SafeNormalize(Vector2.Zero).RotatedBy(MathHelper.PiOver2);
-
-                Vector2 DrawPos = OldPos[i] - Main.screenPosition;
-
-                // 3. 这里的宽度偏移要对称
-                Vertexlist.Add(new VertexPositionColorTexture2D(DrawPos - normal * width, Color.White, new Vector3(progress, 0, 0)));
-                Vertexlist.Add(new VertexPositionColorTexture2D(DrawPos + normal * width, Color.White, new Vector3(progress, 1, 0)));
-            }
-            Main.graphics.GraphicsDevice.Textures[0] = texture;
-            Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.LinearWrap;
-            Main.graphics.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
-            Main.graphics.GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleStrip, Vertexlist.ToArray(), 0, Vertexlist.Count - 2);
+            DrawTrail(texture, 1f, ShaderColorOne, ShaderColorTwo, 50f, 2f);
+            DrawTrail(texture, 0.2f, Color.White, ShaderEndColor, 100f, 4);
+            DrawTrail(texture, 0.2f, Color.White, ShaderEndColor, 50, 4);
+            DrawTrail(texture, 0.4f, Color.Yellow, Color.Orange, 100f, 2);
+            Texture2D texture_Fire = LAPTextureRegister.StandardFlow3.Value;
+            DrawTrail(texture_Fire, 0.4f, Color.Yellow, Color.Orange, 25, 2);
+            Texture2D texture_Bloom = LAPTextureRegister.BloomLine.Value;
+            DrawTrail(texture_Bloom, 0.6f, Color.Orange * 0.75f, Color.Orange, 0f, 1f);
+            DrawTrail(texture_Bloom, 0.4f, Color.Brown, Color.Orange, 0f, 1f);
             LAPUtilities.ReSetToEndShader();
             return false;
         }
+        public void DrawTrail(Texture2D texture, float heigh, Color begin, Color end, float SpeedMult, float widthmult)
+        {
+            Effect effect = LAPShaderRegister.StandardFlowShader.Value;
+            effect.Parameters["FlowTextureSize"].SetValue(texture.Size());
+            effect.Parameters["targetSize"].SetValue(new Vector2(texture.Width * widthmult, texture.Height));
+            effect.Parameters["uTime"].SetValue(Main.GlobalTimeWrappedHourly * SpeedMult);
+            effect.Parameters["uColor"].SetValue(begin.ToVector4());
+            effect.Parameters["uFadeoutLength"].SetValue(1f);
+            effect.Parameters["uFadeinLength"].SetValue(0.2f);
+            effect.CurrentTechnique.Passes[0].Apply();
 
+            List<TrailDrawDate> trailDrawDate = [];
+            DrawSetting drawSetting = new(texture);
+            for (int i = 0; i < OldPos.Count; i++)
+            {
+                float progress = (float)i / OldPos.Count;
+                Color color = LAPUtilities.LerpColor(begin, end, progress);
+                Vector2 DrawPos = OldPos[i] - Main.screenPosition + new Vector2(96, 0).RotatedBy(Projectile.rotation);
+                TrailDrawDate TrailDrawDate = new(DrawPos, color, new Vector2(0, 40 * heigh), Projectile.rotation);
+                trailDrawDate.Add(TrailDrawDate);
+            }
+            Main.graphics.GraphicsDevice.Textures[0] = texture;
+            Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
+            TrailRender.RenderTrail(trailDrawDate.ToArray(), drawSetting);
+        }
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.position);

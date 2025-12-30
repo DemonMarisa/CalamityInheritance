@@ -10,9 +10,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
 {
-    public class StormDragon : ModItem, ILocalizedModType
+    public class StormDragon : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Items.Weapons.Ranged";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Ranged;
         public override void SetDefaults()
         {
             Item.width = 74;

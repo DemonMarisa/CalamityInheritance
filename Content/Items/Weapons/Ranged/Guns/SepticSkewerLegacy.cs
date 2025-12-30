@@ -1,19 +1,9 @@
-﻿using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
-using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Rarities;
+﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
+using CalamityInheritance.Rarity;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
-using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Ranged
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
 {
     public class SepticSkewerLegacy : GeneralWeaponClass
     {
@@ -35,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item10;
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
-            Item.shoot = ProjectileType<SepticSkewerHarpoon>();
+            Item.shoot = ProjectileType<SepticSkewerHarpoonLegacy>();
 
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = RarityType<AbsoluteGreen>();

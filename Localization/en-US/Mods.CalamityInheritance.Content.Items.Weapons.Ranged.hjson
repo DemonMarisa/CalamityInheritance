@@ -617,3 +617,28 @@ TelluricGlareLegacy: {
 	DisplayName: Telluric Glare Legacy
 	Tooltip: ""
 }
+
+FetidEmesisLegacy: {
+	DisplayName: Fetid Emesis Legacy
+	Tooltip: ""
+}
+
+SepticSkewerLegacy: {
+	DisplayName: Septic Skewer Legacy
+	Tooltip: ""
+}
+
+ClockGatlignum: {
+	DisplayName: Clock Gatlignum
+	Tooltip: ""
+}
+
+StormDragon: {
+	DisplayName: Storm Dragon
+	Tooltip: ""
+}
+
+StarmadaLegacy: {
+	DisplayName: Starmada Legacy
+	Tooltip: ""
+}

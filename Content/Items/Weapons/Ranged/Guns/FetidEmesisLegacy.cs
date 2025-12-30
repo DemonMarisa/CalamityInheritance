@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Ranged;
@@ -43,14 +44,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
             if (Main.rand.NextBool(8))
             {
                 Projectile.NewProjectile(source, position, velocity * 0.8f,
-                    ProjectileType<EmesisGore>(), damage, knockback, player.whoAmI);
+                    ProjectileType<EmesisGoreLegacy>(), damage, knockback, player.whoAmI);
                 for (int i = 0; i < 5; i++)
                 {
                     Dust dust = Dust.NewDustDirect(position, 10, 10, DustID.Shadowflame);
                     dust.velocity = Vector2.Normalize(velocity).RotatedByRandom(MathHelper.ToRadians(15f));
                     dust.noGravity = true;
                 }
-                if (player.CIMod().GlobalSoundDelay<= 0)
+                if (player.CIMod().GlobalSoundDelay <= 0)
                 {
                     // WoF vomit sound.
                     SoundEngine.PlaySound(SoundID.NPCDeath13 with { Volume = SoundID.NPCDeath13.Volume * 0.5f }, position);

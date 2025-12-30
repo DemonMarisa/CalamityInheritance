@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.Ranged.Guns
 {
     public class SepticSkewerBacteriaLegacy : GeneralDamageProj
     {
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             int toxicDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 100, default, 2f);
             Main.dust[toxicDust].noGravity = true;
-            float scaleAlpha = 1f - (float)Projectile.alpha / 255f;
+            float scaleAlpha = 1f - Projectile.alpha / 255f;
             scaleAlpha *= Projectile.scale;
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] >= 90f)
@@ -158,13 +158,13 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 56;
-            Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
-            Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             int constant = 36;
             for (int i = 0; i < constant; i++)
             {
-                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2((float)Projectile.width / 2f, (float)Projectile.height) * 0.75f;
-                rotate = rotate.RotatedBy((double)((float)(i - (constant / 2 - 1)) * 6.28318548f / (float)constant), default) + Projectile.Center;
+                Vector2 rotate = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
+                rotate = rotate.RotatedBy((double)((i - (constant / 2 - 1)) * 6.28318548f / constant), default) + Projectile.Center;
                 Vector2 faceDirection = rotate - Projectile.Center;
                 int dust = Dust.NewDust(rotate + faceDirection, 0, 0, DustID.Venom, faceDirection.X, faceDirection.Y, 100, default, 0.5f);
                 Main.dust[dust].noGravity = true;

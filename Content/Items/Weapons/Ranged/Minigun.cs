@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Guns;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;

@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
     public class MountedScannerLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Summon";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.DraedonsArsenal";
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

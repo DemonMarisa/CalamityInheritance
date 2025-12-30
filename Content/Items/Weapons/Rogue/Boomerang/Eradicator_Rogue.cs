@@ -21,6 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
     public class Eradicator_Rogue : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public static float Speed = 9.0f;
         public override void SetDefaults()
         {

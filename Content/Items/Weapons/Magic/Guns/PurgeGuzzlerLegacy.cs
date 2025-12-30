@@ -1,15 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Guns;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Rarities;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -17,9 +9,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Guns
 {
-    internal class PurgeGuzzlerLegacy : ModItem, ILocalizedModType
+    internal class PurgeGuzzlerLegacy : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Items.Weapons.Magic";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Magic;
         private const float Spread = 0.025f;
 
         public override void SetDefaults()

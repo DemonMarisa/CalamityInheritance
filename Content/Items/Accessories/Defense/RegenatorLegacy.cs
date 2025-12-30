@@ -1,11 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,7 +8,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
 {
     public class RegenatorLegacy : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Accessories";
+        public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetDefaults()
         {
             Item.width = 34;

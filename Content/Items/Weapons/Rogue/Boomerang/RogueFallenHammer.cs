@@ -14,8 +14,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
     public class RogueFallenHammer: RogueWeapon, ILocalizedModType
     {
-        public override string Texture => GetInstance<MeleeFallenHammer>().Texture;
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
+        public override string Texture => GetInstance<MeleeFallenHammer>().Texture;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

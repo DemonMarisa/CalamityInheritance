@@ -47,3 +47,23 @@ RottenMatter: {
 	DisplayName: Rotten Matter
 	Tooltip: ""
 }
+
+CoreofChaos: {
+	DisplayName: Coreof Chaos
+	Tooltip: ""
+}
+
+CoreofEleum: {
+	DisplayName: Coreof Eleum
+	Tooltip: ""
+}
+
+CoreofSunlight: {
+	DisplayName: Coreof Sunlight
+	Tooltip: ""
+}
+
+DesertFeather: {
+	DisplayName: Desert Feather
+	Tooltip: ""
+}

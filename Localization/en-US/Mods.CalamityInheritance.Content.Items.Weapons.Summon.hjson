@@ -41,15 +41,6 @@ CosmicImmaterializerOld: {
 		'''
 }
 
-MountedScannerLegacy: {
-	DisplayName: Mounted Scanner Legacy
-	Tooltip:
-		'''
-		Summons a powerful scanner module above your head that fires lasers at nearby enemies
-		Requires 1.25 minions to use
-		'''
-}
-
 YharonSonStaff: {
 	DisplayName: Yharon's Kindle Staff Legacy
 	Tooltip:
@@ -124,4 +115,19 @@ SiriusLegacy: {
 		Summons the brightest star in the night sky to shine upon your foes
 		Increased power based on the number of slots used
 		'''
+}
+
+DazzlingStabberStaffLegacy: {
+	DisplayName: Dazzling Stabber Staff Legacy
+	Tooltip: ""
+}
+
+SunSpiriteStaffLegacy: {
+	DisplayName: Sun Spirite Staff Legacy
+	Tooltip: ""
+}
+
+StaffofDOG: {
+	DisplayName: Staffof D O G
+	Tooltip: ""
 }

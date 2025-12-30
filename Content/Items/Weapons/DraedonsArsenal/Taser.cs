@@ -13,9 +13,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
-    public class Taser : ModItem,ILocalizedModType
+    public class Taser : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.DraedonsArsenal";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.DraedonsArsenal";
         public override void SetDefaults()
         {
             Item.width = 50;

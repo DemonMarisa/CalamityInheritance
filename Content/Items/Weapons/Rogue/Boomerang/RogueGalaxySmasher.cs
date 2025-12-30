@@ -16,9 +16,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
     public class RogueGalaxySmasher : RogueWeapon, ILocalizedModType
     {
-        public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
-
+        public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

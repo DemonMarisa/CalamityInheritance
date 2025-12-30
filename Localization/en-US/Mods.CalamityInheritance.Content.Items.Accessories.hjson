@@ -474,3 +474,8 @@ BurdenBreaker: {
 		Does not work while a boss is alive
 		'''
 }
+
+RegenatorLegacy: {
+	DisplayName: Regenator Legacy
+	Tooltip: ""
+}

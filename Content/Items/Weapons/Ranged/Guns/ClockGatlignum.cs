@@ -3,21 +3,16 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Ranged
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
 {
-    public class ClockGatlignum : ModItem, ILocalizedModType
+    public class ClockGatlignum : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Items.Weapons.Ranged";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Ranged;
         public override void SetDefaults()
         {
             Item.width = 66;

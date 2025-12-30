@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.HeldProj.Melee;
-using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

@@ -9,7 +9,6 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Projectiles.DraedonsArsenal;

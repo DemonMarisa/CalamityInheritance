@@ -6,11 +6,13 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
-    public class MoltenAmputatorLegacy : RogueWeapon
+    public class MoltenAmputatorLegacy : RogueWeapon, ILocalizedModType
     {
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public const float Speed = 21f;
 
         public override void SetDefaults()

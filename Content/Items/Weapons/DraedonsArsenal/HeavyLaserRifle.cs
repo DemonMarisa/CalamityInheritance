@@ -22,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
     public class HeavyLaserRifle : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => "Items.Weapons.DraedonsArsenal";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.DraedonsArsenal";
         public override void SetDefaults()
         {
             Item.width = 84;

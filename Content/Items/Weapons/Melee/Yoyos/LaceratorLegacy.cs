@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Yoyos
 {
-    public class LaceratorLegacy : ModItem, ILocalizedModType
+    public class LaceratorLegacy : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Items.Weapons.Melee";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

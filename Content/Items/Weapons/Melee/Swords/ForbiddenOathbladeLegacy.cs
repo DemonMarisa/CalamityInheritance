@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         {
             CreateRecipe().
                 AddIngredient<BladecrestOathswordLegacy>().
-                AddIngredient<OldLordClaymoreLegacy>().
+                AddIngredient<OldLordOathswordLegacy>().
                 AddIngredient(ItemID.SoulofFright, 5).
                 AddTile(TileID.MythrilAnvil).
                 Register();

@@ -1,23 +1,24 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged
+namespace CalamityInheritance.Content.Projectiles.Ranged.Guns
 {
-    public class SepticSkewerHarpoonLegacy : GeneralDamageProj
+    public class SepticSkewerHarpoonLegacy : ModProjectile, ILocalizedModType
     {
-        public override ProjDamageType UseDamageClass => ProjDamageType.Ranged;
-        public override void ExSD()
+        public new string LocalizationCategory => "Content.Projectiles.Ranged";
+        public override void SetDefaults()
         {
             Projectile.width = 4;
             Projectile.height = 4;
+            Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
             Projectile.ignoreWater = true;
+            Projectile.DamageType = DamageClass.Ranged;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 harpoonPos.Normalize();
                 harpoonPos *= Main.rand.Next(45, 65) * 0.1f;
                 harpoonPos = harpoonPos.RotatedBy((Main.rand.NextDouble() - 0.5) * MathHelper.PiOver2);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, harpoonPos.X, harpoonPos.Y, ProjectileType<SepticSkewerBacteria>(), (int)(Projectile.damage * 0.175), Projectile.knockBack * 0.2f, Projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, harpoonPos.X, harpoonPos.Y, ModContent.ProjectileType<SepticSkewerBacteriaLegacy>(), (int)(Projectile.damage * 0.175), Projectile.knockBack * 0.2f, Projectile.owner, -10f, 0f);
             }
             if (player.dead)
             {
@@ -51,8 +52,24 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 return;
             }
             if (Projectile.alpha == 0)
-                player.ChangeDir((Projectile.Center.X > player.Center.X).ToDirectionInt());
-            Projectile.extraUpdates = 2 + (Projectile.ai[0] == 0f).ToInt();
+            {
+                if (Projectile.position.X + (float)(Projectile.width / 2) > player.position.X + (float)(player.width / 2))
+                {
+                    player.ChangeDir(1);
+                }
+                else
+                {
+                    player.ChangeDir(-1);
+                }
+            }
+            if (Projectile.ai[0] == 0f)
+            {
+                Projectile.extraUpdates = 2;
+            }
+            else
+            {
+                Projectile.extraUpdates = 3;
+            }
             Vector2 halfDist = Projectile.Center;
             float xDist = player.position.X + (float)(player.width / 2) - halfDist.X;
             float yDist = player.position.Y + (float)(player.height / 2) - halfDist.Y;

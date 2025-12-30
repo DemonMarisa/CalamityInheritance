@@ -6,3 +6,42 @@ PulseRifleOld: {
 		攻击附带目标最大生命值0.4%的伤害
 		'''
 }
+
+MountedScannerLegacy: {
+	DisplayName: 架式扫射机[Legacy]
+	Tooltip:
+		'''
+		在头顶召唤强大的扫描模块向附近的敌人发射激光
+		每个召唤物消耗1.25召唤栏
+		'''
+}
+
+GaussRifle: {
+	// DisplayName: Gauss Rifle
+	// Tooltip: ""
+}
+
+HeavyLaserRifle: {
+	// DisplayName: Heavy Laser Rifle
+	// Tooltip: ""
+}
+
+MatterModulator: {
+	// DisplayName: Matter Modulator
+	// Tooltip: ""
+}
+
+PulsePistolLegacy: {
+	// DisplayName: Pulse Pistol Legacy
+	// Tooltip: ""
+}
+
+Taser: {
+	// DisplayName: Taser
+	// Tooltip: ""
+}
+
+TrackingDisk: {
+	// DisplayName: Tracking Disk
+	// Tooltip: ""
+}

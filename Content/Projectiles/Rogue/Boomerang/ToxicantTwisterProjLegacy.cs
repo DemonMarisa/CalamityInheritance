@@ -2,12 +2,10 @@
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
 {
@@ -33,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
         {
             if (Projectile.Calamity().stealthStrike)
             {
-                if (Projectile.timeLeft % 20 == 0 && Main.myPlayer == Projectile.owner)
+                if (Projectile.timeLeft % 10 == 0 && Main.myPlayer == Projectile.owner)
                 {
                     for (int i = 0; i < 2; i++)
                         Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedByRandom(0.1f) * -0.6f, ProjectileType<ToxicantTwisterDustLegacy>(), (int)(Projectile.damage * 0.25), 0f, Projectile.owner);
@@ -135,7 +133,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
             target.AddBuff(BuffType<SulphuricPoisoning>(), 180);
             SoundEngine.PlaySound(SoundID.Item20, Projectile.position);
             for (int k = 0; k < 10; k++)
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, (int)CalamityDusts.SulphurousSeaAcid, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -144,7 +142,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
             target.AddBuff(BuffType<SulphuricPoisoning>(), 180);
             SoundEngine.PlaySound(SoundID.Item20, Projectile.position);
             for (int k = 0; k < 10; k++)
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, (int)CalamityDusts.SulphurousSeaAcid, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
         }
     }
 }

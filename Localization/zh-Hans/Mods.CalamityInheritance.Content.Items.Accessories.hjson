@@ -477,3 +477,8 @@ BurdenBreaker: {
 		有boss存活时失效
 		'''
 }
+
+RegenatorLegacy: {
+	// DisplayName: Regenator Legacy
+	// Tooltip: ""
+}

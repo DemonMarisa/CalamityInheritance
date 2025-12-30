@@ -132,6 +132,7 @@ namespace CalamityInheritance.CIPlayer
         public float LifeMaxPercentBoost = 0f;
         public bool RegenatorLegacy = false; // 再生护符
         public bool PlagueHive = false;// 瘟疫蜂巢
+        public bool CanUseOldLordDash = false;
         #region ResetEffects
         public override void ResetEffects()
         {

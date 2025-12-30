@@ -1,14 +1,15 @@
-﻿using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Potions;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Potions;
-using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -55,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
                 type = Utils.SelectRandom(Main.rand, new int[]
                 {
-                    ProjectileType<AstralStar>(),
+                    ProjectileType<AstralStarLegacy>(),
                     ProjectileID.StarCannonStar,
                     ProjectileID.SuperStar,
                     ProjectileType<FallenStarProj>()

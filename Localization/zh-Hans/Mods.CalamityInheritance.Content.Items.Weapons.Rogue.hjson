@@ -364,3 +364,38 @@ StepToolShadows: {
 		[c/D20103:TrueScarlet]:uhh....
 		'''
 }
+
+Eradicator_Rogue: {
+	// DisplayName: Eradicator_ Rogue
+	// Tooltip: ""
+}
+
+MoltenAmputatorLegacy: {
+	// DisplayName: Molten Amputator Legacy
+	// Tooltip: ""
+}
+
+ToxicantTwisterLegacy: {
+	// DisplayName: Toxicant Twister Legacy
+	// Tooltip: ""
+}
+
+ExorcismLegacy: {
+	// DisplayName: Exorcism Legacy
+	// Tooltip: ""
+}
+
+TheOldReaperLegacy: {
+	// DisplayName: The Old Reaper Legacy
+	// Tooltip: ""
+}
+
+NightsGaze: {
+	// DisplayName: Nights Gaze
+	// Tooltip: ""
+}
+
+TheReaperLegacy: {
+	// DisplayName: The Reaper Legacy
+	// Tooltip: ""
+}
