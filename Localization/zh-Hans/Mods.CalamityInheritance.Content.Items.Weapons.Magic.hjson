@@ -560,3 +560,18 @@ SunSpiriteStaffLegacy: {
 	// DisplayName: Sun Spirite Staff Legacy
 	// Tooltip: ""
 }
+
+ApoctosisArrayLegacy: {
+	// DisplayName: Apoctosis Array Legacy
+	// Tooltip: ""
+}
+
+IonBlasterLegacy: {
+	// DisplayName: Ion Blaster Legacy
+	// Tooltip: ""
+}
+
+SeethingDischargeLegacy: {
+	// DisplayName: Seething Discharge Legacy
+	// Tooltip: ""
+}

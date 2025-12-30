@@ -11,6 +11,16 @@
 	  <Optimize>False</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Texture\Projectiles\Magic\**" />
+	  <AdditionalFiles Remove="Texture\Projectiles\Ranged\**" />
+	  <Compile Remove="Texture\Projectiles\Magic\**" />
+	  <Compile Remove="Texture\Projectiles\Ranged\**" />
+	  <EmbeddedResource Remove="Texture\Projectiles\Magic\**" />
+	  <EmbeddedResource Remove="Texture\Projectiles\Ranged\**" />
+	  <None Remove="Texture\Projectiles\Magic\**" />
+	  <None Remove="Texture\Projectiles\Ranged\**" />
+	</ItemGroup>
+	<ItemGroup>
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Content.Items.Accessories.Melee.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Content.Items.Weapons.DraedonsArsenal.hjson" />
 	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Name.hjson" />
@@ -813,8 +823,6 @@
 	  <Folder Include="Content\Projectiles\Summon\ElementalHeart\" />
 	  <Folder Include="SceneEffect\" />
 	  <Folder Include="Texture\Items\Weapons\Ranged\" />
-	  <Folder Include="Texture\Projectiles\Magic\" />
-	  <Folder Include="Texture\Projectiles\Ranged\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Krafs.Publicizer" Version="2.3.0">

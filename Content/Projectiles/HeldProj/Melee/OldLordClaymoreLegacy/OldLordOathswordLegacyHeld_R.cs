@@ -87,8 +87,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
                 dust.scale = Main.rand.NextFloat(0.85f, 1.2f);
                 dust.noGravity = true;
             }
-            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AnimationState.Middle));
-            Offset = new Vector2(0, 12 * easedProgress);
+            float easedProgress = EasingHelper.EaseInCubic(animationHelper.GetProgress(AnimationState.Begin));
+            Offset = new Vector2(0, 8 * easedProgress);
         }
         public void HandleEndAni()
         {
@@ -108,6 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
                     dust.noGravity = true;
                 }
             }
+            Offset = Vector2.Lerp(Offset, new Vector2(0, 0), 0.2f);
         }
         public override bool PreDraw(ref Color lightColor)
         {

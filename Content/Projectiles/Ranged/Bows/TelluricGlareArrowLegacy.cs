@@ -1,7 +1,5 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Graphics.Primitives;
 using LAP.Assets.Effects;
 using LAP.Assets.TextureRegister;
 using LAP.Core.Enums;
@@ -10,15 +8,11 @@ using LAP.Core.Graphics.Primitives.Trail;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static tModPorter.ProgressUpdate;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
 {

@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
+using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Rogue;
@@ -30,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             Item.UseSound = SoundID.Item1;
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = RarityType<AbsoluteGreen>();
-            Item.shoot = ProjectileType<MoltenAmputatorProj>();
+            Item.shoot = ProjectileType<MoltenAmputatorProjLegacy>();
             Item.shootSpeed = Speed;
             Item.DamageType = RogueDamageClass.Instance;
         }
@@ -41,12 +42,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
         {
             if (player.Calamity().StealthStrikeAvailable())
             {
-                int ss = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                int ss = Projectile.NewProjectile(source, position, velocity * 2, type, damage, knockback, player.whoAmI);
                 if (ss.WithinBounds(Main.maxProjectiles))
                     Main.projectile[ss].Calamity().stealthStrike = true;
                 return false;
             }
-            return true;
+            else
+            {
+                Projectile.NewProjectile(source, position, velocity * 2, type, damage, knockback, player.whoAmI);
+            }
+            return false;
         }
     }
 }

@@ -21,8 +21,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Guns
             Item.damage = 120;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 22;
-            Item.useTime = 24;
-            Item.useAnimation = 24;
+            Item.useTime = 19;
+            Item.useAnimation = 19;
             Item.autoReuse = true;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;

@@ -176,3 +176,15 @@ TheEnforcer: {
 // OathswordFlame.DisplayName: Oathsword Flame
 // EntropicFlechetteLegacy.DisplayName: Entropic Flechette Legacy
 // OracleYoyoOrb.DisplayName: Oracle Yoyo Orb
+// EarthExtraProj.DisplayName: Earth Extra Proj
+// EarthProjLegacy.DisplayName: Earth Proj Legacy
+
+PrismaticBreakerLegacy: {
+	// DisplayName: Prismatic Breaker Legacy
+	// Tooltip: ""
+}
+
+// PrismaticBeamLegacy.DisplayName: Prismatic Beam Legacy
+// PrismaticWaveLegacy.DisplayName: Prismatic Wave Legacy
+// DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
+// MoltenAmputatorProjLegacy.DisplayName: Molten Amputator Proj Legacy

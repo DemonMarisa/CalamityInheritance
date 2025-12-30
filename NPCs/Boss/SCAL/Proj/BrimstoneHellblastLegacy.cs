@@ -33,7 +33,6 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            
             Projectile.width = 40;
             Projectile.height = 40;
             Projectile.hostile = true;

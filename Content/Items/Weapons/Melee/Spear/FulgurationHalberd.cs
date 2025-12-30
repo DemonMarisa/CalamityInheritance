@@ -13,6 +13,7 @@ using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityMod.Projectiles.Melee;
+using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {
@@ -37,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
             Item.shoot = ProjectileType<FulgurationHalberdProj>();
             Item.UseSound = SoundID.Item82;
             Item.shootSpeed = 12f;
+            Item.rare = ItemRarityID.Pink;
+            Item.value = CIShopValue.RarityPricePink;
         }
         public override bool AltFunctionUse(Player player)
         {
@@ -90,7 +93,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("AnyAdamantiteBar", 10).
+                AddRecipeGroup(LAPRecipeGroup.AnyAdamantiteBar, 10).
                 AddIngredient(ItemID.CrystalShard, 10).
                 AddTile(TileID.MythrilAnvil).
                 Register();

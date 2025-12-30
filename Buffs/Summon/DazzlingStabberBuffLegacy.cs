@@ -2,27 +2,23 @@
 using CalamityInheritance.Content.Projectiles.Summon;
 using LAP.Core.Utilities;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {
-    public class DazzlingStabberBuffLegacy : MinionBuffClass
+    public class DazzlingStabberBuffLegacy : ModBuff
     {
-        public override void UpdateMinion(Player player, CalamityInheritancePlayer usPlayer, ref int buffIndex)
+        public override bool RightClick(int buffIndex)
         {
-            if (!player.HasProj<DazzlingStabberProj>())
+            foreach (Projectile proj in Main.ActiveProjectiles)
             {
-                usPlayer.DazzlingStabberMinionLegacy = true;
+                if (proj.type == ProjectileType<DazzlingStabberProj>() && proj.owner == Main.myPlayer)
+                {
+                    proj.Kill();
+                    Main.player[proj.owner].ClearBuff(buffIndex);
+                }
             }
-            if (!usPlayer.DazzlingStabberMinionLegacy)
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
-            else
-            {
-                player.buffTime[buffIndex] = 18000;
-            }
-
+            return true;
         }
     }
 }

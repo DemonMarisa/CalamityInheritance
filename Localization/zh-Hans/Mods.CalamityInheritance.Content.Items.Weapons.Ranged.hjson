@@ -660,3 +660,23 @@ StarmadaLegacy: {
 	// DisplayName: Starmada Legacy
 	// Tooltip: ""
 }
+
+RubicoPrimeLegacy: {
+	// DisplayName: Rubico Prime Legacy
+	// Tooltip: ""
+}
+
+CosmicRainbowLegacy: {
+	// DisplayName: Cosmic Rainbow Legacy
+	// Tooltip: ""
+}
+
+TheStormLegacy: {
+	// DisplayName: The Storm Legacy
+	// Tooltip: ""
+}
+
+SulphuricAcidCannonLegacy: {
+	// DisplayName: Sulphuric Acid Cannon Legacy
+	// Tooltip: ""
+}

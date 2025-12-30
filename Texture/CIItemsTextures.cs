@@ -5,7 +5,6 @@ namespace CalamityInheritance.Texture
 {
     public partial class CITextureRegistry : ModSystem
     {
-
         public static string TexturesPath => "CalamityInheritance/Texture/Items/Weapons";
         public static string RoguePath => $"{TexturesPath}/Rogue";
         public static string MagicPath => $"{TexturesPath}/Magic";

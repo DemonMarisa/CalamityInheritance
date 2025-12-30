@@ -87,6 +87,7 @@ Mods: {
 			Melee: {
 				// AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
 				// CrescentMoonFlailLegacy.DisplayName: Crescent Moon Flail Legacy
+				// DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
 			}
 
 			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
@@ -106,6 +107,7 @@ Mods: {
 			// TeleportRift.DisplayName: Teleport Rift
 			// OldLordClaymoreLegacyProj.DisplayName: Old Lord Claymore Legacy Proj
 			// HolyFireLegacy.DisplayName: Holy Fire Legacy
+			// DaawnlightSpiritOriginMinionLegacy.DisplayName: Daawnlight Spirit Origin Minion Legacy
 		}
 
 		Content/Projectiles/Summon: {

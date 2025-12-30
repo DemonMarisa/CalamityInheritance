@@ -1,16 +1,10 @@
 ﻿using CalamityInheritance.Content.Projectiles.HeldProj.Ranged.Cannos;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -62,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Cannos
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<Starfleet>().
+                AddIngredient<StarfleetLegacy>().
                 AddIngredient<StarSputter>().
                 AddIngredient<ExodiumCluster>(15).
                 AddIngredient<CosmiliteBar>(8).

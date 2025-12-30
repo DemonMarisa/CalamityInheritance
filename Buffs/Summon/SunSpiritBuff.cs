@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Projectiles.Summon.Worms;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
 using System;
@@ -12,39 +13,23 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {
-    public class SunSpiritBuff : MinionBuffClass
+    public class SunSpiritBuff : ModBuff
     {
-        public override void UpdateMinion(Player player, CalamityInheritancePlayer usPlayer, ref int buffIndex)
+        public override bool RightClick(int buffIndex)
         {
-            if (player.HasProj<SunSpiritMinionLegacy>())
+            foreach (Projectile proj in Main.ActiveProjectiles)
             {
-                usPlayer.SunSpiritMinionLegacy = true;
+                if (proj.type == ProjectileType<SunSpiritMinionLegacy>() && proj.owner == Main.myPlayer)
+                {
+                    proj.Kill();
+                    Main.player[proj.owner].ClearBuff(buffIndex);
+                }
             }
-            if (!usPlayer.SunSpiritMinionLegacy)
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
-            else
-            {
-                player.buffTime[buffIndex] = 18000;
-            }
+            return true;
         }
-    }
-    public abstract class MinionBuffClass : ModBuff
-    {
-        public override void SetStaticDefaults()
-        {
-            Main.buffNoTimeDisplay[Type] = true;
-            Main.buffNoSave[Type] = true;
-            ExSSD();
-        }
-        public virtual void ExSSD() { }
         public override void Update(Player player, ref int buffIndex)
         {
-            UpdateMinion(player, player.CIMod(), ref buffIndex);
+            player.buffTime[buffIndex] = 2;
         }
-        public virtual void UpdateMinion(Player player, CalamityInheritancePlayer usPlayer, ref int buffIndex) { }
-
     }
 }

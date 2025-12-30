@@ -205,319 +205,6 @@ Configs: {
 		}
 	}
 
-	CIRespriteConfig: {
-		SkullmasherResprite: {
-			Label: "[i:CalamityInheritance/Skullmasher]Skullmasher Resprite"
-			Tooltip: Determines sprite style of Skullmasher
-		}
-
-		EtherealTalismancTexture: {
-			Label: "[i:CalamityInheritance/AncientEtherealTalisman]Ethereal Talisman Resprite"
-			Tooltip: Determines sprite style of Ethereal Talisman
-		}
-
-		RampartofDeitiesTexture: {
-			Label: "[i:CalamityInheritance/CIRampartofDeities]Rampart of Deities Resprite"
-			Tooltip: Determines sprite style of Rampart of Deities Legacy
-		}
-
-		ArkofCosmosTexture: {
-			Label: "[i:CalamityInheritance/ArkoftheCosmosold]Ark of the Cosmos Legacy Resprite"
-			Tooltip: Determines sprite style of Ark of the Cosmos Legacy
-		}
-
-		SetAllLegacySprite: {
-			Label: "[i:CalamityInheritance/Death]All Legacy Sprite Setting"
-			Tooltip: Changes all sprites of mod item to the sprites style of 1.4.5.7 version
-		}
-
-		WulfumTexture: {
-			Label: "[i:CalamityInheritance/WulfrumPickaxe]Wulfum Texture"
-			Tooltip: Determines sprite style of legacy Wulfrum Tools and Weapons
-		}
-
-		Headers: {
-			Texture: Sprites
-			Accessories: Accessories Header
-			Weapons: Weapons Header
-			Misc: Misc Header
-			Special: Special Header
-		}
-
-		DisplayName: Legacy Sprite
-
-		P90Resprite: {
-			Label: "[i:CalamityInheritance/P90Legacy]P90 Resprite"
-			Tooltip: Determines sprite style of P90 Legacy
-		}
-
-		GodSlayerKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueEmpyreanKnives]Empyrean Knives Resprite"
-			Tooltip: Determines sprite style of Empyrean Knives Legacy Rogue
-		}
-
-		ShadowspecKnivesResprite: {
-			Label: "[i:CalamityInheritance/RogueShadowspecKnives]Illustrious Knives Resprite"
-			Tooltip: Determines sprite style of Illustrious Knives Legacy Rogue
-		}
-
-		TriactisHammerResprite: {
-			Label: "[i:CalamityInheritance/RogueTriactisHammer]Triactis' Hammer Resprite"
-			Tooltip: Determines sprite style of Triactis' Hammer
-		}
-
-		PwnagehammerResprite: {
-			Label: "[i:CalamityInheritance/RoguePwnagehammer]Pwnagehammer Resprite"
-			Tooltip: Determines sprite style of Pwnagehammer
-		}
-
-		FateGirlSprite: {
-			Label: "[i:CalamityMod/DaawnlightSpiritOrigin]Daawnlight Spirit Origin Minion Resprite"
-			Tooltip: Determines sprite style of Daawnlight Spirite Origin Minion
-		}
-
-		StellarContemptResprite: {
-			Label: "[i:CalamityInheritance/RogueStellarContempt]Stellar Contempt Resprite"
-			Tooltip: Determines sprite style of Stellar Contempt
-		}
-
-		HeliumFlashResprite: {
-			Label: "[i:CalamityInheritance/HeliumFlashLegacy]Helium Flash Resprite"
-			Tooltip: Determines sprite style of Helium Flash Legacy
-		}
-
-		DrataliornusResprite: {
-			Label: "[i:CalamityInheritance/DrataliornusLegacy]Drataliornus Resprite"
-			Tooltip: Determines sprite style of Drataliornus
-		}
-
-		PhantomHeartResprite: {
-			Tooltip: Determines sprite style of Phantom Heart
-			Label: "[i:CalamityMod/PhantomHeart]Phantom Heart Resprite"
-		}
-
-		AngelTreadsResprite: {
-			Label: "[i:CalamityMod/AngelTreads]Angel Treads Resprite"
-			Tooltip: Determines sprite style of Angel Treads
-		}
-
-		LunarBootsResprite: {
-			Label: "[i:CalamityInheritance/FasterLunarTracers]Seraph Tracers Legacy Resprite"
-			Tooltip: Determines sprite style of Seraph Tracers Legacy
-		}
-
-		MOABResprite: {
-			Label: "[i:CalamityMod/MOAB]MOAB Resprite"
-			Tooltip: Determines sprite style of MOAB
-		}
-
-		EtherealCoreResprite: {
-			Tooltip: Determines sprite style of Ethereal Core
-			Label: "[i:CalamityMod/EtherealCore]Ethereal Core Resprite"
-		}
-
-		CometShardResprite: {
-			Tooltip: Determines sprite style of Comet Shard
-			Label: "[i:CalamityMod/CometShard]Comet Shard Resprite"
-		}
-
-		DragonfruitResprite: {
-			Tooltip: Determines sprite style of Dragonfruit
-			Label: "[i:CalamityMod/Dragonfruit]Dragonfruit Resprite"
-		}
-
-		ElderberryResprite: {
-			Tooltip: Determines sprite style of Elderberry
-			Label: "[i:CalamityMod/Elderberry]Elderberry Resprite"
-		}
-
-		MiracleFruitResprite: {
-			Tooltip: Determines sprite style of Miracle Fruit
-			Label: "[i:CalamityMod/MiracleFruit]Miracle Fruit Resprite"
-		}
-
-		BloodOrangeResprite: {
-			Tooltip: Determines sprite style of Blood Orange
-			Label: "[i:CalamityMod/BloodOrange]Blood Orange Resprite"
-		}
-
-		TrueNightShivResprite: {
-			Tooltip: Determines sprite style of True Nights Stabber
-			Label: "[i:CalamityInheritance/TrueNightsStabber]True Nights Stabber Resprite"
-		}
-
-		NightShivResprite: {
-			Tooltip: Determines sprite style of Nights Stabber
-			Label: "[i:CalamityInheritance/NightsStabber]Nights Stabber Resprite"
-		}
-
-		TrueCaliburShivResprite: {
-			Tooltip: Determines sprite style of True Excalibur Shortsword
-			Label: "[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword Resprite"
-		}
-
-		CaliburShivResprite: {
-			Tooltip: Determines sprite style of Excalibur Shortsword
-			Label: "[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword Resprite"
-		}
-
-		ElementalShivResprite: {
-			Tooltip: Determines sprite style of Elemental Shiv
-			Label: "[i:CalamityInheritance/ElementalShivold]Elemental Shiv Resprite"
-		}
-
-		GalileoResprite: {
-			Tooltip: Determines sprite style of Galileo
-			Label: "[i:CalamityMod/GalileoGladius]Galileo Gladius Resprite"
-		}
-
-		CrescentMoonResprite: {
-			Tooltip: Determines sprite style of Crescent Moon
-			Label: "[i:CalamityMod/CrescentMoon]Crescent Moon Resprite"
-		}
-
-		AegisResprite: {
-			Tooltip: Determines sprite style of Aegis Blade
-			Label: "[i:CalamityMod/AegisBlade]Aegis Blade Resprite"
-		}
-
-		AllElemental: {
-			Label: "[i:CalamityInheritance/ElementalShivold]All Elemental Items Resprite"
-			Tooltip:
-				'''
-				Determines all sprite styles of Elemental Items.
-				Notes that to distinguish from the existing items in Calamity, this options will
-				prioritize switching the Legacy Elemental Items already present within the mod
-				Sprite List:
-				[i:CalamityInheritance/ElementalShivold]Elemental Shiv Legacy
-				[i:CalamityMod/ElementalLance]Elemental Lance
-				[i:CalamityInheritance/MeleeElementalDisk]Elemental Disk Legacy Melee
-				[i:CalamityMod/ElementalBlaster]Elemental Blaster
-				[i:CalamityInheritance/ElementalRayold]Elemental Ray Revamped
-				[i:CalamityInheritance/ElementalGauntletold]Elemental Gauntlet Legacy
-				'''
-		}
-
-		AllShivs: {
-			Label: "[i:CalamityInheritance/FlameburstShortsword]All Shivs Resprite"
-			Tooltip:
-				'''
-				Determines sprite styles of all shivs mod and Calamity present
-				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
-				Sprite list:
-				[i:CalamityInheritance/AncientShiv]Ancient Shiv
-				[i:CalamityInheritance/FlameburstShortsword]Flameburst Shortsword
-				[i:CalamityInheritance/EutrophicShank]Eutrophic Shank
-				[i:CalamityInheritance/LeechingDagger]Leeching Dagger
-				[i:CalamityInheritance/NightsStabber]Night's Stabber
-				[i:CalamityInheritance/TrueNightsStabber]True Night's Stabber
-				[i:CalamityInheritance/ExcaliburShortsword]Excalibur Shortsword
-				[i:CalamityInheritance/TrueExcaliburShortsword]True Excalibur Shortsword
-				[i:CalamityMod/GalileoGladius]Galileo Gladius
-				'''
-		}
-
-		AllTerra: {
-			Label: "[i:CalamityMod/LivingShard]All Living Shard Items Resprite"
-			Tooltip:
-				'''
-				Determines sprite styles of all weapons made by Living Shards Calamity present
-				Note that for the taste of distinguish, this option doesn't change the same item between Calamity and this mod
-				Sprite list:
-				[i:CalamityMod/BotanicPiercer]Botanic Piercer/ Terra Lance
-				[i:CalamityMod/VernalBolter]Vernal Bolter / Cosmic Bow
-				[i:CalamityMod/PlantationStaff]Plantation Staff/ Plantation Staff
-				[i:CalamityMod/SproutingArrow]Sprouting Arrow / Terra Arrow
-				[i:CalamityMod/DryadsTear]Dryad's Tear / Terra Bullet
-				'''
-		}
-
-		PrismallineResprite: {
-			Label: "[i:CalamityMod/Prismalline]Prismalline Resprite"
-			Tooltip: Determines sprite style of Prismalline
-		}
-
-		RadiantStarResprite: {
-			Label: "[i:CalamityMod/RadiantStar]Radiant Star Resprite"
-			Tooltip: Determines sprite style of Radiant Star
-		}
-
-		ShatteredSunResprite: {
-			Label: "[i:CalamityMod/ShatteredSun]Shattered Sun Resprite"
-			Tooltip: Determines sprite style of Shattered Sun
-		}
-
-		FuckAllExo: {
-			Label: "[i:CalamityMod/Exoblade]Miracle Weapon Resprite"
-			Tooltip:
-				'''
-				Determines sprite style of some Miracle weapon
-				This need to reloaded the mod due to using hook
-				Currently only resprite [i:CalamityMod/SubsumingVortex]Subsuming Vortex
-				'''
-		}
-
-		BrinyBaronResprite: {
-			Label: "[i:CalamityInheritance/DukeLegendary]Briny Baron Legendary Resprite"
-			Tooltip: Determines sprite style of Briny Baron Legendary
-		}
-
-		PlantBowResprite: {
-			Label: "[i:CalamityInheritance/PlanteraLegendary]Blossom Flux Legendary Resprite"
-			Tooltip: Determines sprite style of Blossom Flux Legendary
-		}
-
-		Vesu: {
-			Label: "[i:CalamityInheritance/RavagerLegendary]Vesuvius Legendary Resprite"
-			Tooltip: Determines sprite style of Vesuvius Legendary
-		}
-
-		SHPC: {
-			Label: "[i:CalamityInheritance/DestroyerLegendary]SHPC Legendary Resprite"
-			Tooltip: Determines sprite style of SHPC Legendary
-		}
-
-		Mala: {
-			Label: "[i:CalamityInheritance/PBGLegendary]Malatche Legendary Resprite"
-			Tooltip: Determines sprite style of Malatche Legendary
-		}
-
-		MirrorBlade: {
-			Label: "[i:CalamityMod/MirrorBlade]Mirror Blade Resprite"
-			Tooltip: Determines sprite style of Mirror Blade
-		}
-
-		PlasmaRod: {
-			Label: "[i:CalamityMod/PlasmaRod]Plasma Rod Resprite"
-			Tooltip: Determines sprite style of Plasma Rod
-		}
-
-		StaffofBlushie: {
-			Label: "[i:CalamityMod/StaffofBlushie]Staff of Blushie Resprite"
-			Tooltip: Determines sprite style of Staff of Blushie
-		}
-
-		ScarletDevil: {
-			Label: "[i:CalamityMod/ScarletDevil]Scarlet Devil Resprite"
-			Tooltip: Determines sprite style of Scarlet Devil
-		}
-
-		SomaPrime: {
-			Label: "[i:CalamityInheritance/SomaPrimeOld]Soma Prime[Legacy] Resprite"
-			Tooltip: Determines sprite style of Soma Prime[Legacy]
-		}
-
-		FrigidBulwarkResprite: {
-			Label: "[i:CalamityInheritance/FrigidBulwark]Frigid Bulwark Resprite"
-			Tooltip: Determines sprite style of Frigid Bulwark[Legacy]
-		}
-
-		FrostBarrierResprite: {
-			Label: "[i:CalamityMod/FrostBarrier]Frost Barrier Resprite"
-			Tooltip: Determines sprite style of Frost Barrier[Legacy]
-		}
-	}
-
 	CIServerConfig: {
 		DisplayName: Server Config
 		Headers.GeneralGamePlay: General Gameplay
@@ -643,6 +330,45 @@ Configs: {
 
 		CrateLootsBack: {
 			Label: Crate Loots Back
+			Tooltip: ""
+		}
+	}
+
+	CIRespriteConfig: {
+		DisplayName: C I Resprite Config
+
+		BloodOrange: {
+			Label: Blood Orange
+			Tooltip: ""
+		}
+
+		MiracleFruit: {
+			Label: Miracle Fruit
+			Tooltip: ""
+		}
+
+		Elderberry: {
+			Label: Elderberry
+			Tooltip: ""
+		}
+
+		Dragonfruit: {
+			Label: Dragonfruit
+			Tooltip: ""
+		}
+
+		CometShard: {
+			Label: Comet Shard
+			Tooltip: ""
+		}
+
+		EtherealCore: {
+			Label: Ethereal Core
+			Tooltip: ""
+		}
+
+		PhantomHeart: {
+			Label: Phantom Heart
 			Tooltip: ""
 		}
 	}

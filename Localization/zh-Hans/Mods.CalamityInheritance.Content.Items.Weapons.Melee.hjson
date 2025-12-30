@@ -707,3 +707,8 @@ OldLordOathswordLegacy: {
 	// DisplayName: Old Lord Oathsword Legacy
 	// Tooltip: ""
 }
+
+EarthLegacy: {
+	// DisplayName: Earth Legacy
+	// Tooltip: ""
+}

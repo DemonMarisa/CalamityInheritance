@@ -133,6 +133,9 @@ namespace CalamityInheritance.CIPlayer
         public bool RegenatorLegacy = false; // 再生护符
         public bool PlagueHive = false;// 瘟疫蜂巢
         public bool CanUseOldLordDash = false;
+        public bool CanHaveDaawnlightLegacy = false;
+        public bool AngelTreadsLegacy = false;
+        public int hellbornBoost = 0;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -167,6 +170,10 @@ namespace CalamityInheritance.CIPlayer
             StoredDamage = -1;
             RegenatorLegacy = false;// 再生护符
             PlagueHive = false;// 瘟疫蜂巢
+            CanHaveDaawnlightLegacy = false;
+            AngelTreadsLegacy = false;
+            if (hellbornBoost > 0)
+                hellbornBoost--;
             if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
         }

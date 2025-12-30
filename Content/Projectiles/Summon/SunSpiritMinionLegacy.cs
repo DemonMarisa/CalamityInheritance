@@ -1,13 +1,6 @@
 ﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,18 +30,10 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void AI()
         {
-            Owner.AddBuff<SunSpiritBuff>(3600);
-            bool correctMinion = Projectile.type == ProjectileType<SunSpiritMinionLegacy>();
-            if (correctMinion)
+            Owner.AddBuff<SolarGodBuffLegacy>(2);
+            if (Owner.dead)
             {
-                if (Owner.dead)
-                {
-                    UsPlayer.SunSpiritMinionLegacy = false;
-                }
-                if (UsPlayer.SunSpiritMinionLegacy)
-                {
-                    Projectile.timeLeft = 2;
-                }
+                Projectile.Kill();
             }
             Projectile.Center = Owner.Center + Vector2.UnitY * (Owner.gfxOffY - 60f);
             if (Owner.gravDir == -1f)
@@ -118,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
                 if (foundTarget)
                 {
-                    float shootSpeed = 30f;
+                    float shootSpeed = 15f;
                     Vector2 source = Projectile.Center;
                     Vector2 velocity = targetPos - source;
                     velocity.Normalize();

@@ -289,3 +289,8 @@ DazzlingStabberBuffLegacy: {
 	// DisplayName: Dazzling Stabber Buff Legacy
 	// Description: Mods.CalamityInheritance.Buffs.DazzlingStabberBuffLegacy.Description
 }
+
+DaawnlightSpiritOriginBuffLegacy: {
+	// DisplayName: Daawnlight Spirit Origin Buff Legacy
+	// Description: Mods.CalamityInheritance.Buffs.DaawnlightSpiritOriginBuffLegacy.Description
+}

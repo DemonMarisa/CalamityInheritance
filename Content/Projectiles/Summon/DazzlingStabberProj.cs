@@ -45,6 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             Lighting.AddLight(Projectile.Center, Color.White.ToVector3());
 
+
             ApplyPlayerBuffs();
             UpdateFrames();
 
@@ -58,14 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
 
         public void ApplyPlayerBuffs()
         {
-            Owner.AddBuff(BuffType<DazzlingStabberBuffLegacy>(), 3600);
-            if (Projectile.type == ProjectileType<DazzlingStabberProj>())
-            {
-                if (Owner.dead)
-                    Owner.CIMod().DazzlingStabberMinionLegacy = false;
-                if (Owner.CIMod().DazzlingStabberMinionLegacy)
-                    Projectile.timeLeft = 2;
-            }
+            Owner.AddBuff(BuffType<DazzlingStabberBuffLegacy>(), 2);
         }
 
         public void UpdateFrames()

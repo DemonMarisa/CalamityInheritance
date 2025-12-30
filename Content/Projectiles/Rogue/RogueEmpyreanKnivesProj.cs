@@ -89,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ProjectileType<StandardHealProj>(), -1);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ProjectileType<StandardHealProj>(), Main.rand.Next(1, 3));
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -98,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
     }

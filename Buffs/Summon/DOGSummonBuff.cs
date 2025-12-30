@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Summon.Worms;
-using CalamityMod.CalPlayer;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -17,9 +16,10 @@ namespace CalamityInheritance.Buffs.Summon
         {
             foreach(Projectile proj in Main.ActiveProjectiles)
             {
-                if (proj.type == ModContent.ProjectileType<DOGworm>() && proj.owner == Main.myPlayer)
+                if (proj.type == ProjectileType<DOGworm>() && proj.owner == Main.myPlayer)
                 {
                     proj.Kill();
+                    Main.player[proj.owner].ClearBuff(buffIndex);
                 }
             }
             return true;

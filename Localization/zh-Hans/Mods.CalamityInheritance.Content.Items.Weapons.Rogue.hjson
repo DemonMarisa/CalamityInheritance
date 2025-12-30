@@ -399,3 +399,8 @@ TheReaperLegacy: {
 	// DisplayName: The Reaper Legacy
 	// Tooltip: ""
 }
+
+SeekingScorcherLegacy: {
+	// DisplayName: Seeking Scorcher Legacy
+	// Tooltip: ""
+}

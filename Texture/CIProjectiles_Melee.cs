@@ -1,10 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
-using LAP.Assets.TextureRegister;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture
@@ -21,6 +15,9 @@ namespace CalamityInheritance.Texture
         public static Tex2DWithPath EntropicFlechette1 { get; private set; }
         public static Tex2DWithPath EntropicFlechette2 { get; private set; }
         public static Tex2DWithPath EntropicFlechette3 { get; private set; }
+        public static Tex2DWithPath Earth1 { get; private set; }
+        public static Tex2DWithPath Earth2 { get; private set; }
+        public static Tex2DWithPath Earth3 { get; private set; }
         public static void LoadMeleeProjTex()
         {
             ExcelsusBlue = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/ExcelsusBlue");
@@ -33,6 +30,9 @@ namespace CalamityInheritance.Texture
             EntropicFlechette1 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/EntropicFlechette1");
             EntropicFlechette2 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/EntropicFlechette2");
             EntropicFlechette3 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/EntropicFlechette3");
+            Earth1 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/Earth1");
+            Earth2 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/Earth2");
+            Earth3 = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Melee/Earth3");
         }
         public static void UnLoadMeleeProjTex()
         {
@@ -46,6 +46,9 @@ namespace CalamityInheritance.Texture
             EntropicFlechette1 = null;
             EntropicFlechette2 = null;
             EntropicFlechette3 = null;
+            Earth1 = null;
+            Earth2 = null;
+            Earth3 = null;
         }
     }
 }

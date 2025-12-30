@@ -16,8 +16,6 @@ namespace CalamityInheritance.CIPlayer
         public bool sarosPossessionLegacy = false;
         public bool FungalClumpLegacySummonBuff = false;
         public bool FungalClumpLegacySummon = false;
-        public bool SunSpiritMinionLegacy = false;
-        public bool DazzlingStabberMinionLegacy = false;
         #endregion
         public void ReSetSummon()
         {
@@ -34,8 +32,6 @@ namespace CalamityInheritance.CIPlayer
             sarosPossessionLegacy = false;
             FungalClumpLegacySummon = false;
             FungalClumpLegacySummonBuff = false;
-            SunSpiritMinionLegacy = false;
-            DazzlingStabberMinionLegacy = false;
             #endregion
         }
     } 

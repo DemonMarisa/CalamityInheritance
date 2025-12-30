@@ -479,3 +479,8 @@ RegenatorLegacy: {
 	DisplayName: Regenator Legacy
 	Tooltip: ""
 }
+
+AngelTreadsLegacy: {
+	DisplayName: Angel Treads Legacy
+	Tooltip: ""
+}

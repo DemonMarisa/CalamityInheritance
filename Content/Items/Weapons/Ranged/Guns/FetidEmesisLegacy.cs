@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
