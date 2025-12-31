@@ -18,11 +18,9 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             itemRare:ItemRarityID.Purple,
             itemValue:CIShopValue.RarityPricePurple
         );
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().BeltOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.autoJump = true;
-            player.CIMod().BeltLegacyOn = true;
             player.jumpSpeedBoost += 1.6f;
             player.moveSpeed += 0.1f; //斯塔提斯腰带怎么少了10%移速
             player.extraFall += 35;

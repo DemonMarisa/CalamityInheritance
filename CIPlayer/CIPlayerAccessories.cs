@@ -5,10 +5,7 @@ namespace CalamityInheritance.CIPlayer
     public partial class CalamityInheritancePlayer : ModPlayer
     {
         #region 饰品相关
-        //cnm红月。
-        public bool FUCKYOUREDMOON = false;
         public bool IfGodHand = false;
-        public bool IfCalamitasSigile = false;
         public bool EtherealTalismanLegacy = false;
         public bool ElemQuiver = false;
         public bool CoreOfTheBloodGod = false;
@@ -45,7 +42,6 @@ namespace CalamityInheritance.CIPlayer
         public bool anyShield = false; //是否有任何护盾
         public bool RampartOfDeitiesStar = false;
         public bool ReaperToothNecklaceLegacyEquipped = false;
-        public bool ReaperToothNecklaceEquipper = false;
         //两个肥鸡
         public bool GodlySons = false;
         public bool EmpressBooster = false;
@@ -56,29 +52,12 @@ namespace CalamityInheritance.CIPlayer
         public bool SMarnite = false;
         public bool SMushroom = false;
         public bool AeroStonePower = false;
-        public bool IsWearingBloodyScarf = false;
-        public bool IsWearingElemQuiverCal = false;
         public bool OverloadManaPower = false;
         public bool AmalgamLegacy = false;
         // 寒霜壁垒
         public bool FrigidBulwark = false;
         //日食魔镜
         public bool EMirror = false;
-        #region 削弱同类职业饰品堆叠
-        public bool NerfFinalSummonAcc = false;
-        public bool YGiftOn = false;
-        public bool YGiftLegacyOn = false;
-        public bool AegisOn = false;
-        public bool AegisLegacyOn = false;
-        public bool ValorOn = false;
-        public bool ValorLegacyOn = false;
-        public bool SashOn = false;
-        public bool SashLegacyOn = false;
-        public bool BeltOn = false;
-        public bool BeltLegacyOn = false;
-        public bool ElysianOn = false;
-        public bool ElysianLegacyOn = false;
-        #endregion
         #endregion
         /// <summary>
         /// 这个是在MaxLife后边的
@@ -86,14 +65,12 @@ namespace CalamityInheritance.CIPlayer
         public void ResetAccessories()
         {
             #region Accessories
-            FUCKYOUREDMOON = false;
             BuffExoApolste = false;
             IfCloneHtting = false; //克隆大锤子是否正在攻击
             EtherealTalismanLegacy = false;
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
-            IfCalamitasSigile = false;
             
             SMushroom = false;
             SMarble = false;
@@ -140,26 +117,11 @@ namespace CalamityInheritance.CIPlayer
             DraedonsHeartLegacyStats = false;
             EmpressBooster = false;
             AeroStonePower = false;
-            IsWearingBloodyScarf = false;
-            IsWearingElemQuiverCal = false;
             anyShield = false; //是否有任何护盾
             EMirror = false;
             OverloadManaPower = false;
             AmalgamLegacy = false;
-            AegisLegacyOn = false;
-            AegisOn = false;
-            ValorOn = false;
-            ValorLegacyOn = false;
-            ElysianOn = false;
-            ElysianLegacyOn = false;
-            SashOn = false;
-            SashLegacyOn = false;
-            BeltLegacyOn = false;
-            BeltOn = false;
-            ReaperToothNecklaceEquipper = false;
             ReaperToothNecklaceLegacyEquipped = false;
-            YGiftLegacyOn = false;
-            YGiftOn = false;
             FrigidBulwark = false;
             #endregion
 
@@ -167,7 +129,6 @@ namespace CalamityInheritance.CIPlayer
         public void UpdateDeadAccessories()
         {
             AnkhImmnue = false;
-            FUCKYOUREDMOON = false;
             SolarShieldEndurence = false;
             SMarbleSword = false;
             ElysianAegis = false;
@@ -190,8 +151,6 @@ namespace CalamityInheritance.CIPlayer
             ElysianAegisImmnue = false;
             EmpressBooster = false;
             AeroStonePower = false;
-            IsWearingBloodyScarf = false;
-            IsWearingElemQuiverCal = false;
             anyShield = false;
             OverloadManaPower = false;
             GodlySons = false;

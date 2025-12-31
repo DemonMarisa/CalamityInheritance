@@ -18,7 +18,6 @@ namespace CalamityInheritance.Content.Items.Accessories
             itemValue:CIShopValue.RarityPriceAbsoluteGreen
         );
 
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ReaperToothNecklaceEquipper;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetDamage<GenericDamageClass>() += 0.20f;

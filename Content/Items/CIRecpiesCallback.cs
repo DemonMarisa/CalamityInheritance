@@ -2,8 +2,6 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod.Items.Materials;
 using Terraria;
-using Terraria.ModLoader;
-
 namespace CalamityInheritance.Content.Items
 {
     public static class CIRecipesCallback

@@ -136,6 +136,7 @@ namespace CalamityInheritance.CIPlayer
         public bool CanHaveDaawnlightLegacy = false;
         public bool AngelTreadsLegacy = false;
         public int hellbornBoost = 0;
+        public bool LuxorsGiftLegacy = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -176,6 +177,7 @@ namespace CalamityInheritance.CIPlayer
                 hellbornBoost--;
             if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
+            LuxorsGiftLegacy = false;
         }
 
         #endregion

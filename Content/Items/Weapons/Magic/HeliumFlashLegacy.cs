@@ -1,5 +1,5 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
@@ -7,6 +7,7 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -98,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             //将氦闪的时期转移至龙前
             CreateRecipe().
-                AddIngredient<VenusianTrident>().
+                AddIngredient<VenusianTridentLegacy>().
                 AddIngredient<LashesofChaos>().
                 AddIngredient<ForbiddenSun>().
                 AddIngredient(ItemID.FragmentSolar, 20).

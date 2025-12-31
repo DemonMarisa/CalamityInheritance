@@ -133,3 +133,8 @@ StaffofDOG: {
 	// DisplayName: Staffof D O G
 	// Tooltip: ""
 }
+
+VengefulSunStaffLegacy: {
+	// DisplayName: Vengeful Sun Staff Legacy
+	// Tooltip: ""
+}

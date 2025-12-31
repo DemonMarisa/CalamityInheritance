@@ -26,12 +26,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             itemValue:CIShopValue.RarityPriceLime,
             itemDefense:16
         );
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ValorOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = AsgardsValorDashold.ID;
-            usPlayer.ValorLegacyOn = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
             player.noKnockback = true;

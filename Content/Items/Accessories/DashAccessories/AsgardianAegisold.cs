@@ -32,11 +32,9 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:32
         );
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().AegisOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            usPlayer.AegisLegacyOn = true;
             usPlayer.CIDashID = AsgardianAegisDashold.ID;
             usPlayer.ElysianAegis = true;
             player.Calamity().DashID = string.Empty;

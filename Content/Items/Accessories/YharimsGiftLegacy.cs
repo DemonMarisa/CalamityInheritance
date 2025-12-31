@@ -24,11 +24,9 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             Type.ShimmerEach<YharimsGift>();
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().YGiftOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var source = player.GetSource_Accessory(Item);
-            player.CIMod().YGiftLegacyOn = true;
             player.moveSpeed += 0.15f;
             player.GetDamage<GenericDamageClass>() += 0.15f;
             if (!player.StandingStill())

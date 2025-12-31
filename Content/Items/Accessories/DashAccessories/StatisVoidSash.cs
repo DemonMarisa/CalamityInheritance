@@ -29,11 +29,9 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(8, 3));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().SashOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer modPlayer1 = player.CIMod();
-            modPlayer1.SashLegacyOn = true;
             player.GetDamage<GenericDamageClass>() += 0.10f;
             player.jumpSpeedBoost += 1.6f;
             player.moveSpeed += 0.10f;

@@ -102,6 +102,7 @@ Mods: {
 			Summon: {
 				// DOGLaser.DisplayName: D O G Laser
 				// SarosMicrosunLegacy.DisplayName: Saros Microsun Legacy
+				// SolarGodLegacy.DisplayName: Solar God Legacy
 			}
 
 			// TeleportRift.DisplayName: Teleport Rift

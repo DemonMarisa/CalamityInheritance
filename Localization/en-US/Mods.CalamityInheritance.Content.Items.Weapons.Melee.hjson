@@ -718,3 +718,8 @@ EarthLegacy: {
 	DisplayName: Earth Legacy
 	Tooltip: ""
 }
+
+EutrophicScimitar: {
+	DisplayName: Eutrophic Scimitar
+	Tooltip: ""
+}

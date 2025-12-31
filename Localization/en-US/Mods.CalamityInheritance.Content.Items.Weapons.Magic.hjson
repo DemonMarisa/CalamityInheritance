@@ -545,3 +545,18 @@ SeethingDischargeLegacy: {
 	DisplayName: Seething Discharge Legacy
 	Tooltip: ""
 }
+
+LazharLegacy: {
+	DisplayName: Lazhar Legacy
+	Tooltip: ""
+}
+
+PlasmaRifleLegacy: {
+	DisplayName: Plasma Rifle Legacy
+	Tooltip: ""
+}
+
+ClamorNoctusLegacy: {
+	DisplayName: Clamor Noctus Legacy
+	Tooltip: ""
+}

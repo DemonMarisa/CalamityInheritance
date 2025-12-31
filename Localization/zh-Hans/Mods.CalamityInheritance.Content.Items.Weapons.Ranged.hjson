@@ -680,3 +680,13 @@ SulphuricAcidCannonLegacy: {
 	// DisplayName: Sulphuric Acid Cannon Legacy
 	// Tooltip: ""
 }
+
+StarfleetLegacy: {
+	// DisplayName: Starfleet Legacy
+	// Tooltip: ""
+}
+
+HellbornLegacy: {
+	// DisplayName: Hellborn Legacy
+	// Tooltip: ""
+}

@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.SummonItems;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Content.Projectiles.Typeless.LuxorsGiftLegacy;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.UI;
 using CalamityInheritance.Utilities;
@@ -17,10 +16,17 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.SummonItems;
 using CalamityMod.NPCs.OldDuke;
+using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Ranged;
+using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -33,32 +39,10 @@ namespace CalamityInheritance.Content.Items
     public partial class CalamityInheritanceGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            Player player = Main.LocalPlayer;
-            bool type = player.HeldItem.type == ItemType<R99>();
-            string r99TypeName = GetInstance<R99>().GetType().Name;
-            if (item.type is ItemID.ChlorophyteBullet && type)
-            {
-                string path = CIFunction.GetTextValue($"Content.Items.Weapons.Ranged.{r99TypeName}.EnhancedBullet");
-                FuckThisTooltipAndReplace(tooltips, path);
-            }
-        }
-        /// <summary>
-        /// 用替换的方法完全重写Tooltip
-        /// </summary>
-        /// <param name="tooltips"></param>
-        /// <param name="replacedTextPath"></param>
-        public static void FuckThisTooltipAndReplace(List<TooltipLine> tooltips, string replacedTextPath)
-        {
-            tooltips.RemoveAll((line) => line.Mod == "Terraria" && line.Name != "Tooltip0" && line.Name.StartsWith("Tooltip"));
-            TooltipLine getTooltip = tooltips.FirstOrDefault((x) => x.Name == "Tooltip0" && x.Mod == "Terraria");
-            if (getTooltip is not null)
-                getTooltip.Text = Language.GetTextValue(replacedTextPath);
-        }
         public override void UpdateInventory(Item item, Player player)
         {
             var mplr = player.CIMod();
+            var Cplr = player.Calamity();
             //微光湖附近, 全传奇武器
             mplr.DukeTier1          = SetShimmeUpgrade(mplr.DukeTier1, ItemType<DukeLegendary>(),       ref player, DustID.Water);
             mplr.BetsyTier1         = SetShimmeUpgrade(mplr.BetsyTier1, ItemType<RavagerLegendary>(),    ref player, DustID.Meteorite);
@@ -69,7 +53,7 @@ namespace CalamityInheritance.Content.Items
             mplr.DefendTier1        = SetShimmeUpgrade(mplr.DefendTier1, ItemType<DefenseBlade>(),        ref player, DustID.GoldCoin);
 
             //海爵剑T3: 佩戴蠕虫围巾召唤老猪
-            if (mplr.IsWearingBloodyScarf && CIFunction.IsThereNpcNearby(NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
+            if (Cplr.bloodyWormTooth && CIFunction.IsThereNpcNearby(NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
             {
                 if (CIFunction.FindInventoryItem(ref player, ItemType<DukeLegendary>(), 1))
                 {
@@ -93,21 +77,17 @@ namespace CalamityInheritance.Content.Items
                     LegendaryUpgradeTint(DustID.GemRuby, player);
                 }
             }
-            base.UpdateInventory(item, player);
-
         }
 
         internal static bool SetShimmeUpgrade(bool legendT1, int itemID, ref Player player, short dustID)
         {
             if (legendT1)
                 return true;
-
             if (player.ZoneShimmer && CIFunction.FindInventoryItem(ref player, itemID, 1))
             {
                 LegendaryUpgradeTint(dustID, player);
                 return true;
             }
-
             return false;
         }
 
@@ -143,7 +123,6 @@ namespace CalamityInheritance.Content.Items
                     LegendaryUpgradeTint(DustID.Ice, player);
                 }
             }
-
             //SHPCT3: 召唤噬魂花……在吃下两个魔力上限物品后
             if (item.type == ItemType<NecroplasmicBeacon>() && cplr.cShard && cplr.eCore && !mplr.DestroyerTier3)
             {
@@ -154,7 +133,7 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
-            if ((item.type == ItemType<YharonEgg>()|| item.type == ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver|| mplr.IsWearingElemQuiverCal) && !mplr.PlanteraTier3)
+            if ((item.type == ItemType<YharonEgg>()|| item.type == ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver) && !mplr.PlanteraTier3)
             {
                 if (CIFunction.FindInventoryItem(ref player, ItemType<PlanteraLegendary>(), 1))
                 {
@@ -197,61 +176,6 @@ namespace CalamityInheritance.Content.Items
             CIFunction.DustCircle(plr.Center, 32f, 1.8f, dType, true, 10f);
             SoundEngine.PlaySound(CISoundID.SoundFallenStar with { Volume = .5f }, plr.Center);
         }
-        public override bool AltFunctionUse(Item item, Player player)
-        {
-            //冰灵传奇物品的一些我自己都看不懂的东西, 我从灾厄那复制的
-            if (player.ActiveItem().type == ItemType<CyrogenLegendary>())
-            {
-                bool canContinue = true;
-                int count = 0;
-                foreach (Projectile p in Main.ActiveProjectiles)
-                {
-                    if (p.type == ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
-                    {
-                        if (p.ai[1] > 1f)
-                        {
-                            canContinue = false;
-                            break;
-                        }
-                        else if (p.ai[1] == 0f)
-                        {
-                            if (((CryogenPtr)p.ModProjectile).Idle)
-                                count++;
-                        }
-                    }
-                }
-                if (canContinue && count > 0)
-                {
-                    NPC tar = CalamityUtils.MinionHoming(Main.MouseWorld, 1000f, player);
-                    if (tar != null)
-                    {
-                        int pAmt = count;
-                        float angleVariance = MathHelper.TwoPi / pAmt;
-                        float angle = 0f;
-
-                        var source = player.GetSource_ItemUse(player.ActiveItem());
-                        for (int i = 0; i < pAmt; i++)
-                        {
-                            if (Main.projectile.Length == Main.maxProjectiles)
-                                break;
-                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(CyrogenLegendary.baseDamage);
-                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
-                            // Main.projectile[projj].originalDamage = item.damage;
-
-                            angle += angleVariance;
-                            for (int j = 0; j < 22; j++)
-                            {
-                                Dust dust = Dust.NewDustDirect(Main.projectile[projj].position, Main.projectile[projj].width, Main.projectile[projj].height, DustID.Ice);
-                                dust.velocity = Vector2.UnitY * Main.rand.NextFloat(3f, 5.5f) * Main.rand.NextBool().ToDirectionInt();
-                                dust.noGravity = true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            return base.AltFunctionUse(item, player);
-        }
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
@@ -262,92 +186,11 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.HandOfCreation)
                 usPlayer.IfGodHand = true;
 
-            if (item.type == ItemType<SigilofCalamitas>())
-                usPlayer.IfCalamitasSigile = true;
-            
-            if (item.type == ItemType<BloodyWormScarf>())
-                usPlayer.IsWearingBloodyScarf = true;
-
-            if (item.type == ItemType<ElementalQuiver>())
-                usPlayer.IsWearingElemQuiverCal = true;
-
-            usPlayer.ReaperToothNecklaceEquipper = item.SameType<ReaperToothNecklace>();
-            usPlayer.YGiftOn = item.SameType<YharimsGift>();
-            usPlayer.AegisOn = item.SameType<AsgardianAegis>();
-            usPlayer.ValorOn = item.SameType<AsgardsValor>();
-            usPlayer.BeltOn = item.SameType<StatisNinjaBelt>();
-            usPlayer.SashOn = item.SameType<StatisVoidSash>();
-            usPlayer.ElysianOn = item.SameType<ElysianAegis>();
             if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaAccesoriesUnnerf(item, player);  //饰品
                 CalamityAccesoriesUnerf(item, player);  //灾厄相关的饰品
             }
-        }
-        public override bool CanEquipAccessory(Item item, Player player, int slot, bool modded)
-        {
-            var mp = player.CIMod();
-            if (item.SameType<ElementalQuiver>())
-            {
-                return !mp.ElemQuiver;
-            }
-            if (item.SameType<ElementalGauntlet>())
-            {
-                return !mp.ElemGauntlet;
-            }
-            if (item.SameType<Nucleogenesis>())
-            {
-                return !mp.NucleogenesisLegacy;
-            }
-            if (item.SameType<EtherealTalisman>())
-            {
-                return !mp.EtherealTalismanLegacy;
-            }
-            if (item.SameType<ReaperToothNecklace>())
-            {
-                return !mp.ReaperToothNecklaceLegacyEquipped;
-            }
-            if (item.SameType<RampartofDeities>())
-            {
-                return !mp.RampartOfDeitiesStar;
-            }
-            if (item.SameType<DeificAmulet>())
-            {
-                return !mp.deificAmuletEffect;
-            }
-            if (item.SameType<TheSponge>())
-            {
-                return !mp.CIsponge;
-            }
-            if (item.SameType<YharimsGift>())
-            {
-                return !mp.YGiftLegacyOn;
-            }
-            if (item.SameType<AsgardianAegis>())
-            {
-                return !mp.AegisLegacyOn;
-            }
-            if (item.SameType<ElysianAegis>())
-            {
-                return !mp.ElysianLegacyOn;
-            }
-            if (item.SameType<AsgardsValor>())
-            {
-                return !mp.ValorLegacyOn;
-            }
-            if (item.SameType<DarkSunRing>())
-            {
-                return !mp.DarkSunRings;
-            }
-            if (item.SameType<StatisVoidSash>())
-            {
-                return !mp.SashLegacyOn;
-            }
-            if (item.SameType<StatisNinjaBelt>())
-            {
-                return !mp.BeltLegacyOn;
-            }
-            return base.CanEquipAccessory(item, player, slot, modded);
         }
         public static void CalamityAccesoriesUnerf(Item item, Player player)
         {
@@ -428,14 +271,11 @@ namespace CalamityInheritance.Content.Items
                     calPlayer.canFireGodSlayerRangedProjectile = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
-                        // God Slayer Ranged Shrapnel: 100%, soft cap starts at 800 base damage
                         int shrapnelRoundDamage = CalamityUtils.DamageSoftCap(damage * 2, 1500);
-
                         Projectile.NewProjectile(source, position, velocity * 1.25f, ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
                     }
                 }
             }
-
             if (usPlayer.AuricbloodflareRangedSoul && calPlayer.canFireBloodflareRangedProjectile)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
@@ -443,15 +283,11 @@ namespace CalamityInheritance.Content.Items
                     calPlayer.canFireBloodflareRangedProjectile = false;
                     if (player.whoAmI == Main.myPlayer)
                     {
-                        // Bloodflare Ranged Bloodsplosion: 80%, soft cap starts at 150 base damage
-                        // This is intentionally extremely low because this effect can be grossly overpowered with sniper rifles and the like.
                         int bloodsplosionDamage = CalamityUtils.DamageSoftCap(damage * 0.8, 1200);
-
                         Projectile.NewProjectile(source, position, velocity, ProjectileType<BloodBomb>(), bloodsplosionDamage, 2f, player.whoAmI);
                     }
                 }
             }
-
             if (usPlayer.ReaverRangedRocket && usPlayer.ReaverRocketFires)
             {
                 if (item.CountsAsClass<RangedDamageClass>() && !item.channel)
@@ -460,6 +296,72 @@ namespace CalamityInheritance.Content.Items
                     if (player.whoAmI == Main.myPlayer)
                     {
                         Projectile.NewProjectile(source, position, velocity * 0.001f, ProjectileType<ReaverRangedRocketMark>(), damage, 2f, player.whoAmI, 0f, 0f);
+                    }
+                }
+            }
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (usPlayer.LuxorsGiftLegacy)
+                {
+                    int Melee = (int)(damage * 0.25f);
+                    int Ranged = (int)(damage * 0.15f);
+                    int Magic = (int)(damage * 0.3f);
+                    int Summon = damage;
+                    int Rogue = (int)(damage * 0.2f);
+                    int Cap = 1200;
+                    if (item.CountsAsClass<MeleeDamageClass>())
+                    {
+                        int meleeDamage = LAPUtilities.DamageSoftCap(Melee, Cap);
+                        if (meleeDamage >= 1)
+                        {
+                            int projectile = Projectile.NewProjectile(source, position, velocity * 0.5f, ProjectileType<LuxorsGiftMeleeLegacy>(), meleeDamage, 0f, player.whoAmI);
+                            if (projectile.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[projectile].DamageType = DamageClass.Generic;
+                        }
+                    }
+                    else if (item.CountsAsClass<ThrowingDamageClass>())
+                    {
+                        int throwingDamage = LAPUtilities.DamageSoftCap(Rogue, Cap);
+                        if (throwingDamage >= 1)
+                        {
+                            int projectile = Projectile.NewProjectile(source, position, velocity, ProjectileType<LuxorsGiftRogueLegacy>(), (int)throwingDamage, 0f, player.whoAmI);
+                            if (projectile.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[projectile].DamageType = DamageClass.Generic;
+                        }
+                    }
+                    else if (item.CountsAsClass<RangedDamageClass>())
+                    {
+                        int rangedDamage = LAPUtilities.DamageSoftCap(Ranged, Cap);
+                        if (rangedDamage >= 1)
+                        {
+                            int projectile = Projectile.NewProjectile(source, position, velocity * 1.5f, ProjectileType<LuxorsGiftRangedLegacy>(), (int)rangedDamage, 0f, player.whoAmI);
+                            if (projectile.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[projectile].DamageType = DamageClass.Generic;
+                        }
+                    }
+                    else if (item.CountsAsClass<MagicDamageClass>())
+                    {
+                        int magicDamage = LAPUtilities.DamageSoftCap(Magic, Cap);
+                        if (magicDamage >= 1)
+                        {
+                            int projectile = Projectile.NewProjectile(source, position, velocity, ProjectileType<LuxorsGiftMagicLegacy>(), (int)magicDamage, 0f, player.whoAmI);
+                            if (projectile.WithinBounds(Main.maxProjectiles))
+                                Main.projectile[projectile].DamageType = DamageClass.Generic;
+                        }
+                    }
+                    else if (item.CountsAsClass<SummonDamageClass>() && player.ownedProjectileCounts[ProjectileType<LuxorsGiftSummonLegacy>()] < 1)
+                    {
+                        if (damage >= 1)
+                        {
+                            int baseDamage = LAPUtilities.DamageSoftCap(item.damage, Cap);
+                            int summonDamage = Summon;
+                            int projectile = Projectile.NewProjectile(source, position, Vector2.Zero, ProjectileType<LuxorsGiftSummonLegacy>(), summonDamage, 0f, player.whoAmI);
+                            if (projectile.WithinBounds(Main.maxProjectiles))
+                            {
+                                Main.projectile[projectile].DamageType = DamageClass.Generic;
+                                Main.projectile[projectile].originalDamage = baseDamage;
+                            }
+                        }
                     }
                 }
             }
@@ -935,13 +837,8 @@ namespace CalamityInheritance.Content.Items
         }
         public override bool CanUseItem(Item item, Player player)
         {
-            CalamityPlayer modPlayer = player.Calamity();
-            CalamityGlobalItem modItem = item.Calamity();
-
-            // Restrict behavior when reading Dreadon's Log.
             if (DraedonsPanelUI.Active)
                 return false;
-
             return true;
         }
     }

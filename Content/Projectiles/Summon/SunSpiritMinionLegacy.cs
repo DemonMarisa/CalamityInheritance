@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         public override void AI()
         {
-            Owner.AddBuff<SolarGodBuffLegacy>(2);
+            Owner.AddBuff<SunSpiritBuff>(2);
             if (Owner.dead)
             {
                 Projectile.Kill();

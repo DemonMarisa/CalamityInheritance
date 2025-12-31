@@ -484,3 +484,8 @@ AngelTreadsLegacy: {
 	DisplayName: Angel Treads Legacy
 	Tooltip: ""
 }
+
+LuxorsGiftLegacy: {
+	DisplayName: Luxors Gift Legacy
+	Tooltip: ""
+}

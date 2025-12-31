@@ -404,3 +404,18 @@ SeekingScorcherLegacy: {
 	// DisplayName: Seeking Scorcher Legacy
 	// Tooltip: ""
 }
+
+MeteorFistLegacy: {
+	// DisplayName: Meteor Fist Legacy
+	// Tooltip: ""
+}
+
+EquanimityLegacy: {
+	// DisplayName: Equanimity Legacy
+	// Tooltip: ""
+}
+
+Nychthemeron: {
+	// DisplayName: Nychthemeron
+	// Tooltip: ""
+}

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Projectiles.ExoLore;
@@ -163,7 +164,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddIngredient<PhantasmalFuryOld>().
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
-            AddIngredient<ShadowboltStaff>().
+            AddIngredient<ShadowboltStaffLegacy>().
             AddIngredient<UltraLiquidator>().
             AddIngredient<HeliumFlashLegacy>().
             DisableDecraft().
@@ -176,7 +177,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
-            AddIngredient<ShadowboltStaff>().
+            AddIngredient<ShadowboltStaffLegacy>().
             AddIngredient<UltraLiquidator>().
             AddDecraftCondition(CalamityConditions.DownedExoMechs).
             AddIngredient<HeliumFlashLegacy>().
@@ -189,11 +190,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             AddRecipeGroup(CIRecipeGroup.AnyPhantasmalFury).
             AddIngredient<ThornBlossom>().
             AddIngredient<AsteroidStaff>().
-            AddIngredient<ShadowboltStaff>().
+            AddIngredient<ShadowboltStaffLegacy>().
             AddIngredient<UltraLiquidator>().
             AddIngredient<HeliumFlashLegacy>().
             AddIngredient<AncientMiracleMatter>().
-            AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+            AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
             DisableDecraft().
             AddTile(TileType<DraedonsForge>()).
             Register();

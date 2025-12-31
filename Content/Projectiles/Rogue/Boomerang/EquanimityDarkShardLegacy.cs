@@ -1,0 +1,88 @@
+﻿using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
+{
+    public class EquanimityDarkShardLegacy : ModProjectile, ILocalizedModType
+    {
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override void SetStaticDefaults() => ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+        public override void SetDefaults()
+        {
+            Projectile.width = 12;
+            Projectile.height = 14;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
+            Projectile.alpha = 0;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = true;
+            Projectile.timeLeft = 120;
+            Projectile.DamageType = RogueDamageClass.Instance;
+        }
+
+        public override void AI()
+        {
+            Projectile.velocity.Y += 0.1f;
+            Projectile.rotation += 0.4f * Projectile.direction;
+            if (Projectile.timeLeft < 130)
+            {
+                float minDist = 999f;
+                int index = 0;
+                foreach (NPC npc in Main.ActiveNPCs)
+                {
+                    if (npc.CanBeChasedBy(Projectile, false))
+                    {
+                        float dist = (Projectile.Center - npc.Center).Length();
+                        if (dist < minDist)
+                        {
+                            minDist = dist;
+                            index = npc.whoAmI;
+                        }
+                    }
+                }
+
+                Vector2 velocityNew;
+                if (minDist < 999f)
+                {
+                    velocityNew = Main.npc[index].Center - Projectile.Center;
+                    velocityNew.Normalize();
+                    Projectile.velocity += velocityNew;
+                    if (Projectile.velocity.Length() > 10f)
+                    {
+                        Projectile.velocity.Normalize();
+                        Projectile.velocity *= 10f;
+                    }
+                }
+            }
+
+            if (Projectile.timeLeft < 51)
+            {
+                Projectile.alpha += 5;
+            }
+        }
+
+        public override bool? CanHitNPC(NPC target)
+        {
+            if (Projectile.timeLeft < 130)
+            {
+                return null;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
+            Projectile.Kill();
+            return true;
+        }
+    }
+}

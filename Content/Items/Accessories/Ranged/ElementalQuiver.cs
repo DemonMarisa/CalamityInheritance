@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             itemValue:CIShopValue.RarityPriceDeepBlue,
             itemDefense:30
         );
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().IsWearingElemQuiverCal;
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             bool allowSplit = CIConfig.Instance.ElementalQuiversplit;

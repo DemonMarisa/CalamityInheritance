@@ -188,3 +188,12 @@ PrismaticBeamLegacy.DisplayName: Prismatic Beam Legacy
 PrismaticWaveLegacy.DisplayName: Prismatic Wave Legacy
 DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
 MoltenAmputatorProjLegacy.DisplayName: Molten Amputator Proj Legacy
+EquanimityDarkShardLegacy.DisplayName: Equanimity Dark Shard Legacy
+EquanimityLightShardLegacy.DisplayName: Equanimity Light Shard Legacy
+EquanimityProjLegacy.DisplayName: Equanimity Proj Legacy
+EutrophicScimitarProjLegacy.DisplayName: Eutrophic Scimitar Proj Legacy
+
+DevilsSunriseLegacy: {
+	DisplayName: Devils Sunrise Legacy
+	Tooltip: ""
+}

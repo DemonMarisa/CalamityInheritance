@@ -383,23 +383,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
             }
             if (PBGPower && Player.ActiveItem().type == ItemType<PBGLegendary>())
-                calPlayer.projectileDamageReduction += 0.25;
-            //血神核心专门提供红月免伤, 要注意这个是最优先被计算的。 
-            if (FUCKYOUREDMOON && proj.type == ProjectileType<BrimstoneMonsterLegacy>())
-            {
-                if (CotbgCounter <= 0)
-                {
-                    Player.AddCooldown(CotbgTotem.ID, CalamityUtils.SecondsToFrames(20));
-                    //防前免伤，直接砍50%
-                    calPlayer.projectileDamageReduction += 0.5;
-                    //共享20秒的CD
-                    CotbgCounter = CalamityUtils.SecondsToFrames(20);
-                    //直接返回，不执行下方所有的杂糅计算
-                    return;
-                }
-                //常驻0.15f
-                calPlayer.projectileDamageReduction += 0.15;
-            }
+                calPlayer.projectileDamageReduction += 0.25; 
             // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
             // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
             if (!CalamityProjectileSets.ShouldNotBeReflected[proj.type] && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)

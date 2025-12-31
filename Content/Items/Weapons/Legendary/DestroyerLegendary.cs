@@ -1,16 +1,17 @@
+using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
@@ -36,7 +37,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Item.noUseGraphic = true;
             Item.channel = true;
         }
-        
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 必须手动转换，不然会按照int进行加成

@@ -25,7 +25,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
             itemRare: RarityType<DeepBlue>(),
             itemValue:CIShopValue.RarityPriceDeepBlue
         );
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eTalisman;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer = player.CIMod();

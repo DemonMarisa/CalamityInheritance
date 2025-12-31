@@ -39,14 +39,12 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         {
             Type.ShimmerEach<ElysianAegis>();
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.CIMod().ElysianOn;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
             usPlayer.CIDashID = ElysianAegisDashold.ID;
             usPlayer.ElysianAegis = true;
             usPlayer.ElysianAegisImmnue = true;
-            usPlayer.ElysianLegacyOn = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.buffImmune[BuffID.OnFire3] = true;
             player.buffImmune[BuffType<HolyFlames>()] = true;

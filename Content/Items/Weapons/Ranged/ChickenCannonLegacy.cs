@@ -4,6 +4,8 @@ using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using LAP.Core.Enums;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -40,6 +42,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<ChickenRound>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Rocket;
+
+            Item.SetCalStatInflation(AllWeaponTier.PostDOG);
         }
         public override Vector2? HoldoutOffset() => new Vector2(-15, 10);
     }

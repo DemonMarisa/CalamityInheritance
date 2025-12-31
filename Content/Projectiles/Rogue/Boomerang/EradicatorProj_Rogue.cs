@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
 using CalamityInheritance.Utilities;
 using CalamityMod;

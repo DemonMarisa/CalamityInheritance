@@ -28,7 +28,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         {
             Type.ShimmerEach<ElementalGauntlet>(false);
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().eGauntlet;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var modPlayer1 = player.CIMod();

@@ -36,10 +36,8 @@ namespace CalamityInheritance.Content.Items.Accessories
             //同时标记他是血神核心与给血上限。
             //这个标记主要是给后面血肉图腾被移除时给CD用
             usPlayer.CoreOfTheBloodGod = true;
-            usPlayer.FUCKYOUREDMOON = true;
 
             player.endurance += 0.20f;
-
         }
 
         public override void AddRecipes()

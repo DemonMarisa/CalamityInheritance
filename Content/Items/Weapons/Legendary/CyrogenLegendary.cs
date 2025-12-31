@@ -116,6 +116,56 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
 
         public override bool AltFunctionUse(Player player)
         {
+            if (player.ActiveItem().type == ItemType<CyrogenLegendary>())
+            {
+                bool canContinue = true;
+                int count = 0;
+                foreach (Projectile p in Main.ActiveProjectiles)
+                {
+                    if (p.type == ProjectileType<CryogenPtr>() && p.owner == player.whoAmI)
+                    {
+                        if (p.ai[1] > 1f)
+                        {
+                            canContinue = false;
+                            break;
+                        }
+                        else if (p.ai[1] == 0f)
+                        {
+                            if (((CryogenPtr)p.ModProjectile).Idle)
+                                count++;
+                        }
+                    }
+                }
+                if (canContinue && count > 0)
+                {
+                    NPC tar = CalamityUtils.MinionHoming(Main.MouseWorld, 1000f, player);
+                    if (tar != null)
+                    {
+                        int pAmt = count;
+                        float angleVariance = MathHelper.TwoPi / pAmt;
+                        float angle = 0f;
+
+                        var source = player.GetSource_ItemUse(player.ActiveItem());
+                        for (int i = 0; i < pAmt; i++)
+                        {
+                            if (Main.projectile.Length == Main.maxProjectiles)
+                                break;
+                            int pDmg = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
+                            int projj = Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, ProjectileType<CryogenPtr>(), pDmg, 1f, player.whoAmI, angle, 2f);
+                            // Main.projectile[projj].originalDamage = item.damage;
+
+                            angle += angleVariance;
+                            for (int j = 0; j < 22; j++)
+                            {
+                                Dust dust = Dust.NewDustDirect(Main.projectile[projj].position, Main.projectile[projj].width, Main.projectile[projj].height, DustID.Ice);
+                                dust.velocity = Vector2.UnitY * Main.rand.NextFloat(3f, 5.5f) * Main.rand.NextBool().ToDirectionInt();
+                                dust.noGravity = true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
             return base.AltFunctionUse(player);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

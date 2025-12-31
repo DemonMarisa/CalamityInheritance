@@ -27,7 +27,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         {
             Type.ShimmerEach<Nucleogenesis>(false);
         }
-        public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().nucleogenesis;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer CIplayer = player.CIMod();

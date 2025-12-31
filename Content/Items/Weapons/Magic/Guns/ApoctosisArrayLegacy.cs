@@ -3,7 +3,6 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
