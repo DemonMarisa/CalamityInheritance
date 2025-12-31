@@ -489,3 +489,8 @@ LuxorsGiftLegacy: {
 	DisplayName: Luxors Gift Legacy
 	Tooltip: ""
 }
+
+UrsaSergeantLegacy: {
+	DisplayName: Ursa Sergeant Legacy
+	Tooltip: ""
+}

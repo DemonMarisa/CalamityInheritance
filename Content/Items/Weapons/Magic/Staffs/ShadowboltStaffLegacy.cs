@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
+namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
 {
     public class ShadowboltStaffLegacy : CIMagic, ILocalizedModType
     {

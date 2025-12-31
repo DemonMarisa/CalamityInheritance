@@ -104,3 +104,6 @@ PlasmaExplosion.DisplayName: Plasma Explosion
 ImpactRoundLegacy.DisplayName: Impact Round Legacy
 BoltLegacy.DisplayName: Bolt Legacy
 SulphuricBlast.DisplayName: Sulphuric Blast
+AquaBlastLegacy.DisplayName: Aqua Blast Legacy
+AquaBlastToxic.DisplayName: Aqua Blast Toxic
+NullShotLegacy.DisplayName: Null Shot Legacy

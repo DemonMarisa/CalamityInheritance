@@ -5,7 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
+namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
     public class StellarStrikerLegacy : CIMelee, ILocalizedModType
     {
