@@ -1,12 +1,13 @@
-﻿using CalamityMod.Items;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Flails;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.Melee
+namespace CalamityInheritance.Content.Items.Weapons.Melee.Flails
 {
-    public class UrchinFlail : CIMelee, ILocalizedModType
+    public class UrchinFlail : GeneralWeaponClass
     {
-        public override void SetDefaults()
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
+        public override void ExSD()
         {
             Item.width = 44;
             Item.height = 36;
@@ -18,12 +19,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.knockBack = 6f;
-            Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
+            Item.value = CIShopValue.RarityPriceGreen;
             Item.rare = ItemRarityID.Green;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.channel = true;
-            // Item.shoot = ModContent.ProjectileType<UrchinBall>();
+            Item.shoot = ProjectileType<UrchinBall>();
             Item.shootSpeed = 16f;
         }
     }

@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
+namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
     public class CometQuasherLegacy : CIMelee, ILocalizedModType
     {
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Vector2 destination = target.Center;
-            Vector2 position = destination - (Vector2.UnitY * (destination.Y - Main.screenPosition.Y + 80f));
+            Vector2 position = destination - Vector2.UnitY * (destination.Y - Main.screenPosition.Y + 80f);
             Vector2 cachedPosition = position;
 
             int meteorDamage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(Item.damage / 2f);

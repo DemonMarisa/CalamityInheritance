@@ -88,6 +88,7 @@ Mods: {
 				// AquaticDischargeProj.DisplayName: Aquatic Discharge Proj
 				// CrescentMoonFlailLegacy.DisplayName: Crescent Moon Flail Legacy
 				// DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
+				// LucreciaProj.DisplayName: Lucrecia Proj
 			}
 
 			// SiriusMinionLegacy.DisplayName: Sirius Minion Legacy
@@ -102,6 +103,7 @@ Mods: {
 			Summon: {
 				// DOGLaser.DisplayName: D O G Laser
 				// SarosMicrosunLegacy.DisplayName: Saros Microsun Legacy
+				// SolarGodLegacy.DisplayName: Solar God Legacy
 			}
 
 			// TeleportRift.DisplayName: Teleport Rift

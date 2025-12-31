@@ -9,6 +9,7 @@ using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Content.Items.Weapons.Melee.Flails;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Core;

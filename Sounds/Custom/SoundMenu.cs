@@ -16,6 +16,7 @@ namespace CalamityInheritance.Sounds.Custom
         public static string CosmicImSound => $"{SoundRoute}/CosmicIm";
         public static string AtomSound => $"{SoundRoute}/Atom";
         public static string IronHeartSound => $"{SoundRoute}/IronHeart";
+        public static readonly SoundStyle PlasmaBlast = new($"{ItemSoundRoute}/PlasmaBlast");
 
         public static readonly SoundStyle OpalStriker = new("CalamityInheritance/Sounds/Item/OpalStrike");
         public static readonly SoundStyle YharimsSelfRepair = new($"{SoundRoute}/XerocMadnessSoundActive");

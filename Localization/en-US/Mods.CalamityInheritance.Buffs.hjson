@@ -302,3 +302,8 @@ DaawnlightSpiritOriginBuffLegacy: {
 	DisplayName: Daawnlight Spirit Origin Buff Legacy
 	Description: Mods.CalamityInheritance.Buffs.DaawnlightSpiritOriginBuffLegacy.Description
 }
+
+SolarGodBuffLegacy: {
+	DisplayName: Solar God Buff Legacy
+	Description: Mods.CalamityInheritance.Buffs.SolarGodBuffLegacy.Description
+}

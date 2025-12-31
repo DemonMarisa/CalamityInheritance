@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
+namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
     public class GalactusBladeLegacy : CIMelee, ILocalizedModType
     {
@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.FutureContent.Weapons
             float cometSpeed = Item.shootSpeed;
             for (int i = 0; i < 5; i++)
             {
-                Vector2 realPlayerPos = new(player.Center.X + (Main.rand.NextFloat(201) * -(float)player.direction) + (Main.MouseWorld.X - player.position.X), player.MountedCenter.Y - 600f);
+                Vector2 realPlayerPos = new(player.Center.X + Main.rand.NextFloat(201) * -(float)player.direction + (Main.MouseWorld.X - player.position.X), player.MountedCenter.Y - 600f);
                 realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + Main.rand.NextFloat(-200f, 201f);
                 realPlayerPos.Y -= 100 * i;
                 float mouseXDist = Main.MouseWorld.X - realPlayerPos.X;

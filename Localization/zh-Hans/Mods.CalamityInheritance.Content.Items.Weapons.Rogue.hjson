@@ -404,3 +404,28 @@ SeekingScorcherLegacy: {
 	// DisplayName: Seeking Scorcher Legacy
 	// Tooltip: ""
 }
+
+RogueTerraDisk: {
+	// DisplayName: Rogue Terra Disk
+	// Tooltip: ""
+}
+
+Sandslasher: {
+	// DisplayName: Sandslasher
+	// Tooltip: ""
+}
+
+ShardofAntumbraLegacy: {
+	// DisplayName: Shardof Antumbra Legacy
+	// Tooltip: ""
+}
+
+MeteorFistLegacy: {
+	// DisplayName: Meteor Fist Legacy
+	// Tooltip: ""
+}
+
+StarofDestructionLegacy: {
+	// DisplayName: Starof Destruction Legacy
+	// Tooltip: ""
+}

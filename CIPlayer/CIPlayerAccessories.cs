@@ -1,3 +1,4 @@
+using CalamityMod;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer

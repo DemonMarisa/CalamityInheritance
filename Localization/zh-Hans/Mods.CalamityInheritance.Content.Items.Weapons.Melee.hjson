@@ -712,3 +712,48 @@ EarthLegacy: {
 	// DisplayName: Earth Legacy
 	// Tooltip: ""
 }
+
+BallOFuguLegacy: {
+	// DisplayName: Ball O Fugu Legacy
+	// Tooltip: ""
+}
+
+TumbleweedLegacy: {
+	// DisplayName: Tumbleweed Legacy
+	// Tooltip: ""
+}
+
+BasherLegacy: {
+	// DisplayName: Basher Legacy
+	// Tooltip: ""
+}
+
+GrandGuardianLegacy: {
+	// DisplayName: Grand Guardian Legacy
+	// Tooltip: ""
+}
+
+GreatswordofBlah: {
+	// DisplayName: Greatswordof Blah
+	// Tooltip: ""
+}
+
+GreatswordofJudgementLegacy: {
+	// DisplayName: Greatswordof Judgement Legacy
+	// Tooltip: ""
+}
+
+HellkiteLegacy: {
+	// DisplayName: Hellkite Legacy
+	// Tooltip: ""
+}
+
+MajesticGuardLegacy: {
+	// DisplayName: Majestic Guard Legacy
+	// Tooltip: ""
+}
+
+MantisClawLegacy: {
+	// DisplayName: Mantis Claw Legacy
+	// Tooltip: ""
+}

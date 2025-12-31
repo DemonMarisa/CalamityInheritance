@@ -575,3 +575,48 @@ SeethingDischargeLegacy: {
 	// DisplayName: Seething Discharge Legacy
 	// Tooltip: ""
 }
+
+BurningSeaLegacy: {
+	// DisplayName: Burning Sea Legacy
+	// Tooltip: ""
+}
+
+DeathValleyDusterLegacy: {
+	// DisplayName: Death Valley Duster Legacy
+	// Tooltip: ""
+}
+
+FlareBoltLegacy: {
+	// DisplayName: Flare Bolt Legacy
+	// Tooltip: ""
+}
+
+FrigidflashBoltLegacy: {
+	// DisplayName: Frigidflash Bolt Legacy
+	// Tooltip: ""
+}
+
+FrostBoltLegacy: {
+	// DisplayName: Frost Bolt Legacy
+	// Tooltip: ""
+}
+
+PrimordialAncientLegacy: {
+	// DisplayName: Primordial Ancient Legacy
+	// Tooltip: ""
+}
+
+PrimordialEarthLegacy: {
+	// DisplayName: Primordial Earth Legacy
+	// Tooltip: ""
+}
+
+TomeofFateLegacy: {
+	// DisplayName: Tomeof Fate Legacy
+	// Tooltip: ""
+}
+
+Thunderstorm: {
+	// DisplayName: Thunderstorm
+	// Tooltip: ""
+}

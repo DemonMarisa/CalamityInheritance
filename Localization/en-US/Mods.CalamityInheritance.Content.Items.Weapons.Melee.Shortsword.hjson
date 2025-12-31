@@ -144,3 +144,8 @@ AquaticDischarge: {
 	DisplayName: Aquatic Discharge
 	Tooltip: Releases sparks when hitting enemies
 }
+
+LucreciaLegacy: {
+	DisplayName: Lucrecia Legacy
+	Tooltip: ""
+}

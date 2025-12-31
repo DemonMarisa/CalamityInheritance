@@ -662,3 +662,23 @@ SulphuricAcidCannonLegacy: {
 	DisplayName: Sulphuric Acid Cannon Legacy
 	Tooltip: ""
 }
+
+StarfleetLegacy: {
+	DisplayName: Starfleet Legacy
+	Tooltip: ""
+}
+
+HellbornLegacy: {
+	DisplayName: Hellborn Legacy
+	Tooltip: ""
+}
+
+LeviatitanLegacy: {
+	DisplayName: Leviatitan Legacy
+	Tooltip: ""
+}
+
+NullificationPistolLegacy: {
+	DisplayName: Nullification Pistol Legacy
+	Tooltip: ""
+}
