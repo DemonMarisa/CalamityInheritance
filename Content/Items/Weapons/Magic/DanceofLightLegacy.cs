@@ -1,9 +1,12 @@
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.System.CalStatInflationBACK;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -22,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = 2700;
+            Item.damage = 220;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 9;
             Item.width = 28;
@@ -38,6 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.shoot = ProjectileType<WhiteFlameLegacy>();
             Item.shootSpeed = 30f;
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
 
         public override void AddRecipes()
@@ -52,6 +56,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            BoostWeaponDamage.SetCustomMult(Item, 10f);
             float projSpeed = Item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float getMouseX = Main.mouseX + Main.screenPosition.X - vector2.X;

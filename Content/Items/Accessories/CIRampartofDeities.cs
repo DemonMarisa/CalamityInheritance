@@ -41,10 +41,10 @@ namespace CalamityInheritance.Content.Items.Accessories
 
         public override void AddRecipes()
         {
-            CreateRecipe(). //
+            CreateRecipe().
                 AddIngredient(ItemType<FrigidBulwark>()).
                 AddIngredient<CosmiliteBar>(10).
-                AddRecipeGroup(CIRecipeGroup.AnyDeificAmulet).
+                AddIngredient<DeificAmuletLegacy>().
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddTile<CosmicAnvil>().
                 Register();

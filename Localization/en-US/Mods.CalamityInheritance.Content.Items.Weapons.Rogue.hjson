@@ -48,7 +48,7 @@ PhantomLance: {
 }
 
 Quasar: {
-	DisplayName: Quasar
+	DisplayName: Quasar Legacy
 	Tooltip:
 		'''
 		Succ everything
@@ -210,7 +210,7 @@ RoguePwnagehammer: {
 }
 
 DragonSpear: {
-	DisplayName: Infernal Spear
+	DisplayName: Infernal Spear Legacy
 	Tooltip:
 		'''
 		Legacy Wrathwings
@@ -349,57 +349,176 @@ StepToolShadows: {
 		'''
 }
 
-Eradicator_Rogue: {
-	DisplayName: Eradicator_ Rogue
-	Tooltip: ""
-}
-
-MoltenAmputatorLegacy: {
-	DisplayName: Molten Amputator Legacy
-	Tooltip: ""
-}
-
-ToxicantTwisterLegacy: {
-	DisplayName: Toxicant Twister Legacy
-	Tooltip: ""
-}
-
-ExorcismLegacy: {
-	DisplayName: Exorcism Legacy
-	Tooltip: ""
-}
-
-TheOldReaperLegacy: {
-	DisplayName: The Old Reaper Legacy
-	Tooltip: ""
-}
-
-NightsGaze: {
-	DisplayName: Nights Gaze
-	Tooltip: ""
-}
-
-TheReaperLegacy: {
-	DisplayName: The Reaper Legacy
-	Tooltip: ""
-}
-
 SeekingScorcherLegacy: {
 	DisplayName: Seeking Scorcher Legacy
-	Tooltip: ""
-}
-
-MeteorFistLegacy: {
-	DisplayName: Meteor Fist Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Throws a holy boomerang that seeks out up to four enemies before returning to the player
+		'May your enemies burn in hell for the sins they have committed'
+		'''
 }
 
 EquanimityLegacy: {
 	DisplayName: Equanimity Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Throws a boomerang born of light and darkness that confuses enemies
+		The boomerang will create light shards upon hitting enemies when thrown out, and will fire homing dark shards when returning
+		Stealth strikes cause the boomerang to create both dark and light shards whenever one type would be created
+		'''
+}
+
+Eradicator_Rogue: {
+	DisplayName: Eradicator Legacy Rogue
+	Tooltip:
+		'''
+		Throws a disk that fires nebula lasers at nearby enemies
+		Stealth strikes stick to enemies and unleash a barrage of lasers in all directions
+		'''
+}
+
+MoltenAmputatorLegacy: {
+	DisplayName: Molten Amputator Legacy
+	Tooltip:
+		'''
+		Throws a scythe that emits molten globs on enemy hits
+		Stealth strikes spawn molten globs periodically in flight and more on-hit
+		'''
+}
+
+RogueTerraDisk: {
+	DisplayName: Terra Disk Legacy Rogue
+	Tooltip: Throws a disk that has a chance to generate several disks if enemies are near it
+}
+
+Sandslasher: {
+	DisplayName: Sandslasher Legacy
+	Tooltip:
+		'''
+		Throws a huge shuriken made out of fused sand unaffected by gravity which slowly accelerates horizontally
+		It does more damage depending on how fast it goes horizontally and how long it has been flying for
+		Stealth strikes periodically release sand clouds
+		'''
+}
+
+TheReaperLegacy: {
+	DisplayName: The Reaper Legacy
+	Tooltip:
+		'''
+		Throws a homing reaper scythe that shreds enemies
+		Stealth strikes throw three at once
+		'Slice 'n dice'
+		'''
+}
+
+ToxicantTwisterLegacy: {
+	DisplayName: Toxicant Twister Legacy
+	Tooltip:
+		'''
+		Throws a slow moving boomerang
+		After a few moments, the boomerang chooses a target and rapidly homes in
+		Stealth strikes home in faster and rapidly release sand
+		'''
+}
+
+ExorcismLegacy: {
+	DisplayName: Exorcism Legacy
+	Tooltip:
+		'''
+		Throws a hallowed cross which explodes into a flash of light that damages nearby enemies
+		Stealth strikes create larger flashes and rain stars infused with holy light
+		'''
+}
+
+ShardofAntumbraLegacy: {
+	DisplayName: Shard of Antumbra Legacy
+	Tooltip: Stealth strikes leave homing stars in their wake
+}
+
+MeteorFistLegacy: {
+	DisplayName: Meteor Fist Legacy
+	Tooltip:
+		'''
+		Fires a rocket fist that explodes forcefully
+		Stealth strikes make the fist ricochet between enemies up to 4 times
+		'''
 }
 
 Nychthemeron: {
-	DisplayName: Nychthemeron
-	Tooltip: ""
+	DisplayName: Nychthemeron Legacy
+	Tooltip:
+		'''
+		Throws a spiky ball that ignores gravity and summons a pair of dark and light orbs that orbit the player
+		Once the spiky ball disappears the orbs will home in on the nearest target
+		Up to 10 spiky balls can exist at a time
+		Stealth strikes cause all spiky balls and orbs to be thrown at once
+		Press Right Click to recall all existing spiky balls
+		'''
+}
+
+StarofDestructionLegacy: {
+	DisplayName: Star of Destruction Legacy
+	Tooltip:
+		'''
+		Fires a huge destructive mine that explodes into destruction bolts
+		Amount of bolts scales with enemies hit, up to 16
+		Stealth strikes always explode into the max amount of bolts
+		'''
+}
+
+NightsGaze: {
+	DisplayName: Night's Gaze Legacy
+	Tooltip:
+		'''
+		Strike your foes with this spear of the night
+		Throws a spear that shatters when it hits an enemy
+		Stealth strikes cause the spear to summon homing stars as it flies
+		'''
+}
+
+RefractionRotorLegacy: {
+	DisplayName: Refraction Rotor Legacy
+	Tooltip:
+		'''
+		Fires a huge prismatic disk shuriken
+		The shuriken shatters moments after impact into homing rockets
+		Stealth strikes shatter into many more rockets
+		'''
+}
+
+BrackishFlaskLegacy: {
+	DisplayName: Brackish Flask Legacy
+	Tooltip:
+		'''
+		Throws a flask that explodes into poisonous seawater blasts
+		Stealth strikes summon a brackish spear spike
+		'''
+}
+
+AcidicRainBarrel: {
+	DisplayName: Acidic Rain Barrel Legacy
+	Tooltip:
+		'''
+		Throws a rolling barrel that explodes on wall collision
+		Stealth strikes make it rain on collision
+		'''
+}
+
+AlphaVirus: {
+	DisplayName: Alpha Virus Legacy
+	Tooltip:
+		'''
+		Throws a giant plague cell with a lethal aura that explodes into 6 homing plague seekers
+		Stealth strikes cause the plague cell to move slower, accumulating an aura of swirling plague seekers as it flies
+		'''
+}
+
+SkyStabber: {
+	DisplayName: Sky Stabber Legacy
+	Tooltip:
+		'''
+		Throws up to 4 gravity-defying spiky balls
+		Stealth strikes make the balls rain feathers onto enemies when they hit
+		Press Right Click to delete all existing spiky balls
+		'''
 }

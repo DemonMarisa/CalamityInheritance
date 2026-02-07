@@ -26,9 +26,7 @@ namespace CalamityInheritance.UI.HealthManaTextures
         public string LifeTexturePath()
         {
             string folder = $"{baseFolder}HP";
-            CalamityPlayer modPlayer = Main.LocalPlayer.Calamity();
-            CIWorld world = GetInstance<CIWorld>();
-            if (world.IronHeart) // dozezoze - Chalice gets it's own heart color to make bleed indicator contrast consistent, and also because it looks cool
+            if (CIWorld.ironHeart)
                 return folder + "IronHeart";
             return string.Empty;
         }

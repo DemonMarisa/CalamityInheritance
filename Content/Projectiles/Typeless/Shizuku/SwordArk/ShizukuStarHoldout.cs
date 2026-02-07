@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override void AI()
         {
-            NPC Target = LAPUtilities.FindClosestTarget(Projectile ,1800f, Owner.LocalMouseWorld());
+            NPC Target = LAPUtilities.FindClosestTarget(Owner.LocalMouseWorld(), 1800f);
             BaseEasingSize sizeStruct = new(60f, 50f, 68f);
             //刷新时间
             if (!Owner.noItems && !Owner.CCed && Owner.HeldItem.type == ItemType<ShizukuSword>() && Owner.ownedProjectileCounts[ProjectileType<ShizukuSwordHoldout>()] > 0)

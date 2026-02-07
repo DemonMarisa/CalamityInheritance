@@ -9,6 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
     public class BasherLegacy : GeneralWeaponClass
     {
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
         {
             Item.width = 56;

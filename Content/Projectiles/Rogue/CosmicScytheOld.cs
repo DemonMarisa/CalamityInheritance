@@ -4,13 +4,13 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Microsoft.Xna.Framework;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class CosmicScytheOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
-        public override string Texture => "CalamityMod/Projectiles/Boss/SignusScythe";
 
         private int originalDamage;
 
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = 400;
             Projectile.alpha = 100;
             Projectile.penetrate = 5;
-            Projectile.DamageType = GetInstance<RogueDamageClass>();
+            Projectile.DamageType = DamageClass.Generic;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.timeLeft > 350)
                     Projectile.velocity *= 1.06f;
                 Projectile.damage = (int)(originalDamage * 1.25);
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500f, 12f, 20f);
+                Projectile.HomeInNPC(1500f, 24f, 20f);
             }
         }
 
@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
 

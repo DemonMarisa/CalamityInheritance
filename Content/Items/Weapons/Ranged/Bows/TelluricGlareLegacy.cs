@@ -1,5 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Bows;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -36,6 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Bows
 
             Item.LAP().UseCICalStatInflation = true;
             Item.LAP().WeaponTier = AllWeaponTier.PostProvidence;
+            Item.LAP().GlobalMult = 3f;
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-14f, 0f);
@@ -47,6 +50,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Bows
             Vector2 offset = Vector2.Normalize(velocity.RotatedBy(MathHelper.PiOver2));
             position += offset * Main.rand.NextFloat(-19f, 19f);
             position -= 3f * velocity;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(12).
+                AddIngredient<DivineGeode>(6).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

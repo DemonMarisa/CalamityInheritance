@@ -1,13 +1,14 @@
-﻿using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.CIPlayer.Dash;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
+using LAP.Core.SystemsLoader;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -29,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            usPlayer.CIDashID = AsgardsValorDashold.ID;
+            player.SetLAPDash(LAPContent.DashType<AsgardsValorDashold>());
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
             player.noKnockback = true;

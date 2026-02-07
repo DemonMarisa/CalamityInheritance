@@ -14,9 +14,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
-    public class TheEnforcer : ModItem, ILocalizedModType
+    public class TheEnforcer : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
         {
             Item.width = 100;

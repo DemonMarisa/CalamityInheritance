@@ -1,32 +1,33 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Enums;
+﻿using CalamityInheritance.Content.Items.Accessories.DashAccessories;
+using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Sounds.Cals;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Typeless;
+using LAP.Core.GlobalInstance.Players.DashSystem;
+using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using System;
-using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
-using CalamityMod.Dusts;
+using Terraria.Audio;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer.Dash
 {
-    public class AsgardianAegisDashold : PlayerDashEffect
+    public class AsgardianAegisDashold : BasePlayerDash
     {
-        public static new string ID => "Asgardian Aegis old";
-
-        public int Time = 0;
-        public override DashCollisionType CollisionType => DashCollisionType.ShieldSlam;
-        public override bool IsOmnidirectional => false;
-
-        public bool PostHit = false;
-        public override float CalculateDashSpeed(Player player) => 24f;
-
-        public override void OnDashEffects(Player player)
+        public static int LegacyAsgardianAegisDashDamage = 2000;
+        public static float LegacyAsgardianAegisDashKnockback = 15f;
+        public int Time;
+        public override int ImmuneTime(Player player) => 18;
+        public override int DashTime(Player player) => 18;
+        public override int DashDelay(Player player) => 20;
+        public override DashDamageInfo DashDamageInfo(Player player) => new DashDamageInfo(LegacyAsgardianAegisDashDamage, LegacyAsgardianAegisDashKnockback, DamageClass.Melee);
+        public override float DashSpeed(Player player) => 24f;
+        public override float DashEndSpeedMult(Player player) => 0.5f;
+        public override void OnDashStart(Player player)
         {
             // Spawn fire dust around the player's body.
             for (int d = 0; d < 60; d++)
@@ -41,21 +42,18 @@ namespace CalamityInheritance.CIPlayer.Dash
                 holyFireDashDust.fadeIn = 0.5f;
             }
             Time = 0;
-            PostHit = false;
         }
-
-        public override void MidDashEffects(Player player, ref float dashSpeed, ref float dashSpeedDecelerationFactor, ref float runSpeedDecelerationFactor)
+        public override void DuringDash(Player player)
         {
             Time += 2;
             float radiusFactor = MathHelper.Lerp(0f, 1f, Utils.GetLerpValue(2f, 2.5f, Time, true));
-            // Spawn fire dust around the player's body.
             for (int d = 0; d < 8; d++)
             {
                 int dashDustID = Main.rand.Next(new int[]
                 {
-                    (int)CalamityDusts.BlueCosmilite,
-                    (int)CalamityDusts.PurpleCosmilite,
-                    (int)CalamityDusts.ProfanedFire
+                    LAPDustID.DustDungeonSpirit180,
+                    LAPDustID.DustShadowBoltStaff173,
+                    LAPDustID.DustCopperCoin
                 });
                 Dust fireDashDust = Dust.NewDustDirect(player.position + Vector2.UnitY * 4f, player.width, player.height - 8, dashDustID, 0f, 0f, 100, default, 2f);
                 fireDashDust.velocity *= 0.1f;
@@ -81,40 +79,38 @@ namespace CalamityInheritance.CIPlayer.Dash
                 if (Main.rand.NextBool(2))
                     fireDashDust.fadeIn = 0.5f;
             }
-
-            // Dash at a faster speed than the default value.
-            dashSpeed = 16f;
         }
-
-        public override void OnHitEffects(Player player, NPC npc, IEntitySource source, ref DashHitContext hitContext)
+        public override void OnHitNPC(Player player, NPC target, int DamageDone)
         {
+            SoundStyle style = CICalSounds.DevourerSegmentBreak with
+            {
+                PitchVariance = 0.3f
+            };
+            SoundEngine.PlaySound(in style, player.Center);
+            style = SoundID.Item62 with
+            {
+                Volume = 0.5f,
+                PitchVariance = 0.3f
+            };
+            SoundEngine.PlaySound(in style, player.Center);
+            for (int i = 0; i < 35; i++)
+            {
+                Dust dust = Dust.NewDustPerfect(player.Center, DustID.GiantCursedSkullBolt, new Vector2(4.5f, 4.5f).RotatedByRandom(100.0) * Main.rand.NextFloat(0.2f, 1.9f), 0, default, Main.rand.NextFloat(1.5f, 2.8f));
+                dust.shader = GameShaders.Armor.GetSecondaryShader(player.cShield, player);
+                dust.noGravity = true;
+            }
+            for (int j = 0; j < 14; j++)
+            {
+                Vector2 vector = new Vector2(6f, 6f).RotatedByRandom(100.0) * Main.rand.NextFloat(0.5f, 1.2f);
+                Dust dust2 = Dust.NewDustPerfect(player.Center + vector * 2f, DustID.WitherLightning, vector);
+                dust2.shader = GameShaders.Armor.GetSecondaryShader(player.cShield, player);
+                Dust.NewDustPerfect(player.Center + vector * 2f, DustID.Electric, vector);
+                dust2.shader = GameShaders.Armor.GetSecondaryShader(player.cShield, player);
+            }
+            ModItem item = ItemLoader.GetItem(ItemType<AsgardianAegisold>());
+            Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center, Vector2.Zero, ProjectileType<HolyExplosionold>(), LegacyAsgardianAegisDashDamage, LegacyAsgardianAegisDashKnockback, Main.myPlayer, 1f, 0f);
 
-            float kbFactor = 15f;
-            bool crit = Main.rand.Next(100) < player.GetCritChance<MeleeDamageClass>();
-            if (player.kbGlove)
-                kbFactor *= 2f;
-            if (player.kbBuff)
-                kbFactor *= 1.5f;
-
-            int hitDirection = player.direction;
-            if (player.velocity.X != 0f)
-                hitDirection = Math.Sign(player.velocity.X);
-            hitContext.HitDirection = hitDirection;
-
-            // Define hit context variables.
-            hitContext.HitDirection = hitDirection;
-            hitContext.PlayerImmunityFrames = AsgardianAegis.ShieldSlamIFrames;
-
-            // Define damage parameters.
-            int dashDamage = AsgardianAegis.ShieldSlamDamage;
-            hitContext.damageClass = DamageClass.Melee;
-            hitContext.BaseDamage = dashDamage;
-            hitContext.BaseKnockback = AsgardianAegis.ShieldSlamKnockback;
-
-            // On-hit Cosmic Dash Explosion
-            int explosionDamage = (int)player.GetBestClassDamage().ApplyTo(AsgardianAegis.RamExplosionDamage);
-            Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<CosmicDashExplosion>(), explosionDamage, AsgardianAegis.RamExplosionKnockback, Main.myPlayer, 3f, 0f);
-            npc.AddBuff(BuffType<GodSlayerInferno>(), 300);
+            target.AddBuff(BuffType<GodSlayerInferno>(), 300);
         }
     }
 }

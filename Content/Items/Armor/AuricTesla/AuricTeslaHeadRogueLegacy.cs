@@ -72,11 +72,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 
             player.setBonus = this.GetLocalizedValue("SetBonus");
             usPlayer.GodSlayerReborn = true;
-            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
+            usPlayer.CanUseLegacyGodSlayerDash = true;
             usPlayer.SilvaRougeSetLegacy = true;
 
             calPlayer.rogueStealthMax += 1.3f;

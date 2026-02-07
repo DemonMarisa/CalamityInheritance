@@ -1,4 +1,7 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Items.Accessories.Combats;
+using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.SunkenSea;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,5 +35,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.noUseGraphic = true;
         }
         public override bool MeleePrefix() => true;
+
+        public override void AddRecipes()
+        {
+
+            CreateRecipe().
+                AddIngredient<PearlShard>(2).
+                AddIngredient<SeaPrism>(4).
+                AddIngredient<Navystone>(8).
+                AddTile(TileID.Anvils).
+                Register();
+        }
     }
 }

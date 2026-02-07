@@ -37,14 +37,10 @@ using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityMod.Particles;
 using CalamityMod.Events;
-using CalamityMod.Items.Armor.Vanity;
 using CalamityInheritance.Core;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityMod.Items.Placeables.Furniture;
 using CalamityMod.Items.Potions.Alcohol;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityInheritance.System.DownedBoss;
-using CalamityModMusic.Items.Placeables;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityMod.Items.Tools;
 
@@ -631,13 +627,13 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ItemType<Arcueid>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(new Item(ItemType<BlessingOftheMoon>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
                 .Add(new Item(ItemType<Kunoji>()) { shopCustomPrice = Item.buyPrice(gold: 10) })
-                .Add(new Item(ItemType<Interlude1MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedCalClone)
-                .Add(new Item(ItemType<Interlude2MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedMoonLord)
+                //.Add(new Item(ItemType<Interlude1MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedCalClone)
+                //.Add(new Item(ItemType<Interlude2MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, Condition.DownedMoonLord)
                 .Add(new Item(ItemType<ProvidenceLegacy>()) { shopCustomPrice = Item.buyPrice(gold: 15) }, CalamityConditions.DownedProvidence)
                 .Add(new Item(ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
                 .Add(new Item(ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedExoMechs)
-                .Add(new Item(ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
-                .Add(new Item(ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
+                .Add(new Item(ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon);
+                //.Add(new Item(ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
             MusicShop.Register();
         }
         public void WineShop_List()

@@ -4,13 +4,9 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -22,6 +18,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         }
         public override void SetDefaults()
         {
+            Item.DamageType = GetInstance<RogueDamageClass>();
             Item.width = Item.height = 64;
             Item.damage = 298;
             Item.noMelee = true;

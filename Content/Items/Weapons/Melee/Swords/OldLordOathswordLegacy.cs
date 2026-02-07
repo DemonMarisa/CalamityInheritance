@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymoreLegacy;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymoreLegacy;
 using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -65,5 +66,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         public override bool? CanHitNPC(Player player, NPC target) => false;
 
         public override bool CanHitPvp(Player player, Player target) => false;
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+            AddIngredient<DemonicBoneAsh>(3).
+            AddTile(TileID.Anvils).
+            Register();
+        }
     }
 }

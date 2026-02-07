@@ -2,6 +2,7 @@ using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Potions;
@@ -52,10 +53,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f);
             NPC.boss = true;
 
-            NPC.LifeMaxNERB(1200000, 1500000);
-
+            NPC.lifeMax = 1500000;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 276000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
 
             NPC.aiStyle = -1;
             AIType = -1;

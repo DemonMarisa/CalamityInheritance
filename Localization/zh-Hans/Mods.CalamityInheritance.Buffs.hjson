@@ -276,26 +276,31 @@ ShizukuMoonlight: {
 }
 
 DOGSummonBuff: {
-	// DisplayName: D O G Summon Buff
-	// Description: Mods.CalamityInheritance.Buffs.DOGSummonBuff.Description
+	DisplayName: 神明吞噬者[Legacy]
+	Description: 一个微型的神明吞噬者会保护你
 }
 
 SunSpiritBuff: {
-	// DisplayName: Sun Spirit Buff
-	// Description: Mods.CalamityInheritance.Buffs.SunSpiritBuff.Description
+	DisplayName: 太阳之灵[Legacy]
+	Description: 太阳之灵会保护你
 }
 
 DazzlingStabberBuffLegacy: {
-	// DisplayName: Dazzling Stabber Buff Legacy
-	// Description: Mods.CalamityInheritance.Buffs.DazzlingStabberBuffLegacy.Description
+	DisplayName: 曜日穿刺者[Legacy]
+	Description: 时刻戒护
 }
 
 DaawnlightSpiritOriginBuffLegacy: {
-	// DisplayName: Daawnlight Spirit Origin Buff Legacy
-	// Description: Mods.CalamityInheritance.Buffs.DaawnlightSpiritOriginBuffLegacy.Description
+	DisplayName: 皎月之弓兵[Legacy]
+	Description: 现在你有了属于自己的观察员
 }
 
 SolarGodBuffLegacy: {
-	// DisplayName: Solar God Buff Legacy
-	// Description: Mods.CalamityInheritance.Buffs.SolarGodBuffLegacy.Description
+	DisplayName: 太阳神[Legacy]
+	Description: 暴怒的太阳之灵准备好保护你了
+}
+
+StarSwallowerBuff: {
+	DisplayName: Star Swallower Buff
+	Description: Mods.CalamityInheritance.Buffs.StarSwallowerBuff.Description
 }

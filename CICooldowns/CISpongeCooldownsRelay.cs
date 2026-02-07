@@ -12,7 +12,6 @@ using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.Localization;
 using static CalamityMod.CalamityUtils;
-using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.CICooldowns
 {

@@ -7,6 +7,8 @@ using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
+using LAP.Core.SystemsLoader;
+using LAP.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -24,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 82;
             Item.height = 84;
             Item.scale = 2.25f;
-            Item.damage = 2000;
+            Item.damage = 400;
             Item.useTurn = true;
             Item.DamageType = DamageClass.Melee;
             Item.useAnimation = 11;
@@ -36,6 +38,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.autoReuse = true;
             Item.rare = RarityType<DonatorPink>();
             Item.value = CIShopValue.RarityPriceDonatorPink;
+
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
 
         

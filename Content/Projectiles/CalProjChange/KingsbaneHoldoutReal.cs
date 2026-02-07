@@ -142,7 +142,10 @@ namespace CalamityInheritance.Content.Projectiles.CalProjChange
             UpdateProjectileHeldVariables(armPosition);
             ManipulatePlayerVariables();
         }
-
+        public override void PostAI()
+        {
+            Projectile.extraUpdates = 0;
+        }
         private void UpdateProjectileHeldVariables(Vector2 armPosition)
         {
             if (Main.myPlayer == Projectile.owner)

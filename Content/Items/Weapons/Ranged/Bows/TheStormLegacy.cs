@@ -2,8 +2,7 @@
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -113,6 +112,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Bows
                 }
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<ArmoredShell>(2).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

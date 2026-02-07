@@ -2,6 +2,7 @@
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.IDSets;
 using LAP.Core.Utilities;
 using System;
 using System.Linq;
@@ -16,17 +17,16 @@ namespace CalamityInheritance.Content.Projectiles
         // 是否允许分裂
         public override void SetDefaults(Projectile projectile)
         {
-            if (CalamityInheritanceLists.rangedProjectileExceptionList.Any(x => projectile.type == x))
+            if (CalamityInheritanceLists.rangedProjectileExceptionList.Contains(projectile.type))
                 projectile.SetCantSplit();
         }
-        public override void PostAI(Projectile projectile)
+        public override void AI(Projectile projectile)
         {
             if (ElemQuiverCon(projectile))
             {
                 ProjSpilt(projectile);
             }
         }
-
         public bool ElemQuiverCon(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];
@@ -44,9 +44,6 @@ namespace CalamityInheritance.Content.Projectiles
                 return false;
 
             if (projectile.whoAmI == player.heldProj)
-                return false;
-
-            if (projectile.IsHeldProj())
                 return false;
 
             // 上面的判定都过了后过最终随机发射判定

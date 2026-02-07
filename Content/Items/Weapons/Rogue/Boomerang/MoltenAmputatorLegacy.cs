@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityInheritance.Rarity;
 using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -52,6 +54,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
                 Projectile.NewProjectile(source, position, velocity * 2, type, damage, knockback, player.whoAmI);
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(7).
+                AddIngredient<DivineGeode>(4).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

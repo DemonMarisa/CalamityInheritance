@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

@@ -1,11 +1,9 @@
-using System;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.StatBuffs;
-using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -20,7 +18,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<BlissfulBombardier>();
         }
         public override void SetDefaults()
         {
@@ -60,6 +57,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             else
                 Projectile.NewProjectile(source, position, velocity, ProjectileType<ProfanedNuke>(), damage, knockback);
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(12).
+                AddIngredient<DivineGeode>(6).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

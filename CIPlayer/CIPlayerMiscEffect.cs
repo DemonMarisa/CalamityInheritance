@@ -3,7 +3,9 @@ using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CICooldowns;
+using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Content.Achievements;
+using CalamityInheritance.Content.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
@@ -31,13 +33,10 @@ using CalamityMod.CalPlayer;
 using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Armor.Silva;
-using CalamityMod.Items.Potions.Alcohol;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Systems.Collections;
-using LAP.Core.MiscDate;
+using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
@@ -549,17 +548,16 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             Item item = Player.HeldItem;
             var delePBG = GetInstance<GetMalaLegendary>();
-            var deleJoke = GetInstance<SpongeJoke>();
+
             if (PBGTier1)
                 delePBG.LegendaryComplete1.Complete();
             if (PBGTier2)
                 delePBG.LegendaryComplete2.Complete();
             if (PBGTier3)
                 delePBG.LegendaryComplete3.Complete();
-            
             if (CIConditions.DownedLegacyYharonP1.IsMet())
-                GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
-            
+                GetInstance<DownedYharonP2>().ForceKilledCondition.Complete(); 
+
             bool lastHitToSCal = CIServerConfig.Instance.CalStatInflationBACK;
             bool isNotBothDowned = (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedExoMechs) || (DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs) || (!DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs);
             //非双王后世界，数值膨胀
@@ -617,13 +615,14 @@ namespace CalamityInheritance.CIPlayer
                 PolarisPhase2 = false;
                 PolarisPhase3 = false;
             }
-            if (PolarisBoostCounter >= 20 /*|| CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Player, 3000f)*/)
+            if (PolarisBoostCounter >= 20)
             {
                 PolarisPhase2 = false;
                 PolarisPhase3 = true;
             }
             else if (PolarisBoostCounter >= 10)
                 PolarisPhase2 = true;
+
             if (InvincibleJam)
             {
                 for (int i = 0; i < Player.MaxBuffs; i++)
@@ -642,7 +641,8 @@ namespace CalamityInheritance.CIPlayer
                 float damageBoost = armorPeneBoost / 100f + totalArmorBoost;
                 float actualDamage = 1.0f + damageBoost; 
                 //避免伤害变成0乃至负数倍, 不惜一切代价
-                if(actualDamage <= 0f) actualDamage = 1.0f;
+                if(actualDamage <= 0f) 
+                    actualDamage = 1.0f;
                 Player.GetDamage<RangedDamageClass>() *= actualDamage;
             }           
             
@@ -661,10 +661,15 @@ namespace CalamityInheritance.CIPlayer
                 float damageMult = NanotechOld.nanotechDMGBoost;
                 Player.GetDamage<GenericDamageClass>() *= 1 + RaiderStacks / 150f * damageMult;
             }
-            if (Player.ownedProjectileCounts[ProjectileType<RogueTriactisHammerProjClone>()] == 1 && 
-                Player.ActiveItem().type == ItemType<ExoTheApostle>()) 
+
+            if (CanUseLegacyGodSlayerDash)
             {
-                Player.GetDamage<RogueDamageClass>() *= 2;
+                if (CalamityKeybinds.GodSlayerDashHotKey.JustPressed && !Player.HasCD<Content.CICooldowns.GodSlayerDashLegacy>())
+                {
+                    Player.ImmediatelyDash(LAPContent.DashType<Dash.GodSlayerDashLegacy>());
+                    if (LAPUtilities.IsLocalPlayer(Player.whoAmI))
+                        Player.AddCD(LAPContent.CDType<Content.CICooldowns.GodSlayerDashLegacy>(), 60 * 15);
+                }
             }
         }
         private void StandingStill()
@@ -1166,8 +1171,6 @@ namespace CalamityInheritance.CIPlayer
             // Brimstone Elemental lore inferno potion boost
             if ((LoreBrimstoneElement || PanelsLoreBrimstoneElement ||calPlayer.ataxiaBlaze) && Player.inferno)
             {
-                const int FramesPerHit = 30;
-
                 // Only run this code for the client which is wearing the armor.
                 // Brimstone flames is applied every single frame, but direct damage is only dealt twice per second.
                 if (Player.whoAmI == Main.myPlayer)

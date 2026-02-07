@@ -21,6 +21,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             Projectile.penetrate = -1;
             Projectile.extraUpdates = 5;
             Projectile.tileCollide = false;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
 
         public override void SetStaticDefaults()

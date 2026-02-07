@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.BaseClass
         /// 武器的旋转<br/>
         /// </summary>
         public virtual float WeaponRotation { get; set; }
+        public virtual float DrawRotation { get; set; }
         /// <summary>
         /// 武器转动的速度，越大越快<br/>
         /// </summary>
@@ -54,7 +55,6 @@ namespace CalamityInheritance.Content.BaseClass
         {
             if (UseDelay > 0)
                 UseDelay--;
-            Projectile.extraUpdates = 0;
 
             Vector2 offset = new(0, BaseOffsetY);
 
@@ -81,6 +81,10 @@ namespace CalamityInheritance.Content.BaseClass
             }
             Projectile.timeLeft = 2;
             // 确保不会使用的时候消失
+        }
+        public override void PostAI()
+        {
+            Projectile.extraUpdates = 0;
         }
         public virtual void UpdatePlayerVisuals(Player player, Vector2 playerHandPos)
         {
@@ -147,7 +151,7 @@ namespace CalamityInheritance.Content.BaseClass
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f);
+            float drawRotation = Projectile.rotation + (Projectile.spriteDirection == -1 ? MathHelper.Pi : 0f) + DrawRotation;
             Vector2 rotationPoint = texture.Size() * 0.5f;
             SpriteEffects flipSprite = (Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 

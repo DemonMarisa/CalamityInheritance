@@ -160,6 +160,10 @@ AquaticDischarge: {
 }
 
 LucreciaLegacy: {
-	// DisplayName: Lucrecia Legacy
-	// Tooltip: ""
+	DisplayName: 卢克雷西亚[Legacy]
+	Tooltip:
+		'''
+		发射脱氧核糖核酸链
+		精致
+		'''
 }

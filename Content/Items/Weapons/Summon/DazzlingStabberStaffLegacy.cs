@@ -2,8 +2,10 @@
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Summon;
 using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -66,6 +68,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 }
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(9).
+                AddIngredient<DivineGeode>(4).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

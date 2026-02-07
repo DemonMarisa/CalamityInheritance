@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Cannos;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
-using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -37,5 +35,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Cannos
         }
 
         public override Vector2? HoldoutOffset() => Vector2.UnitX * -15f;
+
     }
 }

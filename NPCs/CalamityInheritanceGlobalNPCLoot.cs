@@ -1,6 +1,6 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Accessories;
+﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.DashAccessories;
+using CalamityInheritance.Content.Items.Accessories.Defense;
 using CalamityInheritance.Content.Items.Accessories.Magic;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
@@ -22,14 +22,21 @@ using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Potions;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Magic.Books;
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Cannos;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Guns;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Bombs;
 using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.Content.Items.Weapons.Summon.Sentrys;
 using CalamityInheritance.Content.Items.Weapons.Typeless;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -37,11 +44,14 @@ using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Banners;
 using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
+using CalamityMod.NPCs.Astral;
 using CalamityMod.NPCs.AstrumAureus;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.BrimstoneElemental;
@@ -72,14 +82,14 @@ using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Reflection;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static CalamityMod.NPCs.BrimstoneElemental.BrimstoneElemental;
 using BadgeofBravery = CalamityInheritance.Content.Items.Accessories.Melee.BadgeofBravery;
 using ElementalQuiver = CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver;
-using StatisVoidSash = CalamityInheritance.Content.Items.Accessories.DashAccessories.StatisVoidSash;
 
 namespace CalamityInheritance.NPCs
 {
@@ -114,6 +124,35 @@ namespace CalamityInheritance.NPCs
             {
                 Loot.DropCommonVanilla(soulType, dropRate, dropMin, dropMax);
             }
+            if (npc.type == NPCID.MartianSaucer)
+                Loot.Add(ItemMod<NullificationPistolLegacy>(), 5);
+            // 红恶魔
+            if (npc.type == NPCID.RedDevil)
+                Loot.Add(ItemMod<DemonicBoneAsh>(), 3);
+            // 带向导人偶的恶魔
+            if (npc.type == NPCID.VoodooDemon)
+            {
+                Loot.Add(ItemMod<BladecrestOathswordLegacy>(), 3);
+                Loot.Add(ItemMod<DemonicBoneAsh>(), 2);
+            }
+            // 恶魔
+            if (npc.type == NPCID.Demon)
+            {
+                Loot.Add(ItemMod<BladecrestOathswordLegacy>(), 3);
+                Loot.Add(ItemMod<DemonicBoneAsh>(), 5);
+            }
+            // 古蛇
+            if (npc.type == NPCID.BoneSerpentHead)
+            {
+                Loot.Add(ItemMod<DemonicBoneAsh>(), 3);
+                Loot.Add(ItemMod<OldLordOathswordLegacy>(), 5);
+            }
+            if (npc.CheckNPCMod<EarthElemental>())
+                Loot.Add(ItemMod<Aftershock>(), 3);
+
+            if (npc.CheckNPCMod<MantisShrimp>())
+                Loot.Add(ItemMod<MantisClawLegacy>(), 5);
+
             if (npc.CheckNPCMod<IrradiatedSlime>())
                 Loot.Add(ItemMod<LeadCore>(), 3);
 
@@ -124,15 +163,25 @@ namespace CalamityInheritance.NPCs
                 Loot.Add(ItemMod<LeadCore>(), 2);
 
             if (npc.CheckNPCMod<Mauler>())
+            {
+                Loot.Add(ItemMod<SulphuricAcidCannonLegacy>(), 2);
                 Loot.Add(ItemMod<LeadCore>(), 2);
+            }
 
             if (npc.CheckNPCMod<NuclearTerror>())
                 Loot.Add(ItemMod<LeadCore>(), 1);
 
             if (npc.CheckNPCMod<EutrophicRay>())
                 Loot.Add(ItemMod<EutrophicShank>(), 3);
+
+            if (npc.CheckNPCMod<PrismBack>())
+                Loot.Add(ItemMod<EutrophicScimitar>(), 3);
+
             if (npc.CheckNPCMod<IceClasper>())
                 Loot.Add(ItemMod<AncientAncientIceChunk>(), 3);
+
+            if (npc.CheckNPCMod<ImpiousImmolator>())
+                Loot.Add(ItemMod<SanctifiedSparkLegacy>(), 3);
 
             LeadingConditionRule postPolter = Loot.DefineConditionalDropSet(DropHelper.PostPolter());
 
@@ -161,60 +210,6 @@ namespace CalamityInheritance.NPCs
                 }
 
             }
-            // if (npc.CheckNPCMod<WulfrumDrone>())
-            // {
-            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
-            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
-            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
-            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
-            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // }
-
-            // if (npc.CheckNPCMod<WulfrumGyrator>())
-            // {
-            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
-            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
-            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
-            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
-            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // 
-
-            // if (npc.CheckNPCMod<WulfrumHovercraft>())
-            // {
-            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
-            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
-            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
-            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
-            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // }
-
-            // if (npc.CheckNPCMod<WulfrumAmplifier>())
-            // {
-            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
-            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
-            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
-            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
-            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // }
-
-            // if (npc.CheckNPCMod<WulfrumRover>())
-            // {
-            //     Loot.Add(ItemMod<MageWulfrumHoodLegacy>(), 100);
-            //     Loot.Add(ItemMod<MeleeWulfrumHelmLegacy>(), 100);
-            //     Loot.Add(ItemMod<RangedWulfrumHeadgearLegacy>(), 100);
-            //     Loot.Add(ItemMod<SummonerWulfrumHelmetLegacy>(), 100);
-            //     Loot.Add(ItemMod<ThrowerWulfrumMaskLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumArmorLegacy>(), 100);
-            //     Loot.Add(ItemMod<WulfrumLeggingsLegacy>(), 100);
-            // }
             if (npc.CheckNPCMod<Cnidrion>())
             {
                 if (CIServerConfig.Instance.CalExtraDrop == true)
@@ -278,13 +273,17 @@ namespace CalamityInheritance.NPCs
                 postCalClone.Add(DropHelper.NormalVsExpertQuantity(ItemMod<DepthCells>(), 2, 1, 2, 2, 3));
                 postCalClone.Add(ItemMod<Lumenyl>(), 2);
             }
+            if (npc.CheckNPCMod<ReaperShark>())
+            {
+                Loot.Add(ItemMod<TheReaperLegacy>(), 3);
+            }
             #endregion
             #region ModBoss
 
             if (npc.CheckNPCMod<DesertScourgeHead>())
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedDesertScourge, ItemMod<KnowledgeDesertScourge>(), desc: DropHelper.FirstKillText);
-                Loot.Add(ItemMod<AeroStoneLegacy>(),1);
+                Loot.Add(ItemMod<AeroStoneLegacy>(), 1);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<DesertScourgeBag>());
             }
             if (npc.CheckNPCMod<Crabulon>())
@@ -298,12 +297,14 @@ namespace CalamityInheritance.NPCs
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<HiveMindBag>());
                 Loot.DropCommonMod<ShadethrowerLegacy>();
                 Loot.DropCommonMod<ShadowdropStaff>();
+                Loot.AddNormalOnly(ItemType<RottenMatter>(), 1, 20, 40);
             }
             if (npc.CheckNPCMod<PerforatorHive>())
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedPerforator, ItemMod<KnowledgePerforators>(), desc: DropHelper.FirstKillText);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<PerforatorBag>());
                 Loot.DropCommonMod<BloodClotStaff>();
+                Loot.AddNormalOnly(ItemType<BloodSample>(), 1, 20, 40);
             }
             if (npc.CheckNPCMod<SlimeGodCore>())
             {
@@ -323,6 +324,7 @@ namespace CalamityInheritance.NPCs
                 Loot.DropCommonMod<CryoBar>(3, 10, 20);
                 Loot.DropCommonMod<GlacialCrusher>();
                 Loot.DropCommonMod<BittercoldStaff>();
+                Loot.Add(ItemType<RegenatorLegacy>(), 1);
                 if (CIServerConfig.Instance.CalBossesCanDropSoul)
                     Loot.DropCommonVanilla(ItemID.SoulofMight, 1, 35, 45);
             }
@@ -330,6 +332,8 @@ namespace CalamityInheritance.NPCs
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
+                Loot.AddNormalOnly(ItemType<SeethingDischargeLegacy>(), 3);
+                Loot.Add(ItemMod<HellbornLegacy>());
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<BrimstoneElementalBag>());
             }
             if (npc.CheckNPCMod<AquaticScourgeHead>())
@@ -356,6 +360,8 @@ namespace CalamityInheritance.NPCs
                 bool shouldDropLore(DropAttemptInfo info) => (!DownedBossSystem.downedLeviathan || !DownedBossSystem.downedCalamitasClone) && LastAnLStanding();
                 Loot.AddConditionalPerPlayer(shouldDropLore, ItemMod<KnowledgeLeviathanAnahita>(), desc: DropHelper.FirstKillText);
                 Loot.AddConditionalPerPlayer(shouldDropLore, ItemMod<KnowledgeOcean>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(LastAnLStanding, ItemMod<LeviatitanLegacy>());
+                Loot.AddConditionalPerPlayer(LastAnLStanding, ItemMod<BrackishFlaskLegacy>());
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<LeviathanBag>());
                 
             }
@@ -374,6 +380,7 @@ namespace CalamityInheritance.NPCs
                 Loot.Add(onlyMasterDeath);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<PlaguebringerGoliathBag>());
                 Loot.DropCommonMod<BlightSpewerLegacy>();
+                Loot.AddNormalOnly(ItemType<DiseasedPikeLegacy>(), 3);
             }
             if (npc.CheckNPCMod<RavagerBody>())
             {
@@ -433,6 +440,11 @@ namespace CalamityInheritance.NPCs
             if (npc.CheckNPCMod<OldDuke>())
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBoomerDuke, ItemMod<KnowledgeOldDuke>(), desc: DropHelper.FirstKillText);
+                Loot.AddNormalOnly(ItemMod<FetidEmesisLegacy>(), 3);
+                Loot.AddNormalOnly(ItemMod<SepticSkewerLegacy>(), 3);
+                Loot.AddNormalOnly(ItemMod<ToxicantTwisterLegacy>(), 3);
+                Loot.AddNormalOnly(ItemMod<InsidiousImpalerLegacy>(), 3);
+                Loot.AddNormalOnly(ItemMod<VitriolicViperLegacy>(), 3);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<OldDukeBag>());
             }
             if (npc.CheckNPCMod<DevourerofGodsHead>())
@@ -662,7 +674,6 @@ namespace CalamityInheritance.NPCs
                     break;
 
                #endregion
-
             }
             GFBDrop(npc, Loot);
         }

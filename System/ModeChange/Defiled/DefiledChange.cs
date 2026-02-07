@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using CalamityInheritance.World;
 
@@ -12,11 +6,10 @@ namespace CalamityInheritance.System.ModeChange.Defiled
 {
     public class DefiledChange : GlobalNPC
     {
-        public override void OnKill(NPC npc)
+        public override void SetDefaults(NPC entity)
         {
-            CIWorld world = GetInstance<CIWorld>();
-            if (world.Defiled)
-                npc.value *= 2;
+            if (CIWorld.defiled)
+                entity.value *= 5;
         }
     }
 }

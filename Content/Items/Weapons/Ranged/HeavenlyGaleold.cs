@@ -18,6 +18,7 @@ using Terraria.Localization;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
 using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Bows;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -160,7 +161,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
-                AddIngredient<TelluricGlare>().
+                AddIngredient<TelluricGlareLegacy>().
                 AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
@@ -174,7 +175,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
-                AddIngredient<TelluricGlare>().
+                AddIngredient<TelluricGlareLegacy>().
                 AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().
@@ -188,7 +189,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
             CreateRecipe().
                 AddIngredient<PlanetaryAnnihilation>().
-                AddIngredient<TelluricGlare>().
+                AddIngredient<TelluricGlareLegacy>().
                 AddIngredient<ClockBowLegacy>().
                 AddIngredient<Alluvion>().
                 AddIngredient<AstrealDefeat>().

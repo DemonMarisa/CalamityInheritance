@@ -1,6 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Ammo.FiniteUse;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Content.Items.Weapons.Melee.Flails;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Cannos;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -17,7 +19,11 @@ namespace CalamityInheritance.NPCs
         public override void ModifyShop(NPCShop shop)
         {
             int type = shop.NpcType;
-
+            if (type == NPCType<SeaKing>())
+            {
+                shop.Add(ItemType<UrchinFlail>());
+                shop.Add(ItemType<CoralCannon>());
+            }
             if (type == NPCType<Archmage>())
             {
                 shop.AddWithCustomValue(ItemType<ColdheartIcicle>(), Item.buyPrice(gold: 150));

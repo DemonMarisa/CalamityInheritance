@@ -29,8 +29,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Books
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddRecipeGroup("AnyIceBlock", 20).
-                AddRecipeGroup("AnySnowBlock", 10).
+                AddIngredient(ItemID.IceBlock, 20).
+                AddIngredient(ItemID.SnowBlock, 10).
                 AddIngredient(ItemID.Shiverthorn, 2).
                 AddTile(TileID.Bookcases).
                 Register();

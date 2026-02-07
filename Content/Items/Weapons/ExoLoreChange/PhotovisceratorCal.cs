@@ -11,6 +11,7 @@ using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil;
@@ -56,7 +57,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 for (int i = 0; i < 2; i++)
                 {
                     Projectile holdout = Projectile.NewProjectileDirect(source, player.Center, Vector2.Zero, ProjectileType<PhotovisceratorWingman>(), damage, knockback, player.whoAmI, 0, 0, i == 0 ? 1 : -1);
-                    holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+                    holdout.velocity = (player.LocalMouseWorld() - player.MountedCenter).SafeNormalize(Vector2.Zero);
                 }
             }
             return false;

@@ -1,4 +1,6 @@
-﻿using Terraria;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer

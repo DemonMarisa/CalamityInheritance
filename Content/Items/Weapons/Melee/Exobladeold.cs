@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
@@ -8,7 +9,6 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -161,9 +161,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
+                AddIngredient<EntropicClaymoreLegacy>().
                 AddIngredient<PhoenixBlade>().
-                AddIngredient<StellarStriker>().
+                AddIngredient<StellarStrikerLegacy>().
                 AddIngredient<AuricBarold>(10).
                 DisableDecraft().
                 AddTile<DraedonsForgeold>().
@@ -174,9 +174,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
+                AddIngredient<EntropicClaymoreLegacy>().
                 AddIngredient<PhoenixBlade>().
-                AddIngredient<StellarStriker>().
+                AddIngredient<StellarStrikerLegacy>().
                 AddIngredient<MiracleMatter>().
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
@@ -186,9 +186,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().
                 AddIngredient<FlarefrostBlade>().
-                AddIngredient<EntropicClaymore>().
+                AddIngredient<EntropicClaymoreLegacy>().
                 AddIngredient<PhoenixBlade>().
-                AddIngredient<StellarStriker>().
+                AddIngredient<StellarStrikerLegacy>().
                 DisableDecraft().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).

@@ -141,50 +141,58 @@ InsidiousHarpoonLegacy.DisplayName: 腐坏长戟
 CIExocomet.DisplayName: 星流彗星
 SoulLargePlaceholder.DisplayName: 巨型灵魂
 VictideSpearBall.DisplayName: 海胆碎片
-// MarniteThrowSpearProj.DisplayName: Marnite Throw Spear Proj
-// CQuasherMeteor.DisplayName: C Quasher Meteor
-// GalacticaStar.DisplayName: Galactica Star
-
-Excelsus: {
-	// DisplayName: Excelsus
-	// Tooltip: ""
-}
-
-TheEnforcer: {
-	// DisplayName: The Enforcer
-	// Tooltip: ""
-}
-
-// EssenceFlame2.DisplayName: Essence Flame2
-// EutrophicSpark.DisplayName: Eutrophic Spark
-// BloodExplosion.DisplayName: Blood Explosion
-// DepthOrbLegacy.DisplayName: Depth Orb Legacy
-// ExcelsusProj.DisplayName: Excelsus Proj
-// LaserFountain.DisplayName: Laser Fountain
-// EradicatorProj_Rogue.DisplayName: Eradicator Proj_ Rogue
-// CrescentMoonProjLegacy.DisplayName: Crescent Moon Proj Legacy
-// GalileosMoonLegacy.DisplayName: Galileos Moon Legacy
-// GalileosPlanet.DisplayName: Galileos Planet
-// BloodScytheLegacy.DisplayName: Blood Scythe Legacy
-// CatastropheClaymoreSparkle.DisplayName: Catastrophe Claymore Sparkle
-// DemonFork.DisplayName: Demon Fork
-// ExaltedOathBladeProj.DisplayName: Exalted Oath Blade Proj
-// GalaxyBlast.DisplayName: Galaxy Blast
-// GalaxyBlast2.DisplayName: Galaxy Blast2
-// GalaxyBlast3.DisplayName: Galaxy Blast3
-// Oathblade.DisplayName: Oathblade
-// OathswordFlame.DisplayName: Oathsword Flame
-// EntropicFlechetteLegacy.DisplayName: Entropic Flechette Legacy
-// OracleYoyoOrb.DisplayName: Oracle Yoyo Orb
-// EarthExtraProj.DisplayName: Earth Extra Proj
-// EarthProjLegacy.DisplayName: Earth Proj Legacy
-
-PrismaticBreakerLegacy: {
-	// DisplayName: Prismatic Breaker Legacy
-	// Tooltip: ""
-}
-
-// PrismaticBeamLegacy.DisplayName: Prismatic Beam Legacy
-// PrismaticWaveLegacy.DisplayName: Prismatic Wave Legacy
-// DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
-// MoltenAmputatorProjLegacy.DisplayName: Molten Amputator Proj Legacy
+MarniteThrowSpearProj.DisplayName: Marnite Throw Spear Proj
+CQuasherMeteor.DisplayName: C Quasher Meteor
+GalacticaStar.DisplayName: Galactica Star
+EssenceFlame2.DisplayName: Essence Flame2
+EutrophicSpark.DisplayName: Eutrophic Spark
+BloodExplosion.DisplayName: Blood Explosion
+DepthOrbLegacy.DisplayName: Depth Orb Legacy
+ExcelsusProj.DisplayName: Excelsus Proj
+LaserFountain.DisplayName: Laser Fountain
+EradicatorProj_Rogue.DisplayName: Eradicator Proj_ Rogue
+CrescentMoonProjLegacy.DisplayName: Crescent Moon Proj Legacy
+GalileosMoonLegacy.DisplayName: Galileos Moon Legacy
+GalileosPlanet.DisplayName: Galileos Planet
+BloodScytheLegacy.DisplayName: Blood Scythe Legacy
+CatastropheClaymoreSparkle.DisplayName: Catastrophe Claymore Sparkle
+DemonFork.DisplayName: Demon Fork
+ExaltedOathBladeProj.DisplayName: Exalted Oath Blade Proj
+GalaxyBlast.DisplayName: Galaxy Blast
+GalaxyBlast2.DisplayName: Galaxy Blast2
+GalaxyBlast3.DisplayName: Galaxy Blast3
+Oathblade.DisplayName: Oathblade
+OathswordFlame.DisplayName: Oathsword Flame
+EntropicFlechetteLegacy.DisplayName: Entropic Flechette Legacy
+OracleYoyoOrb.DisplayName: Oracle Yoyo Orb
+EarthExtraProj.DisplayName: Earth Extra Proj
+EarthProjLegacy.DisplayName: Earth Proj Legacy
+PrismaticBeamLegacy.DisplayName: Prismatic Beam Legacy
+PrismaticWaveLegacy.DisplayName: Prismatic Wave Legacy
+DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
+MoltenAmputatorProjLegacy.DisplayName: Molten Amputator Proj Legacy
+EquanimityDarkShardLegacy.DisplayName: Equanimity Dark Shard Legacy
+EquanimityLightShardLegacy.DisplayName: Equanimity Light Shard Legacy
+EquanimityProjLegacy.DisplayName: Equanimity Proj Legacy
+EutrophicScimitarProjLegacy.DisplayName: Eutrophic Scimitar Proj Legacy
+DustProjectile.DisplayName: Dust Projectile
+DNAChain.DisplayName: D N A Chain
+BallOFuguProjLegacy.DisplayName: Ball O Fugu Proj Legacy
+TumbleweedProj.DisplayName: Tumbleweed Proj
+TumbleweedRollProj.DisplayName: Tumbleweed Roll Proj
+UrchinBall.DisplayName: Urchin Ball
+UrchinBallSpike.DisplayName: Urchin Ball Spike
+GrandGuardianBolt.DisplayName: Grand Guardian Bolt
+GrandGuardianBoom.DisplayName: Grand Guardian Boom
+GreatswordofBlahAura.DisplayName: 巨剑能量
+GreatswordofBlahProj.DisplayName: 巨剑弹幕
+GreatswordofBlahRain.DisplayName: 巨剑之雨
+GreatswordofBlahWhiteOrb.DisplayName: 巨剑光球
+JudgementProjLegacy.DisplayName: 审判
+JudgementWhiteBoltAura.DisplayName: 审判能量
+JudgementWhiteOrb.DisplayName: 审判光球
+JudgementWhiterain.DisplayName: 审判之雨
+VirulentBeeWave.DisplayName: 瘟疫之风
+BalefulHarvesterProjectileLegacy.DisplayName: 收割南瓜
+AftershockRock.DisplayName: 岩石
+MirrorBlastLegacy.DisplayName: 镜之碎片

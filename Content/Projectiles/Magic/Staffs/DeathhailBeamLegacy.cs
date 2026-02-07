@@ -4,14 +4,12 @@ using CalamityMod.Projectiles.BaseProjectiles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Staffs
 {
-    [Obsolete]
     public class DeathhailBeamLegacy : BaseLaserbeamProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";

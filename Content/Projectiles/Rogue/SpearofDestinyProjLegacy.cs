@@ -57,11 +57,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
 
-            NPC npc = Projectile.FindClosestTarget(800);
-            if (npc is not null)
-            {
-                Projectile.HomingTarget(npc.Center, 800, 20f, 35f);
-            }
+            Projectile.HomeInNPC(800f, 20f, 35f);
 
             Vector2 center = Projectile.Center;
             float maxDistance = 800f;

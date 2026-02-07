@@ -284,26 +284,31 @@ ShizukuMoonlight: {
 }
 
 DOGSummonBuff: {
-	DisplayName: D O G Summon Buff
-	Description: Mods.CalamityInheritance.Buffs.DOGSummonBuff.Description
+	DisplayName: Mechworm Legacy
+	Description: The mechworm will protect you
 }
 
 SunSpiritBuff: {
-	DisplayName: Sun Spirit Buff
-	Description: Mods.CalamityInheritance.Buffs.SunSpiritBuff.Description
+	DisplayName: solar spirit Legacy
+	Description: The solar spirit will protect you
 }
 
 DazzlingStabberBuffLegacy: {
-	DisplayName: Dazzling Stabber Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.DazzlingStabberBuffLegacy.Description
+	DisplayName: Dazzling Stabber Legacy
+	Description: En garde!
 }
 
 DaawnlightSpiritOriginBuffLegacy: {
-	DisplayName: Daawnlight Spirit Origin Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.DaawnlightSpiritOriginBuffLegacy.Description
+	DisplayName: Archer of Lunamoon Legacy
+	Description: You have a personal spotter
 }
 
 SolarGodBuffLegacy: {
 	DisplayName: Solar God Buff Legacy
-	Description: Mods.CalamityInheritance.Buffs.SolarGodBuffLegacy.Description
+	Description: A furious Sun spirit is ready to protect you
+}
+
+StarSwallowerBuff: {
+	DisplayName: Star Swallower Buff
+	Description: Mods.CalamityInheritance.Buffs.StarSwallowerBuff.Description
 }

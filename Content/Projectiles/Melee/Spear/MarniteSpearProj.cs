@@ -1,9 +1,5 @@
-using System;
-using System.Numerics;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

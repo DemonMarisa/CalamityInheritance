@@ -1,0 +1,46 @@
+﻿using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Typeless.NorProj
+{
+    internal class EmpyreanStellarDetritusLegacy : ModProjectile, ILocalizedModType
+    {
+        public new string LocalizationCategory => "Content.Projectiles.Typeless";
+        public override void SetStaticDefaults() => ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+        public override void SetDefaults()
+        {
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.alpha = 100;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.timeLeft = 300;
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation += 0.25f;
+            Projectile.localAI[0] += 1f;
+            if (Projectile.localAI[0] > 4f)
+            {
+                int ourpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 100, default, 2f);
+                Main.dust[ourpleDust].noGravity = true;
+                Main.dust[ourpleDust].velocity *= 0f;
+            }
+            Projectile.HomeInNPC(1500f, 10f, 20f);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+    }
+}

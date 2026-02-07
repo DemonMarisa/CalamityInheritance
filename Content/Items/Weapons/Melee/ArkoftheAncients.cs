@@ -152,7 +152,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
                 AddIngredient(ItemID.EnchantedSword).
-                AddTile(TileID.MythrilAnvil).
+                AddTile(TileID.Anvils).
                 Register();
 
             CreateRecipe().
@@ -160,7 +160,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient<EssenceofEleum>(3).
                 AddIngredient(ItemID.Starfury).
                 AddRecipeGroup(LAPRecipeGroup.AnyArkhalis).
-                AddTile(TileID.MythrilAnvil).
+                AddTile(TileID.Anvils).
                 Register();
         }
     }

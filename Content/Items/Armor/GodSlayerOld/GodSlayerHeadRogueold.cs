@@ -53,11 +53,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 
             modPlayer1.GodSlayerReborn = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
+            modPlayer1.CanUseLegacyGodSlayerDash = true;
         }
         public override void UpdateEquip(Player player)
         {

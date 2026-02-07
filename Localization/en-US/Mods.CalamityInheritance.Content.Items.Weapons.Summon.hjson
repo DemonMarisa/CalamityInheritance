@@ -119,20 +119,38 @@ SiriusLegacy: {
 
 DazzlingStabberStaffLegacy: {
 	DisplayName: Dazzling Stabber Staff Legacy
-	Tooltip: ""
-}
-
-SunSpiriteStaffLegacy: {
-	DisplayName: Sun Spirite Staff Legacy
-	Tooltip: ""
-}
-
-StaffofDOG: {
-	DisplayName: Staffof D O G
-	Tooltip: ""
+	Tooltip: Summons a holy blade to fight for you
 }
 
 VengefulSunStaffLegacy: {
 	DisplayName: Vengeful Sun Staff Legacy
+	Tooltip:
+		'''
+		Summons a vengeful solar spirit to protect you
+		There can only be one spirit at a time
+		'''
+}
+
+SunSpiriteStaffLegacy: {
+	DisplayName: Sun Spirite Staff Legacy
+	Tooltip:
+		'''
+		Summons a solar spirit to protect you
+		There can only be one spirit at a time
+		'''
+}
+
+StaffofDOG: {
+	DisplayName: Staff of the Mechworm Revamped
+	Tooltip:
+		'''
+		Requires 3 minion slots to use
+		Summons an aerial mechworm to fight for you
+		There can only be one Mechworm at a time
+		'''
+}
+
+SanctifiedSparkLegacy: {
+	DisplayName: Sanctified Spark Legacy
 	Tooltip: ""
 }

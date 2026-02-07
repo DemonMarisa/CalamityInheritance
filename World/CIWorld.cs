@@ -18,30 +18,12 @@ namespace CalamityInheritance.World
 {
     public class CIWorld : ModSystem
     {
-        // Modes
-        public bool Malice = false; // 恶意
-        public bool Defiled = false; // 神殇
-        public bool IronHeart = false; // 铁心
-        public bool Armageddon = false; // 末日
-
         public static bool malice = false; // 恶意
         public static bool defiled = false; // 神殇
         public static bool ironHeart = false; // 铁心
         public static bool armageddon = false; // 末日
-        public override void PostUpdateWorld()
-        {
-            malice = Malice;
-            defiled = Defiled;
-            ironHeart = IronHeart;
-            armageddon = Armageddon;
-        }
         public override void SaveWorldData(TagCompound tag)
         {
-            tag["MaliceMode"] = Malice;
-            tag["DefiledMode"] = Defiled;
-            tag["IronHeartMode"] = IronHeart;
-            tag["ArmageddonMode"] = Armageddon;
-
             tag["MaliceMode2"] = malice;
             tag["DefiledMode2"] = defiled;
             tag["IronHeartMode2"] = ironHeart;
@@ -49,11 +31,6 @@ namespace CalamityInheritance.World
         }
         public override void LoadWorldData(TagCompound tag)
         {
-            Malice = tag.GetBool("MaliceMode");
-            Defiled = tag.GetBool("DefiledMode");
-            IronHeart = tag.GetBool("IronHeartMode");
-            Armageddon = tag.GetBool("ArmageddonMode");
-
             malice = tag.GetBool("MaliceMode2");
             defiled = tag.GetBool("DefiledMode2");
             ironHeart = tag.GetBool("IronHeartMode2");
@@ -63,33 +40,33 @@ namespace CalamityInheritance.World
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte net1 = new BitsByte();
-            net1[0] = Malice;
-            net1[1] = Defiled;
-            net1[2] = IronHeart;
-            net1[3] = Armageddon;
-            net1[4] = malice;
-            net1[5] = defiled;
-            net1[6] = ironHeart;
-            net1[7] = armageddon;
+            net1[0] = malice;
+            net1[1] = defiled;
+            net1[2] = ironHeart;
+            net1[3] = armageddon;
+            net1[4] = false;
+            net1[5] = false;
+            net1[6] = false;
+            net1[7] = false;
             writer.Write(net1);
         }
         public override void NetReceive(BinaryReader reader)
         {
             BitsByte net1 = reader.ReadByte();
-            Malice = net1[0];
-            Defiled = net1[1];
-            IronHeart = net1[2];
-            Armageddon = net1[3];
-            malice = net1[4];
-            defiled = net1[5];
-            ironHeart = net1[6];
-            armageddon = net1[7];
+            malice = net1[0];
+            defiled = net1[1];
+            ironHeart = net1[2];
+            armageddon = net1[3];
+            _ = net1[4];
+            _ = net1[5];
+            _ = net1[6];
+            _ = net1[7];
         }
         #endregion
         #region 开启与关闭
         public void UpdateMalice()
         {
-            if (!Malice)
+            if (!malice)
             {
                 if (!CalamityWorld.revenge)
                 {
@@ -101,12 +78,12 @@ namespace CalamityInheritance.World
                     CalamityWorld.death = true;
                     CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DeathText", Color.Crimson);
                 }
-                Malice = true;
+                malice = true;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText", Color.LightGoldenrodYellow);
             }
             else
             {
-                Malice = false;
+                malice = false;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText2", Color.LightGoldenrodYellow);
             }
 
@@ -115,15 +92,13 @@ namespace CalamityInheritance.World
         }
         public void UpdateDefiled()
         {
-            if (!Defiled)
+            if (!defiled)
             {
-                Defiled = true;
                 defiled = true;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText", Color.DarkSeaGreen);
             }
             else
             {
-                Defiled = false;
                 defiled = false;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.DefiledText2", Color.DarkSeaGreen);
             }
@@ -133,14 +108,14 @@ namespace CalamityInheritance.World
         }
         public void UpdateArmageddon()
         {
-            if (!Armageddon)
+            if (!armageddon)
             {
-                Armageddon = true;
+                armageddon = true;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.ArmageddonText", Color.Fuchsia);
             }
             else
             {
-                Armageddon = false;
+                armageddon = false;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.ArmageddonText2", Color.Fuchsia);
             }
 
@@ -149,14 +124,14 @@ namespace CalamityInheritance.World
         }
         public void UpdateIronHeart()
         {
-            if (!IronHeart)
+            if (!ironHeart)
             {
-                IronHeart = true;
+                ironHeart = true;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.IronHeartText", Color.LightSkyBlue);
             }
             else
             {
-                IronHeart = false;
+                ironHeart = false;
                 CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.IronHeartText2", Color.LightSkyBlue);
             }
 

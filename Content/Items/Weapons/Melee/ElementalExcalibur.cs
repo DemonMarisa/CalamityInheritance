@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
     public class ElementalExcalibur : CIMelee, ILocalizedModType
     {
         
-        private static int BaseDamage = 4000;
+        private static int BaseDamage = 2000;
         private int BeamType = 0;
         private const int alpha = 50;
 
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            Item.damage = BaseDamage;
+            Item.damage = 2000;
             Item.useAnimation = 14;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useTime = 14;

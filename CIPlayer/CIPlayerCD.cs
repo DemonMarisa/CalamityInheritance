@@ -121,9 +121,6 @@ namespace CalamityInheritance.CIPlayer
             if (AncientAstralStealthCD > 0) //每次潜伏攻击之间的CD
                 AncientAstralStealthCD--;
 
-            if (statisTimerOld > 0 && CIDashDelay >= 0)
-                statisTimerOld = 0;//斯塔提斯CD
-
             if (Player.miscCounter % 150 == 0)
             {
                 ReaverRocketFires = true;

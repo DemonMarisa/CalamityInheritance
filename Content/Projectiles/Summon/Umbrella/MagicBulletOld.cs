@@ -31,6 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
             Projectile.tileCollide = false;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

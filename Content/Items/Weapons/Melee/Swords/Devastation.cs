@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             Item.knockBack = 4.25f;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
             Item.shoot = ProjectileType<GalaxyBlast>();
             Item.shootSpeed = 16f;

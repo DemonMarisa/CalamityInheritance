@@ -119,5 +119,9 @@ ShizukuSword: {
 
 LunicEyeLegacy: {
 	DisplayName: Lunic Eye Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires homing lunic beams that reduce enemy protection
+		This weapon scales with all your damage stats at once
+		'''
 }

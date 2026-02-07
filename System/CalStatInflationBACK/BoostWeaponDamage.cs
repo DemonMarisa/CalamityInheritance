@@ -500,48 +500,21 @@ namespace CalamityInheritance.System.CalStatInflationBACK
             if (item.Same<HalibutCannon>())
                 SetCustomMult(item, 2500);
             #region 遗产魔影
-            //这个需要两倍
-            if (item.type == ItemType<FabstaffOld>())
-                SetCustomMult(item, 2890);
-            if (item.type == ItemType<SomaPrimeOld>())
-                SetCustomMult(item, 2400);
             if (item.type == ItemType<CrystylCrusherLegacy>())
                 SetCustomMult(item, 2000);
-            if (item.type == ItemType<Animus>())
-                SetCustomMult(item, 10000);
             if (item.type == ItemType<AzathothLegacy>())
                 SetCustomMult(item, 1000);
             //这个不需要补强了，回血效率问题
             if (item.type == ItemType<RogueShadowspecKnives>())
                 SetCustomMult(item, 2000);
-            //很难想象这个东西居然是需要加强的
-            //800 -> 1000
-            if (item.Same<MeleeNanoblackReaper>())
-                SetCustomMult(item, 1000);
             //同样不需要补强，强度足够了，还有武器特性问题
             if (item.type == ItemType<RogueTriactisHammer>())
                 SetCustomMult(item, 5800);
-            //为啥开数值膨胀之后面板比没开低了？
-            //不对，这jb的是原版神吞书我草
-            //无敌了
-            //if (item.type == ModContent.ItemType<Apotheosis>())
-            //圣神之象需要翻4倍
-            if (item.type == ItemType<ApotheosisLegacy>())
-                SetCustomMult(item, 2480);
             if (item.type == ItemType<SvantechnicalLegacy>())
                 SetCustomMult(item, 720);
-            if (item.type == ItemType<TemporalUmbrellaOld>())
-                SetCustomMult(item, 1000);
-            //光之舞不需要
-            if (item.type == ItemType<DanceofLightLegacy>())
-                SetCustomMult(item, 480);
             if (item.type == ItemType<StepToolShadows>())
                 SetCustomMult(item, 5141);
-            if (item.Same<ShizukuSword>())
-                SetCustomMult(item, 5000);
-
             #endregion
-
         }
         #endregion
         #region 弹药
@@ -559,13 +532,6 @@ namespace CalamityInheritance.System.CalStatInflationBACK
                 SetCustomMult(item, 40);
             if (item.type == ItemType<GodSlayerSlug>())
                 SetCustomMult(item, 42);
-
-            if (item.type == ItemType<HolyFireBulletOld>())
-                SetCustomMult(item, 27);
-            if (item.type == ItemType<VanquisherArrowold>())
-                SetCustomMult(item, 33);
-            if (item.type == ItemType<ElysianArrowOld>())
-                SetCustomMult(item, 20);
         }
         #endregion
         #endregion

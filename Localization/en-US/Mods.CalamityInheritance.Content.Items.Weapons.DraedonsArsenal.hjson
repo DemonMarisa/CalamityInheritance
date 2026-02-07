@@ -20,31 +20,64 @@ MountedScannerLegacy: {
 }
 
 GaussRifle: {
-	DisplayName: Gauss Rifle
-	Tooltip: ""
+	DisplayName: Gauss Rifle Legacy
+	Tooltip: Fires a devastating powerful high-velocity blast with absurd knockback
 }
 
 HeavyLaserRifle: {
-	DisplayName: Heavy Laser Rifle
-	Tooltip: ""
+	DisplayName: Heavy Laser Rifle Legacy
+	Tooltip: Fires an incredibly accurate pair of destructive laser beams
 }
 
 MatterModulator: {
-	DisplayName: Matter Modulator
-	Tooltip: ""
+	DisplayName: Matter Modulator Legacy
+	Tooltip:
+		'''
+		Fires a burst of unstable matter that pierces infinitely but deals little damage
+		After striking a tile, the matter will gain enhanced damage and no longer pierce
+		'''
 }
 
 PulsePistolLegacy: {
 	DisplayName: Pulse Pistol Legacy
-	Tooltip: ""
+	Tooltip: Fires a pulse that arcs to a new target on enemy hits
 }
 
 Taser: {
-	DisplayName: Taser
-	Tooltip: ""
+	DisplayName: Taser Legacy
+	Tooltip:
+		'''
+		Shoots a hook that attaches to enemies and electrocutes them before returning
+		A slow, simple electric weapon, meant only for low ranking guards
+		'''
 }
 
 TrackingDisk: {
-	DisplayName: Tracking Disk
+	DisplayName: Tracking Disk Legacy
+	Tooltip:
+		'''
+		Releases a flying disk that fires lasers at nearby enemies
+		This disk gains acceleration as it returns to the player
+		Stealth strikes fire lasers at a faster rate and distance, and can fire at multiple different targets
+		'''
+}
+
+GaussPistolLegacy: {
+	DisplayName: Gauss Pistol Legacy
+	Tooltip: ""
+}
+
+FrequencyManipulator: {
+	DisplayName: Frequency Manipulator
+	Tooltip: ""
+}
+
+GatlingLaserLegacy: {
+	DisplayName: Gatling Laser Legacy
+	Tooltip: ""
+}
+
+StarSwallowerContainmentUnit: {
+	DisplayName: Star Swallower Containment Unit
 	Tooltip: ""
 }

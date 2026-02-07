@@ -1,6 +1,8 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items;
+﻿using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
+using LAP.Content.RecipeGroupAdd;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,6 +24,21 @@ namespace CalamityInheritance.Content.Items.Accessories.Combats
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.CIMod().LuxorsGiftLegacy = true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.Ruby, 1).
+                AddRecipeGroup(LAPRecipeGroup.AnyGoldBar, 10).
+                AddIngredient(ItemID.HellstoneBar, 5).
+                AddIngredient(ItemID.Bone, 5).
+                AddIngredient(ItemID.JungleSpores, 5).
+                AddIngredient(ItemID.BeeWax, 5).
+                AddIngredient<SulphuricScale>(5).
+                DisableDecraft().
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

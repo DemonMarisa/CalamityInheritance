@@ -1,23 +1,14 @@
 ﻿using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Content.Achievements;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
-using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
 using CalamityInheritance.Content.Projectiles.Typeless.Heal;
-using CalamityInheritance.Core;
-using CalamityInheritance.NPCs.Boss.Yharon;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.NPCs.Yharon;
 using CalamityMod.Projectiles.Summon;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -49,6 +40,14 @@ namespace CalamityInheritance.CIPlayer
                         Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Main.rand.NextVector2Circular(0.25f, 0.25f), Type, 45, 1, Player.whoAmI);
                     }
                 }
+            }
+            if (AbyssalAmuletLegacy)
+            {
+                target.AddBuff(BuffType<CrushDepth>(), 180, false);
+            }
+            if (LumenousAmulet)
+            {
+                target.AddBuff(BuffType<CrushDepth>(), 360, false);
             }
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */

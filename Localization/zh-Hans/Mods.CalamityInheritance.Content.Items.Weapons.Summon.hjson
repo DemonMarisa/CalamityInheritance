@@ -120,21 +120,39 @@ SiriusLegacy: {
 }
 
 DazzlingStabberStaffLegacy: {
-	// DisplayName: Dazzling Stabber Staff Legacy
-	// Tooltip: ""
-}
-
-SunSpiriteStaffLegacy: {
-	// DisplayName: Sun Spirite Staff Legacy
-	// Tooltip: ""
-}
-
-StaffofDOG: {
-	// DisplayName: Staffof D O G
-	// Tooltip: ""
+	DisplayName: 耀目穿刺者杖[Legacy]
+	Tooltip: 召唤圣刃为你而战
 }
 
 VengefulSunStaffLegacy: {
-	// DisplayName: Vengeful Sun Staff Legacy
+	DisplayName: 太阳神法杖[Legacy]
+	Tooltip:
+		'''
+		召唤一个太阳神灵保护你
+		同时只能存在一个太阳神灵
+		'''
+}
+
+SunSpiriteStaffLegacy: {
+	DisplayName: 太阳之灵法杖[Legacy]
+	Tooltip:
+		'''
+		召唤一个太阳之灵保护你
+		同时只能存在一个太阳之灵
+		'''
+}
+
+StaffofDOG: {
+	DisplayName: 神明吞噬者召唤杖[Revamped]
+	Tooltip:
+		'''
+		占用3召唤栏
+		召唤虚空吞噬者为你而战
+		同时只能存在一个虚空吞噬者
+		'''
+}
+
+SanctifiedSparkLegacy: {
+	// DisplayName: Sanctified Spark Legacy
 	// Tooltip: ""
 }

@@ -401,207 +401,157 @@ DivineRetribution: {
 		'''
 }
 
-ShadowboltStaffLegacy: {
-	DisplayName: Shadowbolt Staff Legacy
-	Tooltip: ""
-}
-
-AsteroidStaff: {
-	DisplayName: Asteroid Staff
-	Tooltip: ""
-}
-
-DeathhailStaff: {
-	DisplayName: Deathhail Staff
-	Tooltip: ""
-}
-
-WrathoftheAncients: {
-	DisplayName: Wrathofthe Ancients
-	Tooltip: ""
-}
-
-VenusianTridentLegacy: {
-	DisplayName: Venusian Trident Legacy
-	Tooltip: ""
-}
-
-PurgeGuzzlerLegacy: {
-	DisplayName: Purge Guzzler Legacy
-	Tooltip: ""
-}
-
-VitriolicViperLegacy: {
-	DisplayName: Vitriolic Viper Legacy
-	Tooltip: ""
-}
-
-CrescentMoonLegacy: {
-	DisplayName: Crescent Moon Legacy
-	Tooltip: ""
-}
-
-GalileoGladiusLegacy: {
-	DisplayName: Galileo Gladius Legacy
-	Tooltip: ""
-}
-
-BladecrestOathswordLegacy: {
-	DisplayName: Bladecrest Oathsword Legacy
-	Tooltip: ""
-}
-
-CatastropheClaymore: {
-	DisplayName: Catastrophe Claymore
-	Tooltip: ""
-}
-
-Devastation: {
-	DisplayName: Devastation
-	Tooltip: ""
-}
-
-DevilsDevastationLegacy: {
-	DisplayName: Devils Devastation Legacy
-	Tooltip: ""
-}
-
-EntropicClaymoreLegacy: {
-	DisplayName: Entropic Claymore Legacy
-	Tooltip: ""
-}
-
-ExaltedOathbladeLegacy: {
-	DisplayName: Exalted Oathblade Legacy
-	Tooltip: ""
-}
-
-Excelsus: {
-	DisplayName: Excelsus
-	Tooltip: ""
-}
-
-ForbiddenOathbladeLegacy: {
-	DisplayName: Forbidden Oathblade Legacy
-	Tooltip: ""
-}
-
-HolyColliderLegacy: {
-	DisplayName: Holy Collider Legacy
-	Tooltip: ""
-}
-
-OldLordClaymoreLegacy: {
-	DisplayName: Old Lord Claymore Legacy
-	Tooltip: ""
-}
-
-BurningRevelationLegacy: {
-	DisplayName: Burning Revelation Legacy
-	Tooltip: ""
-}
-
-TheObliteratorLegacy: {
-	DisplayName: The Obliterator Legacy
-	Tooltip: ""
-}
-
-TheOracleLegacy: {
-	DisplayName: The Oracle Legacy
-	Tooltip: ""
-}
-
-FetidEmesisLegacy: {
-	DisplayName: Fetid Emesis Legacy
-	Tooltip: ""
-}
-
-SepticSkewerLegacy: {
-	DisplayName: Septic Skewer Legacy
-	Tooltip: ""
-}
-
-DazzlingStabberStaffLegacy: {
-	DisplayName: Dazzling Stabber Staff Legacy
-	Tooltip: ""
-}
-
-SunSpiriteStaffLegacy: {
-	DisplayName: Sun Spirite Staff Legacy
-	Tooltip: ""
-}
-
-ApoctosisArrayLegacy: {
-	DisplayName: Apoctosis Array Legacy
-	Tooltip: ""
-}
-
-IonBlasterLegacy: {
-	DisplayName: Ion Blaster Legacy
-	Tooltip: ""
-}
-
-SeethingDischargeLegacy: {
-	DisplayName: Seething Discharge Legacy
-	Tooltip: ""
-}
-
 BurningSeaLegacy: {
 	DisplayName: Burning Sea Legacy
-	Tooltip: ""
+	Tooltip: Fires a bouncing brimstone fireball that splits into homing fireballs upon collision with water
 }
 
 DeathValleyDusterLegacy: {
 	DisplayName: Death Valley Duster Legacy
-	Tooltip: ""
+	Tooltip: Casts a large blast of dust
 }
 
 FlareBoltLegacy: {
 	DisplayName: Flare Bolt Legacy
-	Tooltip: ""
+	Tooltip: Casts a slow-moving ball of flame
 }
 
 FrigidflashBoltLegacy: {
 	DisplayName: Frigidflash Bolt Legacy
-	Tooltip: ""
+	Tooltip: Casts a slow-moving ball of flash-freezing magma
 }
 
 FrostBoltLegacy: {
 	DisplayName: Frost Bolt Legacy
-	Tooltip: ""
+	Tooltip: Casts a slow-moving ball of Frost
 }
 
 PrimordialAncientLegacy: {
 	DisplayName: Primordial Ancient Legacy
-	Tooltip: ""
+	Tooltip: Casts a gigantic blast of dust
 }
 
 PrimordialEarthLegacy: {
 	DisplayName: Primordial Earth Legacy
-	Tooltip: ""
+	Tooltip: Casts a large blast of dust
+}
+
+SeethingDischargeLegacy: {
+	DisplayName: Seething Discharge Legacy
+	Tooltip: Fires a barrage of brimstone blasts
 }
 
 TomeofFateLegacy: {
 	DisplayName: Tomeof Fate Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Casts cosmic tentacles to spear your enemies
+		Can randomly fire a red tentacle for immense damage
+		'''
 }
 
-Thunderstorm: {
-	DisplayName: Thunderstorm
-	Tooltip: ""
+ApoctosisArrayLegacy: {
+	DisplayName: Apoctosis Array Legacy
+	Tooltip:
+		'''
+		Fires ion blasts that speed up and then explode
+		Damage scales with how full your mana is
+		Using Astral Injection reduces the effectiveness of the mana boost
+		'''
+}
+
+IonBlasterLegacy: {
+	DisplayName: Ion Blaster Legacy
+	Tooltip:
+		'''
+		Fires ion blasts that speed up and then explode
+		Damage scales with how full your mana is
+		Using Astral Injection reduces the effectiveness of the mana boost
+		'''
 }
 
 LazharLegacy: {
 	DisplayName: Lazhar Legacy
-	Tooltip: ""
+	Tooltip: Fires a highly volatile concentrated solar beam
 }
 
 PlasmaRifleLegacy: {
 	DisplayName: Plasma Rifle Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a plasma blast that explodes
+		Press Right Click to rapidly fire plasma bolts
+		'''
+}
+
+PurgeGuzzlerLegacy: {
+	DisplayName: Purge Guzzler Legacy
+	Tooltip: Emits three beams of holy energy in a tight spread
+}
+
+Thunderstorm: {
+	DisplayName: Thunderstorm Legacy
+	Tooltip:
+		'''
+		Fires a stream of exploding green plasma bullets that rain down additional plasma from the sky
+		'Make it rain'
+		'''
+}
+
+AsteroidStaff: {
+	DisplayName: Asteroid Staff Legacy
+	Tooltip: Summons asteroids from the sky
 }
 
 ClamorNoctusLegacy: {
 	DisplayName: Clamor Noctus Legacy
+	Tooltip:
+		'''
+		Fires night wyverns and stars from the sky that stick to enemies and tiles and explode
+		'Let the sky fall'
+		'''
+}
+
+DeathhailStaff: {
+	DisplayName: Deathhail Staff
+	Tooltip:
+		'''
+		Casts a storm of nebula lasers from the sky
+		'Rain death upon your foes!'
+		'''
+}
+
+ShadowboltStaffLegacy: {
+	DisplayName: Shadowbolt Staff Legacy
+	Tooltip: The more tiles and enemies the beam bounces off of or travels through the more damage the beam does
+}
+
+VenusianTridentLegacy: {
+	DisplayName: Venusian Trident Legacy
+	Tooltip: Casts an infernal trident that erupts into a gigantic explosion of fire and magma shards
+}
+
+VitriolicViperLegacy: {
+	DisplayName: Vitriolic Viper Legacy
+	Tooltip: Releases a volley of venomous fangs and spit
+}
+
+WrathoftheAncients: {
+	DisplayName: Wrathofthe Ancients Legacy
+	Tooltip: Summons an energy pulse at the cursor to periodically summon homing spirits
+}
+
+VisceraLegacy: {
+	DisplayName: Viscera Legacy
+	Tooltip: Fires a blood beams that heal you on enemy hit
+}
+
+SanguineFlareLegacy: {
+	DisplayName: Sanguine Flare Legacy
+	Tooltip: Fires a blast of sanguine flares that drain enemy life
+}
+
+LashesofChaosLegacy: {
+	DisplayName: Lashesof Chaos Legacy
 	Tooltip: ""
 }

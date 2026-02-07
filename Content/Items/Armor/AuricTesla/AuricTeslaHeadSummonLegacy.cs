@@ -71,18 +71,13 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             modPlayer.bloodflareSet = true;
             modPlayer.bloodflareSummon = true;
             CIPlayer.AuricSilvaFakeDeath = true;
-            modPlayer.silvaSummon = true;
             modPlayer.godSlayer = true;
             CIPlayer.AuricDebuffImmune = true;
             CIPlayer.GodSlayerSummonSet = true;
 
             player.setBonus = this.GetLocalizedValue("SetBonus");
             CIPlayer.GodSlayerReborn = true;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
+            CIPlayer.CanUseLegacyGodSlayerDash = true;
 
             CIPlayer.SilvaSummonSetLegacy = true;
             modPlayer.WearingPostMLSummonerSet = true;

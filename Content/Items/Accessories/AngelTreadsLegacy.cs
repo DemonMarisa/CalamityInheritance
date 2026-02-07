@@ -3,6 +3,7 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using LAP.Core.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.CIMod().AngelTreadsLegacy = true;
+            player.LAP().WingTimeMaxMult += 0.2f;
             player.accRunSpeed = 9.5f;
             player.rocketBoots = player.vanityRocketBoots = 3;
             player.moveSpeed += 0.12f;

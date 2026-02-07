@@ -18,8 +18,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         internal const int TotalHealed = TotalHealOrbs * HealPerOrb;
         public override void SetDefaults()
         {
-            Item.width = 130;
-            Item.height = 130;
+            Item.width = 124;
+            Item.height = 124;
             Item.damage = 150;
             Item.DamageType = GetInstance<TrueMeleeDamageClass>();
             Item.useAnimation = 22;

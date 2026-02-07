@@ -93,11 +93,6 @@ namespace CalamityInheritance.CIPlayer
         public Color PBGBeamColor;
         #endregion
         #region dash
-        public int dashTimeMod;
-        public bool HasReducedDashFirstFrame = false;
-        public bool HasIncreasedDashFirstFrame = false;
-        //这是一个会自动归零的数值，速度为1帧1点，也许可以用于除冲刺外的计时
-        public int CIDashDelay;
         public bool ElysianAegis = false;
         public bool ElysianGuard = false;
         public float shieldInvinc = 5f;
@@ -137,6 +132,9 @@ namespace CalamityInheritance.CIPlayer
         public bool AngelTreadsLegacy = false;
         public int hellbornBoost = 0;
         public bool LuxorsGiftLegacy = false;
+        public bool AbyssalAmuletLegacy = false;
+        public bool LumenousAmulet = false;
+        public bool CanUseLegacyGodSlayerDash = false;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -157,7 +155,6 @@ namespace CalamityInheritance.CIPlayer
             PBGLegendaryDyeable = false;
             PBGBeamColor = default;
             ForceHammerStealth = false;
-            CIDashID = string.Empty;
             ElysianAegis = false;
             CIspongeHurtHeal = false;
             #region 禁止生成物品
@@ -178,6 +175,9 @@ namespace CalamityInheritance.CIPlayer
             if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
                 Player.Calamity().rogueStealthMax += 1.45f;
             LuxorsGiftLegacy = false;
+            AbyssalAmuletLegacy = false;
+            LumenousAmulet = false;
+            CanUseLegacyGodSlayerDash = false;
         }
 
         #endregion
@@ -252,21 +252,6 @@ namespace CalamityInheritance.CIPlayer
             while (oldPositions.Count > MaxoldPositions)
                 oldPositions.Dequeue();
             #endregion
-
-            if (HasCustomDash && UsedDash.IsOmnidirectional)
-                Player.maxFallSpeed = 50f;
-
-            if(HasCustomDash)
-            {
-                if (CIDashDelay > 0)
-                {
-                    CIDashDelay--;
-                }
-                else if (CIDashDelay < 0)
-                {
-                    CIDashDelay++;
-                }
-            }
             // 条件的更新
             PreUp();
         }
@@ -406,31 +391,6 @@ namespace CalamityInheritance.CIPlayer
             {
                 Player.runAcceleration *= 0.95f;
             }
-
-            #region DashEffects
-
-            if (!string.IsNullOrEmpty(DeferredDashID))
-            {
-                CIDashID = DeferredDashID;
-                DeferredDashID = string.Empty;
-            }
-
-            if (Player.pulley && HasCustomDash)
-            {
-                ModDashMovement();
-            }
-            else if (Player.grappling[0] == -1 && !Player.tongued)
-            {
-                ModHorizontalMovement();
-
-                //下面这两行代码会导致弑神冲刺出错，弑神冲刺上下冲刺时无法正常进入cd，也没有特效，但是移除了会导致无法冲刺
-                //加入ID判定后不出错了，为什么dom要这么写ID
-                if (HasCustomDash && modPlayer.DashID != "Godslayer Armor")
-                {
-                    ModDashMovement();
-                }
-            }
-            #endregion
         }
         public override void Initialize()
         {

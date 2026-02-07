@@ -1,10 +1,9 @@
-﻿using CalamityInheritance.Content.Items;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged.Bows;
 using CalamityInheritance.Content.Projectiles.Melee.Lasers;
 using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Tools;
 using CalamityMod.Items.Weapons.Magic;
@@ -18,9 +17,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Specials
 {
-    public class PrismaticBreakerLegacy : ModItem, ILocalizedModType
+    public class PrismaticBreakerLegacy : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         internal static readonly Color[] colors = new Color[]
         {
             new Color(255, 0, 0, 50), //Red
@@ -130,7 +129,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Specials
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<CosmicRainbow>().
+                AddIngredient<CosmicRainbowLegacy>().
                 AddIngredient<SolsticeClaymore>().
                 AddIngredient<LifeAlloy>(3).
                 AddIngredient<CosmiliteBar>(8).

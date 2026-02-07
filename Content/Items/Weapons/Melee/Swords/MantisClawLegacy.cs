@@ -10,6 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
     public class MantisClawLegacy : GeneralWeaponClass
     {
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
         {
             Item.width = 26;

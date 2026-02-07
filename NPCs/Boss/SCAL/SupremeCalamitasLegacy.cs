@@ -36,6 +36,7 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
+using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.World;
 using LAP.Core.MusicEvent;
@@ -109,16 +110,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         #region 音效
         //音效路径
         public static string CISoundPath => "CalamityInheritance/Sounds/Scal";
-        public static string CalSoundPath => "CalamityMod/Sounds/Custom";
+        public static string CalSoundPath => "CalamityInheritance/Sounds/Cals";
         public static string CalScalSoundPath => $"{CalSoundPath}/SCalSounds";
         //实际音效
-        public static readonly SoundStyle SpawnSound                = new($"{CalSoundPath}/SupremeCalamitasSpawn") { Volume = 1.2f };
+        public static readonly SoundStyle SpawnSound                = new($"{CalScalSoundPath}/SupremeCalamitasSpawn") { Volume = 1.2f };
         public static readonly SoundStyle SepulcherSummonSound      = new($"{CalScalSoundPath}/SepulcherSpawn");
         public static readonly SoundStyle BrimstoneShotSound        = new($"{CalScalSoundPath}/BrimstoneShoot");
         public static readonly SoundStyle BrimstoneFireShotSound    = new($"{CalScalSoundPath}/BrimstoneFireblastImpact");
 
         public static readonly SoundStyle CatastropheSwing          = new($"{CalScalSoundPath}/CatastropheResonanceSlash1");
-        public static readonly SoundStyle BrimstoneBigShotSound     = new($"{CalScalSoundPath}/BrimstoneBigShoot"); // DON'T YOU WANNA BE A [BIG SHOT]
+        public static readonly SoundStyle BrimstoneBigShotSound     = new($"{CalScalSoundPath}/BrimstoneBigShoot");
         public static readonly SoundStyle DashSound                 = new($"{CalScalSoundPath}/SCalDash");
         public static readonly SoundStyle HellblastSound            = new($"{CalScalSoundPath}/BrimstoneHellblastSound");
         public static readonly SoundStyle BulletHellSound           = new($"{CalScalSoundPath}/SCalRumble");
@@ -249,6 +250,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.lifeMax = LifeMax;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 1840000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
 
             NPC.aiStyle = -1;
             AIType = -1;

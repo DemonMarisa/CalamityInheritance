@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
 using CalamityMod;
+using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -30,8 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
             ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
+            Projectile.AddHeldProj();
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 42;

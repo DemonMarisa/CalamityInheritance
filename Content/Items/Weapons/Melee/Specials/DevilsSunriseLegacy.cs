@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Projectiles.Melee.Specials;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,9 +11,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Specials
 {
-    public class DevilsSunriseLegacy : ModItem, ILocalizedModType
+    public class DevilsSunriseLegacy : GeneralWeaponClass
     {
-        public new string LocalizationCategory => "Content.Projectiles.Melee";
+        public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
         {
             Item.width = 66;

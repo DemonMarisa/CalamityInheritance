@@ -3,12 +3,8 @@ using LAP.Assets.Effects;
 using LAP.Core.MetaBallsSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.ExtraTextures.Metaballs
 {
@@ -34,7 +30,11 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
         }
         public override Texture2D BgTexture => CITextureRegistry.ShizukuBG.Value;
         public static List<ShizukuStarParticle> Particles { get; private set; } = new();
-        public override Color EdgeColor => Color.Lerp(Color.White,Color.Aqua,0.75f);
+        public override Color EdgeColor => Color.Lerp(Color.White,Color.Aqua,1f);
+        public override bool Active()
+        {
+            return Particles.Count != 0;
+        }
         public override void Update()
         {
             for(int i = 0;i<Particles.Count;i++)
@@ -65,7 +65,7 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
             shader.Parameters["renderTargetSize"].SetValue(AlphaTexture.Size());
             shader.Parameters["bakcGroundSize"].SetValue(BgTexture.Size());
             shader.Parameters["edgeColor"].SetValue(EdgeColor.ToVector4());
-            shader.Parameters["uTime"].SetValue(Vector2.UnitX * Main.GlobalTimeWrappedHourly * 0.05f);
+            shader.Parameters["uTime"].SetValue(Vector2.UnitX * Main.GlobalTimeWrappedHourly * 8);
             shader.CurrentTechnique.Passes[0].Apply();
         }
     }

@@ -56,6 +56,7 @@ Mods: {
 				NightsGazeProjectile.DisplayName: Nights Gaze Projectile
 				NightsGazeSpark.DisplayName: Nights Gaze Spark
 				ReaperProjectileLegacy.DisplayName: Reaper Projectile Legacy
+				EradicatorProj_Rogue.DisplayName: Eradicator Proj_ Rogue
 			}
 
 			ExoSpearProjNor.DisplayName: Exo Spear Proj Nor

@@ -364,24 +364,6 @@ BloodflareCoreLegacy: {
 	DisplayName: Bloodflare Core Legacy
 }
 
-WaifuHeart: {
-	DisplayName: Heart of the Elements Legacy
-	Tooltip:
-		'''
-		Summons all elementals to protect you
-		[STATSBUFF]
-		These stat buffs will be slightly stronger if visibility is off.
-		'''
-	StatsBuff:
-		'''
-		+{0} max HP and mana, +{1}HP/s life regen speed
-		{2}% increased movement speed and damage reduction
-		{3}% increased damage and critical strike chance
-		{4}% increased jump speed
-		{5}% reduced mana usage
-		'''
-}
-
 DraedonsHeartLegacy: {
 	DisplayName: Draedons Heart Legacy
 	Tooltip:
@@ -476,21 +458,64 @@ BurdenBreaker: {
 }
 
 RegenatorLegacy: {
-	DisplayName: Regenator Legacy
-	Tooltip: ""
+	DisplayName: Regenator Revamped
+	Tooltip:
+		'''
+		Reduce LifeMax by 50%
+		double life regen  rate and accelerate natural life regen.
+		'''
 }
 
 AngelTreadsLegacy: {
 	DisplayName: Angel Treads Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		36% increased running acceleration
+		Increased 20% flight time
+		Greater mobility on ice
+		Water and lava walking
+		Immunity to the On Fire! debuff
+		Temporary immunity to lava
+		'Extreme speed!'
+		'''
 }
 
 LuxorsGiftLegacy: {
 	DisplayName: Luxors Gift Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Weapons fire unique projectiles based on the damage type they have
+		Some weapons are unable to receive this bonus
+		'''
 }
 
 UrsaSergeantLegacy: {
 	DisplayName: Ursa Sergeant Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Decreased movement speed by 15%
+		Immune to Astral Infection and Feral Bite
+		Increased regeneration at lower health
+		'''
+}
+
+AbyssalAmulet: {
+	DisplayName: Abyssal Amulet Legacy
+	Tooltip:
+		'''
+		Attacks inflict the Crush Depth
+		Grants immunity to the Riptide debuff
+		While in the abyss you gain 10% increased max life
+		'''
+}
+
+LumenousAmuletLegacy: {
+	DisplayName: Lumenous Amulet Legacy
+	Tooltip:
+		'''
+		Attacks inflict the Crush Depth debuff
+		Grants immunity to the Riptide and Crush Depth debuffs
+		While in the abyss you gain 25% increased max life
+		Provides a moderate amount of light in the abyss
+		'''
 }

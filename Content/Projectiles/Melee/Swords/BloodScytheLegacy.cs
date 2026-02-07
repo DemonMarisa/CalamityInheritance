@@ -12,7 +12,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
     public class BloodScytheLegacy : GeneralDamageProj
     {
         public override ProjDamageType UseDamageClass => ProjDamageType.Melee;
-        public new string LocalizationCategory => "Projectiles.Melee";
         public override void ExSD()
         {
             Projectile.width = 28;

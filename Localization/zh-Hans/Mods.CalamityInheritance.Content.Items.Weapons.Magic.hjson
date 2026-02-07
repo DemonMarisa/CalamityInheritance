@@ -431,162 +431,157 @@ DivineRetribution: {
 		'''
 }
 
-ShadowboltStaffLegacy: {
-	// DisplayName: Shadowbolt Staff Legacy
-	// Tooltip: ""
+BurningSeaLegacy: {
+	DisplayName: 蒸海硫火[Legacy]
+	Tooltip: 发射弹跳硫磺火球，与水接触时会分裂成追踪火球
 }
 
-AsteroidStaff: {
-	// DisplayName: Asteroid Staff
-	// Tooltip: ""
+DeathValleyDusterLegacy: {
+	DisplayName: 死亡之尘[Legacy]
+	Tooltip: 丢出一团巨大的粉尘
 }
 
-DeathhailStaff: {
-	// DisplayName: Deathhail Staff
-	// Tooltip: ""
+FlareBoltLegacy: {
+	DisplayName: 火矢[Legacy]
+	Tooltip: 发射缓慢飞行的火矢
 }
 
-WrathoftheAncients: {
-	// DisplayName: Wrathofthe Ancients
-	// Tooltip: ""
+FrigidflashBoltLegacy: {
+	DisplayName: 冰火矢[Legacy]
+	Tooltip: 发射缓慢飞行的冰火矢
 }
 
-VenusianTridentLegacy: {
-	// DisplayName: Venusian Trident Legacy
-	// Tooltip: ""
+FrostBoltLegacy: {
+	DisplayName: 冰矢[Legacy]
+	Tooltip: 发射缓慢飞行的冰矢
 }
 
-PurgeGuzzlerLegacy: {
-	// DisplayName: Purge Guzzler Legacy
-	// Tooltip: ""
+PrimordialAncientLegacy: {
+	DisplayName: 始源之遗[Legacy]
+	Tooltip: 丢出一团巨大的粉尘
 }
 
-VitriolicViperLegacy: {
-	// DisplayName: Vitriolic Viper Legacy
-	// Tooltip: ""
-}
-
-CrescentMoonLegacy: {
-	// DisplayName: Crescent Moon Legacy
-	// Tooltip: ""
-}
-
-GalileoGladiusLegacy: {
-	// DisplayName: Galileo Gladius Legacy
-	// Tooltip: ""
-}
-
-BladecrestOathswordLegacy: {
-	// DisplayName: Bladecrest Oathsword Legacy
-	// Tooltip: ""
-}
-
-CatastropheClaymore: {
-	// DisplayName: Catastrophe Claymore
-	// Tooltip: ""
-}
-
-Devastation: {
-	// DisplayName: Devastation
-	// Tooltip: ""
-}
-
-DevilsDevastationLegacy: {
-	// DisplayName: Devils Devastation Legacy
-	// Tooltip: ""
-}
-
-EntropicClaymoreLegacy: {
-	// DisplayName: Entropic Claymore Legacy
-	// Tooltip: ""
-}
-
-ExaltedOathbladeLegacy: {
-	// DisplayName: Exalted Oathblade Legacy
-	// Tooltip: ""
-}
-
-Excelsus: {
-	// DisplayName: Excelsus
-	// Tooltip: ""
-}
-
-ForbiddenOathbladeLegacy: {
-	// DisplayName: Forbidden Oathblade Legacy
-	// Tooltip: ""
-}
-
-HolyColliderLegacy: {
-	// DisplayName: Holy Collider Legacy
-	// Tooltip: ""
-}
-
-OldLordClaymoreLegacy: {
-	// DisplayName: Old Lord Claymore Legacy
-	// Tooltip: ""
-}
-
-BurningRevelationLegacy: {
-	// DisplayName: Burning Revelation Legacy
-	// Tooltip: ""
-}
-
-TheObliteratorLegacy: {
-	// DisplayName: The Obliterator Legacy
-	// Tooltip: ""
-}
-
-TheOracleLegacy: {
-	// DisplayName: The Oracle Legacy
-	// Tooltip: ""
-}
-
-FetidEmesisLegacy: {
-	// DisplayName: Fetid Emesis Legacy
-	// Tooltip: ""
-}
-
-SepticSkewerLegacy: {
-	// DisplayName: Septic Skewer Legacy
-	// Tooltip: ""
-}
-
-DazzlingStabberStaffLegacy: {
-	// DisplayName: Dazzling Stabber Staff Legacy
-	// Tooltip: ""
-}
-
-SunSpiriteStaffLegacy: {
-	// DisplayName: Sun Spirite Staff Legacy
-	// Tooltip: ""
-}
-
-ApoctosisArrayLegacy: {
-	// DisplayName: Apoctosis Array Legacy
-	// Tooltip: ""
-}
-
-IonBlasterLegacy: {
-	// DisplayName: Ion Blaster Legacy
-	// Tooltip: ""
+PrimordialEarthLegacy: {
+	DisplayName: 始源之尘[Legacy]
+	Tooltip: 丢出一团巨大的粉尘
 }
 
 SeethingDischargeLegacy: {
-	// DisplayName: Seething Discharge Legacy
-	// Tooltip: ""
+	DisplayName: 沸腾之火[Legacy]
+	Tooltip: 发射一团硫磺火烈焰
+}
+
+TomeofFateLegacy: {
+	DisplayName: 命运之手[Legacy]
+	Tooltip:
+		'''
+		创造元素触手戳刺你的敌人
+		随机产生的红色触手会造成更大的伤害
+		'''
+}
+
+ApoctosisArrayLegacy: {
+	DisplayName: 凋亡射线[Legacy]
+	Tooltip:
+		'''
+		发射会加速并爆炸的离子冲击波
+		你的魔力值越高，它的威力越大
+		使用星幻注射剂会削减加成幅度
+		'''
+}
+
+IonBlasterLegacy: {
+	DisplayName: 离子冲击波[Legacy]
+	Tooltip:
+		'''
+		发射会加速并爆炸的离子冲击波
+		你的魔力值越高，它的威力越大
+		使用星幻注射剂会削减加成幅度
+		'''
 }
 
 LazharLegacy: {
-	// DisplayName: Lazhar Legacy
-	// Tooltip: ""
+	DisplayName: 拉扎尔射线[Legacy]
+	Tooltip: 发射高挥发性聚能太阳光束
 }
 
 PlasmaRifleLegacy: {
-	// DisplayName: Plasma Rifle Legacy
-	// Tooltip: ""
+	DisplayName: 等离子步枪[Legacy]
+	Tooltip:
+		'''
+		发射会爆炸的离子射线
+		右键快速发射离子束
+		'''
+}
+
+PurgeGuzzlerLegacy: {
+	DisplayName: 净化激光炮[Legacy]
+	Tooltip: 发射三束密集的神圣能量射线
+}
+
+Thunderstorm: {
+	DisplayName: 雷暴雨[Legacy]
+	Tooltip:
+		'''
+		发射一束爆炸性绿色等离子子弹，同时召唤额外的等离子子弹从天而降
+		“暴雨倾盆”
+		'''
+}
+
+AsteroidStaff: {
+	DisplayName: 行星法杖[Legacy]
+	Tooltip: 召唤小行星从天而降
 }
 
 ClamorNoctusLegacy: {
-	// DisplayName: Clamor Noctus Legacy
+	DisplayName: 星龙破空杖[Legacy]
+	Tooltip:
+		'''
+		召唤暗夜飞龙与繁星从天而降，会附着在敌人和物块上并爆炸
+		“令天幕坠落”
+		'''
+}
+
+DeathhailStaff: {
+	DisplayName: 死亡冰雹[Legacy]
+	Tooltip:
+		'''
+		释放星云激光从天而降
+		“在你的敌人头顶降下死亡之雨！”
+		'''
+}
+
+ShadowboltStaffLegacy: {
+	DisplayName: 影流法杖[Legacy]
+	Tooltip: 弹射的次数越多，穿透的敌人越多，伤害越高
+}
+
+VenusianTridentLegacy: {
+	DisplayName: 金星三叉戟[Legacy]
+	Tooltip: 发射一团狱炎三叉戟，造成巨大爆炸并释放熔岩火焰碎片
+}
+
+VitriolicViperLegacy: {
+	DisplayName: 酸蚀毒蝰[Legacy]
+	Tooltip: 释放一束毒牙和喷吐物
+}
+
+WrathoftheAncients: {
+	DisplayName: 远古之怒[Legacy]
+	Tooltip: 在光标处召唤能量脉冲，周期性散发追踪灵气
+}
+
+VisceraLegacy: {
+	DisplayName: 心泵血杖[Legacy]
+	Tooltip: 发射穿透鲜血束，在命中敌怪时治疗你
+}
+
+SanguineFlareLegacy: {
+	DisplayName: 猩红烈焰[Legacy]
+	Tooltip: 发射一阵从敌人身上吸取生命的猩红火焰
+}
+
+LashesofChaosLegacy: {
+	// DisplayName: Lashesof Chaos Legacy
 	// Tooltip: ""
 }

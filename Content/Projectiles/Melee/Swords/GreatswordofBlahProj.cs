@@ -28,6 +28,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             Projectile.penetrate = 1;
             Projectile.timeLeft = 120;
             Projectile.DamageType = DamageClass.Melee;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()

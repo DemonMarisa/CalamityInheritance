@@ -327,49 +327,5 @@ Configs: {
 			Label: Defeating the Legacy Boss also marks the Calamity Boss as defeated.
 			Tooltip: defeating the Calamitas Clone [Legacy] and Jungle Dragon - Yharon will also mark the status of the Calamitas Clone and Yharon, Dragon of Rebirth as defeated.
 		}
-
-		CrateLootsBack: {
-			Label: Crate Loots Back
-			Tooltip: ""
-		}
-	}
-
-	CIRespriteConfig: {
-		DisplayName: C I Resprite Config
-
-		BloodOrange: {
-			Label: Blood Orange
-			Tooltip: ""
-		}
-
-		MiracleFruit: {
-			Label: Miracle Fruit
-			Tooltip: ""
-		}
-
-		Elderberry: {
-			Label: Elderberry
-			Tooltip: ""
-		}
-
-		Dragonfruit: {
-			Label: Dragonfruit
-			Tooltip: ""
-		}
-
-		CometShard: {
-			Label: Comet Shard
-			Tooltip: ""
-		}
-
-		EtherealCore: {
-			Label: Ethereal Core
-			Tooltip: ""
-		}
-
-		PhantomHeart: {
-			Label: Phantom Heart
-			Tooltip: ""
-		}
 	}
 }

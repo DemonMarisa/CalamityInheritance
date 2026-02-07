@@ -68,7 +68,6 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Items.Weapons.Typeless;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityModMusic.Items.Placeables;
 using LAP.Content.RecipeGroupAdd;
 using Terraria;
 using Terraria.ID;
@@ -358,6 +357,13 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemType<WulfrumMetalScrap>(), 10).
                 AddIngredient(ItemType<WulfrumBattery>()).
                 AddIngredient(ItemType<EnergyCore>(), 2).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+            // 三核心可以合成灾厄核心
+            Recipe.Create(ItemType<CoreofCalamity>(), 3).
+                AddIngredient(ItemType<CoreofChaos>()).
+                AddIngredient(ItemType<CoreofEleum>()).
+                AddIngredient(ItemType<CoreofSunlight>()).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }
@@ -978,7 +984,7 @@ namespace CalamityInheritance.Content.Items
             //神壁
             Recipe.Create(ItemType<RampartofDeities>()).
                 AddIngredient(ItemID.FrozenShield).
-                AddRecipeGroup(CIRecipeGroup.AnyDeificAmulet).
+                AddIngredient<DeificAmuletLegacy>().
                 AddIngredient<AscendantSpiritEssence>(4).
                 AddIngredient(ItemType<AuricBarold>()).
                 AddTile<CosmicAnvil>().
@@ -1385,26 +1391,6 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             Recipe.Create(ItemType<ShadowspecDye>(),10).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ItemType<BossRushTier1MusicBox>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ItemType<BossRushTier2MusicBox>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ItemType<BossRushTier3MusicBox>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ItemType<BossRushTier4MusicBox>()).
-                AddIngredient<CalamitousEssence>().
-                Register();
-
-            Recipe.Create(ItemType<BossRushTier5MusicBox>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
             #endregion

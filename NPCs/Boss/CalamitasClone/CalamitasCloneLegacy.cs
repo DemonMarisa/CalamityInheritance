@@ -1055,8 +1055,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
         public override void OnKill()
         {
-            if (CIServerConfig.Instance.CalExtraDrop)
-                PingDownedLevi();
+            PingDownedLevi();
             // 手动卸载一下，不知道为什么会有问题
             CIGlobalNPC.LegacyCalamitasClone = -1;
             CIGlobalNPC.LegacyCalamitasCloneP2 = -1;

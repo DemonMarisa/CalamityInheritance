@@ -51,14 +51,12 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     SoundEngine.PlaySound(SoundID.Item9, Projectile.position);
                 }
             }
-            NPC target = Projectile.FindClosestTarget(1800f);
-            if (target != null)
-                Projectile.HomingTarget(target.Center, 1800f, 24f, 20f);
+            Projectile.HomeInNPC(1800f, 24f, 20f);
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
 

@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.rotation = Projectile.velocity.ToRotation();
             Player projOwner = Main.player[Projectile.owner];
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.5f / 255f);
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 4; i++)
             {
                 int dWhite = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, default, 1.2f);
                 Main.dust[dWhite].noGravity = true;
@@ -72,10 +72,6 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D sharpTears = TextureAssets.Extra[ExtrasID.SharpTears].Value;
-            Color color = Color.White;
-            Projectile.BaseProjPreDraw(sharpTears, color, Projectile.rotation + MathHelper.PiOver2);
-            Projectile.BaseProjPreDraw(sharpTears, color, Projectile.rotation + 0f);
             return false;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

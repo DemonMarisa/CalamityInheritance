@@ -1,5 +1,7 @@
-﻿using CalamityInheritance.Texture;
+﻿using CalamityInheritance.System.Configs;
+using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
+using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -85,6 +87,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
         }
         public override void AI()
         {
+            if (LAPUtilities.IsLocalPlayer(Projectile.owner))
+            {
+                if (!CIConfig.Instance.GodSlayerWorm)
+                    Projectile.Kill();
+            }
             if (!Owner.CIMod().GodSlayerSummonSet)
                 Projectile.Kill();
             Projectile.netUpdate = true;
@@ -92,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             if (Projectile.LAP().FirstFrame)
             {
                 Projectile.velocity = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 6;
-                for (int i = 0; i < 14; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     Segment segment = new(Projectile.Center, Projectile.rotation);
                     Segments.Add(segment);

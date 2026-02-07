@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Limits
 {
     internal class SolarGodLegacy : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Projectiles.Summon";
+        public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.MinionSacrificable[Projectile.type] = true;

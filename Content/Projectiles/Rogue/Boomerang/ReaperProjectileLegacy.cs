@@ -68,6 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Boomerang
             {
                 if (Projectile.Calamity().stealthStrike)
                 {
+                    SoundEngine.PlaySound(SoundID.Item84, Projectile.Center);
                     Vector2 a = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 12f;
                     float angle = MathHelper.TwoPi / 3f;
                     for (int i = 0; i < 3; i++)

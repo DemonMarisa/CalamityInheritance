@@ -87,25 +87,40 @@ MagnaBlastLegacy.DisplayName: 麦格纳爆裂
 CIExocomet.DisplayName: 星流流星
 CIExocometMagic.DisplayName: 星流彗星
 DivineRetributionSpear.DisplayName: 神圣之矛
-// PhantomLegacy.DisplayName: Phantom Legacy
-// ShadowBeam.DisplayName: Shadow Beam
-// MagnomalyRocketExoLore.DisplayName: Magnomaly Rocket Exo Lore
-// MagnomalyRocketSplit.DisplayName: Magnomaly Rocket Split
-// GraniteEnergy.DisplayName: Granite Energy
-// GranitePulse.DisplayName: Granite Pulse
-// Asteroid.DisplayName: Asteroid
-// AuraRain.DisplayName: Aura Rain
-// DeathhailBeamLegacy.DisplayName: Deathhail Beam Legacy
-// VenusianBoltLegacy.DisplayName: Venusian Bolt Legacy
-// VenusianExplosionLegacy.DisplayName: Venusian Explosion Legacy
-// HolyLaserLegacy.DisplayName: Holy Laser Legacy
-// VitriolicViperFangLegacy.DisplayName: Vitriolic Viper Fang Legacy
-// VitriolicViperSpitLegacy.DisplayName: Vitriolic Viper Spit Legacy
-// IonBlastLegacy.DisplayName: Ion Blast Legacy
-// BrimstoneBarrageLegacy_F.DisplayName: Brimstone Barrage Legacy_ F
-// BrimstoneHellblastLegacy_F.DisplayName: Brimstone Hellblast Legacy_ F
-// LazharSolarBeam.DisplayName: Lazhar Solar Beam
-// PlasmaBolt.DisplayName: Plasma Bolt
-// PlasmaShot.DisplayName: Plasma Shot
-// ClamorNoctusStar.DisplayName: Clamor Noctus Star
-// ClamorNoctusWyvern.DisplayName: Clamor Noctus Wyvern
+PhantomLegacy.DisplayName: 幻魂
+ShadowBeam.DisplayName: 暗影射线
+MagnomalyRocketExoLore.DisplayName: 极点导弹
+MagnomalyRocketSplit.DisplayName: 极点火箭
+GraniteEnergy.DisplayName: 花岗岩能量
+GranitePulse.DisplayName: 花岗岩脉冲
+Asteroid.DisplayName: 小行星
+AuraRain.DisplayName: 暗影雨
+DeathhailBeamLegacy.DisplayName: 死亡射线
+VenusianBoltLegacy.DisplayName: 狱火球
+VenusianExplosionLegacy.DisplayName: 狱火爆炸
+HolyLaserLegacy.DisplayName: 神圣激光
+VitriolicViperFangLegacy.DisplayName: 酸蚀牙
+VitriolicViperSpitLegacy.DisplayName: 酸蚀泪
+IonBlastLegacy.DisplayName: 冲击波
+BrimstoneBarrageLegacy_F.DisplayName: 硫火飞镖
+BrimstoneHellblastLegacy_F.DisplayName: 地狱炙颅
+LazharSolarBeam.DisplayName: 烈阳射线
+PlasmaBolt.DisplayName: 等离子射线
+PlasmaShot.DisplayName: 等离子脉冲
+ClamorNoctusStar.DisplayName: 破空之星
+ClamorNoctusWyvern.DisplayName: 苍穹之龙
+BrimstoneTentacle.DisplayName: 命运之手
+BurningSeaProj.DisplayName: 蒸海之火
+BurningSeaProjHoming.DisplayName: 追踪烈焰
+CosmicTentacleLegacy.DisplayName: 宇宙之手
+FlareBoltProj.DisplayName: 火箭
+FrigidflashBoltProj.DisplayName: 冰火箭
+FrostBoltProj.DisplayName: 冰箭
+PrimordialAncientProj.DisplayName: 远古之尘
+SupremeDustFlakProjectile.DisplayName: 灰尘
+SupremeDustProjectile.DisplayName: 灰尘
+ThunderstormShot.DisplayName: 雷暴
+SanguineFlareProjLegacy.DisplayName: 鲜血火珠
+VisceraBeamLegacy.DisplayName: 心脏射线
+// HellfireballReborn_F.DisplayName: Hellfireball Reborn_ F
+// HellfireExplosion_F.DisplayName: Hellfire Explosion_ F

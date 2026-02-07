@@ -1,15 +1,16 @@
-﻿using CalamityMod;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.Items.Accessories;
-using Terraria.ID;
-using Terraria.DataStructures;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.SystemsLoader;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -41,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.autoJump = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;
-            modPlayer1.CIDashID = StatisVoidSashDashOld.ID;   
+            player.SetLAPDash(LAPContent.DashType<StatisVoidSashDashOld>());
         }
 
         public override void AddRecipes()

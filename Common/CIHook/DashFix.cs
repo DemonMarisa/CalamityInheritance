@@ -16,6 +16,7 @@ namespace CalamityInheritance.Common.CIHook
     {
         public override void Load()
         {
+            return;
             MethodInfo originalMethod = typeof(CalamityPlayer).GetMethod(nameof(CalamityPlayer.ModDashMovement));
             MonoModHooks.Add(originalMethod, ModDashMovement_Hook);
         }
@@ -27,7 +28,6 @@ namespace CalamityInheritance.Common.CIHook
                 return;
 
             var source = new ProjectileSource_PlayerDashHit(self.Player);
-
             // Handle collision slam-through effects.
             if (self.HasCustomDash && self.Player.dashDelay < 0)
             {
@@ -103,7 +103,6 @@ namespace CalamityInheritance.Common.CIHook
                 if (self.HasCustomDash)
                 {
                     self.Player.vortexStealthActive = false;
-
                     // Handle mid-dash movement.
                     if (self.UsedDash.IsOmnidirectional)
                     {

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            Type.ShimmerEach<Wingman>();
+            Type.ShimmerEach<ACTWingman>();
         }
         public override void SetDefaults()
         {

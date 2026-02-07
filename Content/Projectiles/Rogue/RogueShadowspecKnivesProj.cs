@@ -81,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffType<HolyFlames>(), 180);
-            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ProjectileType<RoyalHealProj>());
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile.GetSource_FromThis(), ProjectileType<RoyalHealProj>(), Projectile.Center, Vector2.Zero);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {

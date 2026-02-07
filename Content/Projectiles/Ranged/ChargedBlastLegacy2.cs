@@ -8,6 +8,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -77,10 +78,10 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             if (Projectile.timeLeft <= 500 && Svant && goToMouse && Projectile.timeLeft % Projectile.extraUpdates == 0)
             {
-                Vector2 mouseSpot = (player.Calamity().mouseWorld - Projectile.Center).SafeNormalize(Vector2.UnitX) * homeSpeed;
+                Vector2 mouseSpot = (player.LocalMouseWorld() - Projectile.Center).SafeNormalize(Vector2.UnitX) * homeSpeed;
                 Projectile.velocity.X = MathHelper.Lerp(Projectile.velocity.X, mouseSpot.X, 0.085f);
                 Projectile.velocity.Y = MathHelper.Lerp(Projectile.velocity.Y, mouseSpot.Y, 0.085f);
-                if (Vector2.Distance(Projectile.Center, player.Calamity().mouseWorld) < 80)
+                if (Vector2.Distance(Projectile.Center, player.LocalMouseWorld()) < 80)
                 {
                     Projectile.timeLeft = 300;
                     Projectile.velocity = Projectile.velocity.SafeNormalize(Vector2.UnitX) * homeSpeed / 2;

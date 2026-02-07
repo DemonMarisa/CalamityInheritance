@@ -1,15 +1,17 @@
-﻿using CalamityMod.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Rogue;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityMod.Projectiles.Magic;
-using CalamityInheritance.Content.Projectiles.Melee;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -60,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                     else
                     {
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, 0f, Main.rand.NextFloat(-2, 2), ProjectileType<LostSoulFriendly>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 1f);
+                        LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(-2, 2)), ProjectileType<LostSoulFriendlyLegacy>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, GetInstance<RogueDamageClass>(),1f);
                     }
                 }
             }
@@ -69,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 bool ss = Projectile.Calamity().stealthStrike;
                 int soulDamage = (int)(Projectile.damage * 0.7f);
-                int projID = ss ? ProjectileType<PhantasmalRuinGhost>() : ProjectileType<LostSoulFriendly>();
+                int projID = ss ? ProjectileType<PhantasmalRuinGhost>() : ProjectileType<LostSoulFriendlyLegacy>();
                 int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<Phantom>(), soulDamage, Projectile.knockBack, Projectile.owner);
                 Main.projectile[soul].DamageType = GetInstance<RogueDamageClass>();
                 int damage = (int)(Projectile.damage * 0.25f);
@@ -77,7 +79,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 velocity = ss
                     ? (Projectile.velocity * 0.4f).RotatedBy(Main.rand.NextFloat(-0.04f, 0.04f))
                     : (Projectile.velocity * 0.08f) + Main.rand.NextVector2Circular(0.4f, 0.4f);
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, projID, damage, kb, Projectile.owner);
+                LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, velocity, projID, damage, kb, Projectile.owner, GetInstance<RogueDamageClass>());
             }
         }
 

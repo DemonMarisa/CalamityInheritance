@@ -35,6 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.alpha = 255;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void AI()
@@ -273,7 +274,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                   int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                   Main.projectile[p].originalDamage = Projectile.originalDamage;
                 }
             }
         }
@@ -295,7 +297,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                    Main.projectile[p].originalDamage = Projectile.originalDamage;
                 }
             }
         }

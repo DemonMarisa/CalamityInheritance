@@ -50,7 +50,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Yoyos
             Player player = Main.player[Projectile.owner];
             player.lifeRegenTime += 2;
 
-            player.SpawnLifeStealProj(target, Projectile, ProjectileType<StandardHealProj>());
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile.GetSource_FromThis(), ProjectileType<StandardHealProj>(), Projectile.Center, Vector2.Zero, Main.rand.Next(1, 3));
+
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -2,6 +2,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -60,8 +61,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void UseItemFrame(Player player)
         {
-            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
-            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
+            float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
             CIFunction.NoHeldProjUpdateAim(player, 0, 1);
         }

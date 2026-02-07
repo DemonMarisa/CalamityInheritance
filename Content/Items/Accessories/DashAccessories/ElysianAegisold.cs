@@ -1,17 +1,18 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer;
-using System.Collections.Generic;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.CIPlayer.Dash;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.LoreItems;
-using CalamityInheritance.Content.Items.LoreItems;
+using LAP.Core.SystemsLoader;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -42,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            usPlayer.CIDashID = ElysianAegisDashold.ID;
+            player.SetLAPDash(LAPContent.DashType<ElysianAegisDashold>());
             usPlayer.ElysianAegis = true;
             usPlayer.ElysianAegisImmnue = true;
             player.buffImmune[BuffID.OnFire] = true;

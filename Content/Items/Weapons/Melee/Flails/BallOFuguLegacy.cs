@@ -1,11 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Flails;
 using CalamityMod.Items;
-using CalamityMod.Projectiles.Melee.MaceFlails;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityMod.Items.Placeables.Abyss;
+using CalamityMod.Items.Weapons.Rogue;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -33,6 +29,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Flails
             Item.channel = true;
             Item.shoot = ProjectileType<BallOFuguProjLegacy>();
             Item.shootSpeed = 12f;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<AbyssGravel>(8).
+                AddIngredient<UrchinStinger>(6).
+                AddIngredient(ItemID.Mace).
+                AddIngredient(ItemID.Bone, 4).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

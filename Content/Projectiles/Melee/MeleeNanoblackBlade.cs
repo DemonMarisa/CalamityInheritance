@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.penetrate = 4;
+            Projectile.penetrate = 2;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;

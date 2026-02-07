@@ -1,17 +1,18 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.CIPlayer.Dash;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.SystemsLoader;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.CIPlayer.Dash;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            usPlayer.CIDashID = AsgardianAegisDashold.ID;
+            player.SetLAPDash(LAPContent.DashType<AsgardianAegisDashold>());
             usPlayer.ElysianAegis = true;
             player.Calamity().DashID = string.Empty;
             player.dashType = 0;

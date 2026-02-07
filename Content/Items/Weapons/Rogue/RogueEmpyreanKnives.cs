@@ -15,7 +15,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueEmpyreanKnives: RogueWeapon, ILocalizedModType
+    public class RogueEmpyreanKnives : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public static int BaseDamage = 200;

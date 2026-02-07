@@ -16,6 +16,7 @@ namespace CalamityInheritance.Texture
             DOGworm_Tail = new Tex2DWithPath("CalamityInheritance/Texture/Projectiles/Summon/DOGworm_Tail");
             LoadMeleeProjTex();
             LoadRangedProjTex();
+            LoadRogueProjTex();
         }
         public static void UnLoadProjTex()
         {
@@ -24,6 +25,7 @@ namespace CalamityInheritance.Texture
             DOGworm_Tail = null;
             UnLoadMeleeProjTex();
             UnLoadRangedProjTex();
+            UnLoadRogueProjTex();
         }
     }
 }

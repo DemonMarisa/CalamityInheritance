@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Worms
             if (Projectile.LAP().FirstFrame)
             {
                 Projectile.velocity = Vector2.UnitX.RotatedByRandom(MathHelper.TwoPi) * 6;
-                for (int i = 0; i < 14; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     Segment segment = new(Projectile.Center, Projectile.rotation);
                     Segments.Add(segment);

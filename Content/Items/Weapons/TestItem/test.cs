@@ -1,9 +1,16 @@
 ﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.ExtraTextures.Metaballs;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using CalamityMod.Cooldowns;
+using CalamityMod.Graphics.Metaballs;
 using CalamityMod.Projectiles.Rogue;
+using LAP.Core.Graphics.RenderTargetsManager;
+using LAP.Core.MetaBallsSystem;
 using LAP.Core.MusicEvent;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -40,8 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
         public override bool AltFunctionUse(Player player) => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int Id = ItemType<Photovisceratorold>();
-            // MusicEventManger.AddMusicEventEntry("CalamityInheritance/Music/Tyrant", TimeSpan.FromSeconds(110d), () => true, TimeSpan.FromSeconds(5d));
+            player.ImmediatelyDash(LAPContent.DashType<GodSlayerDashLegacy>());
             return false;
         }
         public override bool? UseItem(Player player)

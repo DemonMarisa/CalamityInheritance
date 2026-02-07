@@ -34,8 +34,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
         }
         public override void AI()
         {
-            CIWorld world = GetInstance<CIWorld>();
-            float followTimer = world.Malice ? 420f : 190f;
+            float followTimer = CIWorld.malice ? 420f : 190f;
             int target = Player.FindClosest(Projectile.Center, 1, 1);
             Projectile.ai[1] += 1f;
             if (Projectile.ai[1] < followTimer && Projectile.ai[1] > 90f)

@@ -24,9 +24,5 @@ namespace CalamityInheritance.Buffs.Summon
             }
             return true;
         }
-        public override void Update(Player player, ref int buffIndex)
-        {
-            player.buffTime[buffIndex] = 2;
-        }
     }
 }

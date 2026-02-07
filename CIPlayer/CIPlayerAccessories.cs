@@ -22,7 +22,6 @@ namespace CalamityInheritance.CIPlayer
         public bool deificAmuletEffect = false;  //神圣护符的效果
         public bool RoDPaladianShieldActive = false; //神之壁垒的帕拉丁盾效果
         public bool DeadshotBroochCI = false; //独立出来的神射手徽章加成
-        public int statisTimerOld = 0;//虚空饰带的计数器
         public bool nanotechold = false;//发射纳米技术的额外弹幕
         public bool TheAbsorberOld = false;//阴阳石受击回血
         public bool FuckYouBees = false;//降低蜜蜂对玩家的伤害
@@ -134,7 +133,6 @@ namespace CalamityInheritance.CIPlayer
             SMarbleSword = false;
             ElysianAegis = false;
             ElysianGuard = false;
-            statisTimerOld = 0;//虚空饰带的计数器
             SMushroom = false;
             SMarble = false;
             SMarnite = false;

@@ -1,4 +1,6 @@
 ﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Rarities;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
@@ -55,6 +57,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
             if (Main.rand.Next(0, 100) < 90)
                 return false;
             return true;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<ArmoredShell>(2).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

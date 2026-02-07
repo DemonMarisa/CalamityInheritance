@@ -1,6 +1,7 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using System;
@@ -102,13 +103,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         }
         public override void UseItemFrame(Player player)
         {
-            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
 
             if (player.altFunctionUse == 2)
             {
                 float animProgress = 0.5f - player.itemTime / (float)player.itemTimeMax;
                 // ��������ת
-                float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+                float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
                 float offset = -0.05f * (float)Math.Pow((0.6f - animProgress) / 0.6f, 2);
                 if (animProgress < 0.4f)
                     rotation += offset * player.direction;
@@ -119,7 +120,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             else
             {
                 CIFunction.NoHeldProjUpdateAim(player, 0, 1);
-                float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+                float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
             }
         }

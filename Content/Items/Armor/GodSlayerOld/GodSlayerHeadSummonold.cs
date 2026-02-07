@@ -53,21 +53,16 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             usPlayer.GodSlayerReborn = true;
 
             calPlayer.WearingPostMLSummonerSet = true;
-            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
+            usPlayer.CanUseLegacyGodSlayerDash = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 if (CIConfig.Instance.GodSlayerWorm)
                 {
-                    player.AddBuff(BuffType<DOGSummonBuff>(), 3600, true);
                     if (player.ownedProjectileCounts[ProjectileType<DOGworm_Auric>()] < 1)
                     {
                         ModItem item = ItemLoader.GetItem(ItemType<StaffofDOG>());
                         int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
-                        Main.projectile[p].originalDamage = StaffofDOG.BaseDamage * 3;
+                        Main.projectile[p].originalDamage = StaffofDOG.BaseDamage;
                     }
                 }
             }

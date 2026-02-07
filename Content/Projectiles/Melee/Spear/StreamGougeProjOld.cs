@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
 using Terraria.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using CalamityMod;
 using LAP.Core.Utilities;
 

@@ -226,7 +226,7 @@ WulfrumBlade: {
 }
 
 TerraDiskMeleeLegacy: {
-	// DisplayName: Terra Disk Melee Legacy
+	DisplayName: Terra Disk Melee Legacy
 	/* Tooltip:
 		'''
 		Legacy Terra Disk/Samsara Slicer for Melee class
@@ -599,121 +599,316 @@ InsidiousImpalerLegacy: {
 }
 
 CometQuasherLegacy: {
-	// DisplayName: Comet Quasher Legacy
-	// Tooltip: ""
+	DisplayName: 彗星陨刃[Legacy]
+	Tooltip: 击中敌人时会召唤流星
 }
 
 GalactusBladeLegacy: {
-	// DisplayName: Galactus Blade Legacy
-	// Tooltip: ""
+	DisplayName: 星河之刃[Legacy]
+	Tooltip:
+		'''
+		从天空中召唤大量彗星
+		用混沌之核打造
+		'''
 }
 
 StellarStrikerLegacy: {
-	// DisplayName: Stellar Striker Legacy
-	// Tooltip: ""
+	DisplayName: 月炎之锋[Legacy]
+	Tooltip: 击中敌人时召唤数道月炎射线从天而降
 }
 
 Eradicator_Melee: {
-	// DisplayName: Eradicator_ Melee
-	// Tooltip: ""
+	DisplayName: 湮灭·近战版本[Legacy]
+	Tooltip: 投出一个向周围敌人发射星云激光的飞盘
 }
 
 UrchinFlail: {
-	// DisplayName: Urchin Flail
-	// Tooltip: ""
+	DisplayName: 海胆链球
+	Tooltip: 甩出海胆链球，击中敌人时发射海胆刺
 }
 
 CrescentMoonLegacy: {
-	// DisplayName: Crescent Moon Legacy
-	// Tooltip: ""
+	DisplayName: 新月链刃[Legacy]
+	Tooltip:
+		'''
+		这把链刃能发射追踪新月
+		“以寒锋恰似拜月者希冀之月”
+		'''
 }
 
 GalileoGladiusLegacy: {
-	// DisplayName: Galileo Gladius Legacy
-	// Tooltip: ""
+	DisplayName: 伽利略短剑[Legacy]
+	Tooltip:
+		'''
+		发射追踪新月
+		击中敌人时生成小行星
+		“不要低估了小号太空剑的杀伤力”
+		'''
 }
 
 BladecrestOathswordLegacy: {
-	// DisplayName: Bladecrest Oathsword Legacy
-	// Tooltip: ""
+	DisplayName: 剑锋之誓约[Legacy]
+	Tooltip: 发射一连串飞行速度会迅速降低的爆炸性恶魔之刃
 }
 
 CatastropheClaymore: {
-	// DisplayName: Catastrophe Claymore
-	// Tooltip: ""
+	DisplayName: 灾难巨剑[Legacy]
+	Tooltip: 发射会造成冻伤、狱炎或灵液减益的火花
 }
 
 Devastation: {
-	// DisplayName: Devastation
-	// Tooltip: ""
+	DisplayName: 破坏重剑[Legacy]
+	Tooltip: 发射宇宙爆炸
 }
 
 DevilsDevastationLegacy: {
-	// DisplayName: Devils Devastation Legacy
-	// Tooltip: ""
+	DisplayName: 破灭魔王剑[Legacy]
+	Tooltip:
+		'''
+		发射数个恶魔镰刀
+		召唤火叉从地狱中升起，穿透你的敌人
+		暴击时造成暗影焰爆炸
+		'''
 }
 
 EntropicClaymoreLegacy: {
-	// DisplayName: Entropic Claymore Legacy
-	// Tooltip: ""
+	DisplayName: 熵阔剑[Legacy]
+	Tooltip: 发射数个追踪离子球
 }
 
 ExaltedOathbladeLegacy: {
-	// DisplayName: Exalted Oathblade Legacy
-	// Tooltip: ""
+	DisplayName: 崇高誓约之剑[Legacy]
+	Tooltip: 发射三个向外飞出的恶魔镰刀，暴击时造成暗影焰爆炸
 }
 
 Excelsus: {
-	// DisplayName: Excelsus
-	// Tooltip: ""
+	DisplayName: 宙能波纹剑[Legacy]
+	Tooltip:
+		'''
+		发射旋转锋刃
+		击中敌人时召唤激光束
+		'''
 }
 
 ForbiddenOathbladeLegacy: {
-	// DisplayName: Forbidden Oathblade Legacy
-	// Tooltip: ""
+	DisplayName: 誓约与禁忌之刃[Legacy]
+	Tooltip: 发射一只恶魔镰刀，暴击时造成暗影焰爆炸
 }
 
 HolyColliderLegacy: {
-	// DisplayName: Holy Collider Legacy
-	// Tooltip: ""
-}
-
-OldLordClaymoreLegacy: {
-	// DisplayName: Old Lord Claymore Legacy
-	// Tooltip: ""
+	DisplayName: 圣火之刃[Legacy]
+	Tooltip: 击中敌人时使其被圣火点燃并爆炸
 }
 
 BurningRevelationLegacy: {
-	// DisplayName: Burning Revelation Legacy
-	// Tooltip: ""
+	DisplayName: 渎焚天启[Legacy]
+	Tooltip:
+		'''
+		击中敌人时产生强大的圣火爆炸
+		一只超级灵活的悠悠球
+		'''
 }
 
 TheObliteratorLegacy: {
-	// DisplayName: The Obliterator Legacy
-	// Tooltip: ""
+	DisplayName: 混沌射线[Legacy]
+	Tooltip:
+		'''
+		以死亡激光抹除周围敌人的存在
+		一只超级灵活的悠悠球
+		'''
 }
 
 TheOracleLegacy: {
-	// DisplayName: The Oracle Legacy
-	// Tooltip: ""
+	DisplayName: 神谕[Legacy]
+	Tooltip:
+		'''
+		发出红色闪电光圈，在击中敌人时充能
+		充能完全时发射圣金源珠
+		一只超级灵活的悠悠球
+		“我看到了过去，当下，将来……还有你的死期”
+		'''
 }
 
 LaceratorLegacy: {
-	// DisplayName: Lacerator Legacy
-	// Tooltip: ""
+	DisplayName: 裂魔[Legacy]
+	Tooltip:
+		'''
+		用悠悠球击中敌人会加速自然生命再生
+		一只超级灵活的悠悠球
+		竟然有人觉得用这东西可以在某一时间与神明吞噬者战斗，可笑
+		'''
 }
 
 OldLordOathswordLegacy: {
-	// DisplayName: Old Lord Oathsword Legacy
-	// Tooltip: ""
+	DisplayName: 旧神之誓约[Legacy]
+	Tooltip:
+		'''
+		长按右键以快速将能量吸收进刀刃中，直至充能完毕
+		充能时点击左键可向光标位置飞去
+		使用猛冲会将充能重置为零
+		远古地狱遗物
+		'''
 }
 
 EarthLegacy: {
-	// DisplayName: Earth Legacy
-	// Tooltip: ""
+	DisplayName: 无限大地[Legacy]
+	Tooltip:
+		'''
+		每次命中降低敌怪1点防御
+		你的攻击会大幅治疗你
+		击中敌人后召唤会分裂为更多陨石的红绿蓝陨石
+		冰陨石冻结敌怪
+		火陨石会爆炸
+		绿陨石生成治疗球
+		'''
 }
 
 EutrophicScimitar: {
-	// DisplayName: Eutrophic Scimitar
-	// Tooltip: ""
+	DisplayName: 水华弯刀[Legacy]
+	Tooltip: 挥舞时发射两道激光弹幕，会晕眩敌人
+}
+
+BallOFuguLegacy: {
+	DisplayName: 河豚链球[Legacy]
+	Tooltip: 投出一条会吐出追踪尖刺的鱼
+}
+
+TumbleweedLegacy: {
+	DisplayName: 风滚草[Legacy]
+	Tooltip: 击中敌人时释放滚动的风滚草
+}
+
+BasherLegacy: {
+	DisplayName: 痛击者[Legacy]
+	Tooltip: 挥舞一根腐朽的木棍，在击中敌怪时施加中毒和辐射减益
+}
+
+GrandGuardianLegacy: {
+	DisplayName: 大守卫者[Legacy]
+	Tooltip:
+		'''
+		每次击中时降低敌人1防御
+		如果敌人防御低于0，造成伤害会治疗你
+		击中敌人造成大幅爆炸
+		击中低于半血的敌人会释放彩虹弹幕
+		敌人死亡时生成治疗球
+		'''
+}
+
+GreatswordofBlah: {
+	DisplayName: 巨剑‘巴拉’[Legacy]
+	Tooltip:
+		'''
+		来自遗忘之地的苍白之剑
+		发射一个消失时降下彩虹雨的彩虹宝珠
+		你可以听见这把剑微弱的安抚和低语
+		“无论你在何方，你都绝非孤身一人。我永远会在你身旁，我的王”
+		'''
+}
+
+GreatswordofJudgementLegacy: {
+	DisplayName: 巨剑‘审判’[Legacy]
+	Tooltip:
+		'''
+		遗忘之地的苍白之剑
+		发射一个白球，消失后降下白雨
+		你可以听见这把剑微弱的安抚和低语
+		“无论你在何方，你都绝非孤身一人。我永远会在你身旁，我的王”
+		'''
+}
+
+HellkiteLegacy: {
+	DisplayName: 地狱龙锋[Legacy]
+	Tooltip:
+		'''
+		击中敌人时召唤火焰喷泉
+		包含一只远古恶龙的力量
+		'''
+}
+
+MajesticGuardLegacy: {
+	DisplayName: 雄伟之护[Legacy]
+	Tooltip:
+		'''
+		每次命中时降低敌怪1防御
+		当敌人的防御值小于等于0时会治疗玩家
+		'''
+}
+
+MantisClawLegacy: {
+	DisplayName: 螳螂爪[Legacy]
+	Tooltip:
+		'''
+		击中敌人时产生爆炸
+		“三虾五除二的事”
+		'''
+}
+
+MeleeEmpyreanKnives: {
+	DisplayName: 苍穹飞刀·近战版本[Legacy]
+	Tooltip: 投出一簇能够弹射并治疗玩家的飞刀
+}
+
+PlagueKeeper: {
+	DisplayName: 瘟疫大剑[Legacy]
+	Tooltip: 发射一团瘟疫和蜜蜂云
+}
+
+DiseasedPikeLegacy: {
+	DisplayName: 瘟疫长枪[Legacy]
+	Tooltip: 击中敌人时释放瘟疫搜寻者
+}
+
+BalefulHarvesterLegacy: {
+	DisplayName: 邪恶收割者[Legacy]
+	Tooltip: 召唤燃烧的南瓜和颅骨，击中敌人时分裂成追踪火球
+}
+
+Aftershock: {
+	DisplayName: 余震[Legacy]
+	Tooltip: 击中敌怪时召唤落石从天而降
+}
+
+AstralBlade: {
+	DisplayName: 幻星刀[Legacy]
+	Tooltip: 对剩余生命值越高的敌人造成的伤害越高
+}
+
+MirrorBladeLegacy: {
+	DisplayName: 镜之刃[Legacy]
+	Tooltip:
+		'''
+		被攻击的敌人的接触伤害会被添加到此剑的伤害之上
+		你必须用剑身击中敌人才能触发此效果
+		'''
+}
+
+DevilsSunriseLegacy: {
+	DisplayName: 邪锋破晓[Legacy]
+	Tooltip: 勇气？你真的有那玩意？
+}
+
+PrismaticBreakerLegacy: {
+	DisplayName: 光棱破碎者[Legacy]
+	Tooltip:
+		'''
+		充能发射一束彩虹光炮
+		右键挥舞此剑，释放虹光剑气
+		这把剑同时受到近战和远程的伤害加成影响
+		看上去属于一位魔法少女。辐射出强烈的宇宙魔能
+		'''
+}
+
+TheEnforcer: {
+	DisplayName: 暴政[Legacy]
+	Tooltip: 命中时生成精华火焰
+}
+
+TheMutilatorLegacy: {
+	DisplayName: 血石斩切刃[Legacy]
+	Tooltip:
+		'''
+		攻击敌人时会激发鲜血爆破效果
+		鲜血爆破会回复你的生命值
+		'''
 }

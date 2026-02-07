@@ -1,9 +1,4 @@
 ﻿using LAP.Assets.TextureRegister;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,6 +19,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 60;
             Projectile.DamageType = DamageClass.Melee;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
 
         public override void AI()

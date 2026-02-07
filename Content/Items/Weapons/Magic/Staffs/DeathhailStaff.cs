@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Rarity;
-using CalamityMod.Items;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Magic;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -87,6 +88,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staffs
                 Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, type, damage, beamKnockback, i, 0f, 0f);
             }
             return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<CosmiliteBar>(12).
+                AddTile<CosmicAnvil>().
+                Register();
         }
     }
 }

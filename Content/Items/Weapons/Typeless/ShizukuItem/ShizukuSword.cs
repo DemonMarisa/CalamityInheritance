@@ -8,6 +8,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -32,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         }
         public override void SetDefaults()
         {
-            Item.damage = 1140;
+            Item.damage = 200;
             //仅标记作用。
             Item.DamageType = ShizukuDamageClass.Instance;
             Item.channel = true;
@@ -46,6 +48,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
             Item.rare = RarityType<ShizukuAqua>();
             Item.shoot = ProjectileType<ShizukuEnergy>();
             Item.shootSpeed = 12f;
+
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
         public override bool AltFunctionUse(Player player) => true;
         public override bool CanUseItem(Player player)

@@ -3,6 +3,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.World;
 using CalamityMod.CalPlayer;
 using CalamityMod.World;
+using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -66,7 +67,6 @@ namespace CalamityInheritance.UI
 
         public static void DrawCalamityUI(SpriteBatch spriteBatch)
         {
-            CIWorld world = GetInstance<CIWorld>();
             // 右上角为锚点绘制
             float yCenter = 80;
             float xCenter = Main.screenWidth - 450;
@@ -75,23 +75,22 @@ namespace CalamityInheritance.UI
             // 绘制底子
             spriteBatch.Draw(BG, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (world.Malice)
+            if (CIWorld.malice)
                 spriteBatch.Draw(Malice, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.death)
                 spriteBatch.Draw(Death, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
             else if (CalamityWorld.revenge)
                 spriteBatch.Draw(Rev, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (world.Armageddon)
+            if (CIWorld.armageddon)
                 spriteBatch.Draw(Arma, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
 
-            if (world.Defiled)
+            if (CIWorld.defiled)
                 spriteBatch.Draw(Rune, drawBGPosition, null, Color.White, 0f, org, 1f, SpriteEffects.None, 0f);
         }
 
         public static void DrawInfernumModeUI(SpriteBatch spriteBatch)
         {
-            CIWorld world = GetInstance<CIWorld>();
             Texture2D outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumBG").Value;
 
             count++;
@@ -101,16 +100,16 @@ namespace CalamityInheritance.UI
             if (count % 6 == 0)
                 FrameCount++;
 
-            if (world.Armageddon && world.Defiled)
+            if (CIWorld.armageddon && CIWorld.defiled)
                 outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledArmaBG").Value;
-            else if (world.Defiled)
+            else if (CIWorld.defiled)
                 outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumDefiledBG").Value;
-            else if (world.Armageddon)
+            else if (CIWorld.armageddon)
                 outerAreaTexture = Request<Texture2D>("CalamityInheritance/UI/ModeUITexture/InfernumArmaBG").Value;
 
             float pulseRate = 11f;
 
-            if (CalamityPlayer.areThereAnyDamnBosses)
+            if (LAPInfo.AnyBossHere)
                 pulseRate = 25f;
 
             Rectangle areaFrame = outerAreaTexture.Frame(1, 13, 0, (int)(FrameCount * pulseRate) % 13);

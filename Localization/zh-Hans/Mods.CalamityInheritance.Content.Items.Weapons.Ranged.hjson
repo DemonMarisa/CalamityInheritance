@@ -502,8 +502,8 @@ Dualpoon: {
 }
 
 MandibleBow: {
-	// DisplayName: Mandible Bow
-	// Tooltip: ""
+	DisplayName: Mandible Bow
+	Tooltip: ""
 }
 
 MarniteBayonet: {
@@ -626,67 +626,178 @@ PumplerLegacy: {
 	DisplayName: 气泵枪[Legacy]
 }
 
-Deathwind: {
-	// DisplayName: Deathwind
-	// Tooltip: ""
+CosmicRainbowLegacy: {
+	DisplayName: 宙虹[Legacy]
+	Tooltip: 发射大量的彩虹！
 }
 
 TelluricGlareLegacy: {
-	// DisplayName: Telluric Glare Legacy
-	// Tooltip: ""
-}
-
-FetidEmesisLegacy: {
-	// DisplayName: Fetid Emesis Legacy
-	// Tooltip: ""
-}
-
-SepticSkewerLegacy: {
-	// DisplayName: Septic Skewer Legacy
-	// Tooltip: ""
-}
-
-ClockGatlignum: {
-	// DisplayName: Clock Gatlignum
-	// Tooltip: ""
-}
-
-StormDragon: {
-	// DisplayName: Storm Dragon
-	// Tooltip: ""
-}
-
-StarmadaLegacy: {
-	// DisplayName: Starmada Legacy
-	// Tooltip: ""
-}
-
-RubicoPrimeLegacy: {
-	// DisplayName: Rubico Prime Legacy
-	// Tooltip: ""
-}
-
-CosmicRainbowLegacy: {
-	// DisplayName: Cosmic Rainbow Legacy
-	// Tooltip: ""
+	DisplayName: 地核之炎[Legacy]
+	Tooltip: 发射四支可穿透物块的爆炸辐射箭
 }
 
 TheStormLegacy: {
-	// DisplayName: The Storm Legacy
-	// Tooltip: ""
-}
-
-SulphuricAcidCannonLegacy: {
-	// DisplayName: Sulphuric Acid Cannon Legacy
-	// Tooltip: ""
+	DisplayName: 风暴[Legacy]
+	Tooltip:
+		'''
+		发射巨量从天而降的箭矢
+		将木箭转化为能源箭矢
+		'''
 }
 
 StarfleetLegacy: {
-	// DisplayName: Starfleet Legacy
-	// Tooltip: ""
+	DisplayName: 星辰冲击波[Legacy]
+	Tooltip: 发射数个等离子星弹
+}
+
+StarmadaLegacy: {
+	DisplayName: 群星大炮[Legacy]
+	Tooltip:
+		'''
+		发射星辰与等离子星弹
+		66%几率节省弹药
+		'''
+}
+
+SulphuricAcidCannonLegacy: {
+	DisplayName: 硫酸炮[Legacy]
+	Tooltip: 发射一个能黏在敌人身上的硫酸弹幕并溶解它们
+}
+
+Deathwind: {
+	DisplayName: 死亡之风[Legacy]
+	Tooltip:
+		'''
+		一次发射四支箭矢
+		将木箭转化为星云箭
+		星云箭造成更多伤害并且会施加弑神怒焰减益
+		'''
+}
+
+ClockGatlignum: {
+	DisplayName: 发条鳄鱼枪[Legacy]
+	Tooltip:
+		'''
+		将火枪子弹转化为三发高速弹
+		33%几率节省弹药
+		'''
+}
+
+FetidEmesisLegacy: {
+	DisplayName: 腐臭倾泻者[Legacy]
+	Tooltip:
+		'''
+		有一定几率射出腐烂肉块而不是子弹
+		40%几率节省弹药
+		'''
 }
 
 HellbornLegacy: {
-	// DisplayName: Hellborn Legacy
-	// Tooltip: ""
+	DisplayName: 地狱降临[Legacy]
+	Tooltip:
+		'''
+		一次发射三发子弹
+		这把枪发射子弹时接触敌人会造成爆炸
+		爆炸后，该枪的伤害，射速和击退会大幅提高，持续10秒
+		增幅效果会随时间缓慢衰减
+		将火枪子弹转化为爆炸子弹
+		'''
+}
+
+LeviatitanLegacy: {
+	DisplayName: 利维坦海潮枪[Legacy]
+	Tooltip: 将火枪子弹转化为水弹
+}
+
+NullificationPistolLegacy: {
+	DisplayName: 空[Legacy]
+	Tooltip:
+		'''
+		发射一个“空弹”扭曲怪物的属性
+		“是否为空？一起测试吧！”
+		'''
+}
+
+RubicoPrimeLegacy: {
+	DisplayName: 绝路Prime[Legacy]
+	Tooltip:
+		'''
+		射出的弹药有更高的暴击倍率
+		现已使用卑劣加速
+		'''
+}
+
+SepticSkewerLegacy: {
+	DisplayName: 剧毒叉枪[Legacy]
+	Tooltip:
+		'''
+		发射一个黏性剧毒鱼叉
+		飞回玩家时释放细菌
+		'''
+}
+
+StormDragon: {
+	DisplayName: 风暴龙骑士[Legacy]
+	Tooltip: 90%几率节省弹药
+}
+
+FirestormCannonLegacy: {
+	DisplayName: 烈焰风暴[Legacy]
+	Tooltip:
+		'''
+		持续释放武器化的信号弹
+		右键以发射密集的信号弹
+		70%几率节省弹药
+		'''
+}
+
+SpectralstormCannonLegacy: {
+	DisplayName: 光谱风暴[Legacy]
+	Tooltip:
+		'''
+		发射失落之魂与信号弹
+		70%几率节省弹药
+		'''
+}
+
+CoralCannon: {
+	DisplayName: 珊瑚手炮[Legacy]
+	Tooltip:
+		'''
+		有20%几率发射一个能击晕敌人的大珊瑚弹
+		不消耗弹药
+		'''
+}
+
+ClaretCannonLegacy: {
+	DisplayName: 深红手炮[Legacy]
+	Tooltip:
+		'''
+		一次发射三发子弹
+		将火枪子弹转化为吸血的血泪弹
+		'''
+}
+
+ArterialAssaultLegacy: {
+	DisplayName: 血陨[Legacy]
+	Tooltip:
+		'''
+		自天空中发射五支箭
+		所有箭都将迅速跟踪附近的敌人
+		'''
+}
+
+AstralBow: {
+	DisplayName: 幻星弓[Legacy]
+	Tooltip: 一次发射三支箭
+}
+
+Disseminator: {
+	DisplayName: 散播者[Legacy]
+	Tooltip:
+		'''
+		发射密集的子弹，同时从空中召唤大量子弹
+		50%几率节省弹药
+		@全体成员
+		'''
 }

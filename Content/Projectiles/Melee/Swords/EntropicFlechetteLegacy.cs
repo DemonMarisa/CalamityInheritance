@@ -54,11 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             int darkestDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, 0f, 0f, 100, default, 0.8f);
             Main.dust[darkestDust].noGravity = true;
             Main.dust[darkestDust].velocity *= 0f;
-            NPC npc = Projectile.FindClosestTarget(900f, false, false);
-            if (npc is not null)
-            {
-                Projectile.HomingTarget(npc.Center, 900f, 12f, 20f);
-            }
+            Projectile.HomeInNPC(900f, 12f, 20f);
         }
 
         public override bool PreDraw(ref Color lightColor)

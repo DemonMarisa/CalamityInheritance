@@ -1,11 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
-using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.SunkenSea;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -53,6 +49,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             }
 
             return false;
+        }
+        public override void AddRecipes()
+        {
+
+            CreateRecipe().
+                AddIngredient<PearlShard>(2).
+                AddIngredient<SeaPrism>(4).
+                AddIngredient<Navystone>(8).
+                AddTile(TileID.Anvils).
+                Register();
         }
     }
 }

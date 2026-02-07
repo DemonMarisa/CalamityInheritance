@@ -48,7 +48,6 @@ namespace CalamityInheritance.CIPlayer
                 LifePercentMax -= 0.1f;
             if (BuffStatsCadence)
                 LifePercentMax += 0.25f;
-            
             //血契在天顶世界有一定的变化：其将不会使最大生命上限+100%，相反，它会尝试把玩家获得的血量上限收益翻倍.
             if (AncientBloodPact) 
             {
@@ -57,10 +56,18 @@ namespace CalamityInheritance.CIPlayer
                 if (Main.zenithWorld)
                     LifePercentMax *= 2;
             }
+            if (Player.Calamity().ZoneAbyss)
+            {
+                if (AbyssalAmuletLegacy)
+                {
+                    LifePercentMax += 0.1f;
+                }
+                if (LumenousAmulet)
+                {
+                    LifePercentMax += 0.25f;
+                }
+            }
             int StatLifeInt = 0;
-            //避免血量倒扣
-            if (LifePercentMax < 0) 
-                LifePercentMax = 0;
             //先乘算计算完，在考虑加算
             Player.statLifeMax2 += (int)(Player.statLifeMax * LifePercentMax) + StatLifeInt;
         }

@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<Equanimity>().
+                AddIngredient<EquanimityLegacy>().
                 AddIngredient<Brimblade>().
                 AddIngredient<LivingShard>(12).
                 AddTile(TileID.MythrilAnvil).

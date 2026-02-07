@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Projectile.tileCollide = false;
             Projectile.timeLeft *= 5;
             Projectile.minion = true;
+            Projectile.DamageType = DamageClass.Summon;
         }
 
         public override void AI()
@@ -157,7 +158,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                             });
                             float velocityX = Main.rand.NextFloat(-10f, 10f);
                             float velocityY = Main.rand.NextFloat(-15f, -8f);
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, velocityX, velocityY, projType, Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                            int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, velocityX, velocityY, projType, Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                            Main.projectile[p].originalDamage = Projectile.originalDamage;
                         }
                     }
                 }

@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 150;
-            Projectile.DamageType = GetInstance<RogueDamageClass>();
+            Projectile.DamageType = DamageClass.Summon;
         }
         public override void AI()
         {

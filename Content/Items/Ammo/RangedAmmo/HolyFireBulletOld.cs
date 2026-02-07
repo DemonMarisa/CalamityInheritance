@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
         {
             Item.width = 22;
             Item.height = 22;
-            Item.damage = 22;
+            Item.damage = 27;
             Item.DamageType = DamageClass.Ranged;
             Item.maxStack = 9999;
             Item.consumable = true;

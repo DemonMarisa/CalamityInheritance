@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityMod.CalPlayer;
-using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Accessories.Combats;
+using CalamityInheritance.Content.Items.Accessories.Defense;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -52,8 +55,13 @@ namespace CalamityInheritance.CIPlayer
                             if (calPlayer.ZoneAstral)
                             {
                                 rareItemList.Add(ItemType<PolarisParrotfishLegacy>());
+                                rareItemList.Add(ItemType<UrsaSergeantLegacy> ());
                             }
-                            if (rareItemList.Any())
+                            if (calPlayer.ZoneSunkenSea)
+                            {
+                                rareItemList.Add(ItemType<AbyssalAmulet>());
+                            }
+                            if (rareItemList.Count != 0)
                             {
                                 int rareItemAmt = rareItemList.Count;
                                 int caughtRareItem = rareItemList[Main.rand.Next(rareItemAmt)];

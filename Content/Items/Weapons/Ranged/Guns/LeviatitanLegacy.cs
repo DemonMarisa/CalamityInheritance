@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
+using CalamityInheritance.System.Configs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -16,8 +17,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
             Item.height = 28;
             Item.damage = 77;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = 10;
-            Item.useAnimation = 10;
+            Item.useTime = 9;
+            Item.useAnimation = 9;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5f;
@@ -39,16 +40,24 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
         {
             float SpeedX = velocity.X + Main.rand.Next(-10, 11) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
-            if (type == ProjectileID.Bullet)
+            if (CIConfig.Instance.AmmoConversion)
             {
-                if (Main.rand.NextBool(3))
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<AquaBlastToxic>(), (int)(damage * 1.5), knockback, player.whoAmI);
-                else
-                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<AquaBlastToxic>(), (int)(damage * 1.5), knockback, player.whoAmI);
             }
             else
-                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
-
+            {
+                if (type == ProjectileID.Bullet)
+                {
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<AquaBlastToxic>(), (int)(damage * 1.5), knockback, player.whoAmI);
+                }
+                else
+                {
+                    if (Main.rand.NextBool(3))
+                        Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileType<AquaBlastToxic>(), (int)(damage * 1.5), knockback, player.whoAmI);
+                    else
+                        Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+                }
+            }
             return false;
         }
     }

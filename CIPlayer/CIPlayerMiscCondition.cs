@@ -17,14 +17,10 @@ namespace CalamityInheritance.CIPlayer
         }
         public static void PreUp()
         {
-            var remnantsMod = ModLoader.TryGetMod("Remnants", out Mod remnants);
-
-            float spacef = remnantsMod ? 17f : 16f;
+            float spacef = 16f;
             float spaceh = (float)Main.maxTilesX / 4200f;
             spaceh *= spaceh;
-
             inSpace = (float)((double)((Main.screenPosition.Y + (float)(Main.screenHeight / 2)) / spacef - (65f + 10f * spaceh)) / (Main.worldSurface / 5.0)) < 1f;
         }
-
     }
 }

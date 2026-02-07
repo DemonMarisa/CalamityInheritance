@@ -72,7 +72,6 @@ namespace CalamityInheritance
             ModLoader.TryGetMod("NoxusBoss", out WrathoftheGods);
             //fargo
             FuckYouFargo = null;
-            CIPlayerDashManager.Load();
             CalamityInheritanceLists.LoadLists();
             /*
             //我没有测试过这个数组能不能用，而且出于某些原因我的游戏又被飞行钩子给干掉了，所以你自己看着办吧（
@@ -164,7 +163,6 @@ namespace CalamityInheritance
             Goozma = null;
             //wotg
             WrathoftheGods = null;
-            CIPlayerDashManager.Unload();
             AstralArcanumUI.Unload();
             CalamityInheritanceLists.UnloadLists();
             infernumMode = null;

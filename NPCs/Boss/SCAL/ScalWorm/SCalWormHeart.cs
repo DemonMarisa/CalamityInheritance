@@ -1,4 +1,5 @@
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.NPCs.SupremeCalamitas;
@@ -38,7 +39,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
             NPC.width = 24;
             NPC.height = 24;
             NPC.defense = 0;
-            NPC.LifeMaxNERB(160000, 180000, 90000);
+            NPC.lifeMax = 180000;
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
+            NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 30000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;

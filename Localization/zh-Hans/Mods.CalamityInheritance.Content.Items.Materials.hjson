@@ -43,36 +43,36 @@ BlightedLens: {
 }
 
 BloodSample: {
-	// DisplayName: Blood Sample
-	// Tooltip: ""
+	DisplayName: 血液样本[Legacy]
+	Tooltip: ""
 }
 
 RottenMatter: {
-	// DisplayName: Rotten Matter
-	// Tooltip: ""
+	DisplayName: 腐烂物质[Legacy]
+	Tooltip: ""
 }
 
 CoreofChaos: {
-	// DisplayName: Coreof Chaos
-	// Tooltip: ""
+	DisplayName: 混乱核心[Legacy]
+	Tooltip: ""
 }
 
 CoreofEleum: {
-	// DisplayName: Coreof Eleum
-	// Tooltip: ""
+	DisplayName: 冰川核心[Legacy]
+	Tooltip: ""
 }
 
 CoreofSunlight: {
-	// DisplayName: Coreof Sunlight
-	// Tooltip: ""
+	DisplayName: 日光核心[Legacy]
+	Tooltip: ""
 }
 
 DesertFeather: {
-	// DisplayName: Desert Feather
-	// Tooltip: ""
+	DisplayName: 荒漠之羽[Legacy]
+	Tooltip: ""
 }
 
 DemonicBoneAsh: {
-	// DisplayName: Demonic Bone Ash
-	// Tooltip: ""
+	DisplayName: 恶魔骨灰[Legacy]
+	Tooltip: ""
 }

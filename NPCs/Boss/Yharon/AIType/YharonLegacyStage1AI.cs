@@ -489,7 +489,6 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 {
                     if (isTrueDead)
                         FirstDown();
-
                     NPC.active = false;
                 }
                 NPC.Opacity -= 0.04f;

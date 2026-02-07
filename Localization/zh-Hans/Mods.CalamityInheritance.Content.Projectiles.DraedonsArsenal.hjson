@@ -1,9 +1,14 @@
 PulseRifleShotOld.DisplayName: 脉冲能量
-// GaussRifleBlast.DisplayName: Gauss Rifle Blast
-// GaussRifleExplosion.DisplayName: Gauss Rifle Explosion
-// LaserRifleShot.DisplayName: Laser Rifle Shot
-// PulsePistolProj.DisplayName: Pulse Pistol Proj
-// TaserProj.DisplayName: Taser Proj
-// TrackingDiskLaserProj.DisplayName: Tracking Disk Laser Proj
-// TrackingDiskProj.DisplayName: Tracking Disk Proj
-// UnstableMatter.DisplayName: Unstable Matter
+GaussRifleBlast.DisplayName: 高斯脉冲
+GaussRifleExplosion.DisplayName: 能量爆炸
+LaserRifleShot.DisplayName: 伽马射线
+PulsePistolProj.DisplayName: 脉冲射线
+TaserProj.DisplayName: 泰瑟枪
+TrackingDiskLaserProj.DisplayName: 辐射激光
+TrackingDiskProj.DisplayName: 逐影飞盘
+UnstableMatter.DisplayName: 不稳物质
+// GaussPistolShotLegacy.DisplayName: Gauss Pistol Shot Legacy
+// GatlingLaserShot.DisplayName: Gatling Laser Shot
+// FrequencyManipulatorEnergy.DisplayName: Frequency Manipulator Energy
+// StarSwallowerAcid.DisplayName: Star Swallower Acid
+// StarSwallowerSummon.DisplayName: Star Swallower Summon

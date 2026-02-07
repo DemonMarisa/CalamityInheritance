@@ -1,4 +1,5 @@
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -50,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
                 realPlayerPos.Y -= 100 * j;
 
-                Vector2 flareVelocity = CalamityUtils.CalculatePredictiveAimToTargetMaxUpdates(realPlayerPos, target, cometSpeed, 6);
+                Vector2 flareVelocity = LAPUtilities.GetVector2(realPlayerPos, player.LocalMouseWorld()) *  Item.shootSpeed;
 
                 int proj = Projectile.NewProjectile(source, realPlayerPos, flareVelocity, ProjectileID.LunarFlare, damage, Item.knockBack, i, 0f, Main.rand.Next(3));
                 if (proj.WithinBounds(Main.maxProjectiles))

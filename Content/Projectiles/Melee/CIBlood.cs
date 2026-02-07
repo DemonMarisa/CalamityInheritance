@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
 
-            CalamityUtils.HomeInOnNPC(Projectile, !Projectile.tileCollide, 600f, 6f, 12f);
+            Projectile.HomeInNPC(600f, 6f, 12f, null, false);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             if (heal > 100)
                 heal = 100;
-            Projectile.Owner().SpawnLifeStealProj(target, Projectile, ProjectileType<StandardHealProj>(), heal);
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile.GetSource_FromThis(), ProjectileType<StandardHealProj>(), Projectile.Center, Vector2.Zero, heal);
         }
     }
 }

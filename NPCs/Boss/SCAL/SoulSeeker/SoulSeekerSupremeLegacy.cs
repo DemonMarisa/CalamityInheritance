@@ -1,21 +1,22 @@
-using CalamityMod.Projectiles.Boss;
+using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Boss;
+using LAP.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using Terraria.Audio;
-using CalamityMod.Particles;
-using CalamityInheritance.NPCs.Boss.SCAL.Proj;
-using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityMod.NPCs.SupremeCalamitas;
-using Terraria.GameContent.Bestiary;
-using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
 {
@@ -47,8 +48,16 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             NPC.canGhostHeal = false;
             NPC.defense = 80;
 
-			NPC.DR_NERD(0.75f);
-			NPC.LifeMaxNERB(90000, 170000);
+            double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
+            NPC.DR_NERD(0.75f);
+            NPC.lifeMax = 170000;
+            NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 28000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
+
 
             for (int k = 0; k < NPC.buffImmune.Length; k++)
             {

@@ -8,6 +8,7 @@ using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Events;
 using CalamityMod.Projectiles.Boss;
+using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -23,10 +24,9 @@ namespace CalamityInheritance.CIPlayer
         public bool MLG = false; // 恶魔纹章的刷怪增幅
         public void Defiled()
         {
-            CIWorld modWorld = GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
             // 神殇
-            if (modWorld.Defiled)
+            if (CIWorld.defiled)
             {
                 // 禁用翅膀
                 Player.wingTime = 0;
@@ -42,10 +42,11 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            CIWorld modWorld = GetInstance<CIWorld>();
-            if (!modWorld.Malice && !CIServerConfig.Instance.WeatherChange)
+
+            if (!CIWorld.malice && !CIServerConfig.Instance.WeatherChange)
                 return;
-            if (CalamityUtils.AnyBossNPCS())
+
+            if (LAPInfo.AnyBossHere)
                 return;
 
             if (Player.whoAmI == Main.myPlayer)
@@ -303,9 +304,8 @@ namespace CalamityInheritance.CIPlayer
         #region 铁心
         public void IronHeartChange()
         {
-            CIWorld modWorld = GetInstance<CIWorld>();
             CalamityPlayer calPlayer = Player.Calamity();
-            if (modWorld.IronHeart)
+            if (CIWorld.ironHeart)
             {
                 if(Player.lifeRegen > 0)
                 {
@@ -318,8 +318,7 @@ namespace CalamityInheritance.CIPlayer
         #region Get Heal Life
         public override void GetHealLife(Item item, bool quickHeal, ref int healValue)
         {
-            CIWorld modWorld = GetInstance<CIWorld>();
-            if (modWorld.IronHeart)
+            if (CIWorld.ironHeart)
                 healValue = 0;
         }
         #endregion

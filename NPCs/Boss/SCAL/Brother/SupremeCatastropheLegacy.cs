@@ -1,7 +1,16 @@
+using CalamityInheritance.Buffs.Legendary;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+using CalamityInheritance.NPCs.Boss.SCAL.Proj;
+using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.Items.Potions;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.Particles;
 using CalamityMod.Projectiles.Boss;
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+using LAP.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,17 +18,9 @@ using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Particles;
-using CalamityInheritance.NPCs.Boss.SCAL.Proj;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Buffs.Legendary;
-using CalamityMod.NPCs.SupremeCalamitas;
-using Terraria.GameContent.Bestiary;
-using CalamityMod.Items.Potions;
-using LAP.Content.Configs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
 {
@@ -57,9 +58,15 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.defense = 100;
 			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f);
 
-			NPC.LifeMaxNERB(1200000, 1500000);
+            NPC.lifeMax = 1500000;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 276000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
+
             NPC.aiStyle = -1;
             AIType = -1;
             NPC.knockBackResist = 0f;

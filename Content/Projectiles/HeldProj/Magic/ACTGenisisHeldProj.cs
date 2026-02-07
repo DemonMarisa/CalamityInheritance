@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Sounds.Custom;
+using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -21,6 +22,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         //你小子甚至不愿意整一个路径而是创建新的图片
         public override string Texture => GetInstance<GenisisLegacy>().Texture;
         public Player Owner => Main.player[Projectile.owner];
+        public override void SetStaticDefaults()
+        {
+            Projectile.AddHeldProj();
+        }
         public override void SetDefaults()
         {
             Projectile.width = 74;

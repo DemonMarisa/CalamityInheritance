@@ -305,49 +305,5 @@ Configs: {
 				也会标记灾厄之眼，重生之龙，的状态为被击败
 				'''
 		}
-
-		CrateLootsBack: {
-			// Label: Crate Loots Back
-			// Tooltip: ""
-		}
-	}
-
-	CIRespriteConfig: {
-		// DisplayName: C I Resprite Config
-
-		BloodOrange: {
-			// Label: Blood Orange
-			// Tooltip: ""
-		}
-
-		MiracleFruit: {
-			// Label: Miracle Fruit
-			// Tooltip: ""
-		}
-
-		Elderberry: {
-			// Label: Elderberry
-			// Tooltip: ""
-		}
-
-		Dragonfruit: {
-			// Label: Dragonfruit
-			// Tooltip: ""
-		}
-
-		CometShard: {
-			// Label: Comet Shard
-			// Tooltip: ""
-		}
-
-		EtherealCore: {
-			// Label: Ethereal Core
-			// Tooltip: ""
-		}
-
-		PhantomHeart: {
-			// Label: Phantom Heart
-			// Tooltip: ""
-		}
 	}
 }

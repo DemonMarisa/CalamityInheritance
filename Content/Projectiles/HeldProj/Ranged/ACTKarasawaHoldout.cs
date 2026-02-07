@@ -107,6 +107,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             #endregion
 
         }
+        public override void PostAI()
+        {
+            Projectile.extraUpdates = 0;
+        }
         public override bool PreDraw(ref Color lightColor)
         {
             SmokeDrawer.DrawSet(Plr.RotatedRelativePoint(Plr.MountedCenter - Vector2.UnitY * 4f, true, true) + Projectile.velocity * Projectile.width * 0.8f);
@@ -142,9 +146,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Plr.heldProj = Projectile.whoAmI;
             Plr.itemTime = 2;
             Plr.itemAnimation = 2;
-            Plr.itemRotation = ((Plr.Calamity().mouseWorld - Plr.MountedCenter) * Plr.direction).ToRotation();
-            Plr.ChangeDir((Plr.Calamity().mouseWorld - Plr.MountedCenter).X >= 0f ? 1 : -1);
-            Projectile.rotation = (Plr.Calamity().mouseWorld - Plr.MountedCenter).ToRotation() + (Plr.direction == -1 ? (float)Math.PI : 0);
+            Plr.itemRotation = ((Plr.LocalMouseWorld() - Plr.MountedCenter) * Plr.direction).ToRotation();
+            Plr.ChangeDir((Plr.LocalMouseWorld() - Plr.MountedCenter).X >= 0f ? 1 : -1);
+            Projectile.rotation = (Plr.LocalMouseWorld() - Plr.MountedCenter).ToRotation() + (Plr.direction == -1 ? (float)Math.PI : 0);
             Projectile.spriteDirection = Projectile.direction;
 
             float speedLimit = (Projectile.ai[0] >= 300f ? 3f : 4f) * Plr.moveSpeed;

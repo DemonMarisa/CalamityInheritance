@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         {
             NPC target = Main.npc[TargetIndex];
             if (!target.CanBeChasedBy(Projectile))
-                target = LAPUtilities.FindClosestTarget(Projectile, 1800f);
+                target = LAPUtilities.FindClosestTarget(Projectile.Center, 1800f);
             DashingTimer += 1;
             Projectile.Opacity = Utils.GetLerpValue(0f, 1f, DashingTimer, true) * Utils.GetLerpValue(0f, 1f, Projectile.timeLeft, true);
             //缓动，减速，与自转，类似于隔壁ACT射弹

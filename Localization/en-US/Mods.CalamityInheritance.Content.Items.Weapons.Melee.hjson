@@ -606,120 +606,315 @@ InsidiousImpalerLegacy: {
 
 CometQuasherLegacy: {
 	DisplayName: Comet Quasher Legacy
-	Tooltip: ""
+	Tooltip: Summons a swarm of meteors from the sky on enemy hits
 }
 
 GalactusBladeLegacy: {
 	DisplayName: Galactus Blade Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Launches a barrage of comets from the sky
+		Forged with the fury of nuclear chaos
+		'''
 }
 
 StellarStrikerLegacy: {
 	DisplayName: Stellar Striker Legacy
-	Tooltip: ""
+	Tooltip: Summons a swarm of lunar flares from the sky on enemy hits
 }
 
 Eradicator_Melee: {
-	DisplayName: Eradicator_ Melee
-	Tooltip: ""
+	DisplayName: Eradicator Legacy Melee
+	Tooltip: Throws a disk that fires nebula lasers at nearby enemies
 }
 
 UrchinFlail: {
-	DisplayName: Urchin Flail
-	Tooltip: ""
+	DisplayName: Urchin Flail Legacy
+	Tooltip: Launch an urchin ball, which shoots a spike on contact with an enemy
 }
 
 CrescentMoonLegacy: {
 	DisplayName: Crescent Moon Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a whip sword that summons homing crescent moons
+		'People wanted the moon, let's bring the moon to them'
+		'''
 }
 
 GalileoGladiusLegacy: {
 	DisplayName: Galileo Gladius Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Shoots a homing crescent moon
+		Spawns planetoids on enemy hits
+		'Don't underestimate the power of small space swords'
+		'''
 }
 
 BladecrestOathswordLegacy: {
 	DisplayName: Bladecrest Oathsword Legacy
-	Tooltip: ""
+	Tooltip: Fires bursts of demonic blades that exponentially decelerate and explode
 }
 
 CatastropheClaymore: {
-	DisplayName: Catastrophe Claymore
-	Tooltip: ""
+	DisplayName: Catastrophe Claymore Legacy
+	Tooltip: Fires sparkles which inflict Frostbite, Hellfire, or Ichor
 }
 
 Devastation: {
-	DisplayName: Devastation
-	Tooltip: ""
+	DisplayName: Devastation Legacy
+	Tooltip: Fires galaxy blasts that explode
 }
 
 DevilsDevastationLegacy: {
 	DisplayName: Devils Devastation Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a spread of demonic scythes
+		Pitchforks rise from the underworld to skewer your foes
+		Critical hits cause shadowflame explosions
+		'''
 }
 
 EntropicClaymoreLegacy: {
 	DisplayName: Entropic Claymore Legacy
-	Tooltip: ""
+	Tooltip: Fires a spread of homing plasma balls
 }
 
 ExaltedOathbladeLegacy: {
 	DisplayName: Exalted Oathblade Legacy
-	Tooltip: ""
+	Tooltip: Fires a spread of demonic scythes and critical hits cause shadowflame explosions
 }
 
 Excelsus: {
-	DisplayName: Excelsus
-	Tooltip: ""
+	DisplayName: Excelsus Legacy
+	Tooltip:
+		'''
+		Fires a spread of spinning blades
+		Summons laser fountains on hit
+		'''
 }
 
 ForbiddenOathbladeLegacy: {
 	DisplayName: Forbidden Oathblade Legacy
-	Tooltip: ""
+	Tooltip: Fires a demonic scythe and critical hits cause shadowflame explosions
 }
 
 HolyColliderLegacy: {
 	DisplayName: Holy Collider Legacy
-	Tooltip: ""
-}
-
-OldLordClaymoreLegacy: {
-	DisplayName: Old Lord Claymore Legacy
-	Tooltip: ""
+	Tooltip: Striking enemies will cause them to explode into holy fire
 }
 
 BurningRevelationLegacy: {
 	DisplayName: Burning Revelation Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Emits large holy explosions on hit
+		An exceptionally agile yoyo
+		'''
 }
 
 TheObliteratorLegacy: {
 	DisplayName: The Obliterator Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Ruins nearby enemies with death lasers
+		An exceptionally agile yoyo
+		'''
 }
 
 TheOracleLegacy: {
 	DisplayName: The Oracle Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Emits an aura of red lightning which charges up when hitting enemies
+		Fires auric orbs when supercharged
+		An exceptionally agile yoyo
+		'Gaze into the past, the present, the future... and the circumstances of your inevitable demise'
+		'''
 }
 
 LaceratorLegacy: {
 	DisplayName: Lacerator Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Accelerates natural life regeneration on hits with the yoyo
+		An exceptionally agile yoyo
+		Someone thought this was a viable weapon against DoG at one point lol
+		'''
 }
 
 OldLordOathswordLegacy: {
 	DisplayName: Old Lord Oathsword Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Holding Right Click rapidly absorbs energy into the blade until it is charged
+		Press Left Click while charged to fly in the direction of the cursor
+		'''
 }
 
 EarthLegacy: {
 	DisplayName: Earth Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Lowers enemy defense by 1 with every strike
+		Your attacks will heal you a lot
+		Rains RGB meteors that explode into more meteors after a short time on enemy hits
+		Ice meteors freeze enemies
+		Flame meteors explode
+		Green meteors spawn healing orbs
+		'''
 }
 
 EutrophicScimitar: {
-	DisplayName: Eutrophic Scimitar
-	Tooltip: ""
+	DisplayName: Eutrophic Scimitar Legacy
+	Tooltip: Fires two beams that stun enemies
+}
+
+BallOFuguLegacy: {
+	DisplayName: Ball O Fugu Legacy
+	Tooltip: Throws a fish that spews homing spikes
+}
+
+TumbleweedLegacy: {
+	DisplayName: Tumbleweed Legacy
+	Tooltip: Releases a rolling tumbleweed on hit
+}
+
+BasherLegacy: {
+	DisplayName: Basher Legacy
+	Tooltip: Swings a rotten club that poisons and irradiates enemies on hit
+}
+
+GrandGuardianLegacy: {
+	DisplayName: Grand Guardian Legacy
+	Tooltip:
+		'''
+		Lowers enemy defense by 1 with every strike
+		If enemy defense is 0 or below your attacks will heal you
+		Striking enemies causes a large explosion
+		Striking enemies that are under half life will cause them to release rainbow bolts
+		Enemies spawn healing orbs on death
+		'''
+}
+
+GreatswordofBlah: {
+	DisplayName: Greatsword of Blah Legacy
+	Tooltip:
+		'''
+		Fires a rainbow blade that emits rainbow rain from where it dissipated for a time
+		A pale white sword from a forgotten land
+		You can hear faint yet comforting whispers emanating from the blade
+		'No matter where you may be you are never alone
+		I shall always be at your side, my lord'
+		'''
+}
+
+GreatswordofJudgementLegacy: {
+	DisplayName: Greatsword of Judgement Legacy
+	Tooltip:
+		'''
+		Fires a white orb that emits white rain from where it dissipates for a time
+		A pale white sword from a forgotten land
+		You can hear faint yet comforting whispers emanating from the blade
+		'No matter where you may be you are never alone
+		I shall always be at your side, my lord'
+		'''
+}
+
+HellkiteLegacy: {
+	DisplayName: Hellkite Legacy
+	Tooltip:
+		'''
+		Summons flame geyser explosions on enemy hits
+		Contains the power of an ancient drake
+		'''
+}
+
+MajesticGuardLegacy: {
+	DisplayName: Majestic Guard Legacy
+	Tooltip:
+		'''
+		Lowers enemy defense by 1 with every strike
+		If enemy defense is 0 or below your attacks will heal you
+		'''
+}
+
+MantisClawLegacy: {
+	DisplayName: Mantis Claw Legacy
+	Tooltip:
+		'''
+		Explodes on enemy hits
+		'It's just that shrimple'
+		'''
+}
+
+MeleeEmpyreanKnives: {
+	DisplayName: Empyrean Knives Legacy Melee
+	Tooltip: Throws a flurry of bouncing knives that can heal the user
+}
+
+PlagueKeeper: {
+	DisplayName: Plague Keeper Legacy
+	Tooltip: Fires a plague and bee cloud
+}
+
+DiseasedPikeLegacy: {
+	DisplayName: Diseased Pike Legacy
+	Tooltip: Fires plague seekers on hit
+}
+
+BalefulHarvesterLegacy: {
+	DisplayName: Baleful Harvester Legacy
+	Tooltip: Summons flaming pumpkins and skulls that split into homing fire orbs on enemy hits
+}
+
+Aftershock: {
+	DisplayName: Aftershock Legacy
+	Tooltip: Summons boulders from the sky on enemy hits
+}
+
+AstralBlade: {
+	DisplayName: Astral Blade Legacy
+	Tooltip: Deals more damage the more life an enemy has left
+}
+
+MirrorBladeLegacy: {
+	DisplayName: Mirror Blade Legacy
+	Tooltip:
+		'''
+		The amount of contact damage an enemy does is added to this weapons' damage
+		You must hit an enemy with the blade to trigger this effect
+		'''
+}
+
+DevilsSunriseLegacy: {
+	DisplayName: Devil's Sunrise Legacy
+	Tooltip: Balls? Smalls.
+}
+
+PrismaticBreakerLegacy: {
+	DisplayName: Prismatic Breaker Legacy
+	Tooltip:
+		'''
+		Fire to charge for a powerful rainbow laser
+		Press Right Click to instead swing the sword and fire rainbow colored waves
+		The sword is boosted by both melee and ranged damage
+		Seems to belong to a certain magical girl. Radiates with intense cosmic energy
+		'''
+}
+
+TheEnforcer: {
+	DisplayName: The Enforcer Legacy
+	Tooltip: Spawns essence flames on hit
+}
+
+TheMutilatorLegacy: {
+	DisplayName: The Mutilator Legacy
+	Tooltip:
+		'''
+		Striking an enemy will trigger a bloodsplosion
+		Bloodsplosions can heal you
+		'''
 }

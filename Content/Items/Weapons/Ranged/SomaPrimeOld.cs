@@ -7,6 +7,8 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -45,7 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceDonatorPink;
             Item.rare = RarityType<DonatorPink>();
             Item.Calamity().devItem = true;
-            
+
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow, 2f);
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

@@ -59,7 +59,6 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 return true;
             if (player.altFunctionUse != 2)
             {
-                CIWorld world = GetInstance<CIWorld>();
                 if (!CalamityWorld.death)
                 {
                     if (!CalamityWorld.revenge)
@@ -72,9 +71,9 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
                 }
                 else
                 {
-                    if (world.Malice)
+                    if (CIWorld.malice)
                     {
-                        world.Malice = false;
+                        CIWorld.malice = false;
                         CIFunction.BroadcastLocalizedText("Mods.CalamityInheritance.Status.MaliceText2", Color.Crimson);
                     }
                     CalamityWorld.death = false;

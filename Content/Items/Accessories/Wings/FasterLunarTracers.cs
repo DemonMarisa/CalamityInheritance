@@ -45,7 +45,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 }
                 Main.dust[flightDust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
             }
-            CalamityPlayer modPlayer = player.Calamity();
             player.accRunSpeed = 9.25f;
             player.rocketBoots = 3;
             player.moveSpeed += 0.16f;
@@ -55,7 +54,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
             player.lavaMax += 240;
             player.buffImmune[BuffID.OnFire] = true;
             player.noFallDmg = true;
-            modPlayer.tracersDust = !hideVisual;
         }
 
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
@@ -75,23 +73,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 AddIngredient(ItemID.LunarBar, 5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-        }
-
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            CalamityUtils.DrawInventoryCustomScale(
-                spriteBatch,
-                texture: TextureAssets.Item[Type].Value,
-                position,
-                frame,
-                drawColor,
-                itemColor,
-                origin,
-                scale,
-                wantedScale: 0.9f,
-                drawOffset: new(1f, 0f)
-            );
-            return false;
         }
     }
 }

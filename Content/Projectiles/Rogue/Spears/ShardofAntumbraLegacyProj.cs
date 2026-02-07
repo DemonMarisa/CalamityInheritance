@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Spears;
 using CalamityInheritance.Content.Projectiles;
+using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
 using CalamityMod;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
@@ -46,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears
                 {
                     if (IsStealth)
                     {
-                        int star = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<EmpyreanStellarDetritus>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
+                        int star = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<EmpyreanStellarDetritusLegacy>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, 0f, 0f);
                         Main.projectile[star].DamageType = RogueDamageClass.Instance;
                     }
                 }

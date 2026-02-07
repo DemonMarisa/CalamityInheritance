@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.alpha < 128)
                 {
                     int index = -1;
-                    float otherConstant = 300f;
+                    float otherConstant = 1500f;
                     foreach (NPC n in Main.ActiveNPCs)
                     {
                         if (n.CanBeChasedBy(Projectile, false))

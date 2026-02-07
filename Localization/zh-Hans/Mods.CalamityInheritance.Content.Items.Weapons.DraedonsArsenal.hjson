@@ -17,31 +17,69 @@ MountedScannerLegacy: {
 }
 
 GaussRifle: {
-	// DisplayName: Gauss Rifle
-	// Tooltip: ""
+	DisplayName: 高斯来复枪[Legacy]
+	Tooltip:
+		'''
+		巨大且笨重的武器，但其射出的大威力子弹在清理成群的敌人时十分出色。
+		发射毁灭性的荒谬击退的高速冲击波
+		'''
 }
 
 HeavyLaserRifle: {
-	// DisplayName: Heavy Laser Rifle
-	// Tooltip: ""
+	DisplayName: 重型激光步枪[Legacy]
+	Tooltip: 亚利姆军队的重装步兵部队使用的激光武器
 }
 
 MatterModulator: {
-	// DisplayName: Matter Modulator
-	// Tooltip: ""
+	DisplayName: 物质调谐器[Legacy]
+	Tooltip:
+		'''
+		使用与固体物质碰撞中获得的额外质量造成额外伤害
+		发射不稳定物质，碰撞物块后造成更多伤害
+		不稳定物质击中物块前可以无限穿透敌怪，但造成的伤害变低
+		'''
 }
 
 PulsePistolLegacy: {
-	// DisplayName: Pulse Pistol Legacy
-	// Tooltip: ""
+	DisplayName: 脉冲手枪[Legacy]
+	Tooltip: 发射一道在击中一个敌人后，可以弧向附近敌人的脉冲
 }
 
 Taser: {
-	// DisplayName: Taser
-	// Tooltip: ""
+	DisplayName: 泰瑟枪[Legacy]
+	Tooltip:
+		'''
+		一把缓慢，简单的电磁武器，只配给那些低等级的护卫
+		发射吸附在敌人身上的钩爪，在返回前持续电击敌人
+		'''
 }
 
 TrackingDisk: {
-	// DisplayName: Tracking Disk
+	DisplayName: 逐影飞盘[Legacy]
+	Tooltip:
+		'''
+		这把武器，在飞行时可以处理数据，计算，随后向敌人倾泄激光
+		扔出一个会向周围敌人发射激光的飞盘
+		潜伏攻击会使飞盘向多个敌人发射多束大型激光
+		'''
+}
+
+GaussPistolLegacy: {
+	// DisplayName: Gauss Pistol Legacy
+	// Tooltip: ""
+}
+
+FrequencyManipulator: {
+	// DisplayName: Frequency Manipulator
+	// Tooltip: ""
+}
+
+GatlingLaserLegacy: {
+	// DisplayName: Gatling Laser Legacy
+	// Tooltip: ""
+}
+
+StarSwallowerContainmentUnit: {
+	// DisplayName: Star Swallower Containment Unit
 	// Tooltip: ""
 }

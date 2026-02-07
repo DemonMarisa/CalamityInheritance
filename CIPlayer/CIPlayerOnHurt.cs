@@ -47,16 +47,15 @@ namespace CalamityInheritance.CIPlayer
         {
             CalamityPlayer calPlayer = Player.Calamity();
             CalamityInheritancePlayer cIPlayer = Player.CIMod();
-            CIWorld world = GetInstance<CIWorld>();
 
             // 末日模式
-            if (world.Armageddon || SCalLore || PanelsSCalLore)
+            if (CIWorld.armageddon || SCalLore || PanelsSCalLore)
                 KillPlayer();
 
             // Handles energy shields and Boss Rush, in that order
             modifiers.ModifyHurtInfo += ModifyHurtInfo_Calamity;
 
-            if (world.IronHeart)
+            if (CIWorld.ironHeart)
             {
                 modifiers.DisableSound();
                 ModeHit(ref modifiers);
@@ -87,12 +86,12 @@ namespace CalamityInheritance.CIPlayer
                 damageMult += 1.25;
             }
             // 恶意模式额外受到25%伤害
-            if (world.Malice)
+            if (CIWorld.malice)
                 damageMult += 0.25;
-            if (world.Defiled)
+            if (CIWorld.defiled)
             {
                 if(Main.rand.NextBool(4))
-                    damageMult += 0.5;
+                    damageMult += 1;
             }
             modifiers.SourceDamage *= (float)damageMult;
             #endregion
@@ -126,8 +125,7 @@ namespace CalamityInheritance.CIPlayer
         #region 玩家处死
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            CIWorld world = GetInstance<CIWorld>();
-            if (world.IronHeart)
+            if (CIWorld.ironHeart)
             {
                 KillPlayer();
                 return true;
@@ -300,10 +298,9 @@ namespace CalamityInheritance.CIPlayer
         {
             Player player = Main.player[Main.myPlayer];
             CalamityPlayer modPlayer1 = player.Calamity();
-            CIWorld world = GetInstance<CIWorld>();
 
             // 末日模式禁用闪避
-            if (world.Armageddon)
+            if (CIWorld.armageddon)
                 return false;
 
             //日食魔镜的闪避优于所有闪避之前执行
@@ -417,7 +414,6 @@ namespace CalamityInheritance.CIPlayer
                         Player.GiveUniversalIFrames(evolutionIFrames, true);
 
                         modifiers.SetMaxDamage(1);
-                        calPlayer.evolutionLifeRegenCounter = 300;
                         calPlayer.projTypeJustHitBy = proj.type;
 
                         int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
@@ -964,8 +960,7 @@ namespace CalamityInheritance.CIPlayer
                     Player.KillMeForGood();
                 }
             }
-            CIWorld world = GetInstance<CIWorld>();
-            if (world.IronHeart)
+            if (CIWorld.ironHeart)
                 SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
             else
                 SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);
@@ -1009,19 +1004,5 @@ namespace CalamityInheritance.CIPlayer
             }
         }
         #endregion
-
-        public static void On_Player_UpdateLifeRegen(On_Player.orig_UpdateLifeRegen orig, Player self)
-        {
-            bool isIronHeart = GetInstance<CIWorld>().IronHeart;
-            if (isIronHeart)
-            {
-                orig(self);
-                return;
-            }
-
-            int temp = self.statLife;
-            orig(self);
-
-        }
     }
 }

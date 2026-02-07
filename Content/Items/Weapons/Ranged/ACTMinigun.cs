@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -48,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Projectile holdout = Projectile.NewProjectileDirect(source, position, velocity, ProjectileType<KingsbaneHoldoutReal>(), damage, knockback, player.whoAmI, 0f, 0f);
-            holdout.velocity = (player.Calamity().mouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero);
+            holdout.velocity = (player.LocalMouseWorld() - player.MountedCenter).SafeNormalize(Vector2.Zero);
 
             return false;
         }

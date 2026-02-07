@@ -1,6 +1,5 @@
 ﻿using CalamityMod.CalPlayer.Dashes;
 using CalamityMod;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
@@ -8,9 +7,7 @@ using Terraria.ModLoader;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using System.Collections.Generic;
-using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
@@ -39,13 +36,9 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMagicSet = true;
+            modPlayer2.CanUseLegacyGodSlayerDash = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             modPlayer2.GodSlayerReborn = true;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
         }
         public override void UpdateEquip(Player player)
         {

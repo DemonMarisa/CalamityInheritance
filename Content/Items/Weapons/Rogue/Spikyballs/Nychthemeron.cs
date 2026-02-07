@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Spikyballs;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

@@ -6,7 +6,9 @@ using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,6 +37,16 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             Item.shoot = ProjectileType<EradicatorProj_Rogue>();
             Item.shootSpeed = Speed;
             Item.DamageType = GetInstance<RogueDamageClass>();
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            int proj = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            if (player.Calamity().StealthStrikeAvailable() && proj.WithinBounds(Main.maxProjectiles))
+            {
+                Main.projectile[proj].timeLeft += EradicatorProj_Rogue.StealthExtraLifetime;
+                Main.projectile[proj].Calamity().stealthStrike = true;
+            }
+            return false;
         }
         public override void AddRecipes()
         {

@@ -147,5 +147,9 @@ AquaticDischarge: {
 
 LucreciaLegacy: {
 	DisplayName: Lucrecia Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Fires a DNA chain
+		Finesse
+		'''
 }

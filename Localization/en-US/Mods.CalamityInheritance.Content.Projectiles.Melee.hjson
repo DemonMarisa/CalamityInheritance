@@ -144,17 +144,6 @@ VictideSpearBall.DisplayName: Victide Spear Ball
 MarniteThrowSpearProj.DisplayName: Marnite Throw Spear Proj
 CQuasherMeteor.DisplayName: C Quasher Meteor
 GalacticaStar.DisplayName: Galactica Star
-
-Excelsus: {
-	DisplayName: Excelsus
-	Tooltip: ""
-}
-
-TheEnforcer: {
-	DisplayName: The Enforcer
-	Tooltip: ""
-}
-
 EssenceFlame2.DisplayName: Essence Flame2
 EutrophicSpark.DisplayName: Eutrophic Spark
 BloodExplosion.DisplayName: Blood Explosion
@@ -178,12 +167,6 @@ EntropicFlechetteLegacy.DisplayName: Entropic Flechette Legacy
 OracleYoyoOrb.DisplayName: Oracle Yoyo Orb
 EarthExtraProj.DisplayName: Earth Extra Proj
 EarthProjLegacy.DisplayName: Earth Proj Legacy
-
-PrismaticBreakerLegacy: {
-	DisplayName: Prismatic Breaker Legacy
-	Tooltip: ""
-}
-
 PrismaticBeamLegacy.DisplayName: Prismatic Beam Legacy
 PrismaticWaveLegacy.DisplayName: Prismatic Wave Legacy
 DivineHatchetBoomerang.DisplayName: Divine Hatchet Boomerang
@@ -192,8 +175,24 @@ EquanimityDarkShardLegacy.DisplayName: Equanimity Dark Shard Legacy
 EquanimityLightShardLegacy.DisplayName: Equanimity Light Shard Legacy
 EquanimityProjLegacy.DisplayName: Equanimity Proj Legacy
 EutrophicScimitarProjLegacy.DisplayName: Eutrophic Scimitar Proj Legacy
-
-DevilsSunriseLegacy: {
-	DisplayName: Devils Sunrise Legacy
-	Tooltip: ""
-}
+DustProjectile.DisplayName: Dust Projectile
+DNAChain.DisplayName: D N A Chain
+BallOFuguProjLegacy.DisplayName: Ball O Fugu Proj Legacy
+TumbleweedProj.DisplayName: Tumbleweed Proj
+TumbleweedRollProj.DisplayName: Tumbleweed Roll Proj
+UrchinBall.DisplayName: Urchin Ball
+UrchinBallSpike.DisplayName: Urchin Ball Spike
+GrandGuardianBolt.DisplayName: Grand Guardian Bolt
+GrandGuardianBoom.DisplayName: Grand Guardian Boom
+GreatswordofBlahAura.DisplayName: Greatswordof Blah Aura
+GreatswordofBlahProj.DisplayName: Greatswordof Blah Proj
+GreatswordofBlahRain.DisplayName: Greatswordof Blah Rain
+GreatswordofBlahWhiteOrb.DisplayName: Greatswordof Blah White Orb
+JudgementProjLegacy.DisplayName: Judgement Proj Legacy
+JudgementWhiteBoltAura.DisplayName: Judgement White Bolt Aura
+JudgementWhiteOrb.DisplayName: Judgement White Orb
+JudgementWhiterain.DisplayName: Judgement Whiterain
+VirulentBeeWave.DisplayName: Virulent Bee Wave
+BalefulHarvesterProjectileLegacy.DisplayName: Baleful Harvester Projectile Legacy
+AftershockRock.DisplayName: Aftershock Rock
+MirrorBlastLegacy.DisplayName: Mirror Blast Legacy

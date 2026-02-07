@@ -7,7 +7,8 @@ using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
-using CalamityInheritance.System.Configs;
+using LAP.Core.SystemsLoader;
+using LAP.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
@@ -40,6 +41,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             Item.shootSpeed = 6f;
 
             Item.Calamity().devItem = true;
+
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
         public override void AddRecipes()
         {

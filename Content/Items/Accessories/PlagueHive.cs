@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         {
             CreateRecipe().
                 AddIngredient<ToxicHeart>().
-                AddIngredient<AlchemicalFlask>().
+                // AddIngredient<AlchemicalFlask>().
                 AddIngredient(ItemID.HiveBackpack).
                 AddIngredient(ItemID.HoneyComb).
                 AddTile(TileID.LunarCraftingStation).

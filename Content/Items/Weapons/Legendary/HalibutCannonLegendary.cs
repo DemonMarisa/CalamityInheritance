@@ -8,6 +8,7 @@ using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -96,7 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         public override void UseItemFrame(Player player)
         {
             CIFunction.NoHeldProjUpdateAim(player, 0, 1);
-            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
         }
         public override void ModifyWeaponCrit(Player player, ref float crit)
@@ -130,7 +131,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             var mp = p.CIMod();
             int booster = DamageScaling() + Generic.GenericLegendBuffInt();
             string update = this.GetLocalization("LegendaryScaling").Format(booster.ToString(), AddBullet().ToString());
-            tooltips.FindAndReplace("[SCALING]", update);
+            LAPUtilities.FindAndReplace(tooltips, "[SCALING]", update);
             string myGodDude = !Condition.DownedSkeletron.IsMet() && !Main.hardMode ? Language.GetTextValue($"{TextRoute}.OnPreKnockDownedSkeletron") : null;
             if (myGodDude is not null)
                 tooltips.Add(new TooltipLine(Mod, "myGod", myGodDude));

@@ -43,14 +43,9 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
             modPlayer2.GodSlayerMelee= true;
-
+            modPlayer2.CanUseLegacyGodSlayerDash = true;
             modPlayer2.GodSlayerReborn = true;
             modPlayer.WearingPostMLSummonerSet = true;
-            if (modPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && modPlayer.LastUsedDashID == GodslayerArmorDash.ID)
-            {
-                modPlayer.DeferredDashID = GodslayerArmorDash.ID;
-                player.dash = 0;
-            }
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
 

@@ -371,6 +371,11 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             NPC.lifeMax = LifeMax;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            if (!CIServerConfig.Instance.CalStatInflationBACK)
+            {
+                NPC.lifeMax = 1088000;
+                NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
+            }
 
 
             NPC.knockBackResist = 0f;
@@ -937,8 +942,8 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             // Spawn the SCal NPC directly where the boss was
             if (!BossRushEvent.BossRushActive)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 1);
-            CIWorld world = GetInstance<CIWorld>();
-            if(world.Armageddon)
+
+            if(CIWorld.armageddon)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 5);
 
             CIDownedBossSystem.DownedLegacyYharonP1 = true;

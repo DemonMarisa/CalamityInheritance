@@ -1,13 +1,11 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
@@ -21,6 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         public override float OffsetY => 0;
         public override float BaseOffsetY => 0;
         public override float WeaponRotation => 0;
+        public override float DrawRotation => -MathHelper.ToRadians(7);
         // 旋转速度
         public override float AimResponsiveness => 0.25f;
         public Player Owner => Main.player[Projectile.owner];
@@ -40,14 +39,28 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             Projectile.ignoreWater = true;
             Projectile.MaxUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 30;
+            Projectile.localNPCHitCooldown = 10;
+        }
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            // Otherwise, perform an AABB line collision check to check the whole beam.
+            float _ = float.NaN;
+            bool c = Collision.CheckAABBvLineCollision(
+                targetHitbox.TopLeft(),
+                targetHitbox.Size(), 
+                Projectile.Center - Projectile.rotation.ToRotationVector2() * 32,
+                Projectile.Center + Projectile.rotation.ToRotationVector2() * 32, 
+                12f, ref _);
+            return c;
         }
         public override bool? CanHitNPC(NPC target)
         {
-            return true;
+            return null;
         }
         public override void HoldoutAI()
         {
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
             Projectile.extraUpdates = 0;
             // 使用类型 类型为0时为左键 为1时为右键
             ref float UseStyle = ref Projectile.ai[0];
@@ -57,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             ref float firstFire = ref Projectile.ai[2];
 
             // 开火方向
-            Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+            Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation + MathHelper.ToRadians(0.7f) * Owner.direction);
             firedirection = firedirection.SafeNormalize(Vector2.UnitX);
 
             if (UseCounter == 0)
@@ -75,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             UseCounter++;
             if (UseCounter < recoilani)
             {
-                float progress = LAP.Core.Utilities.EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
+                float progress = EasingHelper.EaseInOutQuad((float)UseCounter / recoilani);
                 aniXdistance = MathHelper.Lerp(0, maxXdistance, progress);
             }
             else

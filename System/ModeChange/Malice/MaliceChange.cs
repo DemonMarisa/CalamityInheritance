@@ -33,9 +33,10 @@ namespace CalamityInheritance.System.ModeChange.Malice
 
             public override void OnSpawn(Projectile projectile, IEntitySource source)
             {
-                CIWorld world = GetInstance<CIWorld>();
-                if (BadProj(projectile) && world.Malice)
+                if (CIWorld.malice && BadProj(projectile))
                     projectile.velocity *= 1.5f;
+
+                projectile.netUpdate = true;
             }
 
             #endregion

@@ -140,7 +140,10 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.Cannos
             player.itemAnimation = 2;
             player.itemRotation = (float)Math.Atan2(Projectile.velocity.Y * Projectile.direction, Projectile.velocity.X * Projectile.direction);
         }
-
+        public override void PostAI()
+        {
+            Projectile.extraUpdates = 0;
+        }
         public override bool? CanDamage() => false;
     }
 }

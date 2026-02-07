@@ -1,6 +1,7 @@
 ﻿using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Swords
@@ -49,6 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 
         public override void OnKill(int timeLeft)
         {
+            SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
             int dustType = (ProjectileType == 2f ? 57 : ProjectileType == 1f ? 56 : 73); // Frostbite, Ichor, Hellfire respectively
             float effectiveVelocity = Projectile.velocity.Length() * Projectile.MaxUpdates;
             for (int i = 0; i < 60; i++)

@@ -1,9 +1,6 @@
-﻿using CalamityMod;
-using CalamityMod.Projectiles;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Guns
 {

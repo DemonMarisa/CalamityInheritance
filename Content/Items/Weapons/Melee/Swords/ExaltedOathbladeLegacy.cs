@@ -110,7 +110,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 AddIngredient<ForbiddenOathbladeLegacy>().
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddIngredient<AshesofCalamity>(8).
-                AddIngredient<InfectedArmorPlating>(8).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

@@ -3,6 +3,7 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -58,11 +59,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 
         public override void UseItemFrame(Player player)
         {
-            player.ChangeDir(Math.Sign((player.Calamity().mouseWorld - player.Center).X));
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
 
             float animProgress = 0.5f - player.itemTime / (float)player.itemTimeMax;
             // 向鼠标的旋转
-            float rotation = (player.Center - player.Calamity().mouseWorld).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
             float offset = -0.03f * (float)Math.Pow((0.6f - animProgress) / 0.6f, 2);
             if (animProgress < 0.4f)
                 rotation += offset * player.direction;

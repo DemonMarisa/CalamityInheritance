@@ -1,18 +1,9 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
-using CalamityMod.Projectiles.Melee;
 using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear

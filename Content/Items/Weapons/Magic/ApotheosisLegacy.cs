@@ -5,16 +5,14 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Summon.Worms;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -35,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 
         public override void SetDefaults()
         {
-            Item.damage = 400;
+            Item.damage = 77;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 7;
             Item.width = 30;
@@ -53,6 +51,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.shoot = ProjectileType<ApothMarkLegacy>();
             Item.shootSpeed = 17f;
             Item.Calamity().devItem = true;
+
+            Item.SetCustomMult_Int(778);
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

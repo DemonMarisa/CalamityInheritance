@@ -49,17 +49,17 @@ RottenMatter: {
 }
 
 CoreofChaos: {
-	DisplayName: Coreof Chaos
+	DisplayName: Core of Chaos
 	Tooltip: ""
 }
 
 CoreofEleum: {
-	DisplayName: Coreof Eleum
+	DisplayName: Core of Eleum
 	Tooltip: ""
 }
 
 CoreofSunlight: {
-	DisplayName: Coreof Sunlight
+	DisplayName: Core of Sunlight
 	Tooltip: ""
 }
 

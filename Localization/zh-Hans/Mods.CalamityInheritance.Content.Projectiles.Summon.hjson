@@ -40,9 +40,15 @@ CryoPtrRework.DisplayName: 冰寒尖刺
 SaveCosmic.DisplayName: 宇宙之灵
 AncientClasper.DisplayName: 千载冰虫
 BloodClotMinion.DisplayName: 血块
-// FungalClumpLegacyMinion.DisplayName: Fungal Clump Legacy Minion
-// SarosSunfireLegacy.DisplayName: Saros Sunfire Legacy
-// DOGworm.DisplayName: D O Gworm
-// DOGworm_Auric.DisplayName: D O Gworm_ Auric
-// SunSpiritMinionLegacy.DisplayName: Sun Spirit Minion Legacy
-// DazzlingStabberProj.DisplayName: Dazzling Stabber Proj
+FungalClumpLegacyMinion.DisplayName: Fungal Clump Legacy Minion
+SarosSunfireLegacy.DisplayName: Saros Sunfire Legacy
+DOGworm.DisplayName: 虚空吞噬者
+DOGworm_Auric.DisplayName: 神明吞噬者
+SunSpiritMinionLegacy.DisplayName: Sun Spirit Minion Legacy
+DazzlingStabberProj.DisplayName: Dazzling Stabber Proj
+BloodSpitLegacy.DisplayName: Blood Spit Legacy
+SkeletalDragonChildLegacy.DisplayName: Skeletal Dragon Child Legacy
+SkeletalDragonMotherLegacy.DisplayName: Skeletal Dragon Mother Legacy
+SolarGodLegacy.DisplayName: 太阳神
+// ProfanedEnergyLegacy.DisplayName: Profaned Energy Legacy
+// FlameBurstLegacy.DisplayName: Flame Burst Legacy

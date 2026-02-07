@@ -1,5 +1,7 @@
 ﻿using System;
+using CalamityInheritance.Texture;
 using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -11,7 +13,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
     public class NorfleetCometLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => "CalamityMod/Projectiles/Melee/GalacticaComet";
+        public override string Texture => CITextureRegistry.StarTrail.Path;
 
         private int noTileHitCounter = 120;
 
@@ -73,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             {
                 Projectile.alpha = alphaLimit;
             }
-            Projectile.rotation = Projectile.velocity.ToRotation() - MathHelper.PiOver2;
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             if (Main.rand.NextBool(16))
             {
                 Vector2 dustOffset = Vector2.UnitX.RotatedByRandom(Math.PI * 0.5).RotatedBy((double)Projectile.velocity.ToRotation(), default);
@@ -123,7 +125,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (Projectile.timeLeft >= 600)
                 return false;
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
     }

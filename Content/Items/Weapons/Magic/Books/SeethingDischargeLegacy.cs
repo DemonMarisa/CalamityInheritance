@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Books;
 using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria;

@@ -38,10 +38,11 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             Owner.CIMod().CanUseOldLordDash = false;
             Projectile.rotation += 0.4f;
             Projectile.rotation = MathHelper.WrapAngle(Projectile.rotation);
-            Owner.LAP().NoSlowFall = 3;
             Owner.fullRotation = Projectile.rotation;
             Owner.fullRotationOrigin = Owner.Center - Owner.position;
             Owner.SetImmuneTimeForAllTypes(15);
+
+
             for (int i = 0; i < 4; i++)
             {
                 Vector2 dustSpawnPosition = Projectile.Center + (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2() * Main.rand.NextFloat(Projectile.width) + Main.rand.NextVector2Circular(6f, 6f);
@@ -53,12 +54,13 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             }
             if (Main.myPlayer == Projectile.owner && Projectile.timeLeft % 6f == 5f)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Main.rand.NextVector2CircularEdge(8f, 8f), ProjectileType<OathswordFlame>(), Projectile.damage / 2, Projectile.knockBack * 0.5f, Projectile.owner);
-           
             if (Main.myPlayer == Projectile.owner)
             {
-                float VelMult = MathHelper.Lerp(0.1f, 1f, Projectile.timeLeft / 60f);
+                float VelMult = MathHelper.Lerp(0.2f, 1f, Projectile.timeLeft / 60f);
                 Owner.velocity = Vector2.Lerp(Owner.velocity, Owner.SafeDirectionTo(Main.MouseWorld) * 32f * VelMult, 0.125f);
                 NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, Main.myPlayer);
+                if (Owner.velocity.Y > 0)
+                    Owner.LAP().NoSlowFall = 2;
             }
             if (Projectile.timeLeft < 2)
                 Owner.fullRotation = 0f;

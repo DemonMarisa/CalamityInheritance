@@ -88,8 +88,6 @@ namespace CalamityInheritance.CIPlayer
         public void SetArmorEffectVisuals(Player player, PlayerDrawSet drawInfo)
         {
             CalamityInheritancePlayer modPlayer = player.CIMod();
-            if (modPlayer.CIDashDelay < 0 && !modPlayer.AuricSilvaFakeDeath)
-                player.armorEffectDrawShadow = true;
 
             if (modPlayer.AuricSilvaFakeDeath && drawInfo.shadow == 0f)
             {

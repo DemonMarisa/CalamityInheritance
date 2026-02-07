@@ -8,6 +8,8 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,10 +27,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
         {
             Item.width = 78;
             Item.height = 64;
-            Item.damage = 700;
+            Item.damage = 180;
             Item.knockBack = 9f;
-            Item.useTime = 5;
-            Item.useAnimation = 5;
+            Item.useTime = 6;
+            Item.useAnimation = 6;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -44,6 +46,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
             Item.ArmorPenetration = 500;
             Item.shoot = ProjectileType<MeleeNanoblackReaperProj>();
             Item.shootSpeed = 12;
+
+            Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
         public override bool MeleePrefix() => true;
         public override void AddRecipes()

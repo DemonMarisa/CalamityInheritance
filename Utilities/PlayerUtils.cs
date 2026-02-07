@@ -163,8 +163,7 @@ namespace CalamityInheritance.Utilities
                     Player.KillMeForGood();
                 }
             }
-            CIWorld world = GetInstance<CIWorld>();
-            if (world.IronHeart)
+            if (CIWorld.ironHeart)
                 SoundEngine.PlaySound(CISoundMenu.IronHeartDeath, Player.Center);
             else
                 SoundEngine.PlaySound(SoundID.PlayerKilled, Player.Center);

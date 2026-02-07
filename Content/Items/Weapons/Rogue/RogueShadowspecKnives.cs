@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 tarDist = Item.shootSpeed / tarDist;
                 tarPos.X *= tarDist;
                 tarPos.Y *= tarDist;
-                int p =Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
+                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
                 Main.projectile[p].Calamity().stealthStrike = stealth;
             }
             return false;

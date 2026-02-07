@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Guns;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Sounds.Custom;
+using CalamityMod.Items.Materials;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
@@ -31,5 +32,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Guns
             Item.shoot = ProjectileType<ThunderstormShot>();
         }
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<ArmoredShell>(2).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+        }
     }
 }

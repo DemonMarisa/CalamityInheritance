@@ -1,26 +1,30 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.TreasureBags;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using Terraria.ID;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Accessories;
+﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Melee;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.System.Configs;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.Placeables.Vanity;
 using CalamityInheritance.Content.Items.Qol;
-using CalamityMod.Items.TreasureBags.MiscGrabBags;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Items.Weapons.Magic.Books;
+using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
+using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Guns;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Bombs;
 using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
+using CalamityInheritance.Content.Items.Weapons.Summon;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.TreasureBags;
+using CalamityMod.Items.TreasureBags.MiscGrabBags;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items
 {
@@ -84,6 +88,11 @@ namespace CalamityInheritance.Content.Items
             {
                 loot.LootAdd<LeadCore>(1);
                 loot.LootAdd<InsidiousImpalerLegacy>(3);
+                loot.LootAdd<FetidEmesisLegacy>(3);
+                loot.LootAdd<SepticSkewerLegacy>(3);
+                loot.LootAdd<ToxicantTwisterLegacy>(3);
+                loot.LootAdd<InsidiousImpalerLegacy>(3);
+                loot.LootAdd<VitriolicViperLegacy>(3);
             }
 
             if (item.type == ItemType<AstrumDeusBag>())
@@ -106,6 +115,8 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ItemType<LeviathanBag>())
             {
+                loot.LootAdd<BrackishFlaskLegacy>(3);
+                loot.LootAdd<LeviatitanLegacy>(3);
                 loot.LootAdd<LeviathanAmbergrisLegacy>(3);//利维坦龙涎香现在掉落概率为1/3
             }
             if (item.type == ItemType<CryogenBag>())
@@ -113,6 +124,10 @@ namespace CalamityInheritance.Content.Items
                 loot.LootAdd<CryoBar>(3, 10, 20); //33%概率，数量10-20
                 loot.LootAdd<GlacialCrusher>(3, 1, 1);
                 loot.LootAdd<BittercoldStaff>(3, 1, 1);
+            }
+            if (item.type == ItemType<BrimstoneElementalBag>())
+            {
+                loot.LootAdd(ItemType<SeethingDischargeLegacy>(), 3);
             }
             if (item.type == ItemType<PerforatorBag>())
             {
@@ -152,6 +167,7 @@ namespace CalamityInheritance.Content.Items
             }
             if (item.type == ItemType<PlaguebringerGoliathBag>())
             {
+                loot.LootAdd<DiseasedPikeLegacy>(4);
                 loot.LootAdd<BlightSpewerLegacy>(4);
             }
             if (item.type == ItemType<HiveMindBag>())
@@ -166,6 +182,12 @@ namespace CalamityInheritance.Content.Items
 
             if (item.type == ItemType<AstrumAureusBag>())
                 loot.LootAdd<AuroraBlazerLegacy>(4);
+
+            if (item.type == ItemType<PerforatorBag>())
+                loot.LootAdd<BloodSample>(1, 20, 40);
+
+            if (item.type == ItemType<HiveMindBag>())
+                loot.LootAdd<RottenMatter>(1, 20, 40);
             switch (item.type)
             {
                 #region Boss Treasure Bags

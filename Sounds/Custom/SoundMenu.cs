@@ -141,7 +141,6 @@ namespace CalamityInheritance.Sounds.Custom
         public static readonly SoundStyle SilvaDispel = new($"{ASSoundRoute}/SilvaDispel");
         public static readonly SoundStyle PlasmaHeavyShotSound = new("CalamityInheritance/Sounds/Item/PlasmaRifleMain");
         public static readonly SoundStyle PlasmaFastShotSound = new("CalamityInheritance/Sounds/Item/PlasmaRifleAlt");
-        public static readonly SoundStyle PlasmaBlast = new("CalamityInheritance/Sounds/Item/PlasmaBlast");
 
     }
 }

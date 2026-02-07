@@ -1,24 +1,18 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
+using CalamityMod.Sounds;
+using LAP.Core.SystemsLoader;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CalamityInheritance.Utilities.CIFunction;
+using Mono.Cecil;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Magic;
-using Mono.Cecil;
-using static System.Net.Mime.MediaTypeNames;
-using CalamityMod.Sounds;
-using CalamityInheritance.System.Configs;
-using static tModPorter.ProgressUpdate;
-using LAP.Core.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
+using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
 {
@@ -36,11 +30,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public int RightCD = 7;
         // 旋转速度
         public override float AimResponsiveness => 0.5f;
-        public Player Owner => Main.player[Projectile.owner];
+        public Player Owner => Main.player[Projectile.owner]; 
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
             ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
+            Projectile.AddHeldProj();
         }
         public override void SetDefaults()
         {
