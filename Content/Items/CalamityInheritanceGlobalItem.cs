@@ -39,6 +39,7 @@ namespace CalamityInheritance.Content.Items
     public partial class CalamityInheritanceGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
+
         public override void UpdateInventory(Item item, Player player)
         {
             var mplr = player.CIMod();
