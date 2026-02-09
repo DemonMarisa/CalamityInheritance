@@ -112,20 +112,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         public float Combo = 0f;
         public static float NeedleDamageMultiplier = 0.7f; //Damage on the non-homing needle projectile
         public static float MaxThrowReach = 650;
-        public static float snapDamageMultiplier = 1.4f; //Extra damage from making the scissors snap
-
-        public static float chargeDamageMultiplier = 1.4f; //Extra damage from charge
+        //剪击成功时给予1.5倍伤害
+        public static float snapDamageMultiplier = 1.5f; //Extra damage from making the scissors snap
+        public static float chargeDamageMultiplier = 1.5f; //Extra damage from charge
         public static float chainDamageMultiplier = 0.1f;
 
         public static int DashIframes = 10;
         public static float SlashBoltsDamageMultiplier = 0.2f;
         public static float SnapBoltsDamageMultiplier = 0.1f;
-
-        public static float blastDamageMultiplier = 0.5f; //Damage multiplier applied ontop of the charge damage multiplier mutliplied by the amount of charges consumed. So if you consume 5 charges, the blast will get multiplied by 5 times the damage multiplier
-        public static float blastFalloffSpeed = 0.1f; //How much the blast damage falls off as you hit more and more targets
+        //一层格挡1.5倍，如果是10层格挡，则为15倍。
+        public static float blastDamageMultiplier = 1.5f; 
+        //大撕裂对多目标造成伤害时的衰减
+        //不过yysy这个不算很重要。
+        public static float blastFalloffSpeed = 0.1f;         
         public static float blastFalloffStrenght = 0.75f; //Value between 0 and 1 that determines how much falloff increases affect the damage : Closer to 0 = damage falls off less intensely, closer to 1 : damage falls off way harder
-
-        public static float SwirlBoltAmount = 6f; //The amount of cosmic bolts produced during hte swirl attack
+        //跟踪针的生成数量，这里为8个
+        public static float SwirlBoltAmount = 8f;
         public static float SwirlBoltDamageMultiplier = 0.7f; //This is the damage multiplier for ALL THE BOLTS: Aka, said damage multiplier is divided by the amount of bolts in a swirl and the full damage multiplier is gotten if you hit all the bolts
 
         public override void SetDefaults()
@@ -179,14 +181,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         }
         public override bool PreDrawTooltipLine(DrawableTooltipLine line, ref int yOffset)
         {
-            if(line.Name == "ItemName" && line.Mod == "Terraria")
+            if (line.Name == "ItemName" && line.Mod == "Terraria")
             {
                 ArkRarity.DrawRarity(line);
                 return false;
             }
             //这一条是为了绘制专门的物理顶点。
             //一定程度上是硬编码，不过我也不打算继续浪费时间去想办法做适配实现
-            if(line.Name == "Tooltip3" && line.Mod == "Terraria")
+            if (line.Name == "Tooltip3" && line.Mod == "Terraria")
             {
                 ArkRarity.DrawPhysicalLine(line);
                 return false;
@@ -194,7 +196,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             return base.PreDrawTooltipLine(line, ref yOffset);
         }
         // Terraria seems to really dislike high crit values in SetDefaults
-        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 15;
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 26;
 
         public override bool AltFunctionUse(Player player) => true;
 

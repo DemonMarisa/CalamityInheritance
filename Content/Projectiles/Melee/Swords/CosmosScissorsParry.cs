@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 
             //让方舟格挡成功时，无论怎么样都直接给35的无敌帧
             //我们不考虑敌人是否有接触伤害的情况。 
-                Owner.GiveIFrames(1,35);
+            Owner.GiveIFrames(1, 35);
 
             Vector2 particleOrigin = target.Hitbox.Size().Length() < 140 ? target.Center : Projectile.Center + Projectile.rotation.ToRotationVector2() * 60f;
             Particle spark = new GenericSparkle(particleOrigin, Vector2.Zero, Color.White, Color.HotPink, 1.2f, 35, 0.1f, 2);
@@ -142,7 +142,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
                     }
 
                     //格挡弹幕成功时直接杀死弹幕。
-                    proj.Kill();
+                    proj.damage *= 0;
+                    //剪切成功时也给予无敌帧。
+                    Owner.GiveIFrames(1, 20);
                     break;
                 }
             }

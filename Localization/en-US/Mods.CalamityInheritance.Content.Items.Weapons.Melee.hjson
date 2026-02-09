@@ -938,8 +938,8 @@ CosmosScissors: {
 		'''
 		<right> to snip out the scissor blades in front of you
 		Hitting an enemy with it will parry them, granting you brief invulnerability
-		You can also parry projectiles to make them deal 160 less damage for a short period
-		Parrying will empower the next 16 swings of the sword
+		You can also parry projectiles to make them harmless
+		Parrying will empower the next 10 swings of the sword
 		'''
 	BlastInfo:
 		'''
