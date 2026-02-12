@@ -49,6 +49,6 @@ AncientAuricTeslaWireHemmedVisage: {
 }
 
 DaawnlightSpiritOriginLegacy: {
-	// DisplayName: Daawnlight Spirit Origin Legacy
-	// Tooltip: ""
+	DisplayName: 曙旼始灵
+	Tooltip: 装备后召唤旧版贴图的英灵
 }

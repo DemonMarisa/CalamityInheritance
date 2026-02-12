@@ -1,8 +1,9 @@
-﻿using CalamityMod.Items.Materials;
-using Terraria.ID;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using Terraria;
+using Terraria.ID;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -29,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
             Item.rare = RarityType<AbsoluteGreen>();
+            Item.DamageType = GetInstance<RogueDamageClass>();
         }
         public override float StealthDamageMultiplier => 0.9f;
         public override void AddRecipes()
