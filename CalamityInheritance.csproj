@@ -816,7 +816,7 @@
 	    <HintPath>..\..\ModReader\CalamityModMusic\CalamityModMusic.dll</HintPath>
 	  </Reference>
 	  <Reference Include="LAP">
-	    <HintPath>..\LAP\bin\Release\net8.0\LAP.dll</HintPath>
+	    <HintPath>..\ModAssemblies\LAP_v0.0.0.23.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 	<ItemGroup>

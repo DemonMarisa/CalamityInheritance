@@ -918,3 +918,33 @@ TheMutilatorLegacy: {
 		Bloodsplosions can heal you
 		'''
 }
+
+CosmosScissors: {
+	DisplayName: Cosmos Scissors
+	Tooltip:
+		'''
+		[COMBO]
+		[PARRY]
+		[BLAST]
+		The physical culmination of your journey, capable of rending gods asunder
+		'''
+	ComboInfo:
+		'''
+		<left> to perform a 5-swing combo that ends by throwing the blade
+		The thrown blade will follow your cursor
+		Releasing while the blade is out will cause an exploding snap
+		'''
+	ParryInfo:
+		'''
+		<right> to snip out the scissor blades in front of you
+		Hitting an enemy with it will parry them, granting you brief invulnerability
+		You can also parry projectiles to make them harmless
+		Parrying will empower the next 10 swings of the sword
+		'''
+	BlastInfo:
+		'''
+		Pressing <right> while holding UP with empowered charges will provoke a Big Rip in spacetime and use all charges
+		If more than 5 charges were used, you can dash across the rip by holding UP
+		'''
+	SwitchTooltip: "Holding this weapon and middle click while inventory is opening to switch an alter type"
+}
