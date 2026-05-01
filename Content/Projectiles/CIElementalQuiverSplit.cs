@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using LAP.Core.IDSets;
 using LAP.Core.Utilities;
 using System;
@@ -14,11 +13,12 @@ namespace CalamityInheritance.Content.Projectiles
     public class CIElementalQuiverSplit : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
+        public bool CanSplit = true;
         // 是否允许分裂
         public override void SetDefaults(Projectile projectile)
         {
             if (CalamityInheritanceLists.rangedProjectileExceptionList.Contains(projectile.type))
-                projectile.SetCantSplit();
+                CanSplit = false;
         }
         public override void AI(Projectile projectile)
         {
@@ -33,12 +33,17 @@ namespace CalamityInheritance.Content.Projectiles
             CalamityInheritancePlayer usPlayer = player.CIMod();
 
             // 必须装备元素箭袋，必须是友好射弹，必须有伤害，必须是远程伤害，必须允许分裂
+            if (!CanSplit)
+                return false;
 
             if (!usPlayer.ElemQuiver)
                 return false;
 
-            if (!projectile.CantSplit())
+            if (LAPIDSet.CantSplitProj.Contains(projectile.type) || LAPIDSet.HeldProj.Contains(projectile.type) || projectile.minion || !projectile.friendly || projectile.hostile || projectile.damage < 5)
+            {
+                CanSplit = false;
                 return false;
+            }   
 
             if (projectile.DamageType != DamageClass.Ranged)
                 return false;
@@ -74,8 +79,8 @@ namespace CalamityInheritance.Content.Projectiles
                 Main.projectile[projectile3].DamageType = DamageClass.Default;
                 Main.projectile[projectile2].noDropItem = true;
                 Main.projectile[projectile3].noDropItem = true;
-                Main.projectile[projectile2].SetCantSplit();
-                Main.projectile[projectile3].SetCantSplit();
+                Main.projectile[projectile2].GetGlobalProjectile<CIElementalQuiverSplit>().CanSplit = false;
+                Main.projectile[projectile3].GetGlobalProjectile<CIElementalQuiverSplit>().CanSplit = false;
                 if (CIConfig.Instance.ElementalQuiverSplitstyle == 1 || CIConfig.Instance.ElementalQuiverSplitstyle == 3)
                 {
                     Main.projectile[projectile2].timeLeft = 60;

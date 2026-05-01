@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.System.Configs;
-using LAP.Core.CrossModSupports;
-using Terraria;
+using LAP.Common.CIModCross;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.CalStatInflationBACK
@@ -9,7 +8,7 @@ namespace CalamityInheritance.System.CalStatInflationBACK
     {
         public override void PreUpdateTime()
         {
-            CrossModSupport.UseCICalStatInflation = CIServerConfig.Instance.CalStatInflationBACK;
+            CIMainDate.UseCICalStatInflation = CIServerConfig.Instance.CalStatInflationBACK;
         }
     }
 }

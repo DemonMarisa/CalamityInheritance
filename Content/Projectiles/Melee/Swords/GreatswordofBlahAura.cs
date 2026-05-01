@@ -6,8 +6,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 {
     public class GreatswordofBlahAura : GeneralDamageProj
     {
-        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override ProjDamageType UseDamageClass => ProjDamageType.Melee;
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
+
         public override void SetDefaults()
         {
             Projectile.width = 100;

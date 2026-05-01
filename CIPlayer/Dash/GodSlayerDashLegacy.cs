@@ -1,8 +1,5 @@
-﻿using CalamityMod;
+﻿
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.Particles;
 using LAP.Core.GlobalInstance.Players.DashSystem;
@@ -12,7 +9,6 @@ using ReLogic.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -34,7 +30,7 @@ namespace CalamityInheritance.CIPlayer.Dash
         public SlotId GSDashSlot;
         public int Time = 0;
         public float Size = 2.2f;
-        public bool SoundOnce = true;
+        public bool SoundOnce = false;
 
         public override void SetStaticDefaults()
         {

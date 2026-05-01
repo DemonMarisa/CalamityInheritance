@@ -1,7 +1,5 @@
-
 global using static Terraria.ModLoader.ModContent;
 using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Common.CIHook;
 using CalamityInheritance.Common.ModSupport;
 using CalamityInheritance.Content.Items.Weapons.ExoLoreChange;
@@ -73,21 +71,6 @@ namespace CalamityInheritance
             //fargo
             FuckYouFargo = null;
             CalamityInheritanceLists.LoadLists();
-            /*
-            //我没有测试过这个数组能不能用，而且出于某些原因我的游戏又被飞行钩子给干掉了，所以你自己看着办吧（
-            DumbMods =
-            [
-                "CalamityModMusic",
-                "BossChecklist",
-                "EnderLiliesMusicPack",
-                "CalamityHunt",
-                "NoxusBoss",
-                "Fargowiltas"
-            ];
-            FuckTheseMod = new Dictionary<string, bool>();
-            foreach (string FuckMod in DumbMods)
-                FuckTheseMod.Add(FuckMod, false);
-            */
             if (!Main.dedServ)
             {
                 LoadClient();
@@ -100,7 +83,6 @@ namespace CalamityInheritance
             LAPIDSet.ProtectedProj.Add(ProjectileType<ExoArrowTealExoLore>());
             LAPIDSet.ProtectedProj.Add(ProjectileType<RogueFallenHammerProjClone>());
             LAPIDSet.ProtectedProj.Add(ProjectileType<RogueFallenHammerProj>());
-
             if (LAPList.debuffList != null)
             {
                 LAPList.debuffList.Add(BuffType<AbyssalFlames>());
@@ -112,9 +94,6 @@ namespace CalamityInheritance
             #region Hook
             HeavenlyGaleProjHook.Load(this);
             DOGHook.Load(this);
-            // 草捏妈傻逼灾厄飞行条，谁jb判的和坐骑相关啊，似了一万个妈是吧这么判
-            // FlightBarDrawHook.Load();
-            // 干掉伊布法杖中的变性药水
             // 修复星火bug的hook
             PhotovisceratorCalHook.Load();
             // 邪染特判补全
@@ -133,13 +112,12 @@ namespace CalamityInheritance
             // 橙色
             Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy3"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.4f, 0f).UseOpacity(0.65f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy3"] = new SCalSkyLegacy();
-            //灰色
+            // 灰色
             Filters.Scene["CalamityInheritance:SupremeCalamitasLegacy4"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(0f, 0f, 0f).UseOpacity(1f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:SupremeCalamitasLegacy4"] = new SCalSkyLegacy();
             // 丛林龙的SKY
             Filters.Scene["CalamityInheritance:Yharon"] = new Filter(new YharonScreenShaderDataLegacy("FilterMiniTower").UseColor(1f, 0.4f, 0f).UseOpacity(0.75f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:Yharon"] = new YharonSkyLegacy();
-
             // 红色
             Filters.Scene["CalamityInheritance:CalClone"] = new Filter(new SCalScreenShaderDataLegacy("FilterMiniTower").UseColor(1.1f, 0.3f, 0.3f).UseOpacity(0.65f), (EffectPriority)10);
             SkyManager.Instance["CalamityInheritance:CalClone"] = new CalCloneSky();

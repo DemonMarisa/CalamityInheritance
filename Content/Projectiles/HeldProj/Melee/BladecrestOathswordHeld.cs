@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -25,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee
         public Player Owner => Main.player[Projectile.owner];
         public bool CanHit = true;
         public int UseTime => Owner.ApplyWeaponAttackSpeed(Owner.HeldItem, Owner.HeldItem.useTime, 25);
-        public AnimationHelper animationHelper = new AnimationHelper(3);
+        public AniHelper AniHelper = new AniHelper(3);
         public float SwordLength = 60;
         public float TargetRot = 0;
         public int Time;
@@ -65,8 +64,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee
             {
                 CanHit = false;
                 TargetRot = Owner.GetPlayerToMouseVector2().ToRotation();
-                animationHelper.MaxAniProgress[AnimationState.Begin] = (int)(UseTime * 0.25f);
-                animationHelper.MaxAniProgress[AnimationState.End] = (int)(UseTime * 0.75f);
+                AniHelper.MaxAniProgress[AniState.Begin] = (int)(UseTime * 0.25f);
+                AniHelper.MaxAniProgress[AniState.End] = (int)(UseTime * 0.75f);
             }
             TargetRot = Owner.GetPlayerToMouseVector2().ToRotation();
             Projectile.SetHeldProj(Owner, true);
@@ -90,25 +89,25 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee
         }
         public void HandleAni()
         {
-            if (!animationHelper.HasFinish[AnimationState.Begin])
+            if (!AniHelper.HasFinish[AniState.Begin])
             {
                 HandleBeginAni();
-                animationHelper.UpDateAni(AnimationState.Begin);
+                AniHelper.UpDateAni(AniState.Begin);
             }
-            else if (!animationHelper.HasFinish[AnimationState.End])
+            else if (!AniHelper.HasFinish[AniState.End])
             {
                 HandleEndAni();
-                animationHelper.UpDateAni(AnimationState.End);
+                AniHelper.UpDateAni(AniState.End);
             }
             else Projectile.Kill();
         }
         public void HandleBeginAni()
         {
             Projectile.extraUpdates = 1;
-            float easedProgress = animationHelper.GetProgress(AnimationState.Begin);
+            float easedProgress = AniHelper.GetProgress(AniState.Begin);
             if (easedProgress == 0)
                 SoundEngine.PlaySound(LAPSoundsMenu.CarnageRightUse, Projectile.Center);
-            float baseRotation = animationHelper.UpDateAngle(-135 * Filp, 135 * Filp, Owner.direction, easedProgress);
+            float baseRotation = AniHelper.UpDateAngle(-135 * Filp, 135 * Filp, Owner.direction, easedProgress);
             Vector2 TargetPos = new Vector2(SwordLength, 0).BetterRotatedBy(baseRotation, Vector2.Zero, 1f, 0.6f);
             Projectile.scale = TargetPos.Distance(Vector2.Zero) / (float)SwordLength;
             Projectile.rotation = TargetPos.ToRotation() + TargetRot;
@@ -129,8 +128,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee
         public void HandleEndAni()
         {
             Projectile.extraUpdates = 1;
-            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AnimationState.End));
-            float baseRotation = animationHelper.UpDateAngle(115 * Filp, 135 * Filp, Owner.direction, easedProgress);
+            float easedProgress = EasingHelper.EaseOutCubic(AniHelper.GetProgress(AniState.End));
+            float baseRotation = AniHelper.UpDateAngle(115 * Filp, 135 * Filp, Owner.direction, easedProgress);
             Vector2 TargetPos = new Vector2(SwordLength, 0).BetterRotatedBy(baseRotation, Vector2.Zero, 1f, 0.6f);
             Projectile.scale = TargetPos.Distance(Vector2.Zero) / (float)SwordLength;
             Projectile.rotation = TargetPos.ToRotation() + TargetRot;

@@ -13,6 +13,7 @@ using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Sounds.Custom;
 using LAP.Core.Utilities;
+using LAP.Core.SystemsLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -58,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.alpha = 127;
             Projectile.extraUpdates = 2;
             Projectile.MaxUpdates = 2;
-            Projectile.SetCantSplit();
+            Projectile.AddCantSplitProj();
         }
 
         public override void SendExtraAI(BinaryWriter writer)

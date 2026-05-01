@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         public override LocalizedText DisplayName => LAPUtilities.GetItemName<OldLordOathswordLegacy>();
         public override string Texture => GetInstance<OldLordOathswordLegacy>().Texture;
         public Player Owner => Main.player[Projectile.owner];
-        public AnimationHelper animationHelper = new(3);
+        public AniHelper animationHelper = new(3);
         public Vector2 Offset;
         public override void SetDefaults()
         {
@@ -44,8 +44,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             Projectile.netUpdate = true;
             if (Projectile.LAP().FirstFrame)
             {
-                animationHelper.MaxAniProgress[AnimationState.Begin] = 60;
-                animationHelper.MaxAniProgress[AnimationState.Middle] = 60;
+                animationHelper.MaxAniProgress[AniState.Begin] = 60;
+                animationHelper.MaxAniProgress[AniState.Middle] = 60;
                 Projectile.velocity = Vector2.Zero;
             }
             if (!Owner.LAP().MouseRight)
@@ -61,15 +61,15 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         }
         public void HandleAni()
         {
-            if (!animationHelper.HasFinish[AnimationState.Begin])
+            if (!animationHelper.HasFinish[AniState.Begin])
             {
                 HandleBeginAni();
-                animationHelper.UpDateAni(AnimationState.Begin);
+                animationHelper.UpDateAni(AniState.Begin);
             }
-            else if (!animationHelper.HasFinish[AnimationState.Middle])
+            else if (!animationHelper.HasFinish[AniState.Middle])
             {
                 HandleEndAni();
-                animationHelper.UpDateAni(AnimationState.Middle);
+                animationHelper.UpDateAni(AniState.Middle);
             }
             else Projectile.Kill();
         }
@@ -87,13 +87,13 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
                 dust.scale = Main.rand.NextFloat(0.85f, 1.2f);
                 dust.noGravity = true;
             }
-            float easedProgress = EasingHelper.EaseInCubic(animationHelper.GetProgress(AnimationState.Begin));
+            float easedProgress = EasingHelper.EaseInCubic(animationHelper.GetProgress(AniState.Begin));
             Offset = new Vector2(0, 8 * easedProgress);
         }
         public void HandleEndAni()
         {
             Owner.CIMod().CanUseOldLordDash = true;
-            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AnimationState.Middle));
+            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AniState.Middle));
             if (easedProgress == 0)
             {
                 Vector2 SpawnPos = Projectile.Center + new Vector2(0, -28);
@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             SpriteEffects flipSprite = Projectile.spriteDirection * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             Main.spriteBatch.Draw(texture, drawPosition, null, Color.White, drawRotation, rotationPoint, Projectile.scale, flipSprite, 0f);
 
-            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AnimationState.Middle));
+            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AniState.Middle));
             float opacite = easedProgress;
             Main.spriteBatch.Draw(texture, drawPosition, null, Color.Orange * opacite * 0.5f, drawRotation, rotationPoint, Projectile.scale, flipSprite, 0f);
             return false;

@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Cannos;
 using CalamityMod.Items;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

@@ -1,4 +1,4 @@
-﻿using LAP.Core.ParticleSystem;
+﻿using LAP.Core.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

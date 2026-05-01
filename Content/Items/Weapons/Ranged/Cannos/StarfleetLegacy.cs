@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Cannos
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = SoundID.Item92;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<PlasmaBlast>();
+            Item.shoot = ProjectileType<PlasmaBlast>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.FallenStar;
         }

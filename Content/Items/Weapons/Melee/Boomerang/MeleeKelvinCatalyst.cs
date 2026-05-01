@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<IceStar>(200).
+                AddIngredient<IceStar>().
                 AddIngredient<Avalanche>(2).
                 AddIngredient<GlacialCrusher>(2).
                 AddIngredient<HoarfrostBow>(2).

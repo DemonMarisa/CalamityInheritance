@@ -1,14 +1,10 @@
-﻿using System;
-using CalamityInheritance.Content.Items;
+﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Melee;
 using LAP.Core.Utilities;
-using Microsoft.Build.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;

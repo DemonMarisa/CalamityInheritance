@@ -13,6 +13,8 @@ CalamitasNPCLegacy: {
 		LikeNPC_Princess: 我喜欢 {NPCName}。
 		Princess_LovesNPC: 我喜欢 {NPCName}。
 	}
+
+	// Census.SpawnCondition: Conditions unknown
 }
 
 CalamitaReborn.DisplayName: Calamitas Legacy

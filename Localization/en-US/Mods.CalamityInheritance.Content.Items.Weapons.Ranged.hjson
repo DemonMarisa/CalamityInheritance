@@ -783,3 +783,12 @@ Disseminator: {
 		@everyone
 		'''
 }
+
+MegafleetLegacy: {
+	DisplayName: Megafleet Legacy
+	Tooltip:
+		'''
+		Consumes fallen stars; 95% chance to not consume stars
+		BLOWS UP EVERYTHING AT WARP SPEED!!!
+		'''
+}

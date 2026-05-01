@@ -613,6 +613,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ItemType<PsychoticAmulet>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
                 .Add(new Item(ItemType<FrostBarrier>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, Condition.Hardmode)
                 .Add(new Item(ItemType<Abaddon>()) { shopCustomPrice = Item.buyPrice(gold: 32) }, Condition.Hardmode)
+                .Add(new Item(ItemID.RodofDiscord) { shopCustomPrice = Item.buyPrice(platinum: 2) }, Condition.Hardmode)
                 .Add(new Item(ItemType<LeadCore>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedAquaticScourge)
                 .Add(new Item(ItemType<BobbitHook>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedPolterghast)
                 .Add(new Item(ItemType<MurasamaNeweffect>()) { shopCustomPrice = Item.buyPrice(platinum: 5) }, CalamityConditions.DownedYharon)

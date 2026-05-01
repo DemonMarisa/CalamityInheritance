@@ -65,21 +65,35 @@ TrackingDisk: {
 }
 
 GaussPistolLegacy: {
-	// DisplayName: Gauss Pistol Legacy
-	// Tooltip: ""
+	DisplayName: 高斯手枪[Legacy]
+	Tooltip:
+		'''
+		一种由魔法驱动的简易手枪，更适合法师使用
+		发射毁灭性的极强击退的高速冲击波
+		'''
 }
 
 FrequencyManipulator: {
-	// DisplayName: Frequency Manipulator
-	// Tooltip: ""
+	DisplayName: 变频器[Legacy]
+	Tooltip:
+		'''
+		一种很长的仪器，用来调谐......某些原始机器
+		旋转长矛然后扔出去
+		撞击时，矛会释放追踪能量体
+		潜伏攻击会释放更多能量体并在碰撞时爆炸
+		'''
 }
 
 GatlingLaserLegacy: {
-	// DisplayName: Gatling Laser Legacy
-	// Tooltip: ""
+	DisplayName: 激光加特林[Legacy]
+	Tooltip: 亚利姆舰队和基地防御部队配装的大型激光炮
 }
 
 StarSwallowerContainmentUnit: {
-	// DisplayName: Star Swallower Containment Unit
-	// Tooltip: ""
+	DisplayName: 噬星者控制元件[Legacy]
+	Tooltip:
+		'''
+		用于运输和发射电浆的小巧玩具，在人类中意外的流行。
+		召唤一个生物力学青蛙，向敌人倾吐电浆
+		'''
 }

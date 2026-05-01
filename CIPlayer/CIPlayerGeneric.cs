@@ -135,6 +135,8 @@ namespace CalamityInheritance.CIPlayer
         public bool AbyssalAmuletLegacy = false;
         public bool LumenousAmulet = false;
         public bool CanUseLegacyGodSlayerDash = false;
+        public int CurAOTCCharge;
+        public static int MaxAOTCCharge = 16;
         #region ResetEffects
         public override void ResetEffects()
         {
@@ -178,6 +180,10 @@ namespace CalamityInheritance.CIPlayer
             AbyssalAmuletLegacy = false;
             LumenousAmulet = false;
             CanUseLegacyGodSlayerDash = false;
+            if (CurAOTCCharge > MaxAOTCCharge)
+                CurAOTCCharge = MaxAOTCCharge;
+            else if (CurAOTCCharge < 0)
+                CurAOTCCharge = 0;
         }
 
         #endregion

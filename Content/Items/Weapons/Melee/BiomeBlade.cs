@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddIngredient(ItemID.GlowingMushroom, 20).
                 AddIngredient(ItemID.Marble, 20).
                 AddIngredient(ItemID.Granite, 20).
-                AddIngredient(ItemID.Hellstone, 20).
+                AddIngredient(ItemID.AshBlock, 20).
                 AddIngredient(ItemID.Coral, 20).
                 AddTile(TileID.Anvils).
                 Register();

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
-using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityMod.Projectiles.Typeless;
 using LAP.Assets.Sounds;
 using LAP.Content.Particles;
@@ -8,14 +7,12 @@ using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymoreLegacy
 {
@@ -28,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         public bool CanHit = true;
         public int UseTime => Owner.ApplyWeaponAttackSpeed(Owner.HeldItem, Owner.HeldItem.useTime, 25);
         public List<float> OldRot = [];
-        public AnimationHelper animationHelper = new AnimationHelper(3);
+        public AniHelper animationHelper = new AniHelper(3);
         public float SwordLength = 60;
         public float TargetRot = 0;
         public int Time;
@@ -67,8 +64,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             if (Projectile.LAP().FirstFrame)
             {
                 TargetRot = Owner.GetPlayerToMouseVector2().ToRotation();
-                animationHelper.MaxAniProgress[AnimationState.Begin] = (int)(UseTime * 0.25f) * 4;
-                animationHelper.MaxAniProgress[AnimationState.End] = (int)(UseTime * 0.75f) * 4;
+                animationHelper.MaxAniProgress[AniState.Begin] = (int)(UseTime * 0.25f) * 4;
+                animationHelper.MaxAniProgress[AniState.End] = (int)(UseTime * 0.75f) * 4;
             }
             TargetRot = Owner.GetPlayerToMouseVector2().ToRotation();
             Projectile.SetHeldProj(Owner, true);
@@ -87,21 +84,21 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         }
         public void HandleAni()
         {
-            if (!animationHelper.HasFinish[AnimationState.Begin])
+            if (!animationHelper.HasFinish[AniState.Begin])
             {
                 HandleBeginAni();
-                animationHelper.UpDateAni(AnimationState.Begin);
+                animationHelper.UpDateAni(AniState.Begin);
             }
-            else if (!animationHelper.HasFinish[AnimationState.End])
+            else if (!animationHelper.HasFinish[AniState.End])
             {
                 HandleEndAni();
-                animationHelper.UpDateAni(AnimationState.End);
+                animationHelper.UpDateAni(AniState.End);
             }
             else Projectile.Kill();
         }
         public void HandleBeginAni()
         {
-            float easedProgress = animationHelper.GetProgress(AnimationState.Begin);
+            float easedProgress = animationHelper.GetProgress(AniState.Begin);
             if (easedProgress == 0)
                 SoundEngine.PlaySound(LAPSoundsMenu.CarnageRightUse, Projectile.Center);
             float baseRotation = animationHelper.UpDateAngle(-135 * Filp, 135 * Filp, Owner.direction, easedProgress);
@@ -123,7 +120,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         }
         public void HandleEndAni()
         {
-            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AnimationState.End));
+            float easedProgress = EasingHelper.EaseOutCubic(animationHelper.GetProgress(AniState.End));
             float baseRotation = animationHelper.UpDateAngle(115 * Filp, 135 * Filp, Owner.direction, easedProgress);
             Vector2 TargetPos = new Vector2(SwordLength, 0).BetterRotatedBy(baseRotation, Vector2.Zero, 1f, 0.6f);
             Projectile.scale = TargetPos.Distance(Vector2.Zero) / SwordLength;

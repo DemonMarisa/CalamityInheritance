@@ -483,12 +483,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     fire.noGravity = true;
                     fire.scale *= Main.rand.NextFloat(1f, 1.2f);
                 }
-
                 if (NPC.Opacity <= 0f)
                     NPC.active = false;
                 return;
             }
-
             #region 阶段判定
             // 进入新阶段
             // 用于开局的攻击

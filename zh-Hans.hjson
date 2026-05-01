@@ -112,6 +112,8 @@ Mods: {
 			// OldLordClaymoreLegacyProj.DisplayName: Old Lord Claymore Legacy Proj
 			// HolyFireLegacy.DisplayName: Holy Fire Legacy
 			// DaawnlightSpiritOriginMinionLegacy.DisplayName: Daawnlight Spirit Origin Minion Legacy
+			// NiceCock.DisplayName: Nice Cock
+			// SearedPanProjectile.DisplayName: Seared Pan Projectile
 		}
 
 		Content/Projectiles/Summon: {

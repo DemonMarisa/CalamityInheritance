@@ -64,20 +64,39 @@ TrackingDisk: {
 
 GaussPistolLegacy: {
 	DisplayName: Gauss Pistol Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		A simple pistol that utilizes magic power; a weapon for the more magically adept.
+		Fires a devastating high velocity blast with extreme knockback
+		'''
 }
 
 FrequencyManipulator: {
-	DisplayName: Frequency Manipulator
-	Tooltip: ""
+	DisplayName: Frequency Manipulator Legacy
+	Tooltip:
+		'''
+		A long device, used in the tuning of some rather... original machines.
+		Swings a spear around and then throws it
+		On collision, the spear releases a burst of homing energy
+		Stealth strikes releases more energy and explode on collision
+		'''
 }
 
 GatlingLaserLegacy: {
 	DisplayName: Gatling Laser Legacy
-	Tooltip: ""
+	Tooltip:
+		'''
+		Large laser cannon used primarily by Yharim's fleet and base defense force
+		Deals less damage against enemies with high defense
+		'''
 }
 
 StarSwallowerContainmentUnit: {
-	DisplayName: Star Swallower Containment Unit
-	Tooltip: ""
+	DisplayName: Star Swallower Containment Unit Legacy
+	Tooltip:
+		'''
+		Small novelties created to easily transport and fire plasma, strangely popular with humans.
+		Summons a biomechanical frog that vomits plasma onto enemies
+		Deals more damage against enemies with high defenses
+		'''
 }

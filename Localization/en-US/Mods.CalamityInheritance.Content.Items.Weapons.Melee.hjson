@@ -919,32 +919,32 @@ TheMutilatorLegacy: {
 		'''
 }
 
-CosmosScissors: {
-	DisplayName: Cosmos Scissors
+ArkoftheCosmosNew: {
+	DisplayName: Ark of the Cosmos New Legacy
 	Tooltip:
 		'''
-		[COMBO]
-		[PARRY]
-		[BLAST]
-		The physical culmination of your journey, capable of rending gods asunder
-		'''
-	ComboInfo:
-		'''
-		<left> to perform a 5-swing combo that ends by throwing the blade
+		Using left click performs a 5-swing combo that ends by throwing the blade
 		The thrown blade will follow your cursor
-		Releasing while the blade is out will cause an exploding snap
-		'''
-	ParryInfo:
-		'''
-		<right> to snip out the scissor blades in front of you
+		Releasing left click while the blade is out will cause an exploding snap
+		Using right click will snip out the scissor blades in front of you
 		Hitting an enemy with it will parry them, granting you brief invulnerability
-		You can also parry projectiles to make them harmless
-		Parrying will empower the next 10 swings of the sword
-		'''
-	BlastInfo:
-		'''
-		Pressing <right> while holding UP with empowered charges will provoke a Big Rip in spacetime and use all charges
+		Parrying anything will empower the next 16 swings of the sword
+		Using right click while pressing UP with empowered charges will provoke a Big Rip in spacetime and use all charges
 		If more than 5 charges were used, you can dash across the rip by holding UP
+		The physical culmination of your journey, capable of rending gods asunder 
 		'''
-	SwitchTooltip: "Holding this weapon and middle click while inventory is opening to switch an alter type"
+}
+
+MeleeTriactisHammer: {
+	DisplayName: Triactis' True Paladinian Mage Hammer of Might Legacy Melee
+	Tooltip: ""
+}
+
+IridescentExcalibur: {
+	DisplayName: Iridescent Excalibur
+	Tooltip:
+		'''
+		Fires rainbow beams that change their behavior based on their color
+		Press <right> for true melee
+		'''
 }

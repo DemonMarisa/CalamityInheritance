@@ -6,6 +6,7 @@ using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Ranged;
+using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -53,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
-            Projectile.LAP().canSplit = false;
+            Projectile.AddCantSplitProj();
         }
         public Color sparkColor;
         public int attacktimer = 0;

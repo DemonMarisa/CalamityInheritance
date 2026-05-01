@@ -36,7 +36,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             Item.shootSpeed = 6f;
             Item.noMelee = true;
         }
-
+        public override bool MeleePrefix()
+        {
+            return true;
+        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (player.CIMod().CanUseOldLordDash)

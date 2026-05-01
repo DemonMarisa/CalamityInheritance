@@ -274,7 +274,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemType<Moonlight>()).
                 AddIngredient(ItemType<Daylight>()). 
                 AddIngredient(ItemID.FallenStar).
-                AddTile(TileID.CrystalBall). 
+                AddTile(TileID.LunarCraftingStation). 
                 //Scarlet 1/22:修改合成站为水晶球，防止玩家在困难模式前就能通过宇宙之光微光拆解获得肉后魂
                 Register();
             Recipe.Create(ItemType<FrostcrushValari>()).

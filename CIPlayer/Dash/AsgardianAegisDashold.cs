@@ -2,8 +2,6 @@
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Sounds.Cals;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Projectiles.Typeless;
 using LAP.Core.GlobalInstance.Players.DashSystem;
 using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;

@@ -1,9 +1,9 @@
-﻿using CalamityMod.Projectiles;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.NPCs;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -11,6 +11,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
+        public override void SetStaticDefaults()
+        {
+            PierceResistNPC.exemptProjectiles.Add(Type);
+        }
         public override void SetDefaults()
         {
             Projectile.width = 5;

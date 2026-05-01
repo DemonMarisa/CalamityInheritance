@@ -67,8 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 for (int d = 0; d < 2; d++)
                 {
-                    Vector2 offset = Vector2.UnitX * -12f;
-                    offset = -Vector2.UnitY.RotatedBy((double)(Projectile.ai[0] * pi / 24f + d * pi), default) * new Vector2(5f, 10f) - Projectile.rotation.ToRotationVector2() * 10f;
+                    Vector2 offset = -Vector2.UnitY.RotatedBy((double)(Projectile.ai[0] * pi / 24f + d * pi), default) * new Vector2(5f, 10f) - Projectile.rotation.ToRotationVector2() * 10f;
                     int i = Dust.NewDust(Projectile.Center, 0, 0, DustID.RainbowTorch, 0f, 0f, 160, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f);
                     Main.dust[i].scale = 0.75f;
                     Main.dust[i].noGravity = true;

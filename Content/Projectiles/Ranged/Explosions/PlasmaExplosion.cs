@@ -1,5 +1,5 @@
 ﻿using LAP.Assets.TextureRegister;
-using System;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Explosions
             Projectile.penetrate = -1;
             Projectile.timeLeft = 5;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 1;
+            Projectile.localNPCHitCooldown = -1;
         }
 
         public override void AI()
@@ -34,62 +34,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Explosions
                 SoundEngine.PlaySound(SoundID.Item93, Projectile.position);
                 Projectile.localAI[0] += 1f;
             }
-            bool xflag = false;
-            bool yflag = false;
-            if (Projectile.velocity.X < 0f && Projectile.position.X < Projectile.ai[0])
+
+            for (int i = 0; i < 20; i++)
             {
-                xflag = true;
+                Vector2 randDirection = new Vector2(Main.rand.NextFloat(-40f, 40f), Main.rand.NextFloat(-40f, 40f));
+                randDirection = randDirection.SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(12f, 35f);
+                Dust stardust = Dust.NewDustPerfect(Projectile.Center, Projectile.ai[1] == 1f ? 173 : 221, randDirection, 100, Scale: 2f);
+                stardust.noGravity = true;
             }
-            if (Projectile.velocity.X > 0f && Projectile.position.X > Projectile.ai[0])
-            {
-                xflag = true;
-            }
-            if (Projectile.velocity.Y < 0f && Projectile.position.Y < Projectile.ai[1])
-            {
-                yflag = true;
-            }
-            if (Projectile.velocity.Y > 0f && Projectile.position.Y > Projectile.ai[1])
-            {
-                yflag = true;
-            }
-            if (xflag && yflag)
-            {
-                Projectile.Kill();
-            }
-            float projTimer = 25f;
-            if (Projectile.ai[0] > 180f)
-            {
-                projTimer -= (Projectile.ai[0] - 180f) / 2f;
-            }
-            if (projTimer <= 0f)
-            {
-                projTimer = 0f;
-                Projectile.Kill();
-            }
-            projTimer *= 0.7f;
-            Projectile.ai[0] += 4f;
-            int timerCounter = 0;
-            while ((float)timerCounter < projTimer)
-            {
-                float rand1 = (float)Main.rand.Next(-40, 41);
-                float rand2 = (float)Main.rand.Next(-40, 41);
-                float rand3 = (float)Main.rand.Next(12, 36);
-                float randAdjust = (float)Math.Sqrt((double)(rand1 * rand1 + rand2 * rand2));
-                randAdjust = rand3 / randAdjust;
-                rand1 *= randAdjust;
-                rand2 *= randAdjust;
-                int dustID = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Projectile.ai[1] == 1f ? 173 : 221, 0f, 0f, 100, default, 2f);
-                Dust dust = Main.dust[dustID];
-                dust.noGravity = true;
-                dust.position.X = Projectile.Center.X;
-                dust.position.Y = Projectile.Center.Y;
-                dust.position.X += (float)Main.rand.Next(-10, 11);
-                dust.position.Y += (float)Main.rand.Next(-10, 11);
-                dust.velocity.X = rand1;
-                dust.velocity.Y = rand2;
-                timerCounter++;
-            }
-            return;
         }
     }
 }

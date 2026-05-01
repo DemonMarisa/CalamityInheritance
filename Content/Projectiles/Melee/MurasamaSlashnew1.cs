@@ -1,6 +1,8 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.NPCs;
 using CalamityMod.Particles;
+using CalamityMod.Projectiles;
 using CalamityMod.Systems.Collections;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -22,6 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public int time = 0;
         public override void SetStaticDefaults()
         {
+            PierceResistNPC.exemptProjectiles.Add(Type);
             Main.projFrames[Projectile.type] = 14;
             CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<MurasamaSlashnew1>()] = false;
         }
@@ -187,7 +190,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-
             if (target.Organic())
                 SoundEngine.PlaySound(Murasama.OrganicHit with { Pitch = (Slash2 ? -0.1f : Slash3 ? 0.1f : Slash1 ? -0.15f : 0) }, Projectile.Center);
             else

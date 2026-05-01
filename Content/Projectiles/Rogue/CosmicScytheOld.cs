@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.ignoreWater = true;
             Projectile.timeLeft = 400;
             Projectile.alpha = 100;
-            Projectile.penetrate = 5;
+            Projectile.penetrate = 1;
             Projectile.DamageType = DamageClass.Generic;
             Projectile.extraUpdates = 1;
             Projectile.usesLocalNPCImmunity = true;

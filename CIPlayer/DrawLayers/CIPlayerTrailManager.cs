@@ -21,7 +21,7 @@ namespace CalamityInheritance.CIPlayer.DrawLayers
 
         public static void DrawPlayers_AfterProjectiles(On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
             if (player.dead || player.mount.Active || !player.CIMod().AuricSilvaFakeDeath || player.sleeping.isSleeping)
             {

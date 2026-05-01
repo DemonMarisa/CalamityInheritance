@@ -6,6 +6,7 @@ using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Ranged;
 using LAP.Core.Utilities;
+using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -69,7 +70,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             if (Projectile.owner == Main.myPlayer && !spawnedAura)
             {
                 int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<MagnomalyAura>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack * 0.5f, Projectile.owner, Projectile.identity, 0f);
-                Main.projectile[p].SetCantSplit();
+                Main.projectile[p].GetGlobalProjectile<CIElementalQuiverSplit>().CanSplit = false;
                 spawnedAura = true;
             }
             float dustOffsetX = Projectile.velocity.X * 0.5f;

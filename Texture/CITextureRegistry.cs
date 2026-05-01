@@ -35,6 +35,7 @@ namespace CalamityInheritance.Texture
             StarTrail = new Tex2DWithPath($"{ExtraTexturesPath}/Trails/StarTrail");
             LoadProjTex();
             LoadItemTextures();
+            LoadPTexture();
         }
 
         public override void Unload()
@@ -48,6 +49,7 @@ namespace CalamityInheritance.Texture
             StarTrail = null;
             UnLoadProjTex();
             UnLoadItemTextures();
+            UnloadPTexture();
         }
         #endregion
 

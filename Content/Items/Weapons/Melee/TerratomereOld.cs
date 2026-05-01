@@ -112,16 +112,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 Register();
 
             CreateRecipe().
-                AddIngredient<TrueNightsStabber>().
-                AddIngredient<TrueExcaliburShortsword>().
-                AddIngredient<LivingShard>(5).
-                AddIngredient(ItemID.BrokenHeroSword).
-                AddCondition(Condition.ZenithWorld).
-                AddDecraftCondition(Condition.ZenithWorld).
-                AddTile(TileID.MythrilAnvil).
-                Register();
-
-            CreateRecipe().
                 AddIngredient(ItemID.PiercingStarlight, 1).
                 AddIngredient<LivingShard>(5).
                 AddCondition(Condition.ZenithWorld).

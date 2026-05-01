@@ -42,7 +42,7 @@ namespace CalamityInheritance.System.Configs
         public bool CalExtraDrop { get; set; } //允许灾厄额外掉落
 
         [BackgroundColor(192, 54, 64, 192)]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool CalStatInflationBACK { get; set; } //灾厄数据膨胀回来了
 
         [BackgroundColor(192, 54, 64, 192)]

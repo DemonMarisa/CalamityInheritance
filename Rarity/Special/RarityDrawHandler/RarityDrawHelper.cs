@@ -10,7 +10,7 @@ namespace CalamityInheritance.Rarity.Special.RarityDrawHandler
 {
     public static class RarityDrawHelper
     {
-        public static string GlowPath => "AOTC/Arks/Rarity/RarityDrawHandler/RarityGlow";
+        public static string GlowPath => "CalamityInheritance/Rarity/Special/RarityDrawHandler/RarityGlow";
         public static void DrawCustomTooltipLine(DrawableTooltipLine tooltipLine, Color glowColor, Color edgeColor, Color mainColor, float glowScaleMult = 1.2f)
         {
             string textValue = tooltipLine.Text;

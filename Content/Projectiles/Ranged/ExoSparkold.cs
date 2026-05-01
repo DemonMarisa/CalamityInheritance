@@ -6,6 +6,7 @@ using CalamityMod;
 using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
 using LAP.Core.Utilities;
+using LAP.Core.SystemsLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 600;
-            Projectile.SetCantSplit();
+            Projectile.AddCantSplitProj();
         }
 
         public override void AI()

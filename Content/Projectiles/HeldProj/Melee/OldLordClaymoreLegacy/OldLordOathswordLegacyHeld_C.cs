@@ -19,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
         public override LocalizedText DisplayName => LAPUtilities.GetItemName<OldLordOathswordLegacy>();
         public override string Texture => GetInstance<OldLordOathswordLegacy>().Texture;
         public Player Owner => Main.player[Projectile.owner];
-        public AnimationHelper animationHelper = new(3);
+        public AniHelper animationHelper = new(3);
         public override void SetDefaults()
         {
             Projectile.width = Projectile.height = 70;
@@ -38,11 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
             Owner.CIMod().CanUseOldLordDash = false;
             Projectile.rotation += 0.4f;
             Projectile.rotation = MathHelper.WrapAngle(Projectile.rotation);
-            Owner.fullRotation = Projectile.rotation;
-            Owner.fullRotationOrigin = Owner.Center - Owner.position;
             Owner.SetImmuneTimeForAllTypes(15);
-
-
             for (int i = 0; i < 4; i++)
             {
                 Vector2 dustSpawnPosition = Projectile.Center + (Projectile.rotation - MathHelper.PiOver4).ToRotationVector2() * Main.rand.NextFloat(Projectile.width) + Main.rand.NextVector2Circular(6f, 6f);
@@ -61,9 +57,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.OldLordClaymore
                 NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, Main.myPlayer);
                 if (Owner.velocity.Y > 0)
                     Owner.LAP().NoSlowFall = 2;
+
+                Owner.fullRotation = Projectile.rotation;
+                Owner.fullRotationOrigin = Owner.Center - Owner.position;
+                if (Projectile.timeLeft < 18)
+                    Owner.fullRotation = 0f;
             }
-            if (Projectile.timeLeft < 2)
-                Owner.fullRotation = 0f;
         }
         //public override void OnKill(int timeLeft) => Owner.fullRotation = 0f;
         public override bool PreDraw(ref Color lightColor)

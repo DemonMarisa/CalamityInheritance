@@ -187,6 +187,9 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemID.HandOfCreation)
                 usPlayer.IfGodHand = true;
 
+            if (item.type == ItemType<BloodyWormTooth>() || item.type == ItemType<BloodyWormScarf>())
+                player.GetAttackSpeed<MeleeDamageClass>() += 0.07f;
+
             if (CIServerConfig.Instance.VanillaUnnerf) //下面都是开启返厂原版数值之后的回调
             {
                 VanillaAccesoriesUnnerf(item, player);  //饰品

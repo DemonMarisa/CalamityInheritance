@@ -138,7 +138,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             projdmg = Projectile.damage;
-            Projectile.ModifyHitNPCSticky(6);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

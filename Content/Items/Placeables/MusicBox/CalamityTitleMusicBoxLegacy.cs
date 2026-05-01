@@ -41,7 +41,6 @@ namespace CalamityInheritance.Content.Items.Placeables.MusicBox
             CreateRecipe().
             AddIngredient(ItemID.MusicBox).
                 AddIngredient(ItemType<BrimstoneSlag>(), 12).
-                AddIngredient(ItemType<EssenceofHavoc>(), 3).
                 AddTile(TileType<AshenAltar>()).
                 Register();
         }

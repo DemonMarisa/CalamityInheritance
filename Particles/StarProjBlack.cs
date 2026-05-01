@@ -2,14 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles;
+using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Particles
 {
@@ -20,7 +14,7 @@ namespace CalamityInheritance.Particles
         public override bool SetLifetime => true;
         public override bool UseCustomDraw => true;
         public override bool UseAdditiveBlend => false;
-        public override string Texture => "CalamityMod/Projectiles/StarProj";
+        public override string Texture => LAPTextureRegister.StarProj.Path;
 
         public StarProjBlack(Vector2 relativePosition, Vector2 velocity, bool affectedByGravity, int lifetime, float scale, Color color)
         {
@@ -48,7 +42,7 @@ namespace CalamityInheritance.Particles
         public override void CustomDraw(SpriteBatch spriteBatch)
         {
             Vector2 scale = new Vector2(0.5f, 1.6f) * Scale;
-            Texture2D texture = Request<Texture2D>(Texture).Value;
+            Texture2D texture = LAPTextureRegister.StarProj.Value;
 
             spriteBatch.Draw(texture, Position - Main.screenPosition, null, Color, Rotation, texture.Size() * 0.5f, scale, 0, 0f);
             spriteBatch.Draw(texture, Position - Main.screenPosition, null, Color, Rotation, texture.Size() * 0.5f, scale * new Vector2(0.45f, 1f), 0, 0f);

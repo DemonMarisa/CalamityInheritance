@@ -1,11 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityMod;
-using CalamityMod.Enums;
-using CalamityMod.Particles;
 using LAP.Core.GlobalInstance.Players.DashSystem;
 using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
@@ -32,7 +29,6 @@ namespace CalamityInheritance.CIPlayer.Dash
         public override void DuringDash(Player player)
         {
             Time += 2;
-            float radiusFactor = MathHelper.Lerp(0f, 1f, Utils.GetLerpValue(2f, 2.5f, Time, true));
             for (int d = 0; d < 3; d++)
             {
                 int dashDustID = Main.rand.Next(new int[]
@@ -58,10 +54,7 @@ namespace CalamityInheritance.CIPlayer.Dash
             if (Main.myPlayer == player.whoAmI && player.GetModPlayer<LAPDashPlayer>().DashTime % 4 == 0)
             {
                 int scytheDamage = (int)player.GetBestClassDamage().ApplyTo(500);
-                int scythe = Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<CosmicScytheOld>(), scytheDamage, 5f, player.whoAmI);
-                Main.projectile[scythe].DamageType = DamageClass.Generic;
-                Main.projectile[scythe].usesIDStaticNPCImmunity = true;
-                Main.projectile[scythe].idStaticNPCHitCooldown = 10;
+                Projectile.NewProjectile(player.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<CosmicScytheOld>(), scytheDamage, 5f, player.whoAmI);
             }
         }
     }

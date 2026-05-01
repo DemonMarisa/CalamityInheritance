@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             }
 
             Vector2 beamVelocity = Vector2.Normalize(velocity) * 16f;
-            Projectile.NewProjectile(source, position, beamVelocity, ProjectileType<TerraEdgeBeam>(), (int)(damage * 1.5f), knockback, player.whoAmI);
+            Projectile.NewProjectile(source, position, beamVelocity, ProjectileType<TerraEdgeBeam>(), damage, knockback, player.whoAmI);
 
             NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
 

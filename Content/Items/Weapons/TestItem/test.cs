@@ -1,7 +1,9 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
+using CalamityInheritance.Content.Nodes;
 using CalamityInheritance.ExtraTextures.Metaballs;
+using CalamityInheritance.Particles;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod.Cooldowns;
@@ -47,12 +49,11 @@ namespace CalamityInheritance.Content.Items.Weapons.TestItem
         public override bool AltFunctionUse(Player player) => true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            player.ImmediatelyDash(LAPContent.DashType<GodSlayerDashLegacy>());
+            player.CIMod().CurAOTCCharge = 15;
             return false;
         }
         public override bool? UseItem(Player player)
         {
-            CalamityInheritancePlayer cIPlayer = player.CIMod();
             return true;
         }
     }

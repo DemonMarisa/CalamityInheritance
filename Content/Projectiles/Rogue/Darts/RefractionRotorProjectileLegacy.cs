@@ -1,9 +1,9 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Darts;
 using CalamityMod;
-using CalamityMod.Projectiles.Rogue;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -68,6 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Darts
             }
 
             int shootType = ModContent.ProjectileType<PrismRocket>();
+
             if (Main.myPlayer != Projectile.owner)
                 return;
 
@@ -84,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Darts
                 }
             }
 
-            if (CalamityUtils.CountProjectiles(shootType) > 24)
+            if (Projectile.Owner().HasProjCount<PrismRocket>() > 24)
                 return;
 
             int energyDamage = (int)(Projectile.damage * 0.495);

@@ -801,3 +801,12 @@ Disseminator: {
 		@全体成员
 		'''
 }
+
+MegafleetLegacy: {
+	DisplayName: 巨舰星炮[Legacy]
+	Tooltip:
+		'''
+		消耗坠落之星：95%概率不消耗弹药
+		以曲速摧毁一切!!
+		'''
+}

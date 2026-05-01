@@ -1,5 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Dusts;
+using CalamityMod.NPCs;
 using CalamityMod.Systems.Collections;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -33,6 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public bool Slashing => CurrentFrame % 7 == 0 && Projectile.frameCounter % 3 == 2;
         public override void SetStaticDefaults()
         {
+            PierceResistNPC.exemptProjectiles.Add(Type);
             CalamityProjectileSets.ShouldNotBeReflected[Projectile.type] = true;
         }
         public override void SetDefaults()

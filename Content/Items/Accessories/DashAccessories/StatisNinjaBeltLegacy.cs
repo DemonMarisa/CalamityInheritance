@@ -1,7 +1,7 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer.Dash;
 using CalamityMod;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using LAP.Core.SystemsLoader;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,7 +25,8 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.moveSpeed += 0.1f; //斯塔提斯腰带怎么少了10%移速
             player.extraFall += 35;
             player.blackBelt = true;
-            player.dashType = 1;
+            player.dashType = 4;
+            player.SetLAPDash(LAPContent.DashType<StatisNinjaBeltDash>());
             player.Calamity().DashID = string.Empty;
             player.spikedBoots = 2;
             player.accFlipper = true;

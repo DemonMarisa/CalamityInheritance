@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using LAP.Core.ParticleSystem;
+using LAP.Core.Enums;
 
 namespace CalamityInheritance.Particles
 {

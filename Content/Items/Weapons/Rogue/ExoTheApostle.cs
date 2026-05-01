@@ -112,10 +112,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             CreateRecipe().
                 AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().
-                AddIngredient<ShardofAntumbra>(500).
+                AddIngredient<ShardofAntumbra>().
                 AddIngredient<PhantasmalRuinold>().
                 AddIngredient<EclipseSpear>().
-                AddIngredient<TarragonThrowingDart>(500).
+                AddIngredient<TarragonThrowingDart>().
                 DisableDecraft().
                 AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
@@ -124,10 +124,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             CreateRecipe().
                 AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().
-                AddIngredient<ShardofAntumbra>(500).
+                AddIngredient<ShardofAntumbra>().
                 AddIngredient<PhantasmalRuinold>().
                 AddIngredient<EclipseSpear>().
-                AddIngredient<TarragonThrowingDart>(500).
+                AddIngredient<TarragonThrowingDart>().
                 AddIngredient<MiracleMatter>().
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
@@ -136,10 +136,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             CreateRecipe().
                 AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().
-                AddIngredient<ShardofAntumbra>(500).
+                AddIngredient<ShardofAntumbra>().
                 AddIngredient<PhantasmalRuinold>().
                 AddIngredient<EclipseSpear>().
-                AddIngredient<TarragonThrowingDart>(500).
+                AddIngredient<TarragonThrowingDart>().
                 AddIngredient<AncientMiracleMatter>().
                 AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
                 DisableDecraft().
