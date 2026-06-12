@@ -1,8 +1,5 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -11,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class YharimsDragonSupport: ModProjectile, ILocalizedModType
+    public class YharimsDragonSupport : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         #region 别名
@@ -38,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             Projectile.extraUpdates = 2;
-            Projectile.timeLeft = 360; 
+            Projectile.timeLeft = 360;
             Projectile.width = 56;
             Projectile.height = 64;
             Projectile.tileCollide = false;
@@ -56,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 AttackType = IsKilling;
                 Projectile.netUpdate = true;
             }
-            
+
             switch (AttackType)
             {
                 case IsShooted:
@@ -81,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         //执行加速AI.
         private void DoBoosting(NPC target)
         {
-    
+
             float maxSpeed = 18f;
             float acceleration = 0.015f * 15f;
             float homeInSpeed = MathHelper.Clamp(acceleration, 0f, maxSpeed);
@@ -101,9 +98,9 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             }
             else Projectile.velocity *= 0.97f;
         }
-        public void TrailDust() 
+        public void TrailDust()
         {
-            for (int i = 0; i < 2 ; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 0, default, 0.5f);
                 Main.dust[d].noGravity = true;

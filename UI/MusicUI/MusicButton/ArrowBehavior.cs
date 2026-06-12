@@ -50,7 +50,7 @@ namespace CalamityInheritance.UI.MusicUI.MusicButton
                 rot = rot.AngleLerp((Main.MouseWorld - (plr.Center + distance.RotatedBy(MathHelper.PiOver2))).ToRotation(), 0.25f);
             #endregion
 
-            if(FadeTime != FadeTimeMax)
+            if (FadeTime != FadeTimeMax)
                 return;
 
             #region 判定悬停

@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.BaseClass
 {
-    public abstract class CIBaseWhip  : ModProjectile
+    public abstract class CIBaseWhip : ModProjectile
     {
         // This class by default uses the values in the Mourningstar projectile
         // Note: the original solar eruption code uses hide and player.heldProj.

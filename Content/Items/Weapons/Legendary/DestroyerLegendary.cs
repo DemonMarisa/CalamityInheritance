@@ -4,7 +4,6 @@ using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -15,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class DestroyerLegendary: LegendaryWeaponClass
+    public class DestroyerLegendary : LegendaryWeaponClass
     {
         public override ClassType GeneralWeaponClass => ClassType.Magic;
         public override Color DrawColor => new(65, 105, 225);
@@ -43,22 +42,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             float Buff = (float)((float)(BaseDamage + LegendaryBuff() + Generic.GenericLegendBuffInt()) / (float)BaseDamage);
             damage *= Buff;
         }
-        
+
         public override bool AltFunctionUse(Player player)
         {
             return true;
         }
-        
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.DestroyerTier1? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne")    : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
+            string t1 = mp.DestroyerTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.DestroyerTier2? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo")    : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
+            string t2 = mp.DestroyerTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.DestroyerTier3? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree")  : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
+            string t3 = mp.DestroyerTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
@@ -71,7 +70,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override bool CanUseItem(Player player)
         {
@@ -107,9 +106,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             int dmgBuff = 0;
             bool DownCalclone = DownedBossSystem.downedCalamitasClone || CIDownedBossSystem.DownedCalClone;
             dmgBuff += DownCalclone ? 2 : 0;   //27 - 19
-            dmgBuff += Condition.DownedPlantera.IsMet() ? 3: 0;         //32 - 22
+            dmgBuff += Condition.DownedPlantera.IsMet() ? 3 : 0;         //32 - 22
             dmgBuff += DownedBossSystem.downedLeviathan ? 3 : 0;        //37 - 25
-            dmgBuff += DownedBossSystem.downedAstrumAureus? 3 : 0;      //42 - 28
+            dmgBuff += DownedBossSystem.downedAstrumAureus ? 3 : 0;      //42 - 28
             dmgBuff += Condition.DownedGolem.IsMet() ? 4 : 0;           //50 - 32
             dmgBuff += Condition.DownedEmpressOfLight.IsMet() ? 4 : 0; //60 - 36
             dmgBuff += Condition.DownedDukeFishron.IsMet() ? 4 : 0;    //70 - 40
@@ -117,7 +116,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedPlaguebringer ? 4 : 0;   //90 - 48
             dmgBuff += Condition.DownedCultist.IsMet() ? 5 : 0;        //100 - 53
             //没有星神游龙是故意的，我不希望有人说在冲线阶段浪费时间打这个玩意
-            dmgBuff += Condition.DownedMoonLord.IsMet() ? 47: 0;        //120 - 90
+            dmgBuff += Condition.DownedMoonLord.IsMet() ? 47 : 0;        //120 - 90
             dmgBuff += DownedBossSystem.downedGuardians ? 20 : 0;       //170 - 110
             dmgBuff += DownedBossSystem.downedProvidence ? 110 : 0;      //220 - 220
             dmgBuff += DownedBossSystem.downedSignus ? 10 : 0;          //250 - 230
@@ -126,7 +125,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             dmgBuff += DownedBossSystem.downedPolterghast ? 150 : 0;     //370 - 400
             dmgBuff += DownedBossSystem.downedBoomerDuke ? 40 : 0;     //470 - 440
             //我tm又忘记金龙了，不管了，fuckyou
-            dmgBuff += DownedBossSystem.downedDragonfolly? 10 : 0;      //490 - 450
+            dmgBuff += DownedBossSystem.downedDragonfolly ? 10 : 0;      //490 - 450
             dmgBuff += DownedBossSystem.downedDoG ? 460 : 0;            //610 - 800
             dmgBuff += DownedBossSystem.downedYharon ? 1460 : 0;         //760 - 2060
             dmgBuff += DownedBossSystem.downedCalamitas ? 100 : 0;      //960 - 2160

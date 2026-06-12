@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.DataStructures;
 using CalamityMod.Projectiles.Magic;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Books
 {

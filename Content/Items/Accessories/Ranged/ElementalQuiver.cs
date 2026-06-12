@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -21,11 +19,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         public static string TextPath => $"Mods.CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:28,
-            itemHeight:32,
+            itemWidth: 28,
+            itemHeight: 32,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue,
-            itemDefense:30
+            itemValue: CIShopValue.RarityPriceDeepBlue,
+            itemDefense: 30
         );
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -59,11 +57,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
             CalamityInheritancePlayer modplayer = player.GetModPlayer<CalamityInheritancePlayer>();
             if (CIConfig.Instance.ElementalQuiversplit == true)
             {
-                modplayer.ElemQuiver= true;
+                modplayer.ElemQuiver = true;
             }
             else
             {
-                modplayer.ElemQuiver= false;
+                modplayer.ElemQuiver = false;
             }
             player.GetDamage(DamageClass.Ranged) += 0.25f;
             player.GetCritChance(DamageClass.Ranged) += 20;

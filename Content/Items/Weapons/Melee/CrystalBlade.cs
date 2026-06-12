@@ -1,9 +1,9 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Melee;
-using LAP.Content.RecipeGroupAdd;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Placeables.SunkenSea;
+using LAP.Content.RecipeGroupAdd;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

@@ -14,7 +14,7 @@ namespace CalamityInheritance.Buffs.Summon
         }
         public override bool RightClick(int buffIndex)
         {
-            foreach(Projectile proj in Main.ActiveProjectiles)
+            foreach (Projectile proj in Main.ActiveProjectiles)
             {
                 if (proj.type == ProjectileType<DOGworm>() && proj.owner == Main.myPlayer)
                 {

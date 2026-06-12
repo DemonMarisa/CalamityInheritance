@@ -2,7 +2,6 @@
 using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using LAP.Content.RecipeGroupAdd;
 using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Terraria;

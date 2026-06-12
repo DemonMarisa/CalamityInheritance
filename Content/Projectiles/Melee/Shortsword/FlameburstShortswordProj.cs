@@ -1,11 +1,11 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -53,8 +53,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             CalamityInheritancePlayer modPlayer = Main.player[Projectile.owner].GetModPlayer<CalamityInheritancePlayer>();
-                var source = Projectile.GetSource_FromThis();
-                Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileID.Volcano, Projectile.damage * 2, Projectile.knockBack);
+            var source = Projectile.GetSource_FromThis();
+            Projectile.NewProjectile(source, target.Center, Vector2.Zero, ProjectileID.Volcano, Projectile.damage * 2, Projectile.knockBack);
         }
     }
 }

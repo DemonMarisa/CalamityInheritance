@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Balancing;
+using LAP.Content.Projectiles.LifeStealProj;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
 using Terraria.ModLoader;
-using CalamityMod.Balancing;
-using LAP.Core.Utilities;
-using LAP.Content.Projectiles.LifeStealProj;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 {
@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
                 Projectile.EmitEnchantmentVisualsAt(rect.TopLeft(), rect.Width, rect.Height);
             }
         }
-        
+
         public override bool PreDraw(ref Color lightColor)
         {
             Vector2 vector = Projectile.Center - Main.screenPosition;

@@ -4,7 +4,6 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
-using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -15,7 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class StarCannonEX : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -73,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient(ItemID.SuperStarCannon).
                 AddIngredient<AureusCell>(10).
-                AddIngredient<StarblightSoot> (25).
+                AddIngredient<StarblightSoot>(25).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

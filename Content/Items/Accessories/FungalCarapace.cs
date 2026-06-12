@@ -1,19 +1,19 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories
 {
     public class FungalCarapace : CIAccessories, ILocalizedModType
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:24,
-            itemRare:ItemRarityID.Green,
-            itemValue:CIShopValue.RarityPriceGreen,
-            itemDefense:6
+            itemWidth: 20,
+            itemHeight: 24,
+            itemRare: ItemRarityID.Green,
+            itemValue: CIShopValue.RarityPriceGreen,
+            itemDefense: 6
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

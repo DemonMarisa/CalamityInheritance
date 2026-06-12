@@ -1,4 +1,3 @@
-using System;
 using CalamityInheritance.Buffs.Mage;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Content.Items;
@@ -16,6 +15,7 @@ using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -24,12 +24,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.CIPlayer
 {
-    public partial class CalamityInheritancePlayer : ModPlayer 
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
-        
+
         public void MeleeOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            var calPlayer = Player.Calamity(); 
+            var calPlayer = Player.Calamity();
             var usPlayer = Player.CIMod();
             //真近战或者近战的简化判定
             bool ifTrueMelee = proj.TrueMeleeClass();
@@ -47,7 +47,7 @@ namespace CalamityInheritance.CIPlayer
                 int finalDamage = 500 + weaponDamage / 4;
                 Vector2 velocity = CIFunction.GiveVelocity(200f);
                 Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, velocity * 4f, ProjectileType<GodslayerDartMount>(), finalDamage, 0f, Player.whoAmI);
-                fireCD = 60; 
+                fireCD = 60;
             }
             //永恒套的近战爆炸攻击
             var meleeReaverSrc = proj.GetSource_FromThis();
@@ -86,10 +86,10 @@ namespace CalamityInheritance.CIPlayer
         }
         public void MagicOnHit(Projectile proj, NPC target, NPC.HitInfo hit, int dmgDone)
         {
-            if (!proj.DamageType.CountsAsClass<MagicDamageClass>()) 
+            if (!proj.DamageType.CountsAsClass<MagicDamageClass>())
                 return;
             Player player = Main.player[proj.owner];
-            var calPlayer = player.Calamity(); 
+            var calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
             //弑神火
             if (GodSlayerMagicSet)
@@ -213,7 +213,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
 
             Player player = Main.player[proj.owner];
-            var calPlayer = player.Calamity(); 
+            var calPlayer = player.Calamity();
             var usPlayer = player.CIMod();
             //星幻套
             if (AncientAstralSet)
@@ -251,7 +251,7 @@ namespace CalamityInheritance.CIPlayer
                     for (int i = 0; i < 4; i++)
                     {
                         Vector2 source = new Vector2(target.Center.X + Main.rand.Next(-201, 201), Main.screenPosition.Y - 600f - Main.rand.Next(50));
-                        Vector2 velocity = (target.Center- source) / 40f;
+                        Vector2 velocity = (target.Center - source) / 40f;
 
                         Projectile.NewProjectile(proj.GetSource_FromThis(), source, velocity, ProjectileType<NanoFlareLegacy>(), (int)(proj.damage * 0.05), 3f, proj.owner);
                     }
@@ -261,7 +261,7 @@ namespace CalamityInheritance.CIPlayer
                 CIFunction.SpawnHealProj(Player.GetSource_FromThis(), proj.Center, Player, 10, 20f, 1.6f, 120);
             }
         }
-    
+
         /// <summary>
         /// 全职业共享效果
         /// </summary>
@@ -293,7 +293,7 @@ namespace CalamityInheritance.CIPlayer
                         addBuffToTarget.AddBuff(BuffID.Ichor, duration);
                         addBuffToTarget.AddBuff(BuffID.BetsysCurse, duration);
                     }
-                    
+
                 }
             }
             //远古血炎的红心生成
@@ -346,7 +346,7 @@ namespace CalamityInheritance.CIPlayer
 
         public void AddDebuff(Projectile p, NPC tar, ref NPC.HitInfo hit)
         {
-        bool ifMelee = p.CountsAsClass<MeleeDamageClass>() || p.CountsAsClass<MeleeNoSpeedDamageClass>();
+            bool ifMelee = p.CountsAsClass<MeleeDamageClass>() || p.CountsAsClass<MeleeNoSpeedDamageClass>();
             bool ifTrueMelee = p.CountsAsClass<TrueMeleeDamageClass>() || p.CountsAsClass<TrueMeleeNoSpeedDamageClass>();
             bool ifRogue = p.CountsAsClass<RogueDamageClass>();
             bool ifSummon = p.CountsAsClass<SummonDamageClass>();
@@ -388,7 +388,7 @@ namespace CalamityInheritance.CIPlayer
                 tar.AddBuff(BuffID.Ichor, 90);
             if (LoreHive)
                 tar.AddBuff(BuffID.CursedInferno, 90);
-                
+
             if (LoreProvidence || PanelsLoreProvidence)
                 tar.AddBuff(BuffType<HolyInferno>(), 180, false);
 

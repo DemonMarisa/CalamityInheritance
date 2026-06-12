@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class DragonStaffProj: ModProjectile, ILocalizedModType
+    public class DragonStaffProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()

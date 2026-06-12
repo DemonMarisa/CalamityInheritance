@@ -1,6 +1,6 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Rarity;
+using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += 0.5f;
-			player.statLifeMax2 += 600;
+            player.statLifeMax2 += 600;
             player.carpet = true;
         }
     }

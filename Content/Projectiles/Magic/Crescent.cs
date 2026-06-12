@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityMod;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
             if (Projectile.ai[1] > 20)
             {
-                Projectile.velocity += CalamityUtils.SafeDirectionTo(Projectile,parent.Center,null) * 2.5f;
+                Projectile.velocity += CalamityUtils.SafeDirectionTo(Projectile, parent.Center, null) * 2.5f;
                 if (Projectile.WithinRange(parent.Center, 75f))
                     Projectile.Kill();
             }

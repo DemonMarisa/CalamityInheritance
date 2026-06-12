@@ -1,6 +1,5 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -9,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class GlacialCrusher: CIMelee, ILocalizedModType
+    public class GlacialCrusher : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -32,28 +31,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if(Main.rand.NextBool(3))
+            if (Main.rand.NextBool(3))
                 Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceRod);
-        }
-
-        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
-        {
-            if(target.Calamity().glacialState)
-            {
-                modifiers.ModifyHitInfo += (ref NPC.HitInfo hitnfo) =>
-                {
-                    hitnfo.Damage *= 2;
-                    hitnfo.Knockback *= 3f;
-                };
-            }
         }
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(target.Calamity().glacialState)
-            {
-                SoundEngine.PlaySound(SoundID.NPCHit3);
-            }
+            SoundEngine.PlaySound(SoundID.NPCHit3);
         }
 
         public override void AddRecipes()

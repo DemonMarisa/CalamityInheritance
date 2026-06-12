@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public const int IdleTimer = 30;
         //非追踪状态下的旋转
         public const float NonHomingRotation = 0.45f;
-        
+
         #endregion
         #region 攻击枚举
         public enum DoStyle
@@ -132,14 +132,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //如果实例存在，将刀片指向这个实例
             if (TimerAlt == 5)
                 //刷新射弹生命与判定次数
-                ACTExcelsus.GlobalResetProj(Projectile); 
+                ACTExcelsus.GlobalResetProj(Projectile);
             Vector2 targetPos = tar.Center;
             //原地减速，指向这个敌怪
             float rot = Projectile.AngleTo(targetPos) + MathHelper.PiOver4;
             Projectile.rotation = Utils.AngleLerp(Projectile.rotation, rot, spiningDir);
             Projectile.velocity *= ACTExcelsus.SideIdleSlowSpeed;
             //而后在一段时间后发起追踪
-            TimerAlt ++;
+            TimerAlt++;
             if (TimerAlt > ACTExcelsus.IdleTimer)
             {
                 //给多一个额外更新
@@ -197,8 +197,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             //追踪情况下标记为True
             if (Projectile.ai[0] == (int)DoStyle.IsHoming)
-                AlreadyHit = true;     
+                AlreadyHit = true;
             target.AddBuff(BuffType<GodSlayerInferno>(), 180);
         }
-}
+    }
 }

@@ -1,23 +1,21 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Rogue;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Rogue;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Particles;
-using Microsoft.Xna.Framework.Input;
-using System.IO;
-using CalamityInheritance.Sounds.Custom;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -90,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                 }
 
-                if(!hasPressRight)
+                if (!hasPressRight)
                     Projectile.velocity.Y += gravSpeed;
             }
 
@@ -118,7 +116,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Projectile.extraUpdates = 8;
                 //除非你没有鼠标，不然这里肯定会在下方赋予成鼠标位置
                 Vector2 tar = player.LocalMouseWorld();
-                Rectangle mouseHitBox = new ((int)tar.X, (int)tar.Y, Projectile.width, Projectile.height);
+                Rectangle mouseHitBox = new((int)tar.X, (int)tar.Y, Projectile.width, Projectile.height);
                 if (Projectile.Hitbox.Intersects(mouseHitBox))
                 {
                     MouseInit = true;
@@ -134,7 +132,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
 
         }
-        
+
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Player player = Main.player[Projectile.owner];
@@ -183,7 +181,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             if (Projectile.Calamity().stealthStrike && Projectile.timeLeft % 8 == 0 && Projectile.owner == Main.myPlayer)
             {
-                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<SupernovaStealthBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
                 }
@@ -205,7 +203,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
             }
 
-                //dust effects
+            //dust effects
             int dustType = Main.rand.NextBool() ? 107 : 234;
             if (Main.rand.NextBool(4))
             {

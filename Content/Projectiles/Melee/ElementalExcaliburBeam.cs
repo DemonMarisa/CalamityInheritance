@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
 using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee

@@ -1,11 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Potions;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Potions;
-using CalamityInheritance.Buffs.Potions;
-using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {

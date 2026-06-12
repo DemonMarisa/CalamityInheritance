@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -10,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class DragonSpearProj: ModProjectile, ILocalizedModType
+    public class DragonSpearProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override void SetStaticDefaults()
@@ -36,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.localAI[0] += 2f;
             Projectile.frame = CIFunction.FramesChanger(Projectile, 6, 4);
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
-			CIFunction.HomeInOnNPC(Projectile, false, 800f, 25f, 20f);
+            CIFunction.HomeInOnNPC(Projectile, false, 800f, 25f, 20f);
         }
 
         public override void OnKill(int timeLeft)
@@ -51,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.localNPCHitCooldown = 15;
             Projectile.Damage();
             SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
-             
+
             for (int i = 0; i < 20; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 1.2f);
@@ -77,14 +76,14 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             target.AddBuff(BuffID.Daybreak, 360);
             for (int j = 0; j < 3; j++)
             {
-                Vector2 fireBallSpeed = new Vector2(0 , -26f).RotatedBy(Main.rand.NextFloat(-0.6f + j/10, 0.7f + j/10)) * 1.1f; Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, fireBallSpeed, ProjectileType<DragonSpearFlare>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
+                Vector2 fireBallSpeed = new Vector2(0, -26f).RotatedBy(Main.rand.NextFloat(-0.6f + j / 10, 0.7f + j / 10)) * 1.1f; Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, fireBallSpeed, ProjectileType<DragonSpearFlare>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
             }
-           
+
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor , 1);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
     }

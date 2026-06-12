@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Flails
 {
-    public class BallOFuguLegacy :GeneralWeaponClass
+    public class BallOFuguLegacy : GeneralWeaponClass
     {
         public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()

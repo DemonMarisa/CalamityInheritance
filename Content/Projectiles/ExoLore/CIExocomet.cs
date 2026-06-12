@@ -1,16 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {

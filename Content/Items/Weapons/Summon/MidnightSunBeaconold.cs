@@ -1,12 +1,12 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

@@ -1,21 +1,21 @@
 ﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using Terraria;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Magic;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Terraria.Audio;
-using CalamityInheritance.Sounds.Custom;
-using System.IO;
-using Terraria.ID;
-using System.Collections.Generic;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
 {
@@ -159,12 +159,12 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic.Alpha
                 // 向目标位置移动
                 Projectile.Center = Vector2.Lerp(Projectile.Center, desiredPosition, ApproachSpeed);
             }
-            
+
             else if (distanceToMouse < DesiredDistance)
             {
                 // 当距离过近时施加反向斥力，离得越近力越大
                 float distanceRatio = 1f - (distanceToMouse / DesiredDistance);
-                Vector2 repelVector = - direction * RepelForce * distanceRatio;
+                Vector2 repelVector = -direction * RepelForce * distanceRatio;
                 Projectile.Center += repelVector;
                 Projectile.velocity *= 1.03f;
             }

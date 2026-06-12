@@ -1,20 +1,19 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Rarity;
-using Terraria.GameContent;
-using CalamityMod;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
 {
     [AutoloadEquip(EquipType.Head)]
     public class AncientBloodflareMask : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -27,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.rare = RarityType<BlueGreen>();
             Item.defense = 20; //80
         }
-        
+
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientBloodflareBodyArmor>() && legs.type == ItemType<AncientBloodflareCuisses>();
         public override void UpdateArmorSet(Player player)
         {
@@ -41,13 +40,13 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             player.crimsonRegen = true;
             player.aggro += 900;
             //血炎数值
-            calPlayer.healingPotionMultiplier += 0.35f; 
+            calPlayer.healingPotionMultiplier += 0.35f;
             player.lifeRegen += 10;
             if (player.statLife <= player.statLifeMax2 / 2)
                 player.lifeRegen += 16;
 
         }
-        
+
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 4;

@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Bows;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -56,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Bows
             CreateRecipe().
                 AddIngredient<UnholyEssence>(12).
                 AddIngredient<DivineGeode>(6).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

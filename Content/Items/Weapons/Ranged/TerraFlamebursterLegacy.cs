@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class TerraFlamebursterLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

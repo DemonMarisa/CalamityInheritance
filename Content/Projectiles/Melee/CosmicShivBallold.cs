@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

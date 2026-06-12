@@ -1,15 +1,15 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories.Summon
 {
@@ -18,10 +18,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Summon
         public new string LocalizationCategory => "Content.Items.Accessories.Summon";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:34,
-            itemHeight:32,
+            itemWidth: 34,
+            itemHeight: 32,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
         {

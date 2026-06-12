@@ -1,8 +1,8 @@
 ﻿using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void SetDefaults()
         {
-            
+
             Projectile.width = 32;
             Projectile.height = 32;
             Projectile.friendly = true;

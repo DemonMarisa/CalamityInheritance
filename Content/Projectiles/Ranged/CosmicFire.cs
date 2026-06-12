@@ -1,8 +1,6 @@
-using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ModLoader;
-
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class CosmicFireLegacy : ModProjectile, ILocalizedModType

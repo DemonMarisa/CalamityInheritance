@@ -3,8 +3,6 @@ using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -60,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             CreateRecipe().
                 AddIngredient<UnholyEssence>(7).
                 AddIngredient<DivineGeode>(4).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

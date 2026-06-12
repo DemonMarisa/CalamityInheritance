@@ -1,16 +1,15 @@
-﻿using CalamityMod.Items.Weapons.Rogue;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
+﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Weapons.Rogue;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {

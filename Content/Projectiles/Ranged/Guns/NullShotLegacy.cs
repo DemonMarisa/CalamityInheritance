@@ -1,8 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod.CalPlayer;
-using CalamityMod.Dusts;
+﻿using CalamityMod.CalPlayer;
 using CalamityMod.NPCs.NormalNPCs;
-using CalamityMod.Projectiles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;

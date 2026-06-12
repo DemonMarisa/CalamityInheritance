@@ -1,12 +1,10 @@
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
     public class OricGemstone : CIRogueClass
@@ -42,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Projectile proj = Main.projectile[stealth];
             if (player.altFunctionUse is 2 && !player.CheckStealth())
                 proj.CalamityInheritance().MouseRight = true;
-                
+
             if (player.CheckStealth())
             {
                 proj.Calamity().stealthStrike = true;

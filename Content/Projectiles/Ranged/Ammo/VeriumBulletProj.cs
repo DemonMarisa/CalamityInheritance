@@ -1,13 +1,10 @@
-﻿using CalamityMod.Projectiles;
-using CalamityMod;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
 {
@@ -106,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
             {
                 NPC target = Main.npc[TargetIndex];
                 //没有目标重新在300f里面找新目标
-                if(!target.active || !target.chaseable)
+                if (!target.active || !target.chaseable)
                     target = Projectile.FindClosestTarget(300f);
                 //直接使用追踪即可 
                 if (target is not null)
@@ -117,8 +114,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
             }
             return true;
         }
-            
-        
+
+
 
         public override bool? CanHitNPC(NPC target) => AttackTimer <= 0f && target.CanBeChasedBy(Projectile);
 

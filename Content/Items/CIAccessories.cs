@@ -13,9 +13,9 @@ namespace CalamityInheritance.Content.Items
         public int Value = itemValue;
         public int Defense = itemDefense;
     }
-    public abstract class CIAccessories: ModItem, ILocalizedModType
+    public abstract class CIAccessories : ModItem, ILocalizedModType
     {
-        protected virtual BaseSetDefault BaseSD{ get; }
+        protected virtual BaseSetDefault BaseSD { get; }
         public new string LocalizationCategory => "Content.Items.Accessories";
         public override void SetStaticDefaults()
         {
@@ -34,12 +34,12 @@ namespace CalamityInheritance.Content.Items
             ExSD();
             base.SetDefaults();
         }
-        public virtual void ExSD() {}
+        public virtual void ExSD() { }
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
         {
             itemGroup = ContentSamples.CreativeHelper.ItemGroup.Accessories;
         }
-        public virtual void ExSSD(){}
+        public virtual void ExSSD() { }
     }
     public static class AccessoriesMethods
     {

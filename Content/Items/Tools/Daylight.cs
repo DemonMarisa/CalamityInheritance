@@ -1,9 +1,9 @@
 ﻿using CalamityMod.CalPlayer;
 using CalamityMod.Items;
+using LAP.Content.RecipeGroupAdd;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using LAP.Content.RecipeGroupAdd;
 
 namespace CalamityInheritance.Content.Items.Tools
 {

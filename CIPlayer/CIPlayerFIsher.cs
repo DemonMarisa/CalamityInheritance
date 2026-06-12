@@ -5,8 +5,6 @@ using CalamityMod;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
@@ -55,7 +53,7 @@ namespace CalamityInheritance.CIPlayer
                             if (calPlayer.ZoneAstral)
                             {
                                 rareItemList.Add(ItemType<PolarisParrotfishLegacy>());
-                                rareItemList.Add(ItemType<UrsaSergeantLegacy> ());
+                                rareItemList.Add(ItemType<UrsaSergeantLegacy>());
                             }
                             if (calPlayer.ZoneSunkenSea)
                             {
@@ -72,6 +70,6 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
         }
-            #endregion
+        #endregion
     }
 }

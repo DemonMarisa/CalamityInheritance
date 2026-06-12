@@ -1,18 +1,16 @@
-﻿using System;
-using CalamityInheritance.Content.Projectiles.Typeless.Heal;
+﻿using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles;
-using CalamityMod.Projectiles.Healing;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class RogueShadowspecKnivesProj: ModProjectile, ILocalizedModType
+    public class RogueShadowspecKnivesProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly int ShadowknivesLifeStealCap = 1000;
@@ -37,12 +35,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void AI()
         {
-            Player projOwner = Main.player[Projectile.owner];;
+            Player projOwner = Main.player[Projectile.owner]; ;
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] >= 240f)
             {
                 Projectile.alpha += 4;
-                if(Projectile.ai[0] < 250f)
+                if (Projectile.ai[0] < 250f)
                 {
                     Projectile.damage = (int)(Projectile.damage * 1.05);
                     Projectile.knockBack = (int)(Projectile.knockBack * 0.95);

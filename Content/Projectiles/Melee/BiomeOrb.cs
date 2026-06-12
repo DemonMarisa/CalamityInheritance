@@ -178,7 +178,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (snow)
             {
-                target.AddBuff(BuffType<GlacialState>(), debuffTime / 3);
+                target.AddBuff(BuffID.Frostburn, debuffTime);
             }
             else if (beach)
             {

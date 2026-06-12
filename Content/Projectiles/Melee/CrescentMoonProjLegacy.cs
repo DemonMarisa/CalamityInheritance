@@ -1,12 +1,6 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -14,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class CrescentMoonProjLegacy: GeneralDamageProj 
+    public class CrescentMoonProjLegacy : GeneralDamageProj
     {
         public override ProjDamageType UseDamageClass => ProjDamageType.Melee;
         public override void SetStaticDefaults()

@@ -1,7 +1,7 @@
-﻿using System;
-using CalamityInheritance.Buffs.Summon;
+﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,13 +9,13 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class SonYharon: ModProjectile,ILocalizedModType
+    public class SonYharon : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
-        
+
             ProjectileID.Sets.MinionSacrificable[Projectile.type] = false;
             ProjectileID.Sets.MinionTargettingFeature[Projectile.type] = true;
         }
@@ -125,12 +125,12 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             }
             else
             {
-                for (int j = 0 ; j < 200 ; j++)
+                for (int j = 0; j < 200; j++)
                 {
                     NPC npc2 = Main.npc[j];
                     if (npc2.CanBeChasedBy(Projectile, false))
                     {
-                        float npc2Dist = Vector2.Distance(npc2.Center,Projectile.Center);
+                        float npc2Dist = Vector2.Distance(npc2.Center, Projectile.Center);
                         if ((Vector2.Distance(Projectile.Center, getMinionPos) > npc2Dist && npc2Dist < num633) || !canChase)
                         {
                             num633 = npc2Dist;
@@ -173,10 +173,10 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     Projectile.ai[0] = 0f;
                     Projectile.netUpdate = true;
                 }
-                if (num651 > 2000f)    
+                if (num651 > 2000f)
                 {
-                    Projectile.position.X = Main.player[Projectile.owner].Center.X - Projectile.width /2;
-                    Projectile.position.Y = Main.player[Projectile.owner].Center.Y - Projectile.height/2;
+                    Projectile.position.X = Main.player[Projectile.owner].Center.X - Projectile.width / 2;
+                    Projectile.position.Y = Main.player[Projectile.owner].Center.Y - Projectile.height / 2;
                     Projectile.netUpdate = true;
                 }
                 if (num651 > 70f)
@@ -192,7 +192,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
             }
             Projectile.frame = CIFunction.FramesChanger(Projectile, 12, 4);
-            if (Projectile.ai[1] > 0f) Projectile.ai[1] += Main.rand.Next(1,4);
+            if (Projectile.ai[1] > 0f) Projectile.ai[1] += Main.rand.Next(1, 4);
             if (Projectile.ai[1] > 40f)
             {
                 Projectile.ai[1] = 0f;

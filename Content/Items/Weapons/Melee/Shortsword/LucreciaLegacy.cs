@@ -1,12 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using CalamityMod.Items;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 

@@ -1,7 +1,7 @@
-﻿using Terraria.ModLoader;
+﻿using CalamityMod.Projectiles.Magic;
 using LAP.Assets.TextureRegister;
 using Terraria;
-using CalamityMod.Projectiles.Magic;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             int shardDamage = (int)(Projectile.damage * 0.5);
             if (Projectile.timeLeft <= 2)
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, shardType, shardDamage, Projectile.knockBack, Projectile.owner);
-            
+
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

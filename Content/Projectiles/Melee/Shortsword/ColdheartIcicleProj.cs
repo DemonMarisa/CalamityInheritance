@@ -1,11 +1,11 @@
-﻿using CalamityMod;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod;
+using CalamityMod.NPCs.Providence;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
-using CalamityMod.NPCs.Providence;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {

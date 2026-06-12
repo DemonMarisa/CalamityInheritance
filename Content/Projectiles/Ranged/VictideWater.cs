@@ -1,13 +1,13 @@
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using LAP.Assets.TextureRegister;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class VictideWater: ModProjectile, ILocalizedModType
+    public class VictideWater : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;

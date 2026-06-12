@@ -1,10 +1,9 @@
-using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Legendary
 {
-    public class DukeBuff: ModBuff    
+    public class DukeBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {

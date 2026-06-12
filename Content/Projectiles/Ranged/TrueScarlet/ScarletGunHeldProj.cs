@@ -1,9 +1,7 @@
-using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -142,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
             //有效校准范围(45~135)
             float angleThre = 45f;
             //速度相关的最大校准，额外补充的玩家相关
-            float maxSpeedCalibration = 13f; 
+            float maxSpeedCalibration = 13f;
             //速度对校准的影响系数
             float speedInfluenceFactor = 0.6f;
             //获取玩家移动向量并标准化处理
@@ -152,8 +150,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
             Vector2 normalizedMoveDir = playerMoveVector.SafeNormalize(Vector2.Zero);
             //处理玩家向量相关的校准向量。
             float speedCalibrationAmount = MathHelper.Clamp(
-                moveSpeed * speedInfluenceFactor, 
-                0f, 
+                moveSpeed * speedInfluenceFactor,
+                0f,
                 maxSpeedCalibration
             );
             Vector2 speedBasedCalibration = normalizedMoveDir * speedCalibrationAmount;

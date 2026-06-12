@@ -1,16 +1,16 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class SoulEdgeSoulLegacyLarge: ModProjectile, ILocalizedModType
+    public class SoulEdgeSoulLegacyLarge : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()

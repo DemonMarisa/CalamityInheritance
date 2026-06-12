@@ -95,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.AOTCNew
 
             if (ChargeAttack)
             {
-                Texture2D texture =TextureAssets.Item[ItemType<ArkoftheCosmosNew>()].Value;
+                Texture2D texture = TextureAssets.Item[ItemType<ArkoftheCosmosNew>()].Value;
                 Vector2 DrawOffset = new Vector2(5, 0).RotatedBy(Projectile.rotation);
                 float rot = Projectile.direction == 1 ? Projectile.rotation + MathHelper.PiOver4 : Projectile.rotation - MathHelper.PiOver4 + MathHelper.Pi;
                 Vector2 orig = Projectile.direction == 1 ? new Vector2(0, texture.Height) : new Vector2(texture.Width, texture.Height);

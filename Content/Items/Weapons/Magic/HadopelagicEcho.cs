@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -16,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HadopelagicEcho : CIMagic, ILocalizedModType
     {
-        
+
         private int counter = 0;
         public static readonly SoundStyle UseSound = new("CalamityInheritance/Sounds/Custom/WyrmScream") { Volume = 1f };
         public override void SetStaticDefaults()
@@ -60,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 damageMult = 1.35f;
             if (counter == 4)
                 damageMult = 1.5f;
-            Projectile.NewProjectile(source,position.X, position.Y + 2, velocity.X, velocity.Y, type, (int)(damage * damageMult), knockback, player.whoAmI, counter, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y + 2, velocity.X, velocity.Y, type, (int)(damage * damageMult), knockback, player.whoAmI, counter, 0f);
             counter++;
             if (counter >= 5)
                 counter = 0;

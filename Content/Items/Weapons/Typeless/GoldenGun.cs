@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless
 {

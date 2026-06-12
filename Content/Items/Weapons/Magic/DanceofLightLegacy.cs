@@ -1,9 +1,7 @@
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.CalStatInflationBACK;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Enums;
 using LAP.Core.SystemsLoader;
@@ -16,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class DanceofLightLegacy: CIMagic, ILocalizedModType
+    public class DanceofLightLegacy : CIMagic, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
@@ -77,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 getMouseDist = projSpeed / getMouseDist;
             }
 
-            int projCounts = Main.rand.Next(4,7);
+            int projCounts = Main.rand.Next(4, 7);
             for (int i = 0; i < projCounts; i++)
             {
                 vector2 = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
@@ -99,7 +97,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 getMouseY *= getMouseDist;
                 float speedX4 = getMouseX + Main.rand.Next(-30, 31) * 0.02f;
                 float speedY5 = getMouseY + Main.rand.Next(-30, 31) * 0.02f;
-                Projectile.NewProjectile(player.GetSource_FromThis(),vector2.X, vector2.Y, speedX4, speedY5, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(15));
+                Projectile.NewProjectile(player.GetSource_FromThis(), vector2.X, vector2.Y, speedX4, speedY5, type, damage, knockback, player.whoAmI, 0f, Main.rand.Next(15));
             }
             return false;
         }

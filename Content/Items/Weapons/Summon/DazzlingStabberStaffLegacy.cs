@@ -1,21 +1,11 @@
 ﻿using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -74,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
             CreateRecipe().
                 AddIngredient<UnholyEssence>(9).
                 AddIngredient<DivineGeode>(4).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

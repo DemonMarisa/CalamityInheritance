@@ -23,8 +23,8 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 60;
         }
-        
-      
+
+
         public override void UpdateEquip(Player player)
         {
             player.statLifeMax2 += 250;

@@ -114,7 +114,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 AstralArcanumUI.Toggle();
             }
-            if(CalamityInheritanceKeybinds.QOLUIHotKey.JustPressed)
+            if (CalamityInheritanceKeybinds.QOLUIHotKey.JustPressed)
             {
                 DraedonsPanelUI.Active = !DraedonsPanelUI.Active;
             }

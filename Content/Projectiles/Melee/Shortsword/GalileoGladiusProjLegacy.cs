@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Melee;
@@ -80,12 +79,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
             if (player.whoAmI == Main.myPlayer)
             {
                 var source = player.GetSource_FromThis();
-                if (player.CIMod().GalileoGladiusCounter<= 0)
-                {
-                    int damage = player.GetWeaponDamage(player.ActiveItem()) * 2;
-                    CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 25f, ProjectileType<GalileosPlanet>(), damage, 15f, player.whoAmI);
-                    player.CIMod().GalileoGladiusCounter = 15;
-                }
+                int damage = player.GetWeaponDamage(player.ActiveItem()) * 2;
+                CalamityUtils.ProjectileRain(source, player.Center, 400f, 100f, 500f, 800f, 25f, ProjectileType<GalileosPlanet>(), damage, 15f, player.whoAmI);
             }
         }
     }

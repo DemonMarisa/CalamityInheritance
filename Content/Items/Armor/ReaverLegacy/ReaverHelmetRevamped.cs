@@ -1,20 +1,18 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Buffs.Summon;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.ArmorProj;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ReaverHelmetRevamped : CIArmor, ILocalizedModType 
+    public class ReaverHelmetRevamped : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -39,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
             player.armorEffectDrawShadowSubtle = true;
             player.armorEffectDrawOutlines = true;
         }
-        
+
         public override void UpdateArmorSet(Player player)
         {
             var modPlayer1 = player.CIMod();
@@ -77,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemType<PerennialBar>(),5)
+            .AddIngredient(ItemType<PerennialBar>(), 5)
             .AddIngredient(ItemID.JungleSpores, 4)
             .AddIngredient(ItemType<EssenceofEleum>(), 1)
             .AddTile(TileID.MythrilAnvil)

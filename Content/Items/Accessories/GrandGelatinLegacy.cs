@@ -1,9 +1,9 @@
-﻿using System;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
+using System;
+using Terraria;
 using Terraria.ID;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -11,10 +11,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:24,
-            itemRare:ItemRarityID.LightRed,
-            itemValue:CIShopValue.RarityPriceLightRed
+            itemWidth: 20,
+            itemHeight: 24,
+            itemRare: ItemRarityID.LightRed,
+            itemValue: CIShopValue.RarityPriceLightRed
         );
         public override void ExSSD()
         {
@@ -39,8 +39,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 .AddIngredient<CleansingJelly>()
                 .AddIngredient<LifeJelly>()
                 .AddIngredient<VitalJelly>()
-                .AddIngredient(ItemID.SoulofLight,4)
-                .AddIngredient(ItemID.SoulofNight,4)
+                .AddIngredient(ItemID.SoulofLight, 4)
+                .AddIngredient(ItemID.SoulofNight, 4)
                 .AddTile(TileID.Anvils)
                 .Register();
         }

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
     [AutoloadEquip(EquipType.Head)]
     public class AncientVictideHeadRanged : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            CalamityPlayer modPlayer= player.Calamity();
+            CalamityPlayer modPlayer = player.Calamity();
             modPlayer.victideSet = true;
             player.ignoreWater = true;
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))

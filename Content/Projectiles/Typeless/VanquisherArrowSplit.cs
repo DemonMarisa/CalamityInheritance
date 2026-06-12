@@ -1,9 +1,9 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {

@@ -1,19 +1,18 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using System;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Weapons.Melee;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeStellarContemptProj: ModProjectile, ILocalizedModType
+    public class MeleeStellarContemptProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => GetInstance<MeleeStellarContempt>().Texture;

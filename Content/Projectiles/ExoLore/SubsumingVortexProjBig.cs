@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
@@ -10,6 +8,7 @@ using CalamityMod.Projectiles.Melee;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
@@ -66,9 +65,9 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         //To make sure it won't block SCal proj.
         public override void OnKill(int timeLeft)
         {
-            int j = Main.rand.Next(1,4);
-            int pCounts = Main.rand.Next(1,4);
-            float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+            int j = Main.rand.Next(1, 4);
+            int pCounts = Main.rand.Next(1, 4);
+            float hue = (j / (float)(pCounts - 1f) + Main.rand.NextFloat(0.3f)) % 1f;
             Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
             int magic = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, vel, ProjectileType<ExobeamSlash>(), Projectile.damage, Projectile.knockBack, Projectile.owner, hue);
             //标记这个射弹为魔法伤害

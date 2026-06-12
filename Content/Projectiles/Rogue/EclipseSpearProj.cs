@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
@@ -7,10 +5,8 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
-using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -108,7 +104,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float pSummonPosX = tarPos.X + Main.rand.NextFloat(-200f, 201f);
                 //生成的高度
                 float pSummonPosY = tarPos.Y - Main.rand.NextFloat(670f, 1080f);
-                Vector2 pPos = new (pSummonPosX, pSummonPosY);
+                Vector2 pPos = new(pSummonPosX, pSummonPosY);
                 //速度
                 Vector2 speed = tarPos - pPos;
                 //水平速度一点随机读
@@ -127,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public void SpawndDust(Vector2 projPos)
         {
-            for (int i = 0; i < 2 ; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int d = Dust.NewDust(projPos, Projectile.width, Projectile.height, CIDustID.DustAspalt, 0f, 0f, 0, default, 0.5f);
                 Main.dust[d].noGravity = true;

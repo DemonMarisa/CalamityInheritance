@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Verdant : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.Yoyo[Item.type] = true;

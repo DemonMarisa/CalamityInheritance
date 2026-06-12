@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
@@ -10,15 +9,12 @@ using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static CalamityInheritance.Utilities.CIFunction;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
 {
@@ -187,7 +183,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range
             Projdirection.SafeNormalize(Vector2.UnitX);
             for (int i = 0; i < 2; i++)
             {
-                Vector2 bombPos = Projectile.Center + new Vector2(15f , 0).RotatedBy(Projectile.rotation);
+                Vector2 bombPos = Projectile.Center + new Vector2(15f, 0).RotatedBy(Projectile.rotation);
                 int yDirection = (i == 0).ToDirectionInt();
                 Vector2 bombVel = Projdirection.RotatedBy(0.2f * yDirection);
 

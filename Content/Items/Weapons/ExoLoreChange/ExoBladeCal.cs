@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles.Melee;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
@@ -17,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
     {
         public override bool InstancePerEntity => true;
         public override bool AppliesToEntity(Item item, bool lateInstatiation) => item.type == ItemType<Exoblade>();
-       
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             Player p = Main.LocalPlayer;
@@ -35,28 +34,28 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
         public override bool AppliesToEntity(Projectile entity, bool lateInstantiation) => entity.type == ProjectileType<ExobladeProj>() || entity.type == ProjectileType<Exoboom>();
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
-            
+
             Player player = Main.player[projectile.owner];
             //生成的一瞬间会往不同的方向发射一些星流光束
             int pCounts = 2;
             //2 4 8 16
-            for (int i = 2; i <= 16; i *=2)
+            for (int i = 2; i <= 16; i *= 2)
                 //最高+4, 总6
                 pCounts += Main.rand.NextBool(i) ? 1 : 0;
-            
+
             //大爆炸生成的数量需要缩水至少一半, 因为无敌帧的原因他可以造成双判->三判
             if (projectile.type == ProjectileType<Exoboom>())
-                pCounts /=2;
+                pCounts /= 2;
 
             //给CD，这里CD是必要的，不然这个刀片会无限生成多个光束
             //如果是斩击爆炸，直接绕过这个CD
-            if ((player.CIMod().PanelsLoreExo || player.CIMod().LoreExo)&& (player.CIMod().GlobalFireDelay == 0 || projectile.type == ProjectileType<Exoboom>()) && projectile.owner == Main.myPlayer)
+            if ((player.CIMod().PanelsLoreExo || player.CIMod().LoreExo) && (player.CIMod().GlobalFireDelay == 0 || projectile.type == ProjectileType<Exoboom>()) && projectile.owner == Main.myPlayer)
             {
-                for (int j = 0; j < pCounts; j++) 
+                for (int j = 0; j < pCounts; j++)
                 {
-                    float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+                    float hue = (j / (float)(pCounts - 1f) + Main.rand.NextFloat(0.3f)) % 1f;
                     Vector2 vel = new Vector2(6f, 0f).RotatedByRandom(MathHelper.TwoPi);
-                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), target.Center, vel, ProjectileType<Exobeam>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue); 
+                    int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), target.Center, vel, ProjectileType<Exobeam>(), projectile.damage / 2, projectile.knockBack, projectile.owner, hue);
                     Main.projectile[p].DamageType = DamageClass.Melee;
                     Main.projectile[p].scale *= 0.9f;
                     //启用星流传颂的时候，星流束会+1判，但我们这里只想让星流束打三判。因此给二判。

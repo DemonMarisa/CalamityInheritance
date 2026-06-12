@@ -2,18 +2,17 @@
 using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DukeLegendaryRazor: ModProjectile, ILocalizedModType
+    public class DukeLegendaryRazor : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityMod/Projectiles/TornadoProj";
-        public bool SkyFall = false; 
+        public bool SkyFall = false;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2;
@@ -55,14 +54,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.dust[blueDust].noGravity = true;
                     Main.dust[blueDust].velocity *= 0f;
                 }
-     
+
             }
             //非从天而降的射弹开始不会释放轨迹
-            else if(Projectile.ai[0] == 0f)
+            else if (Projectile.ai[0] == 0f)
                 TrailLine();
             //彻底发挥轮椅之光
             // 砍了一刀，搜索范围太大会导致打长直boss非常卡
-            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 1600f : 450f; 
+            float homingDist = Main.player[Projectile.owner].CIMod().DukeTier1 ? 1600f : 450f;
             NPC getTar = CIFunction.FindClosestTarget(Projectile, homingDist, true, false);
             switch (Projectile.ai[0])
             {

@@ -1,10 +1,10 @@
-using CalamityMod.Dusts;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
-using CalamityMod;
 using Terraria.ID;
+using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
 {
     public class CatastropheBall : ModProjectile, ILocalizedModType

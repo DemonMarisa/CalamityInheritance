@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using System;

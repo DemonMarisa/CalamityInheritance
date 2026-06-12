@@ -1,10 +1,10 @@
 ﻿using LAP.Assets.TextureRegister;
+using LAP.Core.Enums;
 using LAP.Core.ParticleSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using LAP.Core.Enums;
 
 namespace CalamityInheritance.Particles
 {

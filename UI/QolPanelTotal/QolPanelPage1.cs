@@ -1,20 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Core;
-using CalamityInheritance.System.Configs;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Terraria.Localization;
-using ReLogic.Graphics;
 using Terraria.GameContent;
+using Terraria.Localization;
 using Terraria.UI.Chat;
 
 namespace CalamityInheritance.UI.QolPanelTotal
@@ -83,7 +76,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             // -321为第一行的对应偏移
             NorDrawImage(spriteBatch, textOutLine, PageRightCenter, PageRightFirstLine);
             DrawSkipBtn(genericHeadPageData, PageRightCenter + 215, PageRightFirstLine, ref Page, 1); // 215为额外的偏移，就是贴图宽度的一半左右
-            DrawImage(spriteBatch, TextLine, PageRightCenter, PageRightFirstLine, 388 , TextLine.Height, -110);// 默认截取387比较合理 110为左侧的文字像素占用
+            DrawImage(spriteBatch, TextLine, PageRightCenter, PageRightFirstLine, 388, TextLine.Height, -110);// 默认截取387比较合理 110为左侧的文字像素占用
             // 140为文字的X位置，-337是Y位置，我也不知道为啥337比较合适
             // 改为了常规数据后应用偏移，-321 - 16 = -337
             NewDrawTextLeftOrigin(spriteBatch, HeadTextLore, 1f, 1f, TextOffsetX, PageRightFirstLine + 5, 1.5f, TextColor, Color.DarkSlateGray, 400f, 0f);
@@ -190,7 +183,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #endregion
         #region 可变绘制区域的图片绘制
-        public static void DrawImage(SpriteBatch spriteBatch,Texture2D texture,float xPageBottom, float yPageBottom, int DrawWidth, int DrawHeight, int startPosX)
+        public static void DrawImage(SpriteBatch spriteBatch, Texture2D texture, float xPageBottom, float yPageBottom, int DrawWidth, int DrawHeight, int startPosX)
         {
             Texture2D targetTexture = texture;
             // 绘制坐标

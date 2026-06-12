@@ -1,13 +1,13 @@
+using CalamityInheritance.Content.Items.Ammo.FiniteUse;
+using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
+using CalamityInheritance.Utilities;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using Terraria.Audio;
-using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
-using CalamityInheritance.Content.Items.Ammo.FiniteUse;
 
 namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
 {

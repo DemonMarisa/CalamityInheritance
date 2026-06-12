@@ -1,17 +1,11 @@
-﻿using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Projectiles.Typeless.Heal;
-using CalamityMod;
-using CalamityMod.Dusts;
-using CalamityMod.Projectiles;
+﻿using LAP.Assets.TextureRegister;
 using LAP.Content.Projectiles.LifeStealProj;
 using LAP.Core.MiscDate;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

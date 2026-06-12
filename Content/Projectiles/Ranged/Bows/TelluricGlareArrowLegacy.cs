@@ -3,9 +3,9 @@ using CalamityMod.Dusts;
 using LAP.Assets.Effects;
 using LAP.Assets.TextureRegister;
 using LAP.Core.Enums;
+using LAP.Core.Graphics.DeepGlow;
 using LAP.Core.Graphics.PixelatedRender;
 using LAP.Core.Graphics.Primitives.Trail;
-using LAP.Core.ParticleSystem;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
             if (OldPos.Count > 20)
                 OldPos.RemoveAt(0);
             if (OldRot.Count > 20)
-                OldRot.RemoveAt(0); 
+                OldRot.RemoveAt(0);
         }
 
         private void RestrictLifetime()
@@ -86,13 +86,8 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
         {
             if (Projectile.timeLeft > Lifetime - 10)
                 return;
-            /*
             Main.spriteBatch.End();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null);
-            */
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, SamplerState.PointWrap, DepthStencilState.None, RasterizerState.CullNone, null);
-            
             Texture2D texture = LAPTextureRegister.StandardFlow1.Value;
             DrawTrail(texture, 1f, ShaderColorOne, ShaderColorTwo, 50f, 2f);
             DrawTrail(texture, 0.2f, Color.White, ShaderEndColor, 100f, 4);
@@ -100,22 +95,29 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
             DrawTrail(texture, 0.4f, Color.Yellow, Color.Orange, 100f, 2);
             Texture2D texture_Fire = LAPTextureRegister.StandardFlow3.Value;
             DrawTrail(texture_Fire, 0.4f, Color.Yellow, Color.Orange, 25, 2);
-            LAPContent.ReSetToEndShader_Pixel(); 
+            LAPContent.ReSetToEndShader_Pixel();
         }
         public override bool PreDraw(ref Color lightColor)
         {
             if (Projectile.timeLeft > Lifetime - 10)
                 return false;
+            DeepGlow.SubmitCustomGlow(() =>
+            {
+                LAPUtilities.ReSetToBeginShader();
+                int h = Projectile.velocity.X >= 0 ? 3 : -3;
+                Texture2D texture = LAPTextureRegister.StandardFlow1.Value;
+                DrawTrail(texture, 1f, Color.Red, ShaderColorTwo, 50f, 2f, h);
+                DrawTrail(texture, 0.2f, Color.Red, ShaderEndColor, 100f, 4, h);
+                DrawTrail(texture, 0.2f, Color.Orange, ShaderEndColor, 50, 4, h);
+                DrawTrail(texture, 0.4f, Color.Orange, Color.Orange, 100f, 2, h);
+                Texture2D texture_Fire = LAPTextureRegister.StandardFlow3.Value;
+                DrawTrail(texture_Fire, 0.4f, Color.Orange, Color.Orange, 25, 2, h);
+                LAPUtilities.ReSetToEndShader();
+            });
             PixelatedRenderManger.BeginDrawProj = true;
-            LAPUtilities.ReSetToBeginShader();
-            Texture2D texture_Bloom = LAPTextureRegister.BloomLine.Value;
-            Vector2 offset = new Vector2(0, 3);
-            DrawCustomTrail(texture_Bloom, offset, 0.7f, Color.Orange * 0.75f, Color.Orange, 0f, 1f);
-            DrawCustomTrail(texture_Bloom, offset, 0.5f, Color.Brown, Color.Orange, 0f, 1f);
-            LAPUtilities.ReSetToEndShader();
             return false;
         }
-        public void DrawCustomTrail(Texture2D texture, Vector2 ofset,float heigh, Color begin, Color end, float SpeedMult, float widthmult)
+        public void DrawTrail(Texture2D texture, float heigh, Color begin, Color end, float SpeedMult, float widthmult, int yoffset = 0)
         {
             Effect effect = LAPShaderRegister.StandardFlowShader.Value;
             effect.Parameters["FlowTextureSize"].SetValue(texture.Size());
@@ -125,38 +127,14 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Bows
             effect.Parameters["uFadeoutLength"].SetValue(1f);
             effect.Parameters["uFadeinLength"].SetValue(0.2f);
             effect.CurrentTechnique.Passes[0].Apply();
-            List<TrailDrawDate> trailDrawDate = [];
+            List<TrailDrawData> trailDrawDate = [];
             DrawSetting drawSetting = new(texture);
             for (int i = 0; i < OldPos.Count; i++)
             {
                 float progress = (float)i / OldPos.Count;
                 Color color = LAPUtilities.LerpColor(begin, end, progress);
-                Vector2 DrawPos = OldPos[i] - Main.screenPosition + new Vector2(96, 0).RotatedBy(Projectile.rotation) + ofset;
-                TrailDrawDate TrailDrawDate = new(DrawPos, color, new Vector2(0, 40 * heigh), Projectile.rotation);
-                trailDrawDate.Add(TrailDrawDate);
-            }
-            Main.graphics.GraphicsDevice.Textures[0] = texture;
-            Main.graphics.GraphicsDevice.SamplerStates[0] = SamplerState.PointWrap;
-            TrailRender.RenderTrail(trailDrawDate.ToArray(), drawSetting);
-        }
-        public void DrawTrail(Texture2D texture, float heigh, Color begin, Color end, float SpeedMult, float widthmult)
-        {
-            Effect effect = LAPShaderRegister.StandardFlowShader.Value;
-            effect.Parameters["FlowTextureSize"].SetValue(texture.Size());
-            effect.Parameters["targetSize"].SetValue(new Vector2(texture.Width * widthmult, texture.Height));
-            effect.Parameters["uTime"].SetValue(Main.GlobalTimeWrappedHourly * SpeedMult);
-            effect.Parameters["uColor"].SetValue(begin.ToVector4());
-            effect.Parameters["uFadeoutLength"].SetValue(1f);
-            effect.Parameters["uFadeinLength"].SetValue(0.2f);
-            effect.CurrentTechnique.Passes[0].Apply();
-            List<TrailDrawDate> trailDrawDate = [];
-            DrawSetting drawSetting = new(texture);
-            for (int i = 0; i < OldPos.Count; i++)
-            {
-                float progress = (float)i / OldPos.Count;
-                Color color = LAPUtilities.LerpColor(begin, end, progress);
-                Vector2 DrawPos = OldPos[i] - Main.screenPosition + new Vector2(96, 0).RotatedBy(Projectile.rotation);
-                TrailDrawDate TrailDrawDate = new(DrawPos, color, new Vector2(0, 40 * heigh), Projectile.rotation);
+                Vector2 DrawPos = OldPos[i] - Main.screenPosition + new Vector2(96, yoffset).RotatedBy(Projectile.rotation);
+                TrailDrawData TrailDrawDate = new(DrawPos, color, new Vector2(0, 40 * heigh), Projectile.rotation);
                 trailDrawDate.Add(TrailDrawDate);
             }
             Main.graphics.GraphicsDevice.Textures[0] = texture;

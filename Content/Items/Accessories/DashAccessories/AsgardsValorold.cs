@@ -21,11 +21,11 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const int ShieldSlamIFrames = 12;
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:38,
-            itemHeight:44,
-            itemRare:ItemRarityID.Lime,
-            itemValue:CIShopValue.RarityPriceLime,
-            itemDefense:16
+            itemWidth: 38,
+            itemHeight: 44,
+            itemRare: ItemRarityID.Lime,
+            itemValue: CIShopValue.RarityPriceLime,
+            itemDefense: 16
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
             player.buffImmune[BuffType<BrimstoneFlames>()] = true; //以及硫磺火
 
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
-            { 
+            {
                 player.endurance += 0.25f;
             }
         }

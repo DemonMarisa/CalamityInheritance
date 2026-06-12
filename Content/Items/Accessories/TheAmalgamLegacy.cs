@@ -2,13 +2,11 @@ using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
@@ -27,11 +25,11 @@ namespace CalamityInheritance.Content.Items.Accessories
         //在下面会直接被替换了
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:24,
-            itemRare:ItemRarityID.Red,
-            itemValue:CIShopValue.RarityPriceRed,
-            itemDefense:10
+            itemWidth: 20,
+            itemHeight: 24,
+            itemRare: ItemRarityID.Red,
+            itemValue: CIShopValue.RarityPriceRed,
+            itemDefense: 10
         );
         public override void ExSSD()
         {

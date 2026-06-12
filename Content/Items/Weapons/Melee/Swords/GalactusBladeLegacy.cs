@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 {
                     mouseYDist = 20f;
                 }
-                float mouseDistance = new Vector2 (mouseXDist,mouseYDist).Length();
+                float mouseDistance = new Vector2(mouseXDist, mouseYDist).Length();
                 mouseDistance = cometSpeed / mouseDistance;
                 mouseXDist *= mouseDistance;
                 mouseYDist *= mouseDistance;

@@ -1,6 +1,4 @@
-using CalamityInheritance.CICooldowns;
 using CalamityInheritance.Content.Items.Armor.AncientAstral;
-using CalamityMod;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -11,7 +9,7 @@ namespace CalamityInheritance.CIPlayer
     *同时我将玩家类里面的几乎所有成员，除了部分实在是不能乱来的全部更名了
     *现在应该能更容易地看出来这个成员是干嘛的。
     */
-    public partial class CalamityInheritancePlayer: ModPlayer
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
         public int HammerCounts = 0; //用于锤子打击次数的计时
         public bool IfCloneHtting = false; //用于记录克隆的大锤子是否正在击中敌人
@@ -45,11 +43,6 @@ namespace CalamityInheritance.CIPlayer
         public int maliceModeUnderworldTime = 0;
         //远古弑神闪避计时
         public int AncinetGodSlayerDodgeCount = 3;
-        
-        public int AncientAuricDashCache = 0;
-        public int AncientGodSlayerBuffCounter = 0;
-        public int AncientGodSlayerBuffCD = 0;
-        public int GalileoGladiusCounter = 0;
         #region 林海复活
         // 用于计时
         public int SilvaRebornTimer = 0;
@@ -68,14 +61,6 @@ namespace CalamityInheritance.CIPlayer
                 if (yharimArmorinvincibility > 0)
                     yharimArmorinvincibility--;
             }
-            if (AncientAuricDashCache > 0)
-                AncientAuricDashCache--;
-
-            if (AncientGodSlayerBuffCounter > 0)
-                AncientGodSlayerBuffCounter--;
-
-            if (AncientGodSlayerBuffCD > 0)
-                AncientGodSlayerBuffCD--;
 
             if (summonProjCooldown > 0f)
                 summonProjCooldown -= 1;
@@ -97,9 +82,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (AncientAuricHealCooldown > 0)
                 AncientAuricHealCooldown--;
-
-            if (PerunofYharimCooldown > 0)
-                PerunofYharimCooldown--;
 
             if (AncientBloodflareHeartDropCD > 0)
                 AncientBloodflareHeartDropCD--;
@@ -169,11 +151,6 @@ namespace CalamityInheritance.CIPlayer
 
             if (BuffSubsumingVortexFireRate > 0)
                 BuffSubsumingVortexFireRate--;
-
-            if (!Player.HasCooldown(GodSlayerCooldown.ID) && AncinetGodSlayerDodgeCount <= 0)
-                AncinetGodSlayerDodgeCount = 3;
-            if (GalileoGladiusCounter > 0) 
-                GalileoGladiusCounter--;
             return;
         }
     }

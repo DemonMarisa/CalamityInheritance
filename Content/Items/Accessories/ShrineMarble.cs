@@ -1,4 +1,3 @@
-using System.Numerics;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
@@ -13,10 +12,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:36,
-            itemHeight:42,
-            itemRare:ItemRarityID.Orange,
-            itemValue:CIShopValue.RarityPriceOrange
+            itemWidth: 36,
+            itemHeight: 42,
+            itemRare: ItemRarityID.Orange,
+            itemValue: CIShopValue.RarityPriceOrange
         );
         public override void ExSSD() => Type.ShimmerEach<GladiatorsLocket>();
         public override void SetDefaults()
@@ -39,8 +38,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 }
                 if (player.ownedProjectileCounts[ProjectileType<ShrineMarbleSword>()] < 1)
                 {
-                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSword>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
-                    Projectile.NewProjectile(player.GetSource_FromThis(),player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSwordClone>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSword>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
+                    Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<ShrineMarbleSwordClone>(), (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(20), 6f, Main.myPlayer);
                 }
             }
         }

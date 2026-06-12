@@ -18,10 +18,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:54,
-            itemHeight:26,
-            itemRare:ItemRarityID.Lime,
-            itemValue:CIShopValue.RarityPriceLime
+            itemWidth: 54,
+            itemHeight: 26,
+            itemRare: ItemRarityID.Lime,
+            itemValue: CIShopValue.RarityPriceLime
         );
         public override void ExSSD()
         {
@@ -30,12 +30,12 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if((player.armor[0].type == ItemType<ReaverCapRevamped>()        ||
-                player.armor[0].type == ItemType<ReaverHelmRevamped>()       ||
-                player.armor[0].type == ItemType<ReaverHelmetRevamped>()     ||
-                player.armor[0].type == ItemType<ReaverMaskRevamped>()       ||
-                player.armor[0].type == ItemType<ReaverVisageRevamped>())    &&
-                player.armor[1].type == ItemType<ReaverScaleMailRevamped>()  &&//这个判定给我看呆了
+            if ((player.armor[0].type == ItemType<ReaverCapRevamped>() ||
+                player.armor[0].type == ItemType<ReaverHelmRevamped>() ||
+                player.armor[0].type == ItemType<ReaverHelmetRevamped>() ||
+                player.armor[0].type == ItemType<ReaverMaskRevamped>() ||
+                player.armor[0].type == ItemType<ReaverVisageRevamped>()) &&
+                player.armor[1].type == ItemType<ReaverScaleMailRevamped>() &&//这个判定给我看呆了
                 player.armor[2].type == ItemType<ReaverCuissesRevamped>())
             {
                 player.pickSpeed -= 0.5f;

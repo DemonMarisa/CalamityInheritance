@@ -1,10 +1,9 @@
-using System;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Statbuffs
 {
-    public class SilvaPrice: ModBuff
+    public class SilvaPrice : ModBuff
     {
         public override void SetStaticDefaults()
         {

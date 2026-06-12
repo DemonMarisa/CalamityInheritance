@@ -1,14 +1,14 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Dusts;
 using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

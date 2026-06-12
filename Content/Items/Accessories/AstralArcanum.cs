@@ -1,14 +1,14 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Accessories;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -16,11 +16,11 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:26,
-            itemHeight:26,
+            itemWidth: 26,
+            itemHeight: 26,
             itemRare: RarityType<BlueGreen>(),
-            itemValue:CIShopValue.RarityPriceBlueGreen,
-            itemDefense:12
+            itemValue: CIShopValue.RarityPriceBlueGreen,
+            itemDefense: 12
         );
         public override void ExSSD() => Type.ShimmerEach<Radiance>();
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AstralArcanumUIHotkey);

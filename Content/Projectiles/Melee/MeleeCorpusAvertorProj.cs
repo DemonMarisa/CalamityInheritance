@@ -1,7 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityMod;
-using CalamityMod.Projectiles;
 using LAP.Content.Projectiles.LifeStealProj;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

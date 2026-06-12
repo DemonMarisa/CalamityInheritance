@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Dust.NewDustPerfect(Projectile.Center + Utils.RotatedBy(new Vector2(-16f, 0f), (double)(Projectile.rotation + MathHelper.ToRadians(-90f)), default(Vector2)), 111, (Vector2?)Vector2.Zero, 0, default(Color), 1f).noGravity = true;
             Lighting.AddLight(Projectile.Center, 1f, 1f, 1f);
 
-            if(Projectile.timeLeft > 500)
+            if (Projectile.timeLeft > 500)
             {
                 Projectile.velocity *= 0.97f;
             }

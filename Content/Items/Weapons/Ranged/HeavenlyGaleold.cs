@@ -1,30 +1,30 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Bows;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Rarity;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Items.Weapons.Ranged.Bows;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class HeavenlyGaleold : CIRanged, ILocalizedModType
     {
-        
+
         public const float NormalArrowDamageMult = 1.25f;
         private static int[] ExoArrows;
         private static int[] ExoArrowsExoLore;
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useAmmo = AmmoID.Arrow;
             Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            
+
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo spawnSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -93,22 +93,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     offset -= baseOffset;
 
                 int thisArrowType = type;
-            if (CIConfig.Instance.AmmoConversion == false)
-            {
-                if (type == ProjectileID.WoodenArrowFriendly)
+                if (CIConfig.Instance.AmmoConversion == false)
                 {
-                    if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                    if (type == ProjectileID.WoodenArrowFriendly)
                     {
-                        thisArrowType = Main.rand.Next(ExoArrowsExoLore);
-                    }
-                    else
-                    {
-                        thisArrowType = Main.rand.Next(ExoArrows);
+                        if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                        {
+                            thisArrowType = Main.rand.Next(ExoArrowsExoLore);
+                        }
+                        else
+                        {
+                            thisArrowType = Main.rand.Next(ExoArrows);
+                        }
                     }
                 }
-            }
-            if (CIConfig.Instance.AmmoConversion == true)
-            {
+                if (CIConfig.Instance.AmmoConversion == true)
+                {
                     if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     {
                         thisArrowType = Main.rand.Next(ExoArrowsExoLore);
@@ -133,11 +133,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         => Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Ranged/HeavenlyGaleoldGlow").Value);
 
         public override bool CanConsumeAmmo(Item ammo, Player player)
-            {
-                if (Main.rand.Next(0, 100) < 66)
-                    return false;
-                return true;
-            }
+        {
+            if (Main.rand.Next(0, 100) < 66)
+                return false;
+            return true;
+        }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.LocalPlayer;

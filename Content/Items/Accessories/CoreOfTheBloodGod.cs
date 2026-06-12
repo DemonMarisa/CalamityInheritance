@@ -1,4 +1,6 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
@@ -7,8 +9,6 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -16,10 +16,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:48,
+            itemWidth: 48,
+            itemHeight: 48,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
         {

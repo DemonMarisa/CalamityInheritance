@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod.Buffs.StatDebuffs;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -7,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Books
 {
-    public class SupremeDustProjectile: GeneralDamageProj
+    public class SupremeDustProjectile : GeneralDamageProj
     {
         public override ProjDamageType UseDamageClass => ProjDamageType.Magic;
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;

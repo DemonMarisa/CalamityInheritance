@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<LumiStriker>().
                 AddIngredient<PhantomLance>().
                 AddIngredient<RuinousSoul>(4).
-                AddIngredient<Necroplasm> (20).
+                AddIngredient<Necroplasm>(20).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }

@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
@@ -17,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PristineFuryLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public int frameCounter = 0;
         public int frame = 0;
         public static int BaseDamage = 77;
@@ -113,10 +112,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (CIServerConfig.Instance.LegendaryitemsRecipes == true)
             {
-               CreateRecipe().
-                    AddIngredient<KnowledgeProvidence>().
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
+                CreateRecipe().
+                     AddIngredient<KnowledgeProvidence>().
+                     AddTile(TileID.LunarCraftingStation).
+                     Register();
             }
         }
     }

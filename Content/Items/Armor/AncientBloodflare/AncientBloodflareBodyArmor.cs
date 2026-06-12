@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
     [AutoloadEquip(EquipType.Body)]
     public class AncientBloodflareBodyArmor : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientBloodflare
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 45;
         }
-        
+
         public override void UpdateEquip(Player player)
         {
             player.statLifeMax2 += 300;

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee.Swords.AOTCNew;
 using CalamityInheritance.Utilities;
 using LAP.Core.LAPUI.CustomCD;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework;
 using ReLogic.Graphics;
 using Terraria;
 using Terraria.Localization;
-using Terraria.Map;
 using Terraria.ModLoader;
 using Terraria.UI.Chat;
 
@@ -18,7 +16,7 @@ namespace CalamityInheritance.Content.CICooldowns
         public int CurAOTCCharge => Main.LocalPlayer.CIMod().CurAOTCCharge;
         public int MaxAOTCCharge => CalamityInheritancePlayer.MaxAOTCCharge;
         public override Rectangle OverLayerRec => new Rectangle(0, 0, CDTexture_OverLayer.Width, (int)(CDTexture_OverLayer.Height - (CDTexture_OverLayer.Height * (CurAOTCCharge / (float)MaxAOTCCharge))));
-        public override LocalizedText DisplayName() =>  CIFunction.GetText($"UI.Cooldowns.AOTCCharge");
+        public override LocalizedText DisplayName() => CIFunction.GetText($"UI.Cooldowns.AOTCCharge");
         public override void OnRegister()
         {
             Buff = false;

@@ -1,9 +1,9 @@
-﻿using System;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;

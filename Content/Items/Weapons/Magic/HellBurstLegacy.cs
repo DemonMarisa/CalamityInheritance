@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HellBurstLegacy : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             }
             else
             {
-                Projectile.NewProjectile(source,position,velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
-                Projectile.NewProjectile(source,position,-velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, -velocity, ProjectileType<FlameBeamTip>(), damage, knockback, player.whoAmI);
             }
             return false;
         }

@@ -1,9 +1,8 @@
-﻿using Terraria.GameContent.Creative;
+﻿using CalamityInheritance.Content.Items.Armor.Victide;
+using CalamityInheritance.Content.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Armor.Victide;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -11,11 +10,11 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:24,
-            itemHeight:28,
-            itemRare:ItemRarityID.Green,
-            itemValue:CIShopValue.RarityPriceGreen,
-            itemDefense:2
+            itemWidth: 24,
+            itemHeight: 28,
+            itemRare: ItemRarityID.Green,
+            itemValue: CIShopValue.RarityPriceGreen,
+            itemDefense: 2
         );
 
         public override void UpdateAccessory(Player player, bool hideVisual)

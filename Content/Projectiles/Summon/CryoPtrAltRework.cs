@@ -1,4 +1,3 @@
-using System;
 using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -53,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             //整个AI分两个阶段：环绕阶段与开始攻击的阶段，采用timeLeft去执行
             if (Projectile.timeLeft > AttackTimeChanger)
             {
-                
+
             }
             else
             {
@@ -65,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     FloatyDist += 5;
                 else
                     FloatyDist -= 10;
-                
+
             }
         }
 

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class VictideSpearBall: ModProjectile, ILocalizedModType
+    public class VictideSpearBall : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()

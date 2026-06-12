@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ThrowerWulfrumMaskLegacy : CIArmor, ILocalizedModType 
+    public class ThrowerWulfrumMaskLegacy : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Wulfrum";
         public override void SetStaticDefaults()
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
         {
             CalamityPlayer calp = player.Calamity();
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            calp.wearingRogueArmor = true; 
+            calp.wearingRogueArmor = true;
             player.GetDamage<RogueDamageClass>() += 0.03f; //3%盗贼伤害
             calp.rogueStealthMax += 0.5f; //50潜伏值
             player.setBonus = this.GetLocalizedValue("SetBonus");

@@ -2,10 +2,7 @@
 using CalamityInheritance.Content.Projectiles.Melee.Yoyos;
 using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee.Yoyos;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;

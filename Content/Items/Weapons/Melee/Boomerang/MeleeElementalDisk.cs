@@ -3,10 +3,11 @@ using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
-    public class MeleeElementalDisk : CIMelee, ILocalizedModType 
+    public class MeleeElementalDisk : CIMelee, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

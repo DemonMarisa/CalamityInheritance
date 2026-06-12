@@ -5,7 +5,6 @@ using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Utilities;
 using Terraria;

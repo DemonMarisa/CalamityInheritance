@@ -1,10 +1,9 @@
-using CalamityMod;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons
 {
-    public abstract class CIRanged: ModItem
+    public abstract class CIRanged : ModItem
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Ranged";
         public override void SetStaticDefaults()

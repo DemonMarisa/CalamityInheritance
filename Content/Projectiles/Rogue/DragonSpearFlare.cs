@@ -1,22 +1,16 @@
-using System;
-using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.VanillaArmorChanges;
-using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Text;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class DragonSpearFlare: ModProjectile, ILocalizedModType
+    public class DragonSpearFlare : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override void SetStaticDefaults()
@@ -32,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
             //只有参考意义, 实际情况下AI会一直试图更新这个东西
-            Projectile.timeLeft = 200; 
+            Projectile.timeLeft = 200;
             Projectile.width = 56;
             Projectile.height = 64;
             Projectile.tileCollide = false;
@@ -41,12 +35,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool? CanHitNPC(NPC target) => Projectile.localAI[1] > 15f;
         public override void SendExtraAI(BinaryWriter writer)
         {
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
                 writer.Write(Projectile.localAI[i]);
-        } 
+        }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
                 Projectile.localAI[i] = reader.ReadSingle();
         }
         public override void AI()
@@ -55,9 +49,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             //使射弹上升过程中受到重力影响
             if (Main.rand.NextBool(2))
-            TrailDust();
+                TrailDust();
             HomingAI();
-            
+
         }
         public void HomingAI()
         {
@@ -66,18 +60,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 30f && Projectile.velocity.Y < 0f)
             {
-                Projectile.velocity.Y += 0.42f; 
+                Projectile.velocity.Y += 0.42f;
             }
-            Projectile.localAI[1] += 1f; 
-            if(Projectile.localAI[1] >= 10f)
+            Projectile.localAI[1] += 1f;
+            if (Projectile.localAI[1] >= 10f)
             {
                 CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             }
             if (Projectile.localAI[1] < 20f) Projectile.timeLeft = 200;
         }
-        public void TrailDust() 
+        public void TrailDust()
         {
-            for (int i = 0; i < 2 ; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Pixie, 0f, 0f, 0, default, 0.5f);
                 Main.dust[d].noGravity = true;

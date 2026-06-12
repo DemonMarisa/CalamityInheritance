@@ -1,11 +1,11 @@
-﻿using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityMod.Items.Accessories;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -13,12 +13,12 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:22,
+            itemWidth: 20,
+            itemHeight: 22,
             itemRare: RarityType<CatalystViolet>(),
-            itemValue:CIShopValue.RarityPriceCatalystViolet,
-            itemDefense:30
-        );   
+            itemValue: CIShopValue.RarityPriceCatalystViolet,
+            itemDefense: 30
+        );
         public int dragonTimer = 60;
         public override void ExSSD()
         {

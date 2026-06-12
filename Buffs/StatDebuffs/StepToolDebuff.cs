@@ -21,7 +21,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
         }
         internal static void DrawEffects(NPC npc)
         {
-            if(Main.rand.NextBool(4))
+            if (Main.rand.NextBool(4))
             {
                 Dust dust = Dust.NewDustDirect(npc.Center, 20, 20, DustID.Dirt);
                 dust.noGravity = false;

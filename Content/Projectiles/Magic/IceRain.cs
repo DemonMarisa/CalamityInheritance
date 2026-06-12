@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
@@ -11,9 +9,9 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
 
-    public class IceRain: ModProjectile, ILocalizedModType
+    public class IceRain : ModProjectile, ILocalizedModType
     {
-        public new string LocalizationCategory => "Content.Projectiles.Magic" ;
+        public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
@@ -50,18 +48,18 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.rotation += 0.5f;
             Projectile.ai[0] += 1f;
             // CreateDust();
-            if(Projectile.ai[0] > 30f) //在原代码，这个弹幕是试图去找敌人的而不是什么别的，这里则直接改成了，直接追踪
+            if (Projectile.ai[0] > 30f) //在原代码，这个弹幕是试图去找敌人的而不是什么别的，这里则直接改成了，直接追踪
             {
-                if(Projectile.ai[0] < 40f)
-                    Projectile.velocity *=0.5f;
-                if(Projectile.ai[0] == 42f)
+                if (Projectile.ai[0] < 40f)
+                    Projectile.velocity *= 0.5f;
+                if (Projectile.ai[0] == 42f)
                     SignalSend();
-                if(Projectile.ai[0] > 45f)
+                if (Projectile.ai[0] > 45f)
                 {
                     Projectile.rotation += Projectile.velocity.ToRotation() + MathHelper.PiOver2;
                     CIFunction.HomeInOnNPC(Projectile, true, 1800f, 12f, 10f);
                 }
-            }   
+            }
         }
 
         private void DoGeneric() => CreateDust();
@@ -97,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
-            for(int i = 0; i < 5; i ++)
+            for (int i = 0; i < 5; i++)
                 Dust.NewDust(Projectile.Center, Projectile.width, Projectile.height, DustID.IceRod, Projectile.velocity.X, Projectile.velocity.Y);
         }
 

@@ -1,24 +1,21 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Projectiles.Ranged;
+using CalamityMod.Sounds;
+using LAP.Content.RecipeGroupAdd;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using CalamityMod.Sounds;
-using Terraria.Audio;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using LAP.Content.RecipeGroupAdd;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ChargedDartRifle : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -43,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 22f;
             Item.shoot = ProjectileType<ChargedBlast>();
             Item.useAmmo = AmmoID.Dart;
-            
+
         }
 
         public override Vector2? HoldoutOffset()

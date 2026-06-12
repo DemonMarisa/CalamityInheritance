@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
-using Terraria.Audio;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
             if (Projectile.timeLeft < halfDura)
                 progression = Projectile.timeLeft / halfDura;
             else
-                progression = (dura - Projectile.timeLeft ) / halfDura;
-            
+                progression = (dura - Projectile.timeLeft) / halfDura;
+
             //让矛开始移动
             Projectile.Center = owner.MountedCenter + Vector2.SmoothStep(Projectile.velocity * RangeMin, Projectile.velocity * RangeMax, progression);
             if (Projectile.velocity == Projectile.velocity * RangeMax / 2)

@@ -1,11 +1,11 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod;
-using Terraria.Audio;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod;
 using CalamityMod.Items.DraedonMisc;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.DraedonStructures;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Tools
 {

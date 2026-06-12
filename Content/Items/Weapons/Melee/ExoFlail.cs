@@ -1,30 +1,30 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.Melee;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Rarity;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
-using Terraria.Localization;
-using CalamityMod.Items.Weapons.DraedonsArsenal;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.DraedonsArsenal;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ExoFlail : CIMelee, ILocalizedModType
     {
-        
+
 
         public static float Speed = 34f;
 
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item101;
             Item.channel = true;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.shoot = ProjectileType<ExoFlailProj>();
             Item.shootSpeed = 24f;
@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 hitCount++;
                 float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
@@ -121,17 +121,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddTile<DraedonsForge>().
                 Register();
 
-             CreateRecipe().
-                AddIngredient<DragonPow>().
-                AddIngredient<PulseDragon>().
-                AddIngredient<CrescentMoon>().
-                AddIngredient<ClamCrusher>().
-                DisableDecraft().
-                AddIngredient<AncientMiracleMatter>().
-                AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
-                DisableDecraft().
-                AddTile<DraedonsForge>().
-                Register();
+            CreateRecipe().
+               AddIngredient<DragonPow>().
+               AddIngredient<PulseDragon>().
+               AddIngredient<CrescentMoon>().
+               AddIngredient<ClamCrusher>().
+               DisableDecraft().
+               AddIngredient<AncientMiracleMatter>().
+               AddConsumeItemCallback(CIRecipesCallback.DConsumeMatter).
+               DisableDecraft().
+               AddTile<DraedonsForge>().
+               Register();
         }
     }
 }

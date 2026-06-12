@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class AlphaRayYShape: ModProjectile, ILocalizedModType
+    public class AlphaRayYShape : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;

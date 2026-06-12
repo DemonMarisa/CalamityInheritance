@@ -1,18 +1,18 @@
-﻿using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Tiles.FurnitureAncient;
+using CalamityMod.Tiles.FurnitureMonolith;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 using AshenAltar = CalamityMod.Tiles.Furniture.CraftingStations.AshenAltar;
 using PlagueInfuser = CalamityMod.Tiles.Furniture.CraftingStations.PlagueInfuser;
 using VoidCondenser = CalamityMod.Tiles.Furniture.CraftingStations.VoidCondenser;
-using CalamityMod.Tiles.FurnitureAncient;
-using CalamityMod.Tiles.FurnitureMonolith;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
-    public class AcceleratorT2Tile: ModTile
+    public class AcceleratorT2Tile : ModTile
     {
         public override void SetStaticDefaults()
         {

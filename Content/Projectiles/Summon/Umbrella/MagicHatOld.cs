@@ -1,18 +1,18 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
-    public class MagicHatOld : ModProjectile, ILocalizedModType 
+    public class MagicHatOld : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         public const float Range = 1500.0001f;

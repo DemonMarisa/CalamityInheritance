@@ -1,20 +1,15 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -58,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Projectile.CalamityInheritance().ProjNewAI[i] = Main.rand.NextFloat(MathHelper.TwoPi);
             }
         }
-        
+
         public override void AI()
         {
             HandleOpacity();
@@ -93,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             // 是否是持续的光束
             bool isSustainedBeam = Projectile.ai[2] == 1f;
             int parent = (int)Projectile.ai[1];
-            if(isSustainedBeam)
+            if (isSustainedBeam)
             {
                 // 更新位置
                 Vector2 mountedCenter = Main.projectile[parent].Center;
@@ -123,8 +118,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         public override bool PreDraw(ref Color lightColor)
         {
             // ai2为1时，不绘制，在发射点绘制
-            if(Projectile.ai[2] == 1)
-                return false; 
+            if (Projectile.ai[2] == 1)
+                return false;
             DrawLaserBeam();
             return false;
         }
@@ -173,7 +168,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
                 Main.EntitySpriteDraw(headTexture, Projectile.Center - Main.screenPosition,
                     rect, color * 0.8f, projAI[i],// projAI[i]为绘制星星时的随机旋转
-                    origin, scale * Scale,  
+                    origin, scale * Scale,
                     SpriteEffects.None);
             }
         }
@@ -195,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Rectangle rect = new Rectangle(0, 0, length, texture.Height);
             Vector2 scale = new Vector2(1, Projectile.localAI[0] / 9f);
             Vector2 origin = new Vector2(0, texture.Height / 2);
-            Main.EntitySpriteDraw(texture,Projectile.Center - Main.screenPosition,
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition,
                 new Rectangle(0, 0, length, texture.Height),
                 color, rotation, origin, scale * Scale,
                 SpriteEffects.None);

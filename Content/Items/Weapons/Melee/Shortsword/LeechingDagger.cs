@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

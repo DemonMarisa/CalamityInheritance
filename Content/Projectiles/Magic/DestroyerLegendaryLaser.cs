@@ -1,12 +1,11 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Build.Construction;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class DestroyerLegendaryLaser: ModProjectile, ILocalizedModType
+    public class DestroyerLegendaryLaser : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
@@ -60,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             Player player = Main.player[Projectile.owner];
             var usPlayer = player.CIMod();
-            
+
             if (usPlayer.DestroyerTier1)
                 modifiers.SetCrit();
             if (usPlayer.DestroyerTier2)

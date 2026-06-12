@@ -1,24 +1,24 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
-using LAP.Core.SystemsLoader;
-using LAP.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Animus : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
-            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 1.50f; 
+            ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 1.50f;
         }
 
         public override void SetDefaults()
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.SetCalStatInflation(AllWeaponTier.DemonShadow);
         }
 
-        
+
 
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

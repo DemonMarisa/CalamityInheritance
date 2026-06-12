@@ -1,10 +1,10 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Dusts;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Dusts;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

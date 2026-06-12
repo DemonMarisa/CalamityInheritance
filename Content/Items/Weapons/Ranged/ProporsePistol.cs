@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
@@ -13,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ProporsePistol : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -35,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.shootSpeed = 10f;
             Item.shoot = ProjectileType<ProBolt>();
-            
+
         }
 
         public override Vector2? HoldoutOffset()

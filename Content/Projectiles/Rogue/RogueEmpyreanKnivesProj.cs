@@ -1,10 +1,8 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityMod;
-using CalamityMod.Projectiles;
+﻿using CalamityMod;
 using LAP.Content.Projectiles.LifeStealProj;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
+using System.Collections.Generic;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Achievements

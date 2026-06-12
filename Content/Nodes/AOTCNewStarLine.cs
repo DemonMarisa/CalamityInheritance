@@ -1,11 +1,6 @@
-﻿using CalamityInheritance.Content.Projectiles.HeldProj.Melee.AOTCNew;
-using CalamityInheritance.Particles;
-using CalamityMod;
-using CalamityMod.Particles;
+﻿using CalamityInheritance.Particles;
 using LAP.Core.Enums;
 using LAP.Core.Graphics.DrawNode;
-using LAP.Core.ParticleSystem;
-using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

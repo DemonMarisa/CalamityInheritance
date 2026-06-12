@@ -1,25 +1,25 @@
-﻿using CalamityMod.Items.Armor.Bloodflare;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Armor.Silva;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Body)]
     public class AuricTeslaBodyArmorold : CIArmor, ILocalizedModType
     {
-        
+
         public override void Load()
         {
             // All code below runs only if we're not loading on a server

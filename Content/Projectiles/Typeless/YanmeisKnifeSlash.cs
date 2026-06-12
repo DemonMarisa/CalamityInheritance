@@ -1,19 +1,13 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Typeless;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Sounds.Custom;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Sounds.Custom;
-using CalamityMod;
-using CalamityInheritance.Buffs.Statbuffs;
-using CalamityInheritance.Buffs.StatDebuffs;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {

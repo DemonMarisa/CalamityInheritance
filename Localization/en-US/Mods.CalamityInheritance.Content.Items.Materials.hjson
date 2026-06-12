@@ -72,3 +72,8 @@ DemonicBoneAsh: {
 	DisplayName: Demonic Bone Ash
 	Tooltip: ""
 }
+
+GalacticaSingularity: {
+	DisplayName: Galactica Singularity
+	Tooltip: ""
+}

@@ -1,19 +1,19 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Melee;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class WTFGalaxy: ModProjectile, ILocalizedModType
+    public class WTFGalaxy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.ai[0] > 15f)
             {
                 CIFunction.HomeInOnNPC(Projectile, true, 1800f, 30f, 20f);
-                Projectile.rotation += (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + RotationIncrement*2;
+                Projectile.rotation += (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + RotationIncrement * 2;
             }
             Projectile.rotation += RotationIncrement;
             return;

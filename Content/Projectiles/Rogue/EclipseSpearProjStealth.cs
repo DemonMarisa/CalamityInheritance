@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.IO;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
@@ -7,7 +5,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
-using Steamworks;
+using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -152,32 +151,35 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
         {
-            if (isSticky) 
+            if (isSticky)
             {
-				int npcIndex = (int)Projectile.ai[0];
-				if (npcIndex >= 0 && npcIndex < 200 && Main.npc[npcIndex].active) {
-					if (Main.npc[npcIndex].behindTiles) {
-						behindNPCsAndTiles.Add(index);
-					}
-					else {
-						behindNPCsAndTiles.Add(index);
-					}
-					return;
-				}
-			}
-			behindNPCsAndTiles.Add(index);
+                int npcIndex = (int)Projectile.ai[0];
+                if (npcIndex >= 0 && npcIndex < 200 && Main.npc[npcIndex].active)
+                {
+                    if (Main.npc[npcIndex].behindTiles)
+                    {
+                        behindNPCsAndTiles.Add(index);
+                    }
+                    else
+                    {
+                        behindNPCsAndTiles.Add(index);
+                    }
+                    return;
+                }
+            }
+            behindNPCsAndTiles.Add(index);
         }
         private void RainDownSpears()
         {
             Vector2 tarPos = Projectile.Center;
-            int pAmt = Main.rand.Next(2,3);
+            int pAmt = Main.rand.Next(2, 3);
             for (int i = 0; i < pAmt; i++)
             {
                 //随机水平位置
                 float pSummonPosX = tarPos.X + Main.rand.NextFloat(-200f, 201f);
                 //生成的高度
                 float pSummonPosY = tarPos.Y - Main.rand.NextFloat(550f, 880f);
-                Vector2 pPos = new (pSummonPosX, pSummonPosY);
+                Vector2 pPos = new(pSummonPosX, pSummonPosY);
                 //速度
                 Vector2 speed = tarPos - pPos;
                 //水平速度一点随机读

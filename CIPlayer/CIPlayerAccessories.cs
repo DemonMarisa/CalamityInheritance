@@ -1,4 +1,3 @@
-using CalamityMod;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -35,7 +34,7 @@ namespace CalamityInheritance.CIPlayer
         public bool AnkhImmnue = false; //占位符
         public bool AsgardsValorImmnue = false; //阿斯加德英勇单独免疫的debuff
         public bool ElysianAegisImmnue = false; //亵渎盾单独免疫的debuff
-        public bool AmbrosialImmnue= false; //百草瓶的免疫
+        public bool AmbrosialImmnue = false; //百草瓶的免疫
         public bool AmbrosialStats = false; //百草瓶的一些数据
         public bool DraedonsHeartLegacyStats = false;
         public bool WearingStatisCurse = false;
@@ -71,7 +70,7 @@ namespace CalamityInheritance.CIPlayer
             AnkhImmnue = false;
             ElemQuiver = false;
             CoreOfTheBloodGod = false;
-            
+
             SMushroom = false;
             SMarble = false;
             SMarbleSword = false;

@@ -1,9 +1,8 @@
-﻿using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
 using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Ranged.Ammo;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {

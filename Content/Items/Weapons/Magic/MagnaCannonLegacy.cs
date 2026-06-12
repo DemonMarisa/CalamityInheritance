@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

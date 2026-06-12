@@ -12,12 +12,12 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleePwnagehammerProj: ModProjectile, ILocalizedModType
+    public class MeleePwnagehammerProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleePwnagehammer>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         private static readonly float RotationIncrement = 0.22f;
-        private static readonly float StealthSpeed = MeleePwnagehammer.Speed*2;
+        private static readonly float StealthSpeed = MeleePwnagehammer.Speed * 2;
         private static readonly int LifeTime = 240;
         private static readonly float ReboundTime = 45f;
         public override void SetDefaults()
@@ -45,17 +45,17 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Lighting.AddLight(Projectile.Center, 0.5f, 0.5f, 0.5f);
 
             //锤子飞行时应当播报声音
-            if(Projectile.soundDelay == 0)
+            if (Projectile.soundDelay == 0)
             {
                 Projectile.soundDelay = 10;
-                SoundEngine.PlaySound(CISoundID.SoundBoomerangs,Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
 
             //继承至大部分锤子的ai: ai[0]存储锤子是(1f)否(0f)处于返程状态, 
-            if(Projectile.ai[0] == 0f)
+            if (Projectile.ai[0] == 0f)
             {
                 Projectile.ai[1] += 1f;
-                if(Projectile.ai[1] >= ReboundTime)
+                if (Projectile.ai[1] >= ReboundTime)
                 {
                     Projectile.ai[0] = 1f;
                     Projectile.ai[1] = 0f;
@@ -70,9 +70,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 //返程
                 CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
                 //接触玩家时kill
-                if(Main.myPlayer == Projectile.owner)
+                if (Main.myPlayer == Projectile.owner)
                 {
-                    if(Projectile.Hitbox.Intersects(owner.Hitbox)) Projectile.Kill();
+                    if (Projectile.Hitbox.Intersects(owner.Hitbox)) Projectile.Kill();
                 }
             }
             //无论状态，锤子都应当在飞行过程中旋转
@@ -99,10 +99,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         private void OnHitDust() //击中时生成神圣粒子
         {
             float dCounts = 10f;
-            float rotFactor = 360f/10f;
+            float rotFactor = 360f / 10f;
             for (int i = 0; i < dCounts; ++i)
             {
-                float rot = MathHelper.ToRadians(i*rotFactor);
+                float rot = MathHelper.ToRadians(i * rotFactor);
                 Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 3.8f));
                 Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(1.1f, 3.8f));
                 Dust dust = Dust.NewDustPerfect(Projectile.Center + offset, CIDustID.DustSandnado, new Vector2(velOffset.X, velOffset.Y));

@@ -1,19 +1,19 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class ShrineMarnite: CIAccessories, ILocalizedModType
+    public class ShrineMarnite : CIAccessories, ILocalizedModType
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:28,
-            itemHeight:36,
-            itemRare:ItemRarityID.Orange,
-            itemValue:CIShopValue.RarityPriceOrange
+            itemWidth: 28,
+            itemHeight: 36,
+            itemRare: ItemRarityID.Orange,
+            itemValue: CIShopValue.RarityPriceOrange
         );
         public override void ExSSD() => Type.ShimmerEach<UnstableGraniteCore>();
         public override void SetDefaults()

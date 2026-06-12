@@ -1,11 +1,10 @@
-using System;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using LAP.Core.Utilities;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -65,10 +64,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 //返回，不执行下方潜伏和普通左键的逻辑
                 return false;
             }
-            
+
             if (Projectile.velocity.Y != oldVelocity.Y && (Projectile.velocity.X < -2f || Projectile.velocity.Y > 2f))
                 Collision.HitTiles(Projectile.position, Projectile.velocity, Projectile.width, Projectile.height);
-            Projectile.BouncingOnTiles(oldVelocity, -oldVelocity.X / 2, -oldVelocity.Y / 2); 
+            Projectile.BouncingOnTiles(oldVelocity, -oldVelocity.X / 2, -oldVelocity.Y / 2);
             return false;
         }
         //手动绘制
@@ -90,7 +89,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 //位置使用历史位置（oldPos），而非基于当前速度的预测
                 // Vector2 trailDrawPos = Projectile.oldPos[i] + Projectile.Size / 2f - Main.screenPosition;
                 //转角使用对应时间点的历史旋转（与位置同步）
-                float trailingRotation = Projectile.oldRot[i]; 
+                float trailingRotation = Projectile.oldRot[i];
                 Color trailcolor = lightColor * feidiede;
                 //透明度过低直接break出去没必要在画了
                 if (feidiede < 0.1f)
@@ -135,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(!Projectile.CalamityInheritance().MouseRight)
+            if (!Projectile.CalamityInheritance().MouseRight)
                 HitEffect(target.Center);
         }
     }

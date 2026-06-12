@@ -20,17 +20,17 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class DrataliornusLegacy: CIRanged, ILocalizedModType
+    public class DrataliornusLegacy : CIRanged, ILocalizedModType
     {
-        
+
         public virtual string SteamsDetail => Language.GetTextValue("StreamsDetail");
 
         //应某龙弓激推人要求:
         //击败终灾与星流后：右键倍率0.35 -> 1.0, 基础面板 700 -> 1457, 右键使用速度48 -> 12;
-        public double RightClickDamageRatio = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet()? 1.0: 0.35;
+        public double RightClickDamageRatio = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet() ? 1.0 : 0.35;
 
-        public int GetWeaponDamage = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet()? 1457 : 700;
-        public int GetRightClickSpeed =CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet() ? 12 : 48; 
+        public int GetWeaponDamage = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet() ? 1457 : 700;
+        public int GetRightClickSpeed = CalamityConditions.DownedSupremeCalamitas.IsMet() && CalamityConditions.DownedExoMechs.IsMet() ? 12 : 48;
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -111,14 +111,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 var usPlayer = player.CIMod();
                 int numFlames = 5;
-                if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaFakeDeath) //佩戴金源射手时
-                numFlames = 10;
+                if (usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaFakeDeath) //佩戴金源射手时
+                    numFlames = 10;
                 int flameID = ProjectileType<DragonBowFlameRework>();
                 int flameDamage = (int)(damage * RightClickDamageRatio);
                 //直接增加伤害倍率, 即0.65f(右键倍率) + 经过穿甲计算后的倍率, 对于20穿甲的玩家, 这一倍率是0.99≈1f, 即取武器本身的伤害
                 //对于30穿甲则取1.15f别率.
-                
-                if(Main.zenithWorld)
+
+                if (Main.zenithWorld)
                     flameDamage += flameDamage; //处于天顶世界时这玩意弹幕右键基础面板会被双倍
 
                 const float fifteenHundredthPi = 0.471238898f;
@@ -130,8 +130,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     float piArrowOffset = i - (numFlames - 1) / 2;
                     Vector2 offsetSpawn = spinningpoint.RotatedBy(fifteenHundredthPi * piArrowOffset, new Vector2());
                     Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.7f, velocity.Y * 0.7f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
-                    if(usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaFakeDeath) //佩戴金源射手时
-                    Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.9f, velocity.Y * 0.9f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
+                    if (usPlayer.GodSlayerRangedSet && usPlayer.AuricSilvaFakeDeath) //佩戴金源射手时
+                        Projectile.NewProjectile(source, position.X + offsetSpawn.X, position.Y + offsetSpawn.Y, velocity.X * 0.9f, velocity.Y * 0.9f, flameID, flameDamage, knockback, player.whoAmI, 1f, 0f);
                 }
             }
             else

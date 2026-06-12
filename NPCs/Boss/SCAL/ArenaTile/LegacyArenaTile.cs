@@ -1,8 +1,8 @@
 ﻿using CalamityMod.Skies;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.ArenaTile
 {

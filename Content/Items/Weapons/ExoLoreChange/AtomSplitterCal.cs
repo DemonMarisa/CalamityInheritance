@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 int p = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, -1f);
                 Main.projectile[p].Calamity().stealthStrike = stealth;
             }
-            return false; 
+            return false;
         }
     }
 }

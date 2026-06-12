@@ -1,8 +1,8 @@
-﻿using System;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -85,7 +85,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         float enemyX = Main.npc[enemy].position.X + Main.npc[enemy].width / 2;
                         float enemyY = Main.npc[enemy].position.Y + Main.npc[enemy].height / 2;
                         float enemyDistance = Math.Abs(Projectile.position.X + Projectile.width / 2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - enemyY);
-                        if (enemyDistance < ChasingRange  && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
+                        if (enemyDistance < ChasingRange && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
                         {
                             CIFunction.HomeInOnNPC(Projectile, false, ChasingRange, ChasingSpeed, 16f);
                             isHoming = true;

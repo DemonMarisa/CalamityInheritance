@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Yoyos;
 using CalamityMod;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Projectiles.Typeless;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System.IO;

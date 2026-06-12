@@ -1,15 +1,11 @@
-﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
-using CalamityMod.Projectiles.Summon;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Buffs.Summon;
+﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {

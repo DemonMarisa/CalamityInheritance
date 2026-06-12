@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Exobladeold : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             float lifeAmount = player.statLife / player.statLifeMax2;
             lifeAmount = 1 - lifeAmount;
-            damage *= 1 + (lifeAmount  * 0.1f);
+            damage *= 1 + (lifeAmount * 0.1f);
             CalamityInheritancePlayer usPlayer = player.CIMod();
             if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 damage *= 0.5f;
@@ -168,7 +168,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 DisableDecraft().
                 AddTile<DraedonsForgeold>().
                 Register();
-                
+
 
             CreateRecipe().
                 AddIngredient<TerratomereOld>().
@@ -181,7 +181,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
-            
+
             CreateRecipe().
                 AddIngredient<TerratomereOld>().
                 AddIngredient<AnarchyBlade>().

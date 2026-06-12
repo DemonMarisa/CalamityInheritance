@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
-    public class Bread: CIPotion, ILocalizedModType 
+    public class Bread : CIPotion, ILocalizedModType
     {
         //是的，食物也是药！ 
         public new string LocalizationCategory => "Content.Items.Potions";

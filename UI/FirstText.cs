@@ -1,21 +1,14 @@
-﻿using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityInheritance.System.Configs;
+﻿using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.World;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI.Chat;
 
 namespace CalamityInheritance.UI
@@ -27,7 +20,7 @@ namespace CalamityInheritance.UI
             if (CIConfig.Instance.TurnOffFirstText == false)
                 return;
 
-            if(Main.netMode != NetmodeID.SinglePlayer)
+            if (Main.netMode != NetmodeID.SinglePlayer)
                 return;
 
             Texture2D InvisibleUI = Request<Texture2D>("CalamityInheritance/UI/DraedonsTexture/InvisibleUI").Value;

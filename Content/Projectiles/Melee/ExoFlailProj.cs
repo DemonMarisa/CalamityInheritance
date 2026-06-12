@@ -1,12 +1,11 @@
-﻿using CalamityMod.Projectiles.BaseProjectiles;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.BaseClass;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.BaseClass;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

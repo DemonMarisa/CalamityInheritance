@@ -1,12 +1,10 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Summon;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

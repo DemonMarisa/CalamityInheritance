@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles
                 AMRextraTy = false;
             }
 
-            if(ignoreDrAndDef)
+            if (ignoreDrAndDef)
             {
                 //Avoid touching things that you probably aren't meant to damage
                 if (modifiers.SuperArmor || target.defense > 999 || target.Calamity().DR >= 0.95f || target.Calamity().unbreakableDR)

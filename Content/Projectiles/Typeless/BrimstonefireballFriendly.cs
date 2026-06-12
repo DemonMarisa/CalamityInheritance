@@ -1,6 +1,5 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Projectiles.Magic;
 using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.Audio;

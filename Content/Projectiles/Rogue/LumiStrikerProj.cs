@@ -1,18 +1,16 @@
-using CalamityMod;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using System;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod.Particles;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items.Weapons;
-using XPT.Core.Audio.MP3Sharp.Decoding;
-using CalamityMod.Projectiles.Rogue;
-using CalamityInheritance.Sounds.Custom;
-using System.IO;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Particles;
+using CalamityMod.Projectiles.Rogue;
+using Microsoft.Xna.Framework;
+using System;
+using System.IO;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -176,7 +174,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             OnHitSparks();
             SoundEngine.PlaySound(Hitsound, target.Center);
 
-            if(Projectile.ai[0] > 150)
+            if (Projectile.ai[0] > 150)
                 canSlow = true;
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)

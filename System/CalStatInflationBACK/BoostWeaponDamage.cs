@@ -1,7 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
-using CalamityInheritance.Content.Items.Tools;
+﻿using CalamityInheritance.Content.Items.Tools;
 using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
@@ -12,7 +10,6 @@ using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Summon;
-using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Content.Projectiles.Rogue.Spears;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;

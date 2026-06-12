@@ -101,7 +101,7 @@ namespace CalamityInheritance.Common.ModSupport
                 int type = NPCType<CalamitasCloneLegacy>();
                 List<int> summons = new List<int>() {
                     ItemType<EyeofDesolationLegacy>() };
-                List<int> collection = new List<int>() { ItemType<CalamitasCloneBag>() , ItemType<CalCloneRelic>()};
+                List<int> collection = new List<int>() { ItemType<CalamitasCloneBag>(), ItemType<CalCloneRelic>() };
                 AddBoss(bossChecklist, cI, entryName, order, DownedCalCloneLegacy, type, new Dictionary<string, object>()
                 {
                     ["displayName"] = GetDisplayName(entryName),
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Common.ModSupport
                 int type = NPCType<SupremeCalamitasLegacy>();
                 List<int> summons = new List<int>() {
                     ItemType<EyeofExtinction>() };
-                List<int> collection = new List<int>() 
+                List<int> collection = new List<int>()
                 {
                     ItemType<ScalRelic>(),
                     ItemType<SupremeCalamitasTrophy>(),

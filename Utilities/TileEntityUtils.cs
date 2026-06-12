@@ -1,15 +1,9 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Items.Materials;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.UI.Chat;
-using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.Utilities
 {

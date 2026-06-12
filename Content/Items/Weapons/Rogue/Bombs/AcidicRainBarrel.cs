@@ -1,13 +1,11 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Bombs;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Bombs
 {

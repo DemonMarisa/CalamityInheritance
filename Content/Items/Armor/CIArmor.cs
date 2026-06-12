@@ -1,11 +1,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityInheritance.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Armor
 {
-    public abstract class CIArmor: ModItem
+    public abstract class CIArmor : ModItem
     {
         public override void SetStaticDefaults()
         {

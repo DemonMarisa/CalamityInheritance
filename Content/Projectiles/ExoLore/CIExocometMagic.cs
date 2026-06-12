@@ -1,18 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Healing;
-using CalamityMod.Projectiles;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using Terraria.WorldBuilding;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -70,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
             if (Projectile.alpha < 40)
             {
-                if(Projectile.timeLeft % 2 == 0)
+                if (Projectile.timeLeft % 2 == 0)
                 {
                     int exo = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
                     Main.dust[exo].velocity *= -0.25f;

@@ -1,14 +1,12 @@
-﻿using CalamityMod.Items;
-using CalamityMod.Rarities;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Accessories.Wings;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories.Wings;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
@@ -18,10 +16,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:22,
-            itemHeight:20,
+            itemWidth: 22,
+            itemHeight: 20,
             itemRare: RarityType<CatalystViolet>(),
-            itemValue:CIShopValue.RarityPriceCatalystViolet
+            itemValue: CIShopValue.RarityPriceCatalystViolet
         );
         public override void ExSSD()
         {

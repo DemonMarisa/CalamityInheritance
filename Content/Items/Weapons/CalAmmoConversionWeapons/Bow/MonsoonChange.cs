@@ -1,13 +1,13 @@
-﻿using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Ranged;
+﻿using CalamityInheritance.System.Configs;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
 {
@@ -36,26 +36,26 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                     if (!canHit)
                         offset -= velocity;
 
-                        int newType = type;
-                        switch (p)
-                        {
-                            case 0:
-                            case 1:
-                            case 3:
-                            case 4:
-                                newType = ProjectileType<MiniSharkron>();
-                                break;
-                            case 2:
-                                newType = ProjectileType<TyphoonArrow>();
-                                break;
-                        }
-                        int proj = Projectile.NewProjectile(spawnSource, source.X + offset.X, source.Y + offset.Y, velocity.X, velocity.Y, newType, (int)(damage * 1.1), knockback, player.whoAmI);
-                        if (proj.WithinBounds(Main.maxProjectiles))
-                        {
-                            Main.projectile[proj].arrow = true;
-                            Main.projectile[proj].extraUpdates += 1;
-                        }
-                    
+                    int newType = type;
+                    switch (p)
+                    {
+                        case 0:
+                        case 1:
+                        case 3:
+                        case 4:
+                            newType = ProjectileType<MiniSharkron>();
+                            break;
+                        case 2:
+                            newType = ProjectileType<TyphoonArrow>();
+                            break;
+                    }
+                    int proj = Projectile.NewProjectile(spawnSource, source.X + offset.X, source.Y + offset.Y, velocity.X, velocity.Y, newType, (int)(damage * 1.1), knockback, player.whoAmI);
+                    if (proj.WithinBounds(Main.maxProjectiles))
+                    {
+                        Main.projectile[proj].arrow = true;
+                        Main.projectile[proj].extraUpdates += 1;
+                    }
+
                 }
                 return false;
             }

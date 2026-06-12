@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
@@ -164,13 +163,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffType<MiracleBlight>(), 600);
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
             target.AddBuff(BuffType<MiracleBlight>(), 600);
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
         }
 
         public override void AddRecipes()

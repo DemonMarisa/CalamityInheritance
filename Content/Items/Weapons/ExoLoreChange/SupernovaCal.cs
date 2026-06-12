@@ -1,13 +1,12 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityInheritance.Utilities;
 using CalamityMod.Projectiles.Rogue;
-using System.Collections.Generic;
-using Terraria.Localization;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using CalamityMod;
 using LAP.Core.Utilities;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

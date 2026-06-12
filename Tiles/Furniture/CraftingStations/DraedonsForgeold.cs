@@ -1,11 +1,11 @@
-﻿using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {

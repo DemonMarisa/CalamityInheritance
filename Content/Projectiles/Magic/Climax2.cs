@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
-using Terraria.ModLoader;
-using CalamityMod;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class Climax2 : ModProjectile, ILocalizedModType   
+    public class Climax2 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         private double timeElapsed = 0.0;
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             if (Projectile.timeLeft < 30)
             {
                 float num7 = Projectile.timeLeft / 30f;
-                Projectile.alpha = (int)((255f - 255f * num7) *0.5f);
+                Projectile.alpha = (int)((255f - 255f * num7) * 0.5f);
             }
             return new Color(255 - Projectile.alpha, 255 - Projectile.alpha, 255 - Projectile.alpha, 0);
         }

@@ -1,11 +1,9 @@
 ﻿using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Books
 {

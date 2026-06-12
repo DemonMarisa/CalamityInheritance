@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {

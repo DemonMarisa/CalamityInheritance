@@ -1,15 +1,11 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items;
-using CalamityMod.NPCs.TownNPCs;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
 {
@@ -71,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
             SoundEngine.PlaySound(in CISoundID.SoundBomb, Projectile.position);
             // 复制的原版小黄色烟花的代码
             Vector2 randomCirclePointVector = Vector2.One.RotatedByRandom(MathHelper.ToRadians(32f));
-            float lerpStart = Main.rand.Next(9, 14) * 0.66f;;
+            float lerpStart = Main.rand.Next(9, 14) * 0.66f; ;
             float lerpEnd = Main.rand.Next(2, 4) * 0.66f;
             for (float i = 0; i < 9f; ++i)
             {

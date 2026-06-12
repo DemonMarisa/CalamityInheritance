@@ -1,13 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.System.Configs;
 using CalamityInheritance.World;
-using CalamityInheritance.System.Configs;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.ModeChange.Malice
 {

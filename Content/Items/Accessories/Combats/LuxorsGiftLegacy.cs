@@ -1,6 +1,4 @@
-﻿using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using LAP.Content.RecipeGroupAdd;
 using Terraria;

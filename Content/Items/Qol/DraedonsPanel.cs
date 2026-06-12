@@ -1,13 +1,11 @@
-﻿using CalamityMod.Rarities;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.UI;
-using CalamityInheritance.UI.QolPanelTotal;
-using CalamityInheritance.Content.Items.MiscItem;
 using CalamityMod.Items.DraedonMisc;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.DraedonStructures;
+using CalamityMod.Rarities;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Qol
 {

@@ -1,14 +1,12 @@
 ﻿using CalamityInheritance.System;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Events;
-using CalamityMod.Items.Accessories;
-using CalamityMod.World;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Music.MusicScene
 {
-    public class DoGLegacy: ModSceneEffect
+    public class DoGLegacy : ModSceneEffect
     {
         public override int Music => MusicLoader.GetMusicSlot(Mod, "Music/DoGLegacy");
         public override SceneEffectPriority Priority => (SceneEffectPriority)13;

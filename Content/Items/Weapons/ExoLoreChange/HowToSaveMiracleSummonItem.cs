@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.CalProjChange;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Projectiles.Summon;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;

@@ -1,10 +1,9 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {
     public class TerracottaProj : BaseHealProj, ILocalizedModType

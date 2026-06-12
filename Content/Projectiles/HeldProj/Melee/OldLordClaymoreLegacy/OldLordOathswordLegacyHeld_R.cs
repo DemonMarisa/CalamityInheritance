@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Utilities;
-using CalamityMod.NPCs.TownNPCs;
 using LAP.Core.AnimationHandle;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;

@@ -1,4 +1,3 @@
-using CalamityInheritance.Content.Items;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
@@ -14,9 +13,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class BurningSkyLegacy   : CIMelee, ILocalizedModType
+    public class BurningSkyLegacy : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -86,7 +85,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 num79 *= num80;
                 float speedX4 = num78 + Main.rand.Next(-1000, 1001) * 0.02f;
                 float speedY5 = num79 + Main.rand.Next(-1000, 1001) * 0.02f;
-                Projectile.NewProjectile(source,vector2.X, vector2.Y, speedX4, speedY5, ProjectileType<BurningMeteor>(), damage, knockback, i, 0f, Main.rand.Next(10));
+                Projectile.NewProjectile(source, vector2.X, vector2.Y, speedX4, speedY5, ProjectileType<BurningMeteor>(), damage, knockback, i, 0f, Main.rand.Next(10));
             }
             return false;
         }

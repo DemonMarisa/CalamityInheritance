@@ -1,16 +1,16 @@
-﻿using Terraria.DataStructures;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     internal class ConclaveCrossfire : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

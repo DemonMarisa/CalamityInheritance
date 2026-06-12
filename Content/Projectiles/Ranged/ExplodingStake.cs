@@ -1,13 +1,11 @@
-﻿using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

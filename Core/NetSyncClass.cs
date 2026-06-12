@@ -9,8 +9,8 @@ namespace CalamityInheritance.Core
 {
     internal abstract class NetSyncHandler
     {
-        internal byte HandlerType { get ; set;}
-        public abstract void HandlerSocket (BinaryReader readSocket, int fromWho);
+        internal byte HandlerType { get; set; }
+        public abstract void HandlerSocket(BinaryReader readSocket, int fromWho);
         //构造函数
         protected NetSyncHandler(byte handleType) => HandlerType = handleType;
         protected ModPacket GetPacket(byte socketType, int fromWho)
@@ -22,5 +22,5 @@ namespace CalamityInheritance.Core
                 packet.Write((byte)fromWho);
             return packet;
         }
-    } 
+    }
 }

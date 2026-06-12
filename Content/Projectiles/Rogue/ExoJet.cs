@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Particles;
+﻿using CalamityInheritance.System.Configs;
 using CalamityMod;
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.System.Configs;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Particles;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

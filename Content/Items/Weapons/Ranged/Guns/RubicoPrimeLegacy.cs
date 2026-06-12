@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
 using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;

@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 float maxSpeed = 18f;
                 float acceleration = 0.04f * 5f;
                 float homeInSpeed = MathHelper.Clamp(Projectile.ai[0] += acceleration, 0f, maxSpeed);
-                if(hitCount < 1)
-                CIFunction.HomeInOnNPC(Projectile, true, 1500f, homeInSpeed, 40f);
+                if (hitCount < 1)
+                    CIFunction.HomeInOnNPC(Projectile, true, 1500f, homeInSpeed, 40f);
             }
 
             if (Main.rand.NextBool(4))
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 stardust.velocity *= 0.1f;
             }
             if (Projectile.timeLeft < 120)
-            {   
+            {
                 Projectile.velocity *= 0.97f;
             }
         }
@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         }
         public override bool PreDraw(ref Color lightColor)
         {
-            if(Projectile.timeLeft == 360)
+            if (Projectile.timeLeft == 360)
             {
                 return false;
             }

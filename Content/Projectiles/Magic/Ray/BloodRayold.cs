@@ -1,9 +1,8 @@
 ﻿using CalamityMod.Dusts;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using System;
-using Terraria.ModLoader;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {

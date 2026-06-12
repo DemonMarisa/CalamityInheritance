@@ -1,17 +1,17 @@
-﻿using CalamityMod.Items.Materials;
-using System;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
+using System;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class TerraEdge : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false; // Return false because we've manually created the projectiles.
         }
 
-        
+
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

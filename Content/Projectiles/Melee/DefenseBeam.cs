@@ -1,8 +1,7 @@
-﻿using System;
-using CalamityInheritance.Content.Items;
+﻿using CalamityInheritance.Content.Items;
 using CalamityMod;
-using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -10,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DefenseBeam: ModProjectile, ILocalizedModType
+    public class DefenseBeam : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()

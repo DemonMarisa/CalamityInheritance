@@ -1,10 +1,10 @@
-﻿using System;
+﻿using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {
@@ -44,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
                 Main.dust[d].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
                 Main.dust[d].velocity *= 0.05f;
             }
-                
+
             if (Projectile.timeLeft > 170)
             {
                 Projectile.velocity *= 0.9f;
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if(Projectile.timeLeft >197)
+            if (Projectile.timeLeft > 197)
             {
                 return false;
             }

@@ -1,8 +1,5 @@
 ﻿using CalamityMod;
-using CalamityMod.Projectiles;
-using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -29,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             // 给了8穿
             // 现在0穿了
-            Projectile.penetrate = 1; 
+            Projectile.penetrate = 1;
             Projectile.tileCollide = false;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 12;
@@ -57,16 +54,16 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (Projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, 0f, 0f, 612, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, 612, Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
-			if (Projectile.timeLeft > 115)
-				return false;
+            if (Projectile.timeLeft > 115)
+                return false;
 
-			CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }
 
@@ -108,13 +105,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     scaleFactor10 = 1f;
                 }
-                int num626 = Gore.NewGore(Projectile.GetSource_FromThis(),new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                int num626 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[num626].velocity *= scaleFactor10;
                 Gore expr_13AB6_cp_0 = Main.gore[num626];
                 expr_13AB6_cp_0.velocity.X += 1f;
                 Gore expr_13AD6_cp_0 = Main.gore[num626];
                 expr_13AD6_cp_0.velocity.Y += 1f;
-                num626 = Gore.NewGore(Projectile.GetSource_FromThis(),new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                num626 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[num626].velocity *= scaleFactor10;
                 Gore expr_13B79_cp_0 = Main.gore[num626];
                 expr_13B79_cp_0.velocity.X -= 1f;
@@ -126,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 expr_13C3C_cp_0.velocity.X += 1f;
                 Gore expr_13C5C_cp_0 = Main.gore[num626];
                 expr_13C5C_cp_0.velocity.Y -= 1f;
-                num626 = Gore.NewGore(Projectile.GetSource_FromThis(),new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
+                num626 = Gore.NewGore(Projectile.GetSource_FromThis(), new Vector2(Projectile.position.X + (float)(Projectile.width / 2) - 24f, Projectile.position.Y + (float)(Projectile.height / 2) - 24f), default, Main.rand.Next(61, 64), 1f);
                 Main.gore[num626].velocity *= scaleFactor10;
                 Gore expr_13CFF_cp_0 = Main.gore[num626];
                 expr_13CFF_cp_0.velocity.X -= 1f;

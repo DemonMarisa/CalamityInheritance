@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class GodsBellowsLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<MeldConstruct>(12).
+                AddIngredient<MeldBlob>(12).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }

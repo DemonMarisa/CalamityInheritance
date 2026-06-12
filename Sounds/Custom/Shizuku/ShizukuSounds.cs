@@ -19,7 +19,7 @@ namespace CalamityInheritance.Sounds.Custom.Shizuku
         private SoundStyle DaggerHitDirectly3;
         public static List<SoundStyle> StarToss = [];
         public static List<SoundStyle> Return = [];
-        public static List<SoundStyle> DaggerHitDirectly= [];
+        public static List<SoundStyle> DaggerHitDirectly = [];
         public override void Load()
         {
             DaggerHit = new(SoundPath + "DaggerHit");

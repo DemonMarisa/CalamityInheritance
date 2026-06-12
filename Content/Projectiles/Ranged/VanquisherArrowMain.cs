@@ -1,10 +1,10 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

@@ -1,11 +1,9 @@
-using System;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
 using Microsoft.Xna.Framework;
-using Mono.Cecil.Cil;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -65,11 +63,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             //计时器自转
             if (FireDelay > 0)
                 FireDelay--;
-            
+
             if (FireDelay == 0)
             {
                 SpawnDust(Projectile, 20);
-                SoundEngine.PlaySound(CISoundID.SoundIceRodBlockPlaced with {Pitch = 0.2f}, Projectile.Center);
+                SoundEngine.PlaySound(CISoundID.SoundIceRodBlockPlaced with { Pitch = 0.2f }, Projectile.Center);
                 Projectile.netUpdate = true;
             }
             //执行AI逻辑

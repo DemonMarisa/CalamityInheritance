@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.System.Configs;
-using CalamityMod;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -14,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class SpectreRifle : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -37,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.shoot = ProjectileID.LostSoulFriendly;
             Item.shootSpeed = 12f;
-            Item.useAmmo = Main.zenithWorld ? AmmoID.None: AmmoID.Bullet;
+            Item.useAmmo = Main.zenithWorld ? AmmoID.None : AmmoID.Bullet;
         }
         public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 22;
         public override bool CanUseItem(Player player)
@@ -113,6 +111,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 .AddIngredient<CoreofEleum>(3)
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
-                }
+        }
     }
 }

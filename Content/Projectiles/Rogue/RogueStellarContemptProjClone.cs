@@ -1,15 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using Microsoft.Build.Evaluation;
-using CalamityInheritance.Content.Items;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -55,7 +53,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.netImportant = true;
         }
 
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < Lifetime -10 && target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < Lifetime - 10 && target.CanBeChasedBy(Projectile);
 
         public override void AI()
         {
@@ -67,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Lighting.AddLight(Projectile.Center, 0.7f, 0.3f, 0.6f);
 
-            
+
 
             //锤子飞行过程中应当有声音
             if (Projectile.soundDelay == 0)
@@ -80,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             //使克隆锤子在发起跟踪之前受到重力影响
             float pVelAcceleration = 0.197f;
-            if(Projectile.ai[0] < 15f)
+            if (Projectile.ai[0] < 15f)
             {
                 pVelAcceleration = 0.017f;
                 Projectile.velocity.X -= 0.001f;
@@ -89,24 +87,24 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
             //克隆的锤子将会在飞行的过程中增大, 直到ai[0] = 45f为止
-            if(Projectile.ai[0] < 45f) 
-            Projectile.scale += 0.01f;
+            if (Projectile.ai[0] < 45f)
+                Projectile.scale += 0.01f;
             //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
-            if(Projectile.ai[0] > canHomingCounter) 
+            if (Projectile.ai[0] > canHomingCounter)
             {
                 Projectile.ai[0] = canHomingCounter;
                 CIFunction.HomeInOnNPC(Projectile, true, 12050f, stealthSpeed, 24f, 20f);
                 Projectile.ai[2] += 1f;
                 //这是一个额外的计时器, 仅用来操作月耀弹幕的生成量的
-                if(Projectile.ai[2] == 50f) 
+                if (Projectile.ai[2] == 50f)
                 {
-                   Projectile.ai[2] = 0;
-                   addFlares += 1; //每次+2
+                    Projectile.ai[2] = 0;
+                    addFlares += 1; //每次+2
                 }
             }
             else
-            //允许跟踪前会刷新锤子的存续时间
-            Projectile.timeLeft = Lifetime; 
+                //允许跟踪前会刷新锤子的存续时间
+                Projectile.timeLeft = Lifetime;
             //无论状态，锤子都应当在飞行过程中旋转, 但旋转的速度会慢一些
             Projectile.rotation += RotationIncrement;
 
@@ -119,10 +117,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float dFlyVelY = Projectile.velocity.Y * 0.4f + velOffset.Y;
 
                 //克隆锤子在追踪时生成的粒子速度要更快也更大一点
-                dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
-                dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
-                offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
-                float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
+                dFlyVelX = Projectile.ai[0] == canHomingCounter ? dFlyVelX * 1.25f : dFlyVelX;
+                dFlyVelY = Projectile.ai[0] == canHomingCounter ? dFlyVelY * 1.25f : dFlyVelY;
+                offset = Projectile.ai[0] == canHomingCounter ? offset * 1.05f : offset;
+                float dScale = Projectile.ai[0] == canHomingCounter ? 1.2f : 0.8f;
                 Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 229, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
@@ -135,10 +133,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float dFlyVelY = Projectile.velocity.Y * 0.5f + velOffset.Y;
 
                 //克隆锤子在追踪时生成的粒子速度更快, 粒子大小更大, 且偏移也会更大一些
-                dFlyVelX = Projectile.ai[0] == canHomingCounter? dFlyVelX * 1.25f : dFlyVelX;
-                dFlyVelY = Projectile.ai[0] == canHomingCounter? dFlyVelY * 1.25f : dFlyVelY;
-                offset = Projectile.ai[0] == canHomingCounter? offset * 1.05f : offset;
-                float dScale = Projectile.ai[0] == canHomingCounter? 1.2f : 0.8f;
+                dFlyVelX = Projectile.ai[0] == canHomingCounter ? dFlyVelX * 1.25f : dFlyVelX;
+                dFlyVelY = Projectile.ai[0] == canHomingCounter ? dFlyVelY * 1.25f : dFlyVelY;
+                offset = Projectile.ai[0] == canHomingCounter ? offset * 1.05f : offset;
+                float dScale = Projectile.ai[0] == canHomingCounter ? 1.2f : 0.8f;
                 Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, 226, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
@@ -191,7 +189,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             if (!Main.dayTime)
                 target.AddBuff(BuffType<Nightwither>(), 240);
-            
+
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
 
             SpawnFlares(target.Center, target.width, target.height);
@@ -208,7 +206,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Player user = Main.player[Projectile.owner];
             Projectile.netUpdate = true;
             int numFlares = addFlares; //每次ai[2]总是等于50f时, 都会增加月耀的弹幕量
-            int flareDamage = (int)(0.2f*Projectile.damage); //伤害跑高
+            int flareDamage = (int)(0.2f * Projectile.damage); //伤害跑高
             float flareKB = 4f;
             for (int i = 0; i < numFlares; ++i)
             {

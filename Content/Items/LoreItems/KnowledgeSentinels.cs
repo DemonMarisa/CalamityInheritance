@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Rarity;
-using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria.ID;
 using Terraria.ModLoader;
 

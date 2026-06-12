@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace CalamityInheritance.Tiles.Bars
 {
-    public class NebulaBarTile: ModTile, ILocalizedModType
+    public class NebulaBarTile : ModTile, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

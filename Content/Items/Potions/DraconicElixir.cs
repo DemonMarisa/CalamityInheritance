@@ -1,14 +1,13 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
+using CalamityInheritance.Rarity;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Buffs.Potions;
-using CalamityInheritance.Rarity;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {

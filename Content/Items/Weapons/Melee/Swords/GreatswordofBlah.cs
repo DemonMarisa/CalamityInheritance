@@ -3,7 +3,6 @@ using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {

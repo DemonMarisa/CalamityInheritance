@@ -1,5 +1,4 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using LAP.Assets.TextureRegister;
 using LAP.Core.Utilities;
 using Terraria;

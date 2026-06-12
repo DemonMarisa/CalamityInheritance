@@ -1,17 +1,17 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeTerraDiskProj: ModProjectile, ILocalizedModType
+    public class MeleeTerraDiskProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => GetInstance<MeleeTerraDisk>().Texture;
@@ -51,8 +51,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (initialized)
                 return;
 
-            Lifetime =  180;
-            ReboundTime =  45;
+            Lifetime = 180;
+            ReboundTime = 45;
             Projectile.timeLeft = Lifetime;
             initialized = true;
         }
@@ -80,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float returnSpeed = 16f;
                 float acceleration = 1.4f;
                 CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
-                
+
                 // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)
                     if (Projectile.Hitbox.Intersects(player.Hitbox))

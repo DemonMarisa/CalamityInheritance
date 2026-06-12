@@ -1,15 +1,15 @@
-﻿using CalamityInheritance.Sounds.Custom;
+﻿using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Typeless.LevelFirework;
-using CalamityInheritance.Utilities;
-using Terraria.Localization;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.CIPlayer
 {

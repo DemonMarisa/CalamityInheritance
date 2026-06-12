@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Buffs.DamageOverTime;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                     float radius = (7f + (float)Math.Cos(Time / 4f) * 3f) * radiusFactor;
                     Vector2 dustPosition = Projectile.Center;
                     dustPosition += offsetRotationAngle.ToRotationVector2().RotatedBy(i / 5f * MathHelper.TwoPi) * radius;
-                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 107 : 180 , default , default ,new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
+                    Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? 107 : 180, default, default, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB));
                     dust.noGravity = true;
                     dust.velocity = Projectile.velocity * 0.1f;
                     dust.scale = Main.rand.NextFloat(1f, 1.2f);

@@ -1,17 +1,17 @@
-﻿using Terraria.DataStructures;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class Lazinator : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             CreateRecipe().
                 AddIngredient(ItemID.SpaceGun).
                 AddIngredient(ItemID.LaserRifle).
-                AddIngredient<PearlShard> (5).
+                AddIngredient<PearlShard>(5).
                 AddIngredient(ItemID.SoulofSight).
                 AddIngredient(ItemID.SoulofMight).
                 AddIngredient(ItemID.SoulofFright).

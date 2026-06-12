@@ -1,9 +1,8 @@
-using System;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -49,7 +48,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher
         }
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item89 with {MaxInstances = 0}, Projectile.position);
+            SoundEngine.PlaySound(SoundID.Item89 with { MaxInstances = 0 }, Projectile.position);
 
             Projectile.ExpandHitboxBy((int)(128f * Projectile.scale));
 

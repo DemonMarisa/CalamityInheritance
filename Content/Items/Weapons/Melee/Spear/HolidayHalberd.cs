@@ -1,9 +1,9 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Melee.Spear;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Spear
 {

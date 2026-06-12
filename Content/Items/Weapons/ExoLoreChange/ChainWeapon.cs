@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;

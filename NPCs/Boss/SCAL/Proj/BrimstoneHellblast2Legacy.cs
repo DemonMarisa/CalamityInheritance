@@ -1,15 +1,14 @@
-﻿using CalamityMod.Events;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Events;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Particles;
-using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -24,7 +23,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            
+
             Projectile.width = 40;
             Projectile.height = 40;
             Projectile.hostile = true;

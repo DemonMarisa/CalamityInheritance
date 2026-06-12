@@ -1,9 +1,9 @@
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class CorossiveFlamesLegacy : ModProjectile, ILocalizedModType
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.ai[0] > 7f)
             {
                 if (Main.zenithWorld)
-                    CIFunction.HomeInOnNPC(Projectile,true,1800f,24f,20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
                 float num296 = 1f;
                 if (Projectile.ai[0] == 8f)
                 {

@@ -11,7 +11,7 @@ using static CalamityInheritance.Core.Enums;
 namespace CalamityInheritance.Content.Items.Armor.DesertProwlerLegacy
 {
     [AutoloadEquip(EquipType.Head)]
-    public class DesertProwlerHeadLegacy: CIArmor, ILocalizedModType
+    public class DesertProwlerHeadLegacy : CIArmor, ILocalizedModType
     {
         private const int Crits = 4;
         public const int FlatDamage = 1;

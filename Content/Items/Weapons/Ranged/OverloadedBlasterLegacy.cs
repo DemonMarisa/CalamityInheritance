@@ -1,17 +1,17 @@
-﻿using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class OverloadedBlasterLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

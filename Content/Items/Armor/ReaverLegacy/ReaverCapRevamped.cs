@@ -1,17 +1,17 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
     public class ReaverCapRevamped : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             Item.width = 22;
             Item.height = 22;
-            Item.value = CIShopValue.RarityPriceLime; 
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.defense = 10; //43
         }

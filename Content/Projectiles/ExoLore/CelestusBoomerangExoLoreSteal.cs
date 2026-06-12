@@ -1,19 +1,16 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Sounds.Custom;
-using CalamityMod.Projectiles.Rogue;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -74,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             Projectile.DoSyncHandlerRead(ref reader);
             counter = reader.ReadInt32();
-            
+
         }
         public override void AI()
         {
@@ -162,7 +159,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private void SpawnExtraProj()
         {
             counter++;
-            if(counter == 12)
+            if (counter == 12)
             {
                 float randomAngle = Main.rand.NextBool() ? MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f) : -MathHelper.PiOver2 + Main.rand.NextFloat(-3f, 4f);
                 int t = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Projectile.velocity.RotatedBy(randomAngle), ProjectileType<CelestusBoomerangExoLoreHomeIn>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);

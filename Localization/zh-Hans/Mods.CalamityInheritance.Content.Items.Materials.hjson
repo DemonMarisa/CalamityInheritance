@@ -76,3 +76,8 @@ DemonicBoneAsh: {
 	DisplayName: 恶魔骨灰[Legacy]
 	Tooltip: ""
 }
+
+GalacticaSingularity: {
+	DisplayName: 星系异石[Legacy]
+	Tooltip: ""
+}

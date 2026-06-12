@@ -1,29 +1,28 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Sounds;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
 using System.Collections.Generic;
-using Terraria.Localization;
-using Mono.Cecil;
+using Terraria;
 using Terraria.DataStructures;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Projectiles.Ranged;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class TyrannysEndOld : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -48,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.rare = RarityType<CatalystViolet>();
             Item.Calamity().donorItem = true;
-            
+
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults
@@ -98,12 +97,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             {
                 for (int i = 0; i < 35; i++)
                 {
-                    Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f))  * Main.rand.NextFloat(0.8f, 1.1f);
+                    Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f)) * Main.rand.NextFloat(0.8f, 1.1f);
                     int newP = Projectile.NewProjectile(source, new Vector2(position.X + 10f, position.Y), spread, ProjectileType<MineralMortarProjectile>(), damage / 3, knockback, player.whoAmI);
                     Main.projectile[newP].velocity *= 1.1f;
                     Main.projectile[newP].extraUpdates = 1;
                     Main.projectile[newP].netUpdate = true;
-                    Main.projectile[newP].CanExplodeTile(50,50);
+                    Main.projectile[newP].CanExplodeTile(50, 50);
                     Main.projectile[newP].scale *= 2f;
                 }
                 return false;

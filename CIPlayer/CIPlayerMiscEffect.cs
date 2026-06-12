@@ -1,11 +1,8 @@
 ﻿using CalamityInheritance.Buffs.Legendary;
-using CalamityInheritance.Buffs.Potions;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.CICooldowns;
-using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Content.Achievements;
-using CalamityInheritance.Content.CICooldowns;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
@@ -15,18 +12,14 @@ using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Content.Items.Weapons.Summon;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Core;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.Alcohol;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.Potions;
 using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
@@ -47,6 +40,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static CalamityInheritance.Buffs.Statbuffs.ShizukuMoonlight;
+using GodSlayerDashLegacy = CalamityInheritance.Content.CICooldowns.GodSlayerDashLegacy;
 
 namespace CalamityInheritance.CIPlayer
 {
@@ -85,7 +79,7 @@ namespace CalamityInheritance.CIPlayer
 
             //各种套装效果的封装
             ArmorSetbonus();
-            
+
             //冷却变动
             ResetCD();
 
@@ -180,7 +174,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.lifeRegen += 1;
                 Player.lifeRegenTime += 1;
             }
-        
+
             if (BuffStatsDraconicSurge)
             {
                 if (Player.wingTimeMax > 0)
@@ -216,16 +210,11 @@ namespace CalamityInheritance.CIPlayer
             {
                 BuffStatsTitanScaleTrueMelee = 0;
             }
-            
+
             if (AnimusDamage > 1f)
             {
                 if (Player.ActiveItem().type != ItemType<Animus>())
                     AnimusDamage = 1f;
-            }
-
-            if (PerunofYharimCooldown <= 0)
-            {
-                AncientAuricDashCounter = 0;
             }
             /*
             *2/25:
@@ -233,14 +222,14 @@ namespace CalamityInheritance.CIPlayer
             *使拥有龙魂秘药效果的玩家免疫淬火debuff的超高速烧血效果, 但以削减生命恢复作为代价
             *下调玩家的防御数据惩罚, 防御力乘算从0.3 -> 0.7, 免伤降低从0.3→0.2
             */
-            if(BuffStatsBackfire)
+            if (BuffStatsBackfire)
             {
-                if(Player.statLife > Player.statLifeMax2/3)
+                if (Player.statLife > Player.statLifeMax2 / 3)
                 {
-                    if(BuffStatsDraconicSurge)
-                    player.lifeRegen -= 10; //龙魂秘药使烧血转化为削减5HP/s的生命恢复
+                    if (BuffStatsDraconicSurge)
+                        player.lifeRegen -= 10; //龙魂秘药使烧血转化为削减5HP/s的生命恢复
                     else
-                    Player.statLife -= 5;
+                        Player.statLife -= 5;
                 }
 
                 Player.endurance -= 0.2f;  //直接减少玩家20%的免伤，也就是可以让玩家免伤变成负数(有可能)
@@ -262,13 +251,13 @@ namespace CalamityInheritance.CIPlayer
             if (GodlySons)
             {
                 Player.maxMinions += 10;
-				if (Player.whoAmI == Main.myPlayer)
-				{
-					if (Player.FindBuffIndex(BuffType<SonYharonBuff>()) == -1)
-						Player.AddBuff(BuffType<SonYharonBuff>(), 3600, true);
-					if (Player.ownedProjectileCounts[ProjectileType<SonYharon>()] < 2)
-						Projectile.NewProjectile(Player.GetSource_FromThis(),Player.Center, Vector2.Zero, ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
-				}
+                if (Player.whoAmI == Main.myPlayer)
+                {
+                    if (Player.FindBuffIndex(BuffType<SonYharonBuff>()) == -1)
+                        Player.AddBuff(BuffType<SonYharonBuff>(), 3600, true);
+                    if (Player.ownedProjectileCounts[ProjectileType<SonYharon>()] < 2)
+                        Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ProjectileType<SonYharon>(), (int)Player.GetTotalDamage<SummonDamageClass>().ApplyTo(YharonSonStaff.WeaponDamage), 2f, Main.myPlayer, 0f, 0f);
+                }
             }
             if (DarkSunRings)
             {
@@ -277,7 +266,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetKnockback<SummonDamageClass>() += 1.2f;
                 Player.GetAttackSpeed<MeleeDamageClass>() += 0.12f;
                 Player.pickSpeed -= 0.12f;
-                if(Main.eclipse || !Main.dayTime)
+                if (Main.eclipse || !Main.dayTime)
                     Player.statDefense += darkSunRingNightDefense;
             }
             if (RoDPaladianShieldActive) //如果佩戴壁垒
@@ -299,7 +288,7 @@ namespace CalamityInheritance.CIPlayer
                     }
                 }
             }
-            if(AmbrosialImmnue)
+            if (AmbrosialImmnue)
             {
                 Player.buffImmune[BuffID.Venom] = true;
                 Player.buffImmune[BuffID.Frozen] = true;
@@ -307,10 +296,8 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffID.Frostburn] = true;
                 Player.buffImmune[BuffID.Frostburn2] = true; //加了一个霜冻
                 calPlayer.alwaysHoneyRegen = true;
-                calPlayer.honeyDewHalveDebuffs = true;
-                calPlayer.livingDewHalveDebuffs = true;
             }
-            if(AmbrosialStats)
+            if (AmbrosialStats)
                 Player.pickSpeed -= 0.5f;
             if (RegenatorLegacy)
                 Player.statLifeMax2 = (int)(Player.statLifeMax2 * 0.5);
@@ -318,10 +305,10 @@ namespace CalamityInheritance.CIPlayer
         private void Nanotechs()
         {
             CalamityPlayer modPlayer = Player.Calamity();
-            if(nanotechold)
+            if (nanotechold)
             {
                 Player.AddCooldown(NanotechUI.ID, NanotechOld.nanotechDMGStack);
-                
+
                 if (nanoTechStackDurability >= 0 && nanoTechStackDurability < 150)
                 {
                     //储存了攻击的积攒数量。
@@ -410,11 +397,11 @@ namespace CalamityInheritance.CIPlayer
         public void ArmorSetbonus()
         {
             CalamityPlayer calPlayer = Player.Calamity();
-            
-            if (GodSlayerRangedSet) 
+
+            if (GodSlayerRangedSet)
             {
                 float getCrits = Player.GetWeaponCrit(Player.ActiveItem());
-                
+
                 if (getCrits > 95)
                     Player.GetCritChance<RangedDamageClass>() += 20;
             }
@@ -422,14 +409,12 @@ namespace CalamityInheritance.CIPlayer
 
             if (AncientGodSlayerSet)
                 RefreshGodSlayerDash(calPlayer);
-            if (AncientGodSlayerBuffCounter > 0)
-                Player.GetDamage<GenericDamageClass>() += 0.2f;
-            
-            if(AncientAuricSet)
+
+            if (AncientAuricSet)
             {
                 Player.noKnockback = true;
                 RefreshGodSlayerDash(calPlayer);
-                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                if (Player.statLife <= Player.statLifeMax2 * 0.5f)
                 {
                     int getDef = Player.GetCurrentDefense();
                     int buffDef = (int)(getDef * 0.3f);
@@ -470,20 +455,19 @@ namespace CalamityInheritance.CIPlayer
             {
                 // 好你个小子免疫这游戏所有Debuff了
                 // foreach (int debuff in CalamityLists.debuffList)
-                //byd关我屁事，跟灾厄说去吧
+                // byd关我屁事，跟灾厄说去吧
                 foreach (int debuff in CalamityInheritanceLists.AuricdebuffList)
                     Player.buffImmune[debuff] = true;
-            } 
+            }
         }
 
         public void RefreshGodSlayerDash(CalamityPlayer calPlayer)
         {
-            if (Player.HasCooldown(GodSlayerDash.ID))
+            if (Player.HasCD<GodSlayerDashLegacy>())
             {
                 if (calPlayer.rogueStealth == calPlayer.rogueStealthMax)
                 {
-                    Player.RemoveCooldown(GodSlayerDash.ID);
-                    Player.AddCooldown(GodSlayerDash.ID, 0);
+                    Player.RemoveCD(LAPContent.CDType<GodSlayerDashLegacy>());
                     AncinetGodSlayerDashReset = true;
                 }
             }
@@ -556,7 +540,7 @@ namespace CalamityInheritance.CIPlayer
             if (PBGTier3)
                 delePBG.LegendaryComplete3.Complete();
             if (CIConditions.DownedLegacyYharonP1.IsMet())
-                GetInstance<DownedYharonP2>().ForceKilledCondition.Complete(); 
+                GetInstance<DownedYharonP2>().ForceKilledCondition.Complete();
 
             bool lastHitToSCal = CIServerConfig.Instance.CalStatInflationBACK;
             bool isNotBothDowned = (!DownedBossSystem.downedCalamitas && DownedBossSystem.downedExoMechs) || (DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs) || (!DownedBossSystem.downedCalamitas && !DownedBossSystem.downedExoMechs);
@@ -603,7 +587,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 int b = Player.GetCurrentDefense();
                 int realDefense = (int)(b * DefenseBoost);
-                Player.statDefense += realDefense;  
+                Player.statDefense += realDefense;
             }
             if (!BuffPolarisBoost || Player.ActiveItem().type != ItemType<PolarisParrotfishLegacy>())
             {
@@ -637,15 +621,15 @@ namespace CalamityInheritance.CIPlayer
             {
                 float armorPeneBoost = Player.GetTotalArmorPenetration<RangedDamageClass>();
                 int totalArmor = Player.GetCurrentDefense();
-                float totalArmorBoost = (1 - totalArmor/100) < 0f ? 0f : (1 - totalArmor/100);
+                float totalArmorBoost = (1 - totalArmor / 100) < 0f ? 0f : (1 - totalArmor / 100);
                 float damageBoost = armorPeneBoost / 100f + totalArmorBoost;
-                float actualDamage = 1.0f + damageBoost; 
+                float actualDamage = 1.0f + damageBoost;
                 //避免伤害变成0乃至负数倍, 不惜一切代价
-                if(actualDamage <= 0f) 
+                if (actualDamage <= 0f)
                     actualDamage = 1.0f;
                 Player.GetDamage<RangedDamageClass>() *= actualDamage;
-            }           
-            
+            }
+
             //玩家佩戴创造之手，挥舞板凳时，提供30%伤害与暴击概率
             if (Player.ActiveItem().type == ItemType<StepToolShadows>() && IfGodHand)
             {
@@ -653,9 +637,9 @@ namespace CalamityInheritance.CIPlayer
                 Player.GetCritChance<RogueDamageClass>() += 30;
             }
 
-            if(AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
+            if (AncientAstralSet && AncientAstralStealthGap == 0 && AncientAstralStealth > 0)
                 AncientAstralStealth = 0; //置零就行了 
-            
+
             if (nanotechold)
             {
                 float damageMult = NanotechOld.nanotechDMGBoost;
@@ -697,9 +681,9 @@ namespace CalamityInheritance.CIPlayer
             }
             else SForestBuffTimer = 0;
 
-            if(DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
+            if (DraedonsHeartLegacyStats) //嘉登之心的站立不动提供的效果
             {
-                if(Player.StandingStill(0.1f) && !Player.mount.Active)
+                if (Player.StandingStill(0.1f) && !Player.mount.Active)
                 {
                     int getDefense = Player.GetCurrentDefense();
                     Player.GetDamage<GenericDamageClass>() *= DraedonsHeartLegacy.DamageReduceRatio;
@@ -735,9 +719,9 @@ namespace CalamityInheritance.CIPlayer
                 }
 
                 Player.GetDamage<GenericDamageClass>() += (1000 - modStealth) * 0.0003f;
-                Player.GetCritChance<GenericDamageClass>() += (int)((1000 -modStealth) * 0.015f);
+                Player.GetCritChance<GenericDamageClass>() += (int)((1000 - modStealth) * 0.015f);
             }
-            
+
             if (PsychoticAmulet)
             {
                 if (Player.StandingStill(0.1f) && !Player.mount.Active)
@@ -768,7 +752,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void RamShield()
         {
-            if(ElysianAegisImmnue)
+            if (ElysianAegisImmnue)
             {
                 Player.buffImmune[BuffID.CursedInferno] = true; //是的, 就是这么少
                 Player.buffImmune[BuffID.ShadowFlame] = true;
@@ -777,7 +761,7 @@ namespace CalamityInheritance.CIPlayer
                 Player.buffImmune[BuffType<WhisperingDeath>()] = true;
                 Player.buffImmune[BuffType<WeakPetrification>()] = true;
             }
-            if(AsgardsValorImmnue)
+            if (AsgardsValorImmnue)
             {
                 Player.buffImmune[BuffID.Chilled] = true;
                 Player.buffImmune[BuffID.Frostburn] = true;
@@ -871,13 +855,13 @@ namespace CalamityInheritance.CIPlayer
             else
                 ElysianGuard = false;
         }
-        
+
         public void LoreEffects()
         {
             CalamityInheritancePlayer usPlayer = Player.CIMod();
             CalamityPlayer calPlayer = Player.Calamity();
             #region Lore
-            if(LoreEOC || PanelsLoreEoC)
+            if (LoreEOC || PanelsLoreEoC)
             {
                 if (!Main.dayTime)
                     Player.nightVision = true;
@@ -1090,7 +1074,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             if (LoreAureus || PanelsLoreAureus)
-               if (Player.ZoneSkyHeight)
+                if (Player.ZoneSkyHeight)
                     Player.jumpSpeedBoost += 0.5f;
 
             if (LoreGolem || PanelsLoreGolem)
@@ -1169,7 +1153,7 @@ namespace CalamityInheritance.CIPlayer
             }
 
             // Brimstone Elemental lore inferno potion boost
-            if ((LoreBrimstoneElement || PanelsLoreBrimstoneElement ||calPlayer.ataxiaBlaze) && Player.inferno)
+            if ((LoreBrimstoneElement || PanelsLoreBrimstoneElement || calPlayer.ataxiaBlaze) && Player.inferno)
             {
                 // Only run this code for the client which is wearing the armor.
                 // Brimstone flames is applied every single frame, but direct damage is only dealt twice per second.
@@ -1257,13 +1241,13 @@ namespace CalamityInheritance.CIPlayer
                 if (!BuffStatsDraconicSurge)
                     Player.GetDamage<GenericDamageClass>() -= 0.25f;
             }
-            if(LoreCryoDash || PanelsLoreCryoDash)
+            if (LoreCryoDash || PanelsLoreCryoDash)
             {
                 Player.Calamity().DashID = OrnateShieldDash.ID;
                 Player.dashType = 0;
                 Player.statDefense -= 10;
             }
-            if(LoreSG ||PanelsLoreSG)
+            if (LoreSG || PanelsLoreSG)
             {
                 if (Player.dashDelay < 0)
                     Player.velocity.X *= 0.9f;

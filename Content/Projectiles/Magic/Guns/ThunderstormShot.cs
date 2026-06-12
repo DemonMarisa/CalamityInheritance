@@ -1,6 +1,5 @@
 ﻿using CalamityMod;
 using LAP.Assets.TextureRegister;
-using log4net.Util;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

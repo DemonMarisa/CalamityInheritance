@@ -1,24 +1,24 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityInheritance.Rarity;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
-using Terraria.Localization;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
-    public class ExoGladius : CIMelee, ILocalizedModType 
+    public class ExoGladius : CIMelee, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Melee.Shortsword";
         public override void SetStaticDefaults()

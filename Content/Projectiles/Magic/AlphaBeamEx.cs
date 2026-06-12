@@ -1,20 +1,15 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -59,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Projectile.CalamityInheritance().ProjNewAI[i] = Main.rand.NextFloat(MathHelper.TwoPi);
             }
         }
-        
+
         public override void AI()
         {
             HandleOpacity();
@@ -174,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
                 Main.EntitySpriteDraw(headTexture, Pos,
                     rect, color * 0.8f, projAI[i],// projAI[i]为绘制星星时的随机旋转
-                    origin, scale * Scale,  
+                    origin, scale * Scale,
                     SpriteEffects.None);
             }
         }

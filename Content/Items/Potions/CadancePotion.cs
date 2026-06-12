@@ -1,10 +1,10 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Buffs.Potions;
+using CalamityInheritance.Content.Items.Potions.CIPotions;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Buffs.Potions;
-using CalamityInheritance.Content.Items.Potions.CIPotions;
 
 namespace CalamityInheritance.Content.Items.Potions
 {
@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Potions
         }
         public override void SetDefaults()
         {
-            
+
             Item.width = 28;
             Item.height = 38;
             Item.useTurn = true;

@@ -1,13 +1,12 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Summon.Umbrella;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
@@ -246,7 +245,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffType<BrimstoneFlames>(), 120);
-            target.AddBuff(BuffType<GlacialState>(), 120);
             target.AddBuff(BuffType<Plague>(), 120);
             target.AddBuff(BuffType<HolyFlames>(), 120);
         }
@@ -254,7 +252,6 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffType<BrimstoneFlames>(), 120);
-            target.AddBuff(BuffType<GlacialState>(), 120);
             target.AddBuff(BuffType<Plague>(), 120);
             target.AddBuff(BuffType<HolyFlames>(), 120);
         }

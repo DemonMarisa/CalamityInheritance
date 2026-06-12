@@ -1,13 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class MidnightSunLaserold : ModProjectile,ILocalizedModType 
+    public class MidnightSunLaserold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         public override void SetStaticDefaults()

@@ -1,6 +1,6 @@
 using CalamityInheritance.Utilities;
-using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;

@@ -1,19 +1,19 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class TheWandold : CIMagic, ILocalizedModType
     {
-        
+
         // The actual base damage of The Wand. The damage reported on the item is just the spark, which is irrelevant.
         public static int BaseDamage = 999;
 

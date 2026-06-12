@@ -1,24 +1,24 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Rarity;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.ExoLore;
 using Terraria.Localization;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using Terraria.Audio;
-using CalamityInheritance.Sounds.Custom;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         {
             bool canStealth = player.Calamity().StealthStrikeAvailable();
             bool onLore = player.CheckExoLore();
-            int pTypeLore = canStealth ? ProjectileType<CelestusBoomerangExoLoreSteal>() : ProjectileType<CelestusBoomerangExoLore>(); 
+            int pTypeLore = canStealth ? ProjectileType<CelestusBoomerangExoLoreSteal>() : ProjectileType<CelestusBoomerangExoLore>();
             if (onLore)
             {
                 int t = Projectile.NewProjectile(source, position, velocity, pTypeLore, damage, knockback, player.whoAmI);

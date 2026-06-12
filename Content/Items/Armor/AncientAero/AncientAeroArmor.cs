@@ -1,15 +1,12 @@
 using CalamityMod.Items.Materials;
-using ReLogic.Content;
-using Steamworks;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAero
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientAeroArmor :CIArmor, ILocalizedModType
+    public class AncientAeroArmor : CIArmor, ILocalizedModType
     {
         public override void SetDefaults()
         {

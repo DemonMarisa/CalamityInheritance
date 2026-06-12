@@ -3,8 +3,6 @@ using CalamityInheritance.Content.Projectiles.FutureContent.GalacticStar;
 using CalamityInheritance.Content.Projectiles.Ranged.Cannos;
 using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
 using CalamityMod;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Projectiles.Typeless;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;

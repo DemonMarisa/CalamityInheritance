@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons
 {
-    public abstract class CIMagic: ModItem
+    public abstract class CIMagic : ModItem
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Magic";
         public override void SetStaticDefaults()

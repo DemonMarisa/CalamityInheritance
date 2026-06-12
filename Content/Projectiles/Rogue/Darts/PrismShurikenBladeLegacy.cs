@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Darts;
-using CalamityMod;
+﻿using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

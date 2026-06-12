@@ -1,9 +1,7 @@
 ﻿using CalamityMod;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Skies;
 using Microsoft.Xna.Framework;
 using System;
-using System.Linq;
 using System.Reflection;
 using Terraria;
 using Terraria.Audio;

@@ -1,17 +1,10 @@
 ﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Utilities
 {
@@ -73,7 +66,7 @@ namespace CalamityInheritance.Utilities
                 xOffset = -4f;
             player.itemLocation.X = player.Center.X + xOffset * player.direction;
             player.itemLocation.Y = player.MountedCenter.Y + yOffset;
-            if(player.gravDir < 0)
+            if (player.gravDir < 0)
                 player.itemLocation.Y = player.Center.Y + (player.position.Y - player.itemLocation.Y);
         }
         public static void ExoDebuffs(this NPC target, float multiplier = 1f)
@@ -85,7 +78,7 @@ namespace CalamityInheritance.Utilities
             target.AddBuff(BuffType<MiracleBlight>(), 300);
             target.AddBuff(BuffType<BrimstoneFlames>(), 300);
             target.AddBuff(BuffType<Plague>(), 300);
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
         }
         public static void ScalDebuffs(this Player target, int AbyssalFlamesduration, int VulnerabilityHexLegacyduration, int Horrorduration)
         {
@@ -107,7 +100,7 @@ namespace CalamityInheritance.Utilities
 
             float targetRotation = aimVect.ToRotation();
 
-            if(player.LocalMouseWorld().X < player.Center.X)
+            if (player.LocalMouseWorld().X < player.Center.X)
                 player.itemRotation = player.itemRotation.AngleLerp(targetRotation - MathHelper.ToRadians(rotationOffset) + MathHelper.Pi, rotationSpeed);
             else
                 player.itemRotation = player.itemRotation.AngleLerp(targetRotation + MathHelper.ToRadians(rotationOffset), rotationSpeed);

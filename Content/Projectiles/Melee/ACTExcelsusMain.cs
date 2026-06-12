@@ -70,14 +70,14 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //射弹击中后再次发起追踪，且完成了转角修正后
             bool canOnHitHoming = AnotherTimer > ACTExcelsus.IdleTimer * 2;
             //符合上述情况的都会允许造成伤害
-            return canHoming || canIdling || canOnHitHoming; 
+            return canHoming || canIdling || canOnHitHoming;
         }
         //这一串代码写的有点史山
         public override void AI()
         {
             //Projectile.ai[AttackType] <=> Projectile.ai[0] 仅仅用于标记射弹的AI逻辑
             //timer是外置的
-            
+
             //这个用于第五下逻辑，在所有AI代码之前优先判定
             if (HomeOnHitCounts == 3)
                 DoFading();
@@ -107,23 +107,23 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             else Projectile.ai[AttackType] = IsFlying;
             //AI查询
             if (Projectile.owner == Main.myPlayer)
-            switch (Projectile.ai[AttackType])
-            {
-                case IsFlying:
-                    DoFlying();
-                    break;
-                case IsHoming:
-                    DoHoming(tar);
-                    break;
-                case IsPointMouse:
-                    DoPointMouse();
-                    break;
-                case IsOnHitHoming:
-                    DoOnHitHoming(tar);
-                    break;
-                default:
-                    break;
-            }
+                switch (Projectile.ai[AttackType])
+                {
+                    case IsFlying:
+                        DoFlying();
+                        break;
+                    case IsHoming:
+                        DoHoming(tar);
+                        break;
+                    case IsPointMouse:
+                        DoPointMouse();
+                        break;
+                    case IsOnHitHoming:
+                        DoOnHitHoming(tar);
+                        break;
+                    default:
+                        break;
+                }
 
             //保留特效
             if (Main.rand.NextBool(8))
@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (AnotherTimer < ACTExcelsus.IdleTimer * 2 && AnotherTimer > ACTExcelsus.IdleTimer)
             {
                 //发起追踪前时候才会改变转角
-                DoAngleToTarget(tar.Center); 
+                DoAngleToTarget(tar.Center);
             }
             if (AnotherTimer > ACTExcelsus.IdleTimer * 2)
             {
@@ -274,7 +274,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 if (HomeOnHitCounts == 2)
                 {
                     Projectile.penetrate = -1;
-                    Projectile.localNPCHitCooldown= -1;
+                    Projectile.localNPCHitCooldown = -1;
                 }
                 if (HomeOnHitCounts == 3)
                 {

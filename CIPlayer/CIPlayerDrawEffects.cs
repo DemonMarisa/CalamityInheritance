@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod;
 using CalamityMod.Particles;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {

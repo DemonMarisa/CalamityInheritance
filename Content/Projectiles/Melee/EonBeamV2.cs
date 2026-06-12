@@ -2,7 +2,6 @@ using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -52,8 +51,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override bool PreDraw(ref Color lightColor)
         {
-			if (Projectile.timeLeft > 490)
-				return false;
+            if (Projectile.timeLeft > 490)
+                return false;
             UseTexture = MathHelper.Clamp(UseTexture, 1f, 4f);
             Texture2D tex = Request<Texture2D>($"{Texture}_{(int)UseTexture}").Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);

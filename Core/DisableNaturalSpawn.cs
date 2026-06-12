@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.NPCs.DesertScourge;
-using CalamityMod.NPCs.Leviathan;
-using CalamityInheritance.Utilities;
-using CalamityMod;
-using Terraria.ID;
-using CalamityMod.NPCs.HiveMind;
-using CalamityMod.NPCs.Perforator;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.NPCs.AquaticScourge;
+using CalamityMod.NPCs.HiveMind;
+using CalamityMod.NPCs.Leviathan;
+using CalamityMod.NPCs.Perforator;
+using System.Collections.Generic;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core
 {

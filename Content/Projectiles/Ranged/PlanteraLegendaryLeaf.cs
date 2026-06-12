@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.localAI[1] > 60f) Projectile.localAI[1] = 0f;
             if (Projectile.ai[2] == 1f && Main.rand.NextBool(2))
                 CIFunction.HomeInOnNPC(Projectile, false, 1800f, 24f, 20f);
-                
+
         }
         public override Color? GetAlpha(Color lightColor)
         {

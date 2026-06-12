@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.Vanity
 {

@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Tiles.MusicBox;
 using Terraria;
-using CalamityInheritance.Tiles.MusicBox;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {

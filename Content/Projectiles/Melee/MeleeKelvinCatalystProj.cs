@@ -1,15 +1,13 @@
-﻿using System.IO;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using CalamityInheritance.Content.Items;
 using Terraria.ModLoader;
-using Microsoft.Build.Evaluation;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -48,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localAI[0] = reader.ReadSingle();
             AIState = reader.ReadInt32();
         }
-        
+
         public override void AI()
         {
             /*
@@ -62,7 +60,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             VisualAudioEffects();
             BoomerangAI();
         }
-        
+
         private void BoomerangAI()
         {
             switch (AIState)
@@ -132,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         private void OnHitEffects()
         {
-            int maxSpawns =  3;
+            int maxSpawns = 3;
             if (Projectile.owner == Main.myPlayer && Projectile.numHits < maxSpawns)
             {
                 for (int i = 0; i < 5; i++)

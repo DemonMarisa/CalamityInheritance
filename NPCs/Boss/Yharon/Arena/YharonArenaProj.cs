@@ -53,7 +53,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
                 Projectile.netUpdate = true;
                 return;
             }
-            
+
             Projectile.frameCounter++;
             if (Projectile.frameCounter > 2)
             {
@@ -67,7 +67,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
             // ai0 = 0f的时候才会生成
             if (Projectile.ai[0] == 0f && !hasSpawn)
             {
-                for(int i = 0; i < 36; i ++)
+                for (int i = 0; i < 36; i++)
                 {
                     Projectile.ai[1]++;
                     if (Projectile.ai[1] >= Main.projFrames[Projectile.type])
@@ -89,7 +89,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
             }
             CIFunction.BetterAddLight(Projectile.Center, Color.Orange);
         }
-        
+
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D texture2D13 = TextureAssets.Projectile[Projectile.type].Value;
@@ -98,7 +98,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Arena
             Main.spriteBatch.Draw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, num214)), Color.White, Projectile.rotation, new Vector2((float)texture2D13.Width / 2f, (float)num214 / 2f), Projectile.scale, SpriteEffects.None, 0f);
             return false;
         }
-        
+
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
             target.AddBuff(BuffType<Dragonfire>(), 600);

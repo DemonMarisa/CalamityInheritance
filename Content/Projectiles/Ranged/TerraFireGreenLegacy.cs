@@ -1,9 +1,9 @@
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     pScale = 0.75f;
                 }
                 if (Projectile.ai[0] > 15f)
-                Projectile.ai[0] += 1f;
+                    Projectile.ai[0] += 1f;
                 int dType = 107;
                 if (Main.rand.NextBool(2))
                 {

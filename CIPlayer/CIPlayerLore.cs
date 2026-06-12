@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
-    public partial class CalamityInheritancePlayer: ModPlayer
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
         public bool LoreEOC = false;
         public bool LoreKingSlime = false;//

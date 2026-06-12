@@ -1,10 +1,9 @@
-using Terraria.ModLoader;
 using Terraria.ID;
-using CalamityMod;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class AntlionBow: CIRanged, ILocalizedModType
+    public class AntlionBow : CIRanged, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

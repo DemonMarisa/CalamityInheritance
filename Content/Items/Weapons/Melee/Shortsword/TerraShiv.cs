@@ -1,9 +1,9 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             Item.useAnimation = Item.useTime = 13;
             Item.width = 42;
             Item.height = 42;
-            Item.damage = Main.zenithWorld? 280 : 140;
+            Item.damage = Main.zenithWorld ? 280 : 140;
             Item.scale = Main.zenithWorld ? 3f : 1f;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 6f;
@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             CreateRecipe().
                 AddIngredient(ItemType<TrueNightsStabber>()).
                 AddIngredient(ItemType<TrueExcaliburShortsword>()).
-                AddIngredient(ItemType<LivingShard>(),5).
+                AddIngredient(ItemType<LivingShard>(), 5).
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddCondition(Condition.NotZenithWorld).
                 AddDecraftCondition(Condition.NotZenithWorld).
@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
                 DisableDecraft().
                 AddTile(TileID.MythrilAnvil).
                 Register();
-            
+
             CreateRecipe().
                 AddIngredient<Floodtide>().
                 AddIngredient<Hellkite>().

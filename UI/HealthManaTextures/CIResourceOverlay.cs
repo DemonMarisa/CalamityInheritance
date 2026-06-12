@@ -1,18 +1,10 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.World;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.UI.ResourceSets;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.World;
-using CalamityMod;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.UI.HealthManaTextures
 {

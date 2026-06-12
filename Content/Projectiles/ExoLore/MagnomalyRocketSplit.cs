@@ -4,7 +4,6 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Ranged;
 using LAP.Core.SystemsLoader;
-using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

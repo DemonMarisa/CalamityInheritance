@@ -1,9 +1,9 @@
-﻿using System;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -78,7 +78,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             int projectileDamage = (int)(Projectile.damage * 0.25f);
-            if(Projectile.Calamity().stealthStrike == false)
+            if (Projectile.Calamity().stealthStrike == false)
             {
                 if (bounce <= 0)
                     Projectile.Kill();
@@ -167,7 +167,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.owner == Main.myPlayer)
             {
                 int minisAmt = 3;
-                int projectileDamage = Projectile.Calamity().stealthStrike? (int)(Projectile.damage * 0.55f) : Projectile.damage;
+                int projectileDamage = Projectile.Calamity().stealthStrike ? (int)(Projectile.damage * 0.55f) : Projectile.damage;
                 if (Projectile.Calamity().stealthStrike)
                     minisAmt = stealthBounce * OnceStealthBouncesProj;
                 if (Main.rand.NextBool(10))

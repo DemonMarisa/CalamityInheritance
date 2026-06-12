@@ -1,14 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Books;
 using CalamityInheritance.Rarity;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityMod.Projectiles.Magic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 

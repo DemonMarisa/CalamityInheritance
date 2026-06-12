@@ -1,4 +1,3 @@
-using System;
 using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
@@ -8,6 +7,7 @@ using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Utilities;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Effects;

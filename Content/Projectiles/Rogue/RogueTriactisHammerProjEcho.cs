@@ -1,21 +1,19 @@
-﻿using CalamityInheritance.Sounds.Custom;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using CalamityInheritance.Content.Items;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class RogueTriactisHammerProjEcho: ModProjectile, ILocalizedModType
+    public class RogueTriactisHammerProjEcho : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<RogueTriactisHammerProj>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
@@ -72,28 +70,28 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             ***********************************************************/
             Projectile.ai[0] += 1f;
             //Echo在上升过程中速度会一直增快， 旋转速度也一样
-            if(Projectile.ai[0] < HitRange - 60f)
+            if (Projectile.ai[0] < HitRange - 60f)
             {
-                Projectile.velocity.X *=1.02f;
-                Projectile.velocity.Y *=1.02f;
-                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]*0.9f) * Projectile.localAI[0];
+                Projectile.velocity.X *= 1.02f;
+                Projectile.velocity.Y *= 1.02f;
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0] * 0.9f) * Projectile.localAI[0];
             }
             //echo达到一定距离后, 速度将会不断缩短
-            else if(Projectile.ai[0] > HitRange - 60f && Projectile.ai[0] < HitRange - 30f)
+            else if (Projectile.ai[0] > HitRange - 60f && Projectile.ai[0] < HitRange - 30f)
             {
                 Projectile.velocity.X *= 0.05f;
                 Projectile.velocity.Y *= 0.05f;
-                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.3f) * Projectile.localAI[0];
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0] * 0.3f) * Projectile.localAI[0];
             }
             //Echo达到这个距离后停止加速
-            else if(Projectile.ai[0] > HitRange - 30f && Projectile.ai[0] < 5f)
+            else if (Projectile.ai[0] > HitRange - 30f && Projectile.ai[0] < 5f)
             {
-                Projectile.velocity.X = 0f; 
+                Projectile.velocity.X = 0f;
                 Projectile.velocity.Y = 0f;
-                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0]* 0.1f) * Projectile.localAI[0];
+                Projectile.rotation += MathHelper.ToRadians(Projectile.ai[0] * 0.1f) * Projectile.localAI[0];
             }
             //只允许Echo在飞行至大于这个距离时重击
-            if(Projectile.ai[0] > HitRange) 
+            if (Projectile.ai[0] > HitRange)
             {
                 ReturnDust(Projectile);
                 CIFunction.HomeInOnNPC(Projectile, true, 1800f, speed + 10f, 0f);
@@ -117,10 +115,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             if (Main.zenithWorld)
             {
-                SoundEngine.PlaySound(CISoundMenu.Pipes with {MaxInstances = 0 ,Volume = 0.90f}, Projectile.position);
+                SoundEngine.PlaySound(CISoundMenu.Pipes with { MaxInstances = 0, Volume = 0.90f }, Projectile.position);
             }
-            SoundEngine.PlaySound(CISoundMenu.HammerSmashID1 with { MaxInstances = 0,Volume = Main.rand.NextBool(2)? 0.75f : 0.90f}, Projectile.position);
-            
+            SoundEngine.PlaySound(CISoundMenu.HammerSmashID1 with { MaxInstances = 0, Volume = Main.rand.NextBool(2) ? 0.75f : 0.90f }, Projectile.position);
+
             SpawnExplosion();
             SpawnSpark(hit);
         }
@@ -155,13 +153,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void SpawnExplosion()
         {
             Projectile.netUpdate = true;
-            SoundEngine.PlaySound(SoundID.Item88 with {Volume = 0.35f}, Projectile.position);
+            SoundEngine.PlaySound(SoundID.Item88 with { Volume = 0.35f }, Projectile.position);
             if (Projectile.owner == Main.myPlayer)
             {
                 int explo = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<RogueTriactisHammerProjBoom>(), (int)(Projectile.damage * 0.45), Projectile.knockBack, Projectile.owner, 0f, 0f);
-                if(explo.WithinBounds(Main.maxProjectiles))
+                if (explo.WithinBounds(Main.maxProjectiles))
                 {
-                    Main.projectile[explo].tileCollide = true; 
+                    Main.projectile[explo].tileCollide = true;
                 }
             }
         }
@@ -169,9 +167,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         //释放发起重击前的提示性粒子
         private static void ReturnDust(Projectile projectile)
         {
-            Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.velocity.X, projectile.velocity.Y) / 2f; 
+            Vector2 dustPosition = projectile.Center + Utils.NextVector2Circular(Main.rand, projectile.velocity.X, projectile.velocity.Y) / 2f;
 
-            for(int i = 0; i < 5 ; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Dust dust1 = Dust.NewDustPerfect(dustPosition, DustID.GemEmerald);
                 Dust dust2 = Dust.NewDustPerfect(dustPosition, DustID.Vortex);

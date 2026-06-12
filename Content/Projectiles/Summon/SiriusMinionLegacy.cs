@@ -1,19 +1,13 @@
-﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {

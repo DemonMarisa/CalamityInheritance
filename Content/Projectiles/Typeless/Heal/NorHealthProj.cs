@@ -1,16 +1,9 @@
-﻿using CalamityInheritance.Content.BaseClass;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Dusts;
+using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Dusts;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {

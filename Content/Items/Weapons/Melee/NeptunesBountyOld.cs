@@ -1,20 +1,19 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Rarities;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class NeptunesBountyOld : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

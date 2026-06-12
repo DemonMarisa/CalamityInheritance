@@ -1,7 +1,5 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.DataStructures;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;

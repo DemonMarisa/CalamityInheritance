@@ -1,8 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using LAP.Assets.TextureRegister;
-using System;
-using Terraria.ModLoader;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {

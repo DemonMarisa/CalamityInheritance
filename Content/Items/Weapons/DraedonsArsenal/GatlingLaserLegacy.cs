@@ -1,12 +1,9 @@
 ﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;

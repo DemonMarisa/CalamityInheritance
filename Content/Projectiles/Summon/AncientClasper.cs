@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
                 dust--;
             }
-            Projectile.FramesChanger(6,5);
+            Projectile.FramesChanger(6, 5);
             Lighting.AddLight((int)(Projectile.Center.X / 16f), (int)(Projectile.Center.Y / 16f), 0.05f, 0.15f, 0.2f);
             bool isMinion = Projectile.type == ProjectileType<AncientClasper>();
             player.AddBuff(BuffType<AncientClasperBuff>(), 3600);

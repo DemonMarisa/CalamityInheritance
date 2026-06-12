@@ -1,13 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityMod;
 using Terraria.GameContent.Drawing;
-using CalamityInheritance.Utilities;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -44,9 +44,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (hitCount < 1)
             {
                 if (Main.zenithWorld)
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 20f, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 20f, 20f);
                 else
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 16f, 90f);
+                    CalamityUtils.HomeInOnNPC(Projectile, true, 1000, 16f, 90f);
             }
         }
         public override Color? GetAlpha(Color lightColor)

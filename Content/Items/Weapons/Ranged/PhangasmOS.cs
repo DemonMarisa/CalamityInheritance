@@ -1,20 +1,20 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Rarity;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PhangasmOS : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

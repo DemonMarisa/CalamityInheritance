@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    public class KnowledgeCalamitasClone : LoreItem, ILocalizedModType 
+    public class KnowledgeCalamitasClone : LoreItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Lores";
         public override void SetStaticDefaults()

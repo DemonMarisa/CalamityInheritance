@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Projectiles.Melee.Swords;
-using CalamityMod.NPCs.TownNPCs;
 using LAP.Assets.Sounds;
 using LAP.Content.Particles;
 using LAP.Core.AnimationHandle;
@@ -117,9 +116,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee
                 Vector2 beginSpawnPos = Projectile.Center + RealAimPoint * 1.2f;
                 Vector2 EndSpawnPos = Projectile.Center + RealAimPoint * 1.5f;
                 Color TGBColor = Color.Lerp(Color.Brown, Color.DarkRed, Main.rand.NextFloat());
-               
+
                 new TrailGlowBall_T(Vector2.Lerp(beginSpawnPos, EndSpawnPos, Main.rand.NextFloat()), TGBColor, Main.rand.Next(45, 90), 0.15f, 0.2f, Main.rand.NextFloat(MathHelper.TwoPi), 1f).Spawn();
-               
+
                 new TrailGlowBall(Vector2.Lerp(beginSpawnPos, EndSpawnPos, Main.rand.NextFloat()),
                     Projectile.velocity.RotatedBy(MathHelper.PiOver2) * Filp,
                     TGBColor, Main.rand.Next(45, 90), 0.1f, true).Spawn();

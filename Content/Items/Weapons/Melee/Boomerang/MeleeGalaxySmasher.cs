@@ -1,21 +1,20 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleeGalaxySmasher : CIMelee, ILocalizedModType
     {
-        
+
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 

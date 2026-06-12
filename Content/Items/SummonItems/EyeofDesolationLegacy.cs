@@ -2,11 +2,8 @@
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Materials;
-using CalamityMod.NPCs.CalClone;
-using CalamityMod.NPCs.Yharon;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

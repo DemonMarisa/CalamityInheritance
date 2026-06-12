@@ -1,9 +1,7 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Vanity;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -58,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Vanity
         {
             if (player.altFunctionUse != 2)
             {
-                if(!Main.IsItDay())
+                if (!Main.IsItDay())
                 {
                     if (!Main.bloodMoon)
                     {

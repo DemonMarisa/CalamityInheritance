@@ -1,10 +1,10 @@
-using System;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,9 +13,9 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class PhoenixBlade: CIMelee, ILocalizedModType
+    public class PhoenixBlade : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -41,29 +41,29 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             //继承至毁灭刀并加强: 对高于70%血量的敌人造成5倍刀刃伤害
-            if(target.life >= target.lifeMax * 0.7) 
+            if (target.life >= target.lifeMax * 0.7)
             {
                 hit.Damage *= 4;
-                for(int j=0;j<5;j++)
-                CIFunction.DustCircle(target.Center, 15, 1.4f, DustID.CrimsonTorch, false, 5f);
-                SoundEngine.PlaySound(SoundID.Item74 with {Volume = 0.5f});
+                for (int j = 0; j < 5; j++)
+                    CIFunction.DustCircle(target.Center, 15, 1.4f, DustID.CrimsonTorch, false, 5f);
+                SoundEngine.PlaySound(SoundID.Item74 with { Volume = 0.5f });
             }
-            int fuckYou = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f,0f), ProjectileType<FuckYou>(), Item.damage, Item.knockBack, Main.myPlayer);
-            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode with {Volume = 0.5f});
-            if(fuckYou.WithinBounds(Main.maxProjectiles))
+            int fuckYou = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f, 0f), ProjectileType<FuckYou>(), Item.damage, Item.knockBack, Main.myPlayer);
+            SoundEngine.PlaySound(SoundID.DD2_ExplosiveTrapExplode with { Volume = 0.5f });
+            if (fuckYou.WithinBounds(Main.maxProjectiles))
                 Main.projectile[fuckYou].DamageType = DamageClass.Melee;
-            if(target.life <= target.life * 0.2)
+            if (target.life <= target.life * 0.2)
             {
-                Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f,0f), 612, Item.damage, Item.knockBack, Main.myPlayer);
+                Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2(0f, 0f), 612, Item.damage, Item.knockBack, Main.myPlayer);
                 float getSpread = MathHelper.Pi * 0.0174f;
-                double startSpread = Math.Atan2(Item.shootSpeed, Item.shootSpeed) - getSpread/2;
-                double alterSpread = getSpread/8f;
+                double startSpread = Math.Atan2(Item.shootSpeed, Item.shootSpeed) - getSpread / 2;
+                double alterSpread = getSpread / 8f;
                 double offsetSpread;
-                for(int i=0;i<1;i++)
+                for (int i = 0; i < 1; i++)
                 {
                     float getSpeedX = Main.rand.Next(5);
-                    float getSpeedY = Main.rand.Next(3,7);
-                    offsetSpread = startSpread + alterSpread * ( i + i * i)/2f + 32f * i;
+                    float getSpeedY = Main.rand.Next(3, 7);
+                    offsetSpread = startSpread + alterSpread * (i + i * i) / 2f + 32f * i;
                     int healProj = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
                     int healProjAlter = Projectile.NewProjectile(target.GetSource_FromThis(), target.Center, new Vector2((float)(Math.Sin(offsetSpread) * 5f), (float)(Math.Cos(offsetSpread) * 5f)), ProjectileType<PhoenixBladeHeal>(), Item.damage, Item.knockBack, Main.myPlayer);
                     Main.projectile[healProj].velocity.X = -getSpeedX;
@@ -75,8 +75,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-            if(Main.rand.NextBool(4))   
-            Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CopperCoin);
+            if (Main.rand.NextBool(4))
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CopperCoin);
         }
         public override void AddRecipes()
         {

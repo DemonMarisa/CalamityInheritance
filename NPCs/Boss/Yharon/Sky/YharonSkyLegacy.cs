@@ -1,14 +1,10 @@
 ﻿using CalamityInheritance.System;
-using CalamityMod.Events;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Sky
 {

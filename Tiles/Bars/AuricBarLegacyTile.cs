@@ -6,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace CalamityInheritance.Tiles.Bars
 {
-    public class AuricBarLegacyTile: ModTile, ILocalizedModType
+    public class AuricBarLegacyTile : ModTile, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

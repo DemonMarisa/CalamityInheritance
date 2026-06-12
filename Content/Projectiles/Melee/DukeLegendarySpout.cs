@@ -1,13 +1,12 @@
-﻿using System;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DukeLegendarySpout: ModProjectile, ILocalizedModType
+    public class DukeLegendarySpout : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()

@@ -1,19 +1,14 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityMod.Particles;
-using System;
-using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class RogueShadowspecKnivesProjClone: ModProjectile, ILocalizedModType
+    public class RogueShadowspecKnivesProjClone : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => GetInstance<RogueShadowspecKnivesProj>().Texture;
@@ -24,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public ref float AttackTimer => ref Projectile.ai[1];
         public int TargetIndex
         {
-            get => (int)Projectile.ai[2]; 
+            get => (int)Projectile.ai[2];
             set => Projectile.ai[2] = value;
         }
         public Player Owner => Main.player[Projectile.owner];

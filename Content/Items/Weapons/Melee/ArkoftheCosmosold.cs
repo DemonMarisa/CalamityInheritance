@@ -1,24 +1,23 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityMod;
 using CalamityMod.Buffs.Potions;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ArkoftheCosmosold : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -94,13 +93,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        
+
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))
             {
-                int num250 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height,DustID.RainbowTorch, player.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
+                int num250 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.RainbowTorch, player.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
                 Main.dust[num250].velocity *= 0.2f;
                 Main.dust[num250].noGravity = true;
             }
@@ -252,43 +251,43 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             {
                 player.AddBuff(BuffID.Wrath, 600);
             }
-             if (crimson)
+            if (crimson)
             {
                 player.AddBuff(BuffID.Rage, 600);
             }
-             if (dungeon)
+            if (dungeon)
             {
                 player.AddBuff(BuffID.Dangersense, 600);
             }
-             if (desert)
+            if (desert)
             {
                 player.AddBuff(BuffID.Endurance, 600);
             }
-             if (glow)
+            if (glow)
             {
                 player.AddBuff(BuffID.Spelunker, 600);
             }
-             if (hell)
+            if (hell)
             {
                 player.AddBuff(BuffID.Inferno, 600);
             }
-             if (holy)
+            if (holy)
             {
                 player.AddBuff(BuffID.Heartreach, 600);
             }
-             if (nebula)
+            if (nebula)
             {
                 player.AddBuff(BuffID.MagicPower, 600);
             }
-             if (stardust)
+            if (stardust)
             {
                 player.AddBuff(BuffID.Summoning, 600);
             }
-             if (solar)
+            if (solar)
             {
                 player.AddBuff(BuffID.Titan, 600);
             }
-             if (vortex)
+            if (vortex)
             {
                 player.AddBuff(BuffID.AmmoReservation, 600);
             }

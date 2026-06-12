@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Texture;
-using CalamityMod.NPCs;
-using CalamityMod.Projectiles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

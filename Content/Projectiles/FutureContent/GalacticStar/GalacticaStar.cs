@@ -1,7 +1,7 @@
-using System;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -102,7 +102,7 @@ namespace CalamityInheritance.Content.Projectiles.FutureContent.GalacticStar
             {
                 Projectile.soundDelay = 20 + Main.rand.Next(40);
                 if (Main.rand.NextBool(5))
-                    SoundEngine.PlaySound(SoundID.Item9 with {MaxInstances = 0}, Projectile.position);
+                    SoundEngine.PlaySound(SoundID.Item9 with { MaxInstances = 0 }, Projectile.position);
             }
 
             Projectile.localAI[0] += 1f;

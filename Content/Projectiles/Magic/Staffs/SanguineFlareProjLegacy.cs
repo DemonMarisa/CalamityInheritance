@@ -1,7 +1,5 @@
-﻿using CalamityMod;
-using CalamityMod.Balancing;
+﻿using CalamityMod.Balancing;
 using CalamityMod.Dusts;
-using CalamityMod.Projectiles;
 using LAP.Content.Projectiles.LifeStealProj;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

@@ -1,21 +1,11 @@
-﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Items.Placeables.SunkenSea;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.NPCs.NormalNPCs;
-using CalamityMod.Projectiles.Pets;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
@@ -66,13 +56,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
             target.AddBuff(BuffID.Frostburn, 300);
         }
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
             target.AddBuff(BuffID.Frostburn, 300);
         }
     }

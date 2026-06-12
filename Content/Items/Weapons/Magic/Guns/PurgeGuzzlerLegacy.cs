@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Guns;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -43,6 +44,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Guns
 
             // Still also fire the center laser
             return true;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(8).
+                AddIngredient<DivineGeode>(4).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

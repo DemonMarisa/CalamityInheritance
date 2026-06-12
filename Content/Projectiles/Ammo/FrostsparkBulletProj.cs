@@ -1,16 +1,9 @@
-﻿using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
 
 namespace CalamityInheritance.Content.Projectiles.Ammo
 {
@@ -72,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
         {
             target.AddBuff(BuffID.OnFire, 240);
             target.AddBuff(BuffID.Frostburn, 240);
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
         }
 
         public override void OnKill(int timeLeft)

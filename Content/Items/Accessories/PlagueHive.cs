@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -13,10 +13,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:42,
-            itemHeight:48,
-            itemRare:ItemRarityID.Cyan,
-            itemValue:CIShopValue.RarityPriceCyan
+            itemWidth: 42,
+            itemHeight: 48,
+            itemRare: ItemRarityID.Cyan,
+            itemValue: CIShopValue.RarityPriceCyan
         );
 
         public override void UpdateAccessory(Player player, bool hideVisual)

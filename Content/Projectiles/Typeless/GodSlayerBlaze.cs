@@ -1,9 +1,9 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using System;
-using Terraria.ModLoader;
-using Terraria;
 using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {

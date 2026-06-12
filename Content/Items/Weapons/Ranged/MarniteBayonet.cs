@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

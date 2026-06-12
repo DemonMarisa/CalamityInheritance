@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -22,13 +22,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         //默认颜色
         private static Color DefualtColor => Color.White;
         //开发者颜色: TrueScarlet, 近似深红
-        private static Color TrueScarletColor => new(228, 1, 10);  
+        private static Color TrueScarletColor => new(228, 1, 10);
         //开发者颜色: DemonMarisa, 近似金黄
         private static Color DemonMarisaColor => new(255, 165, 0);
         //Tester颜色：Shizuku, 银白
         private static Color ShizukuColorSilver => new(248, 248, 255);
         //Tester颜色：KunojiIchika，近似纯黑
-        private static Color IchikaColorBlack => new (79, 79, 79);
+        private static Color IchikaColorBlack => new(79, 79, 79);
         //Supporter颜色: Plantare, 粉红
         private static Color PlantareColorPink => Color.HotPink;
         //彩蛋颜色: Tristan, 皇家蓝
@@ -115,9 +115,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             var up = p.CIMod();
             string tExo = up.YharimsKilledExo ? Language.GetTextValue($"{TextRoute}.ExoTint") : Language.GetTextValue($"{TextRoute}.NoExoTint");
             string tScal = up.YharimsKilledScal ? Language.GetTextValue($"{TextRoute}.ScalTint") : Language.GetTextValue($"{TextRoute}.NoScalTint");
-            tooltips.FindAndReplace("[EXO]",tExo);
-            tooltips.FindAndReplace("[SCAL]",tScal);
-            
+            tooltips.FindAndReplace("[EXO]", tExo);
+            tooltips.FindAndReplace("[SCAL]", tScal);
+
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {

@@ -2,7 +2,6 @@
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod.Items.Materials;
-using CalamityMod.Sounds;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;

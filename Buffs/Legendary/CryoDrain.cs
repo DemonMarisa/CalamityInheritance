@@ -9,7 +9,7 @@ namespace CalamityInheritance.Buffs.Legendary
     *低温虹吸:
     *吸收敌怪的属性, 将其转化为对自身的增益
     */
-    public class CryoDrain : GenericBuffDefualt 
+    public class CryoDrain : GenericBuffDefualt
     {
         public override void Update(Player player, ref int buffIndex)
         {

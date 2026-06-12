@@ -1,12 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.System.Configs;
+﻿using CalamityInheritance.System.Configs;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -19,7 +15,7 @@ namespace CalamityInheritance.Utilities
     /// <summary>
     /// get向量数据
     /// </summary>
-    
+
     public static partial class CIFunction
     {
         public static int SecondsToFrames(int seconds) => seconds * 60;
@@ -30,7 +26,7 @@ namespace CalamityInheritance.Utilities
         /// <returns>一个位于npc正中心的向量起点(或者终点，看你想怎么使用)</returns>
         public static Vector2 GetNpcCenter(NPC npc)
         {
-            Vector2 npcPos = new(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height* 0.5f);
+            Vector2 npcPos = new(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             return npcPos;
         }
         public static float TryGetVectorMud(float distanceX, float distanceY)
@@ -43,7 +39,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="projectile">射弹</param>
         /// <param name="fCounter">计时器，即间隔多少时间播放下一张帧图</param>
         /// <param name="fMax">这个帧图最大的帧数</param>
-        public static int FramesChanger(this Projectile projectile, int fCounter, int fMax) 
+        public static int FramesChanger(this Projectile projectile, int fCounter, int fMax)
         {
             projectile.frameCounter++;
             if (projectile.frameCounter > fCounter)
@@ -112,10 +108,10 @@ namespace CalamityInheritance.Utilities
 
             return true;
         }
-        
+
         public static void ShimmerEach<T>(this int result, bool ifDontNeedConfigControl = true) where T : ModItem
         {
-            
+
             if (ifDontNeedConfigControl || CIServerConfig.Instance.CustomShimmer)
             {
                 ItemID.Sets.ShimmerTransformToItem[ItemType<T>()] = result;
@@ -129,11 +125,11 @@ namespace CalamityInheritance.Utilities
                 ItemID.Sets.ShimmerTransformToItem[origin] = ItemType<T>();
             }
         }
-        public static void ShopHelper<T>(this NPCShop shop, int value, Condition condition) where T: ModItem
+        public static void ShopHelper<T>(this NPCShop shop, int value, Condition condition) where T : ModItem
         {
             shop.AddWithCustomValue(ItemType<T>(), value, condition);
         }
-        public static RecipeGroup CreateGroupTwoItem<T>(this int showOnRecipe) where T: ModItem
+        public static RecipeGroup CreateGroupTwoItem<T>(this int showOnRecipe) where T : ModItem
         {
             return new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(showOnRecipe)}", showOnRecipe, ItemType<T>());
         }
@@ -143,7 +139,7 @@ namespace CalamityInheritance.Utilities
         }
         public static string GetGroupName(this string name)
         {
-            string getName = "CalamityInheritance:" + name; 
+            string getName = "CalamityInheritance:" + name;
             return getName;
         }
         public static void Chat(this string name)
@@ -170,17 +166,17 @@ namespace CalamityInheritance.Utilities
         #region RecipeHelper
         #endregion
 
-        public static int DamageBoostApply<T>(this Player player ,int baseDamage) where T : DamageClass
+        public static int DamageBoostApply<T>(this Player player, int baseDamage) where T : DamageClass
         {
             return (int)player.GetDamage<T>().ApplyTo(baseDamage);
         }
-        
+
         public static int DamageBoostApply(this Player player, DamageClass damageclass, int baseDamage)
         {
             return (int)player.GetDamage(damageclass).ApplyTo(baseDamage);
         }
         public static bool Same(this Item item, int itemID) => item.type == itemID;
-        public static bool Same<T>(this Item item) where T :ModItem => Same(item, ItemType<T>());
+        public static bool Same<T>(this Item item) where T : ModItem => Same(item, ItemType<T>());
         public static bool ActiveWrath()
         {
             bool isAcitve = ModLoader.TryGetMod("NoxusBoss", out Mod mod);
@@ -211,7 +207,7 @@ namespace CalamityInheritance.Utilities
                     GetInstance<CalamityInheritance>().Logger.Warn($"Skipped assembly:{type.FullName}: {ex.Message}");
                 }
             }
-            if(result.Count is 0)
+            if (result.Count is 0)
                 GetInstance<CalamityInheritance>().Logger.Warn($"NoClassName:{targetClassName}");
             return result;
         }

@@ -1,16 +1,14 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Weapons.Melee;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using System.IO;
-using MonoMod.Utils;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -92,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         if (projHitbox.Intersects(mplrHitbox))
                         {
                             //主要是星神之杀的代码
-                            if(Projectile.Calamity().stealthStrike)
+                            if (Projectile.Calamity().stealthStrike)
                             {
                                 //这个速度会稍微慢一点
                                 Projectile.velocity *= -0.7f;
@@ -109,9 +107,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         }
                     }
                     break;
-                
+
                 case 2f:
-                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, stealthSpeed/2, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1250f, stealthSpeed / 2, 20f);
                     ifSummonClone = true;
                     Projectile.netUpdate = true;
                     break;
@@ -151,7 +149,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int dustCount = Main.rand.Next(20, 24);
             int dustRadius = 6;
             Vector2 corner = new(target.Center.X - dustRadius, target.Center.Y - dustRadius);
-            if(Projectile.ai[0] == 2f)  //从灾厄上抄下来的，只有返程追踪的锤子击中时才会生成这些粒子
+            if (Projectile.ai[0] == 2f)  //从灾厄上抄下来的，只有返程追踪的锤子击中时才会生成这些粒子
             {
                 float numberOfDusts = 40f;
                 float rotFactor = 360f / numberOfDusts;
@@ -180,13 +178,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             if (!Main.dayTime)
                 target.AddBuff(BuffType<Nightwither>(), 240);
-            
+
             //潜伏攻击击中敌怪时将会尝试生成再生成一个追踪锤子,这个追踪锤子会造成面板的1.15f伤害
-            if(ifSummonClone) 
+            if (ifSummonClone)
             {
                 int getClone = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, ProjectileType<RogueStellarContemptProjClone>(), (int)(Projectile.damage), Projectile.knockBack, Main.myPlayer);
-                if(Main.rand.NextBool(3))
-                Main.projectile[getClone].Calamity().stealthStrike = true;
+                if (Main.rand.NextBool(3))
+                    Main.projectile[getClone].Calamity().stealthStrike = true;
                 ifSummonClone = false;
             }
             SpawnFlares(target.Center, target.width, target.height);
@@ -209,7 +207,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Main.dust[idx].scale = scale;
             }
 
-            
+
 
             // Applies Nightwither on contact at night.
             if (!Main.dayTime)
@@ -256,8 +254,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 velocity.Normalize();
                 velocity *= flareSpeed;
                 //如果是返程追踪的锤子，落下的月曜射弹的速度将会被2.5f倍率
-                if(Projectile.ai[0] == 2f)
-                velocity *= 2.5f;
+                if (Projectile.ai[0] == 2f)
+                    velocity *= 2.5f;
 
                 float AI1 = Main.rand.Next(3);
                 if (Projectile.owner == Main.myPlayer)
@@ -265,7 +263,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPoint, velocity, ProjectileID.LunarFlare, flareDamage, flareKB, Main.myPlayer, 0f, AI1);
                     if (proj.WithinBounds(Main.maxProjectiles))
                         Main.projectile[proj].DamageType = GetInstance<RogueDamageClass>();
-                        Main.projectile[proj].tileCollide = false;
+                    Main.projectile[proj].tileCollide = false;
                 }
             }
         }

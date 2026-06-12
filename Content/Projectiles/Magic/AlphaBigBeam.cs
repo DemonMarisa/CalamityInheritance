@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Magic;
-using LAP.Assets.TextureRegister;
 using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

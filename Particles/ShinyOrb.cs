@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LAP.Core.Enums;
+using LAP.Core.ParticleSystem;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using LAP.Core.ParticleSystem;
-using LAP.Core.Enums;
 
 namespace CalamityInheritance.Particles
 {
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Particles
             Scale *= 0.93f;
             DrawColor = Color.Lerp(InitColor, InitColor * 0.2f, (float)Math.Pow(LifetimeRatio, 30));
             Velocity *= 0.95f;
-            if(Velocity.Length() < 12f && AffectedByGravity)
+            if (Velocity.Length() < 12f && AffectedByGravity)
             {
                 Velocity.X *= 0.94f;
                 Velocity.Y += 0.25f;

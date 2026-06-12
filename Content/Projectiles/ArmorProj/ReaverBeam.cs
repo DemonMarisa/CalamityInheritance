@@ -1,9 +1,9 @@
 ﻿using CalamityMod.Particles;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {

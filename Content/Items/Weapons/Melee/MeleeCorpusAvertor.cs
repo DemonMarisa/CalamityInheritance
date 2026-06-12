@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
@@ -11,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class MeleeCorpusAvertor : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

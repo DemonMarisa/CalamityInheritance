@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using CalamityInheritance.NPCs.Boss.Yharon;
+using System.Collections.Generic;
 using Terraria.Achievements;
 using Terraria.GameContent.Achievements;
 using Terraria.ModLoader;
@@ -8,7 +8,7 @@ namespace CalamityInheritance.Content.Achievements
 {
     public class DownedYharonP2 : ModAchievement
     {
-        public CustomFlagCondition ForceKilledCondition { get; private set; } 
+        public CustomFlagCondition ForceKilledCondition { get; private set; }
         public override void SetStaticDefaults()
         {
             ForceKilledCondition = AddCondition();

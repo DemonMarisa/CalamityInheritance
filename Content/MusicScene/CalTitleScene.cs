@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.UI.MusicUI;
 using CalamityInheritance.UI.MusicUI.MusicButton;
-using CalamityInheritance.UI.MusicUI;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.MusicScene
 {

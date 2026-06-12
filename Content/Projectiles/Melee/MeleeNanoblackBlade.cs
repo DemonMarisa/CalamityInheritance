@@ -1,21 +1,19 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.StatDebuffs;
-using Microsoft.Build.Framework;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeNanoblackBlade: ModProjectile, ILocalizedModType
+    public class MeleeNanoblackBlade : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         private static int SpriteWidth = 52;
-        private static int Lifetime = 90; 
+        private static int Lifetime = 90;
         private static float MaxRotationSpeed = 0.22f;
         private static float MaxSpeed = 28f;//使其机动性能追杀炼狱丛林龙
 

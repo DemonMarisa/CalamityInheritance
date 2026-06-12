@@ -1,10 +1,8 @@
 using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -67,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                 Projectile.HomingNPCBetter(target, 1800f, 18f, 20f, ignoreDist: true);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        { 
+        {
             modifiers.DefenseEffectiveness *= 0f;
             if (Owner.ActiveItem().type != ItemType<R99>())
                 return;
@@ -93,7 +91,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                 if (AttackHit == 0f)
                 {
                     for (int i = 0; i < 2; i++)
-                        Dust.NewDust(Projectile.Center, 10, 10, ShootedTime < R99.CrackedShieldTime ? DustID.CursedTorch: DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
+                        Dust.NewDust(Projectile.Center, 10, 10, ShootedTime < R99.CrackedShieldTime ? DustID.CursedTorch : DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y / 4f, 0, default, 1f);
 
                     AttackHit = 1;
                 }
@@ -106,7 +104,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                     ShootedTargetIndex = target.whoAmI;
                     return;
                 }
-                
+
                 ShootedTime++;
                 //专门处理碎甲音效
                 if (ShootedTime > R99.CrackedShieldTime && ShootedTime < R99.FleshHitTime)

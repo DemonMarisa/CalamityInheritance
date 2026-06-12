@@ -1,12 +1,12 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -84,7 +84,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 int height = (int)MathHelper.Min(target.Hitbox.Height, 60);
                 Projectile.ExpandHitboxBy(width, height);
             }
-                target.ExoDebuffs();
+            target.ExoDebuffs();
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)

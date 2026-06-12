@@ -1,9 +1,8 @@
-using System;
-using System.IO;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -19,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         ref float AttackTimer => ref Projectile.ai[1];
         ref float TargetIndex => ref Projectile.ai[2];
         ref int Alpha => ref Projectile.alpha;
-        public Player Owner => Main.player[Projectile.owner]; 
+        public Player Owner => Main.player[Projectile.owner];
         #endregion
         #region 攻击枚举
         const float IsIdle = 0f;
@@ -80,13 +79,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             }
         }
         public override Color? GetAlpha(Color lightColor) => base.GetAlpha(lightColor);
-        
+
         public override bool PreDraw(ref Color lightColor)
         {
             if (AttackTimer <= 1f)
                 return false;
 
-            Color drawColor = CalamityUtils.MulticolorLerp((AttackTimer/ 35f + Projectile.identity / 4f) % 1f, CalamityUtils.ExoPalette);
+            Color drawColor = CalamityUtils.MulticolorLerp((AttackTimer / 35f + Projectile.identity / 4f) % 1f, CalamityUtils.ExoPalette);
             drawColor.A = 0;
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], drawColor);
             return false;
@@ -141,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 AttackType = IsShooted;
                 AttackTimer = 0f;
-                Projectile.netUpdate = true; 
+                Projectile.netUpdate = true;
             }
         }
 

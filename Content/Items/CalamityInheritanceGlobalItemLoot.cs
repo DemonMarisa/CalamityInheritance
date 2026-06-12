@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items
             }
             return base.OnPickup(item, player);
         }
-        
+
         public static void DoDropLegacy(ref Item item)
         {
             int getType = item.type;

@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless.FiniteUse;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Items.Ammo.FiniteUse
 {

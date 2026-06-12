@@ -1,17 +1,16 @@
-﻿using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Melee;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleeStellarContempt : CIMelee, ILocalizedModType
     {
-        
+
         public static int BaseDamage = 300;
         public static float Speed = 18f;
 

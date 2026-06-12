@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
-using CalamityMod.Projectiles.BaseProjectiles;
+﻿using CalamityMod.Projectiles.BaseProjectiles;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using System;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
     public class MountedScannerLaserLegacy : BaseLaserbeamProjectile, ILocalizedModType

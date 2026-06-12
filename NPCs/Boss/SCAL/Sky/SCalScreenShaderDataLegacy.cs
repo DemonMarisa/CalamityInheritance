@@ -4,7 +4,6 @@ using System;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 {

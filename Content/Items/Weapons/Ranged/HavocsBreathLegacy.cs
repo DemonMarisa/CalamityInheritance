@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -12,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class HavocsBreathLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

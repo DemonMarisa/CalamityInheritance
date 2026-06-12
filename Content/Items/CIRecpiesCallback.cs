@@ -40,8 +40,8 @@ namespace CalamityInheritance.Content.Items
 
         public static void IfDragonBow(Recipe recipe, int type, ref int amount, bool isDecrafting)
         {
-            if(type == ItemType<HeavenlyGaleold>()) amount = 0;
-            if(type == ItemType<AscendantSpiritEssence>()) amount = 0;
+            if (type == ItemType<HeavenlyGaleold>()) amount = 0;
+            if (type == ItemType<AscendantSpiritEssence>()) amount = 0;
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using System;
-using Terraria.Audio;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {

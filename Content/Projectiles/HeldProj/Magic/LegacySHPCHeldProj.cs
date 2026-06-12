@@ -1,13 +1,10 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.System.Configs;
-using CalamityMod;
 using CalamityMod.Sounds;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -30,7 +27,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
         public int RightCD = 7;
         // 旋转速度
         public override float AimResponsiveness => 0.5f;
-        public Player Owner => Main.player[Projectile.owner]; 
+        public Player Owner => Main.player[Projectile.owner];
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.NeedsUUID[Projectile.type] = true;

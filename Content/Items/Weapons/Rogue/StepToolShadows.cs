@@ -1,20 +1,20 @@
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Materials;
 using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.Weapons.Rogue;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using CalamityMod.Items.Placeables.Banners;
-using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Utilities;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Banners;
+using CalamityMod.Items.Weapons.Rogue;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -75,5 +75,5 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddTile<DemonshadeTile>().
                 Register();
         }
-    } 
+    }
 }

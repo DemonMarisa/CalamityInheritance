@@ -1,6 +1,6 @@
+using CalamityInheritance.Content.Items.Weapons.Legendary;
 using System;
 using System.Collections.Generic;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
 using Terraria.Achievements;
 using Terraria.GameContent.Achievements;
 using Terraria.ModLoader;
@@ -9,9 +9,9 @@ namespace CalamityInheritance.Content.Achievements
 {
     public class GetMalaLegendary : ModAchievement
     {
-        public CustomFlagCondition LegendaryComplete1{ get; private set; }
-        public CustomFlagCondition LegendaryComplete2{ get; private set; }
-        public CustomFlagCondition LegendaryComplete3{ get; private set; }
+        public CustomFlagCondition LegendaryComplete1 { get; private set; }
+        public CustomFlagCondition LegendaryComplete2 { get; private set; }
+        public CustomFlagCondition LegendaryComplete3 { get; private set; }
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(AchievementCategory.Challenger);
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Achievements
             yield return new After(GetInstance<DownedYharonP2>());
         }
     }
-    
+
     public class CustomTrack : ConditionFloatTracker
     {
         private Dictionary<AchievementCondition, float> weightedCondi;

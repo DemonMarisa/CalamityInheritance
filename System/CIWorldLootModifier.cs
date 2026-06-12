@@ -1,13 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
 using CalamityInheritance.Content.Items.Accessories.Combats;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.SummonItems;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.Generation;
-using Terraria.ID;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;

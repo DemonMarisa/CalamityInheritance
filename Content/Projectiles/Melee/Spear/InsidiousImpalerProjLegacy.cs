@@ -1,18 +1,12 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.BaseProjectiles;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.BaseProjectiles;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {

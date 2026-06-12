@@ -1,6 +1,4 @@
-﻿using System;
-using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

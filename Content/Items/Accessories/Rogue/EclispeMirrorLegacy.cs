@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using ReLogic.Peripherals.RGB.SteelSeries;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -16,10 +15,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Rogue
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:38,
-            itemHeight:38,
+            itemWidth: 38,
+            itemHeight: 38,
             itemRare: RarityType<CatalystViolet>(),
-            itemValue:CIShopValue.RarityPriceCatalystViolet
+            itemValue: CIShopValue.RarityPriceCatalystViolet
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

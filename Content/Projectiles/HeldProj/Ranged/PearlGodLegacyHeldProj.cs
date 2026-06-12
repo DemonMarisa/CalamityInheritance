@@ -1,16 +1,16 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using System;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 using CalamityMod.Particles;
 using LAP.Core.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
 {
@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
         public void RecoilAnimation(ref float AniProgress)
         {
             Player player = Main.player[Projectile.owner];
-            if(Main.mouseRight)
+            if (Main.mouseRight)
             {
                 rotProg = MathHelper.Lerp(rotProg, 0f, 0.25f);
                 return;
@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
                 for (int k = 0; k < 2; k++)
                 {
                     int randomColor = Main.rand.Next(1, 2 + 1);
-                    Color color = randomColor == 1 ? Color.LightBlue :Color.Khaki;
+                    Color color = randomColor == 1 ? Color.LightBlue : Color.Khaki;
                     SparkParticle spark = new SparkParticle(firepos, velocity.RotatedByRandom(0.25) * Main.rand.NextFloat(0.2f, 1.5f), false, Main.rand.Next(20, 25 + 1), Main.rand.NextFloat(0.4f, 0.65f), color);
                     GeneralParticleHandler.SpawnParticle(spark);
                 }

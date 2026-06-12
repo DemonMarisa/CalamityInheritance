@@ -1,15 +1,14 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Accessories.Rogue;
+﻿using CalamityInheritance.Content.Items.Accessories.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.Localization;
 using static CalamityMod.CalamityUtils;
-using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.CICooldowns
 {

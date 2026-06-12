@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Legendary
 {
-    public class CyrogenLegendaryBuff: ModBuff
+    public class CyrogenLegendaryBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Legendary
         public override void Update(Player player, ref int buffIndex)
         {
             var modPlayer = player.CIMod();
-            modPlayer.IsColdDivityActiving= true;
+            modPlayer.IsColdDivityActiving = true;
             if (!modPlayer.IsColdDivityActiving)
             {
                 player.DelBuff(buffIndex);

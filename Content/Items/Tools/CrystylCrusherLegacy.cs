@@ -1,18 +1,18 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Tools;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Tools;
 using CalamityMod.Projectiles.Melee;
 using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Tools
 {

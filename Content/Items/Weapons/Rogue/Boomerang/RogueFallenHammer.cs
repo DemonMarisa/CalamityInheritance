@@ -1,18 +1,18 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod.Items.Weapons.Rogue;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
-    public class RogueFallenHammer: RogueWeapon, ILocalizedModType
+    public class RogueFallenHammer : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override string Texture => GetInstance<MeleeFallenHammer>().Texture;
@@ -39,15 +39,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             Item.shoot = ProjectileType<RogueFallenHammerProj>();
             Item.shootSpeed = 14f;
         }
-        
+
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool stealth = player.CheckStealth();
             if (!stealth)
                 return true;
 
-            int onlyHoming = Projectile.NewProjectile(source, position, velocity*1.6f , type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f, -3f);
-            int homeAndHanging = Projectile.NewProjectile(source, position, velocity*1.8f , ProjectileType<RogueFallenHammerProjClone>(), (int)(damage * 0.65f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int onlyHoming = Projectile.NewProjectile(source, position, velocity * 1.6f, type, (int)(damage * 1.5f), knockback, player.whoAmI, 0f, 0f, -3f);
+            int homeAndHanging = Projectile.NewProjectile(source, position, velocity * 1.8f, ProjectileType<RogueFallenHammerProjClone>(), (int)(damage * 0.65f), knockback, player.whoAmI, 0f, 0f, -3f);
             Main.projectile[onlyHoming].Calamity().stealthStrike = true;
             Main.projectile[homeAndHanging].Calamity().stealthStrike = true;
             return false;

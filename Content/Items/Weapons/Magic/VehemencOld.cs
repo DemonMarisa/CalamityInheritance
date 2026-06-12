@@ -1,18 +1,18 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class VehemencOld : CIMagic, ILocalizedModType 
+    public class VehemencOld : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            Projectile.NewProjectile(source, position, velocity , ProjectileType<VehemenceOld>(), damage, (int)knockback, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position, velocity, ProjectileType<VehemenceOld>(), damage, (int)knockback, player.whoAmI, 0f, 0f);
             player.AddBuff(BuffID.ManaSickness, 600, true);
             return false;
         }

@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;

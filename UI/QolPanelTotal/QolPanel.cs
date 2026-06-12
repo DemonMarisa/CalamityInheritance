@@ -1,12 +1,4 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.System.DownedBoss;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {

@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
+using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
-    public class MidnightSunSkyBeamold : ModProjectile, ILocalizedModType 
+    public class MidnightSunSkyBeamold : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Summon";
         // How long this laser can exist before it is deleted.
@@ -167,7 +167,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                         sourceRectangle.Height = (int)(laserLength - laserLengthDelta);
                     }
 
-                    Main.EntitySpriteDraw(laserBodyTexture, centerDelta, new Rectangle?(sourceRectangle),drawColor,Projectile.rotation,new Vector2(sourceRectangle.Width / 2f, 0f), Projectile.scale, SpriteEffects.None,0f);
+                    Main.EntitySpriteDraw(laserBodyTexture, centerDelta, new Rectangle?(sourceRectangle), drawColor, Projectile.rotation, new Vector2(sourceRectangle.Width / 2f, 0f), Projectile.scale, SpriteEffects.None, 0f);
 
                     laserLengthDelta += sourceRectangle.Height * Projectile.scale;
                     centerDelta += Projectile.velocity * sourceRectangle.Height * Projectile.scale;
@@ -180,11 +180,11 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
             }
 
-            Main.EntitySpriteDraw(laserHeadTexture, centerDelta, null,drawColor,Projectile.rotation,laserHeadTexture.Frame(1, 1, 0, 0).Top(), Projectile.scale,SpriteEffects.None,0f);
+            Main.EntitySpriteDraw(laserHeadTexture, centerDelta, null, drawColor, Projectile.rotation, laserHeadTexture.Frame(1, 1, 0, 0).Top(), Projectile.scale, SpriteEffects.None, 0f);
 
             return false;
         }
-        
+
         public override void CutTiles()
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;

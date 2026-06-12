@@ -7,13 +7,11 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.System.DownedBoss;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Armor.Aerospec;
 using CalamityMod.Items.Armor.Empyrean;
 using CalamityMod.Items.Weapons.Ranged;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.System
 {

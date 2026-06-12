@@ -1,21 +1,20 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using CalamityMod.Items;
+using CalamityMod.Items.Armor.Empyrean;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Items.Armor.Empyrean;
-using CalamityMod.CalPlayer;
-using CalamityInheritance.Buffs.Statbuffs;
 
 namespace CalamityInheritance.Content.Items.Armor.Xeroc
 {
     [AutoloadEquip(EquipType.Head)]
     public class AncientXerocMask : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -96,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Armor.Xeroc
                 AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-                
-        }  
+
+        }
     }
 }

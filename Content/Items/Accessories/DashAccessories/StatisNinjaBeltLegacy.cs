@@ -13,10 +13,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:42,
-            itemRare:ItemRarityID.Purple,
-            itemValue:CIShopValue.RarityPricePurple
+            itemWidth: 48,
+            itemHeight: 42,
+            itemRare: ItemRarityID.Purple,
+            itemValue: CIShopValue.RarityPricePurple
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

@@ -177,7 +177,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (snow)
             {
-                target.AddBuff(BuffType<GlacialState>(), 30);
+
             }
             else if (beach)
             {

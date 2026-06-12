@@ -1,10 +1,10 @@
-﻿using System;
-using CalamityInheritance.Buffs.Summon;
+﻿using CalamityInheritance.Buffs.Summon;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -52,13 +52,13 @@ public class SaveCosmic : ModProjectile, ILocalizedModType
         {
             if (player.dead)
                 usPlayer.CosmicEnergyExtra = false;
-            
+
             if (usPlayer.CosmicEnergyExtra)
                 Projectile.timeLeft = 2;
             if (player.maxMinions < 10f)
                 Projectile.Kill();
         }
-        
+
         float targetDist = 1400f; //700
         Projectile.rotation += Projectile.velocity.X * 0.1f;
         Vector2 projPos = Projectile.position;

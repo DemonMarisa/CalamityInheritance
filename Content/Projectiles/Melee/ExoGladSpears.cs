@@ -1,13 +1,13 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -127,7 +127,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Projectile.ai[0] != 1f) 
+            if (Projectile.ai[0] != 1f)
             {
                 target.AddBuff(BuffID.Frostburn, 300);
                 target.AddBuff(BuffID.OnFire, 300);

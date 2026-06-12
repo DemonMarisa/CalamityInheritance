@@ -1,11 +1,8 @@
-﻿using CalamityMod.Projectiles;
-using CalamityMod;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using CalamityMod.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
 {
@@ -67,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<GlacialState>(), 30);
+
         }
     }
 }

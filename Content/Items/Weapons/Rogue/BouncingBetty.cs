@@ -1,10 +1,10 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Rogue;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {

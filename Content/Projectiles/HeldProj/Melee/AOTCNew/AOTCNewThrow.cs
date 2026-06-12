@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords.AOTCNew;
 using CalamityInheritance.Content.Nodes;
 using CalamityInheritance.Texture;
-using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
 using CalamityMod.Sounds;
 using LAP.Assets.TextureRegister;
@@ -171,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.AOTCNew
 
             Texture2D smear = CITextureRegistry.TrientCircularSmear.Value;
             float opacity = (float)Math.Sin(ThrowCompletion * MathHelper.Pi);
-            float rotationOffset = Projectile.direction == 1 ?  MathHelper.Pi : MathHelper.Pi;
+            float rotationOffset = Projectile.direction == 1 ? MathHelper.Pi : MathHelper.Pi;
             float rotation = Projectile.rotation + rotationOffset;
             Color smearColor = Color.Silver with { A = 0 };
             Main.spriteBatch.Draw(smear, drawPos, null, smearColor * opacity * 0.1f, rotation, smear.Size() / 2f, Projectile.scale * 1.7f, 0, 0);

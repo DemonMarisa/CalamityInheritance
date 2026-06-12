@@ -1,10 +1,7 @@
 ﻿using CalamityInheritance.NPCs;
 using CalamityMod;
-using CalamityMod.Enums;
-using CalamityMod.Items.Accessories;
 using CalamityMod.NPCs.ExoMechs.Ares;
 using CalamityMod.NPCs.SlimeGod;
-using Microsoft.Build.Tasks;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -83,7 +80,7 @@ namespace CalamityInheritance.Utilities
                 }
             }
             return isBoss;
-            
+
         }
         /// <summary>
         /// 使原始单位能够追上你需要的目标单位
@@ -131,8 +128,8 @@ namespace CalamityInheritance.Utilities
         /// <param name="blue">B!</param>
         public static void SetGlow(NPC npc, float red, float green, float blue)
         {
-            float lightingPosX = (npc.position.X + npc.width/2)/16;
-            float lightingPosY = (npc.position.Y + npc.width/2)/16;
+            float lightingPosX = (npc.position.X + npc.width / 2) / 16;
+            float lightingPosY = (npc.position.Y + npc.width / 2) / 16;
             Lighting.AddLight(new Vector2(lightingPosX, lightingPosY), red, green, blue);
         }
         #region Smooth Movement
@@ -332,7 +329,7 @@ namespace CalamityInheritance.Utilities
 
         public static void ArmageddonBagDrop(NPCLoot npcLoot, int bagtype)
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
                 npcLoot.DefineConditionalDropSet(CIDropHelper.ArmageddonNoNor).Add(bagtype);
         }
         /// <summary>
@@ -342,7 +339,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="npc"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static int PlayerAndNPCDir(NPC npc , Player target)
+        public static int PlayerAndNPCDir(NPC npc, Player target)
         {
             int posX = 1;
             if (npc.Center.X < target.Center.X)

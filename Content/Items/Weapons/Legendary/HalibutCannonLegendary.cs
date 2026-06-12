@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -11,13 +7,14 @@ using CalamityMod.Items.Weapons.Ranged;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI;
 using Terraria.UI.Chat;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary

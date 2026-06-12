@@ -26,7 +26,7 @@ namespace CalamityInheritance.CIPlayer.Dash
         {
             for (int d = 0; d < 3; d++)
             {
-                Vector2 pos = new (player.Center.X + Main.rand.Next(-4, 4), player.Center.Y + Main.rand.Next(-12, 12));
+                Vector2 pos = new(player.Center.X + Main.rand.Next(-4, 4), player.Center.Y + Main.rand.Next(-12, 12));
                 new CampSmoke(pos, Vector2.Zero, Color.White, 45, Main.rand.NextFloat(MathHelper.TwoPi), 0.45f, 0.2f).Spawn();
             }
         }

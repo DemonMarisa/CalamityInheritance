@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientAstral
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientAstralHelm: CIArmor, ILocalizedModType
+    public class AncientAstralHelm : CIArmor, ILocalizedModType
     {
         private const int Crits = 5;
         private const int LifeMax = 20;
@@ -39,10 +39,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
             Item.width = 20;
             Item.height = 22;
             Item.value = CIShopValue.RarityPriceRed;
-            Item.rare =  ItemRarityID.Red;
+            Item.rare = ItemRarityID.Red;
             Item.defense = 22;
         }
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(Crits.ToPercent(), LifeMax, LifeSpeed);
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(CIFunction.ToPercent(Crits), LifeMax, LifeSpeed);
         public override void UpdateEquip(Player player)
         {
             player.statLifeMax2 += LifeMax;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
         public override void UpdateArmorSet(Player player)
         {
             CalamityPlayer calPlayer = player.Calamity();
-            var usPlayer = player.CIMod(); 
+            var usPlayer = player.CIMod();
             player.pStone = true;
             calPlayer.wearingRogueArmor = true;
 

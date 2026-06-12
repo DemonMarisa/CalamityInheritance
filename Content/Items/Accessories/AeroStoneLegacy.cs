@@ -1,13 +1,12 @@
-﻿using Terraria;
-using Terraria.DataStructures;
-using Terraria.ModLoader;
-using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.GameContent;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -15,10 +14,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:50,
-            itemRare:ItemRarityID.Green,
-            itemValue:CIShopValue.RarityPriceGreen
+            itemWidth: 48,
+            itemHeight: 50,
+            itemRare: ItemRarityID.Green,
+            itemValue: CIShopValue.RarityPriceGreen
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -27,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public override void ExSSD()
         {
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 8));
-            ItemID.Sets.AnimatesAsSoul[Type] = true;   
+            ItemID.Sets.AnimatesAsSoul[Type] = true;
         }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {

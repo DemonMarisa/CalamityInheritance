@@ -47,9 +47,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged
             float _ = float.NaN;
             bool c = Collision.CheckAABBvLineCollision(
                 targetHitbox.TopLeft(),
-                targetHitbox.Size(), 
+                targetHitbox.Size(),
                 Projectile.Center - Projectile.rotation.ToRotationVector2() * 32,
-                Projectile.Center + Projectile.rotation.ToRotationVector2() * 32, 
+                Projectile.Center + Projectile.rotation.ToRotationVector2() * 32,
                 12f, ref _);
             return c;
         }

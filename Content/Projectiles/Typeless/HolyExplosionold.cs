@@ -1,8 +1,8 @@
-﻿using Terraria.Audio;
+﻿using LAP.Assets.TextureRegister;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {

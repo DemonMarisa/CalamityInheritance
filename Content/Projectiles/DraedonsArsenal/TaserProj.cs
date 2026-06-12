@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal
 {
-    public class TaserProj : ModProjectile,ILocalizedModType
+    public class TaserProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.DraedonsArsenal";
         public enum TaserAIState

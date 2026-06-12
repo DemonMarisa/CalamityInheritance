@@ -1,16 +1,16 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Rarity;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
@@ -48,7 +48,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             if (!stealth)
                 return true;
 
-            int t = Projectile.NewProjectile(source, position, velocity ,type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
+            int t = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 0f, 0f, -3f);
             Main.projectile[t].Calamity().stealthStrike = true;
             return false;
         }

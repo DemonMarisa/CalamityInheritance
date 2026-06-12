@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
-    public partial class CalamityInheritancePlayer: ModPlayer
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -21,7 +21,7 @@ namespace CalamityInheritance.CIPlayer
 
             if (Player.name == "TrueScarlet" || Player.name == "FakeAqua")
             {
-                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore )&& target.type == NPCType<ReaperShark>())
+                if ((usPlayer.SCalLore || usPlayer.PanelsSCalLore) && target.type == NPCType<ReaperShark>())
                 {
                     modifiers.SetInstantKill();
                 }
@@ -35,13 +35,13 @@ namespace CalamityInheritance.CIPlayer
                 }
             }
 
-            ModifyCrtis(proj ,target, ref modifiers);
+            ModifyCrtis(proj, target, ref modifiers);
 
             if (GodSlayerRangedSet && proj.DamageType.CountsAsClass<RangedDamageClass>())
             {
                 int randomChance = (int)(Player.GetTotalCritChance(DamageClass.Ranged) - 100);
 
-                if(randomChance > 0)
+                if (randomChance > 0)
                 {
                     if (Main.rand.Next(1, 101) <= randomChance)
                         modifiers.FinalDamage *= 2;
@@ -50,7 +50,7 @@ namespace CalamityInheritance.CIPlayer
                     modifiers.FinalDamage *= 4;
             }
         }
-        public float GetWantedCrits<Type>() where Type: DamageClass
+        public float GetWantedCrits<Type>() where Type : DamageClass
         {
             return (Player.GetTotalCritChance<Type>() + 4f - 100f) / 100f;
         }
@@ -92,7 +92,7 @@ namespace CalamityInheritance.CIPlayer
                 if (giveBuff > 0f)
                 {
                     //转化为1f
-                    giveBuff /= 100f; 
+                    giveBuff /= 100f;
                     //最后除以10. 取1/10
                     giveBuff /= 8f;
                     //200%暴击概率 -> 12.5%爆伤加成
@@ -105,7 +105,7 @@ namespace CalamityInheritance.CIPlayer
                 float giveBuff = Player.GetTotalCritChance<RogueDamageClass>() + 4f - 100f;
                 if (giveBuff > 0f)
                 {
-                    giveBuff /= 100f; 
+                    giveBuff /= 100f;
                     //最后除以7. 取1/7
                     giveBuff /= 7f;
                     //200%暴击概率 -> 15%

@@ -1,13 +1,13 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
-using CalamityInheritance.Rarity;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientOmegaBlueHelmet: CIArmor, ILocalizedModType
+    public class AncientOmegaBlueHelmet : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
         public override void SetStaticDefaults()

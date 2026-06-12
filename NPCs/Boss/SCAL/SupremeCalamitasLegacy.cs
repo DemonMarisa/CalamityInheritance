@@ -36,7 +36,6 @@ using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
 using CalamityMod.World;
 using LAP.Core.MusicEvent;
@@ -113,19 +112,19 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public static string CalSoundPath => "CalamityInheritance/Sounds/Cals";
         public static string CalScalSoundPath => $"{CalSoundPath}/SCalSounds";
         //实际音效
-        public static readonly SoundStyle SpawnSound                = new($"{CalScalSoundPath}/SupremeCalamitasSpawn") { Volume = 1.2f };
-        public static readonly SoundStyle SepulcherSummonSound      = new($"{CalScalSoundPath}/SepulcherSpawn");
-        public static readonly SoundStyle BrimstoneShotSound        = new($"{CalScalSoundPath}/BrimstoneShoot");
-        public static readonly SoundStyle BrimstoneFireShotSound    = new($"{CalScalSoundPath}/BrimstoneFireblastImpact");
+        public static readonly SoundStyle SpawnSound = new($"{CalScalSoundPath}/SupremeCalamitasSpawn") { Volume = 1.2f };
+        public static readonly SoundStyle SepulcherSummonSound = new($"{CalScalSoundPath}/SepulcherSpawn");
+        public static readonly SoundStyle BrimstoneShotSound = new($"{CalScalSoundPath}/BrimstoneShoot");
+        public static readonly SoundStyle BrimstoneFireShotSound = new($"{CalScalSoundPath}/BrimstoneFireblastImpact");
 
-        public static readonly SoundStyle CatastropheSwing          = new($"{CalScalSoundPath}/CatastropheResonanceSlash1");
-        public static readonly SoundStyle BrimstoneBigShotSound     = new($"{CalScalSoundPath}/BrimstoneBigShoot");
-        public static readonly SoundStyle DashSound                 = new($"{CalScalSoundPath}/SCalDash");
-        public static readonly SoundStyle HellblastSound            = new($"{CalScalSoundPath}/BrimstoneHellblastSound");
-        public static readonly SoundStyle BulletHellSound           = new($"{CalScalSoundPath}/SCalRumble");
-        public static readonly SoundStyle BulletHellEndSound        = new($"{CalScalSoundPath}/SCalEndBH");
-        public static readonly SoundStyle GiveUpSound               = new($"{CalScalSoundPath}/SupremeCalamitasGiveUp");
-        public static readonly SoundStyle BrimstoneMonsterSpawn     = new($"{CalScalSoundPath}/BrimstoneMonsterSpawn");
+        public static readonly SoundStyle CatastropheSwing = new($"{CalScalSoundPath}/CatastropheResonanceSlash1");
+        public static readonly SoundStyle BrimstoneBigShotSound = new($"{CalScalSoundPath}/BrimstoneBigShoot");
+        public static readonly SoundStyle DashSound = new($"{CalScalSoundPath}/SCalDash");
+        public static readonly SoundStyle HellblastSound = new($"{CalScalSoundPath}/BrimstoneHellblastSound");
+        public static readonly SoundStyle BulletHellSound = new($"{CalScalSoundPath}/SCalRumble");
+        public static readonly SoundStyle BulletHellEndSound = new($"{CalScalSoundPath}/SCalEndBH");
+        public static readonly SoundStyle GiveUpSound = new($"{CalScalSoundPath}/SupremeCalamitasGiveUp");
+        public static readonly SoundStyle BrimstoneMonsterSpawn = new($"{CalScalSoundPath}/BrimstoneMonsterSpawn");
 
         public static readonly SoundStyle ScalTra1 = new($"{CISoundPath}/SCalTra");
         public static readonly SoundStyle ScalTra2 = new($"{CISoundPath}/SCalTra2");
@@ -207,12 +206,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         public const float Phase10LifeRatio = 0.01f;
         public const float FirstBulletHellPhase = 0f;
         public const float SecondBulletHellPhase = 1f;
-        public const float ThirdBulletHellPhase = 2f; 
+        public const float ThirdBulletHellPhase = 2f;
         public const float SpawnBrothersPhase = 3f;
         public const float Transiting = 4f;
         public const float FourthBulletHellPhase = 5f;
         public const float SoulSeekerPhase = 6f;
-        public const float FinalBulletHellPhase = 7f; 
+        public const float FinalBulletHellPhase = 7f;
         public const float SummonSepulcherPhase = 8f;
         public const float DesPhase = 12f;
 
@@ -223,7 +222,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailingMode[NPC.type] = 1;
-            
+
             NPCID.Sets.BossBestiaryPriority.Add(Type);
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
@@ -246,7 +245,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             NPC.defense = 120;
             NPC.DR_NERD(DR);
             NPC.value = Item.buyPrice(platinum: 9999, gold: 99, silver: 99, copper: 99);
-            
+
             NPC.lifeMax = LifeMax;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
             NPC.lifeMax += (int)(NPC.lifeMax * HPBoost);
@@ -392,7 +391,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             if (NPC.rotation < 0f)
                 NPC.rotation += MathHelper.TwoPi;
-            else if  (NPC.rotation > MathHelper.TwoPi) 
+            else if (NPC.rotation > MathHelper.TwoPi)
                 NPC.rotation -= MathHelper.TwoPi; //确保转角一直在2pi内
             // 获取目标
             if (NPC.target < 0 || NPC.target == 255 || Main.player[NPC.target].dead || !Main.player[NPC.target].active)
@@ -453,12 +452,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             target.AddBuffSafer<BossEffects>(1);
             // 激怒
             NPC.Calamity().CurrentlyEnraged = Enraged;
-            
+
             // 生成场地
             if (!spawnArena)
             {
                 SoundEngine.PlaySound(SpawnSound, NPC.position);
-                logSpawnPos = new Vector2(target.Center.X , target.Center.Y);
+                logSpawnPos = new Vector2(target.Center.X, target.Center.Y);
                 spawnArena = true;
                 SpawnArena(ref attackType, target);
             }
@@ -637,7 +636,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             {
                 case LegacySCalAttackType.BulletHell:
                     rotationSpeed = 0.08f;
-                    DoBehavior_BulletHell(target,ref attackTimer, currentPhase, ref attackType);
+                    DoBehavior_BulletHell(target, ref attackTimer, currentPhase, ref attackType);
                     break;
                 case LegacySCalAttackType.fireDartsWallAndSmallblast:
                     DoBehavior_FireDartsWallAndSmallblast(attackTimer);
@@ -675,12 +674,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 LookAtTarget(target, rotationSpeed);
 
             // 防止有人兄弟阶段拖太久了
-            if(attackTimer < 10000)
+            if (attackTimer < 10000)
                 attackTimer++;
 
             // Main.NewText($"attackTimer : {attackTimer}");
 
-            if (isWormAlive || isBrotherAlive  || isSeekerAlive)
+            if (isWormAlive || isBrotherAlive || isSeekerAlive)
                 isContactDamage = false;
 
             // 手动重置伤害和是否无敌
@@ -754,7 +753,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         #endregion
         #region 弹幕炼狱管理
-        public void DoBehavior_BulletHell(Player target,ref float attacktimer, float currentPhaseHell, ref float attacktype)
+        public void DoBehavior_BulletHell(Player target, ref float attacktimer, float currentPhaseHell, ref float attacktype)
         {
             Player player = Main.player[NPC.target];
             isContactDamage = false;
@@ -791,7 +790,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 {
                     SpawnDust();
                     SoundEngine.PlaySound(BulletHellEndSound, NPC.position);
-                    if(currentPhaseHell != 1f)
+                    if (currentPhaseHell != 1f)
                         SelectNextAttack();
                     else
                         DoBehavior_SummonSepulcher();
@@ -860,12 +859,12 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                             float speedFactor = 8f + speedBoost;
 
                             Vector2 projvelocity = barrageDirection * speedFactor + new Vector2(speedBoost);
-                            Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileOrigin, projvelocity, ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer );
+                            Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileOrigin, projvelocity, ProjectileType<BrimstoneBarrageLegacy>(), BrimstoneFireblast, 0f, Main.myPlayer);
                         }
                     }
                 }
             }
-            if(attacktimer == TotalAttackTime)
+            if (attacktimer == TotalAttackTime)
                 SelectNextAttack();
         }
         #endregion
@@ -886,10 +885,10 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 float chargeVelocity = isWormAlive ? 26f : 30f;
                 chargeVelocity += 1f * currentPhase;
 
-                if(isSeekerAlive)
+                if (isSeekerAlive)
                     chargeVelocity += 5f;
 
-                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation + MathHelper.PiOver2) ;
+                Vector2 direction = Vector2.UnitX.RotatedBy(NPC.rotation + MathHelper.PiOver2);
                 direction = direction.SafeNormalize(Vector2.UnitX);
                 NPC.velocity = direction * chargeVelocity;
 
@@ -923,7 +922,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                 NPC.netUpdate = true;
             }
 
-            if(ChargeCount > totalCharge - 1)
+            if (ChargeCount > totalCharge - 1)
                 SelectNextAttack();
         }
         #endregion
@@ -1042,7 +1041,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             int currentIndex = (int)NPC.ai[3];
 
             LegacySCalAttackType[] attackCycle = AttackCycle;
-            if(Skip == null)
+            if (Skip == null)
             {
                 // 递增索引
                 currentIndex++;
@@ -1345,7 +1344,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         }
         #endregion
         #region 召唤兄弟
-        public void DoBehavior_SummonBrother(Player target,ref float rotationSpeed,float attacktimer)
+        public void DoBehavior_SummonBrother(Player target, ref float rotationSpeed, float attacktimer)
         {
             float spawnX = target.Center.X - 2000;
             float spawnX2 = target.Center.X + 2000;
@@ -1354,7 +1353,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
 
             isContactDamage = false;
             NPC.velocity *= 0.95f;
-            if(attacktimer == 1)
+            if (attacktimer == 1)
             {
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX, (int)spawnY, NPCType<SupremeCataclysmLegacy>());
                 NPC.NewNPC(NPC.GetSource_FromAI(), (int)spawnX2, (int)spawnY, NPCType<SupremeCatastropheLegacy>());
@@ -1444,7 +1443,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             }
 
             if (attacktimer == 360)
-            { 
+            {
                 canNextPhase = true;
                 SelectNextAttack(19);
                 OnlyGlow = true;
@@ -1475,13 +1474,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     }
                 }
             }
-            if(attacktimer == 450)
+            if (attacktimer == 450)
                 SendBattleText(14);
 
             NPC.noGravity = false;
             NPC.noTileCollide = false;
             NPC.damage = 0;
-            if(attacktimer < totaldesperationTime)
+            if (attacktimer < totaldesperationTime)
             {
                 isContactDamage = false;
                 NPC.velocity.X *= 0.95f;
@@ -1535,7 +1534,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             if (!Main.dedServ)
             {
-                if(dustType == CIDustID.DustMushroomSpray113)
+                if (dustType == CIDustID.DustMushroomSpray113)
                 {
                     float angle = Main.rand.NextFloat(MathHelper.TwoPi);
                     Vector2 spawnPosition = NPC.Center + angle.ToRotationVector2() * (300f + Main.rand.NextFloat(100f, 100f));
@@ -1555,7 +1554,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
                     dust.scale = 0.9f;
                     dust.fadeIn = 1.25f;
                     dust.noGravity = true;
-                }    
+                }
             }
         }
         #endregion
@@ -1628,7 +1627,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
         {
             return canDespawn;
         }
-        
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             scale = 1.5f;
@@ -1713,13 +1712,13 @@ namespace CalamityInheritance.NPCs.Boss.SCAL
             Texture2D Scal = TextureAssets.Npc[NPC.type].Value;
             Texture2D ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow").Value;
             // NPC.CIMod().BossNewAI[6]为阶段判定
-            if(isSecondPhase == true)
+            if (isSecondPhase == true)
             {
                 Scal = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2").Value;
                 ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy2_Glow").Value;
             }
             // 判定使用蓝色贴图
-            if(CIGlobalNPC.LegacySCalLament != -1)
+            if (CIGlobalNPC.LegacySCalLament != -1)
             {
                 Scal = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Blue").Value;
                 ScalGlow = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SupremeCalamitasLegacy_Glow_Blue").Value;

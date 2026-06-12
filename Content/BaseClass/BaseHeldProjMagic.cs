@@ -1,13 +1,10 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using LAP.Core.Utilities;
+﻿using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Content.BaseClass
 {

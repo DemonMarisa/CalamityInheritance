@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
     [AutoloadEquip(EquipType.Head)]
     public class AncientVictideHeadRogue : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

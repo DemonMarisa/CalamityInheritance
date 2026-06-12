@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using CalamityInheritance.CIPlayer;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -123,7 +122,7 @@ namespace CalamityInheritance.Content.Items
                     break;
             }
             //机械手套：可堆叠，10伤害和12速
-            
+
         }
     }
 }

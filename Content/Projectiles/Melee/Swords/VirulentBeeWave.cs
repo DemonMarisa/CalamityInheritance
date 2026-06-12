@@ -1,6 +1,5 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Projectiles.Summon;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

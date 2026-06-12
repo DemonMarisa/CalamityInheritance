@@ -11,9 +11,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class AncientDragonsBreath: CIRanged, ILocalizedModType
+    public class AncientDragonsBreath : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

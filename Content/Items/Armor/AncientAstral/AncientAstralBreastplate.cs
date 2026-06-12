@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientAstral
 {
     [AutoloadEquip(EquipType.Body)]
-    public class AncientAstralBreastplate: CIArmor, ILocalizedModType
+    public class AncientAstralBreastplate : CIArmor, ILocalizedModType
     {
         private const int LifeMax = 30;
         private const float Damage = 0.05f;

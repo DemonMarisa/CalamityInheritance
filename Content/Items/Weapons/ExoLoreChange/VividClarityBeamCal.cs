@@ -1,16 +1,16 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Magic;
-using CalamityMod;
+using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.ExoLore;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

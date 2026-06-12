@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using LAP.Assets.TextureRegister;
-using Terraria.ModLoader;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 
-namespace CalamityInheritance.Content.Projectiles.Ranged 
+namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ExoboompersistentoldRanged : ModProjectile, ILocalizedModType
     {

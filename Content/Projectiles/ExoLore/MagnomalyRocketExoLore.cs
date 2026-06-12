@@ -3,10 +3,7 @@ using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Ranged;
-using LAP.Core.Utilities;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -38,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
         }
-        public override void AI() 
+        public override void AI()
         {
             Player player = Main.player[Projectile.owner];
             var CIPlayer = player.CIMod();

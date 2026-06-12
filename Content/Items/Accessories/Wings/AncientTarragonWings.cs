@@ -13,15 +13,15 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class AncientTarragonWings: CIAccessories, ILocalizedModType
+    public class AncientTarragonWings : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:22,
-            itemHeight:38,
+            itemWidth: 22,
+            itemHeight: 38,
             itemRare: RarityType<BlueGreen>(),
-            itemValue:CIShopValue.RarityPriceBlueGreen
+            itemValue: CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD()
         {

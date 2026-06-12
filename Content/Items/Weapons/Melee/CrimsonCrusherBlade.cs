@@ -1,16 +1,10 @@
 ﻿using CalamityMod.CalPlayer;
-using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.Drawing;
 using Terraria.ModLoader;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 {
@@ -229,7 +228,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffType<MiracleBlight>(), 600);
-            target.AddBuff(BuffType<GlacialState>(), 60);
+
         }
     }
 }

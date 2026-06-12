@@ -1,26 +1,18 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.CalPlayer;
 using CalamityMod.Events;
 using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.Particles;
 using CalamityMod.World;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Core;
-using CalamityInheritance.World;
-using CalamityMod.Particles;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -36,7 +28,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            
+
             Projectile.width = 320;
             Projectile.height = 320;
             Projectile.hostile = true;
@@ -194,7 +186,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             if (info.Damage <= 0 || Projectile.Opacity != 1f)
                 return;
 
-            target.ScalDebuffs(360, 480 , 300);
+            target.ScalDebuffs(360, 480, 300);
         }
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)

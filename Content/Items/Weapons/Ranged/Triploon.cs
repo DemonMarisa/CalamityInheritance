@@ -1,12 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Abyss;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

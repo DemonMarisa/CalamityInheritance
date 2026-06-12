@@ -1,16 +1,9 @@
-﻿using CalamityInheritance.Core;
-using CalamityInheritance.Texture;
-using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 using static CalamityInheritance.Utilities.CIFunction;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {

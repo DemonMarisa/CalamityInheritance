@@ -9,7 +9,6 @@ using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Build.Tasks.Deployment.ManifestUtilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -76,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 Projectile.NewProjectile(player.GetSource_ItemUse_WithPotentialAmmo(this.Item, 0, null), position, velocity * 4, ProjectileType<EnormousConsumingVortexoldExoLore>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
             }
@@ -107,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 .DisableDecraft()
                 .AddTile<DraedonsForge>().
                 Register();
-                
+
             CreateRecipe()
                 .AddIngredient<AuguroftheVoid>()
                 .AddIngredient<EventHorizon>()

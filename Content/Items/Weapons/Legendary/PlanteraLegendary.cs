@@ -1,24 +1,24 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.Localization;
-using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.NPCs.Boss.SCAL;
-using System.Collections.Generic;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class PlanteraLegendary: LegendaryWeaponClass
+    public class PlanteraLegendary : LegendaryWeaponClass
     {
 
         public override int SetRarityColor => RarityType<PlantareGreen>();
-        public override Color DrawColor => new(85,210,28);
+        public override Color DrawColor => new(85, 210, 28);
         public override ClassType GeneralWeaponClass => ClassType.Ranged;
         public static readonly int BaseDamage = 8;
         public override void ExSD()
@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override Vector2? HoldoutOffset()
         {
@@ -96,11 +96,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         {
             if (player.altFunctionUse == 2)
             {
-                    //升级2启用时发射5份炸弹
+                //升级2启用时发射5份炸弹
                 if (player.CIMod().PlanteraTier2)
                 {
                     int pCounts = 5;
-                    const float offset = 0.48f; 
+                    const float offset = 0.48f;
                     Vector2 summonP = velocity;
                     summonP.Normalize();
                     summonP *= 36f;
@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                     {
                         float homeAi = player.CIMod().PlanteraTier3 ? 1f : 0f;
                         float piArrowOffset = i - (pCounts - 1) / 2;
-                        if (piArrowOffset == 1/2) piArrowOffset += 1/2;
+                        if (piArrowOffset == 1 / 2) piArrowOffset += 1 / 2;
                         Vector2 spawn = summonP.RotatedBy(offset * piArrowOffset, new Vector2());
                         Projectile.NewProjectile(source, position.X + spawn.X, position.Y + spawn.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryBomb>(), damage * 4, knockback * 60, player.whoAmI, 0f, 0f, homeAi);
                     }
@@ -137,10 +137,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                         Projectile.NewProjectile(source, position + (i == 0 ? Offset : Offset2), summonP, ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                     }
                 }
-                else 
+                else
                 {
                     float homeAi = player.CIMod().PlanteraTier3 && Main.rand.NextBool(2) ? 1f : 0f;
-                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI ,0f, 0f, homeAi);
+                    Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<PlanteraLegendaryLeaf>(), damage, knockback, player.whoAmI, 0f, 0f, homeAi);
                 }
             }
             return false;

@@ -1,17 +1,16 @@
-﻿using Terraria.DataStructures;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class Impaler : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -34,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<FlamingStake>();
             Item.shootSpeed = 10f;
             Item.useAmmo = AmmoID.Stake;
-            
+
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

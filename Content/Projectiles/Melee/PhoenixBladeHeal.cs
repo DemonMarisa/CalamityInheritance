@@ -1,17 +1,15 @@
-using System;
-using Microsoft.Build.Evaluation;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using System.Xml;
-using Terraria.Audio;
 using CalamityInheritance.Utilities;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class PhoenixBladeHeal: ModProjectile, ILocalizedModType
+    public class PhoenixBladeHeal : ModProjectile, ILocalizedModType
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
@@ -26,19 +24,19 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
-            Vector2 vel = new(Projectile.velocity.X + Projectile.width * 0.5f, Projectile.velocity.Y + Projectile.height * 0.5f);        
+            Vector2 vel = new(Projectile.velocity.X + Projectile.width * 0.5f, Projectile.velocity.Y + Projectile.height * 0.5f);
             int projCounter = (int)Projectile.ai[0];
             float wtfX = Main.player[projCounter].Center.X - vel.X;
             float wtfY = Main.player[projCounter].Center.Y - vel.Y;
-            float wtfSum = (float)Math.Sqrt((double)(wtfX*wtfX + wtfY*wtfY));
+            float wtfSum = (float)Math.Sqrt((double)(wtfX * wtfX + wtfY * wtfY));
 
-            if(wtfSum < 50f && //???
-               Projectile.position.X < Main.player[projCounter].position.X + Main.player[projCounter].width && 
-               Projectile.position.X + Projectile.width > Main.player[projCounter].position.X && 
-               Projectile.position.Y <Main.player[projCounter].position.Y + Main.player[projCounter].height && 
+            if (wtfSum < 50f && //???
+               Projectile.position.X < Main.player[projCounter].position.X + Main.player[projCounter].width &&
+               Projectile.position.X + Projectile.width > Main.player[projCounter].position.X &&
+               Projectile.position.Y < Main.player[projCounter].position.Y + Main.player[projCounter].height &&
                Projectile.position.Y + Projectile.height > Main.player[projCounter].position.Y)
-           {
-                if(Projectile.owner == Main.myPlayer)
+            {
+                if (Projectile.owner == Main.myPlayer)
                 {
                     int healAmt = 10;
                     player.Heal(healAmt);
@@ -46,8 +44,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     NetMessage.SendData(MessageID.SpiritHeal, -1, -1, null, projCounter, healAmt, 0f, 0f, 0, 0, 0);
                 }
                 Projectile.Kill();
-           }
-            for(int i=0;i<1;i++) //WHAT?
+            }
+            for (int i = 0; i < 1; i++) //WHAT?
             {
                 float dVelX = Projectile.velocity.X * 0.2f * projCounter;
                 float dVelY = -Projectile.velocity.Y * 0.2f * projCounter;
@@ -64,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item74 with {Volume = 0.5f});
+            SoundEngine.PlaySound(SoundID.Item74 with { Volume = 0.5f });
         }
     }
 }

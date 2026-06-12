@@ -1,14 +1,14 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class BladeofEnmity : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.BonusAttackSpeedMultiplier[Type] = 0.25f;
@@ -33,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.rare = ItemRarityID.Yellow;
         }
 
-        
+
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {

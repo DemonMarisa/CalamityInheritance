@@ -1,20 +1,16 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Sounds;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.System.Configs;
-using Terraria.DataStructures;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {

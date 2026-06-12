@@ -1,22 +1,14 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Ores;
-using CalamityMod.Items;
-using CalamityMod.Projectiles.Summon;
-using CalamityMod.Rarities;
+﻿using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Rarity;
 using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Ores;
+using CalamityMod.Items.Weapons.Summon;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Weapons.Summon;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -8,7 +7,7 @@ using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class RogueVictideBoomerangProj: ModProjectile, ILocalizedModType
+    public class RogueVictideBoomerangProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<VictideBoomerangMelee>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
@@ -29,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.Calamity().stealthStrike)
             {
                 NPC npc = Projectile.FindClosestTarget(800f, true, true);
-                if(npc != null)
+                if (npc != null)
                 {
                     Vector2 AimToTarget = npc.Center - Projectile.Center;
                     AimToTarget.Normalize();

@@ -1,8 +1,8 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityMod;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -61,7 +61,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 int rand2 = Main.rand.Next(-50, 51);
                 Vector2 targetDir = Projectile.Center + new Vector2(rand, rand2);
                 if (Projectile.ai[1] > 40)
-                    Projectile.NewProjectile(Projectile.GetSource_FromAI(),Projectile.Center, CalamityUtils.SafeDirectionTo(Projectile, targetDir, null) * 12f, ProjectileType<Crescent>(), Projectile.damage / 2, 0.4f, Projectile.owner, Projectile.whoAmI);
+                    Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center, CalamityUtils.SafeDirectionTo(Projectile, targetDir, null) * 12f, ProjectileType<Crescent>(), Projectile.damage / 2, 0.4f, Projectile.owner, Projectile.whoAmI);
 
                 if (Projectile.ai[1] > 46)
                 {
@@ -109,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 dust_nut = 0;
             }
 
-                CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 7, 7);
+            CalamityUtils.HomeInOnNPC(Projectile, true, 1500, 7, 7);
         }
         public override bool PreDraw(ref Color lightColor)
         {

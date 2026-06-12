@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Build.Evaluation;
-using Microsoft.CodeAnalysis;
-using Microsoft.Xna.Framework;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -55,7 +53,7 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="tooltips"></param>
         /// <param name="textPath"></param>
-        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath)
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod, string textPath)
         {
             string text = textPath.ToLangValue();
             var newLine = new TooltipLine(mod, "ModName", text)
@@ -106,7 +104,7 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="tooltips"></param>
         /// <param name="textPath"></param>
-        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod,string textPath, Color color, params object[] args)
+        public static void InsertNewLineToFinalLine(this List<TooltipLine> tooltips, Mod mod, string textPath, Color color, params object[] args)
         {
             string text = textPath.ToLangValue().ToFormatValue(args);
             var newLine = new TooltipLine(mod, "ModName", text)
@@ -123,14 +121,14 @@ namespace CalamityInheritance.Utilities
         /// </summary>
         /// <param name="tooltips"></param>
         /// <param name="textPath"></param>
-        public static void InsertNewLineToFinalLineTest(this List<TooltipLine> tooltips, Mod mod,string textPath)
+        public static void InsertNewLineToFinalLineTest(this List<TooltipLine> tooltips, Mod mod, string textPath)
         {
             string text = textPath.ToLangValue();
             var newLine = new TooltipLine(mod, "ModName", text)
             {
                 OverrideColor = tooltips.Count > 0 ? tooltips[^1].OverrideColor : Color.White
             };
-            List<TooltipLine> customLine = [newLine]; 
+            List<TooltipLine> customLine = [newLine];
             if (tooltips.Count is 0)
                 tooltips.Add(newLine);
             else

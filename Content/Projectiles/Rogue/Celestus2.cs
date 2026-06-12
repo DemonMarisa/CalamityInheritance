@@ -1,11 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 using System.IO;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

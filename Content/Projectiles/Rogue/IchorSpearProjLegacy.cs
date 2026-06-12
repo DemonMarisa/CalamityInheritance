@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             if (Main.rand.NextBool(4))
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GoldCoin, 
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.GoldCoin,
                 Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + 0.785f;
@@ -54,8 +54,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     {
                         Vector2 velocity = new Vector2(Main.rand.NextFloat(-14f, 14f), Main.rand.NextFloat(-14f, 14f));
 
-                        int ichor = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, 
-                        Main.rand.NextBool(2) ? ProjectileID.GoldenShowerFriendly : ProjectileID.IchorSplash, 
+                        int ichor = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity,
+                        Main.rand.NextBool(2) ? ProjectileID.GoldenShowerFriendly : ProjectileID.IchorSplash,
                         Projectile.damage, Projectile.knockBack, Projectile.owner);
 
                         if (ichor.WithinBounds(Main.maxProjectiles))
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override bool PreDraw(ref Color lightColor)
         {
             Texture2D tex = Request<Texture2D>(Texture).Value;
-            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, 
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null,
             Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             CalamityUtils.DrawAfterimagesCentered(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
             return false;
@@ -83,15 +83,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             for (int i = 0; i <= 10; i++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height,
                 DustID.GoldCoin, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
             }
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => 
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) =>
         target.AddBuff(BuffID.Ichor, Projectile.Calamity().stealthStrike ? 600 : 120);
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info) => 
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) =>
         target.AddBuff(BuffID.Ichor, Projectile.Calamity().stealthStrike ? 600 : 120);
     }
 }

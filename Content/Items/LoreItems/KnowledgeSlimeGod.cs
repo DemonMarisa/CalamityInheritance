@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         }
         public override void UpdateInventory(Player player)
         {
-            if(Item.favorited)
+            if (Item.favorited)
             {
                 player.CIMod().LoreSG = true;
             }

@@ -1,11 +1,10 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Heal
 {

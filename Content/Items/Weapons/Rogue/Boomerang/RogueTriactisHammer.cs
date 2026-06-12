@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
     public class RogueTriactisHammer : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -49,8 +49,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             if (!canStealth)
                 return true;
 
-            int stealth = Projectile.NewProjectile(source, position, velocity ,type, (int)(damage * 1.14f), knockback, player.whoAmI);
-            if(stealth.WithinBounds(Main.maxProjectiles))
+            int stealth = Projectile.NewProjectile(source, position, velocity, type, (int)(damage * 1.14f), knockback, player.whoAmI);
+            if (stealth.WithinBounds(Main.maxProjectiles))
                 Main.projectile[stealth].Calamity().stealthStrike = canStealth;
             return false;
         }

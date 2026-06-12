@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Ranged;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,7 +10,7 @@ namespace CalamityInheritance.Content.Projectiles
         public override bool InstancePerEntity => true;
         public override void SetDefaults(Projectile proj)
         {
-            if(CIServerConfig.Instance.VanillaUnnerf)
+            if (CIServerConfig.Instance.VanillaUnnerf)
             {
                 //回调原版所有悠悠球的无敌帧
                 //注意其他方面都不会回调，只回调了无敌帧，但也足够了

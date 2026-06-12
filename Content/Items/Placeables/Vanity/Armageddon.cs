@@ -1,14 +1,10 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Vanity;
-using CalamityInheritance.Rarity;
-using CalamityMod.Systems;
-using CalamityMod;
-using CalamityMod.World;
 using CalamityInheritance.World;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
+using CalamityMod;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.Vanity
 {

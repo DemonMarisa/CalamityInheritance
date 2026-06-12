@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             var source = player.GetSource_ItemUse(Item);
-            SoundEngine.PlaySound(SoundID.Item88 with {MaxInstances = 0}, player.Center);
+            SoundEngine.PlaySound(SoundID.Item88 with { MaxInstances = 0 }, player.Center);
             int i = Main.myPlayer;
             float cometSpeed = Item.shootSpeed;
             int damage = (int)player.GetTotalDamage<MeleeDamageClass>().ApplyTo(Item.damage);
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
                 realPlayerPos.Y -= 100 * j;
 
-                Vector2 flareVelocity = LAPUtilities.GetVector2(realPlayerPos, player.LocalMouseWorld()) *  Item.shootSpeed;
+                Vector2 flareVelocity = LAPUtilities.GetVector2(realPlayerPos, player.LocalMouseWorld()) * Item.shootSpeed;
 
                 int proj = Projectile.NewProjectile(source, realPlayerPos, flareVelocity, ProjectileID.LunarFlare, damage, Item.knockBack, i, 0f, Main.rand.Next(3));
                 if (proj.WithinBounds(Main.maxProjectiles))

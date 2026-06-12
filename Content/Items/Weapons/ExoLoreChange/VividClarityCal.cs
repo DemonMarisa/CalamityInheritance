@@ -1,11 +1,11 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Magic;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Localization;
-using CalamityInheritance.CIPlayer;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

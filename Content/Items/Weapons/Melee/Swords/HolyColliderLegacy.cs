@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -8,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
-    internal class HolyColliderLegacy : GeneralWeaponClass
+    public class HolyColliderLegacy : GeneralWeaponClass
     {
         public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
         public override void SetDefaults()
@@ -47,6 +48,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 Main.projectile[p].DamageType = DamageClass.Melee;
                 Main.projectile[p2].DamageType = DamageClass.Melee;
             }
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<UnholyEssence>(8).
+                AddIngredient<DivineGeode>(4).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

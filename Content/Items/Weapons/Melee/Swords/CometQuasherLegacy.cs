@@ -1,5 +1,4 @@
 using CalamityInheritance.Content.Projectiles.FutureContent.CometQuasher;
-using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

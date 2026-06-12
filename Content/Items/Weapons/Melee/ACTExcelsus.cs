@@ -1,16 +1,12 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Melee.Swords;
-using CalamityInheritance.Core;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -77,18 +73,18 @@ public class ACTExcelsus : CIMelee, ILocalizedModType
         int pType;
         float spreading = 3.8f;
         // -1 0 1, 同时处理转角和弹幕类型。 -1: 蓝刀 -> -30°, 0: 主刀 -> 指向鼠标指针, 1: 粉刀 -> 30°
-        for (int i = -1; i <= 1; i ++)
+        for (int i = -1; i <= 1; i++)
         {
             pType = i switch
             {
-                0 => ProjectileType<ACTExcelsusMain>(), 
-                1 => ProjectileType<ACTExcelsusPink>(), 
+                0 => ProjectileType<ACTExcelsusMain>(),
+                1 => ProjectileType<ACTExcelsusPink>(),
                 _ => ProjectileType<ACTExcelsusBlue>(),
             };
             //处理转角即可
             float speedX = velocity.X;
             float speedY = velocity.Y + spreading * i;
-            Vector2 newSpeed = new (speedX, speedY);
+            Vector2 newSpeed = new(speedX, speedY);
             Vector2 boostSpeed = i == 0 ? newSpeed / 4f : Vector2.Zero;
             Projectile.NewProjectile(source, position, newSpeed + boostSpeed, pType, damage, knockback, player.whoAmI);
         }

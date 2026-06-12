@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Armor.Wulfum
 
         public override void UpdateArmorSet(Player player)
         {
-                
+
             player.setBonus = this.GetLocalizedValue("SetBonus");
             player.statDefense += 3; //9
             player.statManaMax2 += 50; //50魔力值

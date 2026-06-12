@@ -1,16 +1,16 @@
-using System;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class StepToolShadowChairSmall: ModProjectile, ILocalizedModType 
+    public class StepToolShadowChairSmall : ModProjectile, ILocalizedModType
     {
         //只改了伤害类型，其他不动
         public new string LocalizationCategory => "Content.Projectiles.Magic";
@@ -25,11 +25,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.timeLeft = 420;
             Projectile.DamageType = GetInstance<RogueDamageClass>();
         }
-        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft <= 350 &&target.CanBeChasedBy(Projectile);
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft <= 350 && target.CanBeChasedBy(Projectile);
         public override void AI()
         {
 
-           
+
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) - MathHelper.PiOver2;
             /*小凳子会先飞行一段时间，然后再追踪敌怪*/
             float chairX = Projectile.position.X;
@@ -37,16 +37,16 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.velocity *= 1.01f;
             bool flyHoming = false;
             Projectile.ai[0] += 1f;
-            if(Projectile.ai[0] > 15f)
+            if (Projectile.ai[0] > 15f)
             {
                 Projectile.ai[0] = 15f;
-                for(int enemy = 0; enemy < Main.maxNPCs; enemy++)
+                for (int enemy = 0; enemy < Main.maxNPCs; enemy++)
                 {
-                    if(Main.npc[enemy].CanBeChasedBy(Projectile, false))
+                    if (Main.npc[enemy].CanBeChasedBy(Projectile, false))
                     {
-                        float enemyX = Main.npc[enemy].position.X + Main.npc[enemy].width /2;
-                        float enemyY = Main.npc[enemy].position.Y + Main.npc[enemy].height/2;
-                        float enemyRange = Math.Abs(Projectile.position.X + Projectile.width/2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height/2 - enemyY);
+                        float enemyX = Main.npc[enemy].position.X + Main.npc[enemy].width / 2;
+                        float enemyY = Main.npc[enemy].position.Y + Main.npc[enemy].height / 2;
+                        float enemyRange = Math.Abs(Projectile.position.X + Projectile.width / 2 - enemyX) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - enemyY);
                         if (enemyRange < 10000f && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[enemy].position, Main.npc[enemy].width, Main.npc[enemy].height))
                         {
                             CIFunction.HomeInOnNPC(Projectile, false, 10000f, 24f, 16f);
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     }
                 }
             }
-            if(!flyHoming)
+            if (!flyHoming)
             {
                 chairX = Projectile.position.X + Projectile.width / 2 + Projectile.velocity.X * 100f;
                 chairY = Projectile.position.Y + Projectile.height / 2 + Projectile.velocity.Y * 100f;
@@ -74,20 +74,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //击中时梯凳驾到
             target.AddBuff(BuffType<StepToolDebuff>(), 1145);
             //生成粒子
-           
+
         }
         public override void OnKill(int timeLeft)
         {
             //小凳子在消失后恢复玩家18点或24点血量
             Player player = Main.player[Projectile.owner];
-            player.Heal(Main.rand.NextBool(2)? 24 : 18);
-            for(int i = 0; i < 10; i++)
+            player.Heal(Main.rand.NextBool(2) ? 24 : 18);
+            for (int i = 0; i < 10; i++)
             {
-                    int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height,
-                                               DustID.WoodFurniture, Projectile.direction * 2, 0f, 150,
-                                               Color.Brown , 2.0f);
-                    Main.dust[rainbow].noGravity = false;
-                    Main.dust[rainbow].velocity *= 1f;
+                int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height,
+                                           DustID.WoodFurniture, Projectile.direction * 2, 0f, 150,
+                                           Color.Brown, 2.0f);
+                Main.dust[rainbow].noGravity = false;
+                Main.dust[rainbow].velocity *= 1f;
             }
         }
     }

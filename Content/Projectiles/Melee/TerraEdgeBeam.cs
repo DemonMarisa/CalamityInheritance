@@ -1,10 +1,10 @@
-﻿using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Drawing;
-using CalamityMod;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
             // Set the target's hit direction to away from the player so the knockback is in the correct direction.
             hit.HitDirection = (Main.player[Projectile.owner].Center.X < target.Center.X) ? 1 : (-1);
-            
+
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
                 int healAmount = Main.rand.Next(2) + 2;

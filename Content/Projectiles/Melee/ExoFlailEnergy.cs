@@ -1,9 +1,9 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

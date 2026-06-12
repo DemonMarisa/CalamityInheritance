@@ -1,13 +1,13 @@
-﻿using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Content.Projectiles.HeldProj.Typeless;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 3f;
             Item.value = CIShopValue.RarityPriceYellow;
-            Item.rare =  CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>(): ItemRarityID.Yellow;
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>() : ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item33;
             Item.autoReuse = true;
             Item.shootSpeed = 25f;

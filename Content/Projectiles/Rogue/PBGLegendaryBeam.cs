@@ -1,22 +1,20 @@
-using System;
-using System.CodeDom;
-using System.IO;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class PBGLegendaryBeam: ModProjectile, ILocalizedModType
+    public class PBGLegendaryBeam : ModProjectile, ILocalizedModType
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         #region 音效
@@ -53,17 +51,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         #endregion
         #region 射弹颜色
         //默认颜色
-        private static Color DefualtColor => new(107, 142 , 35);
+        private static Color DefualtColor => new(107, 142, 35);
         //开发者颜色: TrueScarlet, 近似深红
-        private static Color TrueScarletColor => new(228, 1, 10);  
+        private static Color TrueScarletColor => new(228, 1, 10);
         //开发者颜色: DemonMarisa, 近似金黄
         private static Color DemonMarisaColor => new(255, 165, 0);
         //Tester颜色：Shizuku, 银白
         private static Color ShizukuColorSilver => new(248, 248, 255);
         //Tester颜色: Shizuku, 青蓝
-        private static Color ShizukuColorAqua => new (152, 245, 255);
+        private static Color ShizukuColorAqua => new(152, 245, 255);
         //Tester颜色：KunojiIchika，近似纯黑
-        private static Color IchikaColorBlack => new (79, 79, 79);
+        private static Color IchikaColorBlack => new(79, 79, 79);
         //Supporter颜色: Plantare, 粉红
         private static Color PlantareColorPink => Color.HotPink;
         //彩蛋颜色: Tristan, 皇家蓝
@@ -97,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void AI()
         {
             Player plr = Main.player[Projectile.owner];
-            Projectile.rotation = (float)Math.Atan2(Projectile.velocity. Y, Projectile.velocity.X) + MathHelper.PiOver2;
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver2;
             AITier1(plr);
         }
         public void AITier1(Player plr)
@@ -113,7 +111,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             Projectile.Opacity = 0f;
             Projectile.localAI[ActiveAITimer] += 1f;
-            
+
             //不断检测与玩家的距离，如果本身超出追踪距离(2000f), 则强制其发起追踪
             float getXDist = plr.Center.X - Projectile.Center.X;
             float getYDist = plr.Center.Y - Projectile.Center.Y;
@@ -128,12 +126,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 GeneralParticleHandler.SpawnParticle(line);
                 //处理跟踪的AI
                 //刚掷出的投刀不允许启用计时器的自增
-                if (HomingTimer != -1f && realDist < MaxAwayPlrDist) 
+                if (HomingTimer != -1f && realDist < MaxAwayPlrDist)
                     HomingTimer += 1f;
                 //每次击中敌怪时他都会改变一下转的角度
                 if (GrantsDirection && !GrantsHoming)
                 {
-                    Projectile.localAI[ChangeDirTimer] += 1f; 
+                    Projectile.localAI[ChangeDirTimer] += 1f;
                     Projectile.velocity = Projectile.velocity.RotatedBy(RotationAngle);
 
                     if (Projectile.localAI[ChangeDirTimer] > CancelRotationTimer)
@@ -162,8 +160,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (plr.CIMod().PBGLegendaryDyeable)
                 getColor = plr.CIMod().PBGBeamColor;
             //特殊名字特殊颜色
-            NameVariance(plr.name ,ref getColor, ref d);
-            
+            NameVariance(plr.name, ref getColor, ref d);
+
             //初始化一个结构体, 并赋值
             StoredColorAndDust type;
             type.dType = d;
@@ -171,7 +169,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //返回
             return type;
         }
-        public static void NameVariance(string name,ref Color setColor, ref int d)
+        public static void NameVariance(string name, ref Color setColor, ref int d)
         {
             switch (name)
             {
@@ -257,7 +255,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (Projectile.velocity.Y != oldVelocity.Y)
                     Projectile.velocity.Y = -oldVelocity.Y;
                 OnKillDust();
-                Projectile.penetrate -= 1; 
+                Projectile.penetrate -= 1;
                 return false;
             }
             return true;

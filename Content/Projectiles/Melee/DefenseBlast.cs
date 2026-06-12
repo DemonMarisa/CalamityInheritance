@@ -1,15 +1,15 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DefenseBlast: ModProjectile, ILocalizedModType
+    public class DefenseBlast : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;

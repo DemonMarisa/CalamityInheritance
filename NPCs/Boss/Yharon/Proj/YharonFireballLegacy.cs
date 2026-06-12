@@ -1,20 +1,13 @@
-﻿using CalamityMod.Projectiles.Boss;
-using CalamityMod.Projectiles;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.GameContent;
+﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using LAP.Content.Configs;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 {
@@ -105,7 +98,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             {
                 for (int x = 0; x < 3; x++)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, speedX, -50f, ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, speedX, -50f, ProjectileType<YharonFireball2Legacy>(), Projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                     speedX += 3f;
                 }
                 for (int x = 0; x < 2; x++)

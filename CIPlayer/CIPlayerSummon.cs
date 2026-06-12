@@ -34,5 +34,5 @@ namespace CalamityInheritance.CIPlayer
             FungalClumpLegacySummonBuff = false;
             #endregion
         }
-    } 
+    }
 }

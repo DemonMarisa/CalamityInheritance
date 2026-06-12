@@ -1,7 +1,6 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.Spear;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -10,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class VictideSpear :CIMelee, ILocalizedModType 
+    public class VictideSpear : CIMelee, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.AOTCNew
                 HomeInstrenge--;
 
             Projectile.HomeInNPC(1500, 8f, HomeInstrenge);
-            
+
             Lighting.AddLight(Projectile.Center, 0.75f, 1f, 0.24f);
             for (int i = 0; i < 5; i++)
             {
@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.AOTCNew
 
                 if (Main.rand.NextBool(3))
                 {
-                    Particle smokeGlow = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, Main.hslToRgb(Hue, 1, 0.7f), 15, Main.rand.NextFloat(0.4f, 0.7f) * Projectile.scale *0.6f, 0.8f, 0, true, 0.05f, true);
+                    Particle smokeGlow = new HeavySmokeParticle(Projectile.Center, Projectile.velocity * 0.5f, Main.hslToRgb(Hue, 1, 0.7f), 15, Main.rand.NextFloat(0.4f, 0.7f) * Projectile.scale * 0.6f, 0.8f, 0, true, 0.05f, true);
                     GeneralParticleHandler.SpawnParticle(smokeGlow);
                 }
             }
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.AOTCNew
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.Lerp(lightColor, Color.White, 0.5f), Projectile.rotation, texture.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
             Texture2D spark = LAPTextureRegister.Sparkle.Value;
             Texture2D bloom = LAPTextureRegister.BloomCircle.Value;
-            Vector2 drawpos = Projectile.Center - Main.screenPosition + new Vector2(0,12).RotatedBy(Projectile.rotation);
+            Vector2 drawpos = Projectile.Center - Main.screenPosition + new Vector2(0, 12).RotatedBy(Projectile.rotation);
             LAPUtilities.Draw(bloom, drawpos, null, Color.White with { A = 0 } * 0.1f, Main.GlobalTimeWrappedHourly, bloom.Size() / 2, Projectile.scale * 0.55f, 0, 0);
             LAPUtilities.ReSetToBeginShader(BlendState.Additive);
             LAPUtilities.Draw(spark, drawpos, null, Color.White, Main.GlobalTimeWrappedHourly, spark.Size() / 2, Projectile.scale * 1.15f, 0, 0);

@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Rogue;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
@@ -58,11 +56,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 {
                     if (Projectile.Calamity().stealthStrike)
                     {
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<PhantasmalRuinGhost>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<PhantasmalRuinGhost>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
                     }
                     else
                     {
-                        LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(-2, 2)), ProjectileType<LostSoulFriendlyLegacy>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, GetInstance<RogueDamageClass>(),1f);
+                        LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(-2, 2)), ProjectileType<LostSoulFriendlyLegacy>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, GetInstance<RogueDamageClass>(), 1f);
                     }
                 }
             }
@@ -92,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int numberOfProjectiles = Main.rand.Next(10, 12);
             if (Projectile.Calamity().stealthStrike)
                 numberOfProjectiles += 10;
-                
+
             float spreadAngle = MathHelper.ToRadians(Main.rand.Next(25, 30));
             float baseAngle = Projectile.velocity.ToRotation();
 

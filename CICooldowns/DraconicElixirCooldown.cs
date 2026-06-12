@@ -1,7 +1,7 @@
-﻿using System;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Localization;
 

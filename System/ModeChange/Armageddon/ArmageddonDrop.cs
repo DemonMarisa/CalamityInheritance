@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.ItemDropRules;
-using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.NPCs;
 using CalamityMod;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using CalamityInheritance.World;
-using CalamityInheritance.Content.Items.Accessories.DashAccessories;
-using CalamityMod.Items.TreasureBags;
-using CalamityMod.Items.Materials;
-using CalamityMod.World;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityInheritance.Core;
-using CalamityInheritance.NPCs;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.ModeChange.Armageddon
 {

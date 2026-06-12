@@ -1,17 +1,16 @@
-using CalamityMod.Items.Materials;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class CrystalFlareStaff : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -43,8 +42,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             int pCounts = Main.rand.Next(5, 8);
             for (int i = 0; i < pCounts; i++)
             {
-                Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(3f))  * Main.rand.NextFloat(0.8f, 1.1f);
-                Projectile.NewProjectile(source, position, spread, ProjectileType<SpiritFlameCurse>(), damage / 2 , knockback, Main.myPlayer);
+                Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(3f)) * Main.rand.NextFloat(0.8f, 1.1f);
+                Projectile.NewProjectile(source, position, spread, ProjectileType<SpiritFlameCurse>(), damage / 2, knockback, Main.myPlayer);
             }
             //需注意的是这句话会直接往鼠标指针的方向发射一个，也就是总共8个射弹
             return true;

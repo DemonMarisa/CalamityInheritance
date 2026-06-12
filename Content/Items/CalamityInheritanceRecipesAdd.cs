@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Content.Items.Accessories.Wings;
-using CalamityInheritance.Content.Items.Armor.Silva;
 using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.MiscItem;
@@ -10,12 +9,9 @@ using CalamityInheritance.Content.Items.Weapons.Magic.Ray;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Melee.Flails;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Core;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Accessories.Wings;
 using CalamityMod.Items.Armor.Auric;
@@ -272,9 +268,9 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ItemType<Cosmolight>()).
                 AddIngredient(ItemType<Moonlight>()).
-                AddIngredient(ItemType<Daylight>()). 
+                AddIngredient(ItemType<Daylight>()).
                 AddIngredient(ItemID.FallenStar).
-                AddTile(TileID.LunarCraftingStation). 
+                AddTile(TileID.LunarCraftingStation).
                 //Scarlet 1/22:修改合成站为水晶球，防止玩家在困难模式前就能通过宇宙之光微光拆解获得肉后魂
                 Register();
             Recipe.Create(ItemType<FrostcrushValari>()).
@@ -293,7 +289,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CryoBar>(18).
                 AddTile<CosmicAnvil>().
                 Register();
-            
+
             Recipe.Create(ItemType<FlarefrostBlade>()).
                 AddIngredient(ItemID.HellstoneBar, 8).
                 AddIngredient<CryoBar>(8).
@@ -344,11 +340,11 @@ namespace CalamityInheritance.Content.Items
                 AddRecipeGroup(RecipeGroupID.IronBar, 10).
                 AddTile(TileID.Anvils).
                 Register();
-            
+
             Recipe.Create(ItemID.TerraBlade).
                 AddIngredient(ItemType<TrueBloodyEdge>()).
                 AddIngredient(ItemID.TrueExcalibur).
-                AddIngredient(ItemType<LivingShard>(),7). //我不是很清楚为啥这个生命碎片还留着
+                AddIngredient(ItemType<LivingShard>(), 7). //我不是很清楚为啥这个生命碎片还留着
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddTile(TileID.MythrilAnvil).
                 Register();
@@ -396,26 +392,26 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.Ruby).
                 AddTile<AcceleratorT1Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<FungalSymbiote>()).
                 AddIngredient(ItemID.GlowingMushroom, 30).
                 AddIngredient(ItemID.Mushroom, 10).
                 AddTile<AcceleratorT1Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<UnstableGraniteCore>()).
                 AddIngredient<EnergyCore>(1).
                 AddIngredient(ItemID.GraniteBlock, 50).
                 AddTile<AcceleratorT1Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<TundraLeash>()).
                 AddIngredient(ItemID.FlinxFur, 10).
                 AddIngredient(ItemID.Leather, 10).
                 AddIngredient(ItemID.HealingPotion, 5).
                 AddTile<AcceleratorT1Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<CorruptionEffigy>()).
                 AddIngredient(ItemID.ShadowScale, 10).
                 AddIngredient(ItemID.RottenChunk, 10).
@@ -453,7 +449,7 @@ namespace CalamityInheritance.Content.Items
                 Register();
 
             //为什么法狗的合成台要用两份地狱熔炉？
-            Recipe.Create(ItemID.Hellforge). 
+            Recipe.Create(ItemID.Hellforge).
                 AddIngredient(ItemID.Furnace, 1).
                 AddIngredient(ItemID.HellstoneBar, 10).
                 DisableDecraft().
@@ -513,7 +509,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<EssenceofEleum>(5).
                 AddTile<AcceleratorT1Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<HeartofDarkness>()).
                 AddIngredient(ItemID.HealingPotion, 5).
                 AddIngredient(ItemID.WrathPotion, 5).
@@ -569,7 +565,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.Glass, 5).
                 AddTile<AcceleratorT2Tile>().
                 Register();
-            
+
             //海参贝壳，合成表仅仅致敬用
             Recipe.Create(ItemID.NeptunesShell, 1).
                 AddIngredient(ItemID.Coral, 15).
@@ -591,7 +587,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient(ItemID.SoulofLight, 10).
                 AddTile<AcceleratorT2Tile>().
                 Register();
-                
+
             #region T2粒子加速器 月后早期合成
             Recipe.Create(ItemType<ExodiumCluster>(), 5). //旧版Exodium Cluster的合成方法
                 AddIngredient(ItemID.LunarOre, 5).
@@ -616,7 +612,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<AshesofCalamity>(15).
                 AddTile<AcceleratorT3Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<EyeOfTheAccursedBanner>()).
                 AddIngredient<OccultBrickItem>(3).
                 AddIngredient(ItemID.Silk, 5).
@@ -709,7 +705,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<OccultBrickItem>(15).
                 AddTile<AcceleratorT3Tile>().
                 Register();
-            
+
             Recipe.Create(ItemType<OccultBrickItem>(), 400).
                 AddRecipeGroup(LAPRecipeGroup.AnyStoneBlock, 400).
                 AddIngredient<AshesofAnnihilation>().
@@ -753,7 +749,7 @@ namespace CalamityInheritance.Content.Items
                 DisableDecraft().
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-            
+
             Recipe.Create(ItemType<Exoblade>()).
                 AddRecipeGroup(CIRecipeGroup.AnyTerratomere).
                 AddIngredient<AnarchyBlade>().
@@ -777,7 +773,7 @@ namespace CalamityInheritance.Content.Items
                 DisableDecraft().
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-            
+
             //星神之杀
             Recipe.Create(ItemType<Celestus>()).
                 AddIngredient<ReboundingRainbow>().
@@ -801,10 +797,10 @@ namespace CalamityInheritance.Content.Items
                 AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-            
+
             //星火解离者
             Recipe.Create(ItemType<Photoviscerator>()).
-                
+
                 AddIngredient<ChromaticEruption>().
                 AddIngredient<DeadSunsWind>().
                 AddIngredient<HalleysInferno>().
@@ -813,7 +809,7 @@ namespace CalamityInheritance.Content.Items
                 AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-            
+
             //磁极异变
             Recipe.Create(ItemType<MagnomalyCannon>()).
                 AddIngredient<ThePack>().
@@ -824,7 +820,7 @@ namespace CalamityInheritance.Content.Items
                 AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-            
+
             //去他妈的法师板砖
             Recipe.Create(ItemType<SubsumingVortex>()).
                 AddIngredient<AuguroftheVoid>().
@@ -835,7 +831,7 @@ namespace CalamityInheritance.Content.Items
                 AddConsumeIngredientCallback(CIRecipesCallback.DConsumeMatter).
                 AddTile(TileType<DraedonsForgeTiles>()).
                 Register();
-                
+
             //星流大棒
             Recipe.Create(ItemType<VividClarity>()).
                 AddIngredient(ItemType<ElementalRayold>()).
@@ -895,7 +891,7 @@ namespace CalamityInheritance.Content.Items
                     DisableDecraft().
                     AddTile(TileType<CosmicAnvil>()).
                     Register();
-                
+
                 //叶流
                 Recipe.Create(ItemType<BlossomFlux>()).
                     AddIngredient<KnowledgePlantera>().
@@ -930,7 +926,7 @@ namespace CalamityInheritance.Content.Items
                     DisableDecraft().
                     AddTile(TileType<CosmicAnvil>()).
                     Register();
-                
+
                 //冰寒神性
                 Recipe.Create(ItemType<GlacialEmbrace>()).
                     AddIngredient<KnowledgeCryogen>().
@@ -1053,8 +1049,8 @@ namespace CalamityInheritance.Content.Items
 
             Recipe.Create(ItemType<AuricTeslaCuisses>()).
                 AddIngredient<GodSlayerLeggings>().
-                AddIngredient<BloodflareCuisses>().    
-                AddIngredient<TarragonLeggings>().    
+                AddIngredient<BloodflareCuisses>().
+                AddIngredient<TarragonLeggings>().
                 AddIngredient(ItemID.FlyingCarpet).
                 AddIngredient<AuricBarold>().
                 AddTile<CosmicAnvil>().
@@ -1125,7 +1121,7 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemType<AcesHigh>()).
                 AddIngredient(ItemID.Revolver).
                 AddIngredient(ItemType<ClaretCannon>()).
-                AddIngredient(ItemType<FantasyTalisman>(),52).
+                AddIngredient(ItemType<FantasyTalisman>(), 52).
                 AddIngredient(ItemType<AuricBarold>()).
                 AddTile(TileType<CosmicAnvil>()).
                 Register();
@@ -1133,14 +1129,14 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemType<AetherfluxCannon>()).
                 AddIngredient(ItemType<NanoPurge>()).
                 AddIngredient(ItemType<PurgeGuzzler>()).
-                AddIngredient(ItemType<UelibloomBar>(),12).
-                AddIngredient(ItemType<DivineGeode>(),8).
+                AddIngredient(ItemType<UelibloomBar>(), 12).
+                AddIngredient(ItemType<DivineGeode>(), 8).
                 AddIngredient(ItemType<AuricBarold>()).
                 AddTile(TileType<CosmicAnvil>()).
                 Register();
 
             Recipe.Create(ItemType<AltarOfTheAccursedItem>()).
-                AddIngredient(ItemType<BrimstoneSlag>(),30).
+                AddIngredient(ItemType<BrimstoneSlag>(), 30).
                 AddIngredient(ItemType<CoreofCalamity>()).
                 AddIngredient(ItemType<AuricBarold>()).
                 AddTile(TileType<CosmicAnvil>()).
@@ -1149,9 +1145,9 @@ namespace CalamityInheritance.Content.Items
             Recipe.Create(ItemType<Ataraxia>()).
                 AddIngredient(ItemID.BrokenHeroSword).
                 AddIngredient(ItemType<AuricBarold>()).
-                AddIngredient(ItemType<CosmiliteBar>(),8).
-                AddIngredient(ItemType<AscendantSpiritEssence>(),2).
-                AddIngredient(ItemType<NightmareFuel>(),20).
+                AddIngredient(ItemType<CosmiliteBar>(), 8).
+                AddIngredient(ItemType<AscendantSpiritEssence>(), 2).
+                AddIngredient(ItemType<NightmareFuel>(), 20).
                 AddTile(TileType<CosmicAnvil>()).
                 Register();
 
@@ -1183,27 +1179,27 @@ namespace CalamityInheritance.Content.Items
                     AddIngredient(ItemType<AuricBarold>()).
                     AddTile<CosmicAnvil>().
                     Register();
-                
+
                 Recipe.Create(ItemType<Nadir>()).
                     AddIngredient(ItemType<VanishingPoint>()).
-                    AddIngredient(ItemType<TwistingNether>(),5).
-                    AddIngredient(ItemType<DarksunFragment>(),8).
+                    AddIngredient(ItemType<TwistingNether>(), 5).
+                    AddIngredient(ItemType<DarksunFragment>(), 8).
                     AddIngredient(ItemType<AuricBarold>()).
                     AddTile<CosmicAnvil>().
                     Register();
-                
+
                 Recipe.Create(ItemType<HeliumFlash>()).
                     AddIngredient(ItemType<VenusianTrident>()).
                     AddIngredient(ItemType<LashesofChaos>()).
                     AddIngredient(ItemType<ForbiddenSun>()).
-                    AddIngredient(ItemID.FragmentSolar,20).
-                    AddIngredient(ItemID.FragmentNebula,5).
+                    AddIngredient(ItemID.FragmentSolar, 20).
+                    AddIngredient(ItemID.FragmentNebula, 5).
                     AddIngredient(ItemType<AuricBarold>()).
                     AddTile<CosmicAnvil>().
                     Register();
             }
 
-                
+
 
             Recipe.Create(ItemType<TheOracle>()).
                 AddIngredient<BurningRevelation>().
@@ -1277,7 +1273,7 @@ namespace CalamityInheritance.Content.Items
         }
         public static void CalamitousEssence()
         {
-         #region CalamitousEssence
+            #region CalamitousEssence
             Recipe.Create(ItemType<TriactisTruePaladinianMageHammerofMight>()).
                 AddIngredient<CalamitousEssence>().
                 Register();
@@ -1390,7 +1386,7 @@ namespace CalamityInheritance.Content.Items
                 AddIngredient<CalamitousEssence>().
                 Register();
 
-            Recipe.Create(ItemType<ShadowspecDye>(),10).
+            Recipe.Create(ItemType<ShadowspecDye>(), 10).
                 AddIngredient<CalamitousEssence>().
                 Register();
             #endregion
@@ -1445,7 +1441,7 @@ namespace CalamityInheritance.Content.Items
                 ItemID.FrostLeggings,
             ];
 
-            foreach(var forstArmorCustomCraft in frostArmor)
+            foreach (var forstArmorCustomCraft in frostArmor)
             {
                 Recipe.Create(forstArmorCustomCraft).
                     AddIngredient<CryoBar>(10).

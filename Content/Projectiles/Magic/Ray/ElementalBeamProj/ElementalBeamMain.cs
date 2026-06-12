@@ -1,12 +1,12 @@
-﻿using CalamityMod.Projectiles.BaseProjectiles;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using ReLogic.Content;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.BaseProjectiles;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -82,8 +82,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 
             int totalShards = (int)MathHelper.Lerp(4, 7, MathHelper.Clamp(lengthFromStart / MaxLaserLength * 1.5f, 0f, 1f));
             int nebulaCounts = 8;
-            float rotFactor = 360f / nebulaCounts; 
-            for (int j = 0; j < nebulaCounts; j++ )
+            float rotFactor = 360f / nebulaCounts;
+            for (int j = 0; j < nebulaCounts; j++)
             {
                 float newRotation = MathHelper.ToRadians(j * rotFactor);
                 Vector2 pPos = new Vector2(18f, 0f).RotatedBy(newRotation);

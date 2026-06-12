@@ -2,7 +2,6 @@
 using CalamityInheritance.UI.QolPanelTotal;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Newtonsoft.Json.Linq;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.UI.Chat;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Utilities
 {
@@ -192,7 +190,7 @@ namespace CalamityInheritance.Utilities
                 buttonCount = 1;
             if (buttonCount == 4 && !isHovering && cIPlayer.wasMouseDown == false)
                 buttonCount = 3;
-            
+
             // 最终材质选择
             if (buttonCount == 1)
                 targetTexture = falseTexture;
@@ -206,7 +204,7 @@ namespace CalamityInheritance.Utilities
                 targetTexture = unavailableTexture;
 
             // 改为中心锚点
-            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
+            spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * scale, flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
         #endregion
         #region 绘制按钮2
@@ -219,7 +217,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="available">是否可用</param>
         /// <param name="buttonCount">按钮状态，建议手动输入</param>
         /// <param name="UIID">UIID，准备用于本地化</param>
-        public static void DrawBton(DrawUIData thisUI,float xPageBottom, float yPageBottom,  ref bool available, ref int buttonCount, ref int UIID)
+        public static void DrawBton(DrawUIData thisUI, float xPageBottom, float yPageBottom, ref bool available, ref int buttonCount, ref int UIID)
         // 这一段接受数量也太多了，我只能这么写了（
         // Scarlet: 这么写是正常的，只是有些地方需要注意：
         // 如果你默认你输入的一些东西大部分情况保持不变，你应当把这些置函数最后方
@@ -237,10 +235,10 @@ namespace CalamityInheritance.Utilities
             // 绘制坐标
             Vector2 drawPosition = new Vector2(Main.screenWidth / 2 + xPageBottom, Main.screenHeight / 2 + yPageBottom);
             Rectangle arrowRect = new Rectangle(
-                (int)(drawPosition.X - thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale* scale / 2),
-                (int)(drawPosition.Y - thisUI.buttonTextureTrue.Height * thisUI.yResolutionScale* scale / 2),
-                (int)(thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale* scale),
-                (int)(thisUI.buttonTextureTrue.Height * thisUI.xResolutionScale* scale)
+                (int)(drawPosition.X - thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale * scale / 2),
+                (int)(drawPosition.Y - thisUI.buttonTextureTrue.Height * thisUI.yResolutionScale * scale / 2),
+                (int)(thisUI.buttonTextureTrue.Width * thisUI.xResolutionScale * scale),
+                (int)(thisUI.buttonTextureTrue.Height * thisUI.xResolutionScale * scale)
             );
 
             // 检测悬停
@@ -290,7 +288,7 @@ namespace CalamityInheritance.Utilities
                 buttonCount = 1;
             if (buttonCount == 4 && !isHovering)
                 buttonCount = 3;
-            
+
             // 最终材质选择
             if (buttonCount == 1)
                 targetTexture = thisUI.buttonTextureFalse;
@@ -308,7 +306,7 @@ namespace CalamityInheritance.Utilities
             }
 
             // 改为中心锚点
-            thisUI.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f,targetTexture.Size() / 2,new Vector2(thisUI.xResolutionScale, thisUI.yResolutionScale) * scale, thisUI.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None , 0f);
+            thisUI.spriteBatch.Draw(targetTexture, drawPosition, null, Color.White, 0f, targetTexture.Size() / 2, new Vector2(thisUI.xResolutionScale, thisUI.yResolutionScale) * scale, thisUI.flipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
         #endregion
         #region 绘制图片
@@ -587,7 +585,7 @@ namespace CalamityInheritance.Utilities
                 // 计算文本尺寸
                 Vector2 textSize = ChatManager.GetStringSize(font, line, new Vector2(scale));
 
-                for (int j = 0; j < 4 ; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     ChatManager.DrawColorCodedString(spriteBatch, font, line, linePosition, TextOutLineColor, 0f, new Vector2(textSize.X / 2f, 0f),
                         new Vector2(xResolutionScale, yResolutionScale) * scale, maxWidth, false);
@@ -806,7 +804,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="rotOffset"></param>
         /// <param name="scale"></param>
         /// <param name="drawOffset"></param>
-        public static void BaseProjPreDraw(this Projectile proj, Texture2D tex, int trailingCount ,Color lightColor, float trailingLength = 0.4f, float rotOffset = 0f, float scale = 1f, Vector2? drawOffset = null)
+        public static void BaseProjPreDraw(this Projectile proj, Texture2D tex, int trailingCount, Color lightColor, float trailingLength = 0.4f, float rotOffset = 0f, float scale = 1f, Vector2? drawOffset = null)
         {
             Vector2 drawPos = proj.Center - Main.screenPosition;
             SpriteEffects flip = SpriteEffects.None;
@@ -815,7 +813,7 @@ namespace CalamityInheritance.Utilities
                 flip |= SpriteEffects.FlipHorizontally;
             if (gravDir is -1f)
                 flip |= SpriteEffects.FlipVertically;
-            
+
             float drawRot = proj.rotation + (proj.spriteDirection is -1 ? MathHelper.Pi : 0f);
             Vector2 origi = tex.Size() / 2f;
             Vector2 offset = drawOffset ?? Vector2.Zero;
@@ -834,10 +832,10 @@ namespace CalamityInheritance.Utilities
             }
         }
         public struct BaseBezierCurveInfo(List<Vector2> rawPosList, List<float> rawRotList)
-    {
-        public List<Vector2> CurvePositionList = rawPosList;
-        public List<float> CurveRotationList = rawRotList;
-    }
+        {
+            public List<Vector2> CurvePositionList = rawPosList;
+            public List<float> CurveRotationList = rawRotList;
+        }
         public static BaseBezierCurveInfo GetValidBeizerCurvePow(List<Vector2> rawPositionList, List<float> rawRotationList, int drawPointTime = 3)
         {
             List<Vector2> smoothPos = [];

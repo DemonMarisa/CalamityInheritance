@@ -1,12 +1,11 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
+using LAP.Content.Projectiles.LifeStealProj;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Core.Utilities;
-using LAP.Content.Projectiles.LifeStealProj;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

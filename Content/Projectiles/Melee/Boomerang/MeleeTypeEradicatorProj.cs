@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -7,7 +6,6 @@ using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Particles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

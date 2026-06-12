@@ -1,14 +1,14 @@
-﻿using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeNanoblackReaperProj: ModProjectile, ILocalizedModType
+    public class MeleeNanoblackReaperProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleeNanoblackReaper>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public static int GetBladeDelay()
         {
-            return Main.rand.Next(MinBladeTimer, MaxBladeTimer + 1); 
+            return Main.rand.Next(MinBladeTimer, MaxBladeTimer + 1);
             //有趣的是, 原灾的分裂弹幕与旧灾的一样, 都是采用一个随机返回的int型数据
             //但区别在于, 因为1.4tmod与1.3tmod的区别, 这一个timer实际上搬运到1.4之后反而变长了
             //一言以蔽之, 1.4tmod一些东西的修改让这个武器分裂的频率变慢了

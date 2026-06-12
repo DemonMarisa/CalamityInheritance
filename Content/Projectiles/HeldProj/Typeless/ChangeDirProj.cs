@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass;
-using Terraria.ModLoader;
-
 using LAP.Assets.TextureRegister;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Typeless
 {
     // 用于复杂手持射弹的改变玩家朝向

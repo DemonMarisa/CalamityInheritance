@@ -1,24 +1,24 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class AncientCotBG: CIAccessories, ILocalizedModType
+    public class AncientCotBG : CIAccessories, ILocalizedModType
     {
 
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:48,
+            itemWidth: 48,
+            itemHeight: 48,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             }
         }
         public override void AddRecipes()
-        {   
+        {
             //Scarlet:旧血核与旧血契的加入已经没有必要微光转化了
             CreateRecipe().
                 AddIngredient<BloodPactLegacy>().

@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityMod;
-using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.Projectiles.Melee;
 using LAP.Core.Utilities;
 using System.Reflection;
@@ -19,7 +17,7 @@ namespace CalamityInheritance.Common.CIHook
 
         public static void OnHitNPC_Hook(TaintedBladeSlasher self, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if(self.Owner.ActiveItem() == Main.item[ItemType<ElementalExcalibur>()])
+            if (self.Owner.ActiveItem() == Main.item[ItemType<ElementalExcalibur>()])
             {
                 hit.SourceDamage *= 2;
                 ItemLoader.OnHitNPC(self.Owner.ActiveItem(), self.Owner, target, hit, damageDone * 2);

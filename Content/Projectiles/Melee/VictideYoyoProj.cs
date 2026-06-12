@@ -1,9 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityMod;
-using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -11,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class VictideYoyoProj: ModProjectile, ILocalizedModType
+    public class VictideYoyoProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
@@ -34,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void AI()
         {
-			CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 15f, 30f, 5, ProjectileType<VictideShell>());
+            CalamityUtils.MagnetSphereHitscan(Projectile, 400f, 15f, 30f, 5, ProjectileType<VictideShell>());
 
         }
 

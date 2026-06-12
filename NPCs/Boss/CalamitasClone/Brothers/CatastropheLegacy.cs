@@ -1,4 +1,3 @@
-using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
@@ -18,7 +17,6 @@ using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers.CataclysmLegacy;
 
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
 

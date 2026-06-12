@@ -1,15 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -41,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             float aiVelocityMult = 25f * Projectile.ai[1]; //100
             float scaleFactor = 5f * Projectile.ai[1]; //5
             float homingRange = 1000f;
-            if(Projectile.Center.Y < Main.player[Projectile.owner].Center.Y)
+            if (Projectile.Center.Y < Main.player[Projectile.owner].Center.Y)
             {
                 CanHomeIn = true;
             }

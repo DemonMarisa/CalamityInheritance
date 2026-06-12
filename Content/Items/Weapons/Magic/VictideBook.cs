@@ -1,6 +1,4 @@
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
@@ -8,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class VictideBook: CIMagic, ILocalizedModType 
+    public class VictideBook : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

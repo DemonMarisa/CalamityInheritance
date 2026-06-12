@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

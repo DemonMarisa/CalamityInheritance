@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleeSubductionSlicer : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

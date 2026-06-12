@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using LAP.Assets.TextureRegister;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -77,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
                 {
                     Vector2 position = Projectile.position;
                     position -= Projectile.velocity * (j * 0.25f);
-                    int dTypeAlt = Dust.NewDust(position, 1, 1, DustID.RainbowTorch, 0f, 0f, 0, new Color(9,212,184));
+                    int dTypeAlt = Dust.NewDust(position, 1, 1, DustID.RainbowTorch, 0f, 0f, 0, new Color(9, 212, 184));
                     Main.dust[dTypeAlt].noGravity = true;
                     Main.dust[dTypeAlt].position = position;
                     Main.dust[dTypeAlt].scale = Main.rand.Next(70, 110) * 0.013f;

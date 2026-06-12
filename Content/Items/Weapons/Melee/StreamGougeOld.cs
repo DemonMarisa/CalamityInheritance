@@ -1,22 +1,21 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Spear;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.Melee.Spear;
-using CalamityInheritance.Rarity;
-using Terraria.DataStructures;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories.Wings;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class StreamGougeOld : CIMelee, ILocalizedModType
     {
-        
+
         public static float ProjShootSpeed = 20f;
         public static int FadeoutSpeed = 20;
 
@@ -59,10 +58,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         }
         public override void AddRecipes()
         {
-                CreateRecipe()
-                    .AddIngredient<CosmiliteBar>(14)
-                    .AddTile<CosmicAnvil>()
-                    .Register();
+            CreateRecipe()
+                .AddIngredient<CosmiliteBar>(14)
+                .AddTile<CosmicAnvil>()
+                .Register();
         }
     }
 }

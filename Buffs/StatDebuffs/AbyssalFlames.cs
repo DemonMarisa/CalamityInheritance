@@ -1,10 +1,10 @@
-﻿using CalamityMod.Dusts;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Dusts;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {

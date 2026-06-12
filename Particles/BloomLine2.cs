@@ -1,11 +1,10 @@
-﻿using CalamityMod.Buffs.StatDebuffs;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
+using LAP.Core.Enums;
 using LAP.Core.ParticleSystem;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using LAP.Core.Enums;
 
 namespace CalamityInheritance.Particles
 {

@@ -6,7 +6,7 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class ShrineMarbleSword: ModProjectile, ILocalizedModType
+    public class ShrineMarbleSword : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public double rotation = 0;

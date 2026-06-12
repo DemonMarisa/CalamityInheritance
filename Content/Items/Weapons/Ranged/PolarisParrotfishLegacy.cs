@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Sounds;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Sounds;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class PolarisParrotfishLegacy : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -44,10 +44,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             var modPlayer = player.CIMod();
             if (Main.zenithWorld)
             {
-                for (int i = 0; i < 8 ; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f))  * Main.rand.NextFloat(0.8f, 1.1f);
-                    Projectile.NewProjectile(source, position, spread, ProjectileType<PolarStarLegacy>(), damage/3, knockback, player.whoAmI, 0f, Main.rand.NextBool(3)? 2f :1f);
+                    Vector2 spread = velocity.RotatedByRandom(MathHelper.ToRadians(30f)) * Main.rand.NextFloat(0.8f, 1.1f);
+                    Projectile.NewProjectile(source, position, spread, ProjectileType<PolarStarLegacy>(), damage / 3, knockback, player.whoAmI, 0f, Main.rand.NextBool(3) ? 2f : 1f);
                 }
             }
             if (modPlayer.PolarisPhase3) //追踪

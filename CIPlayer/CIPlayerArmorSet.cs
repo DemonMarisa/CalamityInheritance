@@ -1,4 +1,3 @@
-using CalamityMod;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
@@ -54,8 +53,6 @@ namespace CalamityInheritance.CIPlayer
         public bool AuricSilvaFakeDeath = false;
         public bool AncientAuricSet = false; //暴君套
         public int AncientAuricHealCooldown = 0; //暴君套回血CD
-        public int PerunofYharimCooldown = 0; //暴君套打击cd
-        public int AncientAuricDashCounter = 0;
         #endregion
         #region Reaver
         //永恒套
@@ -77,7 +74,7 @@ namespace CalamityInheritance.CIPlayer
         public bool ReaverRangedRocket = false;
         public bool ReaverRocketFires = false;
         //石巨人，我杀你妈妈 
-        public bool FuckYouGolem =false;
+        public bool FuckYouGolem = false;
         #endregion
         public bool Test = false;
         #region AncientXeroc
@@ -166,8 +163,6 @@ namespace CalamityInheritance.CIPlayer
             #endregion
             #region AncientGodSlayer
             AncientGodSlayerSet = false;
-            AncientGodSlayerBuffCounter = 0;
-            AncientGodSlayerBuffCD = 0;
             #endregion
             #region AncientSilva
             AncientSilvaForceRegen = false;
@@ -202,9 +197,6 @@ namespace CalamityInheritance.CIPlayer
             AncientAuricSet = false;
             AuricSilvaFakeDeath = false;
             AncientAuricHealCooldown = 0;
-            PerunofYharimCooldown = 0;
-            AncientAuricDashCounter = 0;
-            AncientAuricDashCache = 0;
             #endregion
             #region Reaver
             ReaverMeleeBlast = false;

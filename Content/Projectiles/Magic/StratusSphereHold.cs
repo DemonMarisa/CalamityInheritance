@@ -1,14 +1,14 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -216,7 +216,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
-            Main.EntitySpriteDraw(Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/StratusSphereHoldGlow").Value, Projectile.Center  - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, framing)), Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+            Main.EntitySpriteDraw(Request<Texture2D>($"{GenericProjRoute.ProjRoute}/Magic/StratusSphereHoldGlow").Value, Projectile.Center - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture2D13.Width, framing)), Color.White, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
         }
 
         public override bool? CanDamage() => false;

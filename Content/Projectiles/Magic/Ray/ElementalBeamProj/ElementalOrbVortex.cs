@@ -1,7 +1,7 @@
-﻿using Terraria.ModLoader;
+﻿using CalamityMod;
 using LAP.Assets.TextureRegister;
 using Terraria;
-using CalamityMod;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {

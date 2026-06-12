@@ -1,15 +1,13 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Magic.Ray;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class CarnageRay : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

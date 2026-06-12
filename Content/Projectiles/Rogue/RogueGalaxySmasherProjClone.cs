@@ -1,15 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using System.IO;
-using System;
-using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -86,11 +84,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //获取这个NPC
             NPC target = Main.npc[TargetIndex];
             //这个用于决定下方的攻击AI
-            TargetAvalible = target != null; 
+            TargetAvalible = target != null;
             AttackTimer += 1f;
             //使克隆锤子在发起跟踪之前受到重力影响
             float pVelAcceleration = 0.147f;
-            if(AttackTimer < 15f)
+            if (AttackTimer < 15f)
             {
                 pVelAcceleration = 0.019f;
                 Projectile.velocity.X -= 0.001f;
@@ -98,13 +96,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.velocity.X *= 0.997f;
             Projectile.velocity.Y += pVelAcceleration;
 
-            if(AttackTimer > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            if (AttackTimer > canHomingCounter) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
             {
                 AttackTimer = canHomingCounter;
                 CIFunction.HomeInOnNPC(Projectile, true, 3600f, stealthSpeed, 40f, 17f);
             }
             else
-            Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
+                Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
         }
 
         private void DoGeneral()
@@ -118,8 +116,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //无论状态，锤子都应当在飞行过程中旋转, 但旋转的速度会慢一些
             Projectile.rotation += RotationIncrement;
             //克隆锤子飞行过程中才会生成近似于原灾弑神锤的粒子
-            if(AttackTimer < canHomingCounter)
-            SpawnFlyingDust();
+            if (AttackTimer < canHomingCounter)
+                SpawnFlyingDust();
         }
 
         private void SpawnFlyingDust()
@@ -141,7 +139,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Vector2 velOffset = new Vector2(4, 0).RotatedBy(offset.ToRotation());
                 float dFlyVelX = Projectile.velocity.X * 0.5f + velOffset.X;
                 float dFlyVelY = Projectile.velocity.Y * 0.5f + velOffset.Y;
-                float dScale =  0.8f;
+                float dScale = 0.8f;
                 Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, CIDustID.DustDeadlySphere, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
@@ -162,7 +160,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float rotFactor = 360f / numberOfDusts;
             for (int i = 0; i < numberOfDusts; i++)
             {
-                int dType = Main.rand.NextBool(2)? CIDustID.DustDeadlySphere : CIDustID.DustWitherLight272;
+                int dType = Main.rand.NextBool(2) ? CIDustID.DustDeadlySphere : CIDustID.DustWitherLight272;
                 float rot = MathHelper.ToRadians(i * rotFactor);
                 Vector2 offset = new Vector2(4.8f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));
                 Vector2 velOffset = new Vector2(4f, 0).RotatedBy(rot * Main.rand.NextFloat(3.1f, 4.1f));
@@ -174,9 +172,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
             // 固定造成弑神怒焰的debuff
             target.AddBuff(BuffType<GodSlayerInferno>(), 240);
-           
+
             //克隆的锤子以极低的概率才会生成一次星云射线
-            if(Main.rand.NextBool(5))
+            if (Main.rand.NextBool(5))
                 SpawnNebulaShot(target.Center);
         }
 
@@ -199,7 +197,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             // Applies Nightwither on contact at night.
             if (!Main.dayTime)
                 target.AddBuff(BuffType<GodSlayerInferno>(), 240);
-            
+
             SoundEngine.PlaySound(UseSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center);
 
             SpawnNebulaShot(target.Center);
@@ -241,7 +239,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float anglesRot = 45f / angles;
             float rot = MathHelper.ToRadians(anglesRot);
             Vector2 velOffset = new Vector2(0f, 13f).RotatedBy(rot * Main.rand.NextFloat(1.5f, 2.4f));
-            if(Main.rand.NextBool()) velOffset *= -1;
+            if (Main.rand.NextBool()) velOffset *= -1;
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, velOffset, ProjectileType<RogueGalaxySmasherProj>(), (int)(Projectile.damage * 0.7f), Projectile.knockBack, Main.myPlayer, 0f, 0f, -2f);
         }
     }

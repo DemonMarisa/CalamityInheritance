@@ -1,12 +1,10 @@
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityMod;
 using CalamityMod.Dusts;
-using CalamityMod.Projectiles.Boss;
 using CalamityMod.World;
 using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

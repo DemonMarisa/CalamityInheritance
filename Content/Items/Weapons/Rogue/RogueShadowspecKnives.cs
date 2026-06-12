@@ -1,22 +1,18 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueShadowspecKnives : CIRogueClass 
+    public class RogueShadowspecKnives : CIRogueClass
     {
         public override void SetStaticDefaults()
         {
@@ -58,13 +54,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 float spreadX = Main.rand.Next(-35, 36) * 0.05f * i;
                 float spreadY = Main.rand.Next(-35, 36) * 0.05f * i;
-                Vector2 tarPos = new (spreadX, spreadY);
+                Vector2 tarPos = new(spreadX, spreadY);
                 Vector2 distVec = velocity + tarPos;
                 float tarDist = distVec.Length();
                 tarDist = Item.shootSpeed / tarDist;
                 tarPos.X *= tarDist;
                 tarPos.Y *= tarDist;
-                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
+                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer);
                 Main.projectile[p].Calamity().stealthStrike = stealth;
             }
             return false;
@@ -78,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddIngredient<ShadowspecBar>(5).
                 AddTile<DraedonsForge>().
                 Register();
-            
+
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
                 Register();

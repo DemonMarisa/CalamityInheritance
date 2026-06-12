@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
-    public class YharonSonStaff: CISummon, ILocalizedModType
+    public class YharonSonStaff : CISummon, ILocalizedModType
     {
         public static readonly int WeaponDamage = 160;
         public override void SetStaticDefaults()
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
         }
         public override void SetDefaults()
         {
-            Item.height = 48;    
+            Item.height = 48;
             Item.width = 56;
             Item.mana = 50;
             Item.useTime = 30;

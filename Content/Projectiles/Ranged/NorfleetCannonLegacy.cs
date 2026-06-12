@@ -1,8 +1,8 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

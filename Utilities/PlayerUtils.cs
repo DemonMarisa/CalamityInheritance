@@ -1,17 +1,17 @@
-﻿using CalamityMod.CalPlayer;
-using Terraria;
-using static Terraria.Player;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles;
-using System;
-using Terraria.ModLoader;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.World;
+using CalamityMod;
+using CalamityMod.CalPlayer;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 using static CalamityInheritance.Core.Enums;
+using static Terraria.Player;
 
 namespace CalamityInheritance.Utilities
 {
@@ -92,7 +92,7 @@ namespace CalamityInheritance.Utilities
         /// <returns>伤害类型相同就返回真</returns>
         public static bool WantedDamageClass<T>(this object anyBox, bool needExtension = false) where T : DamageClass
         {
-            
+
             //箱内如果为物品
             if (anyBox is Item itemBox)
                 return itemBox.CountsAsClass<T>();

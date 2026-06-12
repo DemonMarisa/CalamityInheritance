@@ -1,15 +1,9 @@
-﻿using CalamityMod.Items.VanillaArmorChanges;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using System.Linq;
-using System;
-using CalamityInheritance.Utilities;
-using CalamityMod.Graphics.Renderers;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.CIPlayer.DrawLayers
 {

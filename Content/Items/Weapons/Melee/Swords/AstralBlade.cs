@@ -1,7 +1,6 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using System;

@@ -1,10 +1,10 @@
-﻿using CalamityMod.Projectiles.Summon.Umbrella;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.Summon.Umbrella;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {
@@ -274,8 +274,8 @@ namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
                     num16 = num15 / num16;
                     num13 *= num16;
                     num14 *= num16;
-                   int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
-                   Main.projectile[p].originalDamage = Projectile.originalDamage;
+                    int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), x, y, num13, num14, ProjectileType<MagicBatOld>(), (int)(Projectile.damage * Main.rand.NextFloat(0.3f, 0.6f)), Projectile.knockBack * Main.rand.NextFloat(0.7f, 1f), Projectile.owner, 0f, 0f);
+                    Main.projectile[p].originalDamage = Projectile.originalDamage;
                 }
             }
         }

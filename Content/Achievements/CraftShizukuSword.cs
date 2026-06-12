@@ -1,6 +1,5 @@
-using System.Collections.Generic;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
+using System.Collections.Generic;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Achievements

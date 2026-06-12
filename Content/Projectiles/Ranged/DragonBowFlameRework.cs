@@ -1,8 +1,6 @@
-using System.Drawing;
 using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.Typeless;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -14,7 +12,7 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class DragonBowFlameRework: ModProjectile, ILocalizedModType 
+    public class DragonBowFlameRework : ModProjectile, ILocalizedModType
     {
         public override string Texture => $"{GenericProjRoute.ProjRoute}/Ranged/DragonBowFlame";
         public override void SetDefaults()
@@ -37,28 +35,28 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation();
-            if(Projectile.hide)
+            if (Projectile.hide)
             {
                 Projectile.hide = false;
                 Projectile.localAI[0] = Main.rand.Next(30); //让localAI[0]计数器在0~30内随机取一个
-                if(Projectile.ai[0] != 0f)
+                if (Projectile.ai[0] != 0f)
                 {
                     Projectile.extraUpdates = 2;
-                    if(Projectile.ai[0] == 2f)
+                    if (Projectile.ai[0] == 2f)
                     {
                         Projectile.timeLeft += 240;
                     }
                 }
             }
             Projectile.localAI[0]++;
-            if(Projectile.localAI[0]>60f && Projectile.ai[2] >= 0f)
+            if (Projectile.localAI[0] > 60f && Projectile.ai[2] >= 0f)
             {
                 Projectile.localAI[0] = 0f;
-                if(Projectile.ai[0] == 2f && Main.rand.NextBool(3))
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, Projectile.type, (int)(Projectile.damage * 1.8f), Projectile.knockBack, Projectile.owner, 2f, 0f, -1f);
+                if (Projectile.ai[0] == 2f && Main.rand.NextBool(3))
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity, Projectile.type, (int)(Projectile.damage * 1.8f), Projectile.knockBack, Projectile.owner, 2f, 0f, -1f);
             }
             Projectile.netUpdate = true;
-            if(Projectile.ai[0] == 2f)
+            if (Projectile.ai[0] == 2f)
             {
                 float homingSpeed = Main.rand.NextFloat(12f, 19f);
                 float inhertiaSpeed = Main.rand.NextFloat(12f, 19f);
@@ -86,7 +84,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (timeLeft != 0)
             {
-                if(Projectile.soundDelay <=0)
+                if (Projectile.soundDelay <= 0)
                 {
                     Projectile.soundDelay = 30;
                     SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
@@ -97,11 +95,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     Vector2 randomAngle = Projectile.Center + new Vector2(600, 0).RotatedBy(MathHelper.ToRadians(Main.rand.Next(360)));
                     Vector2 speed = Projectile.Center - randomAngle;
                     //如果是追踪射弹，龙尘的伤害取弹幕伤害的1/2，否则取1/4
-                    int dDustDamage = Projectile.ai[0] == 2f? Projectile.damage / 2 : Projectile.damage / 4;
+                    int dDustDamage = Projectile.ai[0] == 2f ? Projectile.damage / 2 : Projectile.damage / 4;
                     speed /= 30f;
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), randomAngle.X, randomAngle.Y, speed.X, speed.Y, ProjectileType<DragonBowExoArrow>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
 
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<DragonDust>(), dDustDamage , Projectile.knockBack * 2f, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<DragonDust>(), dDustDamage, Projectile.knockBack * 2f, Projectile.owner);
                 }
 
                 Projectile.position = Projectile.Center;
@@ -166,9 +164,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     vel.Normalize();
                     vel *= 30f;
                     //发射的射弹如果是追踪的,天降的陨石伤害取2.1f，否则取1.7f
-                    int skyFlareDamage = Projectile.ai[0] == 2f? (int)(Projectile.damage * 2.1f) : (int)(Projectile.damage * 1.7f);
-                    if(Main.rand.NextBool(2))
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
+                    int skyFlareDamage = Projectile.ai[0] == 2f ? (int)(Projectile.damage * 2.1f) : (int)(Projectile.damage * 1.7f);
+                    if (Main.rand.NextBool(2))
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }
         }
@@ -193,7 +191,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     vel.Normalize();
                     vel *= 30f;
                     //发射的射弹如果是追踪的,且并非衍生追踪射弹,天降的陨石伤害取2.4f，否则取1.7f
-                    int skyFlareDamage = (Projectile.ai[0] == 2f && Projectile.ai[2] != 1f)? (int)(Projectile.damage * 2.4f) : (int)(Projectile.damage * 1.7f);
+                    int skyFlareDamage = (Projectile.ai[0] == 2f && Projectile.ai[2] != 1f) ? (int)(Projectile.damage * 2.4f) : (int)(Projectile.damage * 1.7f);
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, vel + target.velocity, ProjectileType<SkyFlareFriendly>(), skyFlareDamage, Projectile.knockBack * 5f, Projectile.owner);
                 }
             }

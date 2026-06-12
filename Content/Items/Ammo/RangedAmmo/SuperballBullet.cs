@@ -1,13 +1,8 @@
-﻿using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.Content.Projectiles.Ammo;
+using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Ammo;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {

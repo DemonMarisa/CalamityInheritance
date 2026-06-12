@@ -1,23 +1,14 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityMod.Dusts;
-using CalamityMod.Particles;
-using CalamityMod;
-using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {

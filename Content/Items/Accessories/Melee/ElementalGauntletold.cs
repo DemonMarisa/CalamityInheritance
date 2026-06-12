@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
@@ -18,11 +19,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         public new string LocalizationCategory => "Content.Items.Accessories.Melee";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:22,
-            itemHeight:38,
+            itemWidth: 22,
+            itemHeight: 38,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue,
-            itemDefense:10
+            itemValue: CIShopValue.RarityPriceDeepBlue,
+            itemDefense: 10
         );
         public override void ExSSD()
         {

@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeVictideBoomerangProj: ModProjectile, ILocalizedModType
+    public class MeleeVictideBoomerangProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => GetInstance<VictideBoomerangMelee>().Texture;

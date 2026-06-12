@@ -1,13 +1,13 @@
-﻿using System;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Melee;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.ID;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -28,8 +28,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.localNPCHitCooldown = 18;
             Projectile.alpha = 255;
         }
-    public override void AI()
-    {
+        public override void AI()
+        {
             Player player = Main.player[Projectile.owner];
             Vector2 vector = player.Center - Projectile.Center;
             float hitRange = vector.Length();

@@ -1,11 +1,10 @@
-﻿using System;
-using System.IO;
-using CalamityInheritance.Content.Projectiles;
-using CalamityInheritance.Content.Projectiles.Typeless.Heal;
+﻿using CalamityInheritance.Content.Projectiles.Typeless.Heal;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -40,7 +39,7 @@ namespace CalamityInheritance.Utilities
             //寻找距离最近的目标
             int targetIndex = -1;
 
-            if(locatedTarget == false)
+            if (locatedTarget == false)
             {
                 foreach (NPC npc in Main.ActiveNPCs)
                 {
@@ -114,13 +113,13 @@ namespace CalamityInheritance.Utilities
             Vector2 newVelocity = (proj.velocity * inertia + homeDirection * homingVelocity) / (inertia + 1f);
 
             proj.velocity = newVelocity;
-            
-            if(acceleration.HasValue)
+
+            if (acceleration.HasValue)
                 proj.velocity *= 1 + acceleration.Value / 100;
 
             if (!needALittleBitFarAwayFromPlayer)
                 return;
-                
+
             float xDist = player.Center.X - proj.Center.X;
             float yDist = player.Center.Y - proj.Center.Y;
             float dist = TryGetVectorMud(xDist, yDist);
@@ -148,14 +147,14 @@ namespace CalamityInheritance.Utilities
             float dist = TryGetVectorMud(xDist, yDist);
 
             //超出这个距离直接干掉回旋镖而非返程
-            
-            if(dist > minKillRangeBoomerangToPlr)
-            boomerang.Kill();
-        
+
+            if (dist > minKillRangeBoomerangToPlr)
+                boomerang.Kill();
+
             dist = rSpeed / dist;
             xDist *= dist;
             yDist *= dist;
-            
+
             //提供加速度
             if (boomerang.velocity.X < xDist)
             {
@@ -231,7 +230,7 @@ namespace CalamityInheritance.Utilities
             if (proj.CalamityInheritance().StoreEU == -1)
                 proj.CalamityInheritance().StoreEU = proj.extraUpdates;
 
-            if (!target.chaseable || (curDist > distRequired && !ignoreDist)) 
+            if (!target.chaseable || (curDist > distRequired && !ignoreDist))
                 canHome = false;
             else canHome = true;
             if (canHome)
@@ -242,9 +241,9 @@ namespace CalamityInheritance.Utilities
                 Vector2 home = (target.Center - proj.Center).SafeNormalize(Vector2.UnitY);
                 Vector2 velo = (proj.velocity * inertia + home * speed) / (inertia + 1f);
                 //这里给了一个角度限制
-                if(maxAngleChage.HasValue)
+                if (maxAngleChage.HasValue)
                 {
-                    float curAngle =  proj.velocity.ToRotation();   
+                    float curAngle = proj.velocity.ToRotation();
                     float tarAngle = velo.ToRotation();
                     float angleDiffer = MathHelper.WrapAngle(tarAngle - curAngle);
                     //转弧度
@@ -275,7 +274,7 @@ namespace CalamityInheritance.Utilities
         /// <param name="ignoreTiles">是否无视物块</param>
         /// <param name="stopHomingDist">如果距离鼠标位置有一定距离时停止跟随</param>
         public static void HomeInOnMouseBetter(Projectile projectile, float homingSpeed, float inertia, int giveExtraUpdate = 1, bool ignoreTiles = false, float? stopHomingDist = null)
-        {  
+        {
             Player Owner = Main.player[projectile.owner];
             Vector2 des = Owner.LocalMouseWorld();
             //一般情况下……鼠标是不会大于4k屏幕的，对吧？
@@ -331,7 +330,7 @@ namespace CalamityInheritance.Utilities
                 if (Vector2.Distance(p.Center, npc.Center) > distStoraged + exDist)
                     continue;
 
-                if (!npc.active || npc.friendly || npc.lifeMax < 5 || !npc.CanBeChasedBy(p.Center, false)) 
+                if (!npc.active || npc.friendly || npc.lifeMax < 5 || !npc.CanBeChasedBy(p.Center, false))
                     continue;
                 //补: 如果优先搜索Boss单位, 且附近至少有一个。我们直接存储这个Boss单位
                 //已经获取到的会被标记，使其不会再跑一遍搜索.
@@ -340,7 +339,7 @@ namespace CalamityInheritance.Utilities
                     tryGetBoss = npc;
                     alreadyGetBoss = true;
                 }
-                
+
                 //搜索符合条件的敌人, 准备返回这个NPC实例
                 float curNpcDist = Vector2.Distance(npc.Center, p.Center);
                 if (curNpcDist < distStoraged && (ignoreTiles || Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1)))
@@ -355,7 +354,7 @@ namespace CalamityInheritance.Utilities
                 }
             }
             //返回这个NPC实例
-            return acceptableTarget;      
+            return acceptableTarget;
         }
         /// <summary>
         /// 用于搜索距离玩家最近的npc单位，并返回NPC实例。通常情况下与上方的追踪方法配套
@@ -383,7 +382,7 @@ namespace CalamityInheritance.Utilities
                 if (Vector2.Distance(p.Center, npc.Center) > distStoraged + exDist)
                     continue;
 
-                if (!npc.active || npc.friendly || npc.lifeMax < 5 || !npc.CanBeChasedBy(p.Center, false)) 
+                if (!npc.active || npc.friendly || npc.lifeMax < 5 || !npc.CanBeChasedBy(p.Center, false))
                     continue;
                 //补: 如果优先搜索Boss单位, 且附近至少有一个。我们直接存储这个Boss单位
                 //已经获取到的会被标记，使其不会再跑一遍搜索.
@@ -392,7 +391,7 @@ namespace CalamityInheritance.Utilities
                     tryGetBoss = npc;
                     alreadyGetBoss = true;
                 }
-                
+
                 //搜索符合条件的敌人, 准备返回这个NPC实例
                 float curNpcDist = Vector2.Distance(npc.Center, p.Center);
                 if (curNpcDist < distStoraged && (ignoreTiles || Collision.CanHit(p.Center, 1, 1, npc.Center, 1, 1)))
@@ -407,7 +406,7 @@ namespace CalamityInheritance.Utilities
                 }
             }
             //返回这个NPC实例
-            return acceptableTarget;      
+            return acceptableTarget;
         }
         /// <summary>
         /// 一个用于手动同步射弹AI的写入句柄。目前主要同步timeLeft, alpha与scale
@@ -444,7 +443,7 @@ namespace CalamityInheritance.Utilities
             float randomAngleOffset = (float)Main.rand.NextFloat(MathHelper.TwoPi);
             Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
             float randomSpeed = Main.rand.NextFloat(12f, 16f);
-            if(ProjID.HasValue)
+            if (ProjID.HasValue)
                 Projectile.NewProjectile(src, position, direction * randomSpeed, (int)ProjID, 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);
             else
                 Projectile.NewProjectile(src, position, direction * randomSpeed, ProjectileType<GlobalHealthProj>(), 0, 0f, player.whoAmI, flyingSpeed, acceleration, healAmt);

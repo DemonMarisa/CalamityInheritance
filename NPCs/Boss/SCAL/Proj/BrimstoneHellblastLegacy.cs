@@ -1,22 +1,18 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Dusts;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Dusts;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
-using CalamityInheritance.Content.Items;
-using CalamityMod.Particles;
-using CalamityInheritance.Buffs.StatDebuffs;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -42,7 +38,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
             Projectile.timeLeft = 255;
             CooldownSlot = ImmunityCooldownID.Bosses;
         }
-        public int dustType = CIGlobalNPC.LegacySCalLament == -1 ? (int)CalamityDusts.Brimstone : CIDustID.DustMushroomSpray113 ;
+        public int dustType = CIGlobalNPC.LegacySCalLament == -1 ? (int)CalamityDusts.Brimstone : CIDustID.DustMushroomSpray113;
         public override void AI()
         {
             Projectile.frameCounter++;
@@ -60,7 +56,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             if (Projectile.ai[1] == 0f)
             {
-                for(int i = 0; i < 15; i++)
+                for (int i = 0; i < 15; i++)
                 {
                     Vector2 sparkVelocity = Projectile.velocity.RotatedByRandom(0.4f) * Main.rand.NextFloat(0.4f, 0.8f);
                     Dust.NewDustPerfect(Projectile.Center + Projectile.velocity, dustType, sparkVelocity, 0, default, Main.rand.NextFloat(1.2f, 1.5f));

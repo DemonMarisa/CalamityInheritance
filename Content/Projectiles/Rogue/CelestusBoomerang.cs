@@ -1,16 +1,16 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

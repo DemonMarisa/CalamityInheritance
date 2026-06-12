@@ -1,6 +1,4 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Summon;
-using LAP.Core.Utilities;
+﻿using CalamityInheritance.Content.Projectiles.Summon;
 using Terraria;
 using Terraria.ModLoader;
 

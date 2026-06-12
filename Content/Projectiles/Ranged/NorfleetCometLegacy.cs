@@ -1,8 +1,8 @@
-﻿using System;
-using CalamityInheritance.Texture;
+﻿using CalamityInheritance.Texture;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

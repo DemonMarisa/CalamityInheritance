@@ -1,13 +1,8 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items;
-using CalamityMod.Items.Accessories.Wings;
-using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,15 +16,15 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class FasterAuricTracers: CIAccessories, ILocalizedModType
+    public class FasterAuricTracers : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:36,
-            itemHeight:32,
+            itemWidth: 36,
+            itemHeight: 32,
             itemRare: RarityType<CatalystViolet>(),
-            itemValue:CIShopValue.RarityPriceCatalystViolet
+            itemValue: CIShopValue.RarityPriceCatalystViolet
         );
         public override void ExSSD()
         {
@@ -54,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
                 Main.dust[flightDust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
             }
             CalamityPlayer modPlayer = player.Calamity();
-            var modPlayer1 = player.CIMod(); 
+            var modPlayer1 = player.CIMod();
             player.accRunSpeed = 10f;
             player.rocketBoots = 3;
             player.moveSpeed += 0.24f;

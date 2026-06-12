@@ -1,11 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons.Ranged.Guns;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged.Guns;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -23,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             Item.ResearchUnlockCount = 1;
         }
-        
+
         public override void SetDefaults()
         {
             Item.damage = 550;

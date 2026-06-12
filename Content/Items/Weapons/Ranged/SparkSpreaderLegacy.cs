@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class SparkSpreaderLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -1,5 +1,4 @@
 using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Content.Items.Weapons.Summon.Worms;
@@ -11,7 +10,6 @@ using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using LAP.Core.Enums;
 using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -24,7 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class ApotheosisLegacy : CIMagic, ILocalizedModType
     {
-       
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

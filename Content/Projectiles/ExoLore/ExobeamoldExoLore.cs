@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;

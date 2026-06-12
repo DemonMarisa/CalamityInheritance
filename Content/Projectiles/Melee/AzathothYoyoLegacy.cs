@@ -28,11 +28,11 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
             Projectile.penetrate = -1;
-            Projectile.scale *= Main.zenithWorld? 0.5f : 1.5f;
+            Projectile.scale *= Main.zenithWorld ? 0.5f : 1.5f;
             Projectile.velocity *= 1.2f; //加倍
             Projectile.MaxUpdates = MaxUpdates;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = Main.zenithWorld? 3 : 1; //3的无敌帧
+            Projectile.localNPCHitCooldown = Main.zenithWorld ? 3 : 1; //3的无敌帧
         }
 
         public override void AI()

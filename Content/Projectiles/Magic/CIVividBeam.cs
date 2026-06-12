@@ -1,17 +1,17 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Magic;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Magic;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
             if (Projectile.owner == Main.myPlayer)
             {
-                    SummonLasers();
+                SummonLasers();
             }
             target.AddBuff(BuffType<MiracleBlight>(), 300);
             target.AddBuff(BuffID.Frostburn, 300);

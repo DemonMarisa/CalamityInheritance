@@ -1,15 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Typeless;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Utilities;
 using Terraria;
-using CalamityInheritance.Sounds.Custom;
-using CalamityMod;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Statbuffs
 {

@@ -1,13 +1,10 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq.Expressions;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -86,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             Rounding = reader.ReadBoolean();
             Idle = reader.ReadBoolean();
             FloatyDist = reader.ReadSingle();
-            PingWhip = reader.ReadBoolean();    
+            PingWhip = reader.ReadBoolean();
 
             int realTar = reader.ReadInt32();
             tar = realTar == -1 ? null : Main.npc[realTar];
@@ -105,13 +102,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         public override bool PreAI()
         {
             Projectile.damage = EXdamage;
-            int fireCD = OnTier1 ? T1CD : NOT1CD; 
+            int fireCD = OnTier1 ? T1CD : NOT1CD;
             //常规射弹：如果是常规的射弹，则发射cd重置为10
             //计时器初始为-1.
             if (AttackTimer == -1)
             {
                 //如果仅仅刚刚生成，则重设锭攻击CD。
-                AttackTimer = AttackType == 0f? fireCD : 0;
+                AttackTimer = AttackType == 0f ? fireCD : 0;
                 // NewDust(30);
             }
             if (AttackType == RegulaPtr && Projectile.timeLeft > 1000)
@@ -133,7 +130,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     float height = tar.getRect().Height;
                     float width = tar.getRect().Width;
                     FloatyDist = MathHelper.Min((height > width ? height : width) * 3f, Main.LogicCheckScreenWidth * Main.LogicCheckScreenHeight / 2);
-                    if (FloatyDist > Main.LogicCheckScreenWidth /3)
+                    if (FloatyDist > Main.LogicCheckScreenWidth / 3)
                         FloatyDist = Main.LogicCheckScreenWidth;
                     Projectile.penetrate = -1;
                     Projectile.usesIDStaticNPCImmunity = true;
@@ -163,7 +160,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.active = false;
                 return;
             }
-            
+
             //如果在玩家周围待机，占用召唤栏
             if (Idle)
             {
@@ -183,7 +180,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 if (AttackTimer == 0)
                 {
                     //释放一些粒子
-                    SoundEngine.PlaySound(SoundID.Item30 with {Pitch = 0.2f}, Projectile.position);
+                    SoundEngine.PlaySound(SoundID.Item30 with { Pitch = 0.2f }, Projectile.position);
                     Projectile.netUpdate = true;
                 }
             }
@@ -283,7 +280,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 AttackType++;
             if (AttackType >= (30f - cir) && Projectile.timeLeft >= 120)
                 AttackTimer = 15;
-            
+
             if (Rounding && target == tar && Projectile.timeLeft < 60)
             {
                 if (Projectile.timeLeft < 60)
@@ -292,15 +289,15 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             else if (Idle)
             {
                 AttackTimer = fireCD;
-                NewDust(20); 
-            } 
-            
+                NewDust(20);
+            }
+
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (Owner.CIMod().ColdDivityTier2)
                 Owner.Heal(1);
-            
+
             if (Rounding && target == tar && Projectile.timeLeft < 60)
             {
                 NewDust(30);
@@ -318,7 +315,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
             //如果敌怪附加低温虹吸，则将伤害提高为完整的射弹初始伤害1/4
             if (Owner.CIMod().IsColdDivityActiving && Owner.CIMod().ColdDivityTier3)
             {
-                
+
                 int dmg = EXdamage / 8;
 
                 if (target.HasBuff(BuffType<CryoDrain>()))
@@ -379,7 +376,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         }
         private void Homing()
         {
-             if (Projectile.timeLeft <= 240)
+            if (Projectile.timeLeft <= 240)
             {
                 if (tar != null)
                 {

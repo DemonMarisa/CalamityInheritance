@@ -1,8 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using System.ComponentModel;
-using System.Numerics;
+﻿using System.ComponentModel;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 namespace CalamityInheritance.System.Configs
@@ -21,7 +18,7 @@ namespace CalamityInheritance.System.Configs
         #region General Gameplay Changes
 
         [Header("Gameplay")]
-       
+
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool ElementalQuiversplit { get; set; }
@@ -61,15 +58,15 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         [ReloadRequired]
-        public bool SpecialRarityColor{ get; set; } //部分物品的特殊颜色
+        public bool SpecialRarityColor { get; set; } //部分物品的特殊颜色
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         [ReloadRequired]
-        public bool LegendaryRarity{ get; set; } //传奇武器特殊稀有度
+        public bool LegendaryRarity { get; set; } //传奇武器特殊稀有度
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
-        public bool GodSlayerWorm{ get; set;} //是否允许弑神蠕虫
+        public bool GodSlayerWorm { get; set; } //是否允许弑神蠕虫
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
@@ -78,7 +75,7 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [Range(0, 1)]
         [DefaultValue(1f)]
-        public float ReduceMoveSpeedMult{ get; set;}
+        public float ReduceMoveSpeedMult { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -116,10 +113,10 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
-        public bool Arcueid{ get; set; }
+        public bool Arcueid { get; set; }
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
-        public bool Kunoji{ get; set; }
+        public bool Kunoji { get; set; }
     }
 }

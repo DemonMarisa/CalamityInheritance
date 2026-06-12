@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
-using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -1,15 +1,12 @@
-﻿using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.GodSlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
@@ -20,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
         {
             Item.ResearchUnlockCount = 1;
         }
-        
+
         public override void SetDefaults()
         {
             Item.width = 18;
@@ -42,7 +39,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
             CalamityInheritancePlayer modPlayer2 = player.CIMod();
             var modPlayer = player.Calamity();
             modPlayer.godSlayer = true;
-            modPlayer2.GodSlayerMelee= true;
+            modPlayer2.GodSlayerMelee = true;
             modPlayer2.CanUseLegacyGodSlayerDash = true;
             modPlayer2.GodSlayerReborn = true;
             modPlayer.WearingPostMLSummonerSet = true;

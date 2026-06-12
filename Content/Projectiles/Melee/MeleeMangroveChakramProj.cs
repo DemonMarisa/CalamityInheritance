@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

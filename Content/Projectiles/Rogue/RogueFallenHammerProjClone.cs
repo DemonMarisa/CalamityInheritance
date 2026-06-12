@@ -1,13 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -64,18 +64,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.velocity.X *= 0.94f;
             Projectile.velocity.Y *= 0.94f;
             Projectile.ai[0] += 1f;
-            if(Projectile.ai[0] == CanHome - 5)
+            if (Projectile.ai[0] == CanHome - 5)
             {
                 Projectile.rotation += RotationIncrement * 0.2f;//大幅度缩短锤子转速
                 SignalSend();
             }
-            if(Projectile.ai[0] > CanHome) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
-            {   
+            if (Projectile.ai[0] > CanHome) //使锤子跟踪, 需注意的是, 跟踪有较大的惯性
+            {
                 Projectile.rotation += RotationIncrement + 5f;//增加转速
                 CIFunction.HomeInOnNPC(Projectile, true, 3000f, 32f, 24f, 20f);
             }
             else
-            Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
+                Projectile.timeLeft = Lifetime; //允许跟踪前会刷新锤子的存续时间
             Projectile.rotation += RotationIncrement;//大锤子的旋转增长速度比他下位的锤子更慢
 
             //同时也会生成粒子
@@ -108,7 +108,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
-            {
+        {
             target.AddBuff(BuffType<BrimstoneFlames>(), 240); //对玩家则造成硫磺火
             OnHitEffect();
         }
@@ -116,13 +116,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public void SignalSend()
         {
 
-            SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.3f}, Projectile.Center); //即将开始追踪前, 播报落星的声音
+            SoundEngine.PlaySound(SoundID.Item4 with { Volume = 0.3f }, Projectile.Center); //即将开始追踪前, 播报落星的声音
             CIFunction.DustCircle(Projectile.Center, 20f, 2.2f, DustID.GemRuby, true, 4.8f);
         }
 
         private void OnHitEffect()
         {
-            SoundEngine.PlaySound(SoundID.Item89 with {Volume = 0.5f}, Projectile.Center);
+            SoundEngine.PlaySound(SoundID.Item89 with { Volume = 0.5f }, Projectile.Center);
             Player calPlayer = Main.player[Projectile.owner];
             calPlayer.Calamity().rogueStealth += 0.01f;
             if (Projectile.owner == Main.myPlayer)

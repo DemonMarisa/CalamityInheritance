@@ -1,8 +1,8 @@
 ﻿using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class SparkSpreaderFireLegacy : ModProjectile, ILocalizedModType
@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.ai[0]++ > 7f)
             {
                 if (Main.zenithWorld)
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
                 float dustScaleSize = 1f;
                 if (Projectile.ai[0] == 8f)
                 {

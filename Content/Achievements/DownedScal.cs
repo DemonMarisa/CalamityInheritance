@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using CalamityInheritance.NPCs.Boss.SCAL;
+using System.Collections.Generic;
 using Terraria.GameContent.Achievements;
 using Terraria.ModLoader;
 

@@ -5,7 +5,6 @@ using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
-using rail;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -82,7 +81,7 @@ namespace CalamityInheritance.CIPlayer
             Player.lifeRegen -= (int)totalPowerfulNegativeLifeRegen;
 
             // 孱弱巫咒的真伤，因为应该只有这两个，所以不写系统了
-            if(vulnerabilityHexLegacy)
+            if (vulnerabilityHexLegacy)
             {
                 // 每秒30点真实伤害
                 if (Player.miscCounter % 2 == 0)
@@ -129,9 +128,9 @@ namespace CalamityInheritance.CIPlayer
                 calPlayer.healingPotionMultiplier += 1.20f;
                 Player.shinyStone = true;
                 Player.lifeRegenTime = 1800f;
-                if(calPlayer.purity) //与灾厄的纯净饰品进行联动
+                if (calPlayer.purity) //与灾厄的纯净饰品进行联动
                     Player.lifeRegenTime = 1200f; //之前是在一半的基础上再减了一半然后发现我受击也能回血了
-                if(Player.statLife <= Player.statLifeMax2 * 0.5f)
+                if (Player.statLife <= Player.statLifeMax2 * 0.5f)
                     Player.lifeRegen += 120;
             }
             if (AncientAstralSet && Player.lifeRegen < 0 && !Player.HasBuff<AlcoholPoisoning>())
@@ -166,7 +165,7 @@ namespace CalamityInheritance.CIPlayer
                         Player.Heal(lifeRegen);
                     }
 
-                    if(Player.miscCounter % 15 == 0)
+                    if (Player.miscCounter % 15 == 0)
                         Player.Heal(lifeRegen);
 
                     if (AncientSilvaRegenCounter < 0f)
@@ -182,11 +181,11 @@ namespace CalamityInheritance.CIPlayer
                     if (Main.rand.NextBool())
                         Main.dust[green].scale *= 1f + Main.rand.Next(40) * 0.01f;
                 }
-                
+
                 if (AncientSilvaRegenTimer > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     //粒子
-                    for(int i = 0; i< 15; i++)
+                    for (int i = 0; i < 15; i++)
                     {
                         if (Main.rand.NextBool())
                         {
@@ -194,7 +193,7 @@ namespace CalamityInheritance.CIPlayer
                             Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
                             float dFlyVelX = Player.velocity.X * 0.8f + velOffset.X;
                             float dFlyVelY = Player.velocity.Y * 0.8f + velOffset.Y;
-                            float dScale =  1.2f;
+                            float dScale = 1.2f;
                             Dust dust = Dust.NewDustPerfect(new Vector2(Player.Center.X, Player.Center.Y) + offset, DustID.GemEmerald, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                             dust.noGravity = true;
                         }
@@ -205,7 +204,7 @@ namespace CalamityInheritance.CIPlayer
                             Vector2 velOffset = new Vector2(8f, 0).RotatedBy(offset.ToRotation());
                             float dFlyVelX = Player.velocity.X * 0.7f + velOffset.X;
                             float dFlyVelY = Player.velocity.Y * 0.7f + velOffset.Y;
-                            float dScale =  1.2f;
+                            float dScale = 1.2f;
                             Dust dust = Dust.NewDustPerfect(new Vector2(Player.Center.X, Player.Center.Y) + offset, DustID.Vortex, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                             dust.noGravity = true;
                         }
@@ -214,9 +213,9 @@ namespace CalamityInheritance.CIPlayer
                     int healAmt = AncientAuricSet ? 50 : 3;
                     int minCD = AncientAuricSet ? 1800 : 2700; //魔君套30sCD
 
-                    if(Main.zenithWorld) healAmt = 10;  //林海强回血在天顶下一次回10
-                    if(Main.zenithWorld) minCD = 30; //林海强回血在天顶世界下只有半秒CD
-                    
+                    if (Main.zenithWorld) healAmt = 10;  //林海强回血在天顶下一次回10
+                    if (Main.zenithWorld) minCD = 30; //林海强回血在天顶世界下只有半秒CD
+
                     Player.Heal(healAmt); //直接操作血量条进行回血
                     int cd = Main.rand.Next(minCD, minCD + 201);
                     AncientSilvaRegenCD = cd;
@@ -227,7 +226,7 @@ namespace CalamityInheritance.CIPlayer
                     SoundEngine.PlaySound(SoundID.Item4, Player.Center); //林海强回血准备好的时候播报这个音效
                     int minTimer = AncientAuricSet ? 60 : 30;
 
-                    if(Main.zenithWorld) minTimer = 3600; //林海强回血在天顶世界下会强行回1分钟
+                    if (Main.zenithWorld) minTimer = 3600; //林海强回血在天顶世界下会强行回1分钟
 
                     int timer = 50; // 现在固定50帧
                     AncientSilvaRegenTimer = timer;

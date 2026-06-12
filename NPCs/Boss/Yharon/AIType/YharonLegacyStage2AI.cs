@@ -1,5 +1,4 @@
 using CalamityInheritance.NPCs.Boss.Yharon.Proj;
-using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Boss;
@@ -33,7 +32,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase2LifeRatio && currentPhase == 5f && isStage2 && !doRebornEffect )
+            if (lifeRatio <= PostEclipse_Phase2LifeRatio && currentPhase == 5f && isStage2 && !doRebornEffect)
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -42,7 +41,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase3LifeRatio && currentPhase == 6f && isStage2 && !doRebornEffect )
+            if (lifeRatio <= PostEclipse_Phase3LifeRatio && currentPhase == 6f && isStage2 && !doRebornEffect)
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -51,7 +50,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase4LifeRatio && currentPhase == 7f && isStage2 && !doRebornEffect )
+            if (lifeRatio <= PostEclipse_Phase4LifeRatio && currentPhase == 7f && isStage2 && !doRebornEffect)
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -60,7 +59,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 NPC.netUpdate = true;
                 return;
             }
-            if (lifeRatio <= PostEclipse_Phase5LifeRatio && currentPhase == 8f && isStage2 && !doRebornEffect )
+            if (lifeRatio <= PostEclipse_Phase5LifeRatio && currentPhase == 8f && isStage2 && !doRebornEffect)
             {
                 attackType = (int)YharonAttacksType.PhaseTransition;
                 attackTimer = 0;
@@ -145,13 +144,13 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 velocity.Y *= 0.3f;
                 velocity = velocity.SafeNormalize(Vector2.UnitX * NPC.spriteDirection);
 
-//                 frameType = (float)YharonFrameType.motionlessRoar;
+                //                 frameType = (float)YharonFrameType.motionlessRoar;
 
                 NPC.velocity = velocity * splittingMeteorBombingSpeed;
-                
+
                 if (currentPhase > 5)
                     NPC.velocity *= 1.45f;
-                
+
             }
             // 发射
             else
@@ -388,7 +387,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 int fireballReleaseRate = 6;
                 if (attacktimer % fireballReleaseRate == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     Projectile.NewProjectile(NPC.GetSource_FromAI(), projectileSpawn, Vector2.Zero, ProjectileType<FlareDust2>(), 515, 0f, Main.myPlayer, 0f, 0f);
-                
+
                 if (NPC.Distance(target.Center) > 4000f)
                     attacktimer = TotalTimer;
             }

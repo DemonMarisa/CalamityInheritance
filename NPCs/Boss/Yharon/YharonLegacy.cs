@@ -46,7 +46,6 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
@@ -63,7 +62,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         //全局传递的别名
         //1f -> 已生成, 0f -> 未生成
         //获取这个值是否==1f，如果是，set这个值为1f，否则set为0f
-        
+
         #region 攻击枚举
         public enum YharonAttacksType
         {
@@ -135,7 +134,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             YharonAttacksType.TeleportCharge,
             ];
 
-        public static YharonAttacksType[] P3AttackCycle => 
+        public static YharonAttacksType[] P3AttackCycle =>
             [
             YharonAttacksType.FlareBombs,
             YharonAttacksType.OpacityToZero,
@@ -460,7 +459,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             _ = net2[6];
             _ = net2[7];
 
-            needhealLife= reader.ReadInt32();
+            needhealLife = reader.ReadInt32();
             NPC.localAI[1] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[0] = reader.ReadSingle();
             NPC.CIMod().BossNewAI[1] = reader.ReadSingle();
@@ -536,7 +535,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             target.AddBuffSafer<BossEffects>(1);
             #region 阶段判定
             // 第一大阶段
-            Stage1AI(lifeRatio,ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
+            Stage1AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
             // 第二大阶段
             if (CIDownedBossSystem.DownedBuffedSolarEclipse || !CIServerConfig.Instance.SolarEclipseChange)
                 Stage2AI(lifeRatio, ref currentPhase, ref attackType, ref attackTimer, ref circleCount);
@@ -566,10 +565,10 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             switch ((YharonAttacksType)attackType)
             {
                 case YharonAttacksType.Charge:
-                    DoBehavior_Charge(target, ref attackTimer, ref frameType,ref rotationAcc, false);
+                    DoBehavior_Charge(target, ref attackTimer, ref frameType, ref rotationAcc, false);
                     break;
                 case YharonAttacksType.ChargeNoRoar:
-                    DoBehavior_Charge(target, ref attackTimer, ref frameType,ref rotationAcc, true);
+                    DoBehavior_Charge(target, ref attackTimer, ref frameType, ref rotationAcc, true);
                     break;
                 case YharonAttacksType.FlareBombsCircle:
                     DoBehavior_CircleFlareBombs(target, ref attackTimer, ref frameType);
@@ -595,7 +594,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
                 case YharonAttacksType.OpacityToZero:
                     DoBehavior_OpacityToZero(attackTimer, ref frameType);
                     break;
-                    // 二阶段的招式
+                // 二阶段的招式
                 case YharonAttacksType.YharonFireballs:
                     DoBehavior_ReleaseYharonFireBall(target, ref attackTimer, ref frameType);
                     break;
@@ -621,7 +620,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             }
 
             if (doRebornEffect)
-                DoBehavior_ReBorn(target, ref attackTimer, ref frameType, ref attackType,ref RebornTimer);
+                DoBehavior_ReBorn(target, ref attackTimer, ref frameType, ref attackType, ref RebornTimer);
 
             // 独立的rot判定
             if (canLookTarget)
@@ -760,7 +759,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             SpriteEffects spriteEffects = NPC.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
             float drawRotation = NPC.rotation + (NPC.spriteDirection == 1 ? MathHelper.Pi : 0);
 
-            if(DrawRotate)
+            if (DrawRotate)
             {
                 spriteEffects = NPC.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
                 drawRotation = NPC.rotation;
@@ -792,7 +791,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             spriteBatch.Draw(texture, baseDrawPos, NPC.frame, NPC.GetAlpha(baseColor), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
             // 发光绘制
             spriteBatch.Draw(glowTexture, baseDrawPos, NPC.frame, NPC.GetAlpha(Color.White), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
-            if(stage2SPDraw)
+            if (stage2SPDraw)
             {
                 // 主体绘制
                 spriteBatch.Draw(texture, baseDrawPos, NPC.frame, NPC.GetAlpha(effectColor), drawRotation, halfSize, NPC.scale, spriteEffects, 0f);
@@ -802,7 +801,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
 
             return false;
         }
-        public void DrawAfterimages(SpriteBatch spriteBatch, Texture2D texture, Vector2 basePos, Vector2 halfSize, 
+        public void DrawAfterimages(SpriteBatch spriteBatch, Texture2D texture, Vector2 basePos, Vector2 halfSize,
             float rotation, SpriteEffects effects, Color baseColor, Color effectColor, float lerpStrength, Color drawColor)
         {
             // 常规残影
@@ -943,7 +942,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
             if (!BossRushEvent.BossRushActive)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 1);
 
-            if(CIWorld.armageddon)
+            if (CIWorld.armageddon)
                 player.QuickSpawnItem(player.GetSource_GiftOrReward(), ItemType<YharonTreasureBagsLegacy>(), 5);
 
             CIDownedBossSystem.DownedLegacyYharonP1 = true;

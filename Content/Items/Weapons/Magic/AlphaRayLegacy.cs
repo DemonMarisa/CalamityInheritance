@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
@@ -8,12 +7,13 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class AlphaRayLegacy : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             else
             {
                 Vector2 laserSpawnPos = player.RotatedRelativePoint(player.MountedCenter, true);
-                float tenthPi = MathHelper.Pi/10;
+                float tenthPi = MathHelper.Pi / 10;
                 int laserAmt = 3;
                 Vector2 laserVelocity = velocity;
                 laserVelocity.Normalize();

@@ -1,17 +1,16 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using Terraria.Audio;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
 {
-    public class LightAmmoProj: ModProjectile, ILocalizedModType
+    public class LightAmmoProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         private const int Lifetime = 600;
@@ -84,7 +83,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.TrueScarlet
                     else
                         Projectile.CalamityInheritance().CurR99Chance += 1;
                 }
-            }   
+            }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

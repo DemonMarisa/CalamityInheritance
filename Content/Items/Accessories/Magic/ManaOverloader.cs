@@ -1,8 +1,6 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Summon;
-using CalamityMod.Projectiles.Melee;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,10 +12,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         public new string LocalizationCategory => "Content.Items.Accessories.Magic";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:50,
-            itemHeight:28,
-            itemRare:ItemRarityID.Red,
-            itemValue:CIShopValue.RarityPriceRed
+            itemWidth: 50,
+            itemHeight: 28,
+            itemRare: ItemRarityID.Red,
+            itemValue: CIShopValue.RarityPriceRed
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

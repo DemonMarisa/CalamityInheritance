@@ -4,9 +4,6 @@ using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.Particles;
-using CalamityMod.Projectiles.Boss;
 using LAP.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -27,7 +24,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
         public static readonly SoundStyle BrimstoneShotSound = new("CalamityMod/Sounds/Custom/SCalSounds/BrimstoneShoot");
         public override void SetStaticDefaults()
         {
-			NPCID.Sets.TrailingMode[NPC.type] = 1;
+            NPCID.Sets.TrailingMode[NPC.type] = 1;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -185,61 +182,61 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker
             return false;
         }
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             if (NPC.IsABestiaryIconDummy)
                 return true;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
-			if (NPC.spriteDirection == 1)
-				spriteEffects = SpriteEffects.FlipHorizontally;
+            if (NPC.spriteDirection == 1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
-			Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
-			Vector2 vector11 = new Vector2((float)(TextureAssets.Npc[NPC.type].Value.Width / 2), (float)(TextureAssets.Npc[NPC.type].Value.Height / 2));
-			Color color36 = Color.White;
-			float amount9 = 0.5f;
-			int num153 = 5;
+            Texture2D texture2D15 = TextureAssets.Npc[NPC.type].Value;
+            Vector2 vector11 = new Vector2((float)(TextureAssets.Npc[NPC.type].Value.Width / 2), (float)(TextureAssets.Npc[NPC.type].Value.Height / 2));
+            Color color36 = Color.White;
+            float amount9 = 0.5f;
+            int num153 = 5;
 
-			if (!LAPConfig.Instance.PerformanceMode)
-			{
-				for (int num155 = 1; num155 < num153; num155 += 2)
-				{
-					Color color38 = drawColor;
-					color38 = Color.Lerp(color38, color36, amount9);
-					color38 = NPC.GetAlpha(color38);
-					color38 *= (float)(num153 - num155) / 15f;
-					Vector2 vector41 = NPC.oldPos[num155] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector41 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-					vector41 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (!LAPConfig.Instance.PerformanceMode)
+            {
+                for (int num155 = 1; num155 < num153; num155 += 2)
+                {
+                    Color color38 = drawColor;
+                    color38 = Color.Lerp(color38, color36, amount9);
+                    color38 = NPC.GetAlpha(color38);
+                    color38 *= (float)(num153 - num155) / 15f;
+                    Vector2 vector41 = NPC.oldPos[num155] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
+                    vector41 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
+                    vector41 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+                    spriteBatch.Draw(texture2D15, vector41, NPC.frame, color38, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			Vector2 vector43 = NPC.Center - Main.screenPosition;
-			vector43 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-			vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            Vector2 vector43 = NPC.Center - Main.screenPosition;
+            vector43 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
+            vector43 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+            spriteBatch.Draw(texture2D15, vector43, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-			texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SoulSeeker/SoulSeekerSupremeLegacyGlow").Value;
+            texture2D15 = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/SoulSeeker/SoulSeekerSupremeLegacyGlow").Value;
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (!LAPConfig.Instance.PerformanceMode)
-			{
-				for (int num163 = 1; num163 < num153; num163++)
-				{
-					Color color41 = color37;
-					color41 = Color.Lerp(color41, color36, amount9);
-					color41 *= (float)(num153 - num163) / 15f;
-					Vector2 vector44 = NPC.oldPos[num163] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
-					vector44 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
-					vector44 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(texture2D15, vector44, NPC.frame, color41, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (!LAPConfig.Instance.PerformanceMode)
+            {
+                for (int num163 = 1; num163 < num153; num163++)
+                {
+                    Color color41 = color37;
+                    color41 = Color.Lerp(color41, color36, amount9);
+                    color41 *= (float)(num153 - num163) / 15f;
+                    Vector2 vector44 = NPC.oldPos[num163] + new Vector2((float)NPC.width, (float)NPC.height) / 2f - Main.screenPosition;
+                    vector44 -= new Vector2((float)texture2D15.Width, (float)(texture2D15.Height)) * NPC.scale / 2f;
+                    vector44 += vector11 * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+                    spriteBatch.Draw(texture2D15, vector44, NPC.frame, color41, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
+            spriteBatch.Draw(texture2D15, vector43, NPC.frame, color37, NPC.rotation, vector11, NPC.scale, spriteEffects, 0f);
 
-			return false;
+            return false;
         }
     }
 }

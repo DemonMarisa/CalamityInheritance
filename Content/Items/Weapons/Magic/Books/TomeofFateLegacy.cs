@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Books;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -78,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Books
         {
             CreateRecipe().
                 AddIngredient(ItemID.SpellTome).
-                AddIngredient<MeldConstruct>(9).
+                AddIngredient<MeldBlob>(9).
                 AddTile(TileID.Bookcases).
                 Register();
         }

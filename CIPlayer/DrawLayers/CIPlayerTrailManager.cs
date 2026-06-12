@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Graphics.Renderers;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;

@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Armor.Victide
     [AutoloadEquip(EquipType.Body)]
     public class AncientVictideBreastplate : CIArmor, ILocalizedModType
     {
-        
+
 
         public override void SetStaticDefaults()
         {

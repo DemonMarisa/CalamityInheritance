@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.NorProj
     public class AstralStarLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
-        public override string Texture =>  CITextureRegistry.StarTrail.Path;
+        public override string Texture => CITextureRegistry.StarTrail.Path;
         private int noTileHitCounter = 90;
         public override void SetStaticDefaults()
         {

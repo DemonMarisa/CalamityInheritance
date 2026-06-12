@@ -1,23 +1,21 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Rarity;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 using System.Collections.Generic;
-using Terraria.Localization;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.NPCs.Boss.SCAL;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class DukeLegendary: LegendaryWeaponClass
+    public class DukeLegendary : LegendaryWeaponClass
     {
         public int baseDamage = 75;
         public override ClassType GeneralWeaponClass => ClassType.Melee;
@@ -82,14 +80,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 必须手动转换，不然会按照int进行加成
             float Buff = (float)((float)(baseDamage + LegendaryDamage() + Generic.GenericLegendBuffInt()) / (float)baseDamage);
             damage *= Buff;
-            
+
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -104,10 +102,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                     NPC target = CIFunction.FindClosestTargetPlayer(player, 1800f, true, true);
                     if (target == null)
                         return false;
-                    
+
                     if (player.CIMod().GlobalFireDelay == 0)
                     {
-                        for (int i = 0; i < 4 ; i++)
+                        for (int i = 0; i < 4; i++)
                         {
                             int j = Main.rand.NextBool() ? -1 : 1;
                             float offset = 800f * j;
@@ -115,7 +113,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                             //这里得取玩家头顶, 不然敌对单位在玩家底下的时候直接露馅
                             float posY = player.Center.Y - offset;
 
-                            Vector2 pos = new (posX, posY);
+                            Vector2 pos = new(posX, posY);
                             Vector2 realSpeed = new Vector2(Item.shootSpeed * 3, 0f).RotatedBy(MathHelper.PiOver2 * j);
                             // 直接让其从天上降落。
                             // bro两倍伤害我靠

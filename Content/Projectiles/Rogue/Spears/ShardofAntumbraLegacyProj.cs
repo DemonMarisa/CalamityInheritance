@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Spears;
-using CalamityInheritance.Content.Projectiles;
 using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
 using CalamityMod;
-using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

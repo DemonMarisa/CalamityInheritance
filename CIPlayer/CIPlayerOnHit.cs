@@ -52,7 +52,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
-            
+
             if (Player.whoAmI != Main.myPlayer)
                 return;
             Player player = Main.LocalPlayer;
@@ -134,7 +134,7 @@ namespace CalamityInheritance.CIPlayer
             if (!Player.moonLeech && target.lifeMax > 5)
             {
                 if (AuricSilvaFakeDeath)
-                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f , CD, ProjectileType<SilvaOrbLegacy>());
+                    CIFunction.SpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, heal, 8f, 1f, CD, ProjectileType<SilvaOrbLegacy>());
                 if (GodSlayerMagicSet)
                     CIFunction.SPSpawnHealProj(proj.GetSource_FromThis(), proj.Center, Player, gsheal, 6f, 3f, gsCD, ProjectileType<GodSlayerHealOrbLegacy>());
             }

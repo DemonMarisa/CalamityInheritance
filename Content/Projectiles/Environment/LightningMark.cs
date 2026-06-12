@@ -1,10 +1,9 @@
-﻿using Terraria.Audio;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Environment
 {
@@ -46,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Environment
                     Vector2 ai0 = Projectile.Center - fireFrom;
                     float ai = Main.rand.Next(100);
                     Vector2 velocity = Vector2.Normalize(ai0.RotatedByRandom(MathHelper.PiOver4)) * 7f;
-                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(),fireFrom.X, fireFrom.Y, velocity.X, velocity.Y, ProjectileID.CultistBossLightningOrbArc, 50, 0f, Projectile.owner, ai0.ToRotation(), ai);
+                    int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), fireFrom.X, fireFrom.Y, velocity.X, velocity.Y, ProjectileID.CultistBossLightningOrbArc, 50, 0f, Projectile.owner, ai0.ToRotation(), ai);
                     Main.projectile[proj].extraUpdates += 6;
                     Main.projectile[proj].friendly = true;
                 }

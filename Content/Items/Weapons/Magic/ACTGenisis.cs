@@ -1,14 +1,14 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.noMelee = true;
             Item.knockBack = 1.5f;
             Item.value = CIShopValue.RarityPricePurple;
-            Item.rare =  CIConfig.Instance.SpecialRarityColor? RarityType<AlgtPink>(): ItemRarityID.Purple;
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<AlgtPink>() : ItemRarityID.Purple;
             Item.UseSound = CISoundMenu.GenisisFire;
             Item.autoReuse = true;
             Item.shootSpeed = 6f;

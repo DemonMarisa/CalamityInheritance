@@ -1,5 +1,4 @@
 ﻿using LAP.Assets.TextureRegister;
-using ReLogic.Content;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Texture

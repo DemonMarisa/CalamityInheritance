@@ -1,9 +1,9 @@
 ﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.CalProjChange

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class AquaticDissolution : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             position = player.LocalMouseWorld();
             for (int i = 0; i < 3; i++)
-                Projectile.NewProjectile(source,position.X + Main.rand.Next(-30,31), position.Y - 600f, 0f, 12f, type, damage, knockback, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(source, position.X + Main.rand.Next(-30, 31), position.Y - 600f, 0f, 12f, type, damage, knockback, Main.myPlayer, 0f, 0f);
             return false;
         }
         public override void AddRecipes()

@@ -1,14 +1,10 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
-using System;
+﻿using CalamityInheritance.Particles;
 using CalamityMod;
-using CalamityInheritance.Content.Items;
 using CalamityMod.Particles;
-using CalamityInheritance.Particles;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -42,7 +38,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Particle eclipseTrai2 = new StarProjBlack(trailPos, Projectile.velocity * 0.2f, false, 60, trailScale, Color.Black);
                 GeneralParticleHandler.SpawnParticle(Main.rand.NextBool() ? eclipseTrail : eclipseTrai2);
             }
-            if(Projectile.Calamity().stealthStrike)
+            if (Projectile.Calamity().stealthStrike)
             {
                 if (Main.rand.NextBool(2))
                 {

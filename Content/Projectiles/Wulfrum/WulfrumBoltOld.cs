@@ -1,13 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {
@@ -52,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Wulfrum
                 Projectile.velocity *= 0.96f;
             else
             {
-                if(Projectile.ai[1] < 12f)
+                if (Projectile.ai[1] < 12f)
                     Projectile.ai[1]++;
                 CIFunction.HomeInOnNPC(Projectile, false, 1500f, Projectile.ai[1], 35f);
             }

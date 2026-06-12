@@ -1,9 +1,7 @@
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Weapons.Ranged;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -37,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 11f;
             Item.useAmmo = AmmoID.Bullet;
-            
+
         }
         public override Vector2? HoldoutOffset()
         {

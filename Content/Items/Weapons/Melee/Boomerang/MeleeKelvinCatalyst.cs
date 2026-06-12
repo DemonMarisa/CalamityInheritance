@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod;
@@ -14,14 +12,12 @@ using CalamityMod.Items.Weapons.Rogue;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleeKelvinCatalyst : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

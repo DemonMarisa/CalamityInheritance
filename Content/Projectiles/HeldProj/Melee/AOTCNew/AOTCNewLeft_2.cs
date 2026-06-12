@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Projectiles.Melee.AOTCNew;
 using CalamityInheritance.Texture;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Melee;
 using CalamityMod.Sounds;
 using LAP.Assets.TextureRegister;
 using LAP.Core.SystemsLoader;
@@ -112,7 +111,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.AOTCNew
                 GeneralParticleHandler.SpawnParticle(glitter);
             }
             float Opacity = MathHelper.Clamp(MathHelper.Clamp((float)Math.Sin((Ratio) * MathHelper.Pi), 0f, 1f) * 2f, 0, 1) * 0.25f;
-            float scaleFactor = MathHelper.Clamp(MathHelper.Clamp((float)Math.Sin((Ratio ) * MathHelper.Pi), 0f, 1f), 0, 1);
+            float scaleFactor = MathHelper.Clamp(MathHelper.Clamp((float)Math.Sin((Ratio) * MathHelper.Pi), 0f, 1f), 0, 1);
 
             for (float i = 0f; i <= 1; i += 0.5f)
             {

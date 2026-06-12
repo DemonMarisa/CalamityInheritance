@@ -1,19 +1,14 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Rarities;
 using CalamityMod.Sounds;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -42,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
             Item.rare = RarityType<PureGreen>();
             Item.Calamity().donorItem = true;
-            
+
         }
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)

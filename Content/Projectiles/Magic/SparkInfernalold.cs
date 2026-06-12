@@ -1,11 +1,10 @@
 ﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Weapons.Magic;
+using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
     public class SparkInfernalold : ModProjectile, ILocalizedModType

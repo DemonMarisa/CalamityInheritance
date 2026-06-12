@@ -1,17 +1,17 @@
-﻿using CalamityInheritance.Content.Items.Armor.Silva;
-using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
+﻿using CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class ElementalRayold : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

@@ -1,14 +1,13 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Items;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -224,7 +223,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
             }
         }
     }

@@ -1,21 +1,21 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityMod;
 using CalamityMod.Buffs.Potions;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class FourSeasonsGalaxiaold : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))

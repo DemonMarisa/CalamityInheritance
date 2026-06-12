@@ -1,15 +1,15 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items;
-using System.IO;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -260,17 +260,17 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
                 if (angleFromBase < 8f)
                 {
-                    randomSpeed = Main.rand.NextFloat(40f,55f);
+                    randomSpeed = Main.rand.NextFloat(40f, 55f);
                 }
                 else
                 {
-                    randomSpeed = Main.rand.NextFloat(25f,35f);
+                    randomSpeed = Main.rand.NextFloat(25f, 35f);
                 }
 
                 Vector2 randomizedVelocity = direction * randomSpeed;
 
                 if (hitCount < 2)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity , ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomizedVelocity, ProjectileType<ExoJet>(), (int)(Projectile.damage * 0.15f), Projectile.knockBack, Projectile.owner);
             }
         }
 
@@ -285,7 +285,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int spearAmt = Main.rand.Next(1, 3);
             int comet = Main.rand.Next(1, 3);
 
-            if(hitCount < 2)
+            if (hitCount < 2)
             {
                 if (Projectile.owner == Main.myPlayer)
                 {

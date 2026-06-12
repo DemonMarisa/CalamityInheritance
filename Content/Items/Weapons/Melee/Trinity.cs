@@ -1,17 +1,17 @@
 ﻿using CalamityMod;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class Trinity : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;

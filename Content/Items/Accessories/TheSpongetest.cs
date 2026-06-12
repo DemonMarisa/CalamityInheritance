@@ -1,28 +1,28 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
+using CalamityMod.CalPlayer;
 using CalamityMod.DataStructures;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using CalamityMod.World;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
 using Terraria.Graphics.Effects;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityInheritance.System.Configs;
+using Terraria.ID;
 using Terraria.Localization;
-using CalamityInheritance.Rarity;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -38,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Accessories
         public static readonly SoundStyle BreakSound = new("CalamityMod/Sounds/Custom/RoverDriveBreak") { Volume = 0.75f };
 
 
-        public static int CIShieldDurabilityMax => Main.LocalPlayer.TryGetModPlayer(out CalamityInheritancePlayer calPlayer)? calPlayer.ShieldDurabilityMax: 0 ;
+        public static int CIShieldDurabilityMax => Main.LocalPlayer.TryGetModPlayer(out CalamityInheritancePlayer calPlayer) ? calPlayer.ShieldDurabilityMax : 0;
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
 
         public static int CIShieldRechargeDelay = CalamityUtils.SecondsToFrames(15); // was 6
@@ -79,11 +79,11 @@ namespace CalamityInheritance.Content.Items.Accessories
         }
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:20,
+            itemWidth: 20,
+            itemHeight: 20,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue,
-            itemDefense:30
+            itemValue: CIShopValue.RarityPriceDeepBlue,
+            itemDefense: 30
         );
 
         public override void ExSSD()
@@ -156,8 +156,8 @@ namespace CalamityInheritance.Content.Items.Accessories
                 string Details = Language.GetTextValue("Mods.CalamityInheritance.Content.Items.Accessories.TheSpongetest.Details");
                 tooltips.Add(new TooltipLine(Mod, "Details", Details));
             }
-        } 
-        
+        }
+
 
         // Renders the bubble shield over the item in the world.
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

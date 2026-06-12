@@ -7,9 +7,9 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Victide
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientVictideLeggings: CIArmor, ILocalizedModType
+    public class AncientVictideLeggings : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
 

@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
@@ -10,7 +9,7 @@ using Terraria.ID;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class RogueScourgeoftheCosmos: CIRogueClass
+    public class RogueScourgeoftheCosmos : CIRogueClass
     {
         public override void SetStaticDefaults()
         {

@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
@@ -12,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
     [AutoloadEquip(EquipType.Body)]
     public class AncientGodSlayerChestplate : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -25,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 80;
         }
-        
+
 
         public override void UpdateEquip(Player player)
         {

@@ -1,13 +1,12 @@
-﻿using CalamityMod.Projectiles.Melee;
+﻿using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DefenseFlame: ModProjectile, ILocalizedModType
+    public class DefenseFlame : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;

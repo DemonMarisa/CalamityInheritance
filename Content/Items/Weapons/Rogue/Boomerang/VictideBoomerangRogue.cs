@@ -12,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
-    public class VictideBoomerangRogue: RogueWeapon, ILocalizedModType
+    public class VictideBoomerangRogue : RogueWeapon, ILocalizedModType
     {
         public override string Texture => GetInstance<VictideBoomerangMelee>().Texture;
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";

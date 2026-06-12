@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient(ItemID.HallowedBar,7).
+                AddIngredient(ItemID.HallowedBar, 7).
                 AddTile(TileID.MythrilAnvil).
                 Register();
         }

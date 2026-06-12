@@ -1,11 +1,10 @@
-﻿using CalamityMod.Projectiles.Summon.Umbrella;
+﻿using CalamityMod.Projectiles;
+using CalamityMod.Projectiles.Summon.Umbrella;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {

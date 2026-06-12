@@ -1,21 +1,21 @@
 ﻿using CalamityInheritance.Content.Items.Accessories;
-using Terraria.ModLoader;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Content.Projectiles.ArmorProj;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using System.Collections.Generic;
-using Terraria;
-using System;
-using Terraria.Audio;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Typeless;
 using CalamityMod.World;
-using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using LAP.Core.Utilities;
 using LAP.Core.IDSets;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 
 namespace CalamityInheritance.CIPlayer
@@ -23,7 +23,7 @@ namespace CalamityInheritance.CIPlayer
     public enum ShizukuSwordType
     {
         TargetSpawn,
-        ArkoftheCosmos 
+        ArkoftheCosmos
     }
     public partial class CalamityInheritancePlayer : ModPlayer
     {
@@ -265,10 +265,8 @@ namespace CalamityInheritance.CIPlayer
         #region Post Hurt
         public override void PostHurt(Player.HurtInfo hurtInfo)
         {
-            Player.Calamity().GemTechState.PlayerOnHitEffects(hurtInfo.Damage);
-
             bool hardMode = Main.hardMode;
-            
+
             if (GodSlayerMelee && hurtInfo.Damage > 80)
             {
                 var source = Player.GetSource_Accessory(FindAccessory(ItemType<GodSlayerHeadMeleeold>()));
@@ -306,7 +304,7 @@ namespace CalamityInheritance.CIPlayer
                     int starAmt = 5;
                     for (int n = 0; n < starAmt; n++)
                     {
-                        CalamityUtils.ProjectileRain(source , Player.Center, 400f, 100f, 500f, 800f, 29f, ProjectileType<AstralStar>(), astralStarDamage , 5f, Player.whoAmI);
+                        CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, ProjectileType<AstralStar>(), astralStarDamage, 5f, Player.whoAmI);
                     }
                 }
 

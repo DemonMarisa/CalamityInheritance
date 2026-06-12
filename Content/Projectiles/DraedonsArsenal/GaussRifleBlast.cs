@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.DraedonsArsenal;
-using CalamityInheritance.Sounds.Custom;
+﻿using CalamityInheritance.Sounds.Custom;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using System;

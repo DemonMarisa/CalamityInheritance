@@ -2,7 +2,6 @@
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.NPCs;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles;
 using CalamityMod.Systems.Collections;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -24,8 +23,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public int time = 0;
         public override void SetStaticDefaults()
         {
-            PierceResistNPC.exemptProjectiles.Add(Type);
             Main.projFrames[Projectile.type] = 14;
+            PierceResistNPC.exemptProjectiles.Add(Type);
             CalamityProjectileSets.ShouldNotBeReflected[ProjectileType<MurasamaSlashnew1>()] = false;
         }
 
@@ -64,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             if (time == 0)
             {
-                if(Projectile.frameCounter == 0)
+                if (Projectile.frameCounter == 0)
                 {
                     Projectile.scale = 2;
                 }
@@ -236,7 +235,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 dust2.noGravity = true;
             }
         }
-        
+
         public override Color? GetAlpha(Color lightColor) => new Color(100, 0, 0, 0);
         public override bool? CanDamage() => Slashing == false ? false : null;
     }

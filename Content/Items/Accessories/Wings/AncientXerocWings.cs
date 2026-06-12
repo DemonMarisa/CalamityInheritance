@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Items.Armor.Xeroc;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories.Wings;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -14,15 +13,15 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class AncientXerocWings: CIAccessories, ILocalizedModType
+    public class AncientXerocWings : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:22,
-            itemHeight:20,
-            itemRare:ItemRarityID.Red,
-            itemValue:CIShopValue.RarityPriceRed
+            itemWidth: 22,
+            itemHeight: 20,
+            itemRare: ItemRarityID.Red,
+            itemValue: CIShopValue.RarityPriceRed
         );
         public override void ExSSD()
         {
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             bool activeXeroc = player.statLife <= player.statLifeMax2 * 0.15f;
-            if(player.armor[0].type == ItemType<AncientXerocMask>() && 
+            if (player.armor[0].type == ItemType<AncientXerocMask>() &&
                player.armor[1].type == ItemType<AncientXerocPlateMail>() &&
                player.armor[2].type == ItemType<AncientXerocCuisses>() &&
                activeXeroc

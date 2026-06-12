@@ -1,15 +1,11 @@
 using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using UtfUnknown.Core.Probers;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 {
@@ -53,7 +49,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             CurTime++;
             float percentageOfLife = CurTime / MaxTime;
             float energyRot = Projectile.velocity.ToRotation();
-            float adjustRot = (MathHelper.Pi + MathHelper.PiOver2)  * Direction * percentageOfLife + energyRot + Direction * MathHelper.Pi + Owner.fullRotation; 
+            float adjustRot = (MathHelper.Pi + MathHelper.PiOver2) * Direction * percentageOfLife + energyRot + Direction * MathHelper.Pi + Owner.fullRotation;
             Projectile.rotation = adjustRot;
             //跟随玩家中心
             Vector2 offsetY = new Vector2(Owner.RotatedRelativePoint(Owner.MountedCenter).X, Owner.RotatedRelativePoint(Owner.Center).Y - 5);
@@ -110,7 +106,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         {
             Projectile.GetBaseDrawField(out Texture2D tex, out Vector2 posBase, out Vector2 orig);
             // orig.Y += CIConfig.Instance.Debugint;
-            SpriteEffects flip = Direction < 0f? SpriteEffects.FlipVertically : SpriteEffects.None;
+            SpriteEffects flip = Direction < 0f ? SpriteEffects.FlipVertically : SpriteEffects.None;
             Texture2D Glowtexture = CITextureRegistry.ShizukuSwordGlow.Value;
             Vector2 glowPostion = Projectile.Center - Main.screenPosition;
             Vector2 glowRotationPoint = Glowtexture.Size() / 2f;

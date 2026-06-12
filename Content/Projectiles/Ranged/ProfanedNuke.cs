@@ -1,9 +1,9 @@
-using System;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ProfanedNuke: ModProjectile, ILocalizedModType
+    public class ProfanedNuke : ModProjectile, ILocalizedModType
     {
         //删除残影
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.ignoreWater = true;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 155;
-            Projectile.DamageType = DamageClass.Ranged; 
+            Projectile.DamageType = DamageClass.Ranged;
         }
         public override void AI()
         {
@@ -71,7 +71,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             SpawnDamageDust();
             Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
-            Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * Projectile.direction;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * Projectile.direction;
             //飞行到一定速度时追踪
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] > 5f)
@@ -82,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             SummonFlaresTimer++;
             if (SummonFlaresTimer % 12 == 0)
                 if (Projectile.owner == Main.myPlayer)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<ProfanedNukeDust>(), Projectile.damage/2, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Vector2.Zero, ProjectileType<ProfanedNukeDust>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, 0f, 0f);
             if (Math.Abs(Projectile.velocity.X) >= 8f || Math.Abs(Projectile.velocity.Y) >= 8f)
                 SpawnDust();
         }
@@ -100,7 +100,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             if (WhatRocket == ItemID.DryRocket ||
                 WhatRocket == ItemID.WetRocket ||
-                WhatRocket == ItemID.LavaRocket||
+                WhatRocket == ItemID.LavaRocket ||
                 WhatRocket == ItemID.HoneyRocket)
             {
                 Projectile.ignoreWater = false;
@@ -108,17 +108,17 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                     Projectile.timeLeft = 1;
             }
         }
-        
+
         //如果可能的话尝试破坏物块
         private void BreakTiles()
         {
-             if (Projectile.owner != Main.myPlayer)
+            if (Projectile.owner != Main.myPlayer)
                 return;
 
             int blastRadius = 0;
             switch (WhatRocket)
             {
-                case ItemID.RocketII: 
+                case ItemID.RocketII:
                     blastRadius = 6;
                     break;
                 case ItemID.RocketIV:
@@ -157,10 +157,10 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Utils.PlotTileArea(center.X, center.Y, DelegateMethods.SpreadHoney);
             }
         }
-        
+
         //粒子
         private void OnKillDust()
-        { 
+        {
             for (int i = 0; i < 40; i++)
             {
                 int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CopperCoin, 0f, 0f, 100, default, 2f);
@@ -231,11 +231,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         {
             float halveX = Projectile.velocity.X / 2;
             float halveY = Projectile.velocity.Y / 2;
-            int d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + halveX, Projectile.position.Y + 3f + halveY) - Projectile.velocity /2, Projectile.width - 8, Projectile.height - 8, DustID.CopperCoin, 0f, 0f, 100, default, 1f);
+            int d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + halveX, Projectile.position.Y + 3f + halveY) - Projectile.velocity / 2, Projectile.width - 8, Projectile.height - 8, DustID.CopperCoin, 0f, 0f, 100, default, 1f);
             Main.dust[d].scale *= 2f + Main.rand.Next(10) * 0.1f;
             Main.dust[d].velocity *= 0.2f;
             Main.dust[d].noGravity = true;
-            d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + halveX, Projectile.position.Y + 3f + halveY) - Projectile.velocity /2, Projectile.width - 8, Projectile.height - 8, DustID.CopperCoin, 0f, 0f, 100, default, 0.5f);
+            d = Dust.NewDust(new Vector2(Projectile.position.X + 3f + halveX, Projectile.position.Y + 3f + halveY) - Projectile.velocity / 2, Projectile.width - 8, Projectile.height - 8, DustID.CopperCoin, 0f, 0f, 100, default, 0.5f);
             Main.dust[d].fadeIn = 1f + Main.rand.Next(5) * 0.1f;
             Main.dust[d].velocity *= 0.05f;
         }

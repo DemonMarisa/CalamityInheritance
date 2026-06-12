@@ -300,7 +300,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                 attackTimer = 0;
                 attackType = (float)LegacyCCloneAttackType.PhaseTransition;
                 currentPhase++;
-                
+
                 NPC.netUpdate = true;
                 return;
             }
@@ -355,7 +355,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
                     DoBehavior_FireAbyssaLaser(target, attackTimer, currentPhase);
                     break;
                 case LegacyCCloneAttackType.charge:
-                    DoBehavior_Charge(target,ref attackTimer, currentPhase,ref rotationSpeed);
+                    DoBehavior_Charge(target, ref attackTimer, currentPhase, ref rotationSpeed);
                     break;
                 case LegacyCCloneAttackType.fireFireBall:
                     DoBehavior_FireBall(target, attackTimer, currentPhase);
@@ -379,7 +379,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
 
             if (invincible == true || isCloneSeekerAlive || isCloneBrotherAlive)
             {
-                if(!isCloneSeekerAlive)
+                if (!isCloneSeekerAlive)
                     NPC.damage = 0;
                 NPC.dontTakeDamage = true;
                 NPC.chaseable = false;
@@ -434,7 +434,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone
             // 尝试悬停在玩家左上方或右上方
             Vector2 destination = new Vector2(target.Center.X + posX * distanceX, target.Center.Y - distanceY);
             // 大于一半时间后向下移动
-            if(attacktimer > totalFireTime / 2)
+            if (attacktimer > totalFireTime / 2)
                 destination = new Vector2(target.Center.X + posX * distanceX, target.Center.Y + distanceY);
 
             // 应该在哪

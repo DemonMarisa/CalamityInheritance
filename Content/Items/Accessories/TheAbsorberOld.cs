@@ -1,15 +1,14 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Abyss;
+using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityMod.Items.Placeables;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System;
-using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -17,11 +16,11 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:24,
-            itemRare:ItemRarityID.Red,
-            itemValue:CIShopValue.RarityPriceRed,
-            itemDefense:10
+            itemWidth: 20,
+            itemHeight: 24,
+            itemRare: ItemRarityID.Red,
+            itemValue: CIShopValue.RarityPriceRed,
+            itemDefense: 10
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -30,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories
             player.noKnockback = true; //继承至🐢壳
             //等一下, 阴阳石的免伤数据呢?
             player.endurance += 0.10f;
-            
+
             //继承至大凝胶:
             player.statLifeMax2 += 20;
             player.statManaMax2 += 20;
@@ -55,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                 player.endurance += 0.05f;
                 player.moveSpeed += 0.1f;
                 player.ignoreWater = true;
-            }  
+            }
         }
 
         public override void AddRecipes()

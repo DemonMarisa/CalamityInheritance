@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Projectiles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;

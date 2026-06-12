@@ -1,14 +1,13 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Rarities;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Ammo.RangedAmmo
 {

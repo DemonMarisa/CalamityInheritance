@@ -1,16 +1,11 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
-using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
-using CalamityInheritance.Content.Projectiles.Typeless.NorProj;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.NPCs.AcidRain;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles;
 using CalamityMod.Projectiles.Melee;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ID;

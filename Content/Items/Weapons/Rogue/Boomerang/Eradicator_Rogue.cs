@@ -1,6 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Melee;
-using CalamityInheritance.Content.Projectiles.Melee.Boomerang;
-using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
+﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityInheritance.Rarity;
 using CalamityMod;
 using CalamityMod.Items.Materials;

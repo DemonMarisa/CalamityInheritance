@@ -1,14 +1,13 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Projectiles.Wulfrum;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Wulfrum;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {

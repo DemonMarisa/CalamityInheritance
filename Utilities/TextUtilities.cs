@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Chat;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Microsoft.CodeAnalysis;
 
 namespace CalamityInheritance.Utilities
 {

@@ -1,25 +1,22 @@
-﻿using System;
-using LAP.Assets.TextureRegister;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Particles;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static Humanizer.In;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ACTKarasawaBoom: ModProjectile, ILocalizedModType
+    public class ACTKarasawaBoom : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         private Color DustColor;
-  
+
         public override void SetDefaults()
         {
             Projectile.width = 32;

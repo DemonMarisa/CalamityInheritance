@@ -1,9 +1,7 @@
 ﻿using CalamityInheritance.System.Configs;
 using CalamityMod;
-using LAP.Core.LAPConditions;
 using LAP.Core.MusicEvent;
 using System;
-using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 

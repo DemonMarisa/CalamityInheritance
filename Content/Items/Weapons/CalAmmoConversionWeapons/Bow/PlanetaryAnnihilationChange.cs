@@ -1,13 +1,13 @@
-﻿using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
 {
@@ -59,12 +59,12 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
                 mouseDistance = arrowSpeed / mouseDistance;
                 mouseXDist *= mouseDistance;
                 mouseYDist *= mouseDistance;
-                    for (int i = 0; i < 7; i++)
-                    {
-                        float speedX4 = mouseXDist + Main.rand.Next(-120, 121) * 0.02f;
-                        float speedY5 = mouseYDist + Main.rand.Next(-120, 121) * 0.02f;
-                        Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<PlanetaryAnnihilationProj>(), damage, knockback, player.whoAmI, 0f, i);
-                    }
+                for (int i = 0; i < 7; i++)
+                {
+                    float speedX4 = mouseXDist + Main.rand.Next(-120, 121) * 0.02f;
+                    float speedY5 = mouseYDist + Main.rand.Next(-120, 121) * 0.02f;
+                    Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<PlanetaryAnnihilationProj>(), damage, knockback, player.whoAmI, 0f, i);
+                }
                 return false;
             }
             else

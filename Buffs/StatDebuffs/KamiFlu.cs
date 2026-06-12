@@ -1,13 +1,6 @@
-﻿using CalamityMod.NPCs;
-using CalamityMod;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Utilities;
 using Terraria;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {

@@ -16,7 +16,7 @@ namespace CalamityInheritance.System
             for (int i = 0; i < Main.recipe.Length; i++)
             {
                 Recipe rec = Main.recipe[i];
-                if(rec.HasResult<Sylvestaff>() && rec.HasIngredient(ItemID.GenderChangePotion) && rec.createItem.stack == 1)
+                if (rec.HasResult<Sylvestaff>() && rec.HasIngredient(ItemID.GenderChangePotion) && rec.createItem.stack == 1)
                 {
                     rec.RemoveIngredient(ItemID.GenderChangePotion);
                 }

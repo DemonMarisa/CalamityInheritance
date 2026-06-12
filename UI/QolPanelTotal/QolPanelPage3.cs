@@ -1,19 +1,11 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.LoreItems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {

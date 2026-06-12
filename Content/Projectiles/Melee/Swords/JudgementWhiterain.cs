@@ -3,7 +3,6 @@ using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 {

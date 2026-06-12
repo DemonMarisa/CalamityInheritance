@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -14,11 +13,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:46,
-            itemHeight:40,
-            itemRare:ItemRarityID.Lime,
-            itemValue:CIShopValue.RarityPriceLime,
-            itemDefense:10
+            itemWidth: 46,
+            itemHeight: 40,
+            itemRare: ItemRarityID.Lime,
+            itemValue: CIShopValue.RarityPriceLime,
+            itemDefense: 10
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

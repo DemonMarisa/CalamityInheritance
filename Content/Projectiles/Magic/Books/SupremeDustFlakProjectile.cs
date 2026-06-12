@@ -1,8 +1,6 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod.Buffs.StatDebuffs;
 using LAP.Assets.TextureRegister;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Books
 {

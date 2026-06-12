@@ -1,17 +1,13 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Content.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
 using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
@@ -68,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo projSource, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if(player.ownedProjectileCounts[ProjectileType<WulfrumStaffHoldOut>()] < 1)
+            if (player.ownedProjectileCounts[ProjectileType<WulfrumStaffHoldOut>()] < 1)
                 Projectile.NewProjectileDirect(projSource, position, velocity, ProjectileType<WulfrumStaffHoldOut>(), damage, knockback, player.whoAmI);
             return false;
         }
@@ -76,7 +72,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<WulfrumMetalScrap> (12).
+                AddIngredient<WulfrumMetalScrap>(12).
                 AddTile(TileID.Anvils).
                 Register();
         }

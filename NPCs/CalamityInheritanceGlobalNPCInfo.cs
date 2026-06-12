@@ -1,14 +1,14 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.NPCs.Boss.CalamitasClone;
+using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.NPCs.Boss.SCAL.Brother;
-using Microsoft.Xna.Framework;
 using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
-using CalamityInheritance.NPCs.Boss.CalamitasClone;
-using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
 using CalamityInheritance.NPCs.Boss.Yharon;
-using CalamityMod.NPCs.DevourerofGods;
 using CalamityInheritance.System;
+using CalamityMod.NPCs.DevourerofGods;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs
 {

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.UI;
+﻿using CalamityInheritance.UI;
 using CalamityInheritance.UI.MusicUI;
-using CalamityMod.UI;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;

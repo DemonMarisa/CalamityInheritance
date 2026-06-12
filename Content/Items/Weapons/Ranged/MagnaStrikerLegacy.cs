@@ -1,14 +1,12 @@
-﻿using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod;
-using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using LAP.Content.RecipeGroupAdd;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -34,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<OpalStrikeLegacy>();
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.None;
-            
+
         }
 
         public override Vector2? HoldoutOffset()

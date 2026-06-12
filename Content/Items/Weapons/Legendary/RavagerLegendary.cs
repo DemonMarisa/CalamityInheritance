@@ -1,21 +1,21 @@
-﻿using System;
-using CalamityInheritance.Content.Projectiles.Magic;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Rarity.Special;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityMod;
-using CalamityInheritance.Rarity.Special;
-using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.NPCs.Boss.SCAL;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class RavagerLegendary: LegendaryWeaponClass
+    public class RavagerLegendary : LegendaryWeaponClass
     {
         public override ClassType GeneralWeaponClass => ClassType.Magic;
         public override Color DrawColor => Color.HotPink;
@@ -68,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -180,17 +180,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 int j = 0;
                 if (usPlayer.BetsyTier2)
                 {
-                    for ( ; j < 2; j++)
+                    for (; j < 2; j++)
                     {
                         float pPosX = Main.MouseWorld.X + Main.rand.NextFloat(-200f, 201f);
                         float pPosY = Main.MouseWorld.Y + Main.rand.NextFloat(670f, 1080f);
-                        Vector2 newPos = new (pPosX, pPosY);
+                        Vector2 newPos = new(pPosX, pPosY);
                         //速度
                         Vector2 spd = Main.MouseWorld - newPos;
                         //水平速度随机度
                         spd.X += Main.rand.NextFloat(-15f, 16f);
                         float pSpeed = 24f;
-                        float tarDist =  spd.Length();
+                        float tarDist = spd.Length();
                         //?
                         tarDist = pSpeed / tarDist;
                         spd.X *= tarDist;
@@ -202,6 +202,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 return false;
             }
         }
-    
+
     }
 }

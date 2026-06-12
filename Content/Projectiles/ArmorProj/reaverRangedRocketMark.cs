@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.ArmorProj
             if (Projectile.timeLeft == 20)
             {
                 int RocketDamage = (int)(0.70f * Projectile.damage);
-                Projectile.NewProjectile(source, position, velocity, ProjectileType<MiniRocket>(), RocketDamage , 2f, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<MiniRocket>(), RocketDamage, 2f, Projectile.owner, 0f, 0f);
             }
             if (Projectile.timeLeft == 10)
             {

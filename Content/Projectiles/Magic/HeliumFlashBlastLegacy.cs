@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items;
+using CalamityMod;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using CalamityMod;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {

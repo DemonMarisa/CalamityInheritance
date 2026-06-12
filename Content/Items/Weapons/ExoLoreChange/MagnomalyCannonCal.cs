@@ -1,16 +1,16 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.CIPlayer;
-using System.Collections.Generic;
-using Terraria.Localization;
-using Terraria.ID;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
                 item.useAnimation = item.useTime = 15;
                 item.UseSound = SoundID.Item11;
             }
-            return base.CanUseItem(item , player);
+            return base.CanUseItem(item, player);
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

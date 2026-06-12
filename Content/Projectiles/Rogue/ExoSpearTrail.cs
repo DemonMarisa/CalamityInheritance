@@ -1,11 +1,11 @@
-﻿using Terraria.Audio;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
 using System.IO;
-using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

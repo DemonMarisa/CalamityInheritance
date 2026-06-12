@@ -1,12 +1,12 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.BaseProjectiles;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityMod;
-using System;
-using Terraria.ModLoader;
-using Terraria;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.ID;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {

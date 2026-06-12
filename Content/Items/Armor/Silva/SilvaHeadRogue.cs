@@ -1,18 +1,18 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using CalamityMod.Tiles.Furniture.CraftingStations;
+using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Abyss;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
     [AutoloadEquip(EquipType.Head)]
     public class SilvaHeadRogue : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

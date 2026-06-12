@@ -1,22 +1,12 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Tiles.MusicBox;
-using CalamityInheritance.UI.MusicUI.MusicButton;
 using CalamityInheritance.UI.MusicUI;
-using CalamityMod.Items.Materials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Placeables.Crags;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items.Placeables.Crags;
 
 namespace CalamityInheritance.Content.Items.Placeables.MusicBox
 {

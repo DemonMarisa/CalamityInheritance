@@ -1,5 +1,4 @@
-﻿using CalamityMod;
-using LAP.Core.Utilities;
+﻿using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

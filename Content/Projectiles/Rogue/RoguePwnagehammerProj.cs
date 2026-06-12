@@ -13,13 +13,13 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class RoguePwnagehammerProj: ModProjectile, ILocalizedModType
+    public class RoguePwnagehammerProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleePwnagehammer>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public static readonly SoundStyle AdditionHitSigSound = new("CalamityMod/Sounds/Item/PwnagehammerSound") { Volume = 0.30f };
         private static float RotationIncrement = 0.23f;
-        private static readonly float StealthSpeed = MeleePwnagehammer.Speed*2;
+        private static readonly float StealthSpeed = MeleePwnagehammer.Speed * 2;
         private static readonly int LifeTime = 240;
         private static readonly int StealthLifeTime = 2400;
         private static readonly float ReboundTime = 36f;
@@ -47,12 +47,12 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Lighting.AddLight(Projectile.Center, 0.5f, 0.5f, 0.5f);
 
             //锤子飞行时应当播报声音
-            if(Projectile.soundDelay == 0 && Projectile.ai[0] != 2f)
+            if (Projectile.soundDelay == 0 && Projectile.ai[0] != 2f)
             {
                 Projectile.soundDelay = 60;
-                SoundEngine.PlaySound(CISoundID.SoundBoomerangs,Projectile.position);
+                SoundEngine.PlaySound(CISoundID.SoundBoomerangs, Projectile.position);
             }
-            
+
             /*********************圣时之锤潜伏*************************
             *继承至大部分锤子的ai: ai[0]存储锤子是(1f)否(0f)处于返程状态, 
             *圣时之锤潜伏有与其他锤子的潜伏有一定的差异:
@@ -65,26 +65,26 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             *实现的方法有点史山, 看情况看看咋优化
             **********************************************************/
 
-            switch(Projectile.ai[0])
+            switch (Projectile.ai[0])
             {
                 case 0f:
                     Projectile.ai[1] += 1f;
-                    if(Projectile.ai[1] >= (Projectile.ai[2] == -1f? ReboundTime + 50f : ReboundTime))
+                    if (Projectile.ai[1] >= (Projectile.ai[2] == -1f ? ReboundTime + 50f : ReboundTime))
                     {
-                        if(Projectile.Calamity().stealthStrike && Projectile.ai[2]!= -1f)
+                        if (Projectile.Calamity().stealthStrike && Projectile.ai[2] != -1f)
                         {
                             Projectile.ai[0] = 2f;
                             Projectile.timeLeft = StealthLifeTime;
                         }
-                        else if(Projectile.ai[2] == -1f) //如果是挂载过的锤子, 将不会返程至玩家手上而是直接清除
+                        else if (Projectile.ai[2] == -1f) //如果是挂载过的锤子, 将不会返程至玩家手上而是直接清除
                         {
                             OnChasingDust();
                             OnStuckEffect();
-                            SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.5f} with {Pitch = 0.5f}, Projectile.Center); //播放落星声音以提示玩家锤子脱靶
+                            SoundEngine.PlaySound(SoundID.Item4 with { Volume = 0.5f } with { Pitch = 0.5f }, Projectile.Center); //播放落星声音以提示玩家锤子脱靶
                             Projectile.ai[0] = 4f;
                         }
-                        else if(Projectile.ai[2] == 0f)
-                           Projectile.ai[0] = 1f;
+                        else if (Projectile.ai[2] == 0f)
+                            Projectile.ai[0] = 1f;
                         Projectile.ai[1] = 0f;
                         Projectile.netUpdate = true;
                     }
@@ -95,21 +95,21 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     float returnSpeed = MeleePwnagehammer.Speed;
                     float acceleration = 1.6f;
                     CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
-                    if(Main.myPlayer == Projectile.owner)
+                    if (Main.myPlayer == Projectile.owner)
                     {
-                        if(Projectile.Hitbox.Intersects(owner.Hitbox))
-                           Projectile.Kill();
+                        if (Projectile.Hitbox.Intersects(owner.Hitbox))
+                            Projectile.Kill();
                     }
                     break;
-                
+
                 case 2f:
                     Projectile.usesIDStaticNPCImmunity = true;
                     Projectile.idStaticNPCHitCooldown = 20;
                     OnChasingDust();
                     CIFunction.HomeInOnNPC(Projectile, true, 1800f, 28f, 16f); //挂载只会在计时器小于120f时进行
-                    if(Projectile.timeLeft < LifeTime)
+                    if (Projectile.timeLeft < LifeTime)
                     {
-                        Projectile.velocity = new Vector2(0, Main.rand.NextBool(2)? 4f : -4f) ;
+                        Projectile.velocity = new Vector2(0, Main.rand.NextBool(2) ? 4f : -4f);
                         Projectile.ai[0] = 0f; //脱靶
                         Projectile.ai[2] = -1f;
                     }
@@ -136,15 +136,15 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             //击中时造成神圣之火
             target.AddBuff(BuffType<HolyFlames>(), 240);
-            if(Projectile.ai[0] == 2f)
-            OnStuckEffect();
-            else 
-            OnHitDust();
+            if (Projectile.ai[0] == 2f)
+                OnStuckEffect();
+            else
+                OnHitDust();
 
-            if(Projectile.ai[0] == 3f)
+            if (Projectile.ai[0] == 3f)
             {
                 CIFunction.DustCircle(Projectile.position, 42f, 2.2f, CIDustID.DustSandnado, true, 9f);
-                SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.2f});
+                SoundEngine.PlaySound(AdditionHitSigSound with { Pitch = 0.2f });
             }
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
@@ -161,7 +161,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void OnStuckEffect()
         {
             CIFunction.DustCircle(Projectile.Center, 16f, 2.2f, CIDustID.DustSandnado, true, 9f, default, default, 6f);
-            SoundEngine.PlaySound(AdditionHitSigSound with {Pitch = 0.15f}, Projectile.Center);
+            SoundEngine.PlaySound(AdditionHitSigSound with { Pitch = 0.15f }, Projectile.Center);
         }
         private void OnChasingDust()
         {
@@ -173,10 +173,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float dFlyVelY = Projectile.velocity.Y * 0.4f + velOffset.Y;
 
                 //追踪时不让金色粒子拥有速度
-                dFlyVelX *=  0f ;
-                dFlyVelY *=  0f ;
-                offset  *=  1.15f ;
-                float dScale =  1.6f;
+                dFlyVelX *= 0f;
+                dFlyVelY *= 0f;
+                offset *= 1.15f;
+                float dScale = 1.6f;
                 Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, CIDustID.DustSandnado, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
@@ -189,10 +189,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 float dFlyVelY = Projectile.velocity.Y * 0.5f + velOffset.Y;
 
                 //克隆锤子在追踪时生成的粒子速度更快, 粒子大小更大, 且偏移也会更大一些
-                dFlyVelX *= 1.25f ;
-                dFlyVelY *= 1.25f ;
-                offset  *= 1.05f ;
-                float dScale = 1.6f ;
+                dFlyVelX *= 1.25f;
+                dFlyVelY *= 1.25f;
+                offset *= 1.05f;
+                float dScale = 1.6f;
                 Dust dust = Dust.NewDustPerfect(new Vector2(Projectile.Center.X, Projectile.Center.Y) + offset, DustID.GemRuby, new Vector2(dFlyVelX, dFlyVelY), 100, default, dScale);
                 dust.noGravity = true;
             }
@@ -200,10 +200,10 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         private void OnHitDust() //击中时生成神圣粒子
         {
             float dCounts = 15f;
-            float rotArg = 360f/10f;
+            float rotArg = 360f / 10f;
             for (int i = 0; i < dCounts; ++i)
             {
-                float rotate = MathHelper.ToRadians(i*rotArg);
+                float rotate = MathHelper.ToRadians(i * rotArg);
                 Vector2 dPos = new Vector2(4.8f, 0).RotatedBy(rotate * Main.rand.NextFloat(1.1f, 3.8f));
                 Vector2 dVelocity = new Vector2(4f, 0).RotatedBy(rotate * Main.rand.NextFloat(1.1f, 3.8f));
                 Dust dust = Dust.NewDustPerfect(Projectile.Center + dPos, CIDustID.DustSandnado, new Vector2(dVelocity.X, dVelocity.Y));

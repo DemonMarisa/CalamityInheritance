@@ -3,7 +3,6 @@ using CalamityInheritance.CIPlayer.Dash;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.SystemsLoader;
@@ -20,10 +19,10 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public new string LocalizationCategory => "Content.Items.Accessories.DashAccessories";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:28,
-            itemHeight:32,
+            itemWidth: 28,
+            itemHeight: 32,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
         {
@@ -54,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
                 AddIngredient(ItemID.AvengerEmblem, 1).
                 AddTile<CosmicAnvil>().
                 Register();
-                //Scarlet:合成材料增加复仇者徽章
+            //Scarlet:合成材料增加复仇者徽章
         }
     }
 }

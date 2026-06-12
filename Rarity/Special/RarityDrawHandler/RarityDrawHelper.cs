@@ -21,7 +21,7 @@ namespace CalamityInheritance.Rarity.Special.RarityDrawHandler
             Vector2 glowScale = new Vector2(textSize.X * 0.135f, 0.6f) * glowScaleMult;
             Texture2D tex = Request<Texture2D>(GlowPath).Value;
             //绘制需要的……发光背景。
-            Main.spriteBatch.Draw(tex, glowPosition, null, glowColor with { A = 0 } * 0.85f, 0f, tex.Size()/2, glowScale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(tex, glowPosition, null, glowColor with { A = 0 } * 0.85f, 0f, tex.Size() / 2, glowScale, SpriteEffects.None, 0f);
 
             float sine = (float)((1 + Math.Sin(Main.GlobalTimeWrappedHourly * 2.5f)) / 2);
             float sineOffset = MathHelper.Lerp(0.5f, 1f, sine);

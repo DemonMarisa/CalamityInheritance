@@ -1,4 +1,3 @@
-using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class ShroomiteVisage : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

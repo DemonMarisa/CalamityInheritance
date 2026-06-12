@@ -1,13 +1,13 @@
+using CalamityInheritance.Content.Projectiles.Magic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Magic;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class DemonicPitchforkLegacy : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         public override void SetDefaults()
         {
             Item.damage = 82;
-            Item.DamageType= DamageClass.Magic;
+            Item.DamageType = DamageClass.Magic;
             Item.mana = 11;
             Item.width = 56;
             Item.height = 56;

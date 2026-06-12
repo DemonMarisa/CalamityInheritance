@@ -1,9 +1,9 @@
-﻿using System;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Projectiles.Melee;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
-    public class ExoChainsawProj: ModProjectile, ILocalizedModType
+    public class ExoChainsawProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public static string TexPath => "CalamityMod/Projectiles/Melee";
@@ -96,7 +96,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
                 SoundEngine.PlaySound(SoundID.Item22, Projectile.Center);
                 Projectile.soundDelay = (int)MathHelper.Lerp(30f, 12f, ChargeUpPower);
-            }    
+            }
         }
 
         public void DetermineDamage()

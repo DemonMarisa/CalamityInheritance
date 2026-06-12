@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.System.Configs;
+using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
-using CalamityMod.Items.Weapons.Ranged;
 using Terraria.Localization;
-using CalamityInheritance.System.Configs;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Bow
 {

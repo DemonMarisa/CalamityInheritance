@@ -6,7 +6,7 @@ namespace CalamityInheritance.Content.Items
     {
         //cnm瑞德，音效就不能取容易读的别名吗😡
         #region 物品音效
-        
+
         public static readonly Terraria.Audio.SoundStyle SoundWeaponSwing = SoundID.Item1;
         public static readonly Terraria.Audio.SoundStyle SoundSummonPet = SoundID.Item2;
         public static readonly Terraria.Audio.SoundStyle SoundPotions = SoundID.Item3;
@@ -51,7 +51,7 @@ namespace CalamityInheritance.Content.Items
         public static readonly Terraria.Audio.SoundStyle SoundFiredMissile = SoundID.Item42;
         public static readonly Terraria.Audio.SoundStyle SoundStaffDiamond = SoundID.Item43;
         public static readonly Terraria.Audio.SoundStyle SoundXeno = SoundID.Item44;
-        public static readonly Terraria.Audio.SoundStyle SoundHoundiusShootius= SoundID.Item45;
+        public static readonly Terraria.Audio.SoundStyle SoundHoundiusShootius = SoundID.Item45;
         public static readonly Terraria.Audio.SoundStyle SoundQueenSpider = SoundID.Item46;
         public static readonly Terraria.Audio.SoundStyle SoundTheAxe = SoundID.Item47;
         public static readonly Terraria.Audio.SoundStyle SoundBreakingSnowBlock = SoundID.Item48;

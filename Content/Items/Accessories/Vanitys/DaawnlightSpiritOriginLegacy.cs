@@ -1,6 +1,6 @@
-﻿using CalamityInheritance.Content.Projectiles.Pets;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Pets;
 using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.Pets;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using LAP.Core.Utilities;

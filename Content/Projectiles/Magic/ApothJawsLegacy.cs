@@ -1,6 +1,5 @@
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Projectiles.Magic;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -41,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 float offsetY = Projectile.position.Y + Main.rand.Next(Projectile.height);
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),offsetX, offsetY, 14 * (float)Math.Cos(angle), 14 * (float)Math.Sin(angle), ProjectileType<ApothChloroLegacy>(), Projectile.damage * 3, Projectile.knockBack / 2, Projectile.owner);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), offsetX, offsetY, 14 * (float)Math.Cos(angle), 14 * (float)Math.Sin(angle), ProjectileType<ApothChloroLegacy>(), Projectile.damage * 3, Projectile.knockBack / 2, Projectile.owner);
                 }
             }
             if (Projectile.timeLeft < 30)

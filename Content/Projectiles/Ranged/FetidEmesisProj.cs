@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Texture;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles;
 using Microsoft.Xna.Framework;
 using System.IO;

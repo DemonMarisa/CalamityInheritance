@@ -5,7 +5,6 @@ using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Content.Projectiles.Wulfrum;
-using CalamityMod;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -74,8 +73,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Magic
             if (secondcount > 0 && secondcount % 10 == 0)
             {
                 Owner.CheckMana(Owner.ActiveItem(), (int)(Owner.HeldItem.mana * Owner.manaCost), true, false);
-                
-                if(Main.zenithWorld)
+
+                if (Main.zenithWorld)
                 {
                     int[] pType =
                     [

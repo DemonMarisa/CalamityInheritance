@@ -1,10 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Rogue;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {
@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             var usPlayer = Main.player[projectile.owner].CIMod();
             if ((usPlayer.PanelsLoreExo || usPlayer.LoreExo) && projectile.owner == Main.myPlayer)
             {
-                projectile.ai[Timer] += 1f; 
+                projectile.ai[Timer] += 1f;
                 if (projectile.ai[Timer] > 60f)
                     CIFunction.HomeInOnNPC(projectile, true, 1800f, 10f, 0f);
             }

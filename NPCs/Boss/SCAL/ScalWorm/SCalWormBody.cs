@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -31,7 +30,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.ScalWorm
         public override void SetDefaults()
         {
             //注释死完了
-            
+
             // ��������
             NPC.damage = 0; //70
             NPC.npcSlots = 5f;

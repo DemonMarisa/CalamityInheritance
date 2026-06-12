@@ -1,13 +1,8 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Dusts;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles;
+﻿using CalamityMod.Dusts;
 using LAP.Content.Projectiles.LifeStealProj;
 using LAP.Core.MiscDate;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -85,7 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Ammo
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.Owner().SpawnLifeStealProj(target, Projectile.GetSource_FromThis(), ProjectileType<StandardHealProj>(), Projectile.Center, Vector2.Zero,Main.rand.Next(1,4));
+            Projectile.Owner().SpawnLifeStealProj(target, Projectile.GetSource_FromThis(), ProjectileType<StandardHealProj>(), Projectile.Center, Vector2.Zero, Main.rand.Next(1, 4));
         }
 
         public override bool PreDraw(ref Color lightColor)

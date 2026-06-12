@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons
 {
-    public abstract class CISummon: ModItem
+    public abstract class CISummon : ModItem
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Summon";
         public override void SetStaticDefaults()

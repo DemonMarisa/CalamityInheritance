@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.MiscItem
 {
-    public class DraedonsToy: CIMisc, ILocalizedModType
+    public class DraedonsToy : CIMisc, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.MiscItem";
         public override void SetStaticDefaults()
@@ -29,8 +29,8 @@ namespace CalamityInheritance.Content.Items.MiscItem
         public override bool CanUseItem(Player player)
         {
             bool canSummon = NPC.AnyNPCs(NPCID.TheDestroyer) && NPC.AnyNPCs(NPCID.SkeletronPrime) && NPC.AnyNPCs(NPCID.Retinazer) && NPC.AnyNPCs(NPCID.Spazmatism);
-			return !canSummon;
-		}
+            return !canSummon;
+        }
 
         public override bool? UseItem(Player player)
         {
@@ -44,23 +44,23 @@ namespace CalamityInheritance.Content.Items.MiscItem
                 int greeEye = NPCID.Spazmatism;
                 Main.npc[worm].lifeMax *= 2;
                 Main.npc[worm].defDamage *= (int)1.5;
-                Main.npc[worm].velocity*= (int)1.5;
-                Main.npc[worm].scale*= (int)1.5;
+                Main.npc[worm].velocity *= (int)1.5;
+                Main.npc[worm].scale *= (int)1.5;
 
                 Main.npc[skull].lifeMax *= 2;
                 Main.npc[skull].defDamage *= (int)1.5;
-                Main.npc[skull].velocity*= (int)1.5;
-                Main.npc[skull].scale*= (int)1.5;
+                Main.npc[skull].velocity *= (int)1.5;
+                Main.npc[skull].scale *= (int)1.5;
 
                 Main.npc[redEye].lifeMax *= 2;
                 Main.npc[redEye].defDamage *= (int)1.5;
-                Main.npc[redEye].velocity*= (int)1.5;
-                Main.npc[redEye].scale*= (int)1.5;
+                Main.npc[redEye].velocity *= (int)1.5;
+                Main.npc[redEye].scale *= (int)1.5;
 
                 Main.npc[greeEye].lifeMax *= 2;
                 Main.npc[greeEye].defDamage *= (int)1.5;
-                Main.npc[greeEye].velocity*= (int)1.5;
-                Main.npc[greeEye].scale*= (int)1.5;
+                Main.npc[greeEye].velocity *= (int)1.5;
+                Main.npc[greeEye].scale *= (int)1.5;
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.SpawnOnPlayer(player.whoAmI, worm);
@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Items.MiscItem
         //         DisableDecraft().
         //         AddTile(TileID.LunarCraftingStation).
         //         Register();
-                
+
         // }
     }
 }

@@ -26,13 +26,13 @@ namespace CalamityInheritance.Utilities
             float xVelocity = xOffset;
             float yVelocity = 0f;
             int alphaVal = 255;
-            if(dustAlpha.HasValue) alphaVal = dustAlpha.Value;
-            if(yPos.HasValue) yOffset = yPos.Value;
-            if(xVel.HasValue) xVelocity = xVel.Value;
-            if(yVel.HasValue) yVelocity = yVel.Value;
+            if (dustAlpha.HasValue) alphaVal = dustAlpha.Value;
+            if (yPos.HasValue) yOffset = yPos.Value;
+            if (xVel.HasValue) xVelocity = xVel.Value;
+            if (yVel.HasValue) yVelocity = yVel.Value;
 
             float rotArg = 360f / dustCounts;
-            for(int i = 0; i < dustCounts; i++)
+            for (int i = 0; i < dustCounts; i++)
             {
                 float rorate = MathHelper.ToRadians(i * rotArg);
                 Vector2 dustPos = new Vector2(xPos, yOffset).RotatedBy(rorate);

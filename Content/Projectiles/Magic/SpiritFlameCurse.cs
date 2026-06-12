@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.penetrate = 2;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
-			Projectile.coldDamage = true;
+            Projectile.coldDamage = true;
             Projectile.timeLeft = 180;
         }
 
@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(35,185,255);
+            return new Color(35, 185, 255);
         }
 
         public override void OnKill(int timeLeft)

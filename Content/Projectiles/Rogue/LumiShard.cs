@@ -1,19 +1,18 @@
-using System;
+using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
+using System.IO;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Audio;
-using CalamityInheritance.Sounds.Custom;
-using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class LumiShard: ModProjectile, ILocalizedModType
+    public class LumiShard : ModProjectile, ILocalizedModType
     {
         bool canGrav = false;
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
@@ -25,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void SetDefaults()
         {
             Projectile.width = 10;
-            Projectile.height= 18;
+            Projectile.height = 18;
             Projectile.DamageType = GetInstance<RogueDamageClass>();
             Projectile.ignoreWater = true;
             Projectile.friendly = true;
@@ -48,20 +47,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             if (Projectile.ai[0] == 0f && Projectile.velocity.X == 0f && Projectile.velocity.Y == 0f)
                 canGrav = true;
-            
+
             Projectile.ai[0] = 1f;
             Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.PiOver2;
 
             if (canGrav)
                 Projectile.velocity.Y *= 1.05f;
-            
+
             if (Projectile.timeLeft < 90)
             {
                 if (Projectile.ai[1] != 1f)
                     CIFunction.HomeInOnNPC(Projectile, true, 1000f, 16f, 20f);
                 else
                     //潜伏攻击的月明碎片的索敌距离更短——这个是故意为之
-                    CIFunction.HomeInOnNPC(Projectile, true, 900f, 14f ,15f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 900f, 14f, 15f);
             }
 
             int num309 = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.BubbleBurst_Blue, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);

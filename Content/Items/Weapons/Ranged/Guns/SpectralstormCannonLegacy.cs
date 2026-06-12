@@ -1,9 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Typeless;
-using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Rogue;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

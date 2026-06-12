@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Buffs.Statbuffs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria.Audio;
-using CalamityMod;
-using CalamityInheritance.Buffs.Statbuffs;
-using CalamityInheritance.Utilities;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -71,9 +71,9 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 
                 else
                 {*/
-                    //注:允许追踪的距离被提升至800f,  同时获得2eU
-                    Projectile.extraUpdates = 2;
-                    CIFunction.HomeInOnNPC(Projectile, false, 800f, 12f, 20f);
+                //注:允许追踪的距离被提升至800f,  同时获得2eU
+                Projectile.extraUpdates = 2;
+                CIFunction.HomeInOnNPC(Projectile, false, 800f, 12f, 20f);
                 //}
             }
             else if (Projectile.ai[1] == 1f) //第二阶段的分裂
@@ -158,7 +158,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
 
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.Item62 with { Volume = SoundID.Item62.Volume * 0.5f}, Projectile.position);
+            SoundEngine.PlaySound(SoundID.Item62 with { Volume = SoundID.Item62.Volume * 0.5f }, Projectile.position);
             if (Projectile.ai[1] == 1f)
             {
                 int projectiles = Main.rand.Next(2, 5);

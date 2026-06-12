@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class RavagerLegendaryProjAlt: ModProjectile, ILocalizedModType
+    public class RavagerLegendaryProjAlt : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetStaticDefaults()

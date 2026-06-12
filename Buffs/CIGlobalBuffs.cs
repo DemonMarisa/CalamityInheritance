@@ -3,15 +3,13 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Alcohol;
 using CalamityMod.Buffs.StatBuffs;
-using CalamityMod.CalPlayer;
-using rail;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs
 {
-    public class CIGlobalBuffs: GlobalBuff
+    public class CIGlobalBuffs : GlobalBuff
     {
         public override void Update(int type, Player player, ref int buffIndex)
         {
@@ -50,7 +48,7 @@ namespace CalamityInheritance.Buffs
             }
             #endregion
             //下面只有开启了原版数值回调才会启用
-            if(CIServerConfig.Instance.VanillaUnnerf)
+            if (CIServerConfig.Instance.VanillaUnnerf)
             {
                 #region 日耀套回调, 但...
                 if (type >= BuffID.SolarShield1 && type <= BuffID.SolarShield3)
@@ -72,7 +70,7 @@ namespace CalamityInheritance.Buffs
                     int getOrbs = player.beetleOrbs < 0 ? 0 : player.beetleOrbs;
                     if (getOrbs > 3) getOrbs = 3;
                     //每一级回调5%, 最后会被补正成(5%->10%, 10%->20%, 15%->30%)
-                    player.GetAttackSpeed<MeleeDamageClass>() += 0.05f * getOrbs; 
+                    player.GetAttackSpeed<MeleeDamageClass>() += 0.05f * getOrbs;
                 }
                 #endregion
                 #region 甲虫免伤回调
@@ -86,34 +84,34 @@ namespace CalamityInheritance.Buffs
                 }
                 #endregion
                 #region 伤害星云回调
-                else if(type == BuffID.NebulaUpDmg1) player.GetDamage<MagicDamageClass>() += 0.075f;//回调至15%
-                else if(type == BuffID.NebulaUpDmg2) player.GetDamage<MagicDamageClass>() += 0.150f;//回调至30%
-                else if(type == BuffID.NebulaUpDmg3) player.GetDamage<MagicDamageClass>() += 0.225f;//回调至45%%
+                else if (type == BuffID.NebulaUpDmg1) player.GetDamage<MagicDamageClass>() += 0.075f;//回调至15%
+                else if (type == BuffID.NebulaUpDmg2) player.GetDamage<MagicDamageClass>() += 0.150f;//回调至30%
+                else if (type == BuffID.NebulaUpDmg3) player.GetDamage<MagicDamageClass>() += 0.225f;//回调至45%%
                 #endregion
                 #region 生命星云回调
                 //生命星云回血回调, 现在也能ban掉负数的生命恢复
-                else if(type == BuffID.NebulaUpLife1)
+                else if (type == BuffID.NebulaUpLife1)
                 {
                     //这里牢灾对生命星云的ban 即使debuff下回血的方法做的非常奇怪，因此这里直接将玩家低于0回血的时候置成一个固定的+1HP/s
                     //哦对了喝酒给了特判
-                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if (player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2;
                     else player.lifeRegen += 2; //2HP/s -> 4HP/s
-                } 
-                else if(type == BuffID.NebulaUpLife2)
+                }
+                else if (type == BuffID.NebulaUpLife2)
                 {
-                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if (player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2;
                     else player.lifeRegen += 4; //4HP/s -> 6HP/s
                 }
-                else if(type == BuffID.NebulaUpLife3)
+                else if (type == BuffID.NebulaUpLife3)
                 {
-                    if(player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2; 
+                    if (player.lifeRegen < 0 && player.HasBuff(BuffType<AlcoholPoisoning>())) player.lifeRegen = 2;
                     else player.lifeRegen += 6; //5HP/s -> 8HP/s
                 }
                 #endregion
                 #region 魔力星云回调
                 #endregion
                 #region 一些其他的冗余
-                switch(type)
+                switch (type)
                 {
                     case BuffID.WellFed://一级饱食
                         player.GetAttackSpeed<MeleeDamageClass>() += 0.05f;

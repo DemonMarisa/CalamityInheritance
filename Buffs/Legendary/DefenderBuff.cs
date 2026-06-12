@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Legendary
 {
-    public class DefenderBuff: ModBuff    
+    public class DefenderBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {

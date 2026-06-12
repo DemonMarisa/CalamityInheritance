@@ -1,14 +1,12 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
-using System.IO;
-using ReLogic.Text;
-using LAP.Core.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -52,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             }
             if (Main.rand.NextBool(4))
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height,
                 DustID.GoldCoin, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
@@ -97,7 +95,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         {
             for (int i = 0; i <= 10; i++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, 
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height,
                 DustID.GoldCoin, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f);
             }
         }
@@ -111,7 +109,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (Projectile.Calamity().stealthStrike)
             {
                 Texture2D tex = Request<Texture2D>(Texture + "Glow").Value;
-                Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, 
+                Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation,
                 tex.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             }
         }

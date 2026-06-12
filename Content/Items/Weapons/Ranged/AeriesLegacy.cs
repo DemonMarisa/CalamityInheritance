@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Materials;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -43,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 offset = new(0, -10);
-            if(CIConfig.Instance.AmmoConversion)
+            if (CIConfig.Instance.AmmoConversion)
             {
                 Projectile.NewProjectile(source, position + offset, velocity, ProjectileType<AeriesShockblastRound>(), damage, knockback, player.whoAmI);
             }

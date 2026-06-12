@@ -1,21 +1,21 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ElementalExcalibur : CIMelee, ILocalizedModType
     {
-        
+
         private static int BaseDamage = 2000;
         private int BeamType = 0;
         private const int alpha = 50;

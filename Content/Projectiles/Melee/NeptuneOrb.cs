@@ -1,14 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Swords;
+using CalamityInheritance.Texture;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee.Swords;
-using CalamityInheritance.Texture;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

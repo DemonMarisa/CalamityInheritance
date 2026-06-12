@@ -1,7 +1,7 @@
-﻿using Terraria.GameContent.Creative;
+﻿using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

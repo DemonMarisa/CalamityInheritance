@@ -25,16 +25,16 @@ namespace CalamityInheritance.System.Configs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool CustomShimmer{ get; set; } //微光嬗变
+        public bool CustomShimmer { get; set; } //微光嬗变
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
         [ReloadRequired]
-        public bool VanillaUnnerf{ get; set; } //原版数值回调
+        public bool VanillaUnnerf { get; set; } //原版数值回调
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool CalBossesCanDropSoul{ get; set; } //允许灾三王掉魂
+        public bool CalBossesCanDropSoul { get; set; } //允许灾三王掉魂
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
@@ -56,7 +56,7 @@ namespace CalamityInheritance.System.Configs
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]
-        public bool LoreDrop{ get; set; } //Lore的掉落方法
+        public bool LoreDrop { get; set; } //Lore的掉落方法
 
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(false)]

@@ -1,11 +1,10 @@
-using System;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Dusts;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -19,7 +18,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
     {
         public new string LocalizationCategory => "Content.Projectiles.Rogue";
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Rogue/CursedDaggerLegacy";
-        
+
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 8;
@@ -94,7 +93,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             //最后转化为整数
             int spawnRates = (int)Math.Round(dynamicSpawnRate);
 
-            
+
             if (Main.rand.NextBool(4))
             {
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, (int)CalamityDusts.SulphurousSeaAcid, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);

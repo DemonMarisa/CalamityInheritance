@@ -1,19 +1,19 @@
-﻿using Terraria.DataStructures;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class AuroraBlazerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     [AutoloadEquip(EquipType.Head)]
     public class ReaverMaskRevamped : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         {
             Item.width = 18;
             Item.height = 22;
-            Item.value = CIShopValue.RarityPriceLime; 
+            Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.defense = 5; //40 → 38 让他变得相对更脆
         }
@@ -62,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemType<PerennialBar>(),10)
+            .AddIngredient(ItemType<PerennialBar>(), 10)
             .AddIngredient(ItemID.JungleSpores, 8)
             .AddIngredient(ItemType<EssenceofEleum>(), 2)
             .AddTile(TileID.MythrilAnvil)

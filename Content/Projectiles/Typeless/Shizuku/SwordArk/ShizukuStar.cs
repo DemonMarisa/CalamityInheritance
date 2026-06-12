@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Core;
 using CalamityInheritance.ExtraTextures.Metaballs;
@@ -9,6 +7,8 @@ using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -17,7 +17,7 @@ using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 {
-    public class ShizukuStar : ModProjectile,ILocalizedModType
+    public class ShizukuStar : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public Player Owner => Main.player[Projectile.owner];
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         public override void AI()
         {
-            
+
             if (AttackTimer is 0)
             {
                 //像粒子一样绘制Metaball，这里粒绘制方法类似于锤子的粒子
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             NPC target = Projectile.FindClosestTarget(1800f);
             if (target != null && AttackTimer > 10f)
                 Projectile.HomingNPCBetter(target, 1f, 20f, 20f, ignoreDist: true);
-            
+
         }
 
         private void DrawDust()

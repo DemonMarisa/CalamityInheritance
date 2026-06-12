@@ -1,32 +1,30 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Tiles.Furniture.CraftingStations;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Rarity;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
-using Terraria.Localization;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using System.Diagnostics.Metrics;
-using System;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class CelestialObliterator : CIRanged, ILocalizedModType
     {
-        
+
         private int shot;
 
         private int burst;
@@ -46,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.PurificationPowder;
@@ -88,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             }
             if (burst >= 5)
             {
-                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
                     burst = 0;
                     SoundEngine.PlaySound(SoundID.Item38);
@@ -140,7 +138,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                 AddIngredient<AuricBarold>(10).
                 AddTile<DraedonsForgeold>().
                 Register();
-                
+
             CreateRecipe().
                 AddIngredient<Onyxia>().
                 AddIngredient<UniversalGenesis>().

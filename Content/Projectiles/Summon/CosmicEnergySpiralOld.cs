@@ -1,16 +1,16 @@
-﻿﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Projectiles.ExoLore;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.CalPlayer;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Sounds.Custom;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -212,7 +212,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 }
                 if (getTar)
                 {
-                    if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                    if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                     {
                         SoundEngine.PlaySound(CISoundMenu.CosmicImToss2, Projectile.position);
                         int blastAmt = Main.rand.Next(12, 18);
@@ -279,13 +279,13 @@ namespace CalamityInheritance.Content.Projectiles.Summon
         {
             Player player = Main.player[Projectile.owner];
             CalamityInheritancePlayer usPlayer = player.CIMod();
-            if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+            if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
             {
                 Projectile.netUpdate = true;
                 return new Color(255, 255, 255, 255);
             }
             else
-            return new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB, 255);
+                return new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB, 255);
         }
 
         public override bool? CanDamage() => false;

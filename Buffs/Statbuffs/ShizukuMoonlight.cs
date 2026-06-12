@@ -1,12 +1,11 @@
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Statbuffs
 {
-    public class ShizukuMoonlight: ModBuff, ILocalizedModType
+    public class ShizukuMoonlight : ModBuff, ILocalizedModType
     {
         public enum ClassType
         {
@@ -21,19 +20,19 @@ namespace CalamityInheritance.Buffs.Statbuffs
         }
         public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
-            string dPath  = "Mods.CalamityInheritance.Buffs.ShizukuMoonlight.";
+            string dPath = "Mods.CalamityInheritance.Buffs.ShizukuMoonlight.";
             tip = (dPath + "Default").ToLangValue();
             Player player = Main.LocalPlayer;
             ClassType theClass = player.CIMod().moonClass;
             if (theClass is ClassType.Melee)
             {
                 string meleePath = dPath + "Melee";
-                tip += "\n" +  meleePath.ToLangValue();
+                tip += "\n" + meleePath.ToLangValue();
             }
             if (theClass is ClassType.Magic)
             {
                 string meleePath = dPath + "Magic";
-                tip += "\n" +  meleePath.ToLangValue();
+                tip += "\n" + meleePath.ToLangValue();
             }
             rare = RarityType<ShizukuAqua>();
         }

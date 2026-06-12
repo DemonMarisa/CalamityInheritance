@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Summon;
 
 namespace CalamityInheritance.Content.Projectiles.ArmorProj
 {

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
-    public class MagnusEye: CIMagic, ILocalizedModType
+    public class MagnusEye : CIMagic, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             Item.autoReuse = true;
             Item.useTime = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 20; 
+            Item.useAnimation = 20;
             Item.shoot = ProjectileType<MagnusProj>();
             Item.shootSpeed = 7f;
             Item.UseSound = CommonCalamitySounds.LaserCannonSound;

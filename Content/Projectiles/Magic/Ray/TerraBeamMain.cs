@@ -1,11 +1,11 @@
 ﻿using CalamityMod.Projectiles.BaseProjectiles;
-using LAP.Assets.TextureRegister;
 using CalamityMod.Projectiles.Magic;
-using Microsoft.Xna.Framework.Graphics;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using Terraria.ModLoader;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             if (Projectile.damage < 1)
                 Projectile.damage = 1;
         }
-        
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (ShardCooldown > 0f)
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 while (Collision.SolidCollision((target.Center + spawnOffset).ToTileCoordinates().ToVector2(), 4, 4) && tries < 10);
 
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), target.Center + spawnOffset, Main.rand.NextVector2CircularEdge(6f, 6f), shardType, shardDamage, Projectile.knockBack, Projectile.owner);
-                
+
             }
 
             ShardCooldown = 3f;

@@ -1,15 +1,12 @@
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Potions;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Boss;
 using LAP.Content.Configs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -37,7 +34,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
         {
             // DisplayName.SetDefault("Catastrophe");
             Main.npcFrameCount[NPC.type] = 6;
-			NPCID.Sets.TrailingMode[NPC.type] = 1;
+            NPCID.Sets.TrailingMode[NPC.type] = 1;
 
             NPCID.Sets.BossBestiaryPriority.Add(Type);
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -56,7 +53,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
             NPC.width = 120;
             NPC.height = 120;
             NPC.defense = 100;
-			NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f);
+            NPC.DR_NERD(0.7f, 0.7f, 0.75f, 0.6f);
 
             NPC.lifeMax = 1500000;
             double HPBoost = CalamityServerConfig.Instance.BossHealthBoost * 0.01;
@@ -265,64 +262,64 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Brother
                 return true;
 
             SpriteEffects spriteEffects = SpriteEffects.None;
-			if (NPC.spriteDirection == 1)
-				spriteEffects = SpriteEffects.FlipHorizontally;
+            if (NPC.spriteDirection == 1)
+                spriteEffects = SpriteEffects.FlipHorizontally;
 
-			Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
+            Texture2D npcTex = TextureAssets.Npc[NPC.type].Value;
             if (CIGlobalNPC.LegacySCalLament != -1)
                 npcTex = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacy_Blue").Value;
 
             Vector2 origiVel = new(TextureAssets.Npc[NPC.type].Value.Width / 2, TextureAssets.Npc[NPC.type].Value.Height / Main.npcFrameCount[NPC.type] / 2);
-			Color white = Color.White;
-			float cLerp = 0.5f;
-			int afterAmt = 7;
+            Color white = Color.White;
+            float cLerp = 0.5f;
+            int afterAmt = 7;
 
-			if (!LAPConfig.Instance.PerformanceMode)
-			{
-				for (int i = 1; i < afterAmt; i += 2)
-				{
-					Color cOrigi = drawColor;
-					cOrigi = Color.Lerp(cOrigi, white, cLerp);
-					cOrigi = NPC.GetAlpha(cOrigi);
-					cOrigi *= (afterAmt - i) / 15f;
-					Vector2 drawVel = NPC.oldPos[i] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
-					drawVel -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-					drawVel += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(npcTex, drawVel, NPC.frame, cOrigi, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (!LAPConfig.Instance.PerformanceMode)
+            {
+                for (int i = 1; i < afterAmt; i += 2)
+                {
+                    Color cOrigi = drawColor;
+                    cOrigi = Color.Lerp(cOrigi, white, cLerp);
+                    cOrigi = NPC.GetAlpha(cOrigi);
+                    cOrigi *= (afterAmt - i) / 15f;
+                    Vector2 drawVel = NPC.oldPos[i] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
+                    drawVel -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+                    drawVel += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+                    spriteBatch.Draw(npcTex, drawVel, NPC.frame, cOrigi, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			Vector2 oriVelEx = NPC.Center - Main.screenPosition;
-			oriVelEx -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-			oriVelEx += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-			spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
+            Vector2 oriVelEx = NPC.Center - Main.screenPosition;
+            oriVelEx -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+            oriVelEx += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+            spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, NPC.GetAlpha(drawColor), NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 
-			npcTex = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow").Value;
+            npcTex = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow").Value;
             if (CIGlobalNPC.LegacySCalLament != -1)
                 npcTex = Request<Texture2D>("CalamityInheritance/NPCs/Boss/SCAL/Brother/SupremeCatastropheLegacyGlow_Blue").Value;
 
             Color color37 = Color.Lerp(Color.White, Color.Red, 0.5f);
 
-			if (!LAPConfig.Instance.PerformanceMode)
-			{
-				for (int j = 1; j < afterAmt; j++)
-				{
-					Color exColor = color37;
-					exColor = Color.Lerp(exColor, white, cLerp);
-					exColor *= (afterAmt - j) / 15f;
-					Vector2 vector44 = NPC.oldPos[j] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
-					vector44 -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
-					vector44 += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
-					spriteBatch.Draw(npcTex, vector44, NPC.frame, exColor, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
-				}
-			}
+            if (!LAPConfig.Instance.PerformanceMode)
+            {
+                for (int j = 1; j < afterAmt; j++)
+                {
+                    Color exColor = color37;
+                    exColor = Color.Lerp(exColor, white, cLerp);
+                    exColor *= (afterAmt - j) / 15f;
+                    Vector2 vector44 = NPC.oldPos[j] + new Vector2(NPC.width, NPC.height) / 2f - Main.screenPosition;
+                    vector44 -= new Vector2(npcTex.Width, npcTex.Height / Main.npcFrameCount[NPC.type]) * NPC.scale / 2f;
+                    vector44 += origiVel * NPC.scale + new Vector2(0f, 4f + NPC.gfxOffY);
+                    spriteBatch.Draw(npcTex, vector44, NPC.frame, exColor, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
+                }
+            }
 
-			spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, color37, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
+            spriteBatch.Draw(npcTex, oriVelEx, NPC.frame, color37, NPC.rotation, origiVel, NPC.scale, spriteEffects, 0f);
 
-			return false;
-		}
+            return false;
+        }
 
-		public override bool CheckActive()
+        public override bool CheckActive()
         {
             return false;
         }

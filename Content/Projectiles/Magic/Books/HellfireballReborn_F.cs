@@ -1,9 +1,6 @@
-﻿using CalamityInheritance.Buffs.StatDebuffs;
-using CalamityInheritance.Content.Projectiles.NPCProj.Friendly;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Dusts;
 using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Terraria;

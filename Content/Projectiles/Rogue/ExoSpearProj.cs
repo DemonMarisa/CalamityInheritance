@@ -1,16 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using Terraria.Audio;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.CIPlayer;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -222,11 +220,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 }
                 if (angleFromBase < 8f)
                 {
-                    randomSpeed = Main.rand.NextFloat(30f,45f);
+                    randomSpeed = Main.rand.NextFloat(30f, 45f);
                 }
                 else
                 {
-                    randomSpeed = Main.rand.NextFloat(15f,25f);
+                    randomSpeed = Main.rand.NextFloat(15f, 25f);
                 }
 
                 Vector2 randomizedVelocity = direction * randomSpeed;

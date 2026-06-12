@@ -1,15 +1,14 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
-using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Sounds.Custom;
+using Terraria.Audio;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {

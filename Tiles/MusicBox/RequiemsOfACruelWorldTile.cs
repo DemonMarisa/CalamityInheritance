@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Drawing;
 using Terraria.GameContent.ObjectInteractions;
@@ -6,10 +10,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Utilities;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.MusicBox
 {

@@ -1,6 +1,4 @@
-﻿using System;
-using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Magic;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -9,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class DestroyerLegendaryBomb: ModProjectile, ILocalizedModType
+    public class DestroyerLegendaryBomb : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public int boomTimer = 120;
@@ -78,12 +76,12 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             SoundEngine.PlaySound(SoundID.Item105, Projectile.Center);
             if (Projectile.owner == Main.myPlayer)
             {
-               Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<DestroyerLegendaryBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<DestroyerLegendaryBoom>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            Player player = Main.player[Projectile.owner]; 
+            Player player = Main.player[Projectile.owner];
             var usPlayer = player.CIMod();
             if (usPlayer.DestroyerTier1)
                 modifiers.SetCrit();

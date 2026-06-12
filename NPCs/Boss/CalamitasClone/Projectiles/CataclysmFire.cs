@@ -1,7 +1,5 @@
-using CalamityInheritance.Content.Projectiles;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using Microsoft.Xna.Framework;
 using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.ModLoader;

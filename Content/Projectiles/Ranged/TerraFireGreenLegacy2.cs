@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class TerraFireGreenLegacy2 : ModProjectile, ILocalizedModType
@@ -28,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
         public override void AI()
         {
             if (Main.zenithWorld)
-            CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
+                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
             Lighting.AddLight(Projectile.Center, 0.15f, 0.45f, 0f);
             if (Projectile.ai[0] > 7f)
             {

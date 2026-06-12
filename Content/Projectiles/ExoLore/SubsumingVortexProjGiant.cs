@@ -3,11 +3,9 @@ using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Magic;
-using LAP.Assets.TextureRegister;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Magic;
+using LAP.Assets.TextureRegister;
 using LAP.Core.Utilities;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -16,12 +14,11 @@ using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
-    public class SubsumingVortexProjGiant: ModProjectile, ILocalizedModType
+    public class SubsumingVortexProjGiant : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public Player Owner => Main.player[Projectile.owner];
@@ -37,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             get => Projectile.ai[1] == 1f;
             set => Projectile.ai[1] = value.ToInt();
         }
-        public ref float AttackTiemr => ref Projectile.ai[2]; 
+        public ref float AttackTiemr => ref Projectile.ai[2];
         public const int ExplodeTime = 45;
 
         public const float StartingScale = 0.0004f;
@@ -84,7 +81,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             //Init one time if just fully charged
             if (Time >= SubsumingVortex.LargeVortexChargeupTime && !InitSound)
             {
-                SoundEngine.PlaySound(CISoundMenu.VortexDone, Projectile.Center);    
+                SoundEngine.PlaySound(CISoundMenu.VortexDone, Projectile.Center);
                 InitSound = true;
             }
             #endregion
@@ -173,13 +170,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
 
         private void DoHoming(NPC tar)
         {
-            
+
             AttackTiemr++;
             //If shouldn't charging to enemy, just following its owner.
             if (AttackTiemr < StartHomingNPCTime)
             {
                 Owner.HomeInPlayer(Projectile, 20f, 16f, 1.0f, true, 150f);
-                Vector2 topHead = new (Owner.Center.X + CIFunction.SetDistance(16) * Owner.direction, Owner.Center.Y - CIFunction.SetDistance(15));
+                Vector2 topHead = new(Owner.Center.X + CIFunction.SetDistance(16) * Owner.direction, Owner.Center.Y - CIFunction.SetDistance(15));
                 Vector2 homeDirection = (topHead - Projectile.Center).SafeNormalize(Vector2.UnitY);
                 Vector2 newVelocity = (Projectile.velocity * 20f + homeDirection * 16f) / (20f + 1f);
 
@@ -203,7 +200,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 }
                 Projectile.netUpdate = true;
             }
-            
+
         }
 
         private void DoDrawDust()
@@ -290,13 +287,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 return;
 
             //固定三个，因为这个玩意右键手持的时候是有判定的
-            for (int j = 0; j < pCounts; j++) 
+            for (int j = 0; j < pCounts; j++)
             {
                 //这里最主要是为了确定生成的位置
                 int offset = Main.rand.Next(200, 1080);
                 //尽可能让射弹在屏幕外生成
                 float xPos = player.position.X + offset * Main.rand.NextBool(2).ToDirectionInt();
-                float yPos = player.position.Y + (Main.rand.NextBool() ? Main.rand.NextFloat(-600, -801): Main.rand.NextFloat(600, 801));
+                float yPos = player.position.Y + (Main.rand.NextBool() ? Main.rand.NextFloat(-600, -801) : Main.rand.NextFloat(600, 801));
                 Vector2 startPos = new(xPos, yPos);
                 //指定好速度和方向
                 Vector2 velocity = target.position - startPos;
@@ -306,13 +303,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
                 velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
                 //改色，或者说改饱和度
-                float hue = (j / (float)(pCounts- 1f) + Main.rand.NextFloat(0.3f)) % 1f;
-                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue); 
+                float hue = (j / (float)(pCounts - 1f) + Main.rand.NextFloat(0.3f)) % 1f;
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), startPos, velocity, ProjectileType<SubsumingVortexProj>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner, hue);
                 Main.projectile[p].DamageType = DamageClass.Magic;
                 Main.projectile[p].scale *= 0.85f;
                 //2穿, 即2判
                 Main.projectile[p].penetrate = 2;
-                
+
             }
         }
 

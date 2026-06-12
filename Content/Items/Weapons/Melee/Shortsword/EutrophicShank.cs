@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Accessories.Combats;
-using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.SunkenSea;
 using Terraria;

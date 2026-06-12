@@ -1,20 +1,20 @@
-﻿using CalamityMod.Items.Materials;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Tiles.Furniture.CraftingStations;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
-using LAP.Core.SystemsLoader;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class FabstaffOld : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

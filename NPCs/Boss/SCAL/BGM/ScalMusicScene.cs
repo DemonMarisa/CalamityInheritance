@@ -1,16 +1,6 @@
-﻿using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs;
-using CalamityMod.Systems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityMod.Systems;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.NPCs.Boss.SCAL.Sky;
-using Terraria;
-using CalamityInheritance.NPCs.Boss.SCAL.SoulSeeker;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.BGM
 {

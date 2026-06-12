@@ -1,9 +1,9 @@
-using System;
-using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -15,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         #region 别名
         ref float AttackType => ref Projectile.ai[0];
         ref float AttackTimer => ref Projectile.ai[1];
-        public Player Owner => Main.player[Projectile.owner]; 
+        public Player Owner => Main.player[Projectile.owner];
         #endregion
         #region 攻击枚举
         //不要修改这个为0f, 不然发射逻辑会出问题
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             writer.Write(FlipX);
             writer.Write(FlipY);
             writer.Write(Init);
-            writer.Write(IncreaseMent); 
+            writer.Write(IncreaseMent);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
@@ -140,7 +140,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         private void DoNotStealthProj(NPC target)
         {
             //射弹非空，尝试设置生成位置。
-            Vector2 realPos = target.Center + (MathHelper.TwoPi / MathHelper.PiOver4 * 8 * IncreaseMent ).ToRotationVector2() * 300f + target.velocity;
+            Vector2 realPos = target.Center + (MathHelper.TwoPi / MathHelper.PiOver4 * 8 * IncreaseMent).ToRotationVector2() * 300f + target.velocity;
             IncreaseMent += 1;
             //设置距离向量，并转为速度向量
             Vector2 pDistVec = target.Center - realPos;
@@ -156,8 +156,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             //这里会用一个嵌套循环设置位置。
             float horizonX = target.Center.X + 200f * FlipX;
-            float horizonY = target.Center.Y + GapY * AnotherIncre; 
-            Vector2 horizon = new (horizonX, horizonY);
+            float horizonY = target.Center.Y + GapY * AnotherIncre;
+            Vector2 horizon = new(horizonX, horizonY);
             Vector2 tarDist = target.Center - horizon;
             float playerDist = tarDist.Length();
             playerDist = 18f / playerDist;
@@ -185,14 +185,14 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         {
             float stealthX = target.Center.X + 200f * StealthIncre;
             float stealthY = target.Center.Y - 300f * FlipY;
-            Vector2 stealthPos = new (stealthX, stealthY);
+            Vector2 stealthPos = new(stealthX, stealthY);
             Vector2 stealthDist = target.Center - stealthPos;
             float dist = stealthDist.Length();
             dist = 24f / dist;
             stealthDist.X *= dist;
             stealthDist.Y *= dist;
             Projectile.NewProjectile(Projectile.GetSource_FromThis(), stealthPos, stealthDist, ProjectileType<AtomDuplicateRework>(), Projectile.damage, 0f, Owner.whoAmI, default, default, target.whoAmI);
-            StealthIncre++; 
+            StealthIncre++;
             //同上
             if (StealthIncre > 1 && FlipY == -1)
             {
@@ -216,7 +216,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                 AttackType = IsFading;
                 Projectile.netUpdate = true;
             }
-            else 
+            else
                 AttackTimer++;
         }
 

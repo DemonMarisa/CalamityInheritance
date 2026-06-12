@@ -1,46 +1,40 @@
-﻿using System.Collections.Generic;
-using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Buffs;
 using CalamityMod.Buffs.Cooldowns;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Buffs;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Projectiles.Ranged;
-using Terraria.ID;
-using static Terraria.ModLoader.ModContent;
-using CalamityMod.Projectiles.Typeless;
-using CalamityMod.NPCs.PlaguebringerGoliath;
-using CalamityMod.NPCs.PlagueEnemies;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Summon;
+using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Weapons.Magic;
-using CalamityInheritance.Content.Projectiles.CalProjChange;
-using CalamityMod.NPCs.Bumblebirb;
-using CalamityMod.NPCs.ProfanedGuardians;
-using CalamityMod.NPCs.Providence;
-using CalamityMod.NPCs.CeaselessVoid;
-using CalamityMod.NPCs.Signus;
-using CalamityMod.NPCs.StormWeaver;
-using CalamityMod.NPCs.Polterghast;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
-using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.Bumblebirb;
+using CalamityMod.NPCs.CeaselessVoid;
 using CalamityMod.NPCs.DevourerofGods;
+using CalamityMod.NPCs.ExoMechs;
 using CalamityMod.NPCs.ExoMechs.Apollo;
 using CalamityMod.NPCs.ExoMechs.Ares;
 using CalamityMod.NPCs.ExoMechs.Artemis;
 using CalamityMod.NPCs.ExoMechs.Thanatos;
-using CalamityMod.NPCs.ExoMechs;
-using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.NPCs.OldDuke;
+using CalamityMod.NPCs.PlaguebringerGoliath;
+using CalamityMod.NPCs.PlagueEnemies;
+using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.PrimordialWyrm;
+using CalamityMod.NPCs.ProfanedGuardians;
+using CalamityMod.NPCs.Providence;
+using CalamityMod.NPCs.Signus;
+using CalamityMod.NPCs.StormWeaver;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.Projectiles.Boss;
 using CalamityMod.Projectiles.DraedonsArsenal;
-using CalamityMod.Items.LoreItems;
-using Terraria;
-using CalamityInheritance.Content.Items.LoreItems;
+using CalamityMod.Projectiles.Magic;
+using CalamityMod.Projectiles.Ranged;
+using System.Collections.Generic;
+using Terraria.ID;
 
 namespace CalamityInheritance
 {
@@ -70,9 +64,8 @@ namespace CalamityInheritance
         public static void LoadLists()
         {
             #region 用于元素箭袋分裂
-            rangedProjectileExceptionList = 
+            rangedProjectileExceptionList =
             [
-                ProjectileType<DryadsTearSplit>(),
                 ProjectileType<NorfleetCannon>(),
                 ProjectileType<NorfleetComet>(),
                 ProjectileType<NorfleetExplosion>(),
@@ -137,7 +130,6 @@ namespace CalamityInheritance
                 BuffType<BurningBlood>(),
                 BuffType<BrainRot>(),
                 BuffType<ElementalMix>(),
-                BuffType<GlacialState>(),
                 BuffType<GodSlayerInferno>(),
                 BuffType<AstralInfectionDebuff>(),
                 BuffType<HolyFlames>(),

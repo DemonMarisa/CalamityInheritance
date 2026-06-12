@@ -3,7 +3,6 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,9 +12,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class DragonSword: CIMelee, ILocalizedModType
+    public class DragonSword : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -44,9 +43,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
         {
             for (int index = 0; index < 4; ++index)
             {
-                float SpeedX = velocity.X+ Main.rand.Next(-25, 26) * 0.05f;
-                float SpeedY = velocity.Y+ Main.rand.Next(-25, 26) * 0.05f;
-                Projectile.NewProjectile(source,position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.75), knockback, player.whoAmI, 0.0f, 0.0f);
+                float SpeedX = velocity.X + Main.rand.Next(-25, 26) * 0.05f;
+                float SpeedY = velocity.Y + Main.rand.Next(-25, 26) * 0.05f;
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, (int)(damage * 0.75), knockback, player.whoAmI, 0.0f, 0.0f);
             }
             return false;
         }

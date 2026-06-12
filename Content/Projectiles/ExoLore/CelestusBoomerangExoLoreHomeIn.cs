@@ -1,20 +1,15 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using Microsoft.Xna.Framework;
 using System;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using System.ComponentModel.DataAnnotations;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
-using CalamityMod.Items.Weapons.Rogue;
-using System.Data;
-using CalamityInheritance.Sounds.Custom;
-using System.IO;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -170,7 +165,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             AttackTimer += 1f;
             if (AttackTimer > 10f)
                 Projectile.rotation += 1f;
-            
+
             float returnSpeed = 25f;
             float acceleration = 5f;
             CIFunction.BoomerangReturningAI(player, Projectile, returnSpeed, acceleration);
@@ -240,7 +235,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                     CISoundMenu.CelestusOnHit2,
                     CISoundMenu.CelestusOnHit3
                 ];
-                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, getSound) with {MaxInstances = 0}, Projectile.position);
+                SoundEngine.PlaySound(Utils.SelectRandom(Main.rand, getSound) with { MaxInstances = 0 }, Projectile.position);
             }
             target.ExoDebuffs();
             OnHitEffects();

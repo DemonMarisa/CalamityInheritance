@@ -1,18 +1,18 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Body)]
     public class GodSlayerChestplateold : CIArmor, ILocalizedModType
     {
-        
+
         public const int DashIFrames = 12;
         public override void SetStaticDefaults()
         {

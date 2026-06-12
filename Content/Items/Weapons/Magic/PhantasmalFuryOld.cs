@@ -1,13 +1,12 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Magic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.Magic;
-using Terraria.GameContent.Golf;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Magic;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
@@ -43,9 +42,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
         {
             if (Main.zenithWorld)
             {
-                Item.DamageType = DamageClass.Ranged; 
+                Item.DamageType = DamageClass.Ranged;
                 Item.mana = 0;
-                Item.useTime =  15;
+                Item.useTime = 15;
                 Item.useAnimation = 15;
             }
             else
@@ -74,7 +73,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
                 AddDecraftCondition(Condition.NotZenithWorld).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
-                
+
             CreateRecipe().
                 AddIngredient(ItemID.SpectreStaff).
                 AddIngredient<CoreofEleum>(3).

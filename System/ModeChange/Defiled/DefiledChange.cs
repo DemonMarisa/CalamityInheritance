@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
+﻿using CalamityInheritance.World;
 using Terraria;
-using CalamityInheritance.World;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.ModeChange.Defiled
 {

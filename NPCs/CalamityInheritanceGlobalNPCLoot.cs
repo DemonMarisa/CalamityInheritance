@@ -44,14 +44,10 @@ using CalamityMod;
 using CalamityMod.Events;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables.Banners;
 using CalamityMod.Items.TreasureBags;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.AcidRain;
 using CalamityMod.NPCs.AquaticScourge;
-using CalamityMod.NPCs.Astral;
 using CalamityMod.NPCs.AstrumAureus;
 using CalamityMod.NPCs.AstrumDeus;
 using CalamityMod.NPCs.BrimstoneElemental;
@@ -82,12 +78,10 @@ using CalamityMod.NPCs.SunkenSea;
 using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.NPCs.Yharon;
 using CalamityMod.World;
-using System.Reflection;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityMod.NPCs.BrimstoneElemental.BrimstoneElemental;
 using BadgeofBravery = CalamityInheritance.Content.Items.Accessories.Melee.BadgeofBravery;
 using ElementalQuiver = CalamityInheritance.Content.Items.Accessories.Ranged.ElementalQuiver;
 
@@ -118,7 +112,7 @@ namespace CalamityInheritance.NPCs
                 if (npc.CheckNPCMod<Cryogen>())
                     DropSoul(ItemID.SoulofMight);
                 if (npc.CheckNPCMod<AquaticScourgeHead>())
-                DropSoul(ItemID.SoulofSight);
+                    DropSoul(ItemID.SoulofSight);
             }
             void DropSoul(int soulType, int dropRate = 1, int dropMin = 35, int dropMax = 45)
             {
@@ -214,7 +208,7 @@ namespace CalamityInheritance.NPCs
             {
                 if (CIServerConfig.Instance.CalExtraDrop == true)
                 {
-                    Loot.Add(ItemMod<PearlShard> (), 1, 6, 12);
+                    Loot.Add(ItemMod<PearlShard>(), 1, 6, 12);
                 }
             }
             #region 深渊掉落
@@ -328,7 +322,7 @@ namespace CalamityInheritance.NPCs
                 if (CIServerConfig.Instance.CalBossesCanDropSoul)
                     Loot.DropCommonVanilla(ItemID.SoulofMight, 1, 35, 45);
             }
-            if (npc.CheckNPCMod<BrimstoneElemental> ())
+            if (npc.CheckNPCMod<BrimstoneElemental>())
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneElemental>(), desc: DropHelper.FirstKillText);
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedBrimstoneElemental, ItemMod<KnowledgeBrimstoneCrag>(), desc: DropHelper.FirstKillText);
@@ -351,7 +345,7 @@ namespace CalamityInheritance.NPCs
                 }
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<CalamitasCloneBag>());
             }
-            if (npc.CheckNPCMod<Cataclysm>() )
+            if (npc.CheckNPCMod<Cataclysm>())
                 Loot.Add(ItemMod<HavocsBreathLegacy>(), 4);
             if (npc.CheckNPCMod<Catastrophe>())
                 Loot.Add(ItemMod<BrimstoneFlameblaster>(), 4);
@@ -363,7 +357,7 @@ namespace CalamityInheritance.NPCs
                 Loot.AddConditionalPerPlayer(LastAnLStanding, ItemMod<LeviatitanLegacy>());
                 Loot.AddConditionalPerPlayer(LastAnLStanding, ItemMod<BrackishFlaskLegacy>());
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<LeviathanBag>());
-                
+
             }
             if (npc.CheckNPCMod<AstrumAureus>())
             {
@@ -392,12 +386,12 @@ namespace CalamityInheritance.NPCs
             if (npc.CheckNPCMod<AstrumDeusHead>())
             {
                 bool firstDeusKill(DropAttemptInfo info) => !DownedBossSystem.downedAstrumDeus && !ShouldNotDropThings(info.npc);
-                Loot.AddConditionalPerPlayer( firstDeusKill, ItemMod<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
-                Loot.AddConditionalPerPlayer( firstDeusKill, ItemMod<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(firstDeusKill, ItemMod<KnowledgeAstrumDeus>(), desc: DropHelper.FirstKillText);
+                Loot.AddConditionalPerPlayer(firstDeusKill, ItemMod<KnowledgeAstralInfection>(), desc: DropHelper.FirstKillText);
                 Loot.Add(ItemMod<ConclaveCrossfire>(), 10);
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<AstrumDeusBag>());
             }
-            if (npc.CheckNPCMod<ProfanedGuardianCommander> ())
+            if (npc.CheckNPCMod<ProfanedGuardianCommander>())
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedGuardians, ItemMod<KnowledgeProfanedGuardians>(), desc: DropHelper.FirstKillText);
             if (npc.CheckNPCMod<Dragonfolly>())
             {
@@ -475,7 +469,7 @@ namespace CalamityInheritance.NPCs
             {
                 Loot.AddConditionalPerPlayer(() => !DownedBossSystem.downedCalamitas, ItemMod<KnowledgeCalamitas>(), desc: DropHelper.FirstKillText);
                 Loot.Add(ItemMod<VehemencOld>(), 1);
-                Loot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(),ItemMod<Armageddon>(), 1, 3000, 9999));
+                Loot.Add(ItemDropRule.ByCondition(new Conditions.ZenithSeedIsUp(), ItemMod<Armageddon>(), 1, 3000, 9999));
                 CIFunction.ArmageddonBagDrop(Loot, ItemMod<CalamitasCoffer>());
             }
             #endregion
@@ -539,7 +533,7 @@ namespace CalamityInheritance.NPCs
                     Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<SeaShell>(), 2, 1));
                     break;
                 case NPCID.DarkCaster:
-                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<AncientShiv>(),25,15));
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemMod<AncientShiv>(), 25, 15));
                     break;
                 //礼物宝箱怪掉节日矛
                 case NPCID.PresentMimic:
@@ -673,7 +667,7 @@ namespace CalamityInheritance.NPCs
                     Loot.AddConditionalPerPlayer(() => !NPC.downedMoonlord, ItemMod<KnowledgeMoonLord>(), desc: DropHelper.FirstKillText);
                     break;
 
-               #endregion
+                    #endregion
             }
             GFBDrop(npc, Loot);
         }
@@ -784,7 +778,7 @@ namespace CalamityInheritance.NPCs
                     Loot.QuickGFBItemMod<ColdheartIcicle>(true);
                     break;
                 case NPCID.WallofFlesh:
-                    Loot.QuickGFBGroupMod<BadgeofBravery>(ItemMod<SamuraiBadge>(), ItemMod<YharimsInsignia>(), ItemMod<DaedalusEmblem>(), ItemMod<ManaOverloader>(),ItemMod<DoubleSonYharon>(), ItemMod<NanotechOld>());
+                    Loot.QuickGFBGroupMod<BadgeofBravery>(ItemMod<SamuraiBadge>(), ItemMod<YharimsInsignia>(), ItemMod<DaedalusEmblem>(), ItemMod<ManaOverloader>(), ItemMod<DoubleSonYharon>(), ItemMod<NanotechOld>());
                     break;
                 case NPCID.QueenSlimeBoss:
                     Loot.QuickGFBItemMod<NeptunesBountyOld>(true);

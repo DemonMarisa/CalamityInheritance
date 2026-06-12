@@ -1,12 +1,12 @@
-﻿using CalamityMod.Items.Weapons.Rogue;
+﻿using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Weapons.Rogue;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int s = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            Main.projectile[s].Calamity().stealthStrike = player.CheckStealth(); 
+            Main.projectile[s].Calamity().stealthStrike = player.CheckStealth();
             return false;
         }
 

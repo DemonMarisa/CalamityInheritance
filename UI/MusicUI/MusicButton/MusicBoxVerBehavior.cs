@@ -1,20 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CalamityInheritance.Utilities.CIFunction;
-using Terraria;
-using static tModPorter.ProgressUpdate;
-using CalamityInheritance.Utilities;
-using Terraria.Localization;
-using Microsoft.CodeAnalysis.Text;
-using static System.Net.Mime.MediaTypeNames;
-using Terraria.UI.Chat;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
+using Terraria;
 using Terraria.GameContent;
+using Terraria.Localization;
+using Terraria.UI.Chat;
+using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.UI.MusicUI.MusicButton
 {
@@ -67,7 +58,7 @@ namespace CalamityInheritance.UI.MusicUI.MusicButton
             #endregion
 
             #region 判定悬停
-            MusicChoiceUI.FastButton(FadeTime, FadeTimeMax, ref Scale, ref Pos,ref IsHovering, ref SecondFadeTime, ref SecondFadeTimeMax, ref wasMouseDown, "CalTitleMusicBoxVer", ref MusicBoxVerOpen);
+            MusicChoiceUI.FastButton(FadeTime, FadeTimeMax, ref Scale, ref Pos, ref IsHovering, ref SecondFadeTime, ref SecondFadeTimeMax, ref wasMouseDown, "CalTitleMusicBoxVer", ref MusicBoxVerOpen);
             #endregion
         }
 

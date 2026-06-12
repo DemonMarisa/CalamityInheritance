@@ -73,8 +73,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
         {
             if (CalamityPlayer.areThereAnyDamnBosses)
             {
-				player.HeldItem.CalamityInheritance().timesUsed++;
-				for (int i = 0; i < Main.InventorySlotsTotal; i++)
+                player.HeldItem.CalamityInheritance().timesUsed++;
+                for (int i = 0; i < Main.InventorySlotsTotal; i++)
                 {
                     if (player.inventory[i].type == Item.type && player.inventory[i] != player.HeldItem)
                         player.inventory[i].CalamityInheritance().timesUsed++;

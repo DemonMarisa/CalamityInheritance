@@ -1,5 +1,4 @@
-﻿using System;
-using CalamityInheritance.Content.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
@@ -59,13 +58,13 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             {
                 float spreadX = Main.rand.Next(-25, 26) * 0.05f * i;
                 float spreadY = Main.rand.Next(-25, 26) * 0.05f * i;
-                Vector2 tarPos = new (spreadX, spreadY);
+                Vector2 tarPos = new(spreadX, spreadY);
                 Vector2 distVec = velocity + tarPos;
                 float tarDist = distVec.Length();
                 tarDist = Item.shootSpeed / tarDist;
                 tarPos.X *= tarDist;
                 tarPos.Y *= tarDist;
-                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer); 
+                int p = Projectile.NewProjectile(source, position, distVec, pType, damage, knockback, Main.myPlayer);
                 Main.projectile[p].Calamity().stealthStrike = stealth;
             }
             return false;

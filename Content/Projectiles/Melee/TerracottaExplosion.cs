@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
-using Terraria;
+﻿using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using LAP.Assets.TextureRegister;
-using LAP.Assets.TextureRegister;
+using System;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

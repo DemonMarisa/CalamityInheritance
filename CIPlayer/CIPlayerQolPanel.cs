@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Magic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -440,7 +439,7 @@ namespace CalamityInheritance.CIPlayer
             tag.Add("CICorruptionPanelType", CorruptionPanelType);
             tag.Add("CICrimsonPanelType", CrimsonPanelType);
             tag.Add("CIUnderworldPanelType", UnderworldPanelType);
-            
+
 
         }
 
@@ -534,7 +533,7 @@ namespace CalamityInheritance.CIPlayer
             UnderworldPanelType = tag.GetInt("CIUnderworldPanelType");
 
             PanelsLoreExo = tag.GetBool("PanelsLoreExo");
-              
+
         }
     }
 }

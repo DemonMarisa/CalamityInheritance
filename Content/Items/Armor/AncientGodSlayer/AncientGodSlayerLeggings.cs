@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
     [AutoloadEquip(EquipType.Legs)]
     public class AncientGodSlayerLeggings : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

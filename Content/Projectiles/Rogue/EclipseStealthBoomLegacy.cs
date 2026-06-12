@@ -1,7 +1,7 @@
 ﻿using CalamityMod;
-using Terraria.ModLoader;
-using Terraria;
 using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             Projectile.localNPCHitCooldown = -1;
             Projectile.scale = 0.75f;
         }
-        
+
         public override void AI()
         {
             Projectile.frameCounter++;

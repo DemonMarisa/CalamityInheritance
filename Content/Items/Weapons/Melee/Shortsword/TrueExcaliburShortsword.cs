@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemType<ExcaliburShortsword>());
-            recipe.AddIngredient(ItemID.ChlorophyteBar,24);
+            recipe.AddIngredient(ItemID.ChlorophyteBar, 24);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

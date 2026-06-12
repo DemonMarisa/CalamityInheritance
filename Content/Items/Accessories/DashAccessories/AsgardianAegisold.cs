@@ -5,8 +5,6 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Core.SystemsLoader;
@@ -27,11 +25,11 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public const float RamExplosionKnockback = 20f;
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:60,
-            itemHeight:54,
+            itemWidth: 60,
+            itemHeight: 54,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue,
-            itemDefense:32
+            itemValue: CIShopValue.RarityPriceDeepBlue,
+            itemDefense: 32
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

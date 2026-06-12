@@ -1,10 +1,10 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Buffs.Statbuffs
 {
-    public class AncientXerocMadness: ModBuff
+    public class AncientXerocMadness : ModBuff
     {
         public override void SetStaticDefaults()
         {

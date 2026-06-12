@@ -1,37 +1,25 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.SummonItems;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
-using CalamityInheritance.Content.Items.Weapons.Ranged.Scarlet;
 using CalamityInheritance.Content.Projectiles.ArmorProj;
-using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.Content.Projectiles.Typeless.LuxorsGiftLegacy;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.UI;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Armor.Reaver;
 using CalamityMod.Items.SummonItems;
 using CalamityMod.NPCs.OldDuke;
-using CalamityMod.Projectiles.Magic;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Projectiles.Summon;
 using CalamityMod.Projectiles.Typeless;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items
@@ -45,13 +33,13 @@ namespace CalamityInheritance.Content.Items
             var mplr = player.CIMod();
             var Cplr = player.Calamity();
             //微光湖附近, 全传奇武器
-            mplr.DukeTier1          = SetShimmeUpgrade(mplr.DukeTier1, ItemType<DukeLegendary>(),       ref player, DustID.Water);
-            mplr.BetsyTier1         = SetShimmeUpgrade(mplr.BetsyTier1, ItemType<RavagerLegendary>(),    ref player, DustID.Meteorite);
-            mplr.PBGTier1           = SetShimmeUpgrade(mplr.PBGTier1, ItemType<PBGLegendary>(),        ref player, DustID.TerraBlade);
-            mplr.PlanteraTier1      = SetShimmeUpgrade(mplr.PlanteraTier1, ItemType<PlanteraLegendary>(),   ref player, DustID.DryadsWard);
-            mplr.ColdDivityTier1    = SetShimmeUpgrade(mplr.ColdDivityTier1, ItemType<CyrogenLegendary>(),    ref player, DustID.Ice);
-            mplr.DestroyerTier1     = SetShimmeUpgrade(mplr.DestroyerTier1, ItemType<DestroyerLegendary>(),  ref player, DustID.Silver);
-            mplr.DefendTier1        = SetShimmeUpgrade(mplr.DefendTier1, ItemType<DefenseBlade>(),        ref player, DustID.GoldCoin);
+            mplr.DukeTier1 = SetShimmeUpgrade(mplr.DukeTier1, ItemType<DukeLegendary>(), ref player, DustID.Water);
+            mplr.BetsyTier1 = SetShimmeUpgrade(mplr.BetsyTier1, ItemType<RavagerLegendary>(), ref player, DustID.Meteorite);
+            mplr.PBGTier1 = SetShimmeUpgrade(mplr.PBGTier1, ItemType<PBGLegendary>(), ref player, DustID.TerraBlade);
+            mplr.PlanteraTier1 = SetShimmeUpgrade(mplr.PlanteraTier1, ItemType<PlanteraLegendary>(), ref player, DustID.DryadsWard);
+            mplr.ColdDivityTier1 = SetShimmeUpgrade(mplr.ColdDivityTier1, ItemType<CyrogenLegendary>(), ref player, DustID.Ice);
+            mplr.DestroyerTier1 = SetShimmeUpgrade(mplr.DestroyerTier1, ItemType<DestroyerLegendary>(), ref player, DustID.Silver);
+            mplr.DefendTier1 = SetShimmeUpgrade(mplr.DefendTier1, ItemType<DefenseBlade>(), ref player, DustID.GoldCoin);
 
             //海爵剑T3: 佩戴蠕虫围巾召唤老猪
             if (Cplr.bloodyWormTooth && CIFunction.IsThereNpcNearby(NPCType<OldDuke>(), player, 3200f) && !mplr.DukeTier3)
@@ -134,7 +122,7 @@ namespace CalamityInheritance.Content.Items
                 }
             }
             //叶流T3: 携带元素箭袋在丛林召唤一只丛林龙
-            if ((item.type == ItemType<YharonEgg>()|| item.type == ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver) && !mplr.PlanteraTier3)
+            if ((item.type == ItemType<YharonEgg>() || item.type == ItemType<YharonEggLegacy>()) && (mplr.ElemQuiver) && !mplr.PlanteraTier3)
             {
                 if (CIFunction.FindInventoryItem(ref player, ItemType<PlanteraLegendary>(), 1))
                 {
@@ -169,7 +157,7 @@ namespace CalamityInheritance.Content.Items
                     LegendaryUpgradeTint(DustID.Ice, player);
                 }
             }
-            
+
             return base.UseItem(item, player);
         }
         public static void LegendaryUpgradeTint(int dType, Player plr)
@@ -180,7 +168,7 @@ namespace CalamityInheritance.Content.Items
         public int timesUsed = 0;
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            var usPlayer = player.CIMod(); 
+            var usPlayer = player.CIMod();
             if (item.type == ItemID.AncientChisel)
                 player.pickSpeed -= 0.15f; //回调饰品的挖掘速度
 
@@ -231,7 +219,7 @@ namespace CalamityInheritance.Content.Items
             if (item.type == ItemType<StatisBlessing>())
             {
                 //如果佩戴了斯塔提斯诅咒, 或者核子之源？补正两个栏位
-                player.maxMinions += (player.CIMod().WearingStatisCurse || player.Calamity().nucleogenesis)? 2 : 0;
+                player.maxMinions += (player.CIMod().WearingStatisCurse || player.Calamity().nucleogenesis) ? 2 : 0;
             }
             #endregion
         }

@@ -149,7 +149,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
         private static void ShootTarget(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int target = ProjectileType<ShizukuSwordHoldout>();
-            if  (player.ownedProjectileCounts[target] < 1 && player.statMana > GetManaUsage())
+            if (player.ownedProjectileCounts[target] < 1 && player.statMana > GetManaUsage())
                 Projectile.NewProjectileDirect(source, position, velocity, target, damage, knockback, player.whoAmI);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -158,12 +158,12 @@ namespace CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem
                 ShootTarget(player, source, position, velocity, type, damage, knockback);
             else
                 ShootAOTC(player, source, position, velocity, type, damage, knockback);
-            
+
             return false;
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Typeless/ShizukuItem/{GetType().Name}"+"_GlowMask").Value);
+            Item.DrawItemGlowmaskSingleFrame(spriteBatch, rotation, Request<Texture2D>($"{Generic.WeaponPath}/Typeless/ShizukuItem/{GetType().Name}" + "_GlowMask").Value);
         }
         public override void AddRecipes()
         {

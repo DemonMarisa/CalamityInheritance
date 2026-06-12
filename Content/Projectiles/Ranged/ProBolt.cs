@@ -1,8 +1,8 @@
 ﻿using CalamityMod;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Main.dust[d].velocity = dspeed;
                 Main.dust[d].noGravity = true;
             }
-            if (Projectile.localAI[0] <  30f)
+            if (Projectile.localAI[0] < 30f)
             {
                 Projectile.velocity *= 1.02f;
             }

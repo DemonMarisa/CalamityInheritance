@@ -4,7 +4,6 @@ using CalamityMod.Projectiles.BaseProjectiles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 

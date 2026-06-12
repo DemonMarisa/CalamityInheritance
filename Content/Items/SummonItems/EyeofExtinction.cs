@@ -1,13 +1,13 @@
 ﻿
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Materials;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityMod.Items.Materials;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.SummonItems
 {

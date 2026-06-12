@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class WingmanLegacy : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

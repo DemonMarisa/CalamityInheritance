@@ -33,7 +33,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.System.CalStatInflationBACK
 {
     public class CheckItem : ModSystem
-    {       
+    {
         // 存储武器类型
         public static List<int> PostMLWeapons = new List<int>();
         public static List<int> PostProfanedWeapons = new List<int>();

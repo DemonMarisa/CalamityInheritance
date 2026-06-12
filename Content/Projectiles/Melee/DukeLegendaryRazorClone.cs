@@ -1,5 +1,4 @@
-﻿using System;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
@@ -9,11 +8,11 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DukeLegendaryRazorClone: ModProjectile, ILocalizedModType
+    public class DukeLegendaryRazorClone : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => "CalamityMod/Projectiles/TornadoProj";
-        public bool SkyFall = false; 
+        public bool SkyFall = false;
         #region 攻击顺序枚举
         const float IsShooted = 0f;
         const float IsHoming = 1f;
@@ -59,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                     Main.dust[blueDust].noGravity = true;
                     Main.dust[blueDust].velocity *= 0f;
                 }
-     
+
             }
             if (Projectile.ai[AttackType] != IsFading)
                 Projectile.alpha -= 100;
@@ -76,7 +75,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             {
                 Projectile.netUpdate = true;
                 Projectile.ai[AttackType] = IsFading;
-             }
+            }
             switch (Projectile.ai[AttackType])
             {
                 //首先我们会让其飞行一段时间
@@ -106,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.ai[AttackTimer] < 25f)
                 Projectile.ai[AttackTimer] += 1f;
             CIFunction.HomingNPCBetter(Projectile, target, 2400f, 10f + Projectile.ai[AttackTimer], 20f, 1, 14f);
-            
+
         }
 
         public void DoShooted()
@@ -116,15 +115,15 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             if (Projectile.ai[AttackTimer] > 30f)
             {
                 Projectile.velocity *= 0.90f;
-                
+
             }
             else
             {
                 //只有没发起减速的射弹才被允许拥有轨迹
-                if(Main.rand.NextBool(4))
+                if (Main.rand.NextBool(4))
                     TrailLine();
             }
-            if (Projectile.ai[AttackTimer] > 60f) 
+            if (Projectile.ai[AttackTimer] > 60f)
             {
                 Projectile.ai[AttackType] = IsHoming;
                 Projectile.ai[AttackTimer] = 0f;

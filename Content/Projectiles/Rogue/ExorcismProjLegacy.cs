@@ -64,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 up.position = Projectile.Center;
                 up.velocity = dustUp * Main.rand.NextFloat(minSpeed, maxSpeed) + Projectile.velocity;
                 up.scale = Main.rand.NextFloat(minScale, maxScale);
-                 
+
                 Dust down = Dust.NewDustPerfect(Projectile.Center, dustType);
                 down.noGravity = true;
                 down.position = Projectile.Center;

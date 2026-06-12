@@ -1,13 +1,11 @@
-using System;
-using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using CalamityMod.Projectiles.Typeless;
 using CalamityMod;
-using CalamityInheritance.Buffs.Summon;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -263,7 +261,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                 Projectile.spriteDirection = -Projectile.direction;
             }
         }
-        
+
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

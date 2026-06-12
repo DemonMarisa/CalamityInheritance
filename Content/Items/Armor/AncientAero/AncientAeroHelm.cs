@@ -1,25 +1,23 @@
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Armor.Aerospec;
 using CalamityMod.Items.Materials;
 using Terraria;
-using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAero
 {
     [AutoloadEquip(EquipType.Head)]
-    public class AncientAeroHelm :CIArmor, ILocalizedModType
+    public class AncientAeroHelm : CIArmor, ILocalizedModType
     {
         public override void SetDefaults()
         {
-             Item.width = 22;
-             Item.height = 20;
-             Item.rare = ItemRarityID.Orange;
-             Item.value = CIShopValue.RarityPriceOrange;
-             Item.defense = 5;
+            Item.width = 22;
+            Item.height = 20;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = CIShopValue.RarityPriceOrange;
+            Item.defense = 5;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientAeroArmor>() && legs.type == ItemType<AncientAeroLeggings>();
         public override void UpdateEquip(Player p)
@@ -31,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAero
         {
             var usPlayer = player.CIMod();
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            usPlayer.AncientAeroSet = true; 
+            usPlayer.AncientAeroSet = true;
             //增加玩家最大飞行时间的180(3秒), 我没说错.
             player.wingTimeMax += 180;
             bool usingAeroStoneLegacy = player.CIMod().AeroStonePower;

@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.Polterghast;
 using CalamityMod.NPCs.Providence;
@@ -16,59 +15,59 @@ using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.CIPlayer
 {
-    public partial class CalamityInheritancePlayer: ModPlayer
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
         public void LegendarySaveData(TagCompound tag)
         {
-            tag.Add("PBGTier1",             PBGTier1);
-            tag.Add("PBGTier2",             PBGTier2);
-            tag.Add("PBGTier3",             PBGTier3);
-            tag.Add("DukeTier1",            DukeTier1);
-            tag.Add("DukeTier2",            DukeTier2);
-            tag.Add("DukeTier3",            DukeTier3);
-            tag.Add("BetsyTier1",           BetsyTier1);
-            tag.Add("BetsyTier2",           BetsyTier2);
-            tag.Add("BetsyTier3",           BetsyTier3);
-            tag.Add("PlanteraTier1",        PlanteraTier1);
-            tag.Add("PlanteraTier2",        PlanteraTier2);
-            tag.Add("PlanteraTier3",        PlanteraTier3);
-            tag.Add("DestroyerTier1",       DestroyerTier1);
-            tag.Add("DestroyerTier2",       DestroyerTier2);
-            tag.Add("DestroyerTier3",       DestroyerTier3);
-            tag.Add("DefendTier1",          DefendTier1);
-            tag.Add("DefendTier2",          DefendTier2);
-            tag.Add("DefendTier3",          DefendTier3);
-            tag.Add("ColdDivityTier1",      ColdDivityTier1);
-            tag.Add("ColdDivityTier2",      ColdDivityTier2);
-            tag.Add("ColdDivityTier3",      ColdDivityTier3);
-            tag.Add("YharimsKilledExo",     YharimsKilledExo);
-            tag.Add("YharimsKilledScal",    YharimsKilledScal);
-            tag.Add("YharimsFuckDragon",    YharimsFuckDragon);
+            tag.Add("PBGTier1", PBGTier1);
+            tag.Add("PBGTier2", PBGTier2);
+            tag.Add("PBGTier3", PBGTier3);
+            tag.Add("DukeTier1", DukeTier1);
+            tag.Add("DukeTier2", DukeTier2);
+            tag.Add("DukeTier3", DukeTier3);
+            tag.Add("BetsyTier1", BetsyTier1);
+            tag.Add("BetsyTier2", BetsyTier2);
+            tag.Add("BetsyTier3", BetsyTier3);
+            tag.Add("PlanteraTier1", PlanteraTier1);
+            tag.Add("PlanteraTier2", PlanteraTier2);
+            tag.Add("PlanteraTier3", PlanteraTier3);
+            tag.Add("DestroyerTier1", DestroyerTier1);
+            tag.Add("DestroyerTier2", DestroyerTier2);
+            tag.Add("DestroyerTier3", DestroyerTier3);
+            tag.Add("DefendTier1", DefendTier1);
+            tag.Add("DefendTier2", DefendTier2);
+            tag.Add("DefendTier3", DefendTier3);
+            tag.Add("ColdDivityTier1", ColdDivityTier1);
+            tag.Add("ColdDivityTier2", ColdDivityTier2);
+            tag.Add("ColdDivityTier3", ColdDivityTier3);
+            tag.Add("YharimsKilledExo", YharimsKilledExo);
+            tag.Add("YharimsKilledScal", YharimsKilledScal);
+            tag.Add("YharimsFuckDragon", YharimsFuckDragon);
         }
         public void LegendaryLoadData(TagCompound tag)
         {
-            tag.TryGet("PBGTier1",          out PBGTier1);
-            tag.TryGet("PBGTier2",          out PBGTier2);
-            tag.TryGet("PBGTier3",          out PBGTier3);
-            tag.TryGet("DukeTier1",         out DukeTier1);
-            tag.TryGet("DukeTier2",         out DukeTier2);
-            tag.TryGet("DukeTier3",         out DukeTier3);
-            tag.TryGet("PlanteraTier1",     out PlanteraTier1);
-            tag.TryGet("PlanteraTier2",     out PlanteraTier2);
-            tag.TryGet("PlanteraTier3",     out PlanteraTier3);
-            tag.TryGet("BetsyTier1",        out BetsyTier1);
-            tag.TryGet("BetsyTier2",        out BetsyTier2);
-            tag.TryGet("BetsyTier3",        out BetsyTier3);
-            tag.TryGet("DestroyerTier1",    out DestroyerTier1);
-            tag.TryGet("DestroyerTier2",    out DestroyerTier2);
-            tag.TryGet("DestroyerTier3",    out DestroyerTier3);
-            tag.TryGet("DefendTier1",       out DefendTier1);
-            tag.TryGet("DefendTier2",       out DefendTier2);
-            tag.TryGet("DefendTier3",       out DefendTier3);
-            tag.TryGet("ColdDivityTier1",   out ColdDivityTier1);
-            tag.TryGet("ColdDivityTier2",   out ColdDivityTier2);
-            tag.TryGet("ColdDivityTier3",   out ColdDivityTier3);
-            tag.TryGet("YharimsKilledExo",  out YharimsKilledExo);
+            tag.TryGet("PBGTier1", out PBGTier1);
+            tag.TryGet("PBGTier2", out PBGTier2);
+            tag.TryGet("PBGTier3", out PBGTier3);
+            tag.TryGet("DukeTier1", out DukeTier1);
+            tag.TryGet("DukeTier2", out DukeTier2);
+            tag.TryGet("DukeTier3", out DukeTier3);
+            tag.TryGet("PlanteraTier1", out PlanteraTier1);
+            tag.TryGet("PlanteraTier2", out PlanteraTier2);
+            tag.TryGet("PlanteraTier3", out PlanteraTier3);
+            tag.TryGet("BetsyTier1", out BetsyTier1);
+            tag.TryGet("BetsyTier2", out BetsyTier2);
+            tag.TryGet("BetsyTier3", out BetsyTier3);
+            tag.TryGet("DestroyerTier1", out DestroyerTier1);
+            tag.TryGet("DestroyerTier2", out DestroyerTier2);
+            tag.TryGet("DestroyerTier3", out DestroyerTier3);
+            tag.TryGet("DefendTier1", out DefendTier1);
+            tag.TryGet("DefendTier2", out DefendTier2);
+            tag.TryGet("DefendTier3", out DefendTier3);
+            tag.TryGet("ColdDivityTier1", out ColdDivityTier1);
+            tag.TryGet("ColdDivityTier2", out ColdDivityTier2);
+            tag.TryGet("ColdDivityTier3", out ColdDivityTier3);
+            tag.TryGet("YharimsKilledExo", out YharimsKilledExo);
             tag.TryGet("YharimsKilledScal", out YharimsKilledScal);
             tag.TryGet("YharimsFuckDragon", out YharimsFuckDragon);
         }
@@ -132,10 +131,10 @@ namespace CalamityInheritance.CIPlayer
                 DefenseBoost += 0.01f;
                 if (DefenseBoost > 0.25f)
                     DefenseBoost = 0.25f;
-                
+
             }
         }
-        
+
         #endregion
         #region 传奇物品伤害任务
         //庇护之刃T2任务：手持庇护之刃承受超过2000点伤害
@@ -144,7 +143,7 @@ namespace CalamityInheritance.CIPlayer
         {
             if (fk.Damage > 5)
                 DefendTier2Pool += fk.Damage;
-             
+
             if (DefendTier2Pool > 1500)
             {
                 LegendaryUpgradeTint(DustID.Gold);
@@ -174,7 +173,7 @@ namespace CalamityInheritance.CIPlayer
 
         public void DukeLegendaryDamageTask(NPC target, NPC.HitInfo hit)
         {
-            
+
             //T2: 用海爵剑给猎魂鲨最后一击
             if (target.type == NPCType<ReaperShark>() && !DukeTier2 && hit.Damage > target.life)
             {

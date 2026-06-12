@@ -1,18 +1,17 @@
-﻿using System;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.Localization;
 using static CalamityMod.CalamityUtils;
-using static Terraria.ModLoader.ModContent;
 
 namespace CalamityInheritance.CICooldowns
 {

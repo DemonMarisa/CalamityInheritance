@@ -1,21 +1,19 @@
-﻿using Terraria.Audio;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Weapons.Ranged;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class DragonsBreathold : CIRanged, ILocalizedModType
     {
-        
+
         public const int BetweenShotsPause = 12;
         public const int PelletsPerShot = 8;
         public const float FullAutoFireRateMult = 0.8f;
@@ -51,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<DragonsBreathRound>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            
+
 
             Item.rare = RarityType<CatalystViolet>();
             Item.value = CIShopValue.RarityPriceCatalystViolet;

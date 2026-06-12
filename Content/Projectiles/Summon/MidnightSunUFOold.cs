@@ -1,16 +1,15 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Projectiles.Summon
 {
@@ -99,7 +98,7 @@ namespace CalamityInheritance.Content.Projectiles.Summon
                     if (Projectile.ai[0] % 6f == 2f && potentialTarget.Top.Y > Projectile.Bottom.Y)
                     {
                         // 伤害再/2是因为生成后莫名其妙伤害翻倍
-                        Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Bottom, Projectile.DirectionTo(potentialTarget.Center).RotatedByRandom(0.15f) * 25f,
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Bottom, Projectile.DirectionTo(potentialTarget.Center).RotatedByRandom(0.15f) * 25f,
                             ProjectileType<MidnightSunLaserold>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
                     float acceleration = 0.35f;

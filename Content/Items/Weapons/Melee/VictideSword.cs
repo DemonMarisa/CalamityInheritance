@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class VictideSword: CIMelee, ILocalizedModType 
+    public class VictideSword : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
-           Item.ResearchUnlockCount = 1;
+            Item.ResearchUnlockCount = 1;
         }
 
         public override void SetDefaults()

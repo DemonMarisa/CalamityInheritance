@@ -1,15 +1,14 @@
-﻿using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeSubductionSlicerProj: ModProjectile, ILocalizedModType
+    public class MeleeSubductionSlicerProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => GetInstance<MeleeSubductionSlicer>().Texture;

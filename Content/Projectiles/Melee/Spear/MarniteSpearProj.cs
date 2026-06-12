@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         public override void SetDefaults()
         {
             Projectile.height = Projectile.width = 25;
-            Projectile.aiStyle = ProjAIStyleID.Spear;    
+            Projectile.aiStyle = ProjAIStyleID.Spear;
             Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.friendly = true;
             Projectile.timeLeft = 90;
@@ -81,8 +81,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
         {
             for (int i = 0; i < 3; i++)
             {
-                Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height,CIDustID.DustMeteor, Projectile.oldVelocity.X * 0.75f, Projectile.oldVelocity.Y * 0.75f);
-                Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height,CIDustID.DustFrostDagger, Projectile.oldVelocity.X * 0.75f, Projectile.oldVelocity.Y * 0.75f);
+                Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height, CIDustID.DustMeteor, Projectile.oldVelocity.X * 0.75f, Projectile.oldVelocity.Y * 0.75f);
+                Dust.NewDust(Projectile.Center + Projectile.velocity, Projectile.width, Projectile.height, CIDustID.DustFrostDagger, Projectile.oldVelocity.X * 0.75f, Projectile.oldVelocity.Y * 0.75f);
             }
         }
     }

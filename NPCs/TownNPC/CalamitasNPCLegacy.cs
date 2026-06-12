@@ -1,48 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Personalities;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using Terraria.GameContent.Bestiary;
-using Terraria.Localization;
-using Terraria.Utilities;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Potions;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories;
-using CalamityMod.Items.Ammo;
-using CalamityInheritance.Content.Items.MiscItem;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
-using CalamityMod.Items.DraedonMisc;
-using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
-using CalamityInheritance.Content.Projectiles.NPCProj.Friendly;
-using CalamityMod.Dusts;
-using CalamityMod.NPCs.TownNPCs;
-using CalamityMod.Items.SummonItems;
-using CalamityMod.NPCs.SupremeCalamitas;
-using CalamityMod.NPCs.CalClone;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityMod.BiomeManagers;
 using CalamityInheritance.Content.Items.Ammo.RangedAmmo;
-using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityMod.Particles;
-using CalamityMod.Events;
-using CalamityInheritance.Core;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.MiscItem;
 using CalamityInheritance.Content.Items.Placeables.MusicBox;
+using CalamityInheritance.Content.Items.Potions;
+using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Content.Items.Weapons.Melee;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Content.Projectiles.NPCProj.Friendly;
+using CalamityInheritance.Core;
+using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.BiomeManagers;
+using CalamityMod.Dusts;
+using CalamityMod.Events;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Ammo;
+using CalamityMod.Items.DraedonMisc;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Furniture;
 using CalamityMod.Items.Potions.Alcohol;
-using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityMod.Items.SummonItems;
 using CalamityMod.Items.Tools;
+using CalamityMod.NPCs.CalClone;
+using CalamityMod.NPCs.SupremeCalamitas;
+using CalamityMod.NPCs.TownNPCs;
+using CalamityMod.Particles;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Personalities;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace CalamityInheritance.NPCs.TownNPC
 {
@@ -52,8 +48,8 @@ namespace CalamityInheritance.NPCs.TownNPC
         private int Chat = 4;
 
         #region Prices
-        public static int GeneralAccPrice => Item.buyPrice(0, 50, 0 , 0);
-        public static int GeneralPostMLMatPrice => Item.buyPrice(0, 20, 0 , 0);
+        public static int GeneralAccPrice => Item.buyPrice(0, 50, 0, 0);
+        public static int GeneralPostMLMatPrice => Item.buyPrice(0, 20, 0, 0);
         public static string DialogueRoute => "Mods.CalamityInheritance.Dialogue";
         const short ChatOpt = 0;
         const short LoreShopOpt = 1;
@@ -176,7 +172,7 @@ namespace CalamityInheritance.NPCs.TownNPC
             CalamityInheritancePlayer CIPlayer = player.CIMod();
 
             WeightedRandom<string> list = new WeightedRandom<string>();
-            if(Main.rand.NextBool(100))
+            if (Main.rand.NextBool(100))
             {
                 return Language.GetTextValue($"{DialogueRoute}.ScalFAPChat");
             }
@@ -552,7 +548,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         public void MiscShop_List()
         {
             var MiscShop = new NPCShop(Type, Language.GetTextValue($"{DialogueRoute}.ScalMiscShopOption"))
-                .Add(new Item(ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver:19, copper: 19) })
+                .Add(new Item(ItemType<ScalShopMessage>()) { shopCustomPrice = Item.buyPrice(platinum: 1145, gold: 14, silver: 19, copper: 19) })
                 .Add(new Item(ItemType<WulfrumMetalScrap>()) { shopCustomPrice = Item.buyPrice(silver: 5) })
                 .Add(new Item(ItemType<EnergyCore>()) { shopCustomPrice = Item.buyPrice(gold: 1) })
                 .Add(new Item(ItemType<WulfrumBattery>()) { shopCustomPrice = Item.buyPrice(gold: 5) })
@@ -602,7 +598,7 @@ namespace CalamityInheritance.NPCs.TownNPC
         }
         //只卖你mod的稀有物品，其它mod等扔给杂项了
         //比如bro，魔君套需要五个神经元护符
-        
+
         //统一抬了下价格，倒也不是因为说没钱花，而是感觉有些东西就卖这么少钱有点奇怪
         public void ItemShop_List()
         {
@@ -634,7 +630,7 @@ namespace CalamityInheritance.NPCs.TownNPC
                 .Add(new Item(ItemType<TyrantPart1>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon)
                 .Add(new Item(ItemType<RequiemsOfACruelWorld>()) { shopCustomPrice = Item.buyPrice(gold: 30) }, CalamityConditions.DownedExoMechs)
                 .Add(new Item(ItemType<NowStopAskingWhere>()) { shopCustomPrice = Item.buyPrice(gold: 20) }, CIConditions.DownedAnyYharon);
-                //.Add(new Item(ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
+            //.Add(new Item(ItemType<Interlude3MusicBox>()) { shopCustomPrice = Item.buyPrice(gold: 10) }, CIConditions.DownedLegacyScal);
             MusicShop.Register();
         }
         public void WineShop_List()

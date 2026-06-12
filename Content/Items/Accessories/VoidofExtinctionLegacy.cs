@@ -1,16 +1,15 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Projectiles.Typeless;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -21,23 +20,18 @@ namespace CalamityInheritance.Content.Items.Accessories
         public int FireCountdown = 0;
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:26,
-            itemHeight:26,
-            itemRare:ItemRarityID.Yellow,
-            itemValue:CIShopValue.RarityPriceYellow,
-            itemDefense:12
+            itemWidth: 26,
+            itemHeight: 26,
+            itemRare: ItemRarityID.Yellow,
+            itemValue: CIShopValue.RarityPriceYellow,
+            itemDefense: 12
         );
-        public override void ExSSD()
-        {
-            Type.ShimmerEach<VoidofExtinction>(false);
-        }
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().voidOfCalamity;
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             var source = player.GetSource_Accessory(Item);
             CalamityPlayer modPlayer = player.Calamity();
             modPlayer.voidOfCalamity = true;
-            modPlayer.voidOfExtinction = true;
             player.buffImmune[BuffType<BrimstoneFlames>()] = true;
             player.buffImmune[BuffID.OnFire] = true;
             player.fireWalk = true;

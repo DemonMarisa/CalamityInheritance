@@ -1,6 +1,6 @@
-﻿using System;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityMod.Projectiles.Melee;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class DukeLegendaryBubble: ModProjectile, ILocalizedModType
+    public class DukeLegendaryBubble : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<VictideSwordProj>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                         for (int i = 0; i < dAmount; i++)
                         {
                             Vector2 dRot = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
-                            dRot = dRot.RotatedBy((i - (dAmount / 2 - 1)) * MathHelper.Pi/ (double)(float)dAmount, default) + Projectile.Center;
+                            dRot = dRot.RotatedBy((i - (dAmount / 2 - 1)) * MathHelper.Pi / (double)(float)dAmount, default) + Projectile.Center;
                             Vector2 faceDirection = ((float)(Main.rand.NextDouble() * MathHelper.Pi) - MathHelper.PiOver2).ToRotationVector2() * Main.rand.Next(3, 8);
                             int d = Dust.NewDust(dRot + faceDirection, 0, 0, DustID.Flare_Blue, faceDirection.X * 2f, faceDirection.Y * 2f, 100, new Color(53, Main.DiscoG, 255), 1.4f);
                             Main.dust[d].noGravity = true;

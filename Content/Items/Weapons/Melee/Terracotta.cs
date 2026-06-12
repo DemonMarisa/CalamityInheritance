@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Content.Projectiles.Typeless.Heal;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Typeless.Heal;
-using CalamityInheritance.Content.Projectiles.Melee;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

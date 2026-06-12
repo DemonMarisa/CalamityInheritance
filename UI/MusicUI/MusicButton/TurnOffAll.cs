@@ -1,16 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CalamityInheritance.Utilities.CIFunction;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.Localization;
 using Terraria.UI.Chat;
-using Terraria;
+using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.UI.MusicUI.MusicButton
 {
@@ -60,7 +55,7 @@ namespace CalamityInheritance.UI.MusicUI.MusicButton
             Scale = MathHelper.Lerp(0, targetscale, EasingHelper.EaseOutBack(progress));
             #endregion
             string text = "CalTitleAllOn";
-            if(MusicChoiceUI.turnOffAll)
+            if (MusicChoiceUI.turnOffAll)
                 text = "CalTitleAll";
             #region 判定悬停
             MusicChoiceUI.FastButton(FadeTime, FadeTimeMax, ref Scale, ref Pos, ref IsHovering, ref SecondFadeTime, ref SecondFadeTimeMax, ref wasMouseDown, text, ref MusicChoiceUI.turnOffAll);

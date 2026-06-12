@@ -1,12 +1,10 @@
-﻿using CalamityInheritance.Sounds.Custom;
-using CalamityMod.Items.Accessories;
-using CalamityMod.Particles;
+﻿using CalamityMod.Items.Accessories;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {

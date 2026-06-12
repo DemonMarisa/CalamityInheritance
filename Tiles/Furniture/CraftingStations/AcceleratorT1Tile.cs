@@ -1,12 +1,12 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod.Tiles.FurnitureWulfrum;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Tiles.FurnitureNavystone.FurnitureAncientNavystone;
 using CalamityMod.Tiles.FurnitureStatigel;
+using CalamityMod.Tiles.FurnitureWulfrum;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {

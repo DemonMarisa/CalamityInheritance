@@ -1,7 +1,7 @@
-using System.IO;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -49,18 +49,18 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
         }
         public override void SendExtraAI(BinaryWriter writer)
         {
-			Projectile.DoSyncHandlerWrite(ref writer);
-			writer.Write(timer);
-			writer.Write(distance);
-			writer.Write(foundTarget);
-			writer.Write(firstTick);
+            Projectile.DoSyncHandlerWrite(ref writer);
+            writer.Write(timer);
+            writer.Write(distance);
+            writer.Write(foundTarget);
+            writer.Write(firstTick);
         }
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-			Projectile.DoSyncHandlerRead(ref reader);
-			timer = reader.ReadInt32();
-			distance = reader.ReadInt32();
-			foundTarget = reader.ReadBoolean();
+            Projectile.DoSyncHandlerRead(ref reader);
+            timer = reader.ReadInt32();
+            distance = reader.ReadInt32();
+            foundTarget = reader.ReadBoolean();
             firstTick = reader.ReadBoolean();
         }
         public override void AI()

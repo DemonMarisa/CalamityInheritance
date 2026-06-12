@@ -1,21 +1,21 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items;
+﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 {
-    public class VictideSpearProj: ModProjectile, ILocalizedModType
+    public class VictideSpearProj : ModProjectile, ILocalizedModType
     {
         protected virtual float RangeMin => 24f;
         protected virtual float RangeMax => 96f;
-        public new string LocalizationCategory => "Content.Projectiles.Melee"; 
+        public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetDefaults()
         {
-            Projectile.width = 56;  
+            Projectile.width = 56;
             Projectile.aiStyle = 19;
             Projectile.DamageType = GetInstance<TrueMeleeDamageClass>();
             Projectile.timeLeft = 90;
@@ -47,8 +47,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
                 if (Projectile.timeLeft < halfDura)
                     progression = Projectile.timeLeft / halfDura;
                 else
-                    progression = (dura - Projectile.timeLeft ) / halfDura;
-                
+                    progression = (dura - Projectile.timeLeft) / halfDura;
+
                 //让矛开始移动
                 Projectile.Center = owner.MountedCenter + Vector2.SmoothStep(Projectile.velocity * RangeMin, Projectile.velocity * RangeMax, progression);
                 //给猫一个正确的转角
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spear
 
                 CIFunction.DustCircle(Projectile.position, 24, 2f, CIDustID.DustWater, true, 12f);
                 //而后，生成水环
-                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3,-6)), ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, npcindex);
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, new Vector2(Main.rand.NextFloat(-0.4f, 0.5f), Main.rand.NextFloat(-3, -6)), ProjectileType<VictideSpearWaterRing>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0, npcindex);
                 Projectile.netUpdate = true;
             }
         }

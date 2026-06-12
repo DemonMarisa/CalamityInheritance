@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using CalamityInheritance.Core;
-using CalamityInheritance.Texture;
-using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 using static CalamityInheritance.Utilities.CIFunction;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -89,7 +82,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                     }
                     speed.Normalize();
                     speed *= Main.rand.Next(70, 101) * 0.1f;
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage, 0f, Projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.oldPosition.X + Projectile.width / 2, Projectile.oldPosition.Y + Projectile.height / 2, speed.X, speed.Y, ProjectileType<WhiteFlameAltLegacy>(), (int)(double)Projectile.damage, 0f, Projectile.owner, 0f, 0f);
                 }
             }
             target.AddBuff(BuffType<HolyFlames>(), 360);

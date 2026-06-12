@@ -1,12 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
+﻿using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using LAP.Core.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using LAP.Core.SystemsLoader;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

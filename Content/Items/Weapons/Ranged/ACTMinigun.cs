@@ -1,15 +1,14 @@
 ﻿using CalamityInheritance.Content.Projectiles.CalProjChange;
 using CalamityInheritance.Rarity;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -20,7 +19,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.ResearchUnlockCount = 1;
             Type.ShimmerTo<Minigun>();
         }
-        
+
         public override void SetDefaults()
         {
             Item.damage = 165;

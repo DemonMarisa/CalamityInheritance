@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using Microsoft.Xna.Framework;

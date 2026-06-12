@@ -12,8 +12,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         {
             //这里可能无法动态修改，看情况
             ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = -1f;
-            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = Main.zenithWorld? 1800f : 560f;
-            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = Main.zenithWorld ? 28f :17f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = Main.zenithWorld ? 1800f : 560f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = Main.zenithWorld ? 28f : 17f;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.penetrate = -1;
             Projectile.MaxUpdates = 2;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = Main.zenithWorld? 1 : 9;
+            Projectile.localNPCHitCooldown = Main.zenithWorld ? 1 : 9;
         }
 
         public override void AI()

@@ -1,6 +1,7 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.Potions;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.CalPlayer;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
@@ -9,8 +10,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -154,7 +153,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             else if (snow)
             {
-                target.AddBuff(BuffType<GlacialState>(), 30);
+
                 player.AddBuff(BuffID.Warmth, 600);
                 Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Projectile.velocity, ProjectileID.IceBolt, Projectile.damage, Projectile.knockBack, Projectile.owner);
             }

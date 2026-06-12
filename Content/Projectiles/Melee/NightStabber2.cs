@@ -1,15 +1,15 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
-using CalamityInheritance.CIPlayer;
-using System;
-using CalamityInheritance.Utilities;
-using Terraria.Audio;
-using CalamityInheritance.Content.Items;
-using LAP.Assets.TextureRegister;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {

@@ -94,6 +94,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         {
             target.AddBuff(BuffID.CursedInferno, 120);
         }
-        
+
     }
 }

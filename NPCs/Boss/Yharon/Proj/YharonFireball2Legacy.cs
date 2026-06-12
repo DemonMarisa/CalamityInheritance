@@ -1,18 +1,11 @@
-﻿using CalamityMod.Projectiles;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria;
 using Terraria.Audio;
-using CalamityMod.Buffs.DamageOverTime;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 {

@@ -1,4 +1,3 @@
-using System.IO;
 using CalamityInheritance.Buffs.Statbuffs;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom.Shizuku;
@@ -7,6 +6,7 @@ using CalamityMod.Particles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
 {
-    
+
     public class ShizukuDagger : ModProjectile, ILocalizedModType
     {
         private enum Style
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         }
         private Style DoType
         {
-            get =>(Style)Projectile.ai[2];
+            get => (Style)Projectile.ai[2];
             set => Projectile.ai[2] = (float)value;
         }
 
@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public ref float InitAngle => ref Projectile.CalamityInheritance().ProjNewAI[1];
         public bool NotStirke = true;
         private const float SpiningTime = 45;
-        private const float ShootTime = 25; 
+        private const float ShootTime = 25;
         public override void SetStaticDefaults() => ProjectileID.Sets.CultistIsResistantTo[Type] = true;
         public override void SetDefaults()
         {
@@ -112,7 +112,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                 Projectile.Kill();
 
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
-            Projectile.HomingNPCBetter(target, 20f + AttackTimer/3, 20f, 1);
+            Projectile.HomingNPCBetter(target, 20f + AttackTimer / 3, 20f, 1);
             DrawSparkLine();
         }
 
@@ -148,7 +148,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     Player player = Main.player[Projectile.owner];
                     Vector2 direction = (Projectile.Center - player.LocalMouseWorld()).SafeNormalize(Vector2.UnitX);
                     Projectile.velocity = direction * 23;
-                    Projectile.rotation = Projectile.velocity.ToRotation() +  MathHelper.PiOver4;
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
                     AttackTimer = -1;
                 }
             }
@@ -207,7 +207,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 DoType = Style.IsAngleTo;
                 DashingTimer = 0;
-                
+
                 Projectile.netUpdate = true;
             }
         }
@@ -232,8 +232,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Owner.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
             target.CIMod().moonClass = ShizukuMoonlight.ClassType.Magic;
             Owner.AddBuff(BuffType<ShizukuMoonlight>(), 60);
-            
-            
+
+
         }
         public override bool PreDraw(ref Color lightColor)
         {

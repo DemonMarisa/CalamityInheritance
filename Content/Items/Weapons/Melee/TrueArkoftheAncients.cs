@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class TrueArkoftheAncients : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -121,7 +121,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        
+
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

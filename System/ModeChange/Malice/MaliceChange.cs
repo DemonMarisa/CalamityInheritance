@@ -1,16 +1,11 @@
 ﻿using CalamityInheritance.World;
-using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
-using MonoMod.Cil;
-using static MonoMod.Cil.ILContext;
-using System.Collections.Generic;
-using System.Reflection;
-using System;
 using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
-using MonoMod.Utils;
-using System.Linq;
+using MonoMod.Cil;
+using System;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.System.ModeChange.Malice
 {
@@ -72,7 +67,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
             public static void ModifyVelocityIL(ILContext il)
             {
                 var cursor = new ILCursor(il);
-                if (cursor.TryGotoNext(MoveType.After,i => i.MatchLdfld<NPC>("velocity"),i => i.MatchCall<Vector2>("op_Addition")))
+                if (cursor.TryGotoNext(MoveType.After, i => i.MatchLdfld<NPC>("velocity"), i => i.MatchCall<Vector2>("op_Addition")))
                 {
                     cursor.Emit(OpCodes.Ldarg_0);
                     cursor.EmitDelegate<Func<Vector2, NPC, Vector2>>((originalVel, npc) => ShouldAccelerate(npc) ? originalVel * SpeedMultiplier : originalVel);
@@ -106,7 +101,7 @@ namespace CalamityInheritance.System.ModeChange.Malice
             // NPC的额外更新
             public static void PerformExtraUpdate(NPC npc)
             {
-                if (!npc.active) 
+                if (!npc.active)
                     return;
 
                 NPCLoader.ResetEffects(npc);
@@ -127,4 +122,4 @@ namespace CalamityInheritance.System.ModeChange.Malice
         #endregion
     }
 }
-   
+

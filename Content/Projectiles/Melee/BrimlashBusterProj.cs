@@ -1,12 +1,7 @@
-using CalamityInheritance.Content.Items;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
-using CalamityMod.Projectiles.Melee;
-using Microsoft.Build.Evaluation;
-using Microsoft.CodeAnalysis;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -15,7 +10,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class BrimlashBusterProj: ModProjectile, ILocalizedModType
+    public class BrimlashBusterProj : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
@@ -25,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void SetDefaults()
         {
-            Projectile.width = Projectile.height = 40; 
+            Projectile.width = Projectile.height = 40;
             Projectile.friendly = true;
             Projectile.extraUpdates = 1;
             Projectile.penetrate = -1;

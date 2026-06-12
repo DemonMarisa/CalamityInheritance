@@ -1,20 +1,19 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using System;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeFallenHammerProj: ModProjectile, ILocalizedModType
+    public class MeleeFallenHammerProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleeFallenHammer>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";

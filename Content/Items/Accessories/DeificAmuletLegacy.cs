@@ -1,10 +1,10 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Placeables.SunkenSea;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -12,10 +12,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:48,
-            itemRare:ItemRarityID.LightRed,
-            itemValue:CIShopValue.RarityPriceLightRed
+            itemWidth: 48,
+            itemHeight: 48,
+            itemRare: ItemRarityID.LightRed,
+            itemValue: CIShopValue.RarityPriceLightRed
         );
         public override void ExSSD() => Type.ShimmerEach<DeificAmulet>();
         public override bool CanEquipAccessory(Player player, int slot, bool modded) => !player.Calamity().dAmulet;

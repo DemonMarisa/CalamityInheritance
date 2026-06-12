@@ -8,12 +8,13 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ElementBall = CalamityInheritance.Content.Projectiles.Melee.ElementBall;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ArkoftheElementsold : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -101,7 +102,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             return false;
         }
 
-        
+
 
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

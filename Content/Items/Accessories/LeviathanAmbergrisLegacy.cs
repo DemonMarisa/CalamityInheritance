@@ -1,11 +1,11 @@
-﻿using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Accessories;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -13,11 +13,11 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:20,
-            itemHeight:22,
-            itemRare:ItemRarityID.Lime,
-            itemValue:CIShopValue.RarityPriceLime,
-            itemDefense:20
+            itemWidth: 20,
+            itemHeight: 22,
+            itemRare: ItemRarityID.Lime,
+            itemValue: CIShopValue.RarityPriceLime,
+            itemDefense: 20
         );
         public override void ExSSD() => Type.ShimmerEach<LeviathanAmbergris>();
         public override void UpdateAccessory(Player player, bool hideVisual)

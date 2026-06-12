@@ -1,28 +1,29 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Rogue
 {
     public class NanotechOld : CIAccessories, ILocalizedModType
     {
-        public static int nanotechDMGStack  = 150;
+        public static int nanotechDMGStack = 150;
         public static float nanotechDMGBoost = 0.10f;
         public new string LocalizationCategory => "Content.Items.Accessories.Rogue";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:46,
-            itemHeight:46,
+            itemWidth: 46,
+            itemHeight: 46,
             itemRare: RarityType<CatalystViolet>(),
-            itemValue:CIShopValue.RarityPriceCatalystViolet
+            itemValue: CIShopValue.RarityPriceCatalystViolet
         );
 
         public override void UpdateAccessory(Player player, bool hideVisual)

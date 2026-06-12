@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientOmegaBlueLeggings: CIArmor, ILocalizedModType
+    public class AncientOmegaBlueLeggings : CIArmor, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Vanity";
         public override void SetStaticDefaults()
@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Armor.Vanity.AncientOmegaBlue
             Item.vanity = true;
         }
 
-                public override void AddRecipes()
+        public override void AddRecipes()
         {
             CreateRecipe().
             AddIngredient<Necroplasm>(3).

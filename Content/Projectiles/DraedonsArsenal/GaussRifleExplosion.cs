@@ -1,12 +1,6 @@
-﻿using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.DraedonsArsenal;
-using CalamityInheritance.Sounds.Custom;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal

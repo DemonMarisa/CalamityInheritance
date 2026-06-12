@@ -1,10 +1,10 @@
 ﻿using CalamityMod;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

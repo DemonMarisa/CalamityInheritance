@@ -1,11 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Crags;
+using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Rarities;
-using CalamityMod.Items.Placeables.Crags;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {

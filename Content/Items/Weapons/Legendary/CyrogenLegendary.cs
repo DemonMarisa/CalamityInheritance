@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CalamityInheritance.Buffs.Legendary;
 using CalamityInheritance.Content.Projectiles.Summon;
 using CalamityInheritance.NPCs.Boss.SCAL;
@@ -8,6 +7,7 @@ using CalamityInheritance.Utilities;
 using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -17,11 +17,11 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
     //我本人完全看不懂这个代码，如果需要的话可能重写？
-    public class CyrogenLegendary: LegendaryWeaponClass
+    public class CyrogenLegendary : LegendaryWeaponClass
     {
         public override ClassType GeneralWeaponClass => ClassType.Summon;
         public override int SetRarityColor => RarityType<CryogenBlue>();
-        public override Color DrawColor => new (30, 144, 255);
+        public override Color DrawColor => new(30, 144, 255);
         public static readonly float ShootSpeed = 10f;
         public static int baseDamage = 48;
         public static int TrueDamage = 0;
@@ -54,15 +54,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 ("[TIERTWO]",mp.ColdDivityTier2,"TierTwo"),
                 ("[TIERTHREE]",mp.ColdDivityTier3,"TierThree")
             };
-            void ReplaceTierTooltip(List<TooltipLine> tooltips,string placeholder,bool isEnable,string textKey)
+            void ReplaceTierTooltip(List<TooltipLine> tooltips, string placeholder, bool isEnable, string textKey)
             {
                 string text = isEnable ? Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}") : Language.GetTextValue($"{GeneralLegendItemTextPath}.{textKey}Tint");
                 LAPUtilities.FindAndReplace(tooltips, placeholder, text);
             }
             foreach (var (placehloder, isEnable, textKey) in tiers)
                 ReplaceTierTooltip(tooltips, placehloder, isEnable, textKey);
-            
-            
+
+
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
             if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
@@ -75,7 +75,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             LAPUtilities.FindAndReplace(tooltips, "[SCALING]", update);
             if (t4 != null)
                 tooltips.Add(new TooltipLine(Mod, "Buff", t4));
-        } 
+        }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
             // 必须手动转换，不然会按照int进行加成
@@ -189,7 +189,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 int p = Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI);
                 //实时刷新伤害
                 if (Main.projectile.IndexInRange(p))
-                   Main.projectile[p].originalDamage = Item.damage;
+                    Main.projectile[p].originalDamage = Item.damage;
 
                 //查询当前在玩家身上持有的射弹数量
                 int ptr = 0;
@@ -197,7 +197,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
                 {
                     if (pro.type == type && pro.owner == player.whoAmI)
                     {
-                        if(!(pro.ModProjectile as CryogenPtr).Idle)
+                        if (!(pro.ModProjectile as CryogenPtr).Idle)
                             continue;
                         ptr++;
                     }

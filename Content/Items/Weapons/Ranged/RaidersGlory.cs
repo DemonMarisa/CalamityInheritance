@@ -1,15 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class RaidersGlory : CIRanged, ILocalizedModType 
+    public class RaidersGlory : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 15f;
             Item.useAmmo = AmmoID.Arrow;
-            
+
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

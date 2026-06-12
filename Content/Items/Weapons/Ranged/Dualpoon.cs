@@ -1,17 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityMod.Items.Placeables.SunkenSea;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Items.Placeables.SunkenSea;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -34,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.autoReuse = true;
             Item.shootSpeed = 20f;
             Item.shoot = ProjectileType<DualpoonProj>();
-            
+
         }
 
         public override Vector2? HoldoutOffset()

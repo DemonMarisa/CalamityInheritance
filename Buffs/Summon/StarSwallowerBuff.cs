@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.DraedonsArsenal;
-using CalamityInheritance.Content.Projectiles.Summon.Limits;
 using LAP.Core.BaseClass;
 
 namespace CalamityInheritance.Buffs.Summon

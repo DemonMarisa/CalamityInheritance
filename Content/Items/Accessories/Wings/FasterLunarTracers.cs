@@ -1,10 +1,6 @@
-﻿using CalamityMod;
-using CalamityMod.CalPlayer;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,15 +8,15 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings, EquipType.Shoes)]
-    public class FasterLunarTracers: CIAccessories, ILocalizedModType
+    public class FasterLunarTracers : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:36,
-            itemHeight:32,
-            itemRare:ItemRarityID.Red,
-            itemValue:CIShopValue.RarityPriceRed
+            itemWidth: 36,
+            itemHeight: 32,
+            itemRare: ItemRarityID.Red,
+            itemValue: CIShopValue.RarityPriceRed
         );
 
         public override void ExSSD()

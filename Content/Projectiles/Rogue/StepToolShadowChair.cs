@@ -1,22 +1,22 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityMod;
-using Terraria.Audio;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityMod;
 using CalamityMod.NPCs.Abyss;
 using CalamityMod.NPCs.DevourerofGods;
 using CalamityMod.NPCs.SupremeCalamitas;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class StepToolShadowChair: ModProjectile, ILocalizedModType
+    public class StepToolShadowChair : ModProjectile, ILocalizedModType
     {
         //只改了伤害类型，其他不动
         public new string LocalizationCategory => "Content.Projectiles.Magic";
@@ -42,7 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             float spinTime = 50f;
 
             /*玩家如果死了就摧毁凳子(kill)*/
-            if(player.dead || !player.channel)
+            if (player.dead || !player.channel)
             {
                 Projectile.Kill();
                 player.reuseDelay = 2;
@@ -51,19 +51,19 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             int spinDirection = Math.Sign(Projectile.velocity.X);
             Projectile.velocity = new Vector2(spinDirection, 0f);
             /*开始转凳子*/
-            if(Projectile.ai[0] == 0f)
+            if (Projectile.ai[0] == 0f)
             {
                 Projectile.rotation = new Vector2(spinDirection, -player.gravDir).ToRotation() + MathHelper.ToRadians(135f);
-                if(Projectile.velocity.X <0f)
+                if (Projectile.velocity.X < 0f)
                 {
                     Projectile.rotation -= MathHelper.PiOver2;
                 }
             }
 
             Projectile.ai[0] += 1f;
-            Projectile.rotation += MathHelper.TwoPi * 2f/spinTime * spinDirection;
+            Projectile.rotation += MathHelper.TwoPi * 2f / spinTime * spinDirection;
             int wantedDirection = (player.SafeDirectionTo(player.LocalMouseWorld()).X > 0f).ToDirectionInt();
-            if(Projectile.ai[0] % spinTime > spinTime*0.5f && wantedDirection != Projectile.velocity.X)
+            if (Projectile.ai[0] % spinTime > spinTime * 0.5f && wantedDirection != Projectile.velocity.X)
             {
                 player.ChangeDir(wantedDirection);
                 Projectile.velocity = Vector2.UnitX * wantedDirection;
@@ -94,32 +94,32 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 SoundEngine.PlaySound(CISoundMenu.StepBonk, Projectile.Center);
             }
 
-            if(modPlayer.StepToolShadowChairSmallCD <= 0)
-            SpawnChair();//无视CD生成椅子
+            if (modPlayer.StepToolShadowChairSmallCD <= 0)
+                SpawnChair();//无视CD生成椅子
 
             //掠夺鲨、神长、地守和终灾会被直接秒杀.别问我为什么.
-            if(target.type == NPCType<ReaperShark>() || 
+            if (target.type == NPCType<ReaperShark>() ||
                target.type == NPCType<DevourerofGodsHead>() ||
                target.type == NPCType<DevourerofGodsBody>() ||
                target.type == NPCType<DevourerofGodsTail>() ||
                target.type == NPCType<SupremeCalamitas>() ||
                target.type == NPCID.DungeonGuardian)
-            target.life /= 2;
+                target.life /= 2;
 
             //无视敌怪的防御数据，每次真“近战”a击中时必定扣除其固定点血量, 代码是这么写的.
-            
+
             target.AddBuff(BuffType<StepToolDebuff>(), 1145); //梯凳驾到
         }
         private void SpawnChair()
         {
             //每次攻击时都会生成2~4张椅子
-            int chairCounts = Main.rand.Next(2,5);
-            for(int i = 0; i < chairCounts; i++)
+            int chairCounts = Main.rand.Next(2, 5);
+            for (int i = 0; i < chairCounts; i++)
             {
-                float angle = MathHelper.TwoPi / chairCounts*2;
+                float angle = MathHelper.TwoPi / chairCounts * 2;
                 float speed = 24f;
                 Vector2 velocity = new Vector2(0f, speed);
-                velocity = velocity.RotatedBy(angle * i * Main.rand.NextFloat(0.9f,1.1f));
+                velocity = velocity.RotatedBy(angle * i * Main.rand.NextFloat(0.9f, 1.1f));
                 //生成小椅子
                 Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity, ProjectileType<StepToolShadowChairSmall>(), Projectile.damage, Projectile.knockBack / 4f, Projectile.owner);
             }

@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
+﻿using CalamityInheritance.Tiles.Banner;
 using Terraria;
-using CalamityInheritance.Tiles.Banner;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.Banner
 {

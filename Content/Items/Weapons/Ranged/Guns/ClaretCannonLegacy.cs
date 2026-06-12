@@ -1,10 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Typeless;
-using CalamityMod.Rarities;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;

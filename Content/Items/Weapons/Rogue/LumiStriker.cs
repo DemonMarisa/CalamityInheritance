@@ -2,7 +2,6 @@ using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Sounds.Custom;
 using CalamityMod;
-using CalamityMod.Buffs.StatBuffs;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class LumiStriker: RogueWeapon, ILocalizedModType
+    public class LumiStriker : RogueWeapon, ILocalizedModType
     {
         public static readonly SoundStyle ThrowSound2 = new("CalamityMod/Sounds/Item/LanceofDestinyStrong") { Volume = 0.4f, PitchVariance = 0.3f };
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
@@ -33,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             Item.value = CIShopValue.RarityPriceRed;
-            Item.rare = ItemRarityID.Red; 
+            Item.rare = ItemRarityID.Red;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.knockBack = 16f;
@@ -53,8 +52,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Projectile.NewProjectile(source, position, stealth ? -velocity * 1.8f : -velocity * 1.4f, ProjectileType<LumiStrikerBack>(), damage, knockback, player.whoAmI);
             if (!stealth)
                 return false;
-                
-            SoundEngine.PlaySound(CISoundMenu.HammerReturnID1 with {Volume = 0.7f, Pitch = 0.5f});
+
+            SoundEngine.PlaySound(CISoundMenu.HammerReturnID1 with { Volume = 0.7f, Pitch = 0.5f });
             Main.projectile[p].Calamity().stealthStrike = stealth;
             Main.projectile[p].damage = (int)(damage * 0.70f);
             return false;

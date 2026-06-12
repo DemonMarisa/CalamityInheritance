@@ -1,20 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.LoreItems;
+﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class LeadWizard : CIRanged, ILocalizedModType 
+    public class LeadWizard : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -38,7 +36,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileID.BulletHighVelocity;
             Item.shootSpeed = 20f;
             Item.useAmmo = AmmoID.Bullet;
-            
+
         }
 
         // Terraria seems to really dislike high crit values in SetDefaults

@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.UI.QolPanelTotal;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using static CalamityInheritance.Utilities.CIFunction;
 using Terraria.Audio;
 using Terraria.ID;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.UI.QolPanelTotal;
+using static CalamityInheritance.Utilities.CIFunction;
 
 namespace CalamityInheritance.UI
 {
@@ -39,7 +38,7 @@ namespace CalamityInheritance.UI
             CalamityInheritancePlayer cIPlayer = player.CIMod();
 
             //必须先按下才能检测释放事件，否则会触发两次点击事件（鼠标按下和移动都会触发）
-            if(Main.mouseLeft && (leftArrowHovered || rightArrowHovered))
+            if (Main.mouseLeft && (leftArrowHovered || rightArrowHovered))
                 cIPlayer.wasMouseDown = true;
 
             // 检测鼠标释放事件
@@ -80,7 +79,7 @@ namespace CalamityInheritance.UI
             // ?你为啥再乘一遍
 
             // 修改页面滑动动画，同样优化为曲线
-            float yPageCenter = MathHelper.Lerp(Main.screenHeight * 1.4f,Main.screenHeight * 0.5f,EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
+            float yPageCenter = MathHelper.Lerp(Main.screenHeight * 1.4f, Main.screenHeight * 0.5f, EasingHelper.EaseInOutQuad(FadeTime / (float)FadeTimeMax));
 
             Rectangle mouseRectangle = new((int)Main.MouseScreen.X, (int)Main.MouseScreen.Y, 2, 2);
 
@@ -90,7 +89,7 @@ namespace CalamityInheritance.UI
             Rectangle pageRectangle = new((int)drawPosition.X - (int)(pageTexture.Width * scale.X), (int)yPageCenter - (int)(pageTexture.Height / 2 * scale.Y), (int)(pageTexture.Width * scale.X) * 2, (int)(pageTexture.Height * scale.Y));
 
             // 绘制在左侧的书页的锚点
-            Vector2 pageOriginLeft = new(pageTexture.Width , pageTexture.Height / 2);
+            Vector2 pageOriginLeft = new(pageTexture.Width, pageTexture.Height / 2);
             // 右侧的
             Vector2 pageOriginRight = new(0f, pageTexture.Height / 2);
 
@@ -182,7 +181,7 @@ namespace CalamityInheritance.UI
 
                 spriteBatch.Draw(leftArrowTexture, drawPosition, null, Color.White, 0f,
                     leftArrowTexture.Size() / 2,  // 改为中心锚点
-                    new Vector2(xResolutionScale, yResolutionScale) * LeftarrowScale, SpriteEffects.None,0f);
+                    new Vector2(xResolutionScale, yResolutionScale) * LeftarrowScale, SpriteEffects.None, 0f);
 
 
             }
@@ -217,7 +216,7 @@ namespace CalamityInheritance.UI
                 // 绘制背景
                 spriteBatch.Draw(rightArrowTextureBG, drawBGPosition, null, Color.White, 0f, new Vector2(0f, rightArrowTextureBG.Height / 2), scale, SpriteEffects.FlipHorizontally, 0f);
 
-                spriteBatch.Draw(rightArrowTexture,drawPosition,null,Color.White,0f,rightArrowTexture.Size() / 2,new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.FlipHorizontally, 0f);
+                spriteBatch.Draw(rightArrowTexture, drawPosition, null, Color.White, 0f, rightArrowTexture.Size() / 2, new Vector2(xResolutionScale, yResolutionScale) * RightarrowScale, SpriteEffects.FlipHorizontally, 0f);
             }
             #endregion
         }

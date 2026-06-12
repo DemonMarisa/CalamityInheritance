@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

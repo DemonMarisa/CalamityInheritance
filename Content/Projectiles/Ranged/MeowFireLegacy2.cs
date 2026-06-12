@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using LAP.Assets.TextureRegister;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

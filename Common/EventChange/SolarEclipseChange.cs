@@ -1,9 +1,9 @@
-﻿using CalamityMod.Items.Materials;
-using Terraria.DataStructures;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityInheritance.System.Configs;
+﻿using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
+using CalamityMod.Items.Materials;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.EventChange
 {
@@ -24,7 +24,7 @@ namespace CalamityInheritance.Common.EventChange
             if (!CIServerConfig.Instance.SolarEclipseChange)
                 return base.OnPickup(item, player);
 
-            if (item.type == ItemType<DarksunFragment>()&& !CIDownedBossSystem.DownedLegacyYharonP1)
+            if (item.type == ItemType<DarksunFragment>() && !CIDownedBossSystem.DownedLegacyYharonP1)
             {
                 item.active = false; // 删除物品
                 return false;
@@ -33,4 +33,3 @@ namespace CalamityInheritance.Common.EventChange
         }
     }
 }
-               

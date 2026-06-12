@@ -1,23 +1,21 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.DownedBoss;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using System;
-using CalamityInheritance.System.DownedBoss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class MurasamaNeweffect : CIMelee, ILocalizedModType
     {
-        
+
         public int frameCounter = 0;
         public int frame = 0;
         public bool IDUnlocked(Player player) => DownedBossSystem.downedYharon || player.name == "Jetstream Sam" || player.name == "Samuel Rodrigues" || CIDownedBossSystem.DownedLegacyYharonP2;

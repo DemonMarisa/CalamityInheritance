@@ -1,18 +1,18 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Magic;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Ores;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Placeables.Ores;
-using CalamityInheritance.Content.Projectiles.Magic;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class StratusSphere : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

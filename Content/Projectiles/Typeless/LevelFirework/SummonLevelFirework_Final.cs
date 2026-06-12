@@ -1,16 +1,11 @@
-﻿using CalamityMod.NPCs.TownNPCs;
+﻿using CalamityInheritance.Content.Items;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Items;
 using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
 {

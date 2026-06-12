@@ -1,17 +1,16 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Abyss;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Placeables;
-using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class TrueBiomeBlade : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

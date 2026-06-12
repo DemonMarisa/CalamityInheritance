@@ -1,9 +1,8 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Magic;
-
+﻿using CalamityMod.Projectiles.Magic;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray
 {
     public class TerraBolt2 : ModProjectile, ILocalizedModType

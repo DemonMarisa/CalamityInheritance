@@ -1,7 +1,7 @@
-﻿using Terraria.ModLoader;
+﻿using CalamityInheritance.Utilities;
 using Terraria;
 using Terraria.ID;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Potions
 {

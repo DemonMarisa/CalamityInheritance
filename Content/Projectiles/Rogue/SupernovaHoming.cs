@@ -1,12 +1,11 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Items;
 using CalamityMod;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using CalamityInheritance.Content.Items;
-
+using CalamityMod.Buffs.DamageOverTime;
 using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
     public class SupernovaHoming : ModProjectile, ILocalizedModType

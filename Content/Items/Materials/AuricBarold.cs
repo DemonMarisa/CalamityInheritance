@@ -1,18 +1,17 @@
-﻿using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Rarity;
-using CalamityMod.Tiles;
+﻿using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Bars;
 using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Ores;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Placeables.Ores;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Tiles.Bars;
 
 namespace CalamityInheritance.Content.Items.Materials
 {

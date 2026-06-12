@@ -1,19 +1,18 @@
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
-    public class BrimlashBuster: CIMelee, ILocalizedModType
+    public class BrimlashBuster : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

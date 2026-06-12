@@ -1,12 +1,11 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -64,7 +63,8 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                 Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
                 int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 12f, ProjectileType<EutrophicSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
-            };
+            }
+            ;
         };
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

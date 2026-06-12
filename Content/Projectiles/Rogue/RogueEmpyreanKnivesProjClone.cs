@@ -1,13 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityInheritance.Content.Items.Weapons.Rogue;
+﻿using CalamityInheritance.Content.Items.Weapons.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
-using System;
 using System.IO;
-using System.Security.Cryptography;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -67,7 +62,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void AI()
         {
             DoGeneral();
-            
+
             switch (AttackType)
             {
                 case IsFlying:

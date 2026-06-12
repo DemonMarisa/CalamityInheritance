@@ -1,30 +1,26 @@
-﻿using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.Auric;
+﻿using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Accessories.Ranged;
-using CalamityInheritance.Content.Items.Armor.Silva;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.Localization;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadRogueLegacy : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -1,6 +1,4 @@
-﻿using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using CalamityMod;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

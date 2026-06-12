@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
-    public class AcceleratorT1: CIPlaceable, ILocalizedModType
+    public class AcceleratorT1 : CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Local}.Furniture.CraftingStations";
         public override void SetStaticDefaults()
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.consumable = true;
             Item.value = CIShopValue.RarityPriceGreen;
             Item.createTile = TileType<AcceleratorT1Tile>();
-            Item.rare = ItemRarityID.Green;    
+            Item.rare = ItemRarityID.Green;
         }
         public override void AddRecipes()
         {

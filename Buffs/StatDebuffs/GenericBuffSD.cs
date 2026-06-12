@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {
-    public abstract class GenericBuffDefualt: ModBuff
+    public abstract class GenericBuffDefualt : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -11,7 +11,7 @@ namespace CalamityInheritance.Buffs.StatDebuffs
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = false;
-            base.SetStaticDefaults();    
+            base.SetStaticDefaults();
         }
     }
 }

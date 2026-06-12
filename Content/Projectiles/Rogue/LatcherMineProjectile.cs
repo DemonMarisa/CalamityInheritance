@@ -1,17 +1,11 @@
-﻿using CalamityMod.Projectiles.Rogue;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using System.IO;
-using CalamityMod.Projectiles;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -80,7 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     Projectile.Center = Main.npc[(int)Projectile.ai[1]].Center - Projectile.velocity * 2f;
                     Projectile.gfxOffY = Main.npc[(int)Projectile.ai[1]].gfxOffY;
                     Projectile.timeLeft = (int)MathHelper.Min(Projectile.timeLeft, 120);
-                    Projectile.netUpdate =true;
+                    Projectile.netUpdate = true;
                 }
                 else
                 {

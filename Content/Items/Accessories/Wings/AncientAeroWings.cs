@@ -15,10 +15,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:22,
-            itemHeight:32,
-            itemRare:ItemRarityID.Orange,
-            itemValue:CIShopValue.RarityPriceOrange
+            itemWidth: 22,
+            itemHeight: 32,
+            itemRare: ItemRarityID.Orange,
+            itemValue: CIShopValue.RarityPriceOrange
         );
         public override void ExSSD()
         {
@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Wings
         {
             player.noFallDmg = true;
             if (player.armor[0].type == ItemType<AncientAeroHelm>() &&
-                player.armor[1].type == ItemType<AncientAeroArmor>() && 
+                player.armor[1].type == ItemType<AncientAeroArmor>() &&
                 player.armor[2].type == ItemType<AncientAeroLeggings>())
             {
                 player.CIMod().AncientAeroWingsPower = true;

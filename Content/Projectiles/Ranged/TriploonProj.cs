@@ -1,17 +1,9 @@
-﻿using CalamityMod.Projectiles;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
 using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using XPT.Core.Audio.MP3Sharp.Decoding;
 using Terraria.ID;
-using CalamityMod.Projectiles.Ranged;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

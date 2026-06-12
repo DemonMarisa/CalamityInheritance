@@ -1,7 +1,7 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityMod;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

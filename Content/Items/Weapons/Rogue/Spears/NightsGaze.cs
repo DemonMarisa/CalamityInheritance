@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spears
 {
     public class NightsGaze : CIRogueClass
     {
-        public override string Texture =>  CITextureRegistry.NightsGaze.Path;
+        public override string Texture => CITextureRegistry.NightsGaze.Path;
         public override void SetDefaults()
         {
             Item.width = 82;

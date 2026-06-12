@@ -1,14 +1,12 @@
-﻿using CalamityMod.Buffs.Summon;
-using CalamityMod.Projectiles.Summon;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Buffs.Summon;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL
 {

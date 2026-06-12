@@ -1,7 +1,7 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Armor.Wulfum.NewTexture;
 
 namespace CalamityInheritance.Content.Items.Armor.Wulfum
 {

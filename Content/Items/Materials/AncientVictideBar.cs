@@ -1,11 +1,10 @@
-﻿using CalamityMod.Items.Materials;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Materials
 {
-    public class AncientVictideBar: CIMaterials, ILocalizedModType
+    public class AncientVictideBar : CIMaterials, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Materials";
         public override void SetStaticDefaults()

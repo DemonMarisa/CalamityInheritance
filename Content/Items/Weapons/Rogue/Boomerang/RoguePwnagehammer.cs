@@ -1,9 +1,7 @@
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
-using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Rogue;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -13,10 +11,10 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {
-    public class RoguePwnagehammer: RogueWeapon, ILocalizedModType
+    public class RoguePwnagehammer : RogueWeapon, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleePwnagehammer>().Texture;
-        public new string LocalizationCategory =>$"{Generic.BaseWeaponCategory}.Rogue";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {
@@ -42,15 +40,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
             Item.rare = ItemRarityID.LightRed;
             Item.autoReuse = true;
         }
-        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 24  ;
+        public override void ModifyWeaponCrit(Player player, ref float crit) => crit += 24;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             bool isStealth = player.CheckStealth();
             if (!isStealth)
                 return true;
-                
-            int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f ,type, damage, knockback, player.whoAmI, 0f, 0f, 0f);
-            if(stealth.WithinBounds(Main.maxProjectiles))
+
+            int stealth = Projectile.NewProjectile(source, position, velocity * 1.2f, type, damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            if (stealth.WithinBounds(Main.maxProjectiles))
                 Main.projectile[stealth].Calamity().stealthStrike = true;
             return false;
         }

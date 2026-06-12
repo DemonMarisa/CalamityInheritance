@@ -1,9 +1,7 @@
-using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
@@ -63,7 +61,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles
                 Projectile.damage = 0;
                 Projectile.alpha += 10;
             }
-            
+
         }
 
         public override Color? GetAlpha(Color lightColor)

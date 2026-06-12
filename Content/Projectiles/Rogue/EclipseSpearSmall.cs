@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using CalamityInheritance.Particles;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
-using Humanizer;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

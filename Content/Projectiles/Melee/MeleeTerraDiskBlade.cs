@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeTerraDiskBlade: ModProjectile, ILocalizedModType
+    public class MeleeTerraDiskBlade : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         private double rotation = 0;

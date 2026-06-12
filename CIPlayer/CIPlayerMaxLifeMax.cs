@@ -4,14 +4,14 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.CIPlayer
 {
-    public partial class CalamityInheritancePlayer: ModPlayer 
+    public partial class CalamityInheritancePlayer : ModPlayer
     {
         public void ResetLifeMax()
         {
             float LifePercentMax = 0f;
             if (CoreOfTheBloodGod)
                 LifePercentMax += 0.25f;
-            
+
             //元素手套10%
             if (ElemGauntlet)
                 LifePercentMax += 0.1f;
@@ -39,7 +39,7 @@ namespace CalamityInheritance.CIPlayer
                 if (Player.IsUnderwater())
                 {
                     if (Player.Calamity().aquaticHeart || Player.Calamity().aquaticHeartPrevious)
-                    Player.statLifeMax2 = Player.statLifeMax2 / 20;
+                        Player.statLifeMax2 = Player.statLifeMax2 / 20;
                 }
             }
             if (LoreCalamitasClone)
@@ -49,7 +49,7 @@ namespace CalamityInheritance.CIPlayer
             if (BuffStatsCadence)
                 LifePercentMax += 0.25f;
             //血契在天顶世界有一定的变化：其将不会使最大生命上限+100%，相反，它会尝试把玩家获得的血量上限收益翻倍.
-            if (AncientBloodPact) 
+            if (AncientBloodPact)
             {
                 if (!Main.zenithWorld)
                     LifePercentMax += 2f;

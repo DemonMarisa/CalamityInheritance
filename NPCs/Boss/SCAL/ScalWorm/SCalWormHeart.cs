@@ -1,13 +1,9 @@
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Dusts;
-using CalamityMod.NPCs.SupremeCalamitas;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;

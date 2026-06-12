@@ -1,23 +1,19 @@
-﻿using CalamityMod.Items.Armor.Auric;
+﻿using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Accessories.Ranged;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.Localization;
-using System;
-using CalamityInheritance.Content.Items.Armor.Silva;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
@@ -50,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
                 }
             }
         }
-        
+
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawOutlines = true;

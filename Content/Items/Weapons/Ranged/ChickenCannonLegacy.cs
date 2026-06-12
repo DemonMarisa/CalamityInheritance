@@ -6,10 +6,8 @@ using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
 using LAP.Core.Enums;
 using LAP.Core.SystemsLoader;
-using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ChickenCannonLegacy : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

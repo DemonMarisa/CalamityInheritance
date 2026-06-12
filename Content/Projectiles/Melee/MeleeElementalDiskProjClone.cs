@@ -1,11 +1,9 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -31,7 +29,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.timeLeft = 60;
             AIType = ProjectileID.WoodenBoomerang;
             Projectile.DamageType = DamageClass.MeleeNoSpeed;
-            Projectile.usesLocalNPCImmunity= true;
+            Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8; //8独立无敌帧
         }
         public override void AI()
@@ -51,19 +49,18 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<GlacialState>(), 180);
             target.AddBuff(BuffType<BrimstoneFlames>(), 180);
             target.AddBuff(BuffType<HolyFlames>(), 180);
             target.AddBuff(BuffType<Plague>(), 180);
         }
         public override void OnKill(int timeLeft)
         {
-            
-            for(int i = 0; i < 5; i++)
+
+            for (int i = 0; i < 5; i++)
             {
-                    int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
-                    Main.dust[rainbow].noGravity = true;
-                    Main.dust[rainbow].velocity *= 0f;
+                int rainbow = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.RainbowTorch, Projectile.direction * 2, 0f, 150, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.3f);
+                Main.dust[rainbow].noGravity = true;
+                Main.dust[rainbow].velocity *= 0f;
             }
         }
     }

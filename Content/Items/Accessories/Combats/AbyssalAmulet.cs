@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.FurnitureAcidwood;
 using Terraria;
 using Terraria.ID;

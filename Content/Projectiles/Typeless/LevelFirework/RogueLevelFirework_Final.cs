@@ -1,18 +1,14 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items;
+using CalamityMod;
+using CalamityMod.Projectiles.Melee;
+using CalamityMod.Projectiles.Rogue;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Melee;
-using CalamityInheritance.Content.Items;
-using Terraria.Audio;
-using CalamityMod.Projectiles.Rogue;
-using CalamityMod;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
 {
@@ -140,11 +136,11 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.LevelFirework
                 float scale = Main.rand.NextFloat(1.5f, 1.9f);
                 float randomWhitingValue = Main.rand.NextFloat(0.0f, 0.2f);
                 Color color = Color.Lerp(CosmicShivTrail.DustColors[Main.rand.Next(0, CosmicShivTrail.DustColors.Count)], Color.White, randomWhitingValue);  // Just for even more variety in colors idk
-                
+
                 Vector2 velocity = StarPolarEquation(petalCount, k, 0f) * speed * 1.5f;
                 Dust dust = Dust.NewDustPerfect(Projectile.Center, DustID.FireworksRGB, velocity, 0, color, scale);
                 dust.noGravity = true;
-                
+
                 Vector2 velocity2 = StarPolarEquation(petalCount, k - 0.04f, 0f) * speed * 2 * 0.5f;
                 Dust dust2 = Dust.NewDustPerfect(Projectile.Center, DustID.FireworksRGB, velocity2, 0, color, scale);
                 dust2.noGravity = true;

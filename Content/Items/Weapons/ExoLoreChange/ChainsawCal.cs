@@ -1,9 +1,9 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Localization;
@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
             if (player.CIMod().LoreExo || player.CIMod().PanelsLoreExo)
                 pType = ProjectileType<ExoChainsawProj>();
             Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI, 0f, 0f, breakBlocks);
-            return false; 
+            return false;
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {

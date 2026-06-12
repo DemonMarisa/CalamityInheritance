@@ -1,14 +1,12 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityMod;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
-using MonoMod.ModInterop;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Tools
 {
-    public class XerocPickaxe: RogueWeapon, ILocalizedModType
+    public class XerocPickaxe : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Tools";
         public override void SetStaticDefaults()

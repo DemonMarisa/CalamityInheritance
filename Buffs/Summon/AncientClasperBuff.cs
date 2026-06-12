@@ -18,7 +18,7 @@ namespace CalamityInheritance.Buffs.Summon
             var modPlayer = player.CIMod();
             if (player.ownedProjectileCounts[ProjectileType<AncientClasper>()] > 0)
             {
-                modPlayer.IsAncientClasper= true;
+                modPlayer.IsAncientClasper = true;
             }
             if (!modPlayer.IsAncientClasper)
             {

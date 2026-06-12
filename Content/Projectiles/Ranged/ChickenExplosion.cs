@@ -1,28 +1,26 @@
-using System;
-using LAP.Assets.TextureRegister;
-using System.Runtime.Intrinsics.Arm;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ChickenNukeExplosion: ModProjectile, ILocalizedModType
+    public class ChickenNukeExplosion : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
         public override void SetDefaults()
         {
             Projectile.width = ChickenRound.ExplosionHitboxW;
-            Projectile.height= ChickenRound.ExplosionHitboxH;
+            Projectile.height = ChickenRound.ExplosionHitboxH;
             Projectile.friendly = true;
             Projectile.ignoreWater = false;
             Projectile.tileCollide = false;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 150;
-            Projectile.DamageType = DamageClass.Ranged; 
+            Projectile.DamageType = DamageClass.Ranged;
             Projectile.usesLocalNPCImmunity = true;
             //是的，就是1帧
             Projectile.localNPCHitCooldown = 1;
@@ -39,16 +37,16 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                 Projectile.localAI[0] = 1f;
             }
         }
-        
+
         private void SpawnDust(int dustCopperCoin)
         {
             float maxDustCount = 25f;
             if (Projectile.ai[0] > 180f)
-                maxDustCount -= (Projectile.ai[0] - 180f)/2f;
+                maxDustCount -= (Projectile.ai[0] - 180f) / 2f;
             if (maxDustCount <= 0f) Projectile.Kill();
             maxDustCount *= 0.7f;
             Projectile.ai[0] += 4f;
-            int dustCount = 0; 
+            int dustCount = 0;
 
             while (dustCount < maxDustCount)
             {

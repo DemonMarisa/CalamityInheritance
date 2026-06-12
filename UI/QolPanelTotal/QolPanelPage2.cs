@@ -1,14 +1,12 @@
-﻿using CalamityInheritance.System.DownedBoss;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
+using LAP.Core.LAPConditions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ModLoader;
 using Terraria;
 using Terraria.Localization;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.System.Configs;
-using LAP.Core.LAPConditions;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -63,39 +61,39 @@ namespace CalamityInheritance.UI.QolPanelTotal
         public static int KSBtnID = 1;
         public static int DSBtnID = 2;
         public static int EoCBtnID = 3;
-        public static  int CrabBtnID = 4;
-        public static  int EoWBtnID = 5;
-        public static  int BoCBtnID = 6;
-        public static  int HiveBtnID = 7;
-        public static  int PerfBtnID = 8;
-        public static  int QBBtnID = 9;
-        public static  int SkeleBtnID = 10;
-        public static  int SGBtnID = 11;
-        public static  int WoFBtnID = 12;
-        public static  int CryoBtnID = 13;
-        public static  int TwinsBtnID = 14;
-        public static  int BrimmyBtnID = 15;
-        public static  int DestroyerBtnID = 16;
-        public static  int ASBtnID = 17;
-        public static  int PrimeBtnID = 18;
-        public static  int CalCloneBtnID = 19;
-        public static  int PlantBtnID = 20;
-        public static  int AureusBtnID = 21;
-        public static  int LABtnID = 22;
-        public static  int GolemBtnID = 23;
-        public static  int PBGBtnID = 24;
-        public static  int RavagerBtnID = 25;
-        public static  int DukeBtnID = 26;
-        public static  int CultistBtnID = 27;
-        public static  int DeusBtnID = 28;
-        public static  int MLBtnID = 29;
-        public static  int ProviBtnID = 30;
-        public static  int PolterBtnID = 31;
-        public static  int ODBtnID = 32;
-        public static  int DoGBtnID = 33;
-        public static  int YharonBtnID = 34;
-        public static  int ExoBtnID = 35;
-        public static  int SCalBtnID = 36;
+        public static int CrabBtnID = 4;
+        public static int EoWBtnID = 5;
+        public static int BoCBtnID = 6;
+        public static int HiveBtnID = 7;
+        public static int PerfBtnID = 8;
+        public static int QBBtnID = 9;
+        public static int SkeleBtnID = 10;
+        public static int SGBtnID = 11;
+        public static int WoFBtnID = 12;
+        public static int CryoBtnID = 13;
+        public static int TwinsBtnID = 14;
+        public static int BrimmyBtnID = 15;
+        public static int DestroyerBtnID = 16;
+        public static int ASBtnID = 17;
+        public static int PrimeBtnID = 18;
+        public static int CalCloneBtnID = 19;
+        public static int PlantBtnID = 20;
+        public static int AureusBtnID = 21;
+        public static int LABtnID = 22;
+        public static int GolemBtnID = 23;
+        public static int PBGBtnID = 24;
+        public static int RavagerBtnID = 25;
+        public static int DukeBtnID = 26;
+        public static int CultistBtnID = 27;
+        public static int DeusBtnID = 28;
+        public static int MLBtnID = 29;
+        public static int ProviBtnID = 30;
+        public static int PolterBtnID = 31;
+        public static int ODBtnID = 32;
+        public static int DoGBtnID = 33;
+        public static int YharonBtnID = 34;
+        public static int ExoBtnID = 35;
+        public static int SCalBtnID = 36;
         #endregion
         /*
         *Scarlet: 制表-绘制格式，下方出现的值都是相对于0差值绝对值
@@ -291,14 +289,14 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 CIFunction.DrawLore(genericLoreData, GetLorePos(3, 5).LorePosX, GetLorePos(3, 5).LorePosY, LoreAS, ref TextDisplayID, ref ASBtnID, ref DownedAS, ref draedonsLoreChoice, ref PanelLore1);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(3, 6).LorePosX, GetLorePos(3, 6).LorePosY, LorePrime, ref TextDisplayID, ref PrimeBtnID, ref DownedPrime, ref draedonsLoreChoice, ref PanelLore4);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(4, 1).LorePosX, GetLorePos(4, 1).LorePosY, LoreCalClone, ref TextDisplayID, ref CalCloneBtnID, ref DownedCalClone, ref draedonsLoreChoice, ref PanelLore3);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 2).LorePosX, GetLorePos(4, 2).LorePosY, LorePlant, ref TextDisplayID, ref PlantBtnID, ref DownedPlant , ref draedonsLoreChoice, ref PanelLore2);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(4, 2).LorePosX, GetLorePos(4, 2).LorePosY, LorePlant, ref TextDisplayID, ref PlantBtnID, ref DownedPlant, ref draedonsLoreChoice, ref PanelLore2);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(4, 3).LorePosX, GetLorePos(4, 3).LorePosY, LoreAureus, ref TextDisplayID, ref AureusBtnID, ref DownedAureus, ref draedonsLoreChoice, ref PanelLore2);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(4, 4).LorePosX, GetLorePos(4, 4).LorePosY, LoreLA, ref TextDisplayID, ref LABtnID, ref DownedLA, ref draedonsLoreChoice, ref PanelLore4);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(4, 5).LorePosX, GetLorePos(4, 5).LorePosY, LoreGolem, ref TextDisplayID, ref GolemBtnID, ref DownedGolem, ref draedonsLoreChoice, ref PanelLore1);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(4, 6).LorePosX, GetLorePos(4, 6).LorePosY, LorePBG, ref TextDisplayID, ref PBGBtnID, ref DownedPBG, ref draedonsLoreChoice, ref PanelLore4);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5, 1).LorePosX, GetLorePos(5, 1).LorePosY, LoreDuke, ref TextDisplayID, ref DukeBtnID, ref DownedDuke, ref draedonsLoreChoice, ref PanelLore1);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5, 2).LorePosX, GetLorePos(5, 2).LorePosY, LoreRavager, ref TextDisplayID, ref RavagerBtnID, ref DownedRavager, ref draedonsLoreChoice, ref PanelLore4);
-                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 3).LorePosX, GetLorePos(5, 3).LorePosY, LoreCultist, ref TextDisplayID, ref CultistBtnID, ref DownedCultist , ref draedonsLoreChoice, ref PanelLore3);
+                CIFunction.DrawLore(genericLoreData, GetLorePos(5, 3).LorePosX, GetLorePos(5, 3).LorePosY, LoreCultist, ref TextDisplayID, ref CultistBtnID, ref DownedCultist, ref draedonsLoreChoice, ref PanelLore3);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5, 4).LorePosX, GetLorePos(5, 4).LorePosY, LoreDeus, ref TextDisplayID, ref DeusBtnID, ref DownedDeus, ref draedonsLoreChoice, ref PanelLore3);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5, 5).LorePosX, GetLorePos(5, 5).LorePosY, LoreML, ref TextDisplayID, ref MLBtnID, ref DownedML, ref draedonsLoreChoice, ref PanelLore1);
                 CIFunction.DrawLore(genericLoreData, GetLorePos(5, 6).LorePosX, GetLorePos(5, 6).LorePosY, LoreProvi, ref TextDisplayID, ref ProviBtnID, ref DownedProvi, ref draedonsLoreChoice, ref PanelLore4);
@@ -353,8 +351,8 @@ namespace CalamityInheritance.UI.QolPanelTotal
                 // 305
 
                 Texture2D loreTexturePanelVer = Request<Texture2D>($"{DraedonGenericUI}/PanelLore" + draedonsLoreChoice).Value;
-   
-                CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice ,ref PanelLore1, 0.98f);
+
+                CIFunction.DrawLore(genericLoreDataNotOutLine, 305, GetLorePos(3, 5, true).LoreBtnY - 210, loreTexturePanelVer, ref TextDisplayID, ref DefaultType, ref Any, ref draedonsLoreChoice, ref PanelLore1, 0.98f);
 
                 // 下划线贴图
                 Texture2D loreTextLineTexture = Request<Texture2D>($"{DraedonGenericUI}/TextLine").Value;
@@ -380,7 +378,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
 
                 CIFunction.DrawText(spriteBatch, LoreText, 0.9f, 0.9f, 340, -27, 1f, TextColor, Color.DarkSlateGray, loreTextLineTexture, 23, 400f, 1.4f);
                 // 36号ID为終灾
-                if(TextDisplayID == 36)
+                if (TextDisplayID == 36)
                 {
 
                     float drawPositionX = Main.screenWidth * 0.5f;

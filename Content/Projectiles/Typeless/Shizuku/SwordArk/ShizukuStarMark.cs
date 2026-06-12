@@ -45,8 +45,8 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 float rad = 120f;
                 int count = 4;
-                float spreadAngle= -MathHelper.PiOver4;
-                Vector2 tarDir = (Owner.LocalMouseWorld()- Owner.Center).SafeNormalize(Vector2.UnitX);
+                float spreadAngle = -MathHelper.PiOver4;
+                Vector2 tarDir = (Owner.LocalMouseWorld() - Owner.Center).SafeNormalize(Vector2.UnitX);
                 float mouseAngle = tarDir.ToRotation();
                 float rearBaseAngle = mouseAngle + MathHelper.Pi;
                 float startAngle = rearBaseAngle - spreadAngle / 2;
@@ -76,7 +76,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
             Color lerpColor = Color.SkyBlue;
             lerpColor = lerpColor * 0.5f;
-            Main.spriteBatch.Draw(mark, drawPos, null, Color.Turquoise * Projectile.Opacity *  0.6f, Projectile.rotation, mark.Size() / 2, scale, SpriteEffects.None, 0);
+            Main.spriteBatch.Draw(mark, drawPos, null, Color.Turquoise * Projectile.Opacity * 0.6f, Projectile.rotation, mark.Size() / 2, scale, SpriteEffects.None, 0);
             Main.spriteBatch.Draw(mark, drawPos, null, lerpColor * Projectile.Opacity, Projectile.rotation, mark.Size() / 2, scale, SpriteEffects.None, 0);
             LAPUtilities.ReSetToEndShader();
             return false;

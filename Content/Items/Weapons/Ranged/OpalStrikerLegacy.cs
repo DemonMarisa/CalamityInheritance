@@ -1,19 +1,18 @@
-﻿using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Content.Projectiles.Ranged;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class OpalStrikerLegacy : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -39,7 +38,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<OpalStrikeLegacy>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            
+
         }
 
         public override Vector2? HoldoutOffset() => new Vector2(-10, 0);

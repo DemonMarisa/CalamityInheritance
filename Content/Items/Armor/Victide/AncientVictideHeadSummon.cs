@@ -1,20 +1,20 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityMod;
 using CalamityMod.Buffs.Summon;
+using CalamityMod.CalPlayer;
+using CalamityMod.Items.Materials;
 using CalamityMod.Projectiles.Summon;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityMod.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Armor.Victide
 {
     [AutoloadEquip(EquipType.Head)]
     public class AncientVictideHeadSummon : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

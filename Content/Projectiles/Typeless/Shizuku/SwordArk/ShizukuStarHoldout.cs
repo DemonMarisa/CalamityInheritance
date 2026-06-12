@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
             {
                 ShootDarkStar(Target.Center);
                 DrawMark(Target);
-                foreach(Projectile proj in Main.ActiveProjectiles)
+                foreach (Projectile proj in Main.ActiveProjectiles)
                 {
                     if (LAPUtilities.CheckType<ShizukuStarMark>(proj))
                     {
@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
                     Projectile proj = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, dire * 23f, ProjectileType<ShizukuStar>(), (int)(Projectile.damage * 1.5f), 0f, Owner.whoAmI);
                     proj.DamageType = DamageClass.Magic;
                     SoundStyle starToss = Utils.SelectRandom(Main.rand, ShizukuSounds.StarToss.ToArray());
-                    SoundEngine.PlaySound(starToss with { MaxInstances = 0, Volume = 0.6f}, Projectile.Center);
+                    SoundEngine.PlaySound(starToss with { MaxInstances = 0, Volume = 0.6f }, Projectile.Center);
                 }
                 if (ShootStarTimer > 60 + 20 * 3)
                     ShootStarTimer = 0;

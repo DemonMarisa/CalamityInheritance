@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Texture;
-using CalamityMod.Projectiles;
 using CalamityMod.Sounds;
-using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;

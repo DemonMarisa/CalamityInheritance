@@ -1,14 +1,14 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Typeless;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Typeless;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -74,8 +74,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                     break;
 
                 case 1f:
-                    if(Projectile.Calamity().stealthStrike)
-                    Projectile.extraUpdates = 3; //潜伏返程时给予3eu
+                    if (Projectile.Calamity().stealthStrike)
+                        Projectile.extraUpdates = 3; //潜伏返程时给予3eu
                     Projectile.tileCollide = false;
                     float returnSpeed = 26f;
                     float acceleration = 3.2f;
@@ -87,7 +87,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         if (projHitbox.Intersects(mplrHitbox))
                         {
                             //主要是星神之杀的代码
-                            if(Projectile.Calamity().stealthStrike)
+                            if (Projectile.Calamity().stealthStrike)
                             {
                                 //这个速度会稍微慢一点
                                 Projectile.velocity *= -0.7f;
@@ -104,7 +104,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                         }
                     }
                     break;
-                
+
                 case 2f:
                     CIFunction.HomeInOnNPC(Projectile, true, 1250f, 16f, 20f);
                     break;
@@ -157,11 +157,11 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (proj.WithinBounds(Main.maxProjectiles))
                     Main.projectile[proj].DamageType = GetInstance<RogueDamageClass>();
             }
-            if(Projectile.ai[0] == 2f)
+            if (Projectile.ai[0] == 2f)
             {
                 SoundEngine.PlaySound(SoundID.Item89);
                 //从灾厄上抄下来的，只有返程追踪的锤子击中时才会生成这些粒子
-                if(Projectile.ai[0] == 2f)
+                if (Projectile.ai[0] == 2f)
                 {
                     float numberOfDusts = 20f;
                     float rotFactor = 360f / numberOfDusts;

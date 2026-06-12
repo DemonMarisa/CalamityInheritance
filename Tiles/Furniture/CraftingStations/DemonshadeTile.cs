@@ -1,19 +1,13 @@
-using System.Drawing;
 using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Summon;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Microsoft.Xna.Framework;
 using Color = Microsoft.Xna.Framework.Color;
-using Terraria.ID;
-using CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations;
-using Microsoft.Xna.Framework.Graphics;
-using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
-    public class DemonshadeTile: ModTile
+    public class DemonshadeTile : ModTile
     {
         public override void SetStaticDefaults()
         {
@@ -45,8 +39,8 @@ namespace CalamityInheritance.Tiles.Furniture.CraftingStations
         }
         // public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         // {
-		// 	Tile tile = Main.tile[i, j];
-		// 	if ((tile.TileFrameX == 0 || tile.TileFrameX == 72) && tile.TileFrameY == 0) 
+        // 	Tile tile = Main.tile[i, j];
+        // 	if ((tile.TileFrameX == 0 || tile.TileFrameX == 72) && tile.TileFrameY == 0) 
         //     {
         //         Texture2D texture = (Texture2D)ModContent.Request<Texture2D>("Tiles/Furniture/CraftingStations/DemonshadeTileFire");
         //         Rectangle dRect2 = new Rectangle((int)(i * 16 + 192 - Main.screenPosition.X), (int)(j * 16 + 176 - Main.screenPosition.Y), texture.Width, texture.Height);

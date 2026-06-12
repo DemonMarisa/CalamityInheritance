@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity.Special;
@@ -6,6 +5,7 @@ using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -14,12 +14,12 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class DefenseBlade: LegendaryWeaponClass
+    public class DefenseBlade : LegendaryWeaponClass
     {
         public override ClassType GeneralWeaponClass => ClassType.Melee;
         public override int SetRarityColor => RarityType<GolemPurple>();
         public override Color DrawColor => new(145, 115, 177);
- 
+
         public int baseDamage = 75;
         public override void ExSD()
         {
@@ -66,7 +66,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
-             if (Main.rand.NextBool(3))
+            if (Main.rand.NextBool(3))
                 Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.GoldCoin, 0f, 0f, 0, new Color(255, Main.DiscoG, 53));
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -74,11 +74,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             Player p = Main.LocalPlayer;
             var mp = p.CIMod();
             //升级的Tooltip:
-            string t1 = mp.DefendTier1? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
+            string t1 = mp.DefendTier1 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOne") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierOneTint");
             tooltips.FindAndReplace("[TIERONE]", t1);
-            string t2 = mp.DefendTier2? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
+            string t2 = mp.DefendTier2 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwo") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierTwoTint");
             tooltips.FindAndReplace("[TIERTWO]", t2);
-            string t3 = mp.DefendTier3? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
+            string t3 = mp.DefendTier3 ? Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThree") : Language.GetTextValue($"{GeneralLegendItemTextPath}.TierThreeTint");
             tooltips.FindAndReplace("[TIERTHREE]", t3);
             //用于发送传奇武器在至尊灾厄眼在场时得到数值增强的信息
             string t4 = null;
@@ -92,7 +92,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -126,6 +126,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             return dmgBuff;
         }
 
-        
+
     }
 }

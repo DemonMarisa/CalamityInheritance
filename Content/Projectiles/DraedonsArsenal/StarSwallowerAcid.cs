@@ -1,5 +1,4 @@
-﻿using CalamityMod;
-using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityMod.Buffs.StatDebuffs;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

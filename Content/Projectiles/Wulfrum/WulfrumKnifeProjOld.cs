@@ -1,11 +1,10 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Wulfrum;
+using CalamityMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Weapons.Wulfrum;
-using CalamityInheritance.Content.Items.Weapons;
 
 namespace CalamityInheritance.Content.Projectiles.Wulfrum
 {

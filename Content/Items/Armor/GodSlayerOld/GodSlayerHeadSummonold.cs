@@ -1,27 +1,21 @@
-﻿using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.GodSlayer;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod;
-using System;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.Buffs.Summon;
-using CalamityMod.Projectiles.Summon;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Weapons.Summon.Worms;
 using CalamityInheritance.Content.Projectiles.Summon.Worms;
-using CalamityInheritance.Buffs.Summon;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Head)]
     public class GodSlayerHeadSummonold : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -67,7 +61,7 @@ namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
                 }
             }
         }
- 
+
         public override void UpdateEquip(Player player)
         {
             player.GetDamage<SummonDamageClass>() += 0.65f;

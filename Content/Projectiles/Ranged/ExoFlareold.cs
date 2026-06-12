@@ -1,12 +1,12 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Buffs.DamageOverTime;
 using LAP.Assets.TextureRegister;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
@@ -74,7 +74,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             Projectile.rotation = (Projectile.position - Projectile.oldPos[1]).ToRotation();
             OffsetRotation += OffsetSpeed;
 
-            if(Projectile.timeLeft >= 120)
+            if (Projectile.timeLeft >= 120)
             {
                 Projectile.alpha += 15;
                 if (Projectile.alpha >= 255)

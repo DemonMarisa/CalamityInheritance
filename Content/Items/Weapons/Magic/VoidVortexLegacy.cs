@@ -1,10 +1,8 @@
-﻿using CalamityInheritance.Content.Items.LoreItems;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -19,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class VoidVortexLegacy : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;
@@ -75,10 +73,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
             for (i = 0; i < 4; i++)
             {
                 offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                Vector2 perturbedVelocity1 = new Vector2((float)(Math.Cos(offsetAngle) * velocity.Length()),(float)(Math.Sin(offsetAngle) * velocity.Length()));
-                Vector2 perturbedVelocity2 = new Vector2((float)(-Math.Cos(offsetAngle) * velocity.Length()),(float)(-Math.Sin(offsetAngle) * velocity.Length()));
-                Projectile.NewProjectile(source , vector2, perturbedVelocity1, type, damage, (int)knockback, player.whoAmI, passedVar, 0f);
-                Projectile.NewProjectile(source , vector2, perturbedVelocity2, type, damage, (int)knockback, player.whoAmI, -passedVar, 0f);
+                Vector2 perturbedVelocity1 = new Vector2((float)(Math.Cos(offsetAngle) * velocity.Length()), (float)(Math.Sin(offsetAngle) * velocity.Length()));
+                Vector2 perturbedVelocity2 = new Vector2((float)(-Math.Cos(offsetAngle) * velocity.Length()), (float)(-Math.Sin(offsetAngle) * velocity.Length()));
+                Projectile.NewProjectile(source, vector2, perturbedVelocity1, type, damage, (int)knockback, player.whoAmI, passedVar, 0f);
+                Projectile.NewProjectile(source, vector2, perturbedVelocity2, type, damage, (int)knockback, player.whoAmI, -passedVar, 0f);
                 passedVar += 1f;
             }
             return false;

@@ -123,7 +123,7 @@ namespace CalamityInheritance.CIPlayer
         }
         public void BuffEffect()
         {
-            if(kamiBoost)
+            if (kamiBoost)
             {
                 Player.moveSpeed *= 1.15f;
                 Player.maxRunSpeed *= 1.15f;

@@ -1,9 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Spikyballs;
 using CalamityMod;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -65,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Spikyballs
 
         public override bool AltFunctionUse(Player player)
         {
-            foreach(Projectile proj in Main.ActiveProjectiles)
+            foreach (Projectile proj in Main.ActiveProjectiles)
             {
                 if (proj.owner == player.whoAmI && proj.type == ProjectileType<SkyStabberProj>())
                     proj.Kill();

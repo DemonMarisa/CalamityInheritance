@@ -1,11 +1,5 @@
 using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.Items.Weapons.Melee;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,7 +7,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleePwnagehammer : CIMelee, ILocalizedModType
     {
-        public new string LocalizationCategory =>$"{Generic.BaseWeaponCategory}.Melee";
+        public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Melee";
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {

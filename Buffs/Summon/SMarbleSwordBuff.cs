@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {
-    public class SMarbleSwordBuff: ModBuff
+    public class SMarbleSwordBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -14,10 +14,10 @@ namespace CalamityInheritance.Buffs.Summon
         }
         public override void Update(Player player, ref int buffIndex)
         {
-             var mp = player.CIMod();
+            var mp = player.CIMod();
             if (player.ownedProjectileCounts[ProjectileType<ShrineMarbleSword>()] > 0)
             {
-                mp.SMarbleSword= true;
+                mp.SMarbleSword = true;
             }
             if (!mp.SMarbleSword)
             {

@@ -1,21 +1,21 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
 using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod;
-using Terraria.Audio;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
-using Terraria.Localization;
+using CalamityInheritance.NPCs.Boss.SCAL;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.DownedBoss;
-using CalamityInheritance.NPCs.Boss.SCAL;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Legendary
 {
-    public class PBGLegendary: LegendaryWeaponClass
+    public class PBGLegendary : LegendaryWeaponClass
     {
         public static readonly SoundStyle StealthSound = new("CalamityMod/Sounds/Item/WulfrumKnifeThrowSingle") { PitchVariance = 0.4f };
         public override ClassType GeneralWeaponClass => ClassType.Rogue;
@@ -79,7 +79,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             );
             tooltips.FindAndReplace("[SCALING]", update);
             if (t4 != null)
-            tooltips.Add(new TooltipLine(Mod, "Buff", t4));
+                tooltips.Add(new TooltipLine(Mod, "Buff", t4));
         }
         public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
         {
@@ -99,7 +99,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Legendary
             else
             {
                 int pNum = player.CIMod().PBGTier1 ? 6 : 5;
-                int dmg =  (int)(damage * 0.7f);
+                int dmg = (int)(damage * 0.7f);
                 for (int j = 1; j <= pNum; j++)
                 {
                     Vector2 spread = new Vector2(velocity.X, velocity.Y).RotatedBy(j / 11f + 0.2f) * j / 5f;

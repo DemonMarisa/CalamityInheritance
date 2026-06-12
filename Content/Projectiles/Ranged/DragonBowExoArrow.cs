@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class DragonBowExoArrow: ModProjectile, ILocalizedModType
+    public class DragonBowExoArrow : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => "CalamityMod/Projectiles/LaserProj";

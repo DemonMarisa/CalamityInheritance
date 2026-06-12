@@ -1,11 +1,10 @@
-﻿using CalamityMod.Buffs.StatDebuffs;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -46,7 +45,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[Projectile.owner];
-            target.AddBuff(BuffType<GlacialState>(), 30);
+
             if (target.type != NPCID.TargetDummy && target.canGhostHeal && !player.moonLeech)
             {
                 int healAmount = Main.rand.Next(1) + 1;

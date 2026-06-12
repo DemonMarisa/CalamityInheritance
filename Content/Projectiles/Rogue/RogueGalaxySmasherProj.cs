@@ -1,16 +1,16 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Particles;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityMod.Particles;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         public override void AI()
         {
             DoGeneral();
-            switch(AttackType)
+            switch (AttackType)
             {
                 case IsShooted:
                     DoShooted();
@@ -124,9 +124,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             CIFunction.BoomerangReturningAI(Owner, Projectile, StellarContempt.Speed, 2.4f);
             if (Main.myPlayer == Owner.whoAmI)
             {
-                int pWidth  = isCloned ? Owner.width  * 2 : Owner.width;
+                int pWidth = isCloned ? Owner.width * 2 : Owner.width;
                 int pHEight = isCloned ? Owner.height * 2 : Owner.height;
-                Rectangle plrBox = new ((int)Owner.Center.X, (int)Owner.Center.Y, pWidth, pHEight);
+                Rectangle plrBox = new((int)Owner.Center.X, (int)Owner.Center.Y, pWidth, pHEight);
                 if (Projectile.Hitbox.Intersects(plrBox))
                 {
                     //ClonedProj也会直接执行反击的AI
@@ -153,9 +153,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 if (IsCloneSummon == ClonedProj)
                 {
                     //收回并拐弯的时候播放使用落星的声音
-                    SoundEngine.PlaySound(SoundID.Item4 with {Volume = 0.4f}, Projectile.position); 
+                    SoundEngine.PlaySound(SoundID.Item4 with { Volume = 0.4f }, Projectile.position);
                     //采用与返程时相同的粒子AI
-                    ReturnDust();   
+                    ReturnDust();
                 }
                 AttackType = IsReturning;
                 AttackTimer = 0f;
@@ -176,13 +176,13 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             if (ifSummonClone)
                 StealthOnHit(target);  //如果允许生成克隆弑神锤子
 
-            else if (IsCloneSummon != ClonedProj && IsCloneSummon != IsJustShooted) 
+            else if (IsCloneSummon != ClonedProj && IsCloneSummon != IsJustShooted)
                 OnHitEffect(target.Center); //非滞留过后收回的锤子, 与非由潜伏打出来的锤子才允许发射星云射线
 
             else if (IsCloneSummon == ClonedProj)
                 SpawnSpark(hit); //只会让挂载过的锤子执行这个函数
 
-            else 
+            else
                 SoundEngine.PlaySound(StealthOnHitSound with { Pitch = 8 * 0.05f - 0.05f }, Projectile.Center); //非挂载过的, 且由潜伏打出来的锤子, 播报这个声音
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<GodSlayerInferno>(), 240);
@@ -220,18 +220,18 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
                 Dust fire = Dust.NewDustPerfect(Projectile.Center, 181);
                 fire.velocity = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedByRandom(0.8f) * new Vector2(4f, 1.25f) * Main.rand.NextFloat(0.9f, 1f);
                 fire.velocity = fire.velocity.RotatedBy(Projectile.rotation - MathHelper.PiOver2);
-                fire.velocity += Projectile.velocity/2 * (3* 0.04f);
+                fire.velocity += Projectile.velocity / 2 * (3 * 0.04f);
 
                 fire.noGravity = true;
                 fire.scale = Main.rand.NextFloat(0.2f, 0.6f) * 5;
                 fire = Dust.CloneDust(fire);
                 fire.velocity = Main.rand.NextVector2Circular(3f, 3f);
-                fire.velocity += Projectile.velocity/2*(5*0.04f);
+                fire.velocity += Projectile.velocity / 2 * (5 * 0.04f);
             }
         }
         private void SpawnSpark(NPC.HitInfo hit)
         {
-            SoundEngine.PlaySound(Main.rand.NextBool()? CISoundMenu.HammerSmashID1 with {Volume = 0.8f} : CISoundMenu.HammerSmashID2 with {Volume = 0.8f}, Projectile.Center);
+            SoundEngine.PlaySound(Main.rand.NextBool() ? CISoundMenu.HammerSmashID1 with { Volume = 0.8f } : CISoundMenu.HammerSmashID2 with { Volume = 0.8f }, Projectile.Center);
             float getDMGLerp = Utils.GetLerpValue(670f, 2000f, hit.Damage, true);
             float getVelLerp = MathHelper.Lerp(0.08f, 0.2f, getDMGLerp);
             getVelLerp *= Main.rand.NextBool().ToDirectionInt() * Main.rand.NextFloat(0.75f, 1.25f);

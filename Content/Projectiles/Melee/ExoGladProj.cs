@@ -1,12 +1,12 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 {
                     CalamityUtils.ProjectileRain(source, targetPos, 400f, 100f, -1000f, -800f, 29f, ProjectileType<ExoGladSpears>(), swordDmg, swordKB, Projectile.owner);
                 }
-                if(usPlayer.LoreExo || usPlayer.PanelsLoreExo)
+                if (usPlayer.LoreExo || usPlayer.PanelsLoreExo)
                 {
 
                     ExoGladiusProj.GiveImmue(player, 60, 45);

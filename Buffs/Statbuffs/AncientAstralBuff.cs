@@ -1,12 +1,11 @@
 using CalamityInheritance.Content.Items.Armor.AncientAstral;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Statbuffs
 {
-    public class AncientAstralBuff: ModBuff, ILocalizedModType
+    public class AncientAstralBuff : ModBuff, ILocalizedModType
     {
         public new string LocalizationCategory => "Buffs";
         public override void SetStaticDefaults()
@@ -18,7 +17,7 @@ namespace CalamityInheritance.Buffs.Statbuffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            var calPlayer = player.Calamity();    
+            var calPlayer = player.Calamity();
             int getDef = player.statDefense;
             int defenseBuff = (int)(getDef * AncientAstralHelm.DefenseAndDR);
             player.statDefense += defenseBuff;

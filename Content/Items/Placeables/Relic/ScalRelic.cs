@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Tiles.Relic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Placeables.Relic

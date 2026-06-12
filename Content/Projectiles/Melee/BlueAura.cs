@@ -1,16 +1,15 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
-using Terraria.Audio;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Sounds.Custom;
-using LAP.Core.Utilities;
-
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using LAP.Assets.TextureRegister;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class BlueAura : ModProjectile, ILocalizedModType

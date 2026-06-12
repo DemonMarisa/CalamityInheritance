@@ -1,17 +1,16 @@
-using CalamityMod;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using System.IO;
 using CalamityInheritance.Content.Items.Weapons.Legendary;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using Microsoft.Xna.Framework;
+using System.IO;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {
-    public class PBGLegendaryProj: ModProjectile, ILocalizedModType
+    public class PBGLegendaryProj : ModProjectile, ILocalizedModType
     {
         public struct StoredColorAndDust
         {
@@ -43,9 +42,9 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             StoredColorAndDust gColor = SpecialColor(Main.player[Projectile.owner], Projectile);
             if (Projectile.localAI[1] < 4f)
                 Projectile.alpha = 0;
-            else if (Projectile.localAI[1] == 4f) 
+            else if (Projectile.localAI[1] == 4f)
                 Projectile.alpha = 255;
-                
+
             Projectile.alpha -= 3;
             if (Projectile.alpha < 30)
             {
@@ -65,7 +64,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            return new Color(Main.DiscoR, 142, 35, Projectile.alpha);        
+            return new Color(Main.DiscoR, 142, 35, Projectile.alpha);
         }
         public static StoredColorAndDust SpecialColor(Player plr, Projectile p)
         {
@@ -86,20 +85,20 @@ namespace CalamityInheritance.Content.Projectiles.Rogue
             {
                 case "TrueScarlet":
                 case "FakeAqua":
-                    reColor = new(228, 1 ,10, p.alpha);
+                    reColor = new(228, 1, 10, p.alpha);
                     dType = DustID.GemRuby;
                     break;
                 case "Shizuku":
                 case "shizuku":
-                    reColor = Main.rand.NextBool()? new(248, 248, 255, p.alpha) : new(152, 245, 255, p.alpha);
+                    reColor = Main.rand.NextBool() ? new(248, 248, 255, p.alpha) : new(152, 245, 255, p.alpha);
                     dType = DustID.GemDiamond;
                     break;
                 case "DemonMarisa":
-                    reColor = new (255, 165, 0, p.alpha);
+                    reColor = new(255, 165, 0, p.alpha);
                     dType = DustID.GoldCoin;
                     break;
                 case "KunojiIchika":
-                    reColor = new(79,79,79,p.alpha);
+                    reColor = new(79, 79, 79, p.alpha);
                     dType = DustID.WhiteTorch;
                     break;
                 case "Plantare":

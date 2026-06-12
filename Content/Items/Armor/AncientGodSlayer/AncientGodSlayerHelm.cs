@@ -4,10 +4,9 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.GodSlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.SystemsLoader;
 using Terraria;
 using Terraria.ModLoader;
 using static CalamityInheritance.Core.Enums;
@@ -17,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
     [AutoloadEquip(EquipType.Head)]
     public class AncientGodSlayerHelm : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -30,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 30; //130
         }
-        public override bool IsArmorSet(Item head, Item body, Item legs) => body.ThisBodyPart<AncientGodSlayerChestplate>(ArmorPart.Body) && legs.ThisBodyPart<AncientGodSlayerLeggings>(ArmorPart.Legs); 
+        public override bool IsArmorSet(Item head, Item body, Item legs) => body.ThisBodyPart<AncientGodSlayerChestplate>(ArmorPart.Body) && legs.ThisBodyPart<AncientGodSlayerLeggings>(ArmorPart.Legs);
 
         public override void UpdateArmorSet(Player player)
         {
@@ -40,28 +39,22 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
             calPlayer.WearingPostMLSummonerSet = true;
             calPlayer.godSlayer = true;
             calPlayer.rogueStealthMax += 1.25f;
-            usPlayer.AncientGodSlayerSet = true;
-            usPlayer.GodSlayerReborn = true;
             calPlayer.contactDamageReduction += 0.15f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (calPlayer.godSlayerDashHotKeyPressed || player.dashDelay != 0 && calPlayer.LastUsedDashID == GodslayerArmorDash.ID)
+
+            usPlayer.AncientGodSlayerSet = true;
+            usPlayer.GodSlayerReborn = true;
+            usPlayer.CanUseLegacyGodSlayerDash = true;
+            if (CalamityKeybinds.GodSlayerDashHotKey.JustPressed && !player.HasCD<CICooldowns.GodSlayerDashLegacy>())
             {
-                calPlayer.DeferredDashID = GodslayerArmorDash.ID;
                 if (usPlayer.AncinetGodSlayerDashReset)
                     calPlayer.rogueStealth = calPlayer.rogueStealthMax / 4 * 3;
-                if (usPlayer.AncientGodSlayerBuffCD == 0)
-                {
-                    usPlayer.AncientGodSlayerBuffCounter = 600;
-                    usPlayer.AncientGodSlayerBuffCD = 1500;
-                }
-                
-                player.dash = 0;
-                //旧套装通用新增；血上限，血药，回血
-                calPlayer.healingPotionMultiplier += 0.70f;
-                player.lifeRegen += 8; //+4HP/s
             }
+            //旧套装通用新增；血上限，血药，回血
+            calPlayer.healingPotionMultiplier += 0.70f;
+            player.lifeRegen += 8; //+4HP/s
         }
-        
+
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 5;
@@ -83,7 +76,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientGodSlayer
                 AddIngredient<AscendantSpiritEssence>(10).
                 AddTile<CosmicAnvil>().
                 Register();
-                
+
         }
     }
 }

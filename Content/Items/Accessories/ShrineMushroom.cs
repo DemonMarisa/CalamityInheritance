@@ -1,20 +1,20 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Accessories;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
-    public class ShrineMushroom: CIAccessories, ILocalizedModType
+    public class ShrineMushroom : CIAccessories, ILocalizedModType
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:38,
-            itemHeight:36,
-            itemRare:ItemRarityID.Orange,
-            itemValue:CIShopValue.RarityPriceOrange
+            itemWidth: 38,
+            itemHeight: 36,
+            itemRare: ItemRarityID.Orange,
+            itemValue: CIShopValue.RarityPriceOrange
         );
         public override void ExSSD() => Type.ShimmerEach<FungalSymbiote>();
         public override void UpdateAccessory(Player player, bool hideVisual)

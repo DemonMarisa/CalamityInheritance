@@ -1,15 +1,15 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
 {
     [AutoloadEquip(EquipType.Head)]
     public class ReaverHelmRevamped : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

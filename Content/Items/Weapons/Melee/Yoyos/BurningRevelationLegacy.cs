@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee.Yoyos;
 using CalamityInheritance.Rarity;
 using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -46,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Yoyos
             CreateRecipe().
                 AddIngredient<UnholyEssence>(8).
                 AddIngredient<DivineGeode>(4).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

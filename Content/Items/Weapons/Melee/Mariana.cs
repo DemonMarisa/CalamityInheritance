@@ -1,11 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Abyss;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {

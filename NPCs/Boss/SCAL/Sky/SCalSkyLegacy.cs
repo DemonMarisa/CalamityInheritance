@@ -1,15 +1,12 @@
-﻿using CalamityMod.Events;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.NPCs.Boss.SCAL.Brother;
+using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.GameContent;
 using Terraria.Graphics.Effects;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.NPCs.Boss.SCAL.Brother;
-using CalamityInheritance.NPCs.Boss.SCAL.ScalWorm;
-using CalamityInheritance.System;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Sky
 {

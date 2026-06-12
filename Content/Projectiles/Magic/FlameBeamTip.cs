@@ -1,5 +1,4 @@
 using CalamityMod.Projectiles.Typeless;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
             return true;
         }
-    
+
         public override void AI()
         {
             if (Projectile.ai[0] == 0f)
@@ -78,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         {
             target.immune[Projectile.owner] = 8;
             target.AddBuff(BuffID.OnFire3, 300);
-            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * 0f, ProjectileType<FuckYou>(), Projectile.damage/2, 0f , Projectile.owner);
+            int proj = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position, Projectile.velocity * 0f, ProjectileType<FuckYou>(), Projectile.damage / 2, 0f, Projectile.owner);
             Main.projectile[proj].DamageType = DamageClass.Magic;
         }
     }

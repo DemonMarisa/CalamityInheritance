@@ -1,19 +1,9 @@
 ﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
-using log4net.Core;
-using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.UI.QolPanelTotal
 {
@@ -35,7 +25,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         {
             #region 获取数据
             Player player = Main.player[Main.myPlayer];
-            CalamityInheritancePlayer cIPlayer = player.CIMod();    
+            CalamityInheritancePlayer cIPlayer = player.CIMod();
             #endregion
             #region 注册材质
             // 经验条
@@ -57,7 +47,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
             #region 左侧绘制内容
             string Exp = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.Exp");
             // 战士
-            DrawMeleeBar(spriteBatch , cIPlayer, LevelBorder, LevelBar, Exp);
+            DrawMeleeBar(spriteBatch, cIPlayer, LevelBorder, LevelBar, Exp);
             // 射手
             DrawRangedBar(spriteBatch, cIPlayer, LevelBorder, LevelBar, Exp);
             // 法师
@@ -83,7 +73,7 @@ namespace CalamityInheritance.UI.QolPanelTotal
         }
         #region 经验条
         #region 绘制战士经验条
-        public static void DrawMeleeBar(SpriteBatch spriteBatch,CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
+        public static void DrawMeleeBar(SpriteBatch spriteBatch, CalamityInheritancePlayer cIPlayer, Texture2D LevelBorder, Texture2D LevelBar, string Exp)
         {
             string Melee = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelTextMelee");
             string MeleeCurrentLevel = Language.GetTextValue("Mods.CalamityInheritance.QolPanel.LevelPoolText") + cIPlayer.meleeLevel;

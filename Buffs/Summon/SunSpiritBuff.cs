@@ -1,13 +1,4 @@
-﻿using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.Content.Projectiles.Summon.Worms;
-using CalamityInheritance.Utilities;
-using LAP.Core.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.Content.Projectiles.Summon;
 using Terraria;
 using Terraria.ModLoader;
 

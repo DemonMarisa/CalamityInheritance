@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers;
-using CalamityInheritance.NPCs.Boss.Yharon.Proj;
+﻿using CalamityInheritance.NPCs.Boss.Yharon.Proj;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.System.DownedBoss;
 using CalamityInheritance.Utilities;
@@ -7,15 +6,10 @@ using CalamityMod;
 using CalamityMod.Projectiles.Boss;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static CalamityInheritance.NPCs.Boss.Yharon.YharonLegacy;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon
 {
@@ -28,7 +22,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon
         public const float PreEclipse_Phase2LifeRatio = 0.7f;
 
         public const float PreEclipse_Phase3LifeRatio = 0.4f;
-        public void Stage1AI(float lifeRatio,ref float currentPhase,ref float attackType,ref float attackTimer,ref float circleCount)
+        public void Stage1AI(float lifeRatio, ref float currentPhase, ref float attackType, ref float attackTimer, ref float circleCount)
         {
             #region 阶段判定
             // 进入新阶段

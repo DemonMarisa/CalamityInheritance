@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Buffs.StatDebuffs
 {

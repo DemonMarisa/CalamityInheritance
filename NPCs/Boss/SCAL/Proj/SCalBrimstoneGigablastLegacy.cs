@@ -1,24 +1,16 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Buffs.StatDebuffs;
+using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
+using CalamityMod;
 using CalamityMod.Dusts;
-using CalamityMod.Events;
-using CalamityMod.Projectiles.Boss;
-using CalamityMod.World;
-using Microsoft.Xna.Framework.Graphics;
+using CalamityMod.Particles;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityMod.Particles;
-using CalamityInheritance.Buffs.StatDebuffs;
 
 namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 {
@@ -35,7 +27,7 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
         public override void SetDefaults()
         {
-            
+
             Projectile.width = 50;
             Projectile.height = 50;
             Projectile.hostile = true;
@@ -169,14 +161,14 @@ namespace CalamityInheritance.NPCs.Boss.SCAL.Proj
 
             for (int j = 0; j < 2; j++)
             {
-                Dust.NewDust( Projectile.position,  Projectile.width,  Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 50, default, 1f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 50, default, 1f);
             }
             for (int k = 0; k < 20; k++)
             {
-                int redFire = Dust.NewDust( Projectile.position,  Projectile.width,  Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 0, default, 1.5f);
+                int redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 0, default, 1.5f);
                 Main.dust[redFire].noGravity = true;
                 Main.dust[redFire].velocity *= 3f;
-                redFire = Dust.NewDust( Projectile.position,  Projectile.width,  Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 50, default, 1f);
+                redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, (int)CalamityDusts.Brimstone, 0f, 0f, 50, default, 1f);
                 Main.dust[redFire].velocity *= 2f;
                 Main.dust[redFire].noGravity = true;
             }

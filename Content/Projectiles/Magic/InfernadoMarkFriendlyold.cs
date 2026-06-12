@@ -1,10 +1,10 @@
-﻿using System;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
 
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
@@ -146,7 +146,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
         public override void OnKill(int timeLeft)
         {
-            if(onhitNPC == false)
+            if (onhitNPC == false)
             {
                 SoundEngine.PlaySound(FlareSound, Projectile.Center);
                 int dustAmt = 36;

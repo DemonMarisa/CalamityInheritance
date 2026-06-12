@@ -50,7 +50,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 Projectile.netUpdate = true;
             }
             //执行不同的AI
-            switch(AttackType)
+            switch (AttackType)
             {
                 case IsShooted:
                     DoShooted();
@@ -87,18 +87,18 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             Projectile.position = Projectile.Center;
             Projectile.width = Projectile.height = 160;
             Projectile.position.X = Projectile.position.X - Projectile.width / 2;
-            Projectile.position.Y = Projectile.position.Y - Projectile.height/ 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
             OnHitDust();
             if (AttackType == IsHoming)
             {
                 //击中敌人，播报这个声音
-                SoundEngine.PlaySound(SoundID.DD2_KoboldFlyerHurt with {Volume = 0.7f, Pitch = 0.5f}, Projectile.Center);
+                SoundEngine.PlaySound(SoundID.DD2_KoboldFlyerHurt with { Volume = 0.7f, Pitch = 0.5f }, Projectile.Center);
                 AttackType = IsFading;
                 Projectile.netUpdate = true;
             }
         }
 
-        
+
         #region 方法合集
         public void TrailLine()
         {
@@ -110,7 +110,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         private void OnHitDust()
         {
-             for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.GemRuby, 0f, 0f, 100, Color.Red, 1.2f);
                 Main.dust[d].velocity *= 3f;
@@ -178,7 +178,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
             else
             {
                 if (Main.rand.NextBool(5))
-                TrailLine();
+                    TrailLine();
             }
         }
         #endregion

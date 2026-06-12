@@ -1,17 +1,11 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 using CalamityMod.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -37,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shoot = ProjectileType<ButcherHeldProj>();
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Bullet;
-            
+
         }
 
         public override bool CanUseItem(Player player) => player.ownedProjectileCounts[Item.shoot] <= 0;

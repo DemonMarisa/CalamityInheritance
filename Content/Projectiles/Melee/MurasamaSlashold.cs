@@ -28,9 +28,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 frameY = value % 7;
             }
         }
-
-        // A "slash" is only present during 2 specific frames (ones with a slash effect) right before they transition to the next frame.
-        // Note: This bool is unused. Murasama formerly only dealt damage when on these frames, but it created a few issues with player usability.
         public bool Slashing => CurrentFrame % 7 == 0 && Projectile.frameCounter % 3 == 2;
         public override void SetStaticDefaults()
         {
@@ -154,7 +151,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
             Projectile.velocity = newVelocity;
         }
-        
+
         public override Color? GetAlpha(Color lightColor) => new Color(200, 0, 0, 0);
     }
 }

@@ -1,15 +1,14 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Ranged;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Utilities;
-using CalamityMod.Items.Weapons.Ranged;
 namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
 {
     public class WulfrumBow : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -33,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Wulfrum
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
-            
+
         }
 
         public override void AddRecipes()

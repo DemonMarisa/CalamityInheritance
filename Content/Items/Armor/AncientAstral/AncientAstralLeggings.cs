@@ -1,5 +1,4 @@
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +8,7 @@ using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.AncientAstral
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class AncientAstralLeggings: CIArmor, ILocalizedModType
+    public class AncientAstralLeggings : CIArmor, ILocalizedModType
     {
         private const int LifeMax = 20;
         private const int Crits = 5;
@@ -18,7 +17,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
         {
             Item.ResearchUnlockCount = 1;
         }
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeMax,Crits.ToPercent(),Regen.ToTooltipHP());
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(LifeMax, Crits.ToPercent(), Regen.ToTooltipHP());
 
         public override void SetDefaults()
         {
@@ -32,7 +31,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAstral
         public override void UpdateEquip(Player player)
         {
             player.statLifeMax2 += LifeMax;
-            player.GetCritChance<RogueDamageClass>() += Crits;
+            player.GetCritChance<CalamityMod.RogueDamageClass>() += Crits;
             player.lifeRegen += Regen.ToInnerLifeRegen();
         }
         public override void AddRecipes()

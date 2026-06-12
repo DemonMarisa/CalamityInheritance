@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Texture;
 using CalamityMod;
 using CalamityMod.Items.Weapons.Rogue;
 using Microsoft.Xna.Framework;

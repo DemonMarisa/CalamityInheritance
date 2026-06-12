@@ -1,8 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic.Staffs;
 using CalamityInheritance.Content.Projectiles.Magic;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -17,7 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic
 {
     public class HeliumFlashLegacy : CIMagic, ILocalizedModType
     {
-        
+
         internal const float ExplosionDamageMultiplier = 0.65f;
         public static readonly int HeliumFlashDamage = 720;
         public static readonly int HeliumFlashManaCost = 15;

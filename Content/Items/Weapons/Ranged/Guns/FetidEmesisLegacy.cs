@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Ranged.Guns;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -55,19 +53,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Guns
                 {
                     // WoF vomit sound.
                     SoundEngine.PlaySound(SoundID.NPCDeath13 with { Volume = SoundID.NPCDeath13.Volume * 0.5f }, position);
-                    player.CIMod().GlobalSoundDelay= 120;
+                    player.CIMod().GlobalSoundDelay = 120;
                 }
                 return false;
             }
             return true;
-        }
-        public override void AddRecipes()
-        {
-            CreateRecipe().
-                AddIngredient<UnholyEssence>(12).
-                AddIngredient<DivineGeode>(6).
-                AddTile<CosmicAnvil>().
-                Register();
         }
     }
 }

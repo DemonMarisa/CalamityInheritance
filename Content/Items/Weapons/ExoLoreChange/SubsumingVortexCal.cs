@@ -1,21 +1,15 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Projectiles.Magic;
 using System.Collections.Generic;
-using Terraria.Localization;
+using Terraria;
 using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using System.Reflection;
-using CalamityInheritance.Texture;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.Content.Items.Weapons.Magic;
 using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

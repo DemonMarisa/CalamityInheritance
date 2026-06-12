@@ -1,6 +1,4 @@
 ﻿using CalamityInheritance.Content.Projectiles.Magic.Books;
-using CalamityMod.Items;
-using CalamityMod.Items.Weapons.Magic;
 using Terraria.ID;
 using Terraria.ModLoader;
 

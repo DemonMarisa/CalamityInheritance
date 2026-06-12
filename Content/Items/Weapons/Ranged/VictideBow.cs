@@ -1,6 +1,5 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -9,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class VictideBow: CIRanged, ILocalizedModType
+    public class VictideBow : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -41,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             float SpeedX = velocity.X + Main.rand.Next(-30, 31) * 0.05f;
             float SpeedY = velocity.Y + Main.rand.Next(-30, 31) * 0.05f;
-            Projectile.NewProjectile(source,position.X, position.Y, SpeedX * 0.5f, SpeedY * 0.5f, ProjectileType<VictideWater>(), (int)(damage * 0.4), 0f, player.whoAmI, 0f, 0f);
+            Projectile.NewProjectile(source, position.X, position.Y, SpeedX * 0.5f, SpeedY * 0.5f, ProjectileType<VictideWater>(), (int)(damage * 0.4), 0f, player.whoAmI, 0f, 0f);
             return true;
         }
 

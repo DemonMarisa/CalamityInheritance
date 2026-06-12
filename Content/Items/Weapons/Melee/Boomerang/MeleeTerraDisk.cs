@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Rogue;
@@ -9,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
-    public class MeleeTerraDisk: CIMelee, ILocalizedModType
+    public class MeleeTerraDisk : CIMelee, ILocalizedModType
     {
-        
+
         public static readonly float Speed = 12f;
         public override void SetStaticDefaults()
         {

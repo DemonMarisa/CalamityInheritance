@@ -1,31 +1,17 @@
-﻿using CalamityInheritance.Content.Projectiles.CalProjChange;
-using CalamityInheritance.Content.Projectiles.ExoLore;
+﻿using CalamityInheritance.Content.Projectiles.ExoLore;
 using CalamityInheritance.Content.Projectiles.HeldProj.CalChange.Range;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using CalamityMod.Graphics.Metaballs;
-using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.NPCs.DevourerofGods;
-using CalamityMod.Particles;
-using CalamityMod.Projectiles.Magic;
 using CalamityMod.Projectiles.Ranged;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Items.Weapons.ExoLoreChange
 {

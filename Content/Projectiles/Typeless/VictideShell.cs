@@ -1,11 +1,9 @@
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using Microsoft.Xna.Framework;
-using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
-    public class VictideShell: ModProjectile, ILocalizedModType
+    public class VictideShell : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Typeless";
         public override void SetDefaults()

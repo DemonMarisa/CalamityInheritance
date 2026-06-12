@@ -1,15 +1,10 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using LAP.Assets.TextureRegister;
-using System;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.ID;
-using CalamityMod;
-using Microsoft.Build.Evaluation;
-using CalamityInheritance.Utilities;
-using Terraria.DataStructures;
+﻿using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Particles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
 {
@@ -22,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
-        public Vector2 ProjScale = new( 0.5f, 0.5f);
+        public Vector2 ProjScale = new(0.5f, 0.5f);
         public override void SetDefaults()
         {
             Projectile.width = 4;
@@ -60,22 +55,22 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray.ElementalBeamProj
         }
     }
 }
-                 //技术力不够先注释掉了，等哪天有技术力了就改
-                // for (int i = 0; i< Main.maxNPCs; i++)
-                // {
-                //     if (Main.npc[i].active && Main.npc[i].life > 5)
-                //     {
-                //         float getEnemyX = Main.npc[i].position.X + Main.npc[i].width/2;
-                //         float getEnemyY = Main.npc[i].position.Y + Main.npc[i].height/2;
-                //         //获得距离
-                //         Vector2 getEnemyPos = new (getEnemyX, getEnemyY);
-                //         //获得坐标位置
-                //         Vector2 getProjEnemyDist = Main.npc[i].Center - Projectile.Center;
-                //         //开始旋转
-                //         Projectile.Center = Main.npc[i].Center + new Vector2(9f, 0).RotatedBy(Projectile.ai[1] + Projectile.ai[0] * MathHelper.PiOver2);
-                //         Projectile.ai[1] += 0.1f;
-                //         Projectile.velocity.X = (getProjEnemyDist.X > 0f) ? -0.001f : 0f;
-                //         //需注意的是，这一过程会一直让lifeTimie取这个值
-                //         Projectile.timeLeft = 101;
-                //     }
-                // }
+//技术力不够先注释掉了，等哪天有技术力了就改
+// for (int i = 0; i< Main.maxNPCs; i++)
+// {
+//     if (Main.npc[i].active && Main.npc[i].life > 5)
+//     {
+//         float getEnemyX = Main.npc[i].position.X + Main.npc[i].width/2;
+//         float getEnemyY = Main.npc[i].position.Y + Main.npc[i].height/2;
+//         //获得距离
+//         Vector2 getEnemyPos = new (getEnemyX, getEnemyY);
+//         //获得坐标位置
+//         Vector2 getProjEnemyDist = Main.npc[i].Center - Projectile.Center;
+//         //开始旋转
+//         Projectile.Center = Main.npc[i].Center + new Vector2(9f, 0).RotatedBy(Projectile.ai[1] + Projectile.ai[0] * MathHelper.PiOver2);
+//         Projectile.ai[1] += 0.1f;
+//         Projectile.velocity.X = (getProjEnemyDist.X > 0f) ? -0.001f : 0f;
+//         //需注意的是，这一过程会一直让lifeTimie取这个值
+//         Projectile.timeLeft = 101;
+//     }
+// }

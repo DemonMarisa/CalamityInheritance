@@ -6,7 +6,6 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.NPCs
 {
@@ -48,8 +47,8 @@ namespace CalamityInheritance.NPCs
             }
             if (rageOfChair)
             {
-                if(npc.lifeRegen > 0)
-                npc.lifeRegen = 0;
+                if (npc.lifeRegen > 0)
+                    npc.lifeRegen = 0;
                 npc.lifeRegen -= rageOfChairDoTDamage;
                 if (damage < rageOfChairDoTDamage)
                     damage = 114514;
@@ -59,13 +58,13 @@ namespace CalamityInheritance.NPCs
                 ApplyDPSDebuff(15000, 15000 / 5, ref npc.lifeRegen);
                 damage = 15000 / 5;
             }
-            if(abyssalFlamesNPC)
+            if (abyssalFlamesNPC)
             {
                 // 深渊之火
                 ApplyDPSDebuff(12222, 12222 / 5, ref npc.lifeRegen);
                 damage = 12222 / 5;
             }
-            if(vulnerabilityHexLegacyNPC)
+            if (vulnerabilityHexLegacyNPC)
             {
                 // 深渊之火
                 ApplyDPSDebuff(6666, 6666 / 5, ref npc.lifeRegen);
@@ -74,7 +73,7 @@ namespace CalamityInheritance.NPCs
             //不要试图修改这个dot伤害太多，因为这个会直接用于玩家生命恢复的计算。
             if (CryoDrainDoT)
             {
-                npc.lifeRegen -= CryoDrainDotDamage; 
+                npc.lifeRegen -= CryoDrainDotDamage;
             }
             // Kami Debuff from Yanmei's Knife
             if (kamiFlu)

@@ -5,22 +5,16 @@ using CalamityInheritance.Content.Projectiles.HeldProj.Melee.AOTCNew;
 using CalamityInheritance.Content.Projectiles.Melee.AOTCNew;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
-using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using LAP.Core.LAPUI.CustomCD;
 using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Map;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords.AOTCNew

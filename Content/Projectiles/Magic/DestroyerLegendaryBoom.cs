@@ -1,11 +1,11 @@
-﻿using System;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
+using LAP.Assets.TextureRegister;
+using System;
 using Terraria;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class DestroyerLegendaryBoom: ModProjectile, ILocalizedModType
+    public class DestroyerLegendaryBoom : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            Player player = Main.player[Projectile.owner]; 
+            Player player = Main.player[Projectile.owner];
             var usPlayer = player.CIMod();
             if (usPlayer.DestroyerTier1)
                 modifiers.SetCrit();

@@ -1,16 +1,17 @@
-﻿using Terraria.DataStructures;
+﻿using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class ElementalEruptionLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

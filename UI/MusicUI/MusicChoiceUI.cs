@@ -1,22 +1,9 @@
-﻿using CalamityInheritance.Content.Items.Placeables.Vanity;
+﻿using CalamityInheritance.UI.MusicUI.MusicButton;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
 using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.UI.MusicUI.MusicButton;
 using static CalamityInheritance.Utilities.CIFunction;
-using static tModPorter.ProgressUpdate;
-using ReLogic.Graphics;
-using Terraria.GameContent;
-using Terraria.UI.Chat;
-using Microsoft.CodeAnalysis.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.UI.MusicUI
 {
@@ -118,9 +105,9 @@ namespace CalamityInheritance.UI.MusicUI
                 ChangeCd--;
         }
         #region 绘制按钮封装
-        public static void FastButton(int FadeTime, int FadeTimeMax,ref float Scale,ref Vector2 Pos 
-            ,ref bool IsHovering,ref int SecondFadeTime,ref int SecondFadeTimeMax,ref bool wasMouseDown, string text
-            ,ref bool changebool)
+        public static void FastButton(int FadeTime, int FadeTimeMax, ref float Scale, ref Vector2 Pos
+            , ref bool IsHovering, ref int SecondFadeTime, ref int SecondFadeTimeMax, ref bool wasMouseDown, string text
+            , ref bool changebool)
         {
             #region 更新缩放
             float targetscale = 0.5f;

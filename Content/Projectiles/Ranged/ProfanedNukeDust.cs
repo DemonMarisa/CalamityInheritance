@@ -1,13 +1,13 @@
-using System;
 using CalamityMod.Buffs.DamageOverTime;
 using LAP.Assets.TextureRegister;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class ProfanedNukeDust: ModProjectile, ILocalizedModType
+    public class ProfanedNukeDust : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             while (getTimerCount < getTimer)
             {
                 //基本就是生成粒子的AI了，照抄了
-                 float r1 = Main.rand.Next(-8, 9);
+                float r1 = Main.rand.Next(-8, 9);
                 float r2 = Main.rand.Next(-8, 9);
                 float r3 = Main.rand.Next(2, 7);
                 float rAdj = (float)Math.Sqrt((double)(r1 * r1 + r2 * r2));

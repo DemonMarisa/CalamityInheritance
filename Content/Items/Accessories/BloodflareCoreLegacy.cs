@@ -10,10 +10,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:26,
-            itemHeight:26,
+            itemWidth: 26,
+            itemHeight: 26,
             itemRare: RarityType<BlueGreen>(),
-            itemValue:CIShopValue.RarityPriceBlueGreen
+            itemValue: CIShopValue.RarityPriceBlueGreen
         );
         public override void ExSSD() => Type.ShimmerEach<BloodflareCore>();
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Accessories
                     player.GetDamage<GenericDamageClass>() += 0.20f; ;
                 }
             }
-            
+
             if (player.statDefense <= 100)
                 player.GetDamage<GenericDamageClass>() += 0.15f;
         }

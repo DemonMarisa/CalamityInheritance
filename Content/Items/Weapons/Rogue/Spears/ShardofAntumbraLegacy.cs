@@ -29,7 +29,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Spears
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<MeldConstruct>(15).
+                AddIngredient<MeldBlob>(15).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }

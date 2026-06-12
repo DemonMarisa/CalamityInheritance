@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CalamityInheritance.NPCs.NorNPC;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.NPCs.NorNPC;
-using Terraria.Enums;
 
 namespace CalamityInheritance.Tiles.Banner
 {

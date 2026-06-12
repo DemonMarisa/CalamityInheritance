@@ -21,7 +21,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class SomaPrimeOld : CIRanged, ILocalizedModType
     {
-        
+
         private static readonly float XYInaccuracy = 0.32f;
         public override void SetStaticDefaults()
         {
@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             velocity.X += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);
             velocity.Y += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);
             Vector2 vel = velocity;
-            Projectile shot = Projectile.NewProjectileDirect(source, position + new Vector2(0 , -6), vel, type, damage, knockback, player.whoAmI);
+            Projectile shot = Projectile.NewProjectileDirect(source, position + new Vector2(0, -6), vel, type, damage, knockback, player.whoAmI);
             CalamityGlobalProjectile cgp = shot.Calamity();
             cgp.appliesSomaShred = true;
             return false;

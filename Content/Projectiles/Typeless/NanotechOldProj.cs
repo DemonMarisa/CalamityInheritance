@@ -1,12 +1,8 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using System;
-using CalamityInheritance.Utilities;
-using CalamityMod.Enums;
-using CalamityMod.Particles;
 
 namespace CalamityInheritance.Content.Projectiles.Typeless
 {
@@ -36,7 +32,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
         public override void AI()
         {
             DoGeneric();
-            switch(AttackType)
+            switch (AttackType)
             {
                 case IsShooted:
                     DoShooted();
@@ -77,7 +73,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
             AttackTimer += 1f;
         }
 
-        private void DoSearching() 
+        private void DoSearching()
         {
             if (Projectile.alpha > 0)
                 Projectile.alpha -= 15;
@@ -119,7 +115,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless
                 {
                     nanoDust.velocity = dustDirection * Main.rand.Next(45, 91) / 10f;
                 }
-                nanoDust.color = Main.hslToRgb((float)(0.4+ Main.rand.NextDouble() * 0.2), 0.9f, 0.5f);
+                nanoDust.color = Main.hslToRgb((float)(0.4 + Main.rand.NextDouble() * 0.2), 0.9f, 0.5f);
                 nanoDust.color = Color.Lerp(nanoDust.color, Color.White, 0.3f);
                 nanoDust.noGravity = true;
                 nanoDust.scale = 0.7f;

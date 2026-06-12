@@ -1,7 +1,6 @@
-﻿using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
-using CalamityMod;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -20,10 +19,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         }
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:28,
-            itemHeight:32,
+            itemWidth: 28,
+            itemHeight: 32,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
@@ -46,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Magic
         {
             CreateRecipe().
                 AddIngredient<SigilofCalamitas>().
-                AddRecipeGroup("AnyManaFlower").
+                AddIngredient(ItemID.ManaFlower).
                 AddIngredient(ItemID.CharmofMyths).
                 AddIngredient(ItemID.LunarBar, 8).
                 AddIngredient<GalacticaSingularity>(4).

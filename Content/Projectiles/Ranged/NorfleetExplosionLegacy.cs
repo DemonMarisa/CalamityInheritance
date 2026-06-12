@@ -1,10 +1,8 @@
-﻿using CalamityInheritance.Content.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using LAP.Assets.TextureRegister;
-using LAP.Assets.TextureRegister;
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class NorfleetExplosionLegacy : ModProjectile, ILocalizedModType

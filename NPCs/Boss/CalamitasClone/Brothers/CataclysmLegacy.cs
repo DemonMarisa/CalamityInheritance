@@ -1,4 +1,3 @@
-using System.IO;
 using CalamityInheritance.Content.Items;
 using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
@@ -11,7 +10,6 @@ using CalamityMod.Particles;
 using CalamityMod.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoMod.Core.Utils;
 using ReLogic.Content;
 using Terraria;
 using Terraria.Audio;
@@ -180,7 +178,7 @@ namespace CalamityInheritance.NPCs.Boss.CalamitasClone.Brothers
             int fireDelay = 5;
 
             // 尝试悬停在玩家两侧
-            Vector2 destination = new Vector2(target.Center.X + PosX , target.Center.Y);
+            Vector2 destination = new Vector2(target.Center.X + PosX, target.Center.Y);
 
             // 应该在哪
             Vector2 distanceFromDestination = destination - NPC.Center;

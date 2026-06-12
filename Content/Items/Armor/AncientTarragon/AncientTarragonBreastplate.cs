@@ -10,7 +10,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
     [AutoloadEquip(EquipType.Body)]
     public class AncientTarragonBreastplate : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -24,7 +24,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 45;
         }
-        
+
 
         public override void UpdateEquip(Player player)
         {

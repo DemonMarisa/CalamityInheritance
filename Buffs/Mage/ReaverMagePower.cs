@@ -1,10 +1,9 @@
-using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Mage
 {
-    public class ReaverMagePower: ModBuff
+    public class ReaverMagePower : ModBuff
     {
         public override void SetStaticDefaults()
         {

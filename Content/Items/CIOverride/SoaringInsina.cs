@@ -1,4 +1,3 @@
-using System.Reflection;
 using CalamityInheritance.System.Configs;
 using CalamityMod;
 using Terraria;
@@ -22,7 +21,7 @@ namespace CalamityInheritance.Content.Items.CIOverride
             //做掉经过灾厄削弱后的飞行奖励
             player.runAcceleration /= 1.1f;
             player.jumpSpeedBoost -= 0.5f;
-            
+
             //而后将其重置为原版的数值
             player.runAcceleration *= 1.75f;
             player.jumpSpeedBoost += 1.8f;

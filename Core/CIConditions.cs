@@ -6,7 +6,6 @@ using CalamityMod.World;
 using System;
 using Terraria;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core
 {

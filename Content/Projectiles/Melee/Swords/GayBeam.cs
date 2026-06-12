@@ -67,7 +67,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
 
             if (Projectile.ai[2] == 0f)
                 SoundEngine.PlaySound(SoundID.Item60, Projectile.Center);
-            
+
             Color color = GetProjectileColor();
             switch ((int)Projectile.ai[0])
             {

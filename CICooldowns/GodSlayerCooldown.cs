@@ -1,7 +1,7 @@
-﻿using CalamityMod.Cooldowns;
-using Terraria.Localization;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Cooldowns;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
+using Terraria.Localization;
 
 namespace CalamityInheritance.CICooldowns
 {

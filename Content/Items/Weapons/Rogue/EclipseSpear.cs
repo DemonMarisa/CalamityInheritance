@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class EclipseSpear: RogueWeapon , ILocalizedModType
+    public class EclipseSpear : RogueWeapon, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Generic.BaseWeaponCategory}.Rogue";
         public override void SetStaticDefaults()

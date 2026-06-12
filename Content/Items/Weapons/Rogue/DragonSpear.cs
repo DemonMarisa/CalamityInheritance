@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int steal =  Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            int steal = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
             if (player.Calamity().StealthStrikeAvailable())
             {
                 Main.projectile[steal].Calamity().stealthStrike = true;

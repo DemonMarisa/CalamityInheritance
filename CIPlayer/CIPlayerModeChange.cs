@@ -307,7 +307,7 @@ namespace CalamityInheritance.CIPlayer
             CalamityPlayer calPlayer = Player.Calamity();
             if (CIWorld.ironHeart)
             {
-                if(Player.lifeRegen > 0)
+                if (Player.lifeRegen > 0)
                 {
                     calPlayer.noLifeRegen = true;
                     Player.lifeRegen = 0;

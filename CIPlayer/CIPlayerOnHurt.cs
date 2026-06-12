@@ -9,7 +9,6 @@ using CalamityInheritance.Content.Items.Weapons.Legendary;
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Content.Projectiles.Typeless;
 using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityInheritance.NPCs.Boss.SCAL.Proj;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
@@ -22,7 +21,6 @@ using CalamityMod.CalPlayer;
 using CalamityMod.Cooldowns;
 using CalamityMod.Dusts;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Particles;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Projectiles.Typeless;
@@ -80,7 +78,7 @@ namespace CalamityInheritance.CIPlayer
             if (modPlayer1.LoreDevourer || PanelsLoreDevourer)
                 damageMult += 0.15;
 
-            if(AncientBloodPact && Main.rand.NextBool(4))
+            if (AncientBloodPact && Main.rand.NextBool(4))
             {
                 Player.AddBuff(BuffType<BloodyBoost>(), 600);
                 damageMult += 1.25;
@@ -90,7 +88,7 @@ namespace CalamityInheritance.CIPlayer
                 damageMult += 0.25;
             if (CIWorld.defiled)
             {
-                if(Main.rand.NextBool(4))
+                if (Main.rand.NextBool(4))
                     damageMult += 1;
             }
             modifiers.SourceDamage *= (float)damageMult;
@@ -106,7 +104,7 @@ namespace CalamityInheritance.CIPlayer
             }
             if (SForestBuff)
             {
-                damageReduce -= 0.15;    
+                damageReduce -= 0.15;
             }
             //大师石巨人在场，且玩家佩戴玉金喷射器+永恒套的搭配时，获得20%乘算伤害减免
             //我草泥马的石巨人
@@ -209,7 +207,7 @@ namespace CalamityInheritance.CIPlayer
         public void SilvaReborn(int TotalTimer)
         {
             // 在刚触发时的初始化，判断治疗玩家与添加buff
-            if(!Player.HasBuff(BuffType<SilvaRevival>()))
+            if (!Player.HasBuff(BuffType<SilvaRevival>()))
             {
                 Player.AddBuff(BuffType<SilvaRevival>(), TotalTimer);
                 SilvaRebornTimer = TotalTimer;
@@ -256,7 +254,7 @@ namespace CalamityInheritance.CIPlayer
             if (Triumph)
             {
                 if (!Main.zenithWorld)
-                calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
+                    calPlayer.contactDamageReduction += 0.15 * (1D - (npc.life / (double)npc.lifeMax));
                 if (Main.zenithWorld)
                 {
                     calPlayer.contactDamageReduction += 0.35;
@@ -268,7 +266,7 @@ namespace CalamityInheritance.CIPlayer
             {
                 //这个用于做准备，暂时无作用。
                 string cdID = CoreOfTheBloodGod ? CotbgTotem.ID : Totem.ID;
-                    //给效果
+                //给效果
                 calPlayer.contactDamageReduction += 0.15;
                 if (CotbgCounter <= 0)
                 {
@@ -289,7 +287,7 @@ namespace CalamityInheritance.CIPlayer
                     calPlayer.contactDamageReduction += 0.25;
             }
             bool ignoreDefenseDamage = DefenderPower || AncientAuricSet || (ShizukuMoon && moonClass == ShizukuMoonlight.ClassType.Magic);
-            npc.Calamity().canBreakPlayerDefense= !ignoreDefenseDamage;
+            npc.Calamity().canBreakPlayerDefense = !ignoreDefenseDamage;
 
         }
         #endregion
@@ -329,7 +327,7 @@ namespace CalamityInheritance.CIPlayer
                     NetMessage.SendData(MessageID.Dodge, -1, -1, null, Player.whoAmI, 1f);
                 return true;
             }
-            if((YharimAuricSet || AncientGodSlayerSet) && yharimArmorinvincibility > 0)
+            if ((YharimAuricSet || AncientGodSlayerSet) && yharimArmorinvincibility > 0)
                 return true;
 
             return base.FreeDodge(info);
@@ -380,7 +378,7 @@ namespace CalamityInheritance.CIPlayer
                 return;
             }
             if (PBGPower && Player.ActiveItem().type == ItemType<PBGLegendary>())
-                calPlayer.projectileDamageReduction += 0.25; 
+                calPlayer.projectileDamageReduction += 0.25;
             // TODO -- Evolution dodge isn't actually a dodge and you'll still get hit for 1.
             // This should probably be changed so that when the evolution reflects it gives you 1 frame of guaranteed free dodging everything.
             if (!CalamityProjectileSets.ShouldNotBeReflected[proj.type] && proj.active && !proj.friendly && proj.hostile && proj.damage > 0)
@@ -416,7 +414,7 @@ namespace CalamityInheritance.CIPlayer
                         modifiers.SetMaxDamage(1);
                         calPlayer.projTypeJustHitBy = proj.type;
 
-                        int cooldownDuration = (int)MathHelper.Lerp(900, 5400 , cooldownDurationScalar);
+                        int cooldownDuration = (int)MathHelper.Lerp(900, 5400, cooldownDurationScalar);
                         Player.AddCooldown(GlobalDodge.ID, cooldownDuration);
 
                         return;
@@ -449,7 +447,7 @@ namespace CalamityInheritance.CIPlayer
                     if (!otherTarget.active || otherTarget.friendly || otherTarget.dontTakeDamage)
                         continue;
                     int duration = CIFunction.SecondsToFrames(8) + hurtInfo.Damage / 3;
-          
+
                     otherTarget.AddBuff(BuffType<GodSlayerInferno>(), duration);
                     otherTarget.AddBuff(BuffType<BrimstoneFlames>(), duration);
                     otherTarget.AddBuff(BuffType<SulphuricPoisoning>(), duration);
@@ -468,7 +466,7 @@ namespace CalamityInheritance.CIPlayer
             if (AncientAeroSet && AeroFlightPower == 0)
             {
                 //如果穿着配套的翅膀则干掉无限飞行
-                if(AncientAeroWingsPower)
+                if (AncientAeroWingsPower)
                 {
                     AncientAeroWingsPower = false;
                     calPlayer.infiniteFlight = false;
@@ -494,7 +492,7 @@ namespace CalamityInheritance.CIPlayer
 
                 if (PolarisBoostCounter >= 20)
                 {
-                    PolarisPhase2= false;
+                    PolarisPhase2 = false;
                     PolarisPhase3 = true;
                 }
                 else if (PolarisBoostCounter >= 10)
@@ -539,7 +537,7 @@ namespace CalamityInheritance.CIPlayer
                 {
                     int deificStarDamage = (int)Player.GetBestClassDamage().ApplyTo(130);
 
-                    Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f, 
+                    Projectile star = CalamityUtils.ProjectileRain(source, Player.Center, 400f, 100f, 500f, 800f, 29f,
                     ProjectileID.StarVeilStar, deificStarDamage, 4f, Player.whoAmI);
 
                     if (star.whoAmI.WithinBounds(Main.maxProjectiles))
@@ -575,17 +573,17 @@ namespace CalamityInheritance.CIPlayer
                     Main.projectile[p].localNPCHitCooldown = 5;
                 }
             }
-            if(AncientAstralSet)
+            if (AncientAstralSet)
             {
-                if(calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.75)) //尝试恢复25%潜伏值
-                   calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
+                if (calPlayer.rogueStealth < (float)(calPlayer.rogueStealthMax * 0.75)) //尝试恢复25%潜伏值
+                    calPlayer.rogueStealth += (float)(calPlayer.rogueStealthMax * 0.25);
                 for (int n = 0; n < 9; n++) //生成一些落星，或者说我也不知道，反正是一些落星
                 {
                     int astralStarsDMG = (int)Player.GetBestClassDamage().ApplyTo(1000);
 
-                    Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f, 
+                    Projectile star = CalamityUtils.ProjectileRain(Player.GetSource_FromThis(), Player.Center, 400f, 100f, 500f, 800f, 29f,
                     ProjectileID.StarVeilStar, astralStarsDMG, 4f, Player.whoAmI);
-                    
+
                     if (star.whoAmI.WithinBounds(Main.maxProjectiles))
                     {
                         star.DamageType = GetInstance<RogueDamageClass>(); //:)
@@ -638,30 +636,30 @@ namespace CalamityInheritance.CIPlayer
             }
             if (AncientBloodflareSet)
             {
-                if(hurtInfo.Damage > 400 && AncientAuricHealCooldown == 0)
+                if (hurtInfo.Damage > 400 && AncientAuricHealCooldown == 0)
                 //旧血炎新增效果: 承受大于400点的伤害时，恢复本次承伤的1.5倍血量，取20秒内置CD
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 1.5f));
-                    AncientAuricHealCooldown =  1200;
+                    AncientAuricHealCooldown = 1200;
                 }
             }
-            if(AncientAuricSet)
+            if (AncientAuricSet)
             {
                 //魔君套处于天顶世界下，启用高伤保护的最低生命值只需要大于2即可
                 int DamageCap = Main.zenithWorld ? 2 : 200;
-                if(hurtInfo.Damage> DamageCap && AncientAuricHealCooldown == 0) 
+                if (hurtInfo.Damage > DamageCap && AncientAuricHealCooldown == 0)
                 //承受的伤害大于600点血时直接恢复承伤的2倍血量，这一效果会有5秒的内置CD
                 {
                     SoundEngine.PlaySound(CISoundMenu.YharimsSelfRepair, Player.Center, null);
                     Player.Heal((int)(hurtInfo.Damage * 5f));
                     //魔君套处于天顶世界下，高伤保护的CD只有一秒
-                    AncientAuricHealCooldown = Main.zenithWorld? 1 : 300;
+                    AncientAuricHealCooldown = Main.zenithWorld ? 1 : 300;
                 }
             }
             if (Player.ownedProjectileCounts[ProjectileType<DragonBow>()] != 0)
             {
-                foreach(Projectile p in Main.ActiveProjectiles)
+                foreach (Projectile p in Main.ActiveProjectiles)
                 {
                     if (p.type == ProjectileType<DragonBow>() && p.owner == Player.whoAmI)
                     {

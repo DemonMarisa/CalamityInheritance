@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using Microsoft.Xna.Framework;

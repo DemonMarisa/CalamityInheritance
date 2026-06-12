@@ -1,23 +1,23 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Rarity;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using System.Collections.Generic;
 using Terraria.Localization;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using Terraria.Audio;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Projectiles.HeldProj.Ranged;
-using LAP.Core.Utilities;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
     {
         public int OwnerIndex;
         public Player Owner => Main.player[OwnerIndex];
-        
+
         public const float AmmoNotConsumeChance = 0.9f;
 
         public override void SetStaticDefaults()

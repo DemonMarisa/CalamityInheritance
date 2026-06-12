@@ -1,19 +1,13 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.GameContent.Bestiary;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader.Utilities;
-using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.Content.Items.Placeables.Banner;
 using CalamityMod;
 using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Placeables.Banner;
-using MonoMod.Cil;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ModLoader.Utilities;
 
 namespace CalamityInheritance.NPCs.NorNPC
 {

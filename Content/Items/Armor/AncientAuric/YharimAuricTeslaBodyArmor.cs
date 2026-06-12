@@ -1,16 +1,7 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Rarity;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Armor.AuricTesla;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Items.Armor.AncientTarragon;
-using CalamityInheritance.Content.Items.Armor.AncientBloodflare;
-using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
-using CalamityInheritance.Content.Items.Armor.AncientSilva;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Armor.AncientAuric
 {
@@ -29,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientAuric
         {
             Item.ResearchUnlockCount = 1;
         }
-        
+
         public override void SetDefaults()
         {
             Item.width = 18;

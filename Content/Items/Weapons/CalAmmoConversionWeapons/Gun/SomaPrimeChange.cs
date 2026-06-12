@@ -1,14 +1,14 @@
-﻿using CalamityMod.Items.Weapons.Ranged;
+﻿using CalamityInheritance.System.Configs;
+using CalamityMod;
+using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Projectiles;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityMod.Projectiles;
-using CalamityMod;
-using Terraria.ID;
-using CalamityInheritance.System.Configs;
 
 namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
 {
@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CalAmmoConversionWeapons.Gun
 
                 type = ProjectileID.BulletHighVelocity;
                 damage += 4; // in 1.4, HVBs deal 11 damage and Musket Balls deal 7
-                
+
 
                 velocity.X += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);
                 velocity.Y += Main.rand.NextFloat(-XYInaccuracy, XYInaccuracy);

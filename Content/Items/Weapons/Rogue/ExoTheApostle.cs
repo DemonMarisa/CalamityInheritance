@@ -1,26 +1,26 @@
-﻿using CalamityMod.Items.Weapons.Rogue;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.Audio;
-using CalamityInheritance.Content.Projectiles.Ranged;
-using CalamityInheritance.Rarity;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.Content.Projectiles.ExoLore;
-using System.Collections.Generic;
-using Terraria.Localization;
+using CalamityInheritance.Content.Projectiles.Ranged;
+using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Rogue;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -45,7 +45,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.noMelee = true;
             Item.knockBack = 4f;
             Item.value = CIShopValue.RarityPriceCatalystViolet;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<SeraphPurple>() : RarityType<CatalystViolet>();
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.DamageType = GetInstance<RogueDamageClass>();
             Item.autoReuse = true;
@@ -132,7 +132,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
                 AddDecraftCondition(CalamityConditions.DownedExoMechs).
                 AddTile<DraedonsForge>().
                 Register();
-            
+
             CreateRecipe().
                 AddIngredient<DragonSpear>().
                 AddIngredient<StormfrontRazor>().

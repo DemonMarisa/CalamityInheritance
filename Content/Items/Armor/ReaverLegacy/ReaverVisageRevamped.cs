@@ -9,7 +9,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
     [AutoloadEquip(EquipType.Head)]
     public class ReaverVisageRevamped : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -54,7 +54,7 @@ namespace CalamityInheritance.Content.Items.Armor.ReaverLegacy
         public override void AddRecipes()
         {
             CreateRecipe()
-            .AddIngredient(ItemType<PerennialBar>(),10)
+            .AddIngredient(ItemType<PerennialBar>(), 10)
             .AddIngredient(ItemID.JungleSpores, 8)
             .AddIngredient(ItemType<EssenceofEleum>(), 2)
             .AddTile(TileID.MythrilAnvil)

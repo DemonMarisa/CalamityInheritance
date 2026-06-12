@@ -1,17 +1,17 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Projectiles.Melee;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class BloodyEdge : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -73,7 +73,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
                 DisableDecraft().
                 AddTile(TileID.DemonAltar).
                 Register();
-                
+
             CreateRecipe().
                 AddIngredient(ItemID.BloodButcherer).
                 AddIngredient(ItemID.Muramasa).

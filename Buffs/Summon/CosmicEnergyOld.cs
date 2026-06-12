@@ -1,8 +1,8 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Projectiles.Summon;
-using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {

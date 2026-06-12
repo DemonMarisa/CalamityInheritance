@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class EonBeamV4 : ModProjectile,ILocalizedModType 
+    public class EonBeamV4 : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override void SetStaticDefaults()
@@ -62,10 +62,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override bool PreDraw(ref Color lightColor)
         {
-			if (Projectile.timeLeft > 390)
-				return false;
+            if (Projectile.timeLeft > 390)
+                return false;
 
-			Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D tex = TextureAssets.Projectile[Projectile.type].Value;
             Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0f);
             return false;
         }

@@ -1,16 +1,16 @@
-﻿using Terraria.ID;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Utilities;
-using ProfanedCrucible = CalamityMod.Tiles.Furniture.CraftingStations.ProfanedCrucible;
 using DraedonsForge = CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge;
+using ProfanedCrucible = CalamityMod.Tiles.Furniture.CraftingStations.ProfanedCrucible;
 
 namespace CalamityInheritance.Tiles.Furniture.CraftingStations
 {
-    public class AcceleratorT3Tile: ModTile
+    public class AcceleratorT3Tile : ModTile
     {
         public override void SetStaticDefaults()
         {

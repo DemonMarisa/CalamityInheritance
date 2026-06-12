@@ -1,12 +1,10 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using LAP.Content.RecipeGroupAdd;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang
 {

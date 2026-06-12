@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.System.Configs;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
@@ -26,7 +25,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
             Item.width = 30;
             Item.height = 26;
             Item.DamageType = DamageClass.MeleeNoSpeed;
-            Item.damage =  90;
+            Item.damage = 90;
             Item.knockBack = 6f;
             Item.useTime = 20;
             Item.useAnimation = 20;

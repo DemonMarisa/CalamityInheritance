@@ -1,15 +1,12 @@
 ﻿using CalamityInheritance.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class VictideSpearWaterRing: ModProjectile, ILocalizedModType
+    public class VictideSpearWaterRing : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Melee";
         public override string Texture => $"{GenericProjRoute.ProjRoute}/Melee/VictideSwordProj";
@@ -37,7 +34,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             for (int i = 0; i < dCounts; i++)
             {
                 Vector2 dPosition = Vector2.Normalize(Projectile.velocity) * new Vector2(Projectile.width / 2f, Projectile.height) * 0.75f;
-                dPosition = dPosition.RotatedBy((i - (dCounts / 2 - 1)) * MathHelper.Pi/ (double)(float)dCounts, default) + Projectile.Center;
+                dPosition = dPosition.RotatedBy((i - (dCounts / 2 - 1)) * MathHelper.Pi / (double)(float)dCounts, default) + Projectile.Center;
                 Vector2 dVelocity = ((float)(Main.rand.NextDouble() * MathHelper.Pi) - MathHelper.PiOver2).ToRotationVector2() * Main.rand.Next(3, 8);
                 int d = Dust.NewDust(dPosition + dVelocity, 0, 0, DustID.DungeonWater, dVelocity.X * 2f, dVelocity.Y * 2f, 100, default, Projectile.scale);
                 Main.dust[d].noGravity = true;
@@ -58,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             //发起追踪前这个玩意无视墙体
             else Projectile.tileCollide = false;
             CIFunction.FramesChanger(Projectile, 4, 3);
-            Projectile.rotation += 0.08f ;
+            Projectile.rotation += 0.08f;
         }
 
         public override void OnKill(int timeLeft)

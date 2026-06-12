@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Summon
 {
-    public class SonYharonBuff: ModBuff
+    public class SonYharonBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {

@@ -1,18 +1,17 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using CalamityMod;
-using Terraria;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using System;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ClockBowLegacy: CIRanged, ILocalizedModType
+    public class ClockBowLegacy : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -31,11 +30,11 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.value = CIShopValue.RarityPricePurple;
             Item.rare = ItemRarityID.Purple;
             Item.UseSound = CISoundID.SoundBow;
-            Item.autoReuse = true; 
+            Item.autoReuse = true;
             Item.shootSpeed = 30f;
             Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = 40;
-            
+
         }
         public override void AddRecipes()
         {

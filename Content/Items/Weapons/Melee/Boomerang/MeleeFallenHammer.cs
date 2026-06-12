@@ -1,17 +1,16 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Utilities;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Melee;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
     public class MeleeFallenHammer : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Type.ShimmerEach<FallenPaladinsHammer>();

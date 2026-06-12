@@ -1,7 +1,6 @@
 using CalamityInheritance.Content.Projectiles.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Weapons.Ranged;
-using CalamityMod.Projectiles.Ranged;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class MeowthrowerLegacy : FlamethrowerSpecial, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -63,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
                     default:
                         break;
                 }
-                Projectile.NewProjectile(Item.GetSource_FromThis(), position, velocity, type , damage, knockback, player.whoAmI, 0.0f, 0.0f);
+                Projectile.NewProjectile(Item.GetSource_FromThis(), position, velocity, type, damage, knockback, player.whoAmI, 0.0f, 0.0f);
             }
             return false;
         }

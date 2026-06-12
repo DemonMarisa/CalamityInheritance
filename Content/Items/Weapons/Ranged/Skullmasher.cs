@@ -1,28 +1,27 @@
-﻿using Terraria.Audio;
-using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.System.Configs;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.StatDebuffs;
 using CalamityMod.Projectiles.Ranged;
 using CalamityMod.Sounds;
-using CalamityMod;
-using Terraria.ID;
-using Terraria.DataStructures;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.LoreItems;
-using CalamityMod.Items.LoreItems;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Rarity;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
-using CalamityInheritance.System.Configs;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
     public class Skullmasher : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -45,15 +44,15 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.shootSpeed = 12f;
             Item.useAmmo = 97;
             Item.rare = RarityType<MaliceChallengeDrop>();
-            
+
         }
 
         public override Vector2? HoldoutOffset()
         {
-           /* if (CIRespriteConfig.Instance.SkullmasherResprite)
-                return new Vector2(-15, 0);
-            else */
-                return new Vector2(-40, 0);
+            /* if (CIRespriteConfig.Instance.SkullmasherResprite)
+                 return new Vector2(-15, 0);
+             else */
+            return new Vector2(-40, 0);
         }
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {

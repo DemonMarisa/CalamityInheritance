@@ -69,7 +69,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             }
             return false;
         }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit , int damage)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damage)
         {
             if (Projectile.owner == Main.myPlayer)
             {

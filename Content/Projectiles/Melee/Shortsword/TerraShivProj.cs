@@ -1,12 +1,11 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod.Projectiles.BaseProjectiles;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Projectiles.BaseProjectiles;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -20,7 +19,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
         }
         public override void SetDefaults()
         {
-            Projectile.Size = Main.zenithWorld? new Vector2(210) :new Vector2(21);
+            Projectile.Size = Main.zenithWorld ? new Vector2(210) : new Vector2(21);
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;

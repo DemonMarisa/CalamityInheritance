@@ -1,21 +1,21 @@
-﻿using CalamityMod.Items.Armor.Bloodflare;
+﻿using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Content.Items.Armor.Silva;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityInheritance.Content.Items.Armor.Silva;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Legs)]
     public class AuricTeslaCuissesold : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

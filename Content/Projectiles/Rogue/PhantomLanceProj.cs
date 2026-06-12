@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Weapons;
 using CalamityInheritance.Content.Projectiles.Magic;
-using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

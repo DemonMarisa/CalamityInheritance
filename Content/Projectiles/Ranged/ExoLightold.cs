@@ -1,19 +1,19 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using LAP.Assets.TextureRegister;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+using CalamityMod.Buffs.DamageOverTime;
+using LAP.Assets.TextureRegister;
+using LAP.Core.SystemsLoader;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Sounds.Custom;
-using LAP.Core.Utilities;
-using LAP.Core.SystemsLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

@@ -1,13 +1,10 @@
 ﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.CIPlayer.Dash;
-using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.CalPlayer;
 using CalamityMod.Items.Accessories;
-using CalamityMod.Items.LoreItems;
 using LAP.Core.SystemsLoader;
 using System.Collections.Generic;
 using Terraria;
@@ -30,11 +27,11 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CalamityInheritanceKeybinds.AegisHotKey);
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:48,
-            itemHeight:42,
+            itemWidth: 48,
+            itemHeight: 42,
             itemRare: RarityType<BlueGreen>(),
-            itemValue:CIShopValue.RarityPriceBlueGreen,
-            itemDefense:18
+            itemValue: CIShopValue.RarityPriceBlueGreen,
+            itemDefense: 18
         );
         public override void ExSSD()
         {
@@ -56,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Accessories.DashAccessories
 
             player.noKnockback = true;
             player.fireWalk = true;
-            
+
             player.statLifeMax2 += 40;
             player.lifeRegen += 4;
         }

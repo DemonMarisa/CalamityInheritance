@@ -3,9 +3,7 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Items.Armor.Silva;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
 using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
@@ -15,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
     [AutoloadEquip(EquipType.Head)]
     public class AncientSilvaHelm : CIArmor, ILocalizedModType
     {
-         
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -28,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             Item.value = CIShopValue.RarityPriceDeepBlue;
             Item.defense = 20; //100
         }
-        
+
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientSilvaArmor>() && legs.type == ItemType<AncientSilvaLeggings>();
 
         public override void UpdateArmorSet(Player player)
@@ -46,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientSilva
             player.lifeRegenTime = 2000;
             player.setBonus = this.GetLocalizedValue("SetBonus");
         }
-        
+
         public override void UpdateEquip(Player player)
         {
             player.maxMinions += 3;

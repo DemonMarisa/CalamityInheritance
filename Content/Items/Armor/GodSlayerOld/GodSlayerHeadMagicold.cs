@@ -1,13 +1,12 @@
-﻿using CalamityMod.CalPlayer.Dashes;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
-using System.Collections.Generic;
 
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {

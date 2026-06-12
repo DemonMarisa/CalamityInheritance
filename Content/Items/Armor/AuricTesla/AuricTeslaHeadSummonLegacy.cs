@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Buffs.Summon;
-using CalamityInheritance.CIPlayer;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
@@ -11,7 +10,6 @@ using CalamityInheritance.System.Configs;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.Summon;
-using CalamityMod.CalPlayer.Dashes;
 using CalamityMod.Items.Armor.Bloodflare;
 using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
@@ -29,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadSummonLegacy : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

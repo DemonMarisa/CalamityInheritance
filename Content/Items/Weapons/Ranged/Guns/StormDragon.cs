@@ -1,6 +1,5 @@
 ﻿using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Weapons.Ranged;
 using CalamityMod.Rarities;
 using LAP.Core.Enums;
 using LAP.Core.Utilities;

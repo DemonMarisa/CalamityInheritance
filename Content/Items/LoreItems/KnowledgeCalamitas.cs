@@ -1,16 +1,12 @@
-﻿using CalamityInheritance.Utilities;
-using CalamityMod.Items.Placeables.Furniture.Trophies;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityMod.Items.LoreItems;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.Items.Placeables.Relic;
+using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems
 {
-    
+
     public class KnowledgeCalamitas : LoreItem, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Lores";
@@ -30,7 +26,7 @@ namespace CalamityInheritance.Content.Items.LoreItems
         {
             if (Item.favorited)
             {
-                player.CIMod(). SCalLore= true;
+                player.CIMod().SCalLore = true;
             }
         }
         public override void AddRecipes()

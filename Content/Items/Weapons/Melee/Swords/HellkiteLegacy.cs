@@ -1,20 +1,14 @@
 ﻿using CalamityMod;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
-{ 
+{
     public class HellkiteLegacy : GeneralWeaponClass
     {
         public override WeaponDamageType UseDamageClass => WeaponDamageType.Melee;
@@ -93,7 +87,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         }
 
         public override void AddRecipes()
-        {            
+        {
             CreateRecipe().
             AddIngredient(ItemID.FieryGreatsword).
             AddIngredient<PerennialBar>(8).

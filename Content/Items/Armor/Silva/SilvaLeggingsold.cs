@@ -1,16 +1,16 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Terraria;
 using Terraria.ModLoader;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Placeables.Abyss;
 
 namespace CalamityInheritance.Content.Items.Armor.Silva
 {
     [AutoloadEquip(EquipType.Legs)]
     public class SilvaLeggingsold : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

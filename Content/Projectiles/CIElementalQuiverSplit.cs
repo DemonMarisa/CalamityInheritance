@@ -43,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles
             {
                 CanSplit = false;
                 return false;
-            }   
+            }
 
             if (projectile.DamageType != DamageClass.Ranged)
                 return false;

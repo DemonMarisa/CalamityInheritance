@@ -2,7 +2,6 @@ using CalamityInheritance.Content.Items.Weapons.Typeless.ShizukuItem;
 using CalamityInheritance.Sounds.Custom;
 using CalamityInheritance.Texture;
 using CalamityInheritance.Utilities;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,7 +24,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.Shizuku.SwordArk
         public Player Owner => Main.player[Projectile.owner];
         public override string Texture => "CalamityInheritance/Content/Items/Weapons/Typeless/ShizukuItem/ShizukuSword";
         public int StarSpawnCD = 0;
-        public const float Radius = 210f; 
+        public const float Radius = 210f;
         public ref float GlowingFadingTimer => ref Projectile.CalamityInheritance().ProjNewAI[1];
         public override void SetStaticDefaults()
         {

@@ -1,19 +1,16 @@
-﻿using CalamityMod.NPCs;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using CalamityMod.Items.LoreItems;
-using CalamityInheritance.Content.Items.LoreItems;
+﻿using CalamityInheritance.Content.Items.LoreItems;
 using CalamityInheritance.Rarity;
 using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework;
+using CalamityMod.NPCs;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class GrandDad : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

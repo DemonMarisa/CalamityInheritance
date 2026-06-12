@@ -1,9 +1,9 @@
-﻿using CalamityMod.Projectiles.Summon.Umbrella;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.Summon.Umbrella;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Projectiles.Summon.Umbrella
 {

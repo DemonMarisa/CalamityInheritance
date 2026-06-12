@@ -1,8 +1,8 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {

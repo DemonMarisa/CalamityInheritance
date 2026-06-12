@@ -1,9 +1,9 @@
 ﻿using CalamityMod.Particles;
-using Microsoft.Xna.Framework.Graphics;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Particles
 {

@@ -1,13 +1,13 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.CalPlayer;
 using CalamityMod.Particles;
-using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -119,7 +119,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             {
 
                 Projectile.velocity = Vector2.Zero;
-  
+
                 int points = 2;
                 float radians = MathHelper.TwoPi / points;
                 Vector2 spinningPoint = Vector2.Normalize(new Vector2(-1f, -1f));

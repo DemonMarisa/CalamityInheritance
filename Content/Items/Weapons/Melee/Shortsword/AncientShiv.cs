@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Projectiles.HeldProj.Magic;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using Microsoft.Xna.Framework;
 using Terraria;

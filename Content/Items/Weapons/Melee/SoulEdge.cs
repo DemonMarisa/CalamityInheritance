@@ -1,24 +1,21 @@
 ﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Items.Weapons.Melee;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
-using CalamityInheritance.Rarity;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class SoulEdge : CIMelee, ILocalizedModType
     {
-        
-        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f};
+
+        public static readonly SoundStyle ProjectileDeathSound = SoundID.NPCDeath39 with { Volume = 0.5f };
 
         public override void SetStaticDefaults()
         {

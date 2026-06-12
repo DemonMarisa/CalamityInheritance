@@ -1,16 +1,14 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
@@ -61,7 +59,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             }
 
             // Returns after some number of frames in the air
-            int timeMult =  1;
+            int timeMult = 1;
             if (Projectile.timeLeft < Lifetime * timeMult - ReboundTime * timeMult)
                 Projectile.ai[0] = 1f;
 
@@ -150,7 +148,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<GlacialState>(), 180);
             target.AddBuff(BuffType<BrimstoneFlames>(), 180);
             target.AddBuff(BuffType<HolyFlames>(), 180);
             target.AddBuff(BuffType<Plague>(), 180);

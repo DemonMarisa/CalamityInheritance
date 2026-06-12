@@ -1,10 +1,9 @@
-﻿using CalamityMod.Projectiles.Rogue;
-using CalamityMod.Projectiles;
-using CalamityMod;
+﻿using CalamityMod;
+using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged.Ammo

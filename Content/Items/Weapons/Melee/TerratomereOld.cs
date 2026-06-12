@@ -1,20 +1,18 @@
-﻿using CalamityMod.Items.Weapons.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Materials;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.Melee;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class TerratomereOld : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -76,7 +74,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffType<GlacialState>(), 30);
+
 
             if (!target.canGhostHeal || player.moonLeech)
                 return;
@@ -88,7 +86,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
         public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
         {
-            target.AddBuff(BuffType<GlacialState>(), 30);
+
 
             if (player.moonLeech)
                 return;

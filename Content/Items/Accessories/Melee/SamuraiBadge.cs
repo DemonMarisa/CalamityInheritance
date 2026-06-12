@@ -1,11 +1,11 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.LoreItems;
+using CalamityInheritance.System.Configs;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Content.Items.LoreItems;
 
 namespace CalamityInheritance.Content.Items.Accessories.Melee
 {
@@ -16,10 +16,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Melee
         internal const float MaxDistance = 600f;
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:30,
-            itemHeight:30,
-            itemRare:ItemRarityID.Purple,
-            itemValue:CIShopValue.RarityPricePurple
+            itemWidth: 30,
+            itemHeight: 30,
+            itemRare: ItemRarityID.Purple,
+            itemValue: CIShopValue.RarityPricePurple
         );
         public override void ExSSD()
         {

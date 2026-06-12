@@ -3,7 +3,6 @@ using CalamityInheritance.Rarity;
 using CalamityInheritance.Rarity.Special;
 using CalamityInheritance.System.Configs;
 using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -12,9 +11,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class ProfanedLancher: CIRanged, ILocalizedModType
+    public class ProfanedLancher : CIRanged, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -31,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<IchikaBlack>() : RarityType<BlueGreen>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<IchikaBlack>() : RarityType<BlueGreen>();
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.autoReuse = true;
             Item.UseSound = CISoundID.SoundGrenadeLanucher;
@@ -47,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
         {
             if (Main.zenithWorld)
             {
-                for (int i = 0; i < 12 ; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     Vector2 spreading = new Vector2(velocity.X, 0).RotatedByRandom(180f);
                     Projectile.NewProjectile(source, position, spreading, ProjectileType<ProfanedNuke>(), damage, knockback);
@@ -63,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged
             CreateRecipe().
                 AddIngredient<UnholyEssence>(12).
                 AddIngredient<DivineGeode>(6).
-                AddTile<CosmicAnvil>().
+                AddTile(TileID.LunarCraftingStation).
                 Register();
         }
     }

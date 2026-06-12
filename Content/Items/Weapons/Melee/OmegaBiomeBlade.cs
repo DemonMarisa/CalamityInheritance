@@ -1,4 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class OmegaBiomeBlade : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -1,21 +1,19 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Weapons.Melee;
-using CalamityMod.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
+using CalamityInheritance.Sounds.Custom;
+using CalamityInheritance.Utilities;
 using CalamityMod;
-using System;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Melee;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Sounds.Custom;
-using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
-    public class MeleeGalaxySmasherProj: ModProjectile, ILocalizedModType
+    public class MeleeGalaxySmasherProj : ModProjectile, ILocalizedModType
     {
         public override string Texture => GetInstance<MeleeGalaxySmasher>().Texture;
         public new string LocalizationCategory => "Content.Projectiles.Melee";
@@ -125,7 +123,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 float acceleration = 3.2f;
                 Player owner = Main.player[Projectile.owner];
                 CIFunction.BoomerangReturningAI(owner, Projectile, returnSpeed, acceleration);
-                
+
                 // Delete the projectile if it touches its owner.
                 if (Main.myPlayer == Projectile.owner)
                     if (Projectile.Hitbox.Intersects(owner.Hitbox))

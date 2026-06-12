@@ -1,10 +1,7 @@
 ﻿using CalamityInheritance.Tiles.Vanity;
-using CalamityInheritance.Utilities;
 using CalamityInheritance.World;
 using CalamityMod;
 using CalamityMod.Rarities;
-using CalamityMod.World;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

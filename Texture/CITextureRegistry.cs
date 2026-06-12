@@ -16,7 +16,7 @@ namespace CalamityInheritance.Texture
         public static Asset<Texture2D> ShizukuSwordGlow { get; private set; }
         public static Asset<Texture2D> ShizukuSwordTrail { get; private set; }
         public static Asset<Texture2D> ShizukuArkTrail { get; private set; }
-        public static Asset<Texture2D> BaseTrail{ get; private set; }
+        public static Asset<Texture2D> BaseTrail { get; private set; }
         public static Asset<Texture2D> ShizukuBG { get; private set; }
         public static Asset<Texture2D> ShizukuStar { get; private set; }
         public static Tex2DWithPath StarTrail { get; private set; }

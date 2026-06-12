@@ -12,7 +12,7 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
     [AutoloadEquip(EquipType.Head)]
     public class AncientTarragonHelm : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -25,10 +25,10 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             Item.value = CIShopValue.RarityPriceBlueGreen;
             Item.defense = 20; //90
         }
-        
+
 
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<AncientTarragonBreastplate>() && legs.type == ItemType<AncientTarragonLeggings>();
-        
+
         public override void ArmorSetShadows(Player player)
         {
             player.armorEffectDrawOutlines = true;
@@ -44,18 +44,18 @@ namespace CalamityInheritance.Content.Items.Armor.AncientTarragon
             calPlayer.WearingPostMLSummonerSet = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
             calPlayer.defenseDamageRatio *= 0.45f; //防损减免
-            if(player.statLife <= player.statLifeMax2 * 0.5f)
+            if (player.statLife <= player.statLifeMax2 * 0.5f)
             {
                 int getDef = player.GetCurrentDefense();
                 int buffDef = (int)(getDef * 0.2f);
                 player.statDefense += buffDef;
                 player.endurance += 0.2f;
             }
-            calPlayer.healingPotionMultiplier += 0.45f; 
+            calPlayer.healingPotionMultiplier += 0.45f;
             player.crimsonRegen = true;
             player.lifeRegen += 8; //+4HP/s
         }
-        
+
         public override void UpdateEquip(Player player)
         {
             player.endurance += 0.05f;

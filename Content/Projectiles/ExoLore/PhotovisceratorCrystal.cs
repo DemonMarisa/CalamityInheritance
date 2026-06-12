@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityInheritance.Content.Items;
+using CalamityInheritance.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityInheritance.Content.Items;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -44,7 +43,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 + MathHelper.ToRadians(5f);
             Projectile.Opacity = Utils.GetLerpValue(180f, 174f, Projectile.timeLeft, true);
 
-            if(Projectile.timeLeft > Projectile.MaxUpdates * 160)
+            if (Projectile.timeLeft > Projectile.MaxUpdates * 160)
                 Projectile.tileCollide = false;
             else
                 Projectile.tileCollide = true;

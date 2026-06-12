@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue.Boomerang;
 using CalamityInheritance.Rarity;
 using CalamityMod;
-using CalamityMod.Projectiles.Rogue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

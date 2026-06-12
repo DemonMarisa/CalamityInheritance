@@ -1,11 +1,11 @@
-﻿using CalamityMod;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Utilities;
+using CalamityMod;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.ID;
-using CalamityInheritance.Utilities;
-using System.IO;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue
 {

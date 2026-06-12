@@ -10,7 +10,7 @@ namespace CalamityInheritance.CIPlayer
         public bool currentBloodMoon = false;
         public void CISpawnItem()
         {
-            if(!CIDownedBossSystem.DownedBloodMoon)
+            if (!CIDownedBossSystem.DownedBloodMoon)
             {
                 if (CIDownedBossSystem.DownedBloodMoon)
                     return;

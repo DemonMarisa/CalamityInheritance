@@ -1,12 +1,12 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityMod;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

@@ -1,17 +1,7 @@
 ﻿using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Items.Materials;
-using CalamityMod.Projectiles.Rogue;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
@@ -36,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
         public override void AddRecipes()
         {
             CreateRecipe().
-                AddIngredient<MeldConstruct>(10).
+                AddIngredient<MeldBlob>(10).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }

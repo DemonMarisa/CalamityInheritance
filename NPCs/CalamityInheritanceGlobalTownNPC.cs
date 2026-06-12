@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Ammo.FiniteUse;
-using CalamityInheritance.Content.Items.Placeables.MusicBox;
 using CalamityInheritance.Content.Items.Weapons.Melee.Flails;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 using CalamityInheritance.Content.Items.Weapons.Ranged.Cannos;

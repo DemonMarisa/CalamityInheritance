@@ -1,16 +1,16 @@
-﻿using System;
+﻿using CalamityInheritance.Content.Items.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityInheritance.Utilities;
 using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Projectiles.BaseProjectiles;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Utilities;
-using LAP.Core.Utilities;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -72,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 
         public static void GiveImmue(Player player, int immuneCD, int wantedImmuneTime)
         {
-            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo ) && player.CIMod().DNAImmnueActive == 0)
+            if ((player.CIMod().LoreExo || player.CIMod().PanelsLoreExo) && player.CIMod().DNAImmnueActive == 0)
             {
                 player.CIMod().DNAImmnue = wantedImmuneTime;
                 player.CIMod().DNAImmnueActive = immuneCD;

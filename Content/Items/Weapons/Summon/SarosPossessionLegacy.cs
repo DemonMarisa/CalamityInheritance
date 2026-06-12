@@ -1,14 +1,14 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL;
+using CalamityInheritance.Rarity;
+using CalamityMod;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.Summon.SarosPossessionL;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

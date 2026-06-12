@@ -1,17 +1,14 @@
-﻿using Terraria.DataStructures;
-using CalamityMod.Projectiles.Rogue;
+﻿using CalamityInheritance.Content.Projectiles.Rogue;
+using CalamityInheritance.Rarity;
+using CalamityMod;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using CalamityInheritance.Content.Projectiles.Rogue;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Weapons.Rogue
 {
-    public class SpearofDestinyLegacy :CIRogueClass
+    public class SpearofDestinyLegacy : CIRogueClass
     {
         public override void SetStaticDefaults()
         {
@@ -30,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.autoReuse = true;
             Item.height = 52;
-            Item.rare = RarityType<MaliceChallengeDrop>();   
+            Item.rare = RarityType<MaliceChallengeDrop>();
             Item.shoot = ProjectileType<SpearofDestinyProjLegacy>();
             Item.shootSpeed = 20f;
             Item.value = CIShopValue.RarityMaliceDrop;

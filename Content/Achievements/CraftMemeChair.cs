@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using CalamityInheritance.Content.Items.Weapons.Rogue;
+using System.Collections.Generic;
 using Terraria.Achievements;
 using Terraria.ModLoader;
 

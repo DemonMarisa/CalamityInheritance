@@ -1,10 +1,8 @@
-﻿using CalamityInheritance.Content.Items.Accessories;
-using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Magic;
 using CalamityInheritance.Content.Items.Weapons.Melee;
 using CalamityInheritance.Content.Items.Weapons.Melee.Boomerang;
 using CalamityInheritance.Content.Items.Weapons.Rogue.Boomerang;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Items.LoreItems;
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
@@ -20,7 +18,7 @@ namespace CalamityInheritance
         public static string WoodSwordRecipeGroup;
         // public static string AnyEvilFlask;
         public static string AnyTerratomere;
-        public static string AnyPhantasmalFury; 
+        public static string AnyPhantasmalFury;
         public static string LoreSentinal;
         public static string AnyRottenMatter;
         public static string AnyEradicator;

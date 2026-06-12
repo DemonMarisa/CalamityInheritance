@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
-using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ID;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod;
-using Terraria.GameContent;
 using LAP.Content.Configs;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 {
@@ -64,7 +59,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
 
             Player target = Main.player[NPC.target];
 
-            if(NPC.ai[3] == 0)
+            if (NPC.ai[3] == 0)
             {
                 NPC.velocity = new Vector2(2f, 0).RotatedByRandom(MathHelper.TwoPi);
                 NPC.ai[3]++;
@@ -82,7 +77,7 @@ namespace CalamityInheritance.NPCs.Boss.Yharon.Proj
             Vector2 distanceFromDestination = target.Center - NPC.Center;
 
             NPC.ai[0] = 0.08f;
-            if(attackTimer < fireBallTimer3)
+            if (attackTimer < fireBallTimer3)
             {
                 CIFunction.SmoothMovement(NPC, 0f, distanceFromDestination, 8f, 0.18f, true);
             }

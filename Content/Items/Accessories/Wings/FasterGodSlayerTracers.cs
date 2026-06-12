@@ -1,6 +1,10 @@
-﻿using CalamityMod.Items;
+﻿using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using CalamityInheritance.Rarity;
+using CalamityMod;
 using CalamityMod.CalPlayer;
-using CalamityMod.Rarities;
+using CalamityMod.Items.Accessories.Wings;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,28 +14,19 @@ using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
-using CalamityMod.Items.Accessories.Wings;
-using CalamityMod.Items.Materials;
-using CalamityInheritance.Content.Items.Armor.AncientGodSlayer;
-using CalamityInheritance.System.Configs;
-using CalamityMod.Items.Armor.GodSlayer;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.Rarity;
 
 namespace CalamityInheritance.Content.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class FasterGodSlayerTracers: CIAccessories, ILocalizedModType
+    public class FasterGodSlayerTracers : CIAccessories, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Items.Accessories.Wings";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:36,
-            itemHeight:32,
+            itemWidth: 36,
+            itemHeight: 32,
             itemRare: RarityType<DeepBlue>(),
-            itemValue:CIShopValue.RarityPriceDeepBlue
+            itemValue: CIShopValue.RarityPriceDeepBlue
         );
         public override void ExSSD()
         {

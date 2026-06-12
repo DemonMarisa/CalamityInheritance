@@ -1,5 +1,4 @@
 ﻿using CalamityMod;
-using CalamityMod.Items;
 using CalamityMod.Projectiles.Typeless;
 using Microsoft.Xna.Framework;
 using Terraria;

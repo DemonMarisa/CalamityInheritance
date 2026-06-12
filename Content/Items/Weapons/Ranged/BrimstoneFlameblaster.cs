@@ -1,14 +1,14 @@
-﻿using Terraria.GameContent.Creative;
+﻿using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.NPCs.Boss.CalamitasClone.Projectiles;
-using Terraria.DataStructures;
 
 namespace CalamityInheritance.Content.Items.Weapons.Ranged
 {
-    public class BrimstoneFlameblaster : FlamethrowerSpecial, ILocalizedModType 
+    public class BrimstoneFlameblaster : FlamethrowerSpecial, ILocalizedModType
     {
         public override void SetStaticDefaults()
         {

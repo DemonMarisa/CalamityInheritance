@@ -30,14 +30,14 @@ namespace CalamityInheritance.ExtraTextures.Metaballs
         }
         public override Texture2D BgTexture => CITextureRegistry.ShizukuBG.Value;
         public static List<ShizukuStarParticle> Particles { get; private set; } = new();
-        public override Color EdgeColor => Color.Lerp(Color.White,Color.Aqua,1f);
+        public override Color EdgeColor => Color.Lerp(Color.White, Color.Aqua, 1f);
         public override bool Active()
         {
             return Particles.Count != 0;
         }
         public override void Update()
         {
-            for(int i = 0;i<Particles.Count;i++)
+            for (int i = 0; i < Particles.Count; i++)
                 Particles[i].Update();
             Particles.RemoveAll(p => p.Size <= 2f);
         }

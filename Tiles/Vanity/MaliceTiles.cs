@@ -1,18 +1,18 @@
-﻿using CalamityMod.Dusts;
+﻿using CalamityInheritance.Content.Items.Placeables.Vanity;
+using CalamityInheritance.Utilities;
+using CalamityMod.Dusts;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent.ObjectInteractions;
+using Terraria.Enums;
 using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria;
-using Microsoft.Xna.Framework;
-using Terraria.Enums;
-using CalamityInheritance.Content.Items.Placeables.Vanity;
-using CalamityInheritance.Utilities;
 
 namespace CalamityInheritance.Tiles.Vanity
 {

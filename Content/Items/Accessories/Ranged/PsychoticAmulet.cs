@@ -1,10 +1,8 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod;
 
 namespace CalamityInheritance.Content.Items.Accessories.Ranged
 {
@@ -13,10 +11,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Ranged
         public new string LocalizationCategory => "Content.Items.Accessories.Ranged";
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:26,
-            itemHeight:26,
-            itemRare:ItemRarityID.Pink,
-            itemValue:CIShopValue.RarityPricePink
+            itemWidth: 26,
+            itemHeight: 26,
+            itemRare: ItemRarityID.Pink,
+            itemValue: CIShopValue.RarityPricePink
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

@@ -103,10 +103,10 @@ namespace CalamityInheritance.Sounds.Custom
         private static readonly SoundStyle R99ShieldCracked2 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked2");
         private static readonly SoundStyle R99ShieldCracked3 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked3");
         private static readonly SoundStyle R99ShieldCracked4 = new($"{SoundRoute}" + "/" + "R99/R99ShieldCracked4");
-        private static readonly SoundStyle R99FleshHit1 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit1");
-        private static readonly SoundStyle R99FleshHit2 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit2");
-        private static readonly SoundStyle R99FleshHit3 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit3");
-        private static readonly SoundStyle R99FleshHit4 = new($"{SoundRoute}" + "/" +"R99/R99FleshHit4");
+        private static readonly SoundStyle R99FleshHit1 = new($"{SoundRoute}" + "/" + "R99/R99FleshHit1");
+        private static readonly SoundStyle R99FleshHit2 = new($"{SoundRoute}" + "/" + "R99/R99FleshHit2");
+        private static readonly SoundStyle R99FleshHit3 = new($"{SoundRoute}" + "/" + "R99/R99FleshHit3");
+        private static readonly SoundStyle R99FleshHit4 = new($"{SoundRoute}" + "/" + "R99/R99FleshHit4");
         private static readonly SoundStyle R99Fired1 = new($"{SoundRoute}/R99/R99Fired1");
         private static readonly SoundStyle R99Fired2 = new($"{SoundRoute}/R99/R99Fired2");
         private static readonly SoundStyle R99Fired3 = new($"{SoundRoute}/R99/R99Fired3");
@@ -137,7 +137,7 @@ namespace CalamityInheritance.Sounds.Custom
             ];
         #endregion
         public static readonly SoundStyle Pipes = new($"{SoundRoute}/Pipes");
-        public static readonly SoundStyle SilvaActivation = new ($"{ASSoundRoute}/SilvaActivation");
+        public static readonly SoundStyle SilvaActivation = new($"{ASSoundRoute}/SilvaActivation");
         public static readonly SoundStyle SilvaDispel = new($"{ASSoundRoute}/SilvaDispel");
         public static readonly SoundStyle PlasmaHeavyShotSound = new("CalamityInheritance/Sounds/Item/PlasmaRifleMain");
         public static readonly SoundStyle PlasmaFastShotSound = new("CalamityInheritance/Sounds/Item/PlasmaRifleAlt");

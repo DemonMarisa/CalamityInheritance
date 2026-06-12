@@ -1,20 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod;
+using CalamityMod.Particles;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using CalamityMod;
-using CalamityMod.Projectiles;
-using CalamityMod.Particles;
-using CalamityMod.Projectiles.Ranged;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
     public class ChargedBlastLegacy : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Ranged";
-        public override string Texture => $"{GenericProjRoute.LaserProjRoute}"; 
+        public override string Texture => $"{GenericProjRoute.LaserProjRoute}";
 
         public Color baseColor = Color.White;
         public bool outOfTime = false;

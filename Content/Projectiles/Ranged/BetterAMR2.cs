@@ -1,18 +1,6 @@
-﻿using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Projectiles.Ranged;
-using CalamityMod.Projectiles;
-using CalamityMod;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {

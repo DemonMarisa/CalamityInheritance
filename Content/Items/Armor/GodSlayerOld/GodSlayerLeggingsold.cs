@@ -1,14 +1,14 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ModLoader;
 using Terraria;
-using CalamityInheritance.Rarity;
+using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Items.Armor.GodSlayerOld
 {
     [AutoloadEquip(EquipType.Legs)]
     public class GodSlayerLeggingsold : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

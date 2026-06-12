@@ -1,22 +1,22 @@
-﻿using CalamityMod.CalPlayer;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Summon;
+using CalamityInheritance.Rarity;
+using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.CalPlayer;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
-using CalamityMod;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Rarity;
-using Microsoft.Xna.Framework;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Content.Projectiles.Summon;
-using Microsoft.Xna.Framework.Graphics;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
 using Terraria.Localization;
-using CalamityInheritance.Tiles.Furniture.CraftingStations;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {

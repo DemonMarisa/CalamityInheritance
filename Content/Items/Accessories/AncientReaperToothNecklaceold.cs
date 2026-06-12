@@ -1,9 +1,9 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Rarity;
+﻿using CalamityInheritance.Rarity;
 using CalamityInheritance.Utilities;
 using CalamityMod.Items.Accessories;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -11,10 +11,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:44,
-            itemHeight:50,
+            itemWidth: 44,
+            itemHeight: 50,
             itemRare: RarityType<AbsoluteGreen>(),
-            itemValue:CIShopValue.RarityPriceAbsoluteGreen
+            itemValue: CIShopValue.RarityPriceAbsoluteGreen
         );
 
         public override void ExSSD() => Type.ShimmerEach<ReaperToothNecklace>();

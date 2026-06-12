@@ -1,11 +1,9 @@
-﻿using System;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Ranged;
+﻿using CalamityInheritance.Content.Items.Weapons.Ranged;
 using CalamityInheritance.Utilities;
 using CalamityMod;
-using CalamityMod.Items.Weapons.Summon;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -14,7 +12,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Ranged
 {
-    public class DragonBow: ModProjectile
+    public class DragonBow : ModProjectile
     {
         public override LocalizedText DisplayName => CalamityUtils.GetItemName<DrataliornusLegacy>();
         public override string Texture => GetInstance<DrataliornusLegacy>().Texture;
@@ -126,22 +124,22 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
                         if (Main.rand.NextBool(2))//当允许追踪时
                         {
                             ai0 = 2f;
-                            if(Main.rand.NextBool(3))
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, (int)(damage * 0.95f), knockBack, Projectile.owner, ai0, 0f);
-                            if(usPlayer.ElemQuiver) //装备元素箭袋时必定多发送一个追踪弹幕
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.95f), knockBack, Projectile.owner, ai0, 0f);
-                            damage *= (int)1.4f; 
+                            if (Main.rand.NextBool(3))
+                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, (int)(damage * 0.95f), knockBack, Projectile.owner, ai0, 0f);
+                            if (usPlayer.ElemQuiver) //装备元素箭袋时必定多发送一个追踪弹幕
+                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.95f), knockBack, Projectile.owner, ai0, 0f);
+                            damage *= (int)1.4f;
                             Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, ai0, 0f);
                         }
                         else
                         {
                             ai0 = 1f;
-                            if(Main.rand.NextBool(4))
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*2.0f, type, (int)(damage * 0.65f), knockBack, Projectile.owner, ai0, 0f);
-                            if(usPlayer.ElemQuiver) //装备元素箭袋时必定多发送一个非追踪弹幕
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f);
-                            damage *= (int)2.10f; 
-                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed*1.2f, type, damage, knockBack, Projectile.owner, ai0, 0f);
+                            if (Main.rand.NextBool(4))
+                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 2.0f, type, (int)(damage * 0.65f), knockBack, Projectile.owner, ai0, 0f);
+                            if (usPlayer.ElemQuiver) //装备元素箭袋时必定多发送一个非追踪弹幕
+                                Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.5f, type, (int)(damage * 0.75f), knockBack, Projectile.owner, ai0, 0f);
+                            damage *= (int)2.10f;
+                            Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed * 1.2f, type, damage, knockBack, Projectile.owner, ai0, 0f);
                         }
                     }
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), position, speed, type, damage, knockBack, Projectile.owner, 0f, 0f);

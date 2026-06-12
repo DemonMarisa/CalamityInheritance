@@ -1,18 +1,18 @@
-﻿using CalamityMod.CustomRecipes;
-using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.DraedonsArsenal;
+using CalamityInheritance.Rarity;
+using CalamityMod.CustomRecipes;
 using CalamityMod.Items;
+using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Projectiles.DraedonsArsenal;
-using CalamityInheritance.Content.Items.Materials;
 
 namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 {
@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.DraedonsArsenal
 
             Item.shoot = ProjectileType<PulseRifleShotOld>();
             Item.shootSpeed = 5f;
-            
+
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

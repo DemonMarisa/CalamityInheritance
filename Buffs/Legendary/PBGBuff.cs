@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Buffs.Legendary
 {
-    public class PBGBuff: ModBuff    
+    public class PBGBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace CalamityInheritance.Buffs.Legendary
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.CIMod().PBGPower= true;
+            player.CIMod().PBGPower = true;
         }
     }
 }

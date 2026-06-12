@@ -1,17 +1,16 @@
-﻿using CalamityMod.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Summon.Umbrella;
+using CalamityInheritance.Rarity;
+using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Summon;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Projectiles.Summon.Umbrella;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityInheritance.Rarity;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.System.Configs;
-using LAP.Core.SystemsLoader;
-using LAP.Core.Enums;
 
 namespace CalamityInheritance.Content.Items.Weapons.Summon
 {
@@ -54,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                     projectile.Kill();
                 }
             }
-            int p = Projectile.NewProjectile(source, position , Vector2.Zero , type, damage, knockback, player.whoAmI);
+            int p = Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI);
             Main.projectile[p].originalDamage = Item.damage;
             return false;
         }
@@ -69,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon
                 AddIngredient<ShadowspecBar>(4).
                 AddTile<DraedonsForge>().
                 Register();
-            
+
 
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().

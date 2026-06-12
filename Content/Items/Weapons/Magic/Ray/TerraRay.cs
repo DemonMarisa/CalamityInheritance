@@ -1,5 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Armor.Silva;
-using CalamityInheritance.Content.Projectiles.Magic.Ray;
+﻿using CalamityInheritance.Content.Projectiles.Magic.Ray;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Weapons.Magic;
 using Microsoft.Xna.Framework;
@@ -12,7 +11,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
 {
     public class TerraRay : CIMagic, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.staff[Item.type] = true;

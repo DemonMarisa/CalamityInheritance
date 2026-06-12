@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 namespace CalamityInheritance.Content.Projectiles.Magic
 {
-    public class VictideBookSpike: ModProjectile, ILocalizedModType
+    public class VictideBookSpike : ModProjectile, ILocalizedModType
     {
         public new string LocalizationCategory => "Content.Projectiles.Magic";
         public override void SetDefaults()

@@ -8,9 +8,9 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Boomerang
 {
-    public class VictideBoomerangMelee: CIMelee, ILocalizedModType
+    public class VictideBoomerangMelee : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

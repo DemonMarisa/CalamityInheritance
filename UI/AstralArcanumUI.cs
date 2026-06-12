@@ -1,14 +1,14 @@
-﻿using CalamityMod.CalPlayer;
-using Microsoft.Xna.Framework.Graphics;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityMod.CalPlayer;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.CIPlayer;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.UI
 {

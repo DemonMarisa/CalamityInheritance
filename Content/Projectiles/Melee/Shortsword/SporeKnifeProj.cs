@@ -1,13 +1,12 @@
-﻿using CalamityMod;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
+using CalamityMod;
 using CalamityMod.Projectiles.BaseProjectiles;
+using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Microsoft.Xna.Framework;
-using CalamityInheritance.Utilities;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
@@ -67,7 +66,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
                     float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                     Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(),Projectile.Center, randomDirection * 6f,ProjectileID.Leaf, Projectile.damage * 1, Projectile.knockBack,Projectile.owner);
+                    int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, randomDirection * 6f, ProjectileID.Leaf, Projectile.damage * 1, Projectile.knockBack, Projectile.owner);
                     Main.projectile[newProjectileId].DamageType = DamageClass.Melee;
                 }
                 modPlayer.ProjectilHitCounter2 = 0;

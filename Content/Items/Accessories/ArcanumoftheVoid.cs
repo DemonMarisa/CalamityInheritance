@@ -1,8 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.CIPlayer;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories
 {
@@ -10,10 +10,10 @@ namespace CalamityInheritance.Content.Items.Accessories
     {
         protected override BaseSetDefault BaseSD => new
         (
-            itemWidth:26,
-            itemHeight:26,
+            itemWidth: 26,
+            itemHeight: 26,
             itemRare: RarityType<BlueGreen>(),
-            itemValue:CIShopValue.RarityPriceBlueGreen
+            itemValue: CIShopValue.RarityPriceBlueGreen
         );
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

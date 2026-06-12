@@ -1,7 +1,7 @@
-﻿using Terraria;
-using Terraria.ID;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Items.LoreItems;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.LoreItems

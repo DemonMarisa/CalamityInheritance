@@ -1,7 +1,7 @@
 using CalamityInheritance.Utilities;
-using LAP.Assets.TextureRegister;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Dusts;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged
             if (Projectile.ai[0] > 5f)
             {
                 if (Main.zenithWorld)
-                CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
+                    CIFunction.HomeInOnNPC(Projectile, true, 1800f, 24f, 20f);
                 float pScale = 1f;
                 if (Projectile.ai[0] == 6f)
                 {

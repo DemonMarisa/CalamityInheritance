@@ -1,29 +1,26 @@
-﻿using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.Items.Armor.Auric;
-using CalamityMod.Items.Armor.Bloodflare;
-using CalamityMod.Items.Armor.Tarragon;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using Terraria.ModLoader;
-using Terraria;
-using CalamityMod;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Content.Items.Accessories.Ranged;
+using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
 using CalamityInheritance.Content.Items.Armor.Silva;
-using CalamityInheritance.Content.Items.Accessories.Ranged;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Rarity;
+using CalamityInheritance.Utilities;
+using CalamityMod;
+using CalamityMod.Items.Armor.Bloodflare;
+using CalamityMod.Items.Armor.Tarragon;
 using CalamityMod.Items.Materials;
-using CalamityInheritance.System.Configs;
-using System.Collections.Generic;
+using CalamityMod.Tiles.Furniture.CraftingStations;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.Localization;
-using CalamityInheritance.Content.Items.Armor.GodSlayerOld;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.AuricTesla
 {
     [AutoloadEquip(EquipType.Head)]
     public class AuricTeslaHeadMeleeLegacy : CIArmor, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -65,7 +62,7 @@ namespace CalamityInheritance.Content.Items.Armor.AuricTesla
             calPlayer.bloodflareSet = true;
             calPlayer.bloodflareMelee = true;
             calPlayer.godSlayer = true;
-            usPlayer.GodSlayerMelee= true;
+            usPlayer.GodSlayerMelee = true;
             usPlayer.AuricDebuffImmune = true;
 
             usPlayer.SilvaMeleeSetLegacy = true;

@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CalamityMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityMod;
 namespace CalamityInheritance.Content.Projectiles.Melee
 {
     public class ElementBall : ModProjectile, ILocalizedModType

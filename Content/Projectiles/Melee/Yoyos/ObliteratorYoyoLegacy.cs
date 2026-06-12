@@ -46,7 +46,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Yoyos
                 Projectile.Kill();
             extraUpdateCounter = (extraUpdateCounter + 1) % UpdatesPerFrame;
             if (extraUpdateCounter != UpdatesPerFrame - 1)
-                return; 
+                return;
             Lighting.AddLight(Projectile.Center, 0.8f, 0.3f, 1f);
 
             Projectile.localAI[1]++;

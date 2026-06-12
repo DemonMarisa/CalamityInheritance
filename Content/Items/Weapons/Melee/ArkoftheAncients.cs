@@ -1,9 +1,9 @@
-﻿using System;
-using CalamityInheritance.Content.Projectiles.Melee;
+﻿using CalamityInheritance.Content.Projectiles.Melee;
 using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items.Materials;
 using LAP.Content.RecipeGroupAdd;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -13,7 +13,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 {
     public class ArkoftheAncients : CIMelee, ILocalizedModType
     {
-        
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -106,7 +106,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee
 
             return false;
         }
-        
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             if (Main.rand.NextBool(5))

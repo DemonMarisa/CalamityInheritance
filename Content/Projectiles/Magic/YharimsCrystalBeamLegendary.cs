@@ -1,18 +1,11 @@
-﻿using System;
-using System.IO;
-using CalamityInheritance.Content.Items.Weapons;
-using CalamityInheritance.Content.Projectiles.ExoLore;
-using CalamityInheritance.NPCs.Boss.SCAL;
-using CalamityInheritance.System.Configs;
-using CalamityInheritance.Utilities;
+﻿using CalamityInheritance.Utilities;
 using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Items.Accessories;
 using CalamityMod.Projectiles.Magic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.IO;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.Shaders;
 using Terraria.Graphics.Effects;
@@ -224,7 +217,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
                 //     DoExoUpgrade(target, src);
                 // if (usPlayer.YharimsKilledScal)
                 //     DoScalUpgrade(target, src);
-                    // DoDragonUpgrade(target, src);
+                // DoDragonUpgrade(target, src);
             }
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffType<Dragonfire>(), 180);
@@ -253,7 +246,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic
 
             beamLength -= Reduction * Projectile.scale * Projectile.scale;
 
-            DelegateMethods.f_1 = 1f; 
+            DelegateMethods.f_1 = 1f;
             Vector2 beamStartPos = centerFloored - Main.screenPosition;
             Vector2 beamEndPos = beamStartPos + Projectile.velocity * beamLength;
             Utils.LaserLineFraming llf = new Utils.LaserLineFraming(DelegateMethods.RainbowLaserDraw);

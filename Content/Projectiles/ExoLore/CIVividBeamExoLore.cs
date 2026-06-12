@@ -1,19 +1,17 @@
-﻿using CalamityMod.Buffs.DamageOverTime;
-using CalamityMod.Projectiles.Magic;
+﻿using CalamityInheritance.CIPlayer;
+using CalamityInheritance.Content.Items.Weapons.Magic;
+using CalamityInheritance.Utilities;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
+using CalamityMod.Projectiles.Magic;
+using LAP.Assets.TextureRegister;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using CalamityInheritance.Content.Items.Weapons.Magic;
-using CalamityInheritance.CIPlayer;
-using CalamityInheritance.Utilities;
-using CalamityMod.Projectiles.Rogue;
-using Mono.Cecil;
-using LAP.Core.Utilities;
-using LAP.Assets.TextureRegister;
 
 namespace CalamityInheritance.Content.Projectiles.ExoLore
 {
@@ -175,7 +173,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoLore
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                         Projectile.NewProjectile(source, Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ProjectileType<VividLaser2>(), Projectile.damage, Projectile.knockBack, Projectile.owner);
                     }
-                    int boomType = Main.zenithWorld? ProjectileType<RainbowComet>() : ProjectileType<SupernovaBoomOld>();
+                    int boomType = Main.zenithWorld ? ProjectileType<RainbowComet>() : ProjectileType<SupernovaBoomOld>();
                     int p = Projectile.NewProjectile(source, Projectile.Center, Vector2.Zero, boomType, Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
                     break;
             }

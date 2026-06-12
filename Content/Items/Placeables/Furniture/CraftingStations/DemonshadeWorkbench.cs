@@ -10,7 +10,7 @@ using DraedonsForge = CalamityMod.Tiles.Furniture.CraftingStations.DraedonsForge
 
 namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStations
 {
-    public class DemonshadeWorkbench: CIPlaceable, ILocalizedModType
+    public class DemonshadeWorkbench : CIPlaceable, ILocalizedModType
     {
         public new string LocalizationCategory => $"{Local}.Furniture.CraftingStations";
         public override void SetStaticDefaults()
@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Items.Placeables.Furniture.CraftingStation
             Item.useStyle = ItemUseStyleID.Swing;
             Item.consumable = true;
             Item.value = CIShopValue.RarityPricePureRed;
-            Item.rare = CIConfig.Instance.SpecialRarityColor? RarityType<PlantareGreen>() : RarityType<PureRed>();
+            Item.rare = CIConfig.Instance.SpecialRarityColor ? RarityType<PlantareGreen>() : RarityType<PureRed>();
             Item.createTile = TileType<DemonshadeTile>();
         }
 

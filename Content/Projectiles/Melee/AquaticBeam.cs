@@ -1,7 +1,7 @@
-using System;
 using CalamityInheritance.Utilities;
 using CalamityMod;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -61,13 +61,13 @@ namespace CalamityInheritance.Content.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-                Projectile.localAI[0] += 1f;
-                if (Projectile.localAI[0] > 30f)
-                {
-                    Projectile.velocity.X = -Projectile.velocity.X;
-                    Projectile.velocity.Y = -Projectile.velocity.Y;
-                    Projectile.localAI[0] = 0f;
-                }
+            Projectile.localAI[0] += 1f;
+            if (Projectile.localAI[0] > 30f)
+            {
+                Projectile.velocity.X = -Projectile.velocity.X;
+                Projectile.velocity.Y = -Projectile.velocity.Y;
+                Projectile.localAI[0] = 0f;
+            }
         }
         public override void OnKill(int timeLeft)
         {
