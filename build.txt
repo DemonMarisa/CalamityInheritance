@@ -2,6 +2,7 @@
 author = DemonMarisa
 hideCode = false
 hideResources = false
-modReferences = CalamityMod, LAP
-version = 2.0.4.15
+modReferences = LAP
+weakReferences = CalamityMod
+version = 2.0.4.18
 sortBefore = UnCalamityModMusic, InfernumMode

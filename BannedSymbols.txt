@@ -1,0 +1,1 @@
+﻿N:CalamityMod; Don't use CalamityMod namespace directly!

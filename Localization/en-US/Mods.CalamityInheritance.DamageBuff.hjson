@@ -1,0 +1,29 @@
+CIAstralInfection: {
+	DisplayName: C I Astral Infection
+	Description: Mods.CalamityInheritance.DamageBuff.CIAstralInfection.Description
+}
+
+CIBrimstoneFlames: {
+	DisplayName: C I Brimstone Flames
+	Description: Mods.CalamityInheritance.DamageBuff.CIBrimstoneFlames.Description
+}
+
+CICrushDepth: {
+	DisplayName: C I Crush Depth
+	Description: Mods.CalamityInheritance.DamageBuff.CICrushDepth.Description
+}
+
+CIHolyFlames: {
+	DisplayName: C I Holy Flames
+	Description: Mods.CalamityInheritance.DamageBuff.CIHolyFlames.Description
+}
+
+CIPlague: {
+	DisplayName: C I Plague
+	Description: Mods.CalamityInheritance.DamageBuff.CIPlague.Description
+}
+
+CIGravityNormalizer: {
+	DisplayName: C I Gravity Normalizer
+	Description: Mods.CalamityInheritance.DamageBuff.CIGravityNormalizer.Description
+}

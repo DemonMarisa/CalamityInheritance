@@ -1,83 +1,14 @@
-AuricBarold: {
-	DisplayName: 圣金源锭[Legacy]
-	Tooltip: 散发出永恒的璀璨金光
-}
-
-NebulaBar: {
-	DisplayName: 星云合金[Legacy]
-	Tooltip: 来自宇宙深处
-}
-
 CalamitousEssence: {
-	DisplayName: 灾厄精华[Legacy]
-	Tooltip:
-		'''
-		来自旧日最深邃，最黑暗的疯狂
-		只有星流巨械被击败后才会掉落
-		'''
-}
-
-AncientMiracleMatter: {
-	DisplayName: 奇迹物质[Legacy]
-	Tooltip:
-		'''
-		无所定形，但潜力无穷
-		每把星流武器需要一个
-		用于制作时不会被消耗
-		'''
-}
-
-AncientVictideBar: {
-	DisplayName: 胜朝锭[Legacy]
-	Tooltip: 远古海洋碎片
-}
-
-CryoBar: {
-	Tooltip: 摸起来很冷
-	DisplayName: 极寒锭[Legacy]
-}
-
-BlightedLens: {
-	DisplayName: 枯萎透镜[Legacy]
-	Tooltip: ""
-}
-
-BloodSample: {
-	DisplayName: 血液样本[Legacy]
-	Tooltip: ""
-}
-
-RottenMatter: {
-	DisplayName: 腐烂物质[Legacy]
-	Tooltip: ""
-}
-
-CoreofChaos: {
-	DisplayName: 混乱核心[Legacy]
-	Tooltip: ""
-}
-
-CoreofEleum: {
-	DisplayName: 冰川核心[Legacy]
-	Tooltip: ""
-}
-
-CoreofSunlight: {
-	DisplayName: 日光核心[Legacy]
-	Tooltip: ""
-}
-
-DesertFeather: {
-	DisplayName: 荒漠之羽[Legacy]
-	Tooltip: ""
-}
-
-DemonicBoneAsh: {
-	DisplayName: 恶魔骨灰[Legacy]
-	Tooltip: ""
+	// DisplayName: Calamitous Essence
+	// Tooltip: ""
 }
 
 GalacticaSingularity: {
-	DisplayName: 星系异石[Legacy]
-	Tooltip: ""
+	// DisplayName: Galactica Singularity
+	// Tooltip: ""
+}
+
+AuricBarold: {
+	// DisplayName: Auric Barold
+	// Tooltip: ""
 }

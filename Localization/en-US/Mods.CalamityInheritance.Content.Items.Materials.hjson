@@ -1,79 +1,14 @@
-AuricBarold: {
-	DisplayName: Auric Bar Legacy
-	Tooltip: Boundless power emanates from the metal
-}
-
-NebulaBar: {
-	DisplayName: Meld Bar
-	Tooltip: ""
-}
-
 CalamitousEssence: {
 	DisplayName: Calamitous Essence
-	Tooltip: The smoldering essence of the Witch's wrath
-}
-
-AncientMiracleMatter: {
-	DisplayName: Ancient Miracle Matter
-	Tooltip:
-		'''
-		Its amorphous from contains untold potential
-		One is required for every Exo Weapons
-		Not consumed when used to crafting
-		'''
-}
-
-AncientVictideBar: {
-	DisplayName: Ancient Victide Bar
-	Tooltip: ""
-}
-
-CryoBar: {
-	Tooltip: Cold to the touch
-	DisplayName: Cryo Bar
-}
-
-BlightedLens: {
-	DisplayName: Blighted Lens
-	Tooltip: ""
-}
-
-BloodSample: {
-	DisplayName: Blood Sample
-	Tooltip: ""
-}
-
-RottenMatter: {
-	DisplayName: Rotten Matter
-	Tooltip: ""
-}
-
-CoreofChaos: {
-	DisplayName: Core of Chaos
-	Tooltip: ""
-}
-
-CoreofEleum: {
-	DisplayName: Core of Eleum
-	Tooltip: ""
-}
-
-CoreofSunlight: {
-	DisplayName: Core of Sunlight
-	Tooltip: ""
-}
-
-DesertFeather: {
-	DisplayName: Desert Feather
-	Tooltip: ""
-}
-
-DemonicBoneAsh: {
-	DisplayName: Demonic Bone Ash
 	Tooltip: ""
 }
 
 GalacticaSingularity: {
 	DisplayName: Galactica Singularity
+	Tooltip: ""
+}
+
+AuricBarold: {
+	DisplayName: Auric Barold
 	Tooltip: ""
 }
