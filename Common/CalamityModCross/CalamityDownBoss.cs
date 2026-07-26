@@ -8,7 +8,7 @@ namespace CalamityInheritance.Common.CalamityModCross
 {
     public class CalamityDownBoss : ModSystem
     {
-        public static bool downedYharon =  true;
+        public static bool downedYharon = true;
         public override void PostUpdateWorld()
         {
             if (CIUtils.HasCalamity())

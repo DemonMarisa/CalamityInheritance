@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            for (int i = 1;i < 5; i++)
+            for (int i = 1; i < 5; i++)
             {
                 Projectile.NewProjectile(source, position, velocity * 0.5f * i, type, damage, knockback, player.whoAmI);
             }

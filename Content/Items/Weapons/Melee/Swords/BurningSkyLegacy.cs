@@ -91,7 +91,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         {
             if (Main.rand.NextBool(3))
             {
-               Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CopperCoin);
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.CopperCoin);
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Melee.Yoyos;
 using CalamityInheritance.Content.Projectiles.Melee.Yoyos;
 using LAP.Core.Utilities;
@@ -42,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.Yoyos
             {
                 if (Projectile.owner == Main.myPlayer)
                     Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center,
-                        Projectile.velocity.RotatedByRandom(0.2f) * Main.rand.NextFloat(0.32f, 0.55f), ProjectileType<AzathothOrbLegacy>(), 
+                        Projectile.velocity.RotatedByRandom(0.2f) * Main.rand.NextFloat(0.32f, 0.55f), ProjectileType<AzathothOrbLegacy>(),
                         Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
             }
             if ((Projectile.position - Main.player[Projectile.owner].position).Length() > 3200f)

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityMod;
 using LAP.Assets.TextureRegister;
 using LAP.Core.Utilities;
 using System;
@@ -64,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
                 Main.dust[shinyDust].velocity += Projectile.velocity * 0.1f;
             }
 
-            LAPUtilities.HomeInNPC(Projectile, 600f, 10f, 20f,null, !Projectile.tileCollide);
+            LAPUtilities.HomeInNPC(Projectile, 600f, 10f, 20f, null, !Projectile.tileCollide);
         }
 
         public override void OnKill(int timeLeft)

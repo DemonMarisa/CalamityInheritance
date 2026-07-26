@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Yoyos;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using CalamityMod.Items.Materials;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

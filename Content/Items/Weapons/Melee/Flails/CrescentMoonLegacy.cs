@@ -1,11 +1,9 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Flails;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -61,7 +59,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Flails
             else
             {
                 CreateRecipe().
-                    AddIngredient<GalacticaSingularity>(8).
+                    //AddIngredient<>(8).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

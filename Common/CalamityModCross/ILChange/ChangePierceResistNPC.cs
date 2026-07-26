@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Core.Utils;
 using CalamityMod.NPCs;
-using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Terraria;

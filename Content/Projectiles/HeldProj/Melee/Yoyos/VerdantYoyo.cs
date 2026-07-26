@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Items.Weapons.Melee.Yoyos;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;

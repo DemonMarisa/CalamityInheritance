@@ -36,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Swords
             Main.dust[waterDust].velocity *= 0.5f;
             Main.dust[waterDust].velocity += Projectile.velocity * 0.1f;
 
-            LAPUtilities.HomeInNPC(Projectile, 200f, 12f, 20f, null,!Projectile.tileCollide);
+            LAPUtilities.HomeInNPC(Projectile, 200f, 12f, 20f, null, !Projectile.tileCollide);
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using LAP.Assets.TextureRegister;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

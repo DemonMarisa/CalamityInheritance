@@ -6,7 +6,6 @@ using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using CalamityMod.Items.Materials;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;

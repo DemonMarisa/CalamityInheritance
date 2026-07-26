@@ -46,9 +46,9 @@ namespace CalamityInheritance.Content.Projectiles.Melee.LightGreadtSword
             Player player = Main.player[Projectile.owner];
             target.AddBuff(BuffID.Ichor, 60);
             ParticleOrchestrator.RequestParticleSpawn(
-                clientOnly: false, 
+                clientOnly: false,
                 ParticleOrchestraType.TerraBlade,
-                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox), MovementVector = Projectile.velocity}, 
+                new ParticleOrchestraSettings { PositionInWorld = Main.rand.NextVector2FromRectangle(target.Hitbox), MovementVector = Projectile.velocity },
                 Projectile.owner);
 
             // You could also spawn dusts at the enemy position. Here is simple an example:

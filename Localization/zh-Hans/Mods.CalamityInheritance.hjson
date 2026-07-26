@@ -2,3 +2,10 @@ DamageClasses: {
 	// TrueMelee.DisplayName: True Melee
 	// TrueMeleeNoSpeed.DisplayName: True Melee No Speed
 }
+
+GlobalDataBase: {
+	ItemOwner: {
+		DonerItem: -捐赠者物品-
+		DeveloperItem: -开发者物品-
+	}
+}

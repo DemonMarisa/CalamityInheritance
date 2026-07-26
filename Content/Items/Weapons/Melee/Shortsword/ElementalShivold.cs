@@ -1,11 +1,11 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Misc;
+using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.Items.Materials;
-using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Misc;
-using CalamityInheritance.Content.Rarity.ShopValue;
-using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
 {

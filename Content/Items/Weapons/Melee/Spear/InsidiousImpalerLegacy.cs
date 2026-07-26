@@ -2,9 +2,7 @@
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Spears;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 

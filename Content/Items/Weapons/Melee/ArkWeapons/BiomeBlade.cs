@@ -3,7 +3,6 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using LAP.Content.RecipeGroupAdd;
-using LAP.Core.MiscDate;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

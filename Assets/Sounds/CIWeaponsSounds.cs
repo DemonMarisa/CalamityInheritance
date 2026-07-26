@@ -17,5 +17,12 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle LouderPhantomPhoenix = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/LouderPhantomPhoenix", 3);
 
         public static readonly SoundStyle ScissorGuillotineSnapSound = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/ScissorGuillotineSnap");
+        public static class Common
+        {
+            #region 通用音效（存疑）
+            public static string CommonSoundPath = "CalamityInheritance/Assets/Sounds/Weapons/Common/";
+            public static readonly SoundStyle LargeWeaponFire = new SoundStyle(CommonSoundPath + nameof(LargeWeaponFire));
+            #endregion
+        }
     }
 }

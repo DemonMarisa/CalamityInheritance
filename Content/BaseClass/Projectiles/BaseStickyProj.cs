@@ -59,7 +59,7 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles
             RelativePos = Projectile.Center - target.Center;
             Projectile.netUpdate = true;
             Projectile.netSpam = 0;
-            ExOnHit(target,  hit, damageDone);
+            ExOnHit(target, hit, damageDone);
         }
         public virtual void ExOnHit(NPC target, NPC.HitInfo hit, int damageDone)
         {

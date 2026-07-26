@@ -1,6 +1,4 @@
-﻿using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
-using CalamityMod.Projectiles;
-using LAP.Assets.TextureRegister;
+﻿using LAP.Assets.TextureRegister;
 using LAP.Core.BaseClass.Projectiles;
 using Microsoft.Xna.Framework;
 using Terraria;

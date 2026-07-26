@@ -4,6 +4,7 @@ using CalamityMod.Items.Placeables.Abyss;
 using CalamityMod.Items.Placeables.FurnitureAcidwood;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Placeables.SunkenSea;
+using CalamityMod.Items.Weapons.Ranged;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.CalamityModCross
@@ -33,7 +34,7 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int BloodstoneCore;
         public static int UnholyEssence;
         public static int DivineGeode;
-        
+
         public static int ExodiumCluster;
         public static int GrandScale;
 
@@ -50,11 +51,29 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int MeldBlob;
         public static int PerennialBar;
         public static int InfectedArmorPlating;
+<<<<<<< HEAD
+        /// <summary>
+        /// 这个有可能会删除
+        /// </summary>
+        public static int LifeAlloy;
+=======
+
+        public static int AstralBar;
+        public static int Acidwood;
+        public static int SulphuricScale;
+
+        public static int StarblightSoot;
+
+        public static int MeldBlob;
+        public static int PerennialBar;
+        public static int InfectedArmorPlating;
+>>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
             {
                 GetCalamityMaterialsID();
+                GetCalamityWeaponID();
             }
         }
 
@@ -92,6 +111,27 @@ namespace CalamityInheritance.Common.CalamityModCross
             MeldBlob = ItemType<StarblightSoot>();
             PerennialBar = ItemType<PerennialBar>();
             InfectedArmorPlating = ItemType<InfectedArmorPlating>();
+<<<<<<< HEAD
+            LifeAlloy = ItemType<LifeAlloy>();
+        }
+        /// <summary>
+        /// 这么搞下去要没完没了了你自己寻思一下怎么去处理这个武器材料
+        /// <br>反正我先这么写放在这里了</br>
+        /// </summary>
+        public static int PestilentDefiler;
+        [JITWhenModsEnabled("CalamityMod")]
+        public static void GetCalamityWeaponID()
+        {
+            PestilentDefiler = ItemType<PestilentDefiler>();
+=======
+            AstralBar = ItemType<AstralBar>();
+            Acidwood = ItemType<Acidwood>();
+            SulphuricScale = ItemType<SulphuricScale>();
+            StarblightSoot = ItemType<StarblightSoot>();
+            MeldBlob = ItemType<StarblightSoot>();
+            PerennialBar = ItemType<PerennialBar>();
+            InfectedArmorPlating = ItemType<InfectedArmorPlating>();
+>>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
         }
     }
 }

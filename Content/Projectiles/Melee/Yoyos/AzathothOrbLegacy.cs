@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Core.Utils;
-using CalamityMod;
-using LAP.Core.Graphics.DeepGlow;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -56,7 +54,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Yoyos
             Projectile.localAI[2]++;
             if (Projectile.localAI[2] % 10f == 0)
             {
-                NPC npc = LAPUtilities.FindClosestTarget(Projectile.Center,400);
+                NPC npc = LAPUtilities.FindClosestTarget(Projectile.Center, 400);
                 if (npc is not null)
                 {
                     Vector2 ToNPC = LAPUtilities.GetVector2(Projectile.Center, npc.Center);
@@ -101,7 +99,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Yoyos
             for (int i = 0; i < 10; i++)
             {
                 Vector2 offset = new Vector2(2.5f * Main.rand.NextFloat(0.8f, 1.3f), 0).RotatedBy(angle * i);
-                LAPUtilities.Draw(texture, drawPos + offset, null, drawColor with { A = 0}, drawRot, orig, Projectile.scale, 0);
+                LAPUtilities.Draw(texture, drawPos + offset, null, drawColor with { A = 0 }, drawRot, orig, Projectile.scale, 0);
             }
             LAPUtilities.Draw(texture, drawPos, null, Projectile.GetAlpha(drawColor), drawRot, orig, Projectile.scale, 0);
             return false;

@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Rarity.ShopValue;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Fists
 {

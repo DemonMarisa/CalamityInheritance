@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+=======
 ﻿using Terraria;
 using Terraria.ModLoader;
+>>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
 
 namespace CalamityInheritance.Core.Utils
 {
@@ -19,5 +26,27 @@ namespace CalamityInheritance.Core.Utils
                 player.itemLocation.Y = player.Center.Y + (player.position.Y - player.itemLocation.Y);
         }
 
+<<<<<<< HEAD
+        /// <summary>
+        /// 让原版的手持也可以像手持弹幕一样旋转<br/>
+        /// 随便找一个每帧调用的方法调用即可<br/>
+        /// </summary>
+        public static void NoHeldProjUpdateAim(Player player, float rotationOffset = 0f, float rotationSpeed = 1f)
+        {
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
+
+            Vector2 aimVect = player.LocalMouseWorld() - player.Center;
+            aimVect.SafeNormalize(Vector2.UnitX);
+
+            float targetRotation = aimVect.ToRotation();
+
+            if (player.LocalMouseWorld().X < player.Center.X)
+                player.itemRotation = player.itemRotation.AngleLerp(targetRotation - MathHelper.ToRadians(rotationOffset) + MathHelper.Pi, rotationSpeed);
+            else
+                player.itemRotation = player.itemRotation.AngleLerp(targetRotation + MathHelper.ToRadians(rotationOffset), rotationSpeed);
+        }
+=======
+
+>>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
     }
 }
