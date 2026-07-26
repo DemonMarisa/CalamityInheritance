@@ -53,10 +53,10 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Yoyos
                     return;
                 }
             }
-
-            if (Projectile.ai[1] % 2f == 0)
+            Projectile.localAI[2]++;
+            if (Projectile.localAI[2] % 10f == 0)
             {
-                NPC npc = LAPUtilities.FindClosestTarget(Projectile.Center,1500);
+                NPC npc = LAPUtilities.FindClosestTarget(Projectile.Center,400);
                 if (npc is not null)
                 {
                     Vector2 ToNPC = LAPUtilities.GetVector2(Projectile.Center, npc.Center);

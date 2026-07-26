@@ -1,0 +1,47 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Assets.TextureRegister;
+using LAP.Core.Utilities;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Melee.Swords
+{
+    public class JudgementWhiterain : CIMeleeProj
+    {
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
+        public override void SetDefaults()
+        {
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.width = 4;
+            Projectile.height = 4;
+            Projectile.extraUpdates = 1;
+            Projectile.penetrate = 2;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = 120;
+        }
+
+        public override void AI()
+        {
+            if (Projectile.ai[1] == 0f)
+            {
+                Projectile.ai[1] = 1f;
+                SoundEngine.PlaySound(SoundID.Item125 with { Volume = 0.4f }, Projectile.Center);
+            }
+
+            Lighting.AddLight(Projectile.Center, 0.2f, 0.2f, 0.2f);
+
+            for (int i = 0; i < 2; i++)
+            {
+                int shiny = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemDiamond, 0f, 0f, 100, default, 1.25f);
+                Main.dust[shiny].noGravity = true;
+                Main.dust[shiny].velocity *= 0.5f;
+                Main.dust[shiny].velocity += Projectile.velocity * 0.1f;
+            }
+            LAPUtilities.HomeInNPC(Projectile, 600f, 14f, 20f);
+        }
+    }
+}

@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Core.Utils;
 using CalamityMod.Items.Materials;
 using CalamityMod.Items.Placeables.Abyss;
+using CalamityMod.Items.Placeables.FurnitureAcidwood;
 using CalamityMod.Items.Placeables.Ores;
 using CalamityMod.Items.Placeables.SunkenSea;
 using Terraria.ModLoader;
@@ -39,6 +40,16 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int PearlShard;
         public static int SeaPrism;
         public static int Navystone;
+
+        public static int AstralBar;
+        public static int Acidwood;
+        public static int SulphuricScale;
+
+        public static int StarblightSoot;
+
+        public static int MeldBlob;
+        public static int PerennialBar;
+        public static int InfectedArmorPlating;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -74,6 +85,13 @@ namespace CalamityInheritance.Common.CalamityModCross
             PearlShard = ItemType<PearlShard>();
             SeaPrism = ItemType<SeaPrism>();
             Navystone = ItemType<Navystone>();
+            AstralBar = ItemType<AstralBar>();
+            Acidwood = ItemType<Acidwood>();
+            SulphuricScale = ItemType<SulphuricScale>();
+            StarblightSoot = ItemType<StarblightSoot>();
+            MeldBlob = ItemType<StarblightSoot>();
+            PerennialBar = ItemType<PerennialBar>();
+            InfectedArmorPlating = ItemType<InfectedArmorPlating>();
         }
     }
 }

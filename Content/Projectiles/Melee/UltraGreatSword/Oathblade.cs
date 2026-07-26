@@ -1,0 +1,52 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityMod;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Melee.UltraGreatSword
+{
+    public class Oathblade : CIMeleeProj
+    {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.friendly = true;
+            Projectile.width = 58;
+            Projectile.height = 58;
+            Projectile.aiStyle = ProjAIStyleID.Sickle;
+            Projectile.alpha = 100;
+            Projectile.tileCollide = true;
+            Projectile.penetrate = 1;
+            AIType = ProjectileID.DemonScythe;
+        }
+
+        public override void AI()
+        {
+            Lighting.AddLight(Projectile.Center, 0.35f, 0f, 0.35f);
+
+            if (Main.rand.NextBool(3))
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f);
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.OnFire, 180);
+            target.AddBuff(BuffID.ShadowFlame, 90);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 2);
+            return false;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Core.Utilities;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Melee.UltraGreatSword
+{
+    public class EssenceFlame2 : CIMeleeProj
+    {
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 4;
+            ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = false;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.timeLeft = 180;
+            Projectile.alpha = 255;
+            Projectile.extraUpdates = 3;
+        }
+
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 150 && target.CanBeChasedBy(Projectile);
+
+        public override void AI()
+        {
+            Projectile.alpha -= 5;
+
+            Projectile.frameCounter++;
+            if (Projectile.frameCounter > 16)
+            {
+                Projectile.frame++;
+                Projectile.frameCounter = 0;
+            }
+            if (Projectile.frame > 3)
+                Projectile.frame = 0;
+
+            if (Projectile.timeLeft < 150)
+                Projectile.HomeInNPC(760f, 10f, 20f);
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            SoundEngine.PlaySound(SoundID.Item74, Projectile.Center);
+            Projectile.position.X = Projectile.position.X + Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y + Projectile.height / 2;
+            Projectile.width = 50;
+            Projectile.height = 50;
+            Projectile.position.X = Projectile.position.X - Projectile.width / 2;
+            Projectile.position.Y = Projectile.position.Y - Projectile.height / 2;
+            for (int i = 0; i < 5; i++)
+            {
+                int essenceDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                Main.dust[essenceDust].velocity *= 3f;
+                if (Main.rand.NextBool())
+                {
+                    Main.dust[essenceDust].scale = 0.5f;
+                    Main.dust[essenceDust].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                }
+            }
+            for (int j = 0; j < 8; j++)
+            {
+                int essenceDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 3f);
+                Main.dust[essenceDust2].noGravity = true;
+                Main.dust[essenceDust2].velocity *= 5f;
+                essenceDust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.ShadowbeamStaff, 0f, 0f, 100, default, 2f);
+                Main.dust[essenceDust2].velocity *= 2f;
+            }
+        }
+    }
+}

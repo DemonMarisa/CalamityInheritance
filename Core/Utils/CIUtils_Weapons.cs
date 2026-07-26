@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core.Utils
 {
@@ -17,5 +18,6 @@ namespace CalamityInheritance.Core.Utils
             if (player.gravDir < 0)
                 player.itemLocation.Y = player.Center.Y + (player.position.Y - player.itemLocation.Y);
         }
+
     }
 }

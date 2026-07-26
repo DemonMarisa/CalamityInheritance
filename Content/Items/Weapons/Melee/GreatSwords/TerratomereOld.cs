@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
+using CalamityInheritance.Content.Items.Weapons.Melee.LightGreadtSword;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.GreatSwords;
 using CalamityInheritance.Content.Rarity;

@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core.Utils
 {
@@ -12,5 +13,7 @@ namespace CalamityInheritance.Core.Utils
             }
             return true;
         }
+        public static float CalcDamage<T>(this Player player, float baseDamage) where T : DamageClass => player.GetTotalDamage<T>().ApplyTo(baseDamage);
+        public static int CalcIntDamage<T>(this Player player, float baseDamage) where T : DamageClass => (int)player.CalcDamage<T>(baseDamage);
     }
 }

@@ -1,0 +1,136 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Projectiles.Melee.LightGreadtSword;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+
+namespace CalamityInheritance.Content.Items.Weapons.Melee.LightGreadtSword
+{
+    public class Devastation : CIMelee
+    {
+        public override void SetStaticDefaults()
+        {
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 11));
+            ItemID.Sets.AnimatesAsSoul[Type] = true;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 72;
+            Item.height = 72;
+            Item.damage = 132;
+            Item.useAnimation = 24;
+            Item.useTime = 24;
+            Item.useTurn = false;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 4.25f;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.value = CIShopValue.RarityPricePurple;
+            Item.rare = ItemRarityID.Purple;
+            Item.shoot = ProjectileType<GalaxyBlast>();
+            Item.shootSpeed = 16f;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            float ai2 = 0;
+            switch (Main.rand.Next(6))
+            {
+                case 0:
+                    ai2 = 0;
+                    break;
+                case 1:
+                    ai2 = 1;
+                    break;
+                case 2:
+                    ai2 = 2;
+                    break;
+                default:
+                    break;
+            }
+            Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, Main.myPlayer, 0, 0, ai2);
+            float projSpeed = Item.shootSpeed;
+            Vector2 realPlayerPos = player.RotatedRelativePoint(player.MountedCenter, true);
+            float mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
+            float mouseYDist = Main.mouseY + Main.screenPosition.Y - realPlayerPos.Y;
+            if (player.gravDir == -1f)
+            {
+                mouseYDist = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - realPlayerPos.Y;
+            }
+            float mouseDistance = (float)Math.Sqrt((double)(mouseXDist * mouseXDist + mouseYDist * mouseYDist));
+            if (float.IsNaN(mouseXDist) && float.IsNaN(mouseYDist) || mouseXDist == 0f && mouseYDist == 0f)
+            {
+                mouseXDist = player.direction;
+                mouseYDist = 0f;
+                mouseDistance = projSpeed;
+            }
+            else
+            {
+                mouseDistance = projSpeed / mouseDistance;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                realPlayerPos = new Vector2(player.position.X + player.width * 0.5f + (float)(Main.rand.Next(201) * -(float)player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                realPlayerPos.X = (realPlayerPos.X + player.Center.X) / 2f + Main.rand.Next(-200, 201);
+                realPlayerPos.Y -= 100 * i;
+                mouseXDist = Main.mouseX + Main.screenPosition.X - realPlayerPos.X;
+                mouseYDist = Main.mouseY + Main.screenPosition.Y - realPlayerPos.Y;
+                if (mouseYDist < 0f)
+                {
+                    mouseYDist *= -1f;
+                }
+                if (mouseYDist < 20f)
+                {
+                    mouseYDist = 20f;
+                }
+                mouseDistance = (float)Math.Sqrt((double)(mouseXDist * mouseXDist + mouseYDist * mouseYDist));
+                mouseDistance = projSpeed / mouseDistance;
+                mouseXDist *= mouseDistance;
+                mouseYDist *= mouseDistance;
+                float speedX4 = mouseXDist + Main.rand.Next(-40, 41) * 0.02f;
+                float speedY5 = mouseYDist + Main.rand.Next(-40, 41) * 0.02f;
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(5), 0);
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(3), 1);
+                Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, speedX4, speedY5, ProjectileType<GalaxyBlast>(), damage / 2, knockback, player.whoAmI, 0f, Main.rand.Next(1), 2);
+            }
+            return false;
+        }
+
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.PinkFairy);
+            }
+        }
+
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.Ichor, 60);
+            target.AddBuff(BuffID.OnFire, 180);
+            target.AddBuff(BuffID.Frostburn, 120);
+        }
+
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(BuffID.Ichor, 60);
+            target.AddBuff(BuffID.OnFire, 180);
+            target.AddBuff(BuffID.Frostburn, 120);
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<CatastropheClaymore>().
+                AddIngredient(ItemID.LunarBar, 5).
+                AddIngredient(ItemID.MeteoriteBar, 10).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+        }
+    }
+}
