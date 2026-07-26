@@ -30,6 +30,7 @@ Buff一个都没做效果，现在全是占位符
 伽利略短剑
 瘟疫长矛
 邪锋破晓
+
 光棱破碎者
 老核弹的矛
 余震
@@ -39,6 +40,22 @@ Buff一个都没做效果，现在全是占位符
 新元素圣剑
 全部血石武器
 镜之刃
+老核弹的矛
+余震
+水华大剑
+所有宇宙锭武器
+所有亵渎武器
+新元素圣剑
+全部血石武器
+镜之刃
+
+//byd谁记得住中文名是什么啊我直接写类名了
+ClaretCannonLegacy
+FetidEmesisLegacy
+RubicoPrimeLegacy
+StormDragon
+SepticSkewerLegacy
+
 
 给克脑无灾厄的情况下添加血肉样本掉落
 添加海胆NPC
@@ -48,3 +65,8 @@ Buff一个都没做效果，现在全是占位符
 
 要加合成表的
 圣护泰拉刃
+
+
+[b]可能需要重写AI：[/b]
+Projectile.SepticSkewerLegacyHarpoon
+Projectile.SepticSkewerLegacyBacteria

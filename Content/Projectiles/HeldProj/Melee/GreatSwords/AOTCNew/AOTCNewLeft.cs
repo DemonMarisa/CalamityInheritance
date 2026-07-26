@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Assets;
 using CalamityInheritance.Assets.Sounds;
 using CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons;
-using CalamityMod.Sounds;
 using LAP.Assets.TextureRegister;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;

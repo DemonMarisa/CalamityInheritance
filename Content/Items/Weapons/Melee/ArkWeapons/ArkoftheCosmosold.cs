@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.Buffs;
-using CalamityInheritance.Content.Items.CraftingStations;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity;

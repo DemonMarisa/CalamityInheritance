@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework;
 using ReLogic.Graphics;
 using Terraria;
 using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.UI.Chat;
 
 namespace CalamityInheritance.Content.CDs

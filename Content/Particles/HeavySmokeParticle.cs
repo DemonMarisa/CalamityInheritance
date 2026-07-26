@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Particles
 {
@@ -53,7 +52,7 @@ namespace CalamityInheritance.Content.Particles
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D tex =CIParticleTexture.HeavySmoke.Value;
+            Texture2D tex = CIParticleTexture.HeavySmoke.Value;
             int animationFrame = (int)Math.Floor(Time / ((float)(Lifetime / (float)FrameAmount)));
             Rectangle frame = new Rectangle(80 * Variant, 80 * animationFrame, 80, 80);
 

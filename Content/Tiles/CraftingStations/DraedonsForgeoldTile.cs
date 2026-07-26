@@ -1,10 +1,8 @@
 ﻿using CalamityInheritance.Core.Utils;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Common.CalamityModCross;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 

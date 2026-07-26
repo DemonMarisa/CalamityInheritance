@@ -4,11 +4,38 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
-    {      
+    {
+        /// <summary>
+        /// 直接设置<see cref="ProjectileID.Sets.TrailCacheLength"/>和<see cref="ProjectileID.Sets.TrailingMode"/>的拓展方法
+        /// <br><paramref name="length"/>默认取4，而<paramref name="mode"/>默认值为2</br>
+        /// </summary>
+        public static void SetTrail(this Projectile proj, int length = 4, int mode = 2)
+        {
+            ProjectileID.Sets.TrailCacheLength[proj.type] = length;
+            ProjectileID.Sets.TrailingMode[proj.type] = mode;
+        }
+        /// <summary>
+        /// ……我不理解这个方法是图什么。
+        /// <br>灾厄写这个好像是用来边界检查的……？但是这有必要吗</br>
+        /// <br>反正主要是搬运的时候顺带复制过来的，你看需求吧</br>
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="cap"></param>
+        /// <returns></returns>
+        public static bool InBounds(this int index, int cap)
+        {
+            if (index >= 0)
+            {
+                return index < cap;
+            }
+
+            return false;
+        }
         /// <summary>
         /// 播放射弹帧图
         /// </summary>
@@ -27,7 +54,7 @@ namespace CalamityInheritance.Core.Utils
                 projectile.frame = 0;
             return projectile.frame;
         }
-        public static Projectile NewProj(this Projectile projectile, int type, Vector2 position, Vector2 vel, float damageMult = 1f, float knockbackmult = 1f,float ai0 = 0, float ai1 = 0, float ai2 = 0)
+        public static Projectile NewProj(this Projectile projectile, int type, Vector2 position, Vector2 vel, float damageMult = 1f, float knockbackmult = 1f, float ai0 = 0, float ai1 = 0, float ai2 = 0)
         {
             if (projectile.IsLocalPlayer())
                 return Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), position, vel, type, (int)(projectile.damage * damageMult), projectile.knockBack * knockbackmult, projectile.owner, ai0, ai1, ai2);
@@ -52,7 +79,7 @@ namespace CalamityInheritance.Core.Utils
             }
             return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner);
         }
-        public static Projectile FireToClostNPC(this Projectile proj, int type, Vector2 firePos, float Speed,float distance, float damageMult = 1f, float knockBackMult = 1f, float ai0 = 0, float ai1 = 0, float ai2 = 0)
+        public static Projectile FireToClostNPC(this Projectile proj, int type, Vector2 firePos, float Speed, float distance, float damageMult = 1f, float knockBackMult = 1f, float ai0 = 0, float ai1 = 0, float ai2 = 0)
         {
             NPC npc = LAPUtilities.FindClosestTarget(proj.Center, distance);
             if (npc is not null)

@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Projectiles.Melee.Explosions;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;

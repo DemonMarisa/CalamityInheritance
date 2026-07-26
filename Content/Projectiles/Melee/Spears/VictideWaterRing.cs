@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Core.Utils;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -95,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spears
         {
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
-            float drawRotation = Projectile.rotation ;
+            float drawRotation = Projectile.rotation;
             Rectangle rec = texture.Frame(1, 3, 0, Projectile.frame);
             Vector2 rotationPoint = rec.Size() / 2f;
             Main.spriteBatch.Draw(texture, drawPosition, rec, lightColor, drawRotation, rotationPoint, Projectile.scale, 0, 0f);

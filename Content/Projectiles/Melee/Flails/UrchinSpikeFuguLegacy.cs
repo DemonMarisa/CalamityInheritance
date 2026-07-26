@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Core.Utilities;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using CalamityInheritance.Content.BaseClass.Projectiles;
-using LAP.Core.Utilities;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Flails
 {

@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Materials
 {

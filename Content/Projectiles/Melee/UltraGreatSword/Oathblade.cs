@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityMod;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

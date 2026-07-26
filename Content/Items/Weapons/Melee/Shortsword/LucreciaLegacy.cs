@@ -3,7 +3,6 @@ using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using CalamityMod.Items.Materials;
 using LAP.Common.CalamityModCross;
 using Terraria.ID;
 using Terraria.ModLoader;

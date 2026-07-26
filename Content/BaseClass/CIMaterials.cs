@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Core.Path;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.BaseClass

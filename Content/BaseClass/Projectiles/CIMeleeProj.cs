@@ -1,5 +1,4 @@
 ﻿using CalamityInheritance.Core.Path;
-using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.BaseClass.Projectiles

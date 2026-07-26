@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Spears
         {
             Texture2D texture = Request<Texture2D>(Texture).Value;
             float offset = MathHelper.PiOver2 - MathHelper.PiOver4 * Projectile.spriteDirection;
-            Vector2 offset2 =  new Vector2(-texture.Width / 2, 0).RotatedBy(Projectile.rotation);
+            Vector2 offset2 = new Vector2(-texture.Width / 2, 0).RotatedBy(Projectile.rotation);
             Projectile.BaseProjPreDraw(texture, lightColor, offset2, offset, 1);
             return false;
         }

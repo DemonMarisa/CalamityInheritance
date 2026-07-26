@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Projectiles.Melee.Spears;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 
 namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.Spears

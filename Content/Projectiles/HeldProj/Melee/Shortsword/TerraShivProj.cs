@@ -8,7 +8,6 @@ using Terraria;
 using Terraria.GameContent.Drawing;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Melee.Shortsword
 {
