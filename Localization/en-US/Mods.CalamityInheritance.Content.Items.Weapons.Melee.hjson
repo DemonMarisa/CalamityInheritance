@@ -62,3 +62,333 @@ ArkoftheCosmosold: {
 	DisplayName: Arkofthe Cosmosold
 	Tooltip: ""
 }
+
+AzathothLegacy: {
+	DisplayName: Azathoth Legacy
+	Tooltip: ""
+}
+
+BloodyEdge: {
+	DisplayName: Bloody Edge
+	Tooltip: ""
+}
+
+BrimlashBuster: {
+	DisplayName: Brimlash Buster
+	Tooltip: ""
+}
+
+CorruptedCrusherBlade: {
+	DisplayName: Corrupted Crusher Blade
+	Tooltip: ""
+}
+
+Crimsaber: {
+	DisplayName: Crimsaber
+	Tooltip: ""
+}
+
+CrimsonCrusherBlade: {
+	DisplayName: Crimson Crusher Blade
+	Tooltip: ""
+}
+
+CrystalBlade: {
+	DisplayName: Crystal Blade
+	Tooltip: ""
+}
+
+DragonSword: {
+	DisplayName: Dragon Sword
+	Tooltip: ""
+}
+
+ElementalExcalibur: {
+	DisplayName: Elemental Excalibur
+	Tooltip: ""
+}
+
+BurningSkyLegacy: {
+	DisplayName: Burning Sky Legacy
+	Tooltip: ""
+}
+
+GrandDad: {
+	DisplayName: Grand Dad
+	Tooltip: ""
+}
+
+GlacialCrusher: {
+	DisplayName: Glacial Crusher
+	Tooltip: ""
+}
+
+MandibleClaws: {
+	DisplayName: Mandible Claws
+	Tooltip: ""
+}
+
+MarniteSpear: {
+	DisplayName: Marnite Spear
+	Tooltip: ""
+}
+
+MeleeCorpusAvertor: {
+	DisplayName: Melee Corpus Avertor
+	Tooltip: ""
+}
+
+MurasamaNeweffect: {
+	DisplayName: Murasama Neweffect
+	Tooltip: ""
+}
+
+Murasamaold: {
+	DisplayName: Murasamaold
+	Tooltip: ""
+}
+
+NeptunesBountyOld: {
+	DisplayName: Neptunes Bounty Old
+	Tooltip: ""
+}
+
+PhoenixBlade: {
+	DisplayName: Phoenix Blade
+	Tooltip: ""
+}
+
+SoulEdge: {
+	DisplayName: Soul Edge
+	Tooltip: ""
+}
+
+StreamGougeOld: {
+	DisplayName: Stream Gouge Old
+	Tooltip: ""
+}
+
+TemporalFloeSword: {
+	DisplayName: Temporal Floe Sword
+	Tooltip: ""
+}
+
+Terracotta: {
+	DisplayName: Terracotta
+	Tooltip: ""
+}
+
+TerraEdge: {
+	DisplayName: Terra Edge
+	Tooltip: ""
+}
+
+TrueBloodyEdge: {
+	DisplayName: True Bloody Edge
+	Tooltip: ""
+}
+
+Trinity: {
+	DisplayName: Trinity
+	Tooltip: ""
+}
+
+TerratomereOld: {
+	DisplayName: Terratomere Old
+	Tooltip: ""
+}
+
+Verdant: {
+	DisplayName: Verdant
+	Tooltip: ""
+}
+
+VictideSpear: {
+	DisplayName: Victide Spear
+	Tooltip: ""
+}
+
+VictideSword: {
+	DisplayName: Victide Sword
+	Tooltip: ""
+}
+
+VictideYoyo: {
+	DisplayName: Victide Yoyo
+	Tooltip: ""
+}
+
+Waraxe: {
+	DisplayName: Waraxe
+	Tooltip: ""
+}
+
+Warblade: {
+	DisplayName: Warblade
+	Tooltip: ""
+}
+
+BurningRevelationLegacy: {
+	DisplayName: Burning Revelation Legacy
+	Tooltip: ""
+}
+
+LaceratorLegacy: {
+	DisplayName: Lacerator Legacy
+	Tooltip: ""
+}
+
+TheObliteratorLegacy: {
+	DisplayName: The Obliterator Legacy
+	Tooltip: ""
+}
+
+TheOracleLegacy: {
+	DisplayName: The Oracle Legacy
+	Tooltip: ""
+}
+
+BallOFuguLegacy: {
+	DisplayName: Ball O Fugu Legacy
+	Tooltip: ""
+}
+
+CrescentMoonLegacy: {
+	DisplayName: Crescent Moon Legacy
+	Tooltip: ""
+}
+
+TumbleweedLegacy: {
+	DisplayName: Tumbleweed Legacy
+	Tooltip: ""
+}
+
+UrchinFlail: {
+	DisplayName: Urchin Flail
+	Tooltip: ""
+}
+
+AncientShiv: {
+	DisplayName: Ancient Shiv
+	Tooltip: ""
+}
+
+AquaticDischarge: {
+	DisplayName: Aquatic Discharge
+	Tooltip: ""
+}
+
+BloodyRupture: {
+	DisplayName: Bloody Rupture
+	Tooltip: ""
+}
+
+ColdheartIcicle: {
+	DisplayName: Coldheart Icicle
+	Tooltip: ""
+}
+
+FlameburstShortsword: {
+	DisplayName: Flameburst Shortsword
+	Tooltip: ""
+}
+
+LeechingDagger: {
+	DisplayName: Leeching Dagger
+	Tooltip: ""
+}
+
+NightsStabber: {
+	DisplayName: Nights Stabber
+	Tooltip: ""
+}
+
+SporeKnife: {
+	DisplayName: Spore Knife
+	Tooltip: ""
+}
+
+EutrophicShank: {
+	DisplayName: Eutrophic Shank
+	Tooltip: ""
+}
+
+ExcaliburShortsword: {
+	DisplayName: Excalibur Shortsword
+	Tooltip: ""
+}
+
+GalileoGladiusLegacy: {
+	DisplayName: Galileo Gladius Legacy
+	Tooltip: ""
+}
+
+HeartRapier: {
+	DisplayName: Heart Rapier
+	Tooltip: ""
+}
+
+LucreciaLegacy: {
+	DisplayName: Lucrecia Legacy
+	Tooltip: ""
+}
+
+TerraShiv: {
+	DisplayName: Terra Shiv
+	Tooltip: ""
+}
+
+TrueExcaliburShortsword: {
+	DisplayName: True Excalibur Shortsword
+	Tooltip: ""
+}
+
+TrueNightsStabber: {
+	DisplayName: True Nights Stabber
+	Tooltip: ""
+}
+
+CosmicShivold: {
+	DisplayName: Cosmic Shivold
+	Tooltip: ""
+}
+
+ElementalShivold: {
+	DisplayName: Elemental Shivold
+	Tooltip: ""
+}
+
+DiseasedPikeLegacy: {
+	DisplayName: Diseased Pike Legacy
+	Tooltip: ""
+}
+
+FulgurationHalberd: {
+	DisplayName: Fulguration Halberd
+	Tooltip: ""
+}
+
+HolidayHalberd: {
+	DisplayName: Holiday Halberd
+	Tooltip: ""
+}
+
+InsidiousImpalerLegacy: {
+	DisplayName: Insidious Impaler Legacy
+	Tooltip: ""
+}
+
+DevilsSunriseLegacy: {
+	DisplayName: Devils Sunrise Legacy
+	Tooltip: ""
+}
+
+PrismaticBreakerLegacy: {
+	DisplayName: Prismatic Breaker Legacy
+	Tooltip: ""
+}
+
+ArkoftheCosmosNew: {
+	DisplayName: Arkofthe Cosmos New
+	Tooltip: ""
+}

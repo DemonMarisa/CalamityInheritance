@@ -1,14 +1,12 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.Buffs;
 using CalamityInheritance.Content.Items.CraftingStations;
-using CalamityInheritance.Content.Materials;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using LAP.Common.CalamityModCross;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -215,7 +213,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                     AddIngredient<AuricBarold>().
                     AddTile<DraedonsForgeoldTile>().
                     Register();
-
             }
         }
     }

@@ -12,3 +12,48 @@ AuricBarold: {
 	// DisplayName: Auric Barold
 	// Tooltip: ""
 }
+
+CoreofChaos: {
+	// DisplayName: Coreof Chaos
+	// Tooltip: ""
+}
+
+CoreofEleum: {
+	// DisplayName: Coreof Eleum
+	// Tooltip: ""
+}
+
+CoreofSunlight: {
+	// DisplayName: Coreof Sunlight
+	// Tooltip: ""
+}
+
+AncientVictideBar: {
+	// DisplayName: Ancient Victide Bar
+	// Tooltip: ""
+}
+
+CryoBar: {
+	// DisplayName: Cryo Bar
+	// Tooltip: ""
+}
+
+NebulaBar: {
+	// DisplayName: Nebula Bar
+	// Tooltip: ""
+}
+
+BloodSample: {
+	// DisplayName: Blood Sample
+	// Tooltip: ""
+}
+
+RottenMatter: {
+	// DisplayName: Rotten Matter
+	// Tooltip: ""
+}
+
+DemonicBoneAsh: {
+	// DisplayName: Demonic Bone Ash
+	// Tooltip: ""
+}

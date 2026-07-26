@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.DamageBuffs;
-using CalamityInheritance.Content.Materials;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;

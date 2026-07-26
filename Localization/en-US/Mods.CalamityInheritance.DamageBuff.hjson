@@ -27,3 +27,28 @@ CIGravityNormalizer: {
 	DisplayName: C I Gravity Normalizer
 	Description: Mods.CalamityInheritance.DamageBuff.CIGravityNormalizer.Description
 }
+
+CIBurningBlood: {
+	DisplayName: C I Burning Blood
+	Description: Mods.CalamityInheritance.DamageBuff.CIBurningBlood.Description
+}
+
+CIDragonfire: {
+	DisplayName: C I Dragonfire
+	Description: Mods.CalamityInheritance.DamageBuff.CIDragonfire.Description
+}
+
+CIGodSlayerInferno: {
+	DisplayName: C I God Slayer Inferno
+	Description: Mods.CalamityInheritance.DamageBuff.CIGodSlayerInferno.Description
+}
+
+CINightwither: {
+	DisplayName: C I Nightwither
+	Description: Mods.CalamityInheritance.DamageBuff.CINightwither.Description
+}
+
+CISulphuricPoisoning: {
+	DisplayName: C I Sulphuric Poisoning
+	Description: Mods.CalamityInheritance.DamageBuff.CISulphuricPoisoning.Description
+}

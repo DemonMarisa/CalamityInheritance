@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.DamageBuffs;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Core.Utils;
 using LAP.Common.CalamityModCross;
 using Terraria;
 using Terraria.ID;
@@ -47,11 +49,22 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         }
         public override void AddRecipes()
         {
-            CreateRecipe().
-                AddIngredient(CalMaterialsID.LifeAlloyID, 5).
-                AddIngredient(CalamityMaterials.CoreofCalamity, 3).
-                AddTile(TileID.MythrilAnvil).
-                Register();
+            if (CIUtils.HasCalamity())
+            {
+                CreateRecipe().
+                    AddIngredient(CalMaterialsID.LifeAlloyID, 5).
+                    AddIngredient(CalamityMaterials.CoreofCalamity, 3).
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+            }
+            else
+            {
+                CreateRecipe().
+                    AddIngredient(ItemID.BeetleHusk, 5).
+                    AddIngredient<CoreofChaos>(3).
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+            }
         }
     }
 }

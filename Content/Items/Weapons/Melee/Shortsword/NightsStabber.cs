@@ -1,0 +1,55 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Misc;
+using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
+{
+    public class NightsStabber : CIMelee
+    {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
+        {
+            Item.useStyle = ItemUseStyleID.Rapier;
+            Item.width = 28;
+            Item.height = 34;
+            Item.useAnimation = Item.useTime = 20;
+            Item.damage = 38;
+            Item.ArmorPenetration = 15;
+            Item.DamageType = DamageClass.Melee;
+            Item.knockBack = 6f;
+            Item.UseSound = CISoundID.SoundWeaponSwing;
+            Item.autoReuse = true;
+            Item.rare = ItemRarityID.Green;
+            Item.value = CIShopValue.RarityPriceGreen;
+            Item.shoot = ProjectileType<NightsStabberProj>();
+            Item.shootSpeed = 2.4f;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+        }
+        public override bool MeleePrefix() => true;
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemType<SporeKnife>());
+            recipe.AddIngredient(ItemType<LeechingDagger>());
+            recipe.AddIngredient(ItemType<FlameburstShortsword>());
+            recipe.AddIngredient(ItemType<AncientShiv>());
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.Register();
+            Recipe recipe2 = CreateRecipe();
+            recipe2.AddIngredient(ItemType<SporeKnife>());
+            recipe2.AddIngredient(ItemType<BloodyRupture>());
+            recipe2.AddIngredient(ItemType<FlameburstShortsword>());
+            recipe2.AddIngredient(ItemType<AncientShiv>());
+            recipe2.AddTile(TileID.DemonAltar);
+            recipe2.Register();
+        }
+    }
+}

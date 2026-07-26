@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Melee.Swords;
-using CalamityInheritance.Content.Materials;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
 {
-    public class Animus : CIMelee, ILocalizedModType
+    public class Animus : CIMelee
     {
         public override void SetStaticDefaults()
         {
@@ -79,11 +79,10 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
             {
                 CreateRecipe().
                     AddIngredient<BladeofEnmity>().
-                    AddIngredient(CalamityMaterials.ShadowspecBar).
+                    AddIngredient(CalamityMaterials.ShadowspecBar, 5).
                     AddTile(CalamityTile.DraedonsForgeTile).
                     Register();
             }
-
             CreateRecipe().
                 AddIngredient<CalamitousEssence>().
                 DisableDecraft().

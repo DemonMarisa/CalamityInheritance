@@ -7,3 +7,8 @@ CISadness: {
 	DisplayName: C I Sadness
 	Description: Mods.CalamityInheritance.DeBuff.CISadness.Description
 }
+
+WarCleave: {
+	DisplayName: War Cleave
+	Description: Mods.CalamityInheritance.DeBuff.WarCleave.Description
+}
