@@ -1,0 +1,39 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Magic.Ray
+{
+    public class NightBoltold : CIMagicProj
+    {
+
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 4;
+            Projectile.height = 4;
+            Projectile.extraUpdates = 20;
+            Projectile.friendly = true;
+            Projectile.timeLeft = 30;
+            Projectile.DamageType = DamageClass.Magic;
+            Projectile.ignoreWater = true;
+        }
+
+        public override void AI()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
+                Dust corruptMagic = Dust.NewDustPerfect(dustSpawnPos, DustID.Shadowflame);
+                corruptMagic.color = Color.Lerp(Color.Fuchsia, Color.Magenta, Main.rand.NextFloat(0.6f));
+                corruptMagic.scale = Main.rand.NextFloat(0.96f, 1.04f);
+                corruptMagic.noGravity = true;
+                corruptMagic.velocity *= 0.1f;
+            }
+        }
+    }
+}

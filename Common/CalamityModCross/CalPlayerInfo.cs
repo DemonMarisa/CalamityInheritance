@@ -11,6 +11,7 @@ namespace CalamityInheritance.Common.CalamityModCross
     public class CalPlayerInfo : ModPlayer
     {
         public bool ZoneAstral = false;
+        public bool astralInjection = false;
         public override void ResetEffects()
         {
             ZoneAstral = false;
@@ -22,6 +23,7 @@ namespace CalamityInheritance.Common.CalamityModCross
         {
             CalamityPlayer modPlayer = Player.Calamity();
             ZoneAstral = modPlayer.ZoneAstral;
+            astralInjection = modPlayer.astralInjection;
         }
     }
 }

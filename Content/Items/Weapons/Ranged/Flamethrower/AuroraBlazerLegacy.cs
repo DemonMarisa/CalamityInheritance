@@ -1,0 +1,51 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Misc;
+using CalamityInheritance.Content.Projectiles.Ranged.Flamethrower;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Flamethrower
+{
+    public class AuroraBlazerLegacy : CIRanged
+    {
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
+        {
+            Item.damage = 49;
+            Item.DamageType = DamageClass.Ranged;
+            Item.useTime = 18;
+            Item.useAnimation = 18;
+            Item.knockBack = 2f;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileType<AuroraFireLegacy>();
+            Item.shootSpeed = 7.5f;
+            Item.useAmmo = AmmoID.Gel;
+
+            Item.width = 68;
+            Item.height = 36;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.UseSound = CISoundID.SoundFlamethrower;
+            Item.value = CIShopValue.RarityPriceLime;
+            Item.rare = ItemRarityID.Lime;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, Main.rand.Next(4, 11), 0f);
+            return false;
+        }
+        public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+        public override bool CanConsumeAmmo(Item ammo, Player player) => Main.rand.Next(100) >= 60;
+    }
+}

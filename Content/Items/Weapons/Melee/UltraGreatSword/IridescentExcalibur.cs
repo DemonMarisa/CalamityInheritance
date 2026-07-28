@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.UltraGreatSword;
 using CalamityInheritance.Content.Projectiles.Melee.UltraGreatSword;
 using CalamityInheritance.Content.Rarity;
@@ -147,13 +148,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
 
         public override void AddRecipes()
         {
-            //CreateRecipe().
-            //    AddIngredient(ItemID.TrueExcalibur).
-            //    AddIngredient<Orderbringer>().
-            //    AddIngredient<MiracleMatter>(3).
-            //    AddIngredient<AshesofAnnihilation>(15).
-            //    AddTile<DraedonsForge>().
-            //    Register();
+            CreateRecipe().
+                AddIngredient<CalamitousEssence>().
+                Register();
         }
     }
 }

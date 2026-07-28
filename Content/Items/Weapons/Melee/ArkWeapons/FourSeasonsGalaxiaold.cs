@@ -7,7 +7,7 @@ using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -261,7 +261,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                     AddIngredient<OmegaBiomeBlade>().
                     AddIngredient(CalamityMaterials.CosmiliteBar, 8).
                     AddIngredient(CalamityMaterials.DarksunFragment, 8).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

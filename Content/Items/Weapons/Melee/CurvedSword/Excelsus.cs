@@ -1,9 +1,10 @@
-﻿using CalamityInheritance.Content.BaseClass.Weapons;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Projectiles.Melee.CurvedSword;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -59,8 +60,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.CurvedSword
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe()
-                    .AddIngredient(CalMaterialsID.CosmiliteBarID, 14)
-                    .AddTile(CalTileID.CosmicAnvilID)
+                    .AddIngredient(CalamityMaterials.CosmiliteBar, 14)
+                    .AddTile(CalamityTile.CosmicAnvilTile)
                     .Register();
             }
             else

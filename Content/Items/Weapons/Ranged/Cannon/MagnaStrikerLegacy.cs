@@ -1,0 +1,64 @@
+﻿using CalamityInheritance.Assets.Sounds;
+using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Weapons.Magic.MagicGun.Cannon;
+using CalamityInheritance.Content.Items.Weapons.Ranged.HandGun;
+using CalamityInheritance.Content.Projectiles.Ranged.Cannon;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using LAP.Content.RecipeGroupAdd;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Cannon
+{
+    public class MagnaStrikerLegacy : CIRanged
+    {
+        public override void SetDefaults()
+        {
+            Item.damage = 50;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 72;
+            Item.height = 38;
+            Item.useAnimation = 20;
+            Item.useTime = 5;
+            Item.reuseDelay = 6;
+            Item.useLimitPerAnimation = 4;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 2.25f;
+            Item.value = CIShopValue.RarityPriceYellow;
+            Item.rare = ItemRarityID.Yellow;
+            Item.UseSound = CISounds.OpalStriker;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileType<OpalStrikeLegacy>();
+            Item.shootSpeed = 15f;
+            Item.useAmmo = AmmoID.None;
+
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-5, 0);
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            int pType = Main.rand.NextBool() ? type : ProjectileType<MagnaStrikerProj>();
+            Projectile.NewProjectile(source, position, velocity, pType, damage, knockback, player.whoAmI);
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<OpalStrikerLegacy>().
+                AddIngredient<MagnaCannonLegacy>().
+                AddRecipeGroup(LAPRecipeGroup.AnyAdamantiteBar, 6).
+                AddIngredient(ItemID.Ectoplasm, 5).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+        }
+    }
+}

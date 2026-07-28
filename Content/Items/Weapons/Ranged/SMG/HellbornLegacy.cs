@@ -1,0 +1,130 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Core.Utils;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.SMG
+{
+    public class HellbornLegacy : CIRanged
+    {
+        public const float ExplosionDamageMultiplier = 3f;
+        public override void SetDefaults()
+        {
+            Item.width = Item.height = 32;
+            Item.damage = 20;
+            Item.DamageType = DamageClass.Ranged;
+            Item.useAnimation = Item.useTime = 9;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 2f;
+            Item.value = CIShopValue.RarityPricePink;
+            Item.rare = ItemRarityID.Pink;
+            Item.UseSound = null;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shootSpeed = 12f;
+            Item.useAmmo = AmmoID.Bullet;
+        }
+
+        public override float UseTimeMultiplier(Player player) => 1f - 0.5f * ((float)player.CI().HellbornBoost * (1f / 600f));
+
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage) => damage *= 1f + (float)player.CI().HellbornBoost * (1f / 600f);
+
+        public override void ModifyWeaponKnockback(Player player, ref StatModifier knockback) => knockback *= 1f + (float)player.CI().HellbornBoost * (1f / 600f);
+
+        public override Vector2? HoldoutOffset() => new Vector2(-10, 0);
+
+        //Custom melee hitbox
+        public override bool? CanHitNPC(Player player, NPC target)
+        {
+            Rectangle targetHitbox = target.Hitbox;
+
+            float collisionPoint = 0f;
+            float gunLength = 66f;
+            float gunHeight = 15;
+
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), player.MountedCenter, player.MountedCenter + (player.itemRotation + (player.direction < 0 ? MathHelper.Pi : 0f)).ToRotationVector2() * gunLength, gunHeight, ref collisionPoint) ? null : false;
+        }
+        public override void UseItemFrame(Player player)
+        {
+            LAPUtilities.UpdateWeaponAim(player, 0, 1, true, true);
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            SoundEngine.PlaySound(SoundID.Item11, player.Center);
+            for (int index = 0; index < 3; index++)
+            {
+                float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
+                float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
+
+                if (type == ProjectileID.Bullet)
+                {
+                    int bullet = Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, ProjectileID.ExplosiveBullet, damage, knockback, player.whoAmI);
+                    Main.projectile[bullet].usesLocalNPCImmunity = true;
+                    Main.projectile[bullet].localNPCHitCooldown = 10;
+                }
+                else
+                    Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI);
+            }
+            return false;
+        }
+
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            //我往物品类写了，除非你想往玩家类写的话
+            player.CI().HellbornBoost = 600;
+            modifiers.SourceDamage *= ExplosionDamageMultiplier;
+            int touchDamage = player.GetWeaponDamage(Item);
+            player.ApplyDamageToNPC(target, touchDamage, 0f, 0, false);
+            float firstDustScale = 3.4f;
+            float secondDustScale = 1.6f;
+            float thirdDustScale = 4f;
+            Vector2 dustRotation = (target.rotation - MathHelper.PiOver2).ToRotationVector2();
+            Vector2 dustVelocity = dustRotation * target.velocity.Length();
+            SoundEngine.PlaySound(SoundID.Item14, target.Center);
+            for (int i = 0; i < 80; i++)
+            {
+                int contactDust = Dust.NewDust(new Vector2(target.position.X, target.position.Y), target.width, target.height, DustID.InfernoFork, 0f, 0f, 200, default, firstDustScale);
+                Dust dust = Main.dust[contactDust];
+                dust.position = target.Center + Vector2.UnitY.RotatedByRandom(MathHelper.Pi) * (float)Main.rand.NextDouble() * target.width / 2f;
+                dust.noGravity = true;
+                dust.velocity.Y -= 6f;
+                dust.velocity *= 3f;
+                dust.velocity += dustVelocity * Main.rand.NextFloat();
+                contactDust = Dust.NewDust(new Vector2(target.position.X, target.position.Y), target.width, target.height, DustID.InfernoFork, 0f, 0f, 100, default, secondDustScale);
+                dust.position = target.Center + Vector2.UnitY.RotatedByRandom(MathHelper.Pi) * (float)Main.rand.NextDouble() * target.width / 2f;
+                dust.velocity.Y -= 6f;
+                dust.velocity *= 2f;
+                dust.noGravity = true;
+                dust.fadeIn = 1f;
+                dust.color = Color.Crimson * 0.5f;
+                dust.velocity += dustVelocity * Main.rand.NextFloat();
+            }
+            for (int j = 0; j < 40; j++)
+            {
+                int contactDust2 = Dust.NewDust(new Vector2(target.position.X, target.position.Y), target.width, target.height, DustID.InfernoFork, 0f, 0f, 0, default, thirdDustScale);
+                Dust dust = Main.dust[contactDust2];
+                dust.position = target.Center + Vector2.UnitX.RotatedByRandom(MathHelper.Pi).RotatedBy(target.velocity.ToRotation()) * target.width / 3f;
+                dust.noGravity = true;
+                dust.velocity.Y -= 6f;
+                dust.velocity *= 0.5f;
+                dust.velocity += dustVelocity * (0.6f + 0.6f * Main.rand.NextFloat());
+            }
+        }
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(BuffID.OnFire3, 360);
+        }
+
+        public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(BuffID.OnFire3, 360);
+        }
+    }
+}

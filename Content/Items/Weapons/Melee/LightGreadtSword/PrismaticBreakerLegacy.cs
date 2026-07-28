@@ -1,9 +1,15 @@
 ﻿using CalamityInheritance.Assets.Sounds;
+using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.DamageBuffs;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Items.Weapons.Ranged.Bow;
 using CalamityInheritance.Content.Projectiles.Melee.LightGreadtSword;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Content.Tiles.CraftingStations;
+using CalamityInheritance.Core.Utils;
+
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -121,14 +127,25 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.LightGreadtSword
 
         public override void AddRecipes()
         {
-            //CreateRecipe().
-            //    AddIngredient<CosmicRainbowLegacy>().
-            //    AddIngredient<SolsticeClaymore>().
-            //    AddIngredient<LifeAlloy>(3).
-            //    AddIngredient<CosmiliteBar>(8).
-            //    AddIngredient<EndothermicEnergy>(20).
-            //    AddTile<CosmicAnvil>().
-            //    Register();
+            if (CIUtils.HasCalamity())
+            {
+                CreateRecipe().
+                    AddIngredient<CosmicRainbowLegacy>().
+                    AddIngredient(CalamityWeapons.SolsticeClaymore).
+                    AddIngredient(CalamityMaterials.LifeAlloy, 3).
+                    AddIngredient(CalamityMaterials.CosmiliteBar, 8).
+                    AddIngredient(CalamityMaterials.EndothermicEnergy, 20).
+                    AddTile(CalamityTile.CosmicAnvilTile).
+                    Register();
+            }
+            else
+            {
+                CreateRecipe().
+                    AddIngredient<CosmicRainbowLegacy>().
+                    AddIngredient<GalacticaSingularity>().
+                    AddTile<DraedonsForgeoldTile>().
+                    Register();
+            }
         }
     }
 }

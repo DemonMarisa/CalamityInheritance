@@ -5,7 +5,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalMaterialsID.LifeAlloyID, 5).
+                    AddIngredient(CalamityMaterials.LifeAlloy, 5).
                     AddIngredient(CalamityMaterials.CoreofCalamity, 3).
                     AddTile(TileID.MythrilAnvil).
                     Register();

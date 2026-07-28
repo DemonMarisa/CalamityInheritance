@@ -1,10 +1,11 @@
-﻿using CalamityInheritance.Content.BaseClass.Weapons;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.Shortsword;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -45,8 +46,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             {
                 CreateRecipe().
                     AddIngredient<ElementalShivold>().
-                    AddIngredient(CalMaterialsID.CosmiliteBarID, 8).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddIngredient(CalamityMaterials.CosmiliteBar, 8).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

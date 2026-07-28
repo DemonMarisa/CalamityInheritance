@@ -7,6 +7,7 @@ namespace CalamityInheritance.Common.CalamityModCross
     public class CalamityTile : ModSystem
     {
         public static int DraedonsForgeTile;// 嘉登熔炉
+        public static int CosmicAnvilTile;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -19,6 +20,7 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static void GetCalamityTileID()
         {
             DraedonsForgeTile = TileType<DraedonsForge>();
+            CosmicAnvilTile = TileType<CosmicAnvil>();
         }
     }
 }

@@ -5,7 +5,7 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -164,7 +164,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                     AddIngredient<ArkoftheAncients>().
                     AddIngredient(CalamityMaterials.CoreofCalamity).
                     AddIngredient(ItemID.BrokenHeroSword).
-                    AddIngredient(CalMaterialsID.LivingShardID, 3).
                     AddTile(TileID.MythrilAnvil).
                     Register();
             }

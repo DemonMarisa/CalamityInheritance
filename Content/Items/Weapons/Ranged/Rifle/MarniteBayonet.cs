@@ -1,0 +1,87 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Misc;
+using CalamityInheritance.Content.Projectiles.HeldProj.Ranged.Rifle;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using LAP.Content.RecipeGroupAdd;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.Rifle
+{
+    public class MarniteBayonet : CIRanged
+    {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
+        }
+        public override void SetDefaults()
+        {
+            Item.damage = 20;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 72;
+            Item.height = 20;
+            Item.useTime = 28;
+            Item.useAnimation = 28;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 2.25f;
+            Item.value = CIShopValue.RarityPriceGreen;
+            Item.rare = ItemRarityID.Green;
+            Item.UseSound = SoundID.Item41;
+            Item.autoReuse = true;
+            Item.shootSpeed = 22f;
+            Item.useAmmo = AmmoID.Bullet;
+            Item.shoot = ProjectileID.PurificationPowder;
+            Item.noMelee = true;
+
+            Item.noUseGraphic = true;
+            Item.channel = true;
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Item.UseSound = CISoundID.SoundWeaponSwing;
+                Item.useAmmo = AmmoID.None;
+                Item.useTime = 28;
+                Item.useAnimation = 28;
+            }
+            else
+            {
+                Item.UseSound = SoundID.Item41;
+                Item.useAmmo = AmmoID.Bullet;
+                Item.useTime = 28;
+                Item.useAnimation = 28;
+            }
+            return player.ownedProjectileCounts[ProjectileType<MarniteBayonetHeldProj>()] < 1;
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Projectile.NewProjectile(source, position, velocity * 0.1f, ProjectileType<MarniteBayonetSpikesProj>(), damage * 3, knockback, player.whoAmI, 0f, 0f, 0f);
+            }
+            else
+            {
+                Projectile.NewProjectile(source, position, velocity, ProjectileType<MarniteBayonetHeldProj>(), damage, knockback, player.whoAmI, 0f, 0f, 0f);
+            }
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddRecipeGroup(LAPRecipeGroup.AnyGoldBar, 7).
+                AddIngredient(ItemID.Granite, 5).
+                AddIngredient(ItemID.Marble, 5).
+                AddTile(TileID.Anvils).
+                Register();
+        }
+    }
+}

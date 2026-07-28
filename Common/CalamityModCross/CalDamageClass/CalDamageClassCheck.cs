@@ -15,5 +15,10 @@ namespace CalamityInheritance.Common.CalamityModCross.CalDamageClass
         {
             return damageClass == GetInstance<TrueMeleeNoSpeedDamageClass>();
         }
+        [JITWhenModsEnabled("CalamityMod")]
+        public static bool CheckCalRogue(this DamageClass damageClass)
+        {
+            return damageClass == GetInstance<RogueDamageClass>();
+        }
     }
 }

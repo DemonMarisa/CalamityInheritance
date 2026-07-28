@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Items.Weapons.Melee.Yoyos;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.Explosions;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

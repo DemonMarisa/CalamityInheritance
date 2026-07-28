@@ -101,7 +101,7 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles.HeldProj
         }
 
         public override bool ShouldUpdatePosition() => false;
-        public Vector2 OffsetFromPlayer => Projectile.velocity * (FullUse) * 12f;
+        public Vector2 OffsetFromPlayer => Projectile.velocity * MathF.Sin(FullUse * MathHelper.Pi) * 12f;
         public override void CutTiles()
         {
             // "cutting tiles" refers to breaking pots, grass, queen bee larva, etc.

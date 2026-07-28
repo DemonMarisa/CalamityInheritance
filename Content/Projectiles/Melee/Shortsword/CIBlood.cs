@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 180;
+            Projectile.extraUpdates = 1;
         }
 
         public override void AI()
@@ -35,7 +36,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 for (int i = 0; i < 2; i++)
                 {
                     int dustType = Main.rand.NextBool(4) ? LAPDustID.DustVampireKnife : LAPDustID.DustLifeDrain;
-                    Vector2 dustSpawnPos = Projectile.position - Projectile.velocity * i / 2f;
+                    Vector2 dustSpawnPos = Projectile.Center - Projectile.velocity * i / 2f;
                     Dust crimtameMagic = Dust.NewDustPerfect(dustSpawnPos, dustType);
                     crimtameMagic.scale = Main.rand.NextFloat(0.96f, 1.04f) * MathHelper.Lerp(1f, 1.7f, Time / Lifetime);
                     crimtameMagic.noGravity = true;
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee
                 }
             }
 
-            Projectile.HomeInNPC(600f, 6f, 12f, null, false);
+            Projectile.HomeInNPC(600f, 12f, 12f, null, false);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
 {
@@ -14,6 +15,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
         public int Filp = 1;
         public override void SetDefaults()
         {
+            Item.DamageType = DamageClass.Melee;
             Item.width = 56;
             Item.height = 56;
             Item.damage = 25;

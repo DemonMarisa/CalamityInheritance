@@ -1,0 +1,227 @@
+﻿using CalamityInheritance.Assets;
+using CalamityInheritance.Content.Items.Weapons.Ranged.HandGun;
+using CalamityInheritance.Content.Particles;
+using CalamityInheritance.Content.Projectiles.Ranged.HandGun;
+using LAP.Content.Particles;
+using LAP.Core.BaseClass.Projectiles;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.HandGun
+{
+    public class PearlGodLegacyHeldProj : BaseHeldProj
+    {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<PearlGodLegacy>();
+        public override string Texture => GetInstance<PearlGodLegacy>().Texture;
+        public float rotProg;
+        private const int defaultSpread = 1;
+        private int spread = defaultSpread;
+        private bool finalShot = false;
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.NeedsUUID[Projectile.type] = true;
+            ProjectileID.Sets.HeldProjDoesNotUsePlayerGfxOffY[Type] = true;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 80;
+            Projectile.height = 46;
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.tileCollide = false;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.ignoreWater = true;
+            Projectile.scale = 0.75f;
+            RotAmount = 0.4f;
+        }
+        public override void ExAI()
+        {
+            Player player = Main.player[Projectile.owner];
+            // 用于储存动画进度
+            ref float AniProgress = ref Projectile.ai[0];
+
+            if (AniProgress == 0 && !Main.mouseRight)
+            {
+                SoundEngine.PlaySound(SoundID.Item41, Projectile.Center);
+                CustomShoot();
+            }
+            AniProgress++;
+            RecoilAnimation(ref AniProgress);
+            DrawRotOffset = MathHelper.ToRadians(rotProg) * Owner.direction;
+            DrawPosOffset = new Vector2(-10, -4 * Owner.direction).RotatedBy(Projectile.rotation);
+        }
+        #region 后坐力动画
+        public void RecoilAnimation(ref float AniProgress)
+        {
+            Player player = Main.player[Projectile.owner];
+            if (Main.mouseRight)
+            {
+                rotProg = MathHelper.Lerp(rotProg, 0f, 0.25f);
+                return;
+            }
+            // 总进度
+            int recoilani = Owner.HeldItem.useTime;
+            int Halfrecoilani = Owner.HeldItem.useTime / 2;
+            // 旋转最终加值
+            float rotProgress;
+            if (AniProgress <= Halfrecoilani)
+            {
+                float progress = EasingHelper.EaseInOutQuad((float)AniProgress / Halfrecoilani);
+                // 最多转7度
+                rotProgress = MathHelper.Lerp(0, 7, progress);
+                rotProg = -rotProgress;
+            }
+            else if (AniProgress > Halfrecoilani && AniProgress < recoilani)
+            {
+                rotProg = MathHelper.Lerp(rotProg, 0f, 0.5f);
+            }
+            else
+            {
+                AniProgress = 0;
+                rotProg = 0;
+            }
+        }
+        #endregion
+        #region 发射逻辑
+        public void CustomShoot()
+        {
+            if (spread > 6)
+            {
+                spread = defaultSpread;
+                finalShot = true;
+            }
+            rotProg = 0;
+            var source = Projectile.GetSource_FromThis();
+            float rotation = MathHelper.ToRadians(spread);
+
+            Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation);
+            firedirection = firedirection.SafeNormalize(Vector2.UnitX);
+
+            Owner.PickAmmo(Owner.ActiveItem(), out int Proj, out float shootSpeed, out int damage, out float knockback, out _, false);
+            Vector2 velocity = firedirection * shootSpeed;
+
+            Vector2 offset = new Vector2(55, -5 * Projectile.direction).RotatedBy(Projectile.rotation);
+            Vector2 firepos = Projectile.Center + offset;
+            if (!finalShot)
+            {
+                int totalLoops = 1;
+                switch (spread)
+                {
+                    case 1:
+                    case 2:
+                        break;
+                    case 3:
+                    case 4:
+                        totalLoops = 2;
+                        break;
+                    case 5:
+                    case 6:
+                        totalLoops = 3;
+                        break;
+                }
+                for (int i = 0; i < totalLoops; i++)
+                {
+                    int bullet1 = Projectile.NewProjectile(source, firepos, velocity.RotatedBy(-rotation * (i + 1)), Proj, (int)(damage * 0.5), knockback * 0.5f, Owner.whoAmI);
+                    Main.projectile[bullet1].extraUpdates += spread;
+                    int bullet2 = Projectile.NewProjectile(source, firepos, velocity.RotatedBy(+rotation * (i + 1)), Proj, (int)(damage * 0.5), knockback * 0.5f, Owner.whoAmI);
+                    Main.projectile[bullet2].extraUpdates += spread;
+                }
+
+                int shockblast = Projectile.NewProjectile(source, firepos, velocity, ProjectileType<ShockblastRoundLegacy>(), damage, knockback, Owner.whoAmI, 0f, spread);
+                Main.projectile[shockblast].extraUpdates += spread;
+
+                spread++;
+
+                for (int k = 0; k < 2; k++)
+                {
+                    int randomColor = Main.rand.Next(1, 2 + 1);
+                    Color color = randomColor == 1 ? Color.LightBlue : Color.Khaki;
+                    SparkParticle spark = new SparkParticle(firepos, velocity.RotatedByRandom(0.25) * Main.rand.NextFloat(0.2f, 1.5f), false, Main.rand.Next(20, 25 + 1), Main.rand.NextFloat(0.4f, 0.65f), color);
+                    spark.Spawn();
+                }
+                for (int k = 0; k < 6; k++)
+                {
+                    int randomColor = Main.rand.Next(1, 2 + 1);
+                    Color color = randomColor == 1 ? Color.LightBlue : Color.Khaki;
+                    PearlParticle pearl1 = new PearlParticle(firepos, velocity.RotatedByRandom(0.25) * Main.rand.NextFloat(0.2f, 1f), false, Main.rand.Next(40, 45 + 1), Main.rand.NextFloat(0.6f, 0.75f), color, 0.95f, Main.rand.NextFloat(1, -1), true);
+                    pearl1.Spawn();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    int bigShockblast = Projectile.NewProjectile(source, Projectile.Center + offset, velocity, ProjectileType<ShockblastRoundLegacy>(), damage * 2, knockback * 2f, Owner.whoAmI, 0f, 10f);
+                    Main.projectile[bigShockblast].extraUpdates += 9;
+                }
+
+                for (int k = 0; k < 2; k++)
+                {
+                    int randomColor = Main.rand.Next(1, 3 + 1);
+                    Color color = randomColor == 1 ? Color.LightBlue : Color.Khaki;
+                    SparkParticle spark = new SparkParticle(firepos, velocity.RotatedByRandom(0.25) * Main.rand.NextFloat(0.2f, 1.5f), false, Main.rand.Next(20, 25 + 1), Main.rand.NextFloat(0.4f, 0.65f), color);
+                    spark.Spawn();
+                }
+                for (int k = 0; k < 6; k++)
+                {
+                    int randomColor = Main.rand.Next(1, 3 + 1);
+                    Color color = randomColor == 1 ? Color.LightBlue : Color.Khaki;
+                    PearlParticle pearl1 = new PearlParticle(firepos, velocity.RotatedByRandom(0.25) * Main.rand.NextFloat(0.2f, 1f), false, Main.rand.Next(40, 45 + 1), Main.rand.NextFloat(0.6f, 0.75f), color, 0.95f, Main.rand.NextFloat(1, -1), true);
+                    pearl1.Spawn();
+                }
+
+                finalShot = false;
+            }
+        }
+        #endregion
+        public float blinkTimer;
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Player player = Main.player[Projectile.owner];
+            #region 闪烁效果
+            blinkTimer += Main.rand.NextFloat(0.15f, 0.45f);
+            // 范围100-200的透明度变化
+            float alphaFactor = (float)(Math.Sin(blinkTimer) + 1) / 2; // 转换为0-1范围，而不是-1到1范围
+            int alpha = 125 + (int)(75 * alphaFactor); // 映射到125-200范围
+            Color blinkColor = new Color(255, 255, 255, alpha);
+            #endregion
+            #region 材质注册
+            Texture2D laserTexture = CIExtraTexture.PearlGodAimLaser.Value;
+            Texture2D texture = TextureAssets.Projectile[Type].Value;
+            #endregion
+
+            Vector2 offset = new Vector2(0, 6.2f * player.direction).RotatedBy(Projectile.rotation + DrawRotOffset);
+            Vector2 drawPosition = Projectile.Center + offset - Main.screenPosition;
+
+            Vector2 orig = new(0, laserTexture.Height / 2);
+            SpriteEffects flipSprite = player.direction * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically;
+
+            // 重置绘制批次来设置叠加混合模式
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+
+            Main.EntitySpriteDraw(laserTexture, drawPosition + DrawPosOffset, null, blinkColor, Projectile.rotation + DrawRotOffset, orig, Projectile.scale * Main.player[Projectile.owner].gravDir * 0.5f, flipSprite);
+
+            // 绘制后恢复原始状态
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+
+            Vector2 Baseorig = new(0, texture.Height / 2);
+
+            Vector2 drawBasePosition = Projectile.Center - Main.screenPosition;
+            SpriteEffects BaseflipSprite = player.direction * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.FlipVertically : SpriteEffects.None;
+            Main.EntitySpriteDraw(texture, drawBasePosition + DrawPosOffset, null, Color.White, Projectile.rotation + DrawRotOffset, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
+
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2 + DrawRotOffset);
+            return false;
+        }
+    }
+}

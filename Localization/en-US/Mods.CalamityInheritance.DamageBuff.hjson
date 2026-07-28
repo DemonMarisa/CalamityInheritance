@@ -57,3 +57,8 @@ CIIrradiated: {
 	DisplayName: C I Irradiated
 	Description: Mods.CalamityInheritance.DamageBuff.CIIrradiated.Description
 }
+
+PolarisBuffLegacy: {
+	DisplayName: Polaris Buff Legacy
+	Description: Mods.CalamityInheritance.DamageBuff.PolarisBuffLegacy.Description
+}

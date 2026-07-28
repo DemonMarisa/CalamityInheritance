@@ -25,7 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Flails
             Projectile.alpha = 255;
             Projectile.penetrate = 2;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = -1;
+            Projectile.localNPCHitCooldown = 45;
             Projectile.timeLeft = 90;
             Projectile.noEnchantments = true;
         }
@@ -55,6 +55,6 @@ namespace CalamityInheritance.Content.Projectiles.Melee.Flails
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => target.AddBuff(BuffID.Poisoned, 120);
 
-        public override bool? CanDamage() => Time < 12f ? false : base.CanDamage();
+        public override bool? CanDamage() => base.CanDamage();
     }
 }

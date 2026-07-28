@@ -1,0 +1,47 @@
+﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Assets.TextureRegister;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.ID;
+
+namespace CalamityInheritance.Content.Projectiles.Rogue.Effect
+{
+    public class LumiStrikerBack : CIRangedProj
+    {
+        public override string Texture => LAPTextureRegister.InvisibleTexturePath;
+        public override void SetDefaults()
+        {
+            Projectile.width = Projectile.height = 34;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
+            Projectile.DamageType = RogueDamage.Instance;
+            Projectile.penetrate = -1;
+            Projectile.MaxUpdates = 3;
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 5;
+            Projectile.timeLeft = 20;
+            Projectile.tileCollide = false;
+        }
+        public ref float Time => ref Projectile.ai[0];
+        public override void AI()
+        {
+            Time++;
+            Lighting.AddLight(Projectile.Center + Projectile.velocity * 0.6f, 0.6f, 0.2f, 0.9f);
+            float radiusFactor = MathHelper.Lerp(0f, 1f, Utils.GetLerpValue(10f, 50f, Time, true));
+            for (int i = 0; i < 9; i++)
+            {
+                float offsetRotationAngle = Projectile.velocity.ToRotation() + Time / 20f;
+                float radius = (20f + (float)Math.Cos(Time / 3f) * 12f) * radiusFactor;
+                Vector2 dustPosition = Projectile.Center;
+                dustPosition += offsetRotationAngle.ToRotationVector2().RotatedBy(i / 5f * MathHelper.TwoPi) * radius;
+                Dust dust = Dust.NewDustPerfect(dustPosition, Main.rand.NextBool() ? DustID.BubbleBurst_Blue : DustID.BubbleBurst_Pink);
+                dust.noGravity = true;
+                dust.velocity = Projectile.velocity * 0.1f;
+                dust.scale = Main.rand.NextFloat(1.1f, 1.7f);
+            }
+
+        }
+    }
+}

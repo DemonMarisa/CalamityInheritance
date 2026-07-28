@@ -30,6 +30,7 @@ Buff一个都没做效果，现在全是占位符
 伽利略短剑
 瘟疫长矛
 邪锋破晓
+龙弓
 
 光棱破碎者
 老核弹的矛
@@ -45,11 +46,13 @@ Buff一个都没做效果，现在全是占位符
 水华大剑
 所有宇宙锭武器
 所有亵渎武器
-新元素圣剑
 全部血石武器
-镜之刃
 
-//byd谁记得住中文名是什么啊我直接写类名了
+镜之刃
+蚁狮颚弓
+
+弹药转换还没做
+
 ClaretCannonLegacy
 FetidEmesisLegacy
 RubicoPrimeLegacy
@@ -70,3 +73,7 @@ SepticSkewerLegacy
 [b]可能需要重写AI：[/b]
 Projectile.SepticSkewerLegacyHarpoon
 Projectile.SepticSkewerLegacyBacteria
+
+血石幽花武器处于比较尴尬的定位
+因为没有搬运幽花的理由，所以不好做获得
+再商议

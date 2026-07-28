@@ -1,0 +1,66 @@
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Magic.Ray;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityMod.Items.Materials;
+using LAP.Core.Enums;
+using LAP.Core.SystemsLoader;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
+{
+    public class ElementalRayold : CIMagic
+    {
+
+        public override void SetStaticDefaults()
+        {
+            Item.staff[Item.type] = true;
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 62;
+            Item.height = 62;
+            Item.damage = 130;
+            Item.ArmorPenetration = 15;
+            Item.DamageType = DamageClass.Magic;
+            Item.mana = 18;
+            Item.useTime = 15;
+            Item.useAnimation = 20;
+            Item.reuseDelay = 14;
+            Item.useLimitPerAnimation = 1;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 7.5f;
+            Item.value = CIShopValue.RarityPricePurple;
+            Item.rare = ItemRarityID.Purple;
+            Item.UseSound = SoundID.Item60;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileType<ElementalBeamMain>();
+            Item.shootSpeed = 6f;
+
+            Item.SetCalStatInflation(AllWeaponTier.PostMoonLord);
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            Vector2 shootVelocity = velocity;
+            Vector2 shootPosition = position + shootVelocity * 12f;
+            Projectile.NewProjectile(source, shootPosition, shootVelocity, type, damage, knockback, player.whoAmI);
+            return false;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<TerraRay>().
+                AddIngredient(ItemID.LunarBar, 5).
+                AddIngredient<GalacticaSingularity>(5).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+        }
+    }
+}

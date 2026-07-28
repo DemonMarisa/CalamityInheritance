@@ -1,5 +1,6 @@
-﻿using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Core.Utils;
+
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -26,7 +27,7 @@ namespace CalamityInheritance.Content.Tiles.CraftingStations
             if (CIUtils.HasCalamity())
             {
                 AdjTiles = new int[] { TileID.Anvils, TileID.Furnaces, TileID.WorkBenches, TileID.LunarCraftingStation,
-                TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, CalTileID.CosmicAnvilID, CalTileID.DraedonsForgeID };
+                TileID.MythrilAnvil, TileID.AdamantiteForge, TileID.Hellforge, TileID.DemonAltar, CalamityTile.CosmicAnvilTile, CalamityTile.DraedonsForgeTile };
             }
             else
             {

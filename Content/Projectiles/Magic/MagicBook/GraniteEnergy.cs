@@ -1,0 +1,36 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Projectiles.Magic.MagicBook
+{
+    public class GraniteEnergy : CIMagicProj
+    {
+        public override void SetStaticDefaults() => ProjectileID.Sets.CultistIsResistantTo[Type] = true;
+        public override void SetDefaults()
+        {
+            Projectile.width = 12;
+            Projectile.height = 12;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.DamageType = DamageClass.Magic;
+            Projectile.timeLeft = 90;
+        }
+
+        public override bool? CanHitNPC(NPC target) => Projectile.timeLeft < 60 && target.CanBeChasedBy(Projectile);
+
+        public override void AI()
+        {
+            Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + MathHelper.ToRadians(90);
+            if (Main.rand.NextBool())
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Vortex, 0f, 0f, 100, default, 0.6f);
+
+            if (Projectile.timeLeft < 60)
+                LAPUtilities.HomeInNPC(Projectile, 600f, 12f, 20f, null, !Projectile.tileCollide);
+        }
+    }
+}

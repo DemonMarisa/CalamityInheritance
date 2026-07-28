@@ -1,5 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using System;

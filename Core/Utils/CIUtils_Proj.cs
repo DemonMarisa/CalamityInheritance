@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 
 namespace CalamityInheritance.Core.Utils
@@ -35,6 +36,27 @@ namespace CalamityInheritance.Core.Utils
             }
 
             return false;
+        }
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = -oldVel.X;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = oldVel.Y;
+        }
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel, Vector2 wantedNewVel)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = wantedNewVel.X;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = wantedNewVel.Y;
+        }
+        public static void BouncingOnTiles(this Projectile proj, Vector2 oldVel, float newVelX, float newVelY)
+        {
+            if (proj.velocity.X != oldVel.X)
+                proj.velocity.X = newVelX;
+            if (proj.velocity.Y != -oldVel.Y)
+                proj.velocity.Y = newVelX;
         }
         /// <summary>
         /// 播放射弹帧图
@@ -103,6 +125,78 @@ namespace CalamityInheritance.Core.Utils
             velocity.Y *= targetDist;
             return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner);
         }
+        /// <summary>
+        /// Creates an explosion which is visually identical to vanilla's Rocket III and Rocket IV on-hit explosions.
+        /// </summary>
+        /// <param name="projectile">The projectile which is exploding.</param>
+        public static void LargeFieryExplosion(this Projectile projectile)
+        {
+            // Sparks and such
+            Vector2 corner = projectile.position;
+            for (int i = 0; i < 40; i++)
+            {
+                int idx = Dust.NewDust(corner, projectile.width, projectile.height, DustID.Smoke, 0f, 0f, 100, default, 2f);
+                Main.dust[idx].velocity *= 3f;
+                if (Main.rand.NextBool())
+                {
+                    Main.dust[idx].scale = 0.5f;
+                    Main.dust[idx].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                }
+            }
+            for (int i = 0; i < 70; i++)
+            {
+                int idx = Dust.NewDust(corner, projectile.width, projectile.height, DustID.Torch, 0f, 0f, 100, default, 3f);
+                Main.dust[idx].noGravity = true;
+                Main.dust[idx].velocity *= 5f;
+                idx = Dust.NewDust(corner, projectile.width, projectile.height, DustID.Torch, 0f, 0f, 100, default, 2f);
+                Main.dust[idx].velocity *= 2f;
+            }
+
+            // Smoke, which counts as a Gore
+            if (!Main.dedServ)
+            {
+                Vector2 goreSource = projectile.Center;
+                int goreAmt = 3;
+                Vector2 source = new Vector2(goreSource.X - 24f, goreSource.Y - 24f);
+                for (int goreIndex = 0; goreIndex < goreAmt; goreIndex++)
+                {
+                    float velocityMult = 0.33f;
+                    if (goreIndex < (goreAmt / 3))
+                    {
+                        velocityMult = 0.66f;
+                    }
+                    if (goreIndex >= (2 * goreAmt / 3))
+                    {
+                        velocityMult = 1f;
+                    }
+                    int type = Main.rand.Next(61, 64);
+                    int smoke = Gore.NewGore(projectile.GetSource_Death(), source, default, type, 1f);
+                    Gore gore = Main.gore[smoke];
+                    gore.velocity *= velocityMult;
+                    gore.velocity.X += 1f;
+                    gore.velocity.Y += 1f;
+                    type = Main.rand.Next(61, 64);
+                    smoke = Gore.NewGore(projectile.GetSource_Death(), source, default, type, 1f);
+                    gore = Main.gore[smoke];
+                    gore.velocity *= velocityMult;
+                    gore.velocity.X -= 1f;
+                    gore.velocity.Y += 1f;
+                    type = Main.rand.Next(61, 64);
+                    smoke = Gore.NewGore(projectile.GetSource_Death(), source, default, type, 1f);
+                    gore = Main.gore[smoke];
+                    gore.velocity *= velocityMult;
+                    gore.velocity.X += 1f;
+                    gore.velocity.Y -= 1f;
+                    type = Main.rand.Next(61, 64);
+                    smoke = Gore.NewGore(projectile.GetSource_Death(), source, default, type, 1f);
+                    gore = Main.gore[smoke];
+                    gore.velocity *= velocityMult;
+                    gore.velocity.X -= 1f;
+                    gore.velocity.Y -= 1f;
+                }
+            }
+        }
+        #region 绘制方法
         public static void DrawStarTrail(this Projectile projectile, Color outer, Color inner, float auraHeight = 10f)
         {
             Texture2D aura = CITextureRegister.StarTrail.Value;
@@ -140,5 +234,54 @@ namespace CalamityInheritance.Core.Utils
                 Main.EntitySpriteDraw(aura, drawStartInner, auraRec, innerColor * colorMult, auraRotation, auraOrigin, 0.3f + scaleMult * 0.5f, SpriteEffects.None, 0);
             }
         }
+        public static bool DrawBeam(this Projectile projectile, float length, float spacer, Color lightColor, Texture2D texture = null, bool curve = false)
+        {
+            if (texture is null)
+                texture = TextureAssets.Projectile[projectile.type].Value;
+
+            float widthOffset = (float)(texture.Width - projectile.width) * 0.5f + (float)projectile.width * 0.5f;
+            float heightOffset = (float)(projectile.height / 2);
+            Vector2 origin = new Vector2(widthOffset, heightOffset);
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (projectile.spriteDirection == -1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            Rectangle roughScreenBounds = new Rectangle((int)Main.screenPosition.X - 500, (int)Main.screenPosition.Y - 500, Main.screenWidth + 1000, Main.screenHeight + 1000);
+            if (projectile.getRect().Intersects(roughScreenBounds))
+            {
+                Vector2 drawPos = projectile.position - Main.screenPosition + origin;
+                drawPos.Y += projectile.gfxOffY;
+                float maxTrailPoints = length;
+
+                if (projectile.ai[1] == 1f)
+                    maxTrailPoints = (int)projectile.localAI[0];
+
+                Vector2 cumulativeOffset = Vector2.Zero;
+                Color alpha = projectile.GetAlpha(lightColor);
+                float fixedRotation = projectile.rotation + MathHelper.PiOver2;
+                for (int i = 1; i <= (int)projectile.localAI[0]; i++)
+                {
+                    Vector2 velToUseThisIter = projectile.velocity;
+                    if (curve)
+                    {
+                        float oldVelRatio = i / projectile.localAI[0];
+                        int oldVelIndex = (int)(oldVelRatio * projectile.oldRot.Length);
+                        if (oldVelIndex > 0)
+                        {
+                            float angleChange = projectile.oldRot[oldVelIndex - 1] - projectile.rotation;
+                            velToUseThisIter = projectile.velocity.RotatedBy(angleChange);
+                        }
+                    }
+                    cumulativeOffset += Vector2.Normalize(velToUseThisIter) * spacer;
+                    Color color = alpha;
+                    color *= (maxTrailPoints - (float)i) / maxTrailPoints;
+                    color.A = 0;
+                    Main.spriteBatch.Draw(texture, drawPos - cumulativeOffset, null, color, fixedRotation, origin, projectile.scale, spriteEffects, 0f);
+                }
+            }
+            return false;
+        }
+        #endregion
     }
 }

@@ -7,13 +7,14 @@ using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
 {
@@ -21,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
     {
         public override void SetDefaults()
         {
+            Item.DamageType = DamageClass.Melee;
             Item.width = 118;
             Item.height = 118;
             Item.damage = 166;
@@ -156,9 +158,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
                 CreateRecipe().
                     AddIngredient<Devastation>().
                     AddIngredient<ExaltedOathbladeLegacy>().
-                    AddIngredient(CalMaterialsID.CosmiliteBarID, 8).
+                    AddIngredient(CalamityMaterials.CosmiliteBar, 8).
                     AddIngredient(CalamityMaterials.NightmareFuel, 20).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

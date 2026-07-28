@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Content.Items.Weapons.Melee.Yoyos;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

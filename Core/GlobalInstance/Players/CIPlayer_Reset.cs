@@ -6,12 +6,12 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
     {
         public override void ResetEffects()
         {
-            base.ResetEffects();
+            UpdateTimer();
+            ResetWeapons();
         }
         public override void UpdateDead()
         {
             ResetTimerDeath();
         }
-
     }
 }

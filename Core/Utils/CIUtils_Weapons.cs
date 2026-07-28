@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-=======
-﻿using Terraria;
-using Terraria.ModLoader;
->>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
 
 namespace CalamityInheritance.Core.Utils
 {
@@ -25,8 +20,6 @@ namespace CalamityInheritance.Core.Utils
             if (player.gravDir < 0)
                 player.itemLocation.Y = player.Center.Y + (player.position.Y - player.itemLocation.Y);
         }
-
-<<<<<<< HEAD
         /// <summary>
         /// 让原版的手持也可以像手持弹幕一样旋转<br/>
         /// 随便找一个每帧调用的方法调用即可<br/>
@@ -45,8 +38,5 @@ namespace CalamityInheritance.Core.Utils
             else
                 player.itemRotation = player.itemRotation.AngleLerp(targetRotation + MathHelper.ToRadians(rotationOffset), rotationSpeed);
         }
-=======
-
->>>>>>> 6a5a5aaee095507203de8ddd707e66b4043192dd
     }
 }

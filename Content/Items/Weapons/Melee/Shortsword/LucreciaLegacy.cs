@@ -3,7 +3,7 @@ using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Shortsword
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalMaterialsID.LifeAlloyID, 5).
+                    AddIngredient(CalamityMaterials.LifeAlloy, 5).
                     AddIngredient(CalamityMaterials.CoreofCalamity, 5).
                     AddIngredient(ItemID.SoulofLight, 5).
                     AddIngredient(ItemID.SoulofNight, 5).

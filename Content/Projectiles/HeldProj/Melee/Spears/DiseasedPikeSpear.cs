@@ -2,7 +2,7 @@
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Items.Weapons.Melee.Spear;
 using CalamityInheritance.Content.Projectiles.Melee.Spears;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

@@ -1,11 +1,12 @@
-﻿using CalamityInheritance.Content.BaseClass.Weapons;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.HeldProj.Melee.Yoyos;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -62,7 +63,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Yoyos
                     AddIngredient(ItemID.Terrarian).
                     AddIngredient<TheObliteratorLegacy>().
                     AddIngredient<AuricBarold>().
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
 
 
@@ -72,8 +73,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Yoyos
                     AddIngredient<Verdant>().
                     AddIngredient(ItemID.Terrarian).
                     AddIngredient<TheObliteratorLegacy>().
-                    AddIngredient(CalMaterialsID.AuricBarID, 5).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddIngredient(CalamityMaterials.AuricBar, 5).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

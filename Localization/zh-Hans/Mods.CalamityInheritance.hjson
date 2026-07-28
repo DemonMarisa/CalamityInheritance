@@ -1,11 +1,5 @@
 DamageClasses: {
-	// TrueMelee.DisplayName: True Melee
-	// TrueMeleeNoSpeed.DisplayName: True Melee No Speed
-}
-
-GlobalDataBase: {
-	ItemOwner: {
-		DonerItem: -捐赠者物品-
-		DeveloperItem: -开发者物品-
-	}
+	TrueMelee.DisplayName: 真近战
+	TrueMeleeNoSpeed.DisplayName: 真近战
+	// RogueDamage.DisplayName: Rogue Damage
 }

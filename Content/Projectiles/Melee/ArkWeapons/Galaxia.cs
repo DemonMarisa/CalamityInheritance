@@ -2,7 +2,7 @@
 using CalamityInheritance.Content.Buff.Buffs;
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Buff.Debuffs;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.General;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;

@@ -39,9 +39,9 @@ namespace CalamityInheritance.Content.Particles
         public override void Draw(SpriteBatch spriteBatch)
         {
             Vector2 scale = new Vector2(0.5f, 1.6f) * Scale;
-            Texture2D texture = CIParticleTexture.DrainLineBloom2.Value;
+            Texture2D texture = CIParticleTexture.DrainLineBloom.Value;
 
-            spriteBatch.Draw(texture, Position - Main.screenPosition, null, DrawColor, Rotation, texture.Size() * 0.5f, scale, 0, 0f);
+             spriteBatch.Draw(texture, Position - Main.screenPosition, null, DrawColor, Rotation, texture.Size() * 0.5f, scale, 0, 0f);
             spriteBatch.Draw(texture, Position - Main.screenPosition, null, DrawColor, Rotation, texture.Size() * 0.5f, scale * new Vector2(0.45f, 1f), 0, 0f);
         }
     }

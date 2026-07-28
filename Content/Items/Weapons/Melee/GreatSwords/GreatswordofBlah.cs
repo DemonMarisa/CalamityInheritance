@@ -5,7 +5,7 @@ using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -40,7 +40,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
                     AddIngredient<GreatswordofJudgementLegacy>().
                     AddIngredient(CalamityMaterials.CosmiliteBar, 8).
                     AddIngredient(CalamityMaterials.EndothermicEnergy, 20).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

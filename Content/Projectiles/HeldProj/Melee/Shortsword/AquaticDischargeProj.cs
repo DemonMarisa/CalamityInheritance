@@ -1,7 +1,7 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Content.BaseClass.Projectiles.HeldProj;
 using CalamityInheritance.Content.Items.Weapons.Melee.Shortsword;
-using CalamityInheritance.Content.Projectiles.Typeless;
+using CalamityInheritance.Content.Projectiles.Typeless.General;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;

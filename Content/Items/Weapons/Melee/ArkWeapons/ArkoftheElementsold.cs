@@ -5,7 +5,7 @@ using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -115,7 +115,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                 AddIngredient<TrueArkoftheAncients>().
                 AddIngredient<GalacticaSingularity>(5).
                 AddIngredient(CalamityMaterials.CoreofCalamity, 5).
-                AddIngredient(CalMaterialsID.LifeAlloyID, 5).
+                AddIngredient(CalamityMaterials.LifeAlloy, 5).
                 AddIngredient(ItemID.LunarBar, 5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();

@@ -5,7 +5,6 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -65,7 +64,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                 CreateRecipe().
                     AddIngredient<TrueBiomeBlade>().
                     AddIngredient(CalamityMaterials.CoreofCalamity).
-                    AddIngredient(CalMaterialsID.LifeAlloyID, 3).
+                    AddIngredient(CalamityMaterials.LifeAlloy, 3).
                     AddIngredient<GalacticaSingularity>(3).
                     AddIngredient(ItemID.LunarBar, 5).
                     AddTile(TileID.LunarCraftingStation).

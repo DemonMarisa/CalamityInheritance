@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -47,7 +46,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
             {
                 CreateRecipe().
                 AddIngredient<BiomeBlade>().
-                AddIngredient(CalMaterialsID.LivingShardID, 5).
+                AddIngredient(ItemID.BrokenHeroSword).
                 AddIngredient(ItemID.Ectoplasm, 5).
                 AddIngredient(CalamityMaterials.DepthCells, 10).
                 AddIngredient(CalamityMaterials.Lumenyl, 10).

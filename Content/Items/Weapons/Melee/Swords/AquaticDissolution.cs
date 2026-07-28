@@ -4,7 +4,7 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Melee.Swords;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 CreateRecipe().
                 AddIngredient<Mariana>().
                 AddIngredient(ItemID.LunarBar, 10).
-                AddIngredient(CalMaterialsID.LifeAlloyID, 5).
+                AddIngredient(CalamityMaterials.LifeAlloy, 5).
                 AddIngredient(CalamityMaterials.Lumenyl, 20).
                 AddTile(TileID.LunarCraftingStation).
                 Register();

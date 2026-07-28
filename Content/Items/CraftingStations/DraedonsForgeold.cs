@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
 using LAP.Content.RecipeGroupAdd;
 using Terraria;
 using Terraria.ID;
@@ -42,7 +41,7 @@ namespace CalamityInheritance.Content.Items.CraftingStations
                 recipe.AddRecipeGroup(LAPRecipeGroup.AnyHardmodeForge);
                 recipe.AddIngredient(ItemID.LunarCraftingStation);
                 recipe.AddIngredient(ItemID.LunarBar, 5);
-                recipe.AddIngredient(CalMaterialsID.CosmiliteBarID, 5);
+                recipe.AddIngredient(CalamityMaterials.CosmiliteBar, 5);
                 recipe.AddIngredient(CalamityMaterials.NightmareFuel, 20);
                 recipe.AddIngredient(CalamityMaterials.EndothermicEnergy, 20);
                 recipe.AddIngredient(CalamityMaterials.DarksunFragment, 20);

@@ -4,7 +4,7 @@ using CalamityInheritance.Content.Projectiles.Melee.UltraGreatSword;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using LAP.Core.Enums;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -145,7 +145,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
             {
                 CreateRecipe().
                     AddIngredient(CalamityMaterials.CosmiliteBar, 12).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else

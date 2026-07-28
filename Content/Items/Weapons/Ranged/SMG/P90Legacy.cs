@@ -1,0 +1,106 @@
+using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Core.Utils;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Ranged.SMG
+{
+    public class P90Legacy : CIRanged
+    {
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
+        {
+            Item.damage = 6;
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 60;
+            Item.height = 28;
+            Item.useTime = 2;
+            Item.useAnimation = 2;
+            Item.ArmorPenetration = 20;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 1.5f;
+            Item.value = CIShopValue.RarityPriceLime;
+            Item.rare = ItemRarityID.Lime;
+            Item.UseSound = SoundID.Item11;
+            Item.autoReuse = true;
+            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shootSpeed = 18f;
+            Item.useAmmo = 97;
+
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-14, -1);
+        }
+        public override bool CanUseItem(Player player)
+        {
+            if (Main.zenithWorld)
+            {
+                Item.damage = 12;
+                Item.useTime = 1;
+            }
+            else
+            {
+                Item.damage = 6;
+                Item.useTime = 2;
+            }
+            return true;
+        }
+        public override void UseItemFrame(Player player)
+        {
+            player.ChangeDir(Math.Sign((player.LocalMouseWorld() - player.Center).X));
+            float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, rotation);
+            CIUtils.NoHeldProjUpdateAim(player, 0, 1);
+        }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            float SpeedX = velocity.X + Main.rand.Next(-15, 16) * 0.05f;
+            float SpeedY = velocity.Y + Main.rand.Next(-15, 16) * 0.05f;
+            if (!Main.zenithWorld)
+            {
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);
+            }
+            else
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    Vector2 spread = new Vector2(SpeedX, SpeedY).RotatedByRandom(180f) * Main.rand.NextFloat(0.9f, 1.2f);
+                    Projectile.NewProjectile(source, position, spread, type, damage, knockback, player.whoAmI, 0f, 0f);
+                }
+                Projectile.NewProjectile(source, position.X, position.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);
+            }
+            return false;
+        }
+
+        public override bool CanConsumeAmmo(Item ammo, Player player)
+        {
+            if (Main.rand.Next(0, 100) < 33)
+                return false;
+            return true;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddRecipeGroup(RecipeGroupID.IronBar, 10).
+                AddIngredient<CoreofEleum>(7).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+        }
+    }
+}

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
 {
@@ -11,6 +12,8 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
     {
         public override void SetDefaults()
         {
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.friendly = true;
             Projectile.width = 20;
             Projectile.height = 20;
             Projectile.penetrate = 1;

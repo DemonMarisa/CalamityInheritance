@@ -62,3 +62,318 @@ StormDragon: {
 	// DisplayName: Storm Dragon
 	// Tooltip: ""
 }
+
+AncientDragonsBreath: {
+	// DisplayName: Ancient Dragons Breath
+	// Tooltip: ""
+}
+
+AeriesLegacy: {
+	// DisplayName: Aeries Legacy
+	// Tooltip: ""
+}
+
+CursedCapper: {
+	// DisplayName: Cursed Capper
+	// Tooltip: ""
+}
+
+AntlionBow: {
+	// DisplayName: Antlion Bow
+	// Tooltip: ""
+}
+
+ChargedDartRifle: {
+	// DisplayName: Charged Dart Rifle
+	// Tooltip: ""
+}
+
+AuroraBlazerLegacy: {
+	// DisplayName: Aurora Blazer Legacy
+	// Tooltip: ""
+}
+
+BlightSpewerLegacy: {
+	// DisplayName: Blight Spewer Legacy
+	// Tooltip: ""
+}
+
+BloodBoilerLegacy: {
+	// DisplayName: Blood Boiler Legacy
+	// Tooltip: ""
+}
+
+BrimstoneFlameblaster: {
+	// DisplayName: Brimstone Flameblaster
+	// Tooltip: ""
+}
+
+ButcherLegacy: {
+	// DisplayName: Butcher Legacy
+	// Tooltip: ""
+}
+
+ClockBowLegacy: {
+	// DisplayName: Clock Bow Legacy
+	// Tooltip: ""
+}
+
+Deathwind: {
+	// DisplayName: Deathwind
+	// Tooltip: ""
+}
+
+ChickenCannonLegacy: {
+	// DisplayName: Chicken Cannon Legacy
+	// Tooltip: ""
+}
+
+DodusHandcannon: {
+	// DisplayName: Dodus Handcannon
+	// Tooltip: ""
+}
+
+CleansingBlazeLegacy: {
+	// DisplayName: Cleansing Blaze Legacy
+	// Tooltip: ""
+}
+
+PearlGodLegacy: {
+	// DisplayName: Pearl God Legacy
+	// Tooltip: ""
+}
+
+DragonsBreathold: {
+	// DisplayName: Dragons Breathold
+	// Tooltip: ""
+}
+
+DrataliornusLegacy: {
+	// DisplayName: Drataliornus Legacy
+	// Tooltip: ""
+}
+
+ElementalEruptionLegacy: {
+	// DisplayName: Elemental Eruption Legacy
+	// Tooltip: ""
+}
+
+HavocsBreathLegacy: {
+	// DisplayName: Havocs Breath Legacy
+	// Tooltip: ""
+}
+
+MeowthrowerLegacy: {
+	// DisplayName: Meowthrower Legacy
+	// Tooltip: ""
+}
+
+TerraFlamebursterLegacy: {
+	// DisplayName: Terra Flameburster Legacy
+	// Tooltip: ""
+}
+
+Dualpoon: {
+	// DisplayName: Dualpoon
+	// Tooltip: ""
+}
+
+ElementalBlaster: {
+	// DisplayName: Elemental Blaster
+	// Tooltip: ""
+}
+
+PaintballBlaster: {
+	// DisplayName: Paintball Blaster
+	// Tooltip: ""
+}
+
+MagnaStrikerLegacy: {
+	// DisplayName: Magna Striker Legacy
+	// Tooltip: ""
+}
+
+Impaler: {
+	// DisplayName: Impaler
+	// Tooltip: ""
+}
+
+GodsBellowsLegacy: {
+	// DisplayName: Gods Bellows Legacy
+	// Tooltip: ""
+}
+
+HalleysInfernoLegacy: {
+	// DisplayName: Halleys Inferno Legacy
+	// Tooltip: ""
+}
+
+OpalStrikerLegacy: {
+	// DisplayName: Opal Striker Legacy
+	// Tooltip: ""
+}
+
+LeadWizard: {
+	// DisplayName: Lead Wizard
+	// Tooltip: ""
+}
+
+MarniteBayonet: {
+	// DisplayName: Marnite Bayonet
+	// Tooltip: ""
+}
+
+Phangasm: {
+	// DisplayName: Phangasm
+	// Tooltip: ""
+}
+
+OverloadedBlasterLegacy: {
+	// DisplayName: Overloaded Blaster Legacy
+	// Tooltip: ""
+}
+
+Minigun: {
+	// DisplayName: Minigun
+	// Tooltip: ""
+}
+
+PolarisParrotfishLegacy: {
+	// DisplayName: Polaris Parrotfish Legacy
+	// Tooltip: ""
+}
+
+P90Legacy: {
+	// DisplayName: P90 Legacy
+	// Tooltip: ""
+}
+
+NorfleetLegacy: {
+	// DisplayName: Norfleet Legacy
+	// Tooltip: ""
+}
+
+PumplerLegacy: {
+	// DisplayName: Pumpler Legacy
+	// Tooltip: ""
+}
+
+SomaPrimeOld: {
+	// DisplayName: Soma Prime Old
+	// Tooltip: ""
+}
+
+SvantechnicalLegacy: {
+	// DisplayName: Svantechnical Legacy
+	// Tooltip: ""
+}
+
+VictideBow: {
+	// DisplayName: Victide Bow
+	// Tooltip: ""
+}
+
+RaidersGlory: {
+	// DisplayName: Raiders Glory
+	// Tooltip: ""
+}
+
+PristineFuryLegacy: {
+	// DisplayName: Pristine Fury Legacy
+	// Tooltip: ""
+}
+
+ShadethrowerLegacy: {
+	// DisplayName: Shadethrower Legacy
+	// Tooltip: ""
+}
+
+SparkSpreaderLegacy: {
+	// DisplayName: Spark Spreader Legacy
+	// Tooltip: ""
+}
+
+ProporsePistol: {
+	// DisplayName: Proporse Pistol
+	// Tooltip: ""
+}
+
+Triploon: {
+	// DisplayName: Triploon
+	// Tooltip: ""
+}
+
+ProfanedLancher: {
+	// DisplayName: Profaned Lancher
+	// Tooltip: ""
+}
+
+Skullmasher: {
+	// DisplayName: Skullmasher
+	// Tooltip: ""
+}
+
+SpectreRifle: {
+	// DisplayName: Spectre Rifle
+	// Tooltip: ""
+}
+
+TyrannysEndOld: {
+	// DisplayName: Tyrannys End Old
+	// Tooltip: ""
+}
+
+StarCannonEX: {
+	// DisplayName: Star Cannon E X
+	// Tooltip: ""
+}
+
+ArterialAssaultLegacy: {
+	// DisplayName: Arterial Assault Legacy
+	// Tooltip: ""
+}
+
+AstralBow: {
+	// DisplayName: Astral Bow
+	// Tooltip: ""
+}
+
+CosmicRainbowLegacy: {
+	// DisplayName: Cosmic Rainbow Legacy
+	// Tooltip: ""
+}
+
+TelluricGlareLegacy: {
+	// DisplayName: Telluric Glare Legacy
+	// Tooltip: ""
+}
+
+TheStormLegacy: {
+	// DisplayName: The Storm Legacy
+	// Tooltip: ""
+}
+
+CoralCannon: {
+	// DisplayName: Coral Cannon
+	// Tooltip: ""
+}
+
+SulphuricAcidCannonLegacy: {
+	// DisplayName: Sulphuric Acid Cannon Legacy
+	// Tooltip: ""
+}
+
+MegafleetLegacy: {
+	// DisplayName: Megafleet Legacy
+	// Tooltip: ""
+}
+
+StarfleetLegacy: {
+	// DisplayName: Starfleet Legacy
+	// Tooltip: ""
+}
+
+StarmadaLegacy: {
+	// DisplayName: Starmada Legacy
+	// Tooltip: ""
+}

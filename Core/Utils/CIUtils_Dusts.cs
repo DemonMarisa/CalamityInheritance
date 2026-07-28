@@ -1,10 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 
 namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+        public static float TryGetVectorMud(float distanceX, float distanceY)
+        {
+            return (float)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+        }
         public static void DustCircle(Vector2 pos, float dustCounts, float dustScale, int dustType, bool dustGravity,
                                       float xPos, int? dustAlpha = 255, float? yPos = 0f, float? xVel = null,
                                       float? yVel = 0f)

@@ -35,10 +35,6 @@
 		<AdditionalFiles Include="BannedSymbols.txt" />
 	</ItemGroup>
 	
-	<ItemGroup>
-	  <Folder Include="Content\Items\Weapons\Ranged\" />
-	</ItemGroup>
-	
 	<!-- References -->
 
 </Project>

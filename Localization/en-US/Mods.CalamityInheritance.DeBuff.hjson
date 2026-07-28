@@ -12,3 +12,8 @@ WarCleave: {
 	DisplayName: War Cleave
 	Description: Mods.CalamityInheritance.DeBuff.WarCleave.Description
 }
+
+CIMarkedforDeath: {
+	DisplayName: C I Markedfor Death
+	Description: Mods.CalamityInheritance.DeBuff.CIMarkedforDeath.Description
+}

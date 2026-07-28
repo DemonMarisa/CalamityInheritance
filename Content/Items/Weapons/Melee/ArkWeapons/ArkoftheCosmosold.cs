@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.BaseClass.Weapons;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.Buffs;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Melee.ArkWeapons;
@@ -6,7 +7,7 @@ using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using LAP.Common.CalamityModCross;
+
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -194,14 +195,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.ArkWeapons
                     AddIngredient<FourSeasonsGalaxiaold>().
                     AddIngredient<ArkoftheElementsold>().
                     AddIngredient<AuricBarold>().
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
 
                 CreateRecipe().
                     AddIngredient<FourSeasonsGalaxiaold>().
                     AddIngredient<ArkoftheElementsold>().
-                    AddIngredient(CalMaterialsID.AuricBarID, 5).
-                    AddTile(CalTileID.CosmicAnvilID).
+                    AddIngredient(CalamityMaterials.AuricBar, 5).
+                    AddTile(CalamityTile.CosmicAnvilTile).
                     Register();
             }
             else
