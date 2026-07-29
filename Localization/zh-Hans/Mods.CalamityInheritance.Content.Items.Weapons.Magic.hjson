@@ -257,3 +257,8 @@ VisceraLegacy: {
 	// DisplayName: Viscera Legacy
 	// Tooltip: ""
 }
+
+AlphaRayLegacy: {
+	// DisplayName: Alpha Ray Legacy
+	// Tooltip: ""
+}

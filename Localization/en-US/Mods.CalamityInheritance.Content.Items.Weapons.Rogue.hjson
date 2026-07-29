@@ -62,3 +62,98 @@ OricGemstone: {
 	DisplayName: Oric Gemstone
 	Tooltip: ""
 }
+
+PhantomLance: {
+	DisplayName: Phantom Lance
+	Tooltip: ""
+}
+
+PhantasmalRuinold: {
+	DisplayName: Phantasmal Ruinold
+	Tooltip: ""
+}
+
+Quasar: {
+	DisplayName: Quasar
+	Tooltip: ""
+}
+
+StarofDestructionLegacy: {
+	DisplayName: Starof Destruction Legacy
+	Tooltip: ""
+}
+
+SylvanSlasher: {
+	DisplayName: Sylvan Slasher
+	Tooltip: ""
+}
+
+AcidicRainBarrel: {
+	DisplayName: Acidic Rain Barrel
+	Tooltip: ""
+}
+
+AlphaVirus: {
+	DisplayName: Alpha Virus
+	Tooltip: ""
+}
+
+BrackishFlaskLegacy: {
+	DisplayName: Brackish Flask Legacy
+	Tooltip: ""
+}
+
+EquanimityLegacy: {
+	DisplayName: Equanimity Legacy
+	Tooltip: ""
+}
+
+MoltenAmputatorLegacy: {
+	DisplayName: Molten Amputator Legacy
+	Tooltip: ""
+}
+
+Sandslasher: {
+	DisplayName: Sandslasher
+	Tooltip: ""
+}
+
+TheReaperLegacy: {
+	DisplayName: The Reaper Legacy
+	Tooltip: ""
+}
+
+ToxicantTwisterLegacy: {
+	DisplayName: Toxicant Twister Legacy
+	Tooltip: ""
+}
+
+RefractionRotorLegacy: {
+	DisplayName: Refraction Rotor Legacy
+	Tooltip: ""
+}
+
+SearedPan: {
+	DisplayName: Seared Pan
+	Tooltip: ""
+}
+
+MeteorFistLegacy: {
+	DisplayName: Meteor Fist Legacy
+	Tooltip: ""
+}
+
+ShardofAntumbraLegacy: {
+	DisplayName: Shardof Antumbra Legacy
+	Tooltip: ""
+}
+
+Nychthemeron: {
+	DisplayName: Nychthemeron
+	Tooltip: ""
+}
+
+SkyStabber: {
+	DisplayName: Sky Stabber
+	Tooltip: ""
+}

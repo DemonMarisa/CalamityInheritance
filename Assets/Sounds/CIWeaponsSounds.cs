@@ -18,6 +18,8 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle LumiSpearAttackNor = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/LumiSpear/LumiSpearAttackNor");
         public static readonly SoundStyle LumiShardHit = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/LumiSpear/LumiShardHit");
 
+        public static readonly SoundStyle SearedPanSmash = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SearedPan/SearedPanSmash");
+
         public static readonly SoundStyle CrystylCharge = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/CrystylCharge") { Volume = 1f };
         public static readonly SoundStyle SwiftSlice = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/SwiftSlice") { Volume = 1f };
         public static readonly SoundStyle LouderPhantomPhoenix = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/LouderPhantomPhoenix", 3);

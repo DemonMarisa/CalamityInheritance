@@ -1,0 +1,45 @@
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+
+namespace CalamityInheritance.Content.Projectiles.Rogue.Spear
+{
+    internal class EmpyreanStellarDetritusLegacy : CIRogueProj
+    {
+        public override void SetDefaults()
+        {
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.alpha = 100;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.timeLeft = 300;
+            Projectile.extraUpdates = 1;
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation += 0.25f;
+            Projectile.localAI[0] += 1f;
+            if (Projectile.localAI[0] > 4f)
+            {
+                int ourpleDust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.PurpleTorch, 0f, 0f, 100, default, 2f);
+                Main.dust[ourpleDust].noGravity = true;
+                Main.dust[ourpleDust].velocity *= 0f;
+            }
+            Projectile.HomeInNPC(1500f, 10f, 20f);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value;
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, null, Projectile.GetAlpha(lightColor), Projectile.rotation, tex.Size() / 2f, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+    }
+}

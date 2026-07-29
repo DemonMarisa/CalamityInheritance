@@ -1,0 +1,129 @@
+﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.Items.Weapons.Rogue.Spear;
+using CalamityInheritance.Content.Projectiles.Magic.GreatStaff;
+using CalamityInheritance.Content.Projectiles.Melee.LightGreadtSword;
+using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
+using CalamityInheritance.Core.Utils;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+
+namespace CalamityInheritance.Content.Projectiles.Rogue.Spear
+{
+    public class PhantasmalRuinProjold : CIRogueProj
+    {
+        public override string Texture => GetInstance<PhantasmalRuinold>().Texture;
+
+        private const int Lifetime = 600;
+        private const int FramesPerSubProjectile = 13;
+
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 12;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 30;
+            Projectile.height = 30;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
+            Projectile.penetrate = 1;
+            Projectile.tileCollide = false;
+            Projectile.timeLeft = Lifetime;
+            Projectile.extraUpdates = 1;
+            Projectile.DamageType = RogueDamage.Instance;
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 3);
+            return false;
+        }
+
+        public override void AI()
+        {
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver4;
+            Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.SpectreStaff, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, 0, default, 0.85f);
+            if (Projectile.timeLeft % 18 == 0)
+            {
+                if (Projectile.owner == Main.myPlayer)
+                {
+                    if (Projectile.CI().Stealth)
+                    {
+                        Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, Projectile.velocity.X * 0.25f, Projectile.velocity.Y * 0.25f, ProjectileType<PhantasmalRuinGhost>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                    }
+                    else
+                    {
+                        LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, new Vector2(0, Main.rand.NextFloat(-2, 2)), ProjectileType<LostSoulFriendlyLegacy>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner, RogueDamage.Instance);
+                    }
+                }
+            }
+            bool shouldFireSubProjectile = (Lifetime - Projectile.timeLeft) % (Projectile.MaxUpdates * FramesPerSubProjectile) == 8;
+            if (Projectile.owner == Main.myPlayer && shouldFireSubProjectile)
+            {
+                bool ss = Projectile.CI().Stealth;
+                int soulDamage = (int)(Projectile.damage * 0.7f);
+                int projID = ss ? ProjectileType<PhantasmalRuinGhost>() : ProjectileType<LostSoulFriendlyLegacy>();
+                int soul = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<PhantomLegacy>(), soulDamage, Projectile.knockBack, Projectile.owner);
+                Main.projectile[soul].DamageType = RogueDamage.Instance;
+                int damage = (int)(Projectile.damage * 0.25f);
+                float kb = Projectile.knockBack * (ss ? 1f : 0.25f);
+                Vector2 velocity = ss
+                    ? (Projectile.velocity * 0.4f).RotatedBy(Main.rand.NextFloat(-0.04f, 0.04f))
+                    : Projectile.velocity * 0.08f + Main.rand.NextVector2Circular(0.4f, 0.4f);
+                LAPUtilities.NewProjWithClass(Projectile.GetSource_FromThis(), Projectile.Center, velocity, projID, damage, kb, Projectile.owner, RogueDamage.Instance);
+            }
+        }
+
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) => OnHitEffects();
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => OnHitEffects();
+
+        private void OnHitEffects()
+        {
+            SoundEngine.PlaySound(SoundID.NPCDeath39 with { PitchVariance = 0.4f }, Projectile.position);
+            int numberOfProjectiles = Main.rand.Next(10, 12);
+            if (Projectile.CI().Stealth)
+                numberOfProjectiles += 10;
+
+            float spreadAngle = MathHelper.ToRadians(Main.rand.Next(25, 30));
+            float baseAngle = Projectile.velocity.ToRotation();
+
+            float angleStep = spreadAngle / (numberOfProjectiles - 1);
+
+            for (int i = 0; i < numberOfProjectiles; i++)
+            {
+                float randomOffset = Main.rand.NextFloat(-MathHelper.ToRadians(2), MathHelper.ToRadians(1));
+                float currentAngle = baseAngle - spreadAngle / 2 + angleStep * i + randomOffset;
+                Vector2 direction = new Vector2((float)Math.Cos(currentAngle), (float)Math.Sin(currentAngle));
+
+                float angleFromBase = Math.Abs(MathHelper.ToDegrees(currentAngle - baseAngle));
+                float randomSpeed;
+                if (angleFromBase < 1f)
+                {
+                    randomSpeed = Main.rand.NextFloat(55f);
+                }
+                if (angleFromBase < 8f)
+                {
+                    randomSpeed = Main.rand.NextFloat(30f, 45f);
+                }
+                else
+                {
+                    randomSpeed = Main.rand.NextFloat(15f, 25f);
+                }
+
+                Vector2 randomizedVelocity = direction * randomSpeed;
+
+                int[] projectileTypes = { ProjectileType<SoulEdgeSoulLegacyMedium>(), ProjectileType<SoulEdgeSoulLegacyLarge>(), ProjectileType<SoulEdgeSoulLegacySmall>() };
+                int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
+                int newProjectileId = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, -randomizedVelocity, randomProjectileType, (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
+                Main.projectile[newProjectileId].DamageType = RogueDamage.Instance;
+            }
+        }
+    }
+}

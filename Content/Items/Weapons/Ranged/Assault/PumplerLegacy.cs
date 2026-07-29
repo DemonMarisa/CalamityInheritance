@@ -14,6 +14,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
     {
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Item.type] = true;
         }
         public override void SetDefaults()
         {
@@ -33,31 +34,18 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
             Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 11f;
             Item.useAmmo = AmmoID.Bullet;
-
         }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-5, -4);
-        }
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-
+        public override Vector2? HoldoutOffset() => new Vector2(-5, -4);
+        public override bool AltFunctionUse(Player player) => true;
+        public override float UseSpeedMultiplier(Player player) => player.altFunctionUse == 2 ? 0.26f : 1f;
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)
             {
-                Item.useTime = 36;
-                Item.useAnimation = 36;
-                Item.autoReuse = true;
                 Item.shootSpeed = 4f;
             }
             else
             {
-                Item.useTime = 10;
-                Item.useAnimation = 10;
-                Item.autoReuse = true;
                 Item.shootSpeed = 11f;
             }
             return base.CanUseItem(player);
@@ -92,7 +80,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
             if (player.altFunctionUse == 2)
             {
                 float animProgress = 0.5f - player.itemTime / (float)player.itemTimeMax;
-                // ��������ת
                 float rotation = (player.Center - player.LocalMouseWorld()).ToRotation() * player.gravDir + MathHelper.PiOver2;
                 float offset = -0.05f * (float)Math.Pow((0.6f - animProgress) / 0.6f, 2);
                 if (animProgress < 0.4f)
@@ -110,7 +97,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
         }
         public override void AddRecipes()
         {
-
             CreateRecipe().
                 AddIngredient(ItemID.Pumpkin, 30).
                 AddIngredient(ItemID.PumpkinSeed, 5).

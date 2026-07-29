@@ -15,7 +15,6 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spear
     public class NightsGazeProjectile : CIRogueProj
     {
         public override string Texture => GetInstance<NightsGaze>().Texture;
-        public new string LocalizationCategory => "Projectiles.Rogue";
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;

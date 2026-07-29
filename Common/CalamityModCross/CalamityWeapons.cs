@@ -2,6 +2,7 @@
 using CalamityMod.Items.Weapons.Magic;
 using CalamityMod.Items.Weapons.Melee;
 using CalamityMod.Items.Weapons.Ranged;
+using CalamityMod.Items.Weapons.Rogue;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.CalamityModCross
@@ -11,6 +12,8 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int PestilentDefiler;
         public static int SolsticeClaymore;
         public static int ValkyrieRay;
+        public static int ContaminatedBile;
+        public static int BlastBarrel;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -24,6 +27,8 @@ namespace CalamityInheritance.Common.CalamityModCross
             PestilentDefiler = ItemType<PestilentDefiler>();
             SolsticeClaymore = ItemType<SolsticeClaymore>();
             ValkyrieRay = ItemType<ValkyrieRay>();
+            ContaminatedBile = ItemType<ContaminatedBile>();
+            BlastBarrel = ItemType<BlastBarrel>();
         }
     }
 }

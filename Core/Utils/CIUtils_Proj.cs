@@ -6,11 +6,16 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+        public static T ModProjectile<T>(this Projectile projectile) where T : ModProjectile
+        {
+            return projectile.ModProjectile as T;
+        }
         /// <summary>
         /// 直接设置<see cref="ProjectileID.Sets.TrailCacheLength"/>和<see cref="ProjectileID.Sets.TrailingMode"/>的拓展方法
         /// <br><paramref name="length"/>默认取4，而<paramref name="mode"/>默认值为2</br>

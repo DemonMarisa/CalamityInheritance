@@ -80,6 +80,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spear
 
                 if (minDist < 999f)
                 {
+                    Projectile.extraUpdates = 1;
                     Vector2 velocityNew = Main.npc[index].Center - Projectile.Center;
                     float speed = 10f;
                     velocityNew.Normalize();

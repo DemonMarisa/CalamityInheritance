@@ -63,6 +63,9 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int YharonSoulFragment;
 
         public static int UnholyCore;
+        public static int Necroplasm;
+
+        public static int AerialiteBar;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -113,6 +116,8 @@ namespace CalamityInheritance.Common.CalamityModCross
             ArmoredShell = ItemType<ArmoredShell>();
             YharonSoulFragment = ItemType<YharonSoulFragment>();
             UnholyCore = ItemType<UnholyCore>();
+            Necroplasm = ItemType<Necroplasm>();
+            AerialiteBar = ItemType<AerialiteBar>();
         }
     }
 }

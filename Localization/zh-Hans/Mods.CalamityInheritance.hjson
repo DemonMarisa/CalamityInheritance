@@ -1,5 +1,7 @@
 DamageClasses: {
-	TrueMelee.DisplayName: 真近战
-	TrueMeleeNoSpeed.DisplayName: 真近战
+	TrueMelee.DisplayName: 真近战伤害
+	TrueMeleeNoSpeed.DisplayName: 真近战伤害
 	// RogueDamage.DisplayName: Rogue Damage
 }
+
+// Projectiles.PrismShurikenBladeLegacy.DisplayName: Prism Shuriken Blade Legacy

@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityInheritance.Core.ProjAI;
+using CalamityInheritance.Content.Buff.DamageBuffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -23,8 +23,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.MachineGun
         }
         public override void AI()
         {
-            Projectile.StickyProjAI(15);
-
             // Override the default DOT used in the method above.
             //复写上方stickproj方法的ai0
             //我十分推荐这里重写，点开stickproj发现简直是依托大的
@@ -52,10 +50,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.MachineGun
                 }
             }
         }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            Projectile.ModifyHitNPCSticky(8);
-        }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             if (targetHitbox.Width > 8 && targetHitbox.Height > 8)
@@ -66,17 +60,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.MachineGun
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (CalamityBuff.SulphuricPoisoningName.GetThis(out int value))
-            {
-                target.AddBuff(value, 60);
-            }
+            target.AddBuff(BuffType<CIIrradiated>(), 60);
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            if (CalamityBuff.SulphuricPoisoningName.GetThis(out int value))
-            {
-                target.AddBuff(value, 60);
-            }
+            target.AddBuff(BuffType<CIIrradiated>(), 60);
         }
     }
 }

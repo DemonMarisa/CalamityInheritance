@@ -3,3 +3,5 @@ DamageClasses: {
 	TrueMeleeNoSpeed.DisplayName: True Melee
 	RogueDamage.DisplayName: Rogue Damage
 }
+
+Projectiles.PrismShurikenBladeLegacy.DisplayName: Prism Shuriken Blade Legacy

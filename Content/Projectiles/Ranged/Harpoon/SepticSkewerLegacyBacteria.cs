@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.Buff.DamageBuffs;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -151,8 +152,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Harpoon
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (CalamityBuff.SulphuricPoisoningName.GetThis(out int value))
-                target.AddBuff(value, 120);
+            target.AddBuff(BuffType<CIIrradiated>(), 60);
         }
 
         public override void OnKill(int timeLeft)

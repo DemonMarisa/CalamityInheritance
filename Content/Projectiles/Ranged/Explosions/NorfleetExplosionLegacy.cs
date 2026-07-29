@@ -28,7 +28,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Explosions
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.75f / 255f, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.01f / 255f);
-            Vector2 dustVel = CIUtils.RandomVelocity(120f, 36f, 108f, 1f);
+            Vector2 dustVel = CIUtils.RandomVelocity(12f, 3.6f, 18f, 1f);
             int idx = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, Main.rand.NextBool() ? 221 : 244, 0f, 0f, 100, default, 2f);
             Dust dust = Main.dust[idx];
             dust.noGravity = true;

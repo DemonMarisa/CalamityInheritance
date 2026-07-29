@@ -14,8 +14,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Spear
 {
     public class IchorSpearProjLegacy : ModProjectile, ILocalizedModType
     {
-        public override LocalizedText DisplayName => LAPUtilities.GetItemName<SpearofDestinyLegacy>();
-        public override string Texture => GetInstance<SpearofDestinyLegacy>().Texture;
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<IchorSpearLegacy>();
+        public override string Texture => GetInstance<IchorSpearLegacy>().Texture;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;

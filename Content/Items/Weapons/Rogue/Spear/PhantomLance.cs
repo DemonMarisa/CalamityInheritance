@@ -5,6 +5,7 @@ using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.Rogue.Spear;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using LAP.Core.LAPSource;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
@@ -19,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Spear
             Item.ResearchUnlockCount = 99;
         }
 
-        public override void SetDefaults()
+        public override void ExSD()
         {
             Item.damage = 70;
             Item.knockBack = 5f;
@@ -40,6 +41,9 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Spear
             Item.autoReuse = true;
             Item.shootSpeed = 10f;
             Item.shoot = ProjectileType<PhantomLanceProj>();
+
+            Item.LAP().SkillShoot = ProjectileType<PhantomLanceProj>();
+            Item.LAP().SkillShootSpeed = 10f;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
