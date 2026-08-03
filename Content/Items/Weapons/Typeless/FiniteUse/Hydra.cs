@@ -1,0 +1,107 @@
+using CalamityInheritance.Assets.Sounds;
+using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Ammos.FiniteUse;
+using CalamityInheritance.Content.Projectiles.Ammo.FiniteUse;
+using CalamityInheritance.Core.Utils;
+using LAP.Core.MiscDate;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Weapons.Typeless.FiniteUse
+{
+    public class Hydra : CITypeless
+    {
+        public static readonly SoundStyle UseSound = CISounds.Hydra;
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+        public override void SetDefaults()
+        {
+            Item.damage = 120;
+            Item.width = 66;
+            Item.height = 30;
+            Item.useTime = 33;
+            Item.useAnimation = 33;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.noMelee = true;
+            Item.knockBack = 10f;
+            Item.value = Item.buyPrice(0, 80, 0, 0);
+            Item.rare = ItemRarityID.Yellow;
+            Item.UseSound = null;
+            Item.autoReuse = true;
+            Item.shootSpeed = 12f;
+            Item.shoot = ProjectileType<ExplosiveShotgunShell>();
+            Item.useAmmo = ItemType<ExplosiveShells>();
+            if (LAPInfo.AnyBossHere)
+                Item.CI().timesUsed = 1;
+        }
+        public override bool? UseItem(Player player)
+        {
+            SoundEngine.PlaySound(UseSound, player.Center);
+            return true;
+        }
+
+        public override bool OnPickup(Player player)
+        {
+            if (LAPInfo.AnyBossHere)
+                Item.CI().timesUsed = 1;
+
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            return Item.CI().timesUsed < 1;
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-5, 0);
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            if (!LAPInfo.AnyBossHere)
+                Item.CI().timesUsed = 0;
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            for (int index = 0; index < 8; ++index)
+            {
+                float SpeedX = velocity.X + Main.rand.Next(-40, 41) * 0.01f;
+                float SpeedY = velocity.Y + Main.rand.Next(-40, 41) * 0.01f;
+
+                Projectile.NewProjectile(source, position, new Vector2(SpeedX, SpeedY), type, damage, knockback, player.whoAmI);
+            }
+
+            if (LAPInfo.AnyBossHere)
+            {
+                player.HeldItem.CI().timesUsed++;
+                for (int i = 0; i < Main.InventorySlotsTotal; i++)
+                {
+                    if (player.inventory[i].type == Item.type && player.inventory[i] != player.HeldItem)
+                        player.inventory[i].CI().timesUsed++;
+                }
+            }
+
+            return false;
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient(ItemID.Shotgun).
+                AddIngredient(ItemID.IronBar, 20).
+                AddIngredient(ItemID.IllegalGunParts).
+                AddIngredient(ItemID.Ectoplasm, 20).
+                AddTile(TileID.MythrilAnvil).
+                Register();
+        }
+    }
+}

@@ -1,0 +1,44 @@
+ChargerItem: {
+	DisplayName: Charger Item
+	Tooltip: ""
+}
+
+CrystylCrusherLegacy: {
+	DisplayName: Crystyl Crusher Legacy
+	Tooltip: ""
+}
+
+Daylight: {
+	DisplayName: Daylight
+	Tooltip: ""
+}
+
+GreatbayPickaxeLegacy: {
+	DisplayName: Greatbay Pickaxe Legacy
+	Tooltip: ""
+}
+
+Moonlight: {
+	DisplayName: Moonlight
+	Tooltip: ""
+}
+
+WulfrumAxe: {
+	DisplayName: Wulfrum Axe
+	Tooltip: ""
+}
+
+WulfrumHammer: {
+	DisplayName: Wulfrum Hammer
+	Tooltip: ""
+}
+
+WulfrumPickaxe: {
+	DisplayName: Wulfrum Pickaxe
+	Tooltip: ""
+}
+
+XerocPickaxe: {
+	DisplayName: Xeroc Pickaxe
+	Tooltip: ""
+}

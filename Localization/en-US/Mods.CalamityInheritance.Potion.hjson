@@ -1,0 +1,14 @@
+CadancePotion: {
+	DisplayName: Cadance Potion
+	Tooltip: ""
+}
+
+DraconicElixir: {
+	DisplayName: Draconic Elixir
+	Tooltip: ""
+}
+
+HolyWrathPotion: {
+	DisplayName: Holy Wrath Potion
+	Tooltip: ""
+}

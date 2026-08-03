@@ -12,8 +12,10 @@ using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -54,6 +56,25 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.GreatSwords.AOT
             Projectile.netImportant = true;
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 180;
+        }
+        public override void OnSpawn(IEntitySource source)
+        {
+            Projectile.netUpdate = true;
+            Projectile.netSpam = 0;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(Projectile.rotation);
+            writer.WriteVector2(Projectile.LAP().ai_vector2[0]);
+            for (int i = 0; i < Projectile.ai.Length;i++)
+                writer.Write(Projectile.ai[i]);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            Projectile.rotation = reader.ReadSingle();
+            Projectile.LAP().ai_vector2[0] = reader.ReadVector2();
+            for (int i = 0; i < Projectile.ai.Length; i++)
+                Projectile.ai[i] = reader.ReadSingle();
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {

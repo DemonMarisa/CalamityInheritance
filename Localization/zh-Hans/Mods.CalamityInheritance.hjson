@@ -1,7 +1,10 @@
 DamageClasses: {
-	TrueMelee.DisplayName: 真近战伤害
-	TrueMeleeNoSpeed.DisplayName: 真近战伤害
-	// RogueDamage.DisplayName: Rogue Damage
+	RogueDamage.DisplayName: �����˺�
+	TrueMelee.DisplayName: ���ս�˺�
+	TrueMeleeNoSpeed.DisplayName: ���ս�˺�
 }
 
-// Projectiles.PrismShurikenBladeLegacy.DisplayName: Prism Shuriken Blade Legacy
+Projectiles: {
+	// DesertMark.DisplayName: Desert Mark
+	// DesertTornado.DisplayName: Desert Tornado
+}

@@ -134,7 +134,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Misc
             Player player = Main.player[Projectile.owner];
             if (Projectile.owner == Main.myPlayer)
             {
-                player.AddBuff(BuffType<PolarisBuffLegacy>(), 480);
+                player.AddBuff(BuffType<PolarisBuffLegacy>(), 120);
             }
         }
 

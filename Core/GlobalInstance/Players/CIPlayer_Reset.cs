@@ -8,6 +8,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         {
             UpdateTimer();
             ResetWeapons();
+            ResetArmor();
         }
         public override void UpdateDead()
         {

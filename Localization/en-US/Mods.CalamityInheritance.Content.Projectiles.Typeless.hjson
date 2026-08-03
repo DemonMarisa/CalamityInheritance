@@ -11,3 +11,60 @@ DragonDust.DisplayName: Dragon Dust
 SkyFlareFriendly.DisplayName: Sky Flare Friendly
 FlameLegacy.DisplayName: Flame Legacy
 StickyFeatherAero.DisplayName: Sticky Feather Aero
+
+AncientMurasama: {
+	DisplayName: Ancient Murasama
+	Tooltip: ""
+}
+
+Bazooka: {
+	DisplayName: Bazooka
+	Tooltip: ""
+}
+
+ElephantKiller: {
+	DisplayName: Elephant Killer
+	Tooltip: ""
+}
+
+Hydra: {
+	DisplayName: Hydra
+	Tooltip: ""
+}
+
+LightningHawk: {
+	DisplayName: Lightning Hawk
+	Tooltip: ""
+}
+
+Magnum: {
+	DisplayName: Magnum
+	Tooltip: ""
+}
+
+GoldenGun: {
+	DisplayName: Golden Gun
+	Tooltip: ""
+}
+
+LunicEyeLegacy: {
+	DisplayName: Lunic Eye Legacy
+	Tooltip: ""
+}
+
+MarkedMagnum: {
+	DisplayName: Marked Magnum
+	Tooltip: ""
+}
+
+YanmeisKnife: {
+	DisplayName: Yanmeis Knife
+	Tooltip: ""
+}
+
+MagnumRound.DisplayName: Magnum Round
+AncientMurasamaProj.DisplayName: Ancient Murasama Proj
+GoldenGunProj.DisplayName: Golden Gun Proj
+LunicBeamLegacy.DisplayName: Lunic Beam Legacy
+MarkRound.DisplayName: Mark Round
+YanmeisKnifeSlash.DisplayName: Yanmeis Knife Slash

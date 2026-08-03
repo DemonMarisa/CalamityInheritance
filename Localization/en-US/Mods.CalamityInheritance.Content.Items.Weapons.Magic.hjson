@@ -262,3 +262,23 @@ AlphaRayLegacy: {
 	DisplayName: Alpha Ray Legacy
 	Tooltip: ""
 }
+
+WulfrumStaff: {
+	DisplayName: Wulfrum Staff
+	Tooltip: ""
+}
+
+GatlingLaserLegacy: {
+	DisplayName: Gatling Laser Legacy
+	Tooltip: ""
+}
+
+GaussPistolLegacy: {
+	DisplayName: Gauss Pistol Legacy
+	Tooltip: ""
+}
+
+PulsePistolLegacy: {
+	DisplayName: Pulse Pistol Legacy
+	Tooltip: ""
+}

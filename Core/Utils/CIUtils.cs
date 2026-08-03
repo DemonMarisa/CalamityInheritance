@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Core.GlobalInstance.Items;
+using CalamityInheritance.Core.GlobalInstance.NPCs;
 using CalamityInheritance.Core.GlobalInstance.Players;
 using CalamityInheritance.Core.GlobalInstance.Projectiles;
 using Microsoft.Xna.Framework;
@@ -28,6 +29,10 @@ namespace CalamityInheritance.Core.Utils
         public static CalPlayerInfo CalPlayerInfo(this Player player)
         {
             return player.GetModPlayer<CalPlayerInfo>();
+        }
+        public static CIGNPC CI(this NPC npc)
+        {
+            return npc.GetGlobalNPC<CIGNPC>();
         }
         public static Vector2 RandomVelocity(float directionMult, float speedLowerLimit, float speedCap, float speedMult = 0.1f)
         {

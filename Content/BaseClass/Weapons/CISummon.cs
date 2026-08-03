@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.BaseClass.Weapons
 {
-    public abstract class CISummmon : ModItem, ILocalizedModType
+    public abstract class CISummon : ModItem, ILocalizedModType
     {
         public new string LocalizationCategory => LocalizationPath.SummonWeapon;
         public override void SetDefaults()

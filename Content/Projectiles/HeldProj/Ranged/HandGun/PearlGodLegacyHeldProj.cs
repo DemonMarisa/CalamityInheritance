@@ -218,7 +218,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.HandGun
 
             Vector2 drawBasePosition = Projectile.Center - Main.screenPosition;
             SpriteEffects BaseflipSprite = player.direction * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.FlipVertically : SpriteEffects.None;
-            Main.EntitySpriteDraw(texture, drawBasePosition + DrawPosOffset, null, Color.White, Projectile.rotation + DrawRotOffset, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
+            Main.EntitySpriteDraw(texture, drawBasePosition + DrawPosOffset, null, lightColor, Projectile.rotation + DrawRotOffset, Baseorig, Projectile.scale * Main.player[Projectile.owner].gravDir, BaseflipSprite);
 
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation - MathHelper.PiOver2 + DrawRotOffset);
             return false;

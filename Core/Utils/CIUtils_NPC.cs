@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using CalamityInheritance.Core.GlobalInstance.NPCs;
+using Terraria;
 using Terraria.ID;
 
 namespace CalamityInheritance.Core.Utils
@@ -13,6 +14,10 @@ namespace CalamityInheritance.Core.Utils
             }
 
             return false;
+        }
+        public static void AddDebuffDamage(this NPC target, int damage)
+        {
+            target.CI().DeBuffDamage += damage;
         }
     }
 }

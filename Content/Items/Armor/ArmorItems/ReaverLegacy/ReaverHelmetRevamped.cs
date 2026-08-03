@@ -1,0 +1,99 @@
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Items;
+using CalamityInheritance.Content.Buff.Armor.Summon;
+using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Projectiles.Armor.Summon.Header;
+using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Core.Utils;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Armor.ArmorItems.ReaverLegacy
+{
+    [AutoloadEquip(EquipType.Head)]
+    public class ReaverHelmetRevamped : CIArmor
+    {
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.width = 22;
+            Item.height = 22;
+            Item.value = CIShopValue.RarityPriceLime;
+            Item.rare = ItemRarityID.Lime;
+            Item.defense = 7; //40
+        }
+
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == ItemType<ReaverScaleMailRevamped>() && legs.type == ItemType<ReaverCuissesRevamped>();
+        }
+
+        public override void ArmorSetShadows(Player player)
+        {
+            player.armorEffectDrawShadowSubtle = true;
+            player.armorEffectDrawOutlines = true;
+        }
+
+        public override void UpdateArmorSet(Player player)
+        {
+            player.setBonus = this.GetLocalizedValue("SetBonus");
+            //我不知道咋写仆从，先留在这里后面在考虑改了
+            //2025,1,12在改了
+            player.CI().ReaverSummoner = true;
+            if (player.whoAmI == Main.myPlayer)
+            {
+                int baseDamage = 80;
+                var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(baseDamage);
+                var source = player.GetSource_ItemUse(Item);
+                if (player.FindBuffIndex(BuffType<ReaverSummonSetBuff>()) == -1)
+                {
+                    player.AddBuff(BuffType<ReaverSummonSetBuff>(), 2, true);
+                }
+                if (player.ownedProjectileCounts[ProjectileType<ReaverOrbOld>()] < 1)
+                {
+                    Projectile.NewProjectile(source, player.Center, Vector2.Zero, ProjectileType<ReaverOrbOld>(), damage, 2f, player.whoAmI);
+                }
+            }
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.6f;
+            player.whipRangeMultiplier += 0.5f;
+            //Scarlet:平摊数值加成，鞭 速度110%，鞭 距离100%，20%召唤伤害
+        }
+
+        public override void UpdateEquip(Player player)
+        {
+            player.ignoreWater = true;
+            player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.5f;
+            player.whipRangeMultiplier += 0.5f;
+            player.GetDamage<SummonDamageClass>() += 0.05f; //
+        }
+
+        public override void AddRecipes()
+        {
+            if (CIUtils.HasCalamity())
+            {
+                CreateRecipe().
+                    AddIngredient(CalamityMaterials.PerennialBar, 5).
+                    AddIngredient(ItemID.JungleSpores, 4).
+                    AddIngredient<CoreofEleum>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+            }
+            else
+            {
+                CreateRecipe().
+                    AddIngredient(ItemID.ChlorophyteBar, 5).
+                    AddIngredient(ItemID.JungleSpores, 4).
+                    AddIngredient<CoreofEleum>().
+                    AddTile(TileID.MythrilAnvil).
+                    Register();
+            }
+        }
+    }
+}

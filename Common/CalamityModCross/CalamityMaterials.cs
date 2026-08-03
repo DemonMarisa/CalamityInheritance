@@ -66,6 +66,12 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int Necroplasm;
 
         public static int AerialiteBar;
+
+        public static int PlagueCellCanister;
+        public static int WulfrumMetalScrap;
+
+        public static int MysteriousCircuitry;
+        public static int DubiousPlating;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -118,6 +124,8 @@ namespace CalamityInheritance.Common.CalamityModCross
             UnholyCore = ItemType<UnholyCore>();
             Necroplasm = ItemType<Necroplasm>();
             AerialiteBar = ItemType<AerialiteBar>();
+            PlagueCellCanister = ItemType<PlagueCellCanister>();
+            WulfrumMetalScrap = ItemType<WulfrumMetalScrap>();
         }
     }
 }

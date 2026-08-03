@@ -157,3 +157,18 @@ SkyStabber: {
 	// DisplayName: Sky Stabber
 	// Tooltip: ""
 }
+
+WulfrumKnifeOld: {
+	// DisplayName: Wulfrum Knife Old
+	// Tooltip: ""
+}
+
+FrequencyManipulator: {
+	// DisplayName: Frequency Manipulator
+	// Tooltip: ""
+}
+
+TrackingDisk: {
+	// DisplayName: Tracking Disk
+	// Tooltip: ""
+}

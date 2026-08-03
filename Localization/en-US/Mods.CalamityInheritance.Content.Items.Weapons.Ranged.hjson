@@ -377,3 +377,33 @@ StarmadaLegacy: {
 	DisplayName: Starmada Legacy
 	Tooltip: ""
 }
+
+WulfrumBow: {
+	DisplayName: Wulfrum Bow
+	Tooltip: ""
+}
+
+GaussRifle: {
+	DisplayName: Gauss Rifle
+	Tooltip: ""
+}
+
+MatterModulator: {
+	DisplayName: Matter Modulator
+	Tooltip: ""
+}
+
+PulseRifleOld: {
+	DisplayName: Pulse Rifle Old
+	Tooltip: ""
+}
+
+HeavyLaserRifle: {
+	DisplayName: Heavy Laser Rifle
+	Tooltip: ""
+}
+
+Taser: {
+	DisplayName: Taser
+	Tooltip: ""
+}

@@ -1,7 +1,10 @@
 DamageClasses: {
-	TrueMelee.DisplayName: True Melee
-	TrueMeleeNoSpeed.DisplayName: True Melee
 	RogueDamage.DisplayName: Rogue Damage
+	TrueMelee.DisplayName: True Melee
+	TrueMeleeNoSpeed.DisplayName: True Melee No Speed
 }
 
-Projectiles.PrismShurikenBladeLegacy.DisplayName: Prism Shuriken Blade Legacy
+Projectiles: {
+	DesertMark.DisplayName: Desert Mark
+	DesertTornado.DisplayName: Desert Tornado
+}

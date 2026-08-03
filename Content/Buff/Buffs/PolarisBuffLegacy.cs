@@ -12,5 +12,9 @@ namespace CalamityInheritance.Content.Buff.Buffs
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
+        public override void Update(Player player, ref int buffIndex)
+        {
+            base.Update(player, ref buffIndex);
+        }
     }
 }

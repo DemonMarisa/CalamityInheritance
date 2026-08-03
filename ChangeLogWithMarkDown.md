@@ -1,3 +1,26 @@
+整体进度
+
+BuffDebuff效果
+护甲
+普通武器 √
+星流武器 x
+传奇武器 x
+ACT武器 x
+工具 √
+药水 x
+数值膨胀 x
+原版削弱回调 x
+恶意模式
+环境变化
+一堆BGM和音乐事件
+传颂之物
+等级系统
+Boss与NPC
+
+应该不是很多的材料表缺失
+龙魂秘药 没做完
+全部材料的获取方式
+
 未完成的类
 CIBrimstoneFlames：制作VFX重置。未编写降低敌人的生命恢复（变成对NPC造成伤害，而不是常规减血）
 Buff一个都没做效果，现在全是占位符
@@ -61,7 +84,6 @@ RubicoPrimeLegacy
 StormDragon
 SepticSkewerLegacy
 
-
 给克脑无灾厄的情况下添加血肉样本掉落
 添加海胆NPC
 老海胆NPC掉海胆针刺
@@ -84,3 +106,5 @@ Projectile.SepticSkewerLegacyBacteria
 全锤子
 贝壳回旋镖
 苍穹飞刀
+
+光合药水

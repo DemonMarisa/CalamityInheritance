@@ -1,0 +1,94 @@
+CIArmorCrunch: {
+	DisplayName: C I Armor Crunch
+	Description: Mods.CalamityInheritance.DeBuff.CIArmorCrunch.Description
+}
+
+CISadness: {
+	DisplayName: C I Sadness
+	Description: Mods.CalamityInheritance.DeBuff.CISadness.Description
+}
+
+WarCleave: {
+	DisplayName: War Cleave
+	Description: Mods.CalamityInheritance.DeBuff.WarCleave.Description
+}
+
+CIMarkedforDeath: {
+	DisplayName: C I Markedfor Death
+	Description: Mods.CalamityInheritance.DeBuff.CIMarkedforDeath.Description
+}
+
+AncientClasperBuff: {
+	DisplayName: Ancient Clasper Buff
+	Description: Mods.CalamityInheritance.SummonBuff.AncientClasperBuff.Description
+}
+
+BloodClotBuff: {
+	DisplayName: Blood Clot Buff
+	Description: Mods.CalamityInheritance.SummonBuff.BloodClotBuff.Description
+}
+
+DazzlingStabberBuffLegacy: {
+	DisplayName: Dazzling Stabber Buff Legacy
+	Description: Mods.CalamityInheritance.SummonBuff.DazzlingStabberBuffLegacy.Description
+}
+
+MagicHatBuffOld: {
+	DisplayName: Magic Hat Buff Old
+	Description: Mods.CalamityInheritance.SummonBuff.MagicHatBuffOld.Description
+}
+
+MidnightSunBuffOld: {
+	DisplayName: Midnight Sun Buff Old
+	Description: Mods.CalamityInheritance.SummonBuff.MidnightSunBuffOld.Description
+}
+
+SarosPossessionBuffLegacy: {
+	DisplayName: Saros Possession Buff Legacy
+	Description: Mods.CalamityInheritance.SummonBuff.SarosPossessionBuffLegacy.Description
+}
+
+SiriusBuffLegacy: {
+	DisplayName: Sirius Buff Legacy
+	Description: Mods.CalamityInheritance.SummonBuff.SiriusBuffLegacy.Description
+}
+
+SolarGodSpiritBuff: {
+	DisplayName: Solar God Spirit Buff
+	Description: Mods.CalamityInheritance.SummonBuff.SolarGodSpiritBuff.Description
+}
+
+SunSpiritBuff: {
+	DisplayName: Sun Spirit Buff
+	Description: Mods.CalamityInheritance.SummonBuff.SunSpiritBuff.Description
+}
+
+DOGSummonBuff: {
+	DisplayName: D O G Summon Buff
+	Description: Mods.CalamityInheritance.SummonBuff.DOGSummonBuff.Description
+}
+
+SonYharonBuff: {
+	DisplayName: Son Yharon Buff
+	Description: Mods.CalamityInheritance.SummonBuff.SonYharonBuff.Description
+}
+
+WulfrumDroidOldBuff: {
+	DisplayName: Wulfrum Droid Old Buff
+	Description: Mods.CalamityInheritance.SummonBuff.WulfrumDroidOldBuff.Description
+}
+
+MountedScannerLegacyBuff: {
+	DisplayName: Mounted Scanner Legacy Buff
+	Description: Mods.CalamityInheritance.SummonBuff.MountedScannerLegacyBuff.Description
+}
+
+StarSwallowerBuff: {
+	DisplayName: Star Swallower Buff
+	Description: Mods.CalamityInheritance.SummonBuff.StarSwallowerBuff.Description
+}
+
+VictideSummonSetBuff: {
+	DisplayName: Victide Summon Set Buff
+	Description: Mods.CalamityInheritance.SummonBuff.VictideSummonSetBuff.Description
+}

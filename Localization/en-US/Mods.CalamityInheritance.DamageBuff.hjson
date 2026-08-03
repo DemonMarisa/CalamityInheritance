@@ -62,3 +62,33 @@ PolarisBuffLegacy: {
 	DisplayName: Polaris Buff Legacy
 	Description: Mods.CalamityInheritance.DamageBuff.PolarisBuffLegacy.Description
 }
+
+KamiBuff: {
+	DisplayName: Kami Buff
+	Description: Mods.CalamityInheritance.DamageBuff.KamiBuff.Description
+}
+
+CadancesGrace: {
+	DisplayName: Cadances Grace
+	Description: Mods.CalamityInheritance.DamageBuff.CadancesGrace.Description
+}
+
+DraconicSurgeBuff: {
+	DisplayName: Draconic Surge Buff
+	Description: Mods.CalamityInheritance.DamageBuff.DraconicSurgeBuff.Description
+}
+
+HolyWrathBuff: {
+	DisplayName: Holy Wrath Buff
+	Description: Mods.CalamityInheritance.DamageBuff.HolyWrathBuff.Description
+}
+
+AncientXerocMadness: {
+	DisplayName: Ancient Xeroc Madness
+	Description: Mods.CalamityInheritance.DamageBuff.AncientXerocMadness.Description
+}
+
+AncientXerocShame: {
+	DisplayName: Ancient Xeroc Shame
+	Description: Mods.CalamityInheritance.DamageBuff.AncientXerocShame.Description
+}

@@ -7,6 +7,23 @@ namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+
+        public static int DamageSoftCap(double dmgInput, int cap)
+        {
+            // If the incoming damage is less than the cap, don't do anything.
+            if (dmgInput < cap)
+                return (int)dmgInput;
+
+            // Ratio of how far over the cap you are.
+            // This is a value from 1.0 upwards to theoretically infinity.
+            double overpoweredRatio = dmgInput / cap;
+
+            // Formula which reduces how "overpowered" you are to a reasonable level.
+            double cappedRatio = Math.Pow(overpoweredRatio, 0.5) / 1.25 + 0.2;
+
+            // Take the reduced ratio and multiply the cap by it to get the final capped damage.
+            return (int)(cap * cappedRatio);
+        }
         public static void BetterSwing(this Player player)
         {
             float xOffset = 6f;

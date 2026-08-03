@@ -17,3 +17,8 @@ CIMarkedforDeath: {
 	DisplayName: C I Markedfor Death
 	Description: Mods.CalamityInheritance.DeBuff.CIMarkedforDeath.Description
 }
+
+KamiFlu: {
+	DisplayName: Kami Flu
+	Description: Mods.CalamityInheritance.DeBuff.KamiFlu.Description
+}

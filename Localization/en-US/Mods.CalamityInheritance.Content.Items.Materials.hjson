@@ -57,3 +57,18 @@ DemonicBoneAsh: {
 	DisplayName: Demonic Bone Ash
 	Tooltip: ""
 }
+
+AncientMiracleMatter: {
+	DisplayName: Ancient Miracle Matter
+	Tooltip: ""
+}
+
+BlightedLens: {
+	DisplayName: Blighted Lens
+	Tooltip: ""
+}
+
+DesertFeather: {
+	DisplayName: Desert Feather
+	Tooltip: ""
+}

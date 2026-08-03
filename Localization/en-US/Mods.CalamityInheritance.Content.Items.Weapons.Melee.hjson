@@ -542,3 +542,13 @@ TheMutilatorLegacy: {
 	DisplayName: The Mutilator Legacy
 	Tooltip: ""
 }
+
+WulfrumBlade: {
+	DisplayName: Wulfrum Blade
+	Tooltip: ""
+}
+
+GaussDagger: {
+	DisplayName: Gauss Dagger
+	Tooltip: ""
+}

@@ -27,7 +27,7 @@ namespace CalamityInheritance.Content.Items.Materials
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            Texture2D texture = Request<Texture2D>($"{Item.ModItem.Texture}_Glow").Value;
+            Texture2D texture = Request<Texture2D>(Item.ModItem.Texture).Value;
             Main.spriteBatch.Draw(texture, Item.Center - Main.screenPosition, null, Color.White, rotation, texture.Size() / 2, scale, 0, 0);
             DeepGlow.SubmitCustomGlow(() =>
             {

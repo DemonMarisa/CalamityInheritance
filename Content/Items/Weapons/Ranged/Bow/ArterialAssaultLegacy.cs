@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Projectiles.Ammo;
+using CalamityInheritance.Content.Projectiles.Ammo.Ranged;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;

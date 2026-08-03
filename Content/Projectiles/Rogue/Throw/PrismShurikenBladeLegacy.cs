@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -7,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Rogue.Throw
 {
-    internal class PrismShurikenBladeLegacy : ModProjectile, ILocalizedModType
+    internal class PrismShurikenBladeLegacy : CIRogueProj
     {
         public override string Texture => GetInstance<PrismRocket>().Texture;
         public override void SetDefaults()

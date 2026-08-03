@@ -2,6 +2,7 @@
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -12,6 +13,114 @@ namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+        /// <summary>
+        /// 计算受重力影响下的发射速度，使弹幕能够命中目标。
+        /// </summary>
+        /// <param name="origin">发射点</param>
+        /// <param name="target">目标点</param>
+        /// <param name="gravity">重力加速度（正值，向下）</param>
+        /// <param name="speed">期望的发射速度大小（必须大于0）</param>
+        /// <returns>修正后的速度向量，大小等于 speed，方向已抬高以补偿重力</returns>
+        public static Vector2 GetGravityCompensatedVelocity(Vector2 origin, Vector2 target, float gravity, float speed)
+        {
+            Vector2 diff = target - origin;
+            float dx = diff.X;
+
+            // 水平距离过小时直接发射（避免除零）
+            float horizontalDist = Math.Abs(dx);
+            if (horizontalDist < 0.001f)
+            {
+                // 正上/正下，重力修正没有意义，直接朝向目标
+                return diff.SafeNormalize(Vector2.UnitY) * speed;
+            }
+
+            // 估算飞行时间（假设水平速度 ≈ 总速度，因为抬升角度通常不大）
+            float t = horizontalDist / speed;
+            if (t < 0.01f) t = 0.01f;
+
+            // 重力造成的下落量： drop = 0.5 * g * t²
+            float drop = 0.5f * gravity * t * t;
+
+            // 抬高目标点（Y轴向下，所以减去drop）
+            Vector2 compensatedTarget = new Vector2(target.X, target.Y - drop);
+
+            // 计算修正后的方向并乘以速度大小
+            Vector2 direction = compensatedTarget - origin;
+            if (direction.LengthSquared() < 0.0001f)
+                direction = Vector2.UnitY;
+
+            return direction.SafeNormalize(Vector2.Zero) * speed;
+        }
+        public static Vector2 GetProjectilePhysicsFiringVelocity(Vector2 shootingPosition, Vector2 destination, float gravity, float shootSpeed, Vector2? nanFallback = null)
+        {
+            // Ensure that the gravity has the right sign for Terraria's coordinate system.
+            gravity = -Math.Abs(gravity);
+
+            float horizontalRange = MathHelper.Distance(shootingPosition.X, destination.X);
+            float fireAngleSine = gravity * horizontalRange / (float)Math.Pow(shootSpeed, 2);
+
+            // Clamp the sine if no fallback is provided.
+            if (nanFallback is null)
+                fireAngleSine = MathHelper.Clamp(fireAngleSine, -1f, 1f);
+
+            float fireAngle = (float)Math.Asin(fireAngleSine) * 0.5f;
+
+            // Get out of here if no valid firing angle exists. This can only happen if a fallback does indeed exist.
+            if (float.IsNaN(fireAngle))
+                return nanFallback.Value * shootSpeed;
+
+            Vector2 fireVelocity = new Vector2(0f, -shootSpeed).RotatedBy(fireAngle);
+            fireVelocity.X *= (destination.X - shootingPosition.X < 0).ToDirectionInt();
+            return fireVelocity;
+        }
+
+        public static void KillShootProjectiles(bool shouldBreak, int projType, Player player)
+        {
+            for (int x = 0; x < Main.maxProjectiles; x++)
+            {
+                Projectile proj = Main.projectile[x];
+                if (proj.active && proj.owner == player.whoAmI && proj.type == projType)
+                {
+                    proj.Kill();
+                    if (shouldBreak)
+                        break;
+                }
+            }
+        }
+        public static int CountProjectiles(int projectileID)
+        {
+            int count = 0;
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (proj.type == projectileID && proj.active)
+                    count++;
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Detects nearby hostile NPCs from a given point with minion support
+        /// </summary>
+        /// <param name="origin">The position where we wish to check for nearby NPCs</param>
+        /// <param name="maxDistanceToCheck">Maximum amount of pixels to check around the origin</param>
+        /// <param name="owner">Owner of the minion</param>
+        /// <param name="ignoreTiles">Whether to ignore tiles when finding a target or not</param>
+        public static NPC MinionHoming(this Vector2 origin, float maxDistanceToCheck, Player owner, bool ignoreTiles = true, bool checksRange = false)
+        {
+            if (owner is null || !owner.whoAmI.InBounds(Main.maxPlayers) || !owner.MinionAttackTargetNPC.InBounds(Main.maxNPCs))
+                return LAPUtilities.FindClosestTarget(origin, maxDistanceToCheck, ignoreTiles);
+            NPC npc = Main.npc[owner.MinionAttackTargetNPC];
+            bool canHit = true;
+            if (!ignoreTiles)
+                canHit = Collision.CanHit(origin, 1, 1, npc.Center, 1, 1);
+            float extraDistance = (npc.width / 2) + (npc.height / 2);
+            bool distCheck = Vector2.Distance(origin, npc.Center) < (maxDistanceToCheck + extraDistance) || !checksRange;
+            if (owner.HasMinionAttackTargetNPC && canHit && distCheck)
+            {
+                return npc;
+            }
+            return LAPUtilities.FindClosestTarget(origin, maxDistanceToCheck, ignoreTiles);
+        }
         public static T ModProjectile<T>(this Projectile projectile) where T : ModProjectile
         {
             return projectile.ModProjectile as T;
