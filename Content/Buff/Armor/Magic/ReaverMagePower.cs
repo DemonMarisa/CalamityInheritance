@@ -1,0 +1,23 @@
+using CalamityInheritance.Content.BaseClass.Buff;
+using Terraria;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Buff.Armor.Magic
+{
+    public class ReaverMagePower : CIBuff
+    {
+        public override void SetStaticDefaults()
+        {
+            Main.debuff[Type] = false;
+            Main.pvpBuff[Type] = true;
+            Main.buffNoSave[Type] = true;
+            Main.buffNoTimeDisplay[Type] = true;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.manaCost -= 0.80f;
+            player.GetDamage<MagicDamageClass>() += 0.1f;
+        }
+    }
+}

@@ -5,6 +5,6 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
 {
     public abstract class CITypeless : ModItem, ILocalizedModType
     {
-        public new string LocalizationCategory => $"{LocalizationPath.TypelessProj}";
+        public new string LocalizationCategory => $"{LocalizationPath.TypelessWeapon}";
     }
 }

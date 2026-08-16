@@ -6,6 +6,11 @@ namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+        public static bool OBBvsAABBCheck(Rectangle target, Vector2 Begin, Vector2 End, float width)
+        {
+            float a = 0;
+            return Collision.CheckAABBvLineCollision(target.TopLeft(), target.Size(), Begin, End, width, ref a);
+        }
         /// <summary>
         /// Determines the distance required before a ray in a given direction from a given starting position hits solid tiles, taking slopes into account.
         /// </summary>

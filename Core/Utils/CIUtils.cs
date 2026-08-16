@@ -45,5 +45,9 @@ namespace CalamityInheritance.Core.Utils
             vector.SafeNormalize(Vector2.UnitX);
             return vector * (Main.rand.NextFloat(speedLowerLimit, speedCap) * speedMult);
         }
+        public static int SecondsToFrames(float Seconds)
+        {
+            return (int)(Seconds * 60);
+        }
     }
 }

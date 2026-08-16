@@ -1,8 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
-using CalamityInheritance.Content.Buff.Armor.Summon;
-using CalamityInheritance.Content.Items.Armor.ArmorItems.Victide;
+using CalamityInheritance.Content.Buff.SummonBuff.Armor;
 using CalamityInheritance.Content.Projectiles.Melee.Flails;
-using CalamityInheritance.Core.Path;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
@@ -14,7 +12,6 @@ namespace CalamityInheritance.Content.Projectiles.Armor.Summon.Header
 {
     public class VictideUrchin : CIArmorProj
     {
-        public override string LocalizationCategory => LocalizationPath.ArmorProjectile;
         public int dust = 3;
         public override void SetStaticDefaults()
         {

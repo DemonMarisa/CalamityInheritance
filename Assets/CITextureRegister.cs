@@ -14,6 +14,11 @@ namespace CalamityInheritance.Assets
         public static Tex2DWithPath MidnightSunBeamEnd { get; set; }
         public static Tex2DWithPath MidnightSunBeamBegin { get; set; }
         public static Tex2DWithPath MidnightSunBeamMid { get; set; }
+
+        public static Tex2DWithPath HighResHollowCircleHardEdge { get; set; }
+
+        public static Tex2DWithPath Jaws { get; set; }
+        
         public override void Load()
         {
             StarTrail = new Tex2DWithPath("CalamityInheritance/Assets/Textures/StarTrail");
@@ -23,6 +28,9 @@ namespace CalamityInheritance.Assets
             MidnightSunBeamEnd = new Tex2DWithPath("CalamityInheritance/Assets/Textures/MidnightSunBeamEnd");
             MidnightSunBeamBegin = new Tex2DWithPath("CalamityInheritance/Assets/Textures/MidnightSunBeamBegin");
             MidnightSunBeamMid = new Tex2DWithPath("CalamityInheritance/Assets/Textures/MidnightSunBeamMid");
+
+            HighResHollowCircleHardEdge = new Tex2DWithPath("CalamityInheritance/Assets/Textures/HighResHollowCircleHardEdge");
+            Jaws = new Tex2DWithPath("CalamityInheritance/Assets/Textures/Jaws");
         }
         public override void Unload()
         {
@@ -32,6 +40,9 @@ namespace CalamityInheritance.Assets
             MidnightSunBeamEnd = null;
             MidnightSunBeamBegin = null;
             MidnightSunBeamMid = null;
+
+            HighResHollowCircleHardEdge = null;
+            Jaws = null;
         }
     }
 }

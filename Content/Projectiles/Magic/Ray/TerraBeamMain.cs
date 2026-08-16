@@ -90,7 +90,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 }
                 for (int i = 0; i < 8; i++)
                 {
-                    Vector2 SpawnPos = BeginPos + Vel * i * 50;
+                    Vector2 SpawnPos = BeginPos + Vel * i * 30;
                     NPC target = LAPUtilities.FindClosestTarget(SpawnPos, 600);
                     if (target is not null)
                     {
@@ -105,7 +105,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
                 Vector2 Vel = Projectile.velocity.SafeNormalize(Vector2.UnitX) * 7f;
                 for (int i = 0; i < 8; i++)
                 {
-                    Vector2 SpawnPos = BeginPos + Vel * i * 50;
+                    Vector2 SpawnPos = BeginPos + Vel * i * 30;
                     Projectile.NewProj(ProjectileType<TerraShard>(), SpawnPos, Vector2.Zero, 1f, 1f);
                 }
             }

@@ -1,10 +1,9 @@
-﻿using CalamityInheritance.Common.CalamityModCross;
-using CalamityInheritance.Content.BaseClass.Weapons;
+﻿using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged.Flamethrower;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -43,7 +42,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Flamethrower
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalamityMaterials.BloodstoneCore, 6).
+                    AddIngredient<BloodstoneCore>(6).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

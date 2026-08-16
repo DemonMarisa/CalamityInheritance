@@ -4,5 +4,5 @@ hideCode = false
 hideResources = false
 modReferences = LAP
 weakReferences = CalamityMod
-version = 2.0.4.18
+version = 2.1.0.0
 sortBefore = UnCalamityModMusic, InfernumMode

@@ -89,7 +89,9 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword
                     Vector2 direction = new((float)Math.Cos(angle), (float)Math.Sin(angle));
                     int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
                     float randomSpeed = Main.rand.NextFloat(1f, 2.5f);
-                    Projectile.NewProjectile(source, target.Center, direction * randomSpeed, randomProjectileType, Projectile.damage * 1, Projectile.knockBack);
+                    Projectile p = Projectile.NewProjectileDirect(source, target.Center, direction * randomSpeed, randomProjectileType, Projectile.damage * 1, Projectile.knockBack);
+                    p.usesIDStaticNPCImmunity = true;
+                    p.idStaticNPCHitCooldown = 20;
                 }
                 target.AddBuff(BuffID.Poisoned, 120);
                 item.ProjectilHitCounter = 0;

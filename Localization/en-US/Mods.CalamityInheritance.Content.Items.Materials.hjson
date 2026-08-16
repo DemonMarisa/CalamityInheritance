@@ -72,3 +72,13 @@ DesertFeather: {
 	DisplayName: Desert Feather
 	Tooltip: ""
 }
+
+BloodstoneCore: {
+	DisplayName: Bloodstone Core
+	Tooltip: ""
+}
+
+WulfrumShard: {
+	DisplayName: Wulfrum Shard
+	Tooltip: ""
+}

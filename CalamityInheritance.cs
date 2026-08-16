@@ -1,4 +1,7 @@
+global using Microsoft.Xna.Framework;
 global using static Terraria.ModLoader.ModContent;
+global using static CalamityInheritance.Core.Utils.CIUtils;
+using LAP.Core.LAPUI.FocusBar;
 using System.Reflection;
 using Terraria.ModLoader;
 
@@ -13,6 +16,8 @@ namespace CalamityInheritance
         public static Mod Calamity = null;
         public override void Load()
         {
+            FocusBarManger.UseFocus = true;
+
             Instance = this;
             UCA = null;
             Calamity = null;

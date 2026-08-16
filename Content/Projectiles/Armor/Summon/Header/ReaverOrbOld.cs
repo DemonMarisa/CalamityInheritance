@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Core.Utils;
-using Microsoft.Xna.Framework;
+using LAP.Core.Utilities;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -79,30 +79,16 @@ namespace CalamityInheritance.Content.Projectiles.Armor.Summon.Header
                     Projectile.ai[0] -= 1f;
                     return;
                 }
-                bool flag18 = false;
-                float num508 = 1500f;
-                for (int num512 = 0; num512 < 200; num512++)
-                {
-                    if (Main.npc[num512].CanBeChasedBy(Projectile, false))
-                    {
-                        float num513 = Main.npc[num512].position.X + Main.npc[num512].width / 2;
-                        float num514 = Main.npc[num512].position.Y + Main.npc[num512].height / 2;
-                        float num515 = Math.Abs(Projectile.position.X + Projectile.width / 2 - num513) + Math.Abs(Projectile.position.Y + Projectile.height / 2 - num514);
-                        if (num515 < num508 && Collision.CanHit(Projectile.position, Projectile.width, Projectile.height, Main.npc[num512].position, Main.npc[num512].width, Main.npc[num512].height))
-                        {
-                            num508 = num515;
-                            flag18 = true;
-                        }
-                    }
-                }
-                if (flag18)
+                NPC target = LAPUtilities.FindClosestTarget(Projectile.Center, 1500);
+                if (target is not null)
                 {
                     for (int num252 = 0; num252 < 1; num252++)
                     {
-                        int spore = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X - 4f, Projectile.Center.Y, Projectile.velocity.X, Projectile.velocity.Y, ProjectileType<ReaverBeam>(), Projectile.damage, 1.5f, Projectile.owner, 0f, 0f);
+                        Vector2 FireVel = LAPUtilities.GetVector2(Projectile.Center, target.Center) * 16f;
+                        int spore = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X - 4f, Projectile.Center.Y, FireVel.X, FireVel.Y, ProjectileType<ReaverBeam>(), Projectile.damage, 1.5f, Projectile.owner, 0f, 0f);
                         Main.projectile[spore].minion = true;
                         Main.projectile[spore].minionSlots = 0f;
-                        int numberOfProjectiles = Main.rand.Next(6, 8);
+                        int numberOfProjectiles = Main.rand.Next(9, 12);
                         int[] projectileTypes = { ProjectileID.SporeGas, ProjectileID.SporeGas2, ProjectileID.SporeGas3 };
                         float baseAngleIncrement = 2 * MathHelper.Pi / numberOfProjectiles;
                         float randomAngleOffset = (float)(Main.rand.NextDouble() * MathHelper.Pi / 4 - MathHelper.Pi / 8);
@@ -112,12 +98,14 @@ namespace CalamityInheritance.Content.Projectiles.Armor.Summon.Header
                             float angle = i * baseAngleIncrement + randomAngleOffset + randomOffset;
                             Vector2 direction = new((float)Math.Cos(angle), (float)Math.Sin(angle));
                             int randomProjectileType = projectileTypes[Main.rand.Next(projectileTypes.Length)];
-                            float randomSpeed = Main.rand.NextFloat(2f, 3f);
+                            float randomSpeed = Main.rand.NextFloat(1f, 1.5f);
                             int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, direction * randomSpeed, randomProjectileType, Projectile.damage * 1, Projectile.knockBack);
                             Main.projectile[p].DamageType = DamageClass.Summon;
                             Main.projectile[p].originalDamage = Projectile.originalDamage;
                             Main.projectile[p].minion = true;
                             Main.projectile[p].minionSlots = 0f;
+                            Main.projectile[p].usesIDStaticNPCImmunity = true;
+                            Main.projectile[p].idStaticNPCHitCooldown = 20;
                         }
                     }
                     SoundEngine.PlaySound(SoundID.Item77, Projectile.position);

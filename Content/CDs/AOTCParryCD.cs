@@ -11,6 +11,7 @@ namespace CalamityInheritance.Content.CDs
             Buff = false;
             DeBuff = false;
             Info = true;
+            CD = true;
         }
         public override LocalizedText DisplayName()
         {

@@ -7,11 +7,19 @@
         public const string MagicWeapon = "Content.Items.Weapons.Magic";
         public const string SummonWeapon = "Content.Items.Weapons.Summon";
         public const string RogueWeapon = "Content.Items.Weapons.Rogue";
+        public const string TypelessWeapon = "Content.Items.Weapons.Typeless";
         public const string AmmoItem = "Ammo";
         public const string Tool = "Tools";
         public const string Potion = "Potion";
         public const string Armor = "Armor";
         public const string ArmorProjectile = "Armor.Projectile";
+
+        public const string MiscAccessories = "Item.Accessories.Misc";
+        public const string CombatAccessories = "Item.Accessories.Combat";
+        public const string MovementAccessories = "Item.Accessories.Movement";
+        public const string RestorativeAccessories = "Item.Accessories.Restorative";
+        public const string DefenseAccessories = "Item.Accessories.Defense";
+        public const string Wings = "Item.Accessories.Wings";
 
         public const string MeleeProj = "Content.Projectiles.Melee";
         public const string RangedProj = "Content.Projectiles.Ranged";

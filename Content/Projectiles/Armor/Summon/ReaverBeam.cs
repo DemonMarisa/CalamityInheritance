@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Particles;
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.Particles;
 using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -7,14 +8,14 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Armor.Summon
 {
-    public class ReaverBeam : ModProjectile, ILocalizedModType
+    public class ReaverBeam : CIArmorProj
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 
         public override void SetDefaults()
         {
-            Projectile.width = 4;
-            Projectile.height = 4;
+            Projectile.width = 12;
+            Projectile.height = 12;
             Projectile.extraUpdates = 70;
             Projectile.penetrate = -1;
             Projectile.usesLocalNPCImmunity = true;

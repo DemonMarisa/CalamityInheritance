@@ -132,3 +132,198 @@ AncientXerocPlateMail: {
 	DisplayName: Ancient Xeroc Plate Mail
 	Tooltip: ""
 }
+
+ReaverCapRevamped: {
+	DisplayName: Reaver Cap Revamped
+	Tooltip: ""
+}
+
+ReaverCuissesRevamped: {
+	DisplayName: Reaver Cuisses Revamped
+	Tooltip: ""
+}
+
+ReaverHelmetRevamped: {
+	DisplayName: Reaver Helmet Revamped
+	Tooltip: ""
+}
+
+ReaverHelmRevamped: {
+	DisplayName: Reaver Helm Revamped
+	Tooltip: ""
+}
+
+ReaverMaskRevamped: {
+	DisplayName: Reaver Mask Revamped
+	Tooltip: ""
+}
+
+ReaverScaleMailRevamped: {
+	DisplayName: Reaver Scale Mail Revamped
+	Tooltip: ""
+}
+
+ReaverVisageRevamped: {
+	DisplayName: Reaver Visage Revamped
+	Tooltip: ""
+}
+
+AncientAeroArmor: {
+	DisplayName: Ancient Aero Armor
+	Tooltip: ""
+}
+
+AncientAeroHelm: {
+	DisplayName: Ancient Aero Helm
+	Tooltip: ""
+}
+
+AncientAeroLeggings: {
+	DisplayName: Ancient Aero Leggings
+	Tooltip: ""
+}
+
+AncientTarragonBreastplate: {
+	DisplayName: Ancient Tarragon Breastplate
+	Tooltip: ""
+}
+
+AncientTarragonHelm: {
+	DisplayName: Ancient Tarragon Helm
+	Tooltip: ""
+}
+
+AncientTarragonLeggings: {
+	DisplayName: Ancient Tarragon Leggings
+	Tooltip: ""
+}
+
+AncientAstralBreastplate: {
+	DisplayName: Ancient Astral Breastplate
+	Tooltip: ""
+}
+
+AncientAstralHelm: {
+	DisplayName: Ancient Astral Helm
+	Tooltip: ""
+}
+
+AncientAstralLeggings: {
+	DisplayName: Ancient Astral Leggings
+	Tooltip: ""
+}
+
+AncientBloodflareBodyArmor: {
+	DisplayName: Ancient Bloodflare Body Armor
+	Tooltip: ""
+}
+
+AncientBloodflareCuisses: {
+	DisplayName: Ancient Bloodflare Cuisses
+	Tooltip: ""
+}
+
+AncientBloodflareMask: {
+	DisplayName: Ancient Bloodflare Mask
+	Tooltip: ""
+}
+
+AncientGodSlayerChestplate: {
+	DisplayName: Ancient God Slayer Chestplate
+	Tooltip: ""
+}
+
+AncientGodSlayerHelm: {
+	DisplayName: Ancient God Slayer Helm
+	Tooltip: ""
+}
+
+AncientGodSlayerLeggings: {
+	DisplayName: Ancient God Slayer Leggings
+	Tooltip: ""
+}
+
+AncientSilvaArmor: {
+	DisplayName: Ancient Silva Armor
+	Tooltip: ""
+}
+
+AncientSilvaHelm: {
+	DisplayName: Ancient Silva Helm
+	Tooltip: ""
+}
+
+AncientSilvaLeggings: {
+	DisplayName: Ancient Silva Leggings
+	Tooltip: ""
+}
+
+GodSlayerChestplateold: {
+	DisplayName: God Slayer Chestplateold
+	Tooltip: ""
+}
+
+GodSlayerHeadMagicold: {
+	DisplayName: God Slayer Head Magicold
+	Tooltip: ""
+}
+
+GodSlayerHeadMeleeold: {
+	DisplayName: God Slayer Head Meleeold
+	Tooltip: ""
+}
+
+GodSlayerHeadRangedold: {
+	DisplayName: God Slayer Head Rangedold
+	Tooltip: ""
+}
+
+GodSlayerHeadRogueold: {
+	DisplayName: God Slayer Head Rogueold
+	Tooltip: ""
+}
+
+GodSlayerHeadSummonold: {
+	DisplayName: God Slayer Head Summonold
+	Tooltip: ""
+}
+
+GodSlayerLeggingsold: {
+	DisplayName: God Slayer Leggingsold
+	Tooltip: ""
+}
+
+SilvaArmorold: {
+	DisplayName: Silva Armorold
+	Tooltip: ""
+}
+
+SilvaHeadMagicold: {
+	DisplayName: Silva Head Magicold
+	Tooltip: ""
+}
+
+SilvaHeadMelee: {
+	DisplayName: Silva Head Melee
+	Tooltip: ""
+}
+
+SilvaHeadRanged: {
+	DisplayName: Silva Head Ranged
+	Tooltip: ""
+}
+
+SilvaHeadRogue: {
+	DisplayName: Silva Head Rogue
+	Tooltip: ""
+}
+
+SilvaHeadSummonold: {
+	DisplayName: Silva Head Summonold
+	Tooltip: ""
+}
+
+SilvaLeggingsold: {
+	DisplayName: Silva Leggingsold
+	Tooltip: ""
+}

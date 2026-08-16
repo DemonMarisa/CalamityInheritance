@@ -1,6 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Items;
-using CalamityInheritance.Content.Buff.Armor.Summon;
+using CalamityInheritance.Content.Buff.SummonBuff.Armor;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Armor.Summon.Header;
 using CalamityInheritance.Content.Rarity.ShopValue;

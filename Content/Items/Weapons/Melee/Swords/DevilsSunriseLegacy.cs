@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.Swords
                 CreateRecipe().
                     AddIngredient(ItemID.Terragrim).
                     AddIngredient<DemonicBoneAsh>(10).
-                    AddIngredient(CalamityMaterials.BloodstoneCore, 25).
+                    AddIngredient<BloodstoneCore>(25).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

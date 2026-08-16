@@ -1,4 +1,6 @@
-﻿using CalamityInheritance.Content.Items.Materials;
+﻿using CalamityInheritance.Content.Items.Accessories.Defense;
+using CalamityInheritance.Content.Items.Accessories.Misc;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Items.Weapons.Magic.MagicGun.Misc;
 using CalamityInheritance.Content.Items.Weapons.Melee.Axes;
 using CalamityInheritance.Content.Items.Weapons.Melee.CurvedSword;
@@ -26,7 +28,10 @@ namespace CalamityInheritance.Content.NPCs.CILoots
                 Loot.Add(ItemType<NullificationPistolLegacy>(), 5);
             // 红恶魔
             if (npc.type == NPCID.RedDevil)
+            {
                 Loot.Add(ItemType<DemonicBoneAsh>(), 3);
+                Loot.Add(ItemType<AbaddonLegacy>(), 10);
+            }
             // 带向导人偶的恶魔
             if (npc.type == NPCID.VoodooDemon)
             {
@@ -47,6 +52,9 @@ namespace CalamityInheritance.Content.NPCs.CILoots
             }
             switch (npc.type)
             {
+                case NPCID.AnomuraFungus:
+                    Loot.Add(ItemDropRule.NormalvsExpert(ItemType<FungalCarapace>(), 7, 4));
+                    break;
                 case NPCID.VortexRifleman:
                     // 交叉集火
                     Loot.Add(ItemDropRule.NormalvsExpert(ItemType<ConclaveCrossfire>(), 100, 50));

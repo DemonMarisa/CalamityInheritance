@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Content.BaseClass.Items;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Rarity.ShopValue;
+using CalamityInheritance.Core.Utils;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -26,12 +27,12 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.Victide
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance += 0.05f;
+            player.AddDR(0.05f);
             player.GetCritChance<GenericDamageClass>() += 5;
             if (Collision.DrownCollision(player.position, player.width, player.height, player.gravDir))
             {
                 player.statDefense += 5;
-                player.endurance += 0.1f;
+                player.AddDR(0.1f);
             }
         }
 

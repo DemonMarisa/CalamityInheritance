@@ -1,4 +1,5 @@
-﻿using LAP.Assets.TextureRegister;
+﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+using LAP.Assets.TextureRegister;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Armor.Ranged
 {
-    public class DesertMark : ModProjectile
+    public class DesertMark : CIArmorProj
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
 

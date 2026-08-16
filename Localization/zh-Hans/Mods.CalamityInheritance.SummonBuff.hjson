@@ -92,3 +92,23 @@ VictideSummonSetBuff: {
 	// DisplayName: Victide Summon Set Buff
 	// Description: Mods.CalamityInheritance.SummonBuff.VictideSummonSetBuff.Description
 }
+
+ReaverSummonSetBuff: {
+	// DisplayName: Reaver Summon Set Buff
+	// Description: Mods.CalamityInheritance.SummonBuff.ReaverSummonSetBuff.Description
+}
+
+SilvaCrystalBuff: {
+	// DisplayName: Silva Crystal Buff
+	// Description: Mods.CalamityInheritance.SummonBuff.SilvaCrystalBuff.Description
+}
+
+GladiatorsLocketLegacyBuff: {
+	// DisplayName: Gladiators Locket Legacy Buff
+	// Description: Mods.CalamityInheritance.SummonBuff.GladiatorsLocketLegacyBuff.Description
+}
+
+FungalClumpLegacyBuff: {
+	// DisplayName: Fungal Clump Legacy Buff
+	// Description: Mods.CalamityInheritance.SummonBuff.FungalClumpLegacyBuff.Description
+}

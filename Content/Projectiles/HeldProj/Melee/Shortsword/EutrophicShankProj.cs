@@ -65,7 +65,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.Shortsword
                 float randomAngle = baseAngle + Main.rand.NextFloat(-spreadAngle / 2, spreadAngle / 2);
                 Vector2 randomDirection = new Vector2((float)Math.Cos(randomAngle), (float)Math.Sin(randomAngle));
 
-                Projectile newProjectileId = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, velocity: randomDirection * 3f, ProjectileType<ElectricSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
+                Projectile newProjectileId = Projectile.NewProjectileDirect(Projectile.GetSource_FromThis(), Projectile.Center, randomDirection * 9f, ProjectileType<ElectricSpark>(), Projectile.damage * 1, Projectile.knockBack, Projectile.owner, 0f, 0f);
                 newProjectileId.DamageType = DamageClass.Melee;
             }
             ;

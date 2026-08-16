@@ -6,9 +6,14 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
     {
         public override void ResetEffects()
         {
+            MainResetEffects();
             UpdateTimer();
             ResetWeapons();
             ResetArmor();
+            ResetAccessories();
+            PreKillReset();
+            ResetDodge();
+            ResetShield();
         }
         public override void UpdateDead()
         {

@@ -4,7 +4,17 @@ DamageClasses: {
 	TrueMeleeNoSpeed.DisplayName: True Melee No Speed
 }
 
-Projectiles: {
-	DesertMark.DisplayName: Desert Mark
-	DesertTornado.DisplayName: Desert Tornado
+Keybinds: {
+	BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+	AegisHotKey.DisplayName: Aegis Hot Key
+	"Astral Arcanum UI Toggle.DisplayName": Astral  Arcanum  U I  Toggle
+	"Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
+	"God Slayer Dash Toggle.DisplayName": God  Slayer  Dash  Toggle
+}
+
+Buffs: {
+	TrinketofChiLegacyBuff: {
+		DisplayName: Trinketof Chi Legacy Buff
+		Description: Mods.CalamityInheritance.Buffs.TrinketofChiLegacyBuff.Description
+	}
 }

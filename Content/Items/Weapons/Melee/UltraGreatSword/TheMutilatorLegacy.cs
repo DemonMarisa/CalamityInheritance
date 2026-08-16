@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
@@ -67,7 +68,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.UltraGreatSword
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalamityMaterials.BloodstoneCore, 5).
+                    AddIngredient<BloodstoneCore>(5).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

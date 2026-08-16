@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Buff;
+using CalamityInheritance.Core.Utils;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -24,6 +25,7 @@ namespace CalamityInheritance.Content.Buff.DamageBuffs
                 }
                 Lighting.AddLight(npc.position, 0.05f, 0.01f, 0.01f);
             }
+            npc.CI().DeBuffDamage += 100;
         }
     }
 }

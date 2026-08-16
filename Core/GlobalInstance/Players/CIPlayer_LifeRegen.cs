@@ -9,6 +9,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public bool BlockLifeRegen;
         public override void UpdateLifeRegen()
         {
+            ArmorLifeRegen();
             Player.lifeRegen += LifeRegen;
             LifeRegen = 0;
         }

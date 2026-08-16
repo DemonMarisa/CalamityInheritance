@@ -47,7 +47,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Summon.Normal.Worm
                 return false;
             foreach (Projectile p in Main.ActiveProjectiles)
             {
-                if (p.active & p.type == ProjectileType<DOGworm>())
+                if (p.owner == player.whoAmI && p.active && p.type == ProjectileType<DOGworm>())
                     return false;
             }
             return true;

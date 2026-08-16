@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Ranged.HandGun;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
@@ -32,7 +33,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.HandGun
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalamityMaterials.BloodstoneCore, 4).
+                    AddIngredient<BloodstoneCore>(4).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

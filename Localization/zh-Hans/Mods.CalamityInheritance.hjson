@@ -1,10 +1,20 @@
 DamageClasses: {
-	RogueDamage.DisplayName: �����˺�
-	TrueMelee.DisplayName: ���ս�˺�
-	TrueMeleeNoSpeed.DisplayName: ���ս�˺�
+	RogueDamage.DisplayName: 盗贼伤害
+	TrueMelee.DisplayName: 真近战伤害
+	TrueMeleeNoSpeed.DisplayName: 真近战伤害
 }
 
-Projectiles: {
-	// DesertMark.DisplayName: Desert Mark
-	// DesertTornado.DisplayName: Desert Tornado
+Keybinds: {
+	// BoCLoreTeleportation.DisplayName: Bo C Lore Teleportation
+	// AegisHotKey.DisplayName: Aegis Hot Key
+	// "Astral Arcanum UI Toggle.DisplayName": Astral  Arcanum  U I  Toggle
+	// "Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
+	// "God Slayer Dash Toggle.DisplayName": God  Slayer  Dash  Toggle
+}
+
+Buffs: {
+	TrinketofChiLegacyBuff: {
+		// DisplayName: Trinketof Chi Legacy Buff
+		// Description: Mods.CalamityInheritance.Buffs.TrinketofChiLegacyBuff.Description
+	}
 }

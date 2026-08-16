@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using LAP.Assets.TextureRegister;
-using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -16,7 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.General
             Projectile.height = 12;
             Projectile.friendly = true;
             Projectile.penetrate = 3;
-            Projectile.timeLeft = 30;
+            Projectile.timeLeft = 120;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 15;
         }
@@ -57,9 +56,6 @@ namespace CalamityInheritance.Content.Projectiles.Typeless.General
                 spark.noGravity = true;
                 spark.velocity *= 0.1f;
             }
-
-            if (Projectile.velocity.Y > 16f)
-                Projectile.velocity.Y = 16f;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity) => false;

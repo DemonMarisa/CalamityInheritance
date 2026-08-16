@@ -92,3 +92,28 @@ AncientXerocShame: {
 	DisplayName: Ancient Xeroc Shame
 	Description: Mods.CalamityInheritance.DamageBuff.AncientXerocShame.Description
 }
+
+ReaverMeleeRage: {
+	DisplayName: Reaver Melee Rage
+	Description: Mods.CalamityInheritance.DamageBuff.ReaverMeleeRage.Description
+}
+
+ReaverMagePower: {
+	DisplayName: Reaver Mage Power
+	Description: Mods.CalamityInheritance.DamageBuff.ReaverMagePower.Description
+}
+
+AncientAstralBuff: {
+	DisplayName: Ancient Astral Buff
+	Description: Mods.CalamityInheritance.DamageBuff.AncientAstralBuff.Description
+}
+
+SilvaImmunity: {
+	DisplayName: Silva Immunity
+	Description: Mods.CalamityInheritance.DamageBuff.SilvaImmunity.Description
+}
+
+BloodyBoost: {
+	DisplayName: Bloody Boost
+	Description: Mods.CalamityInheritance.DamageBuff.BloodyBoost.Description
+}

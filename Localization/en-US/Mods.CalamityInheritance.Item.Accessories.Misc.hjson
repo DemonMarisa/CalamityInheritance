@@ -1,0 +1,29 @@
+FungalCarapace: {
+	DisplayName: Fungal Carapace
+	Tooltip: ""
+}
+
+LeadCore: {
+	DisplayName: Lead Core
+	Tooltip: ""
+}
+
+SeaShell: {
+	DisplayName: Sea Shell
+	Tooltip: ""
+}
+
+YharimsGiftLegacy: {
+	DisplayName: Yharims Gift Legacy
+	Tooltip: ""
+}
+
+GladiatorsLocketLegacy: {
+	DisplayName: Gladiators Locket Legacy
+	Tooltip: ""
+}
+
+ToxicHeartLegacy: {
+	DisplayName: Toxic Heart Legacy
+	Tooltip: ""
+}

@@ -31,7 +31,7 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int UelibloomBar;
         public static int CryonicBar;
 
-        public static int BloodstoneCore;
+        public static int Bloodstone;
         public static int UnholyEssence;
         public static int DivineGeode;
 
@@ -72,6 +72,9 @@ namespace CalamityInheritance.Common.CalamityModCross
 
         public static int MysteriousCircuitry;
         public static int DubiousPlating;
+        public static int EffulgentFeather;
+        public static int PlantyMush;
+        public static int BloodOrb;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -99,7 +102,7 @@ namespace CalamityInheritance.Common.CalamityModCross
             RuinousSoul = ItemType<RuinousSoul>();
             UelibloomBar = ItemType<UelibloomBar>();
             CryonicBar = ItemType<CryonicBar>();
-            BloodstoneCore = ItemType<BloodstoneCore>();
+            Bloodstone = ItemType<Bloodstone>();
             UnholyEssence = ItemType<UnholyEssence>();
             DivineGeode = ItemType<DivineGeode>();
             ExodiumCluster = ItemType<ExodiumCluster>();
@@ -126,6 +129,9 @@ namespace CalamityInheritance.Common.CalamityModCross
             AerialiteBar = ItemType<AerialiteBar>();
             PlagueCellCanister = ItemType<PlagueCellCanister>();
             WulfrumMetalScrap = ItemType<WulfrumMetalScrap>();
+            EffulgentFeather = ItemType<EffulgentFeather>();
+            PlantyMush = ItemType<PlantyMush>();
+            BloodOrb = ItemType<BloodOrb>();
         }
     }
 }

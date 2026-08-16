@@ -1,0 +1,10 @@
+﻿using CalamityInheritance.Content.BaseClass.Buff;
+using CalamityInheritance.Content.Projectiles.Armor.Summon.Header;
+
+namespace CalamityInheritance.Content.Buff.SummonBuff.Armor
+{
+    public class SilvaCrystalBuff : CISummonBuff
+    {
+        public override int ProjectileType => ProjectileType<SilvaCrystal>();
+    }
+}

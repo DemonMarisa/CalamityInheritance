@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.Magic.Staff;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
@@ -54,7 +55,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Staff
             if (CIUtils.HasCalamity())
             {
                 CreateRecipe().
-                    AddIngredient(CalamityMaterials.BloodstoneCore, 5).
+                    AddIngredient<BloodstoneCore>(5).
                     AddTile(TileID.LunarCraftingStation).
                     Register();
             }

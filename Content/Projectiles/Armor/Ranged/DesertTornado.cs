@@ -1,4 +1,5 @@
 ﻿using CalamityInheritance.Assets;
+using CalamityInheritance.Content.BaseClass.Projectiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -8,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Armor.Ranged
 {
-    public class DesertTornado : ModProjectile
+    public class DesertTornado : CIArmorProj
     {
         public override string Texture => CITextureRegister.TornadoProj.Path;
 
