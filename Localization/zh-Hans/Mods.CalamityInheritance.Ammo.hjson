@@ -12,3 +12,58 @@ MagnumRounds: {
 	// DisplayName: Magnum Rounds
 	// Tooltip: ""
 }
+
+AccelerationRound: {
+	// DisplayName: Acceleration Round
+	// Tooltip: ""
+}
+
+ArcticArrow: {
+	// DisplayName: Arctic Arrow
+	// Tooltip: ""
+}
+
+ElysianArrowOld: {
+	// DisplayName: Elysian Arrow Old
+	// Tooltip: ""
+}
+
+FrostsparkBullet: {
+	// DisplayName: Frostspark Bullet
+	// Tooltip: ""
+}
+
+HolyFireBulletOld: {
+	// DisplayName: Holy Fire Bullet Old
+	// Tooltip: ""
+}
+
+HyperiusBulletOld: {
+	// DisplayName: Hyperius Bullet Old
+	// Tooltip: ""
+}
+
+NapalmArrow: {
+	// DisplayName: Napalm Arrow
+	// Tooltip: ""
+}
+
+SuperballBullet: {
+	// DisplayName: Superball Bullet
+	// Tooltip: ""
+}
+
+VanquisherArrowold: {
+	// DisplayName: Vanquisher Arrowold
+	// Tooltip: ""
+}
+
+VeriumBullet: {
+	// DisplayName: Verium Bullet
+	// Tooltip: ""
+}
+
+GodSlayerSlugLegacy: {
+	// DisplayName: God Slayer Slug Legacy
+	// Tooltip: ""
+}

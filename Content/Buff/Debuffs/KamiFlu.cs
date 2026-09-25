@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Buff;
 using CalamityInheritance.Core.Utils;
+using LAP.Core.Utilities;
 using Terraria;
 
 namespace CalamityInheritance.Content.Buff.Debuffs
@@ -15,6 +16,8 @@ namespace CalamityInheritance.Content.Buff.Debuffs
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.AddDebuffDamage(250);
+            npc.LAP().IgnoreDefense += 30;
+            npc.LAP().StateDR *= 0.8f;
         }
     }
 }

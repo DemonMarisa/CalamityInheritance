@@ -2,7 +2,6 @@
 using CalamityInheritance.Content.Projectiles.Magic.MagicGun.Assault;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

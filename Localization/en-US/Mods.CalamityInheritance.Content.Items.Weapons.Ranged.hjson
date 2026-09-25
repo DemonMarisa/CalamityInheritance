@@ -407,3 +407,13 @@ Taser: {
 	DisplayName: Taser
 	Tooltip: ""
 }
+
+ACTKarasawa: {
+	DisplayName: A C T Karasawa
+	Tooltip: ""
+}
+
+ACTMinigun: {
+	DisplayName: A C T Minigun
+	Tooltip: ""
+}

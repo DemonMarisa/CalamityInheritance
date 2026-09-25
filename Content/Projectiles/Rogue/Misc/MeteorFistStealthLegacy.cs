@@ -1,8 +1,10 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Content.Projectiles.Typeless.Explosions;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -13,6 +15,7 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Misc
     public class MeteorFistStealthLegacy : CIRogueProj
     {
         public override string Texture => GetInstance<MeteorFistProjLegacy>().Texture;
+        public List<NPC> NPC = [];
         public override void SetDefaults()
         {
             Projectile.width = 20;
@@ -22,6 +25,8 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Misc
             Projectile.extraUpdates = 1;
             Projectile.timeLeft = 360;
             Projectile.DamageType = RogueDamage.Instance;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 30;
         }
 
         public override void AI()
@@ -145,41 +150,24 @@ namespace CalamityInheritance.Content.Projectiles.Rogue.Misc
                 }
             }
         }
-
+        public List<NPC> LastHitNPC = [];
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 120);
             int boom = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center, Vector2.Zero, ProjectileType<FuckYou>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0.85f + Main.rand.NextFloat() * 1.15f);
             Projectile.damage = (int)(Projectile.damage * 0.6666);
             float minDist = 999f;
-            int index = 0;
+            NPC.Add(target);
+            LastHitNPC.Clear();
+            LastHitNPC.Add(target);
             // Get the closest enemy to the fist
             if (Projectile.penetrate != -1)
             {
-                foreach (var npc in Main.ActiveNPCs)
-                {
-                    if (npc.CanBeChasedBy(Projectile, false) && npc != target)
-                    {
-                        float dist = (Projectile.Center - npc.Center).Length();
-                        if (dist < minDist)
-                        {
-                            minDist = dist;
-                            index = npc.whoAmI;
-                        }
-                    }
-                }
-                Vector2 newFistVelocity;
-                if (minDist < 999f)
-                {
-                    newFistVelocity = Main.npc[index].Center - Projectile.Center;
-                }
-                else
-                {
-                    newFistVelocity = -Projectile.velocity;
-                }
-                newFistVelocity.Normalize();
-                newFistVelocity *= 10f;
-                Projectile.velocity = newFistVelocity;
+                NPC npc = LAPUtilities.FindClosestNPCExceptSpecific(Projectile.Center, minDist, NPC);
+                npc ??= LAPUtilities.FindClosestNPCExceptSpecific(Projectile.Center, minDist, LastHitNPC);
+                npc ??= LAPUtilities.FindClosestTarget(Projectile.Center, minDist);
+                if (npc is not null)
+                    Projectile.velocity = LAPUtilities.GetVector2(Projectile.Center, npc.Center);
             }
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(BuffID.OnFire, 120);

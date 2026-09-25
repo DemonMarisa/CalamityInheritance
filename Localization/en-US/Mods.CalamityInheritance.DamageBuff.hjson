@@ -117,3 +117,68 @@ BloodyBoost: {
 	DisplayName: Bloody Boost
 	Description: Mods.CalamityInheritance.DamageBuff.BloodyBoost.Description
 }
+
+TrinketofChiLegacyBuff: {
+	DisplayName: Trinketof Chi Legacy Buff
+	Description: Mods.CalamityInheritance.DamageBuff.TrinketofChiLegacyBuff.Description
+}
+
+ElysianGuard: {
+	DisplayName: Elysian Guard
+	Description: Mods.CalamityInheritance.DamageBuff.ElysianGuard.Description
+}
+
+CIElementalMix: {
+	DisplayName: C I Elemental Mix
+	Description: Mods.CalamityInheritance.DamageBuff.CIElementalMix.Description
+}
+
+Mushy: {
+	DisplayName: Mushy
+	Description: Mods.CalamityInheritance.DamageBuff.Mushy.Description
+}
+
+ArmorShattering: {
+	DisplayName: Armor Shattering
+	Description: Mods.CalamityInheritance.DamageBuff.ArmorShattering.Description
+}
+
+Invincible: {
+	DisplayName: Invincible
+	Description: Mods.CalamityInheritance.DamageBuff.Invincible.Description
+}
+
+PenumbraBuff: {
+	DisplayName: Penumbra Buff
+	Description: Mods.CalamityInheritance.DamageBuff.PenumbraBuff.Description
+}
+
+ProfanedRageBuff: {
+	DisplayName: Profaned Rage Buff
+	Description: Mods.CalamityInheritance.DamageBuff.ProfanedRageBuff.Description
+}
+
+Revivify: {
+	DisplayName: Revivify
+	Description: Mods.CalamityInheritance.DamageBuff.Revivify.Description
+}
+
+TitanScale: {
+	DisplayName: Titan Scale
+	Description: Mods.CalamityInheritance.DamageBuff.TitanScale.Description
+}
+
+TriumphBuff: {
+	DisplayName: Triumph Buff
+	Description: Mods.CalamityInheritance.DamageBuff.TriumphBuff.Description
+}
+
+YharimPower: {
+	DisplayName: Yharim Power
+	Description: Mods.CalamityInheritance.DamageBuff.YharimPower.Description
+}
+
+BossEffects: {
+	DisplayName: Boss Effects
+	Description: Mods.CalamityInheritance.DamageBuff.BossEffects.Description
+}

@@ -17,3 +17,18 @@ DeificAmuletLegacy: {
 	DisplayName: Deific Amulet Legacy
 	Tooltip: ""
 }
+
+AstralArcanum: {
+	DisplayName: Astral Arcanum
+	Tooltip: ""
+}
+
+TheAmalgamLegacy: {
+	DisplayName: The Amalgam Legacy
+	Tooltip: ""
+}
+
+RegenatorLegacy: {
+	DisplayName: Regenator Legacy
+	Tooltip: ""
+}

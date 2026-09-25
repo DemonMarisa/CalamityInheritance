@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Flamethrower
             Item.value = CIShopValue.RarityPriceLime;
             Item.rare = ItemRarityID.Lime;
             Item.autoReuse = true;
-            Item.shoot = ProjectileType<CatastropheBall>();
+            Item.shoot = ProjectileType<CatastropheBall_F>();
             Item.shootSpeed = 18f;
             Item.useAmmo = AmmoID.Gel;
         }

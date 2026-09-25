@@ -37,3 +37,28 @@ AstralBulwark: {
 	// DisplayName: Astral Bulwark
 	// Tooltip: ""
 }
+
+ArcanumoftheVoid: {
+	// DisplayName: Arcanumofthe Void
+	// Tooltip: ""
+}
+
+ShieldoftheOceanLegacy: {
+	// DisplayName: Shieldofthe Ocean Legacy
+	// Tooltip: ""
+}
+
+TheSpongeLegacy: {
+	// DisplayName: The Sponge Legacy
+	// Tooltip: ""
+}
+
+TrinketofChiLegacy: {
+	// DisplayName: Trinketof Chi Legacy
+	// Tooltip: ""
+}
+
+UrsaSergeantLegacy: {
+	// DisplayName: Ursa Sergeant Legacy
+	// Tooltip: ""
+}

@@ -5,7 +5,6 @@ namespace CalamityInheritance.Core.GlobalInstance.NPCs
 {
     public partial class CIGNPC : GlobalNPC
     {
-        public override bool InstancePerEntity => true;
         public int DeBuffDamage;
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {

@@ -11,6 +11,7 @@ namespace CalamityInheritance.Content.BaseClass.Items
         public const int Defense = 3;
         public const int Wings = 4;
         public const int Misc = 5;
+        public const int Professional = 6;
         public virtual int AccessoriesStyle => 0;
         public override string LocalizationCategory => GetLocalization(AccessoriesStyle);
         internal static string GetLocalization(int style)
@@ -23,6 +24,7 @@ namespace CalamityInheritance.Content.BaseClass.Items
                 Defense => LocalizationPath.DefenseAccessories,
                 Wings => LocalizationPath.Wings,
                 Misc => LocalizationPath.MiscAccessories,
+                Professional => LocalizationPath.MiscAccessories,
                 _ => LocalizationPath.MiscAccessories
             };
         }

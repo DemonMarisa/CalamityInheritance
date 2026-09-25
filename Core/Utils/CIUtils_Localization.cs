@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.Chat;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -14,6 +17,27 @@ namespace CalamityInheritance.Core.Utils
         public static string GetTextValue(string key)
         {
             return Language.GetTextValue("Mods.CalamityInheritance." + key);
+        }
+        /// <summary>
+        /// 在聊天框中发送文本，支持多人模式。
+        /// </summary>
+        public static void BroadcastLocalizedText(string key, Color? textColor = null)
+        {
+            if (Main.netMode == NetmodeID.Server)
+                ChatHelper.BroadcastChatMessage(NetworkText.FromKey(key), textColor ?? Color.White);
+            else if (Main.netMode == NetmodeID.SinglePlayer)
+                Main.NewText(Language.GetTextValue(key), textColor ?? Color.White);
+        }
+        public static void SendTextOnPlayer(string key, Color color)
+        {
+            Player player = Main.player[Main.myPlayer];
+            Rectangle location = new Rectangle((int)player.position.X, (int)player.position.Y - 16, player.width, player.height);
+            CombatText.NewText(location, color, Language.GetTextValue(key));
+        }
+        public static void SendTextOnNPC(NPC npc, string key, Color color)
+        {
+            Rectangle location = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
+            CombatText.NewText(location, color, Language.GetTextValue(key));
         }
     }
 }

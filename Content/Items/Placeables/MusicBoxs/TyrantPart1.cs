@@ -1,0 +1,25 @@
+﻿
+using CalamityInheritance.Content.Tiles.MusicBoxs;
+using CalamityInheritance.Core.Path;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace CalamityInheritance.Content.Items.Placeables.MusicBoxs
+{
+    public class TyrantPart1 : ModItem, ILocalizedModType
+    {
+        public override string LocalizationCategory => LocalizationPath.MusicBoxs;
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.CanGetPrefixes[Type] = false; // music boxes can't get prefixes in vanilla
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox; // recorded music boxes transform into the basic form in shimmer
+            MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Music/Tyrant"), ItemType<TyrantPart1>(), TileType<TyrantPart1Tile>());
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetDefaults()
+        {
+            Item.DefaultToMusicBox(TileType<TyrantPart1Tile>(), 0);
+        }
+    }
+}

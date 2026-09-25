@@ -129,6 +129,9 @@ namespace CalamityInheritance.Common.CalamityModCross
             AerialiteBar = ItemType<AerialiteBar>();
             PlagueCellCanister = ItemType<PlagueCellCanister>();
             WulfrumMetalScrap = ItemType<WulfrumMetalScrap>();
+
+            MysteriousCircuitry = ItemType<MysteriousCircuitry>();
+            DubiousPlating = ItemType<DubiousPlating>();
             EffulgentFeather = ItemType<EffulgentFeather>();
             PlantyMush = ItemType<PlantyMush>();
             BloodOrb = ItemType<BloodOrb>();

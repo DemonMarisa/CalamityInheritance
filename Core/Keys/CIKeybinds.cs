@@ -9,6 +9,7 @@ namespace CalamityInheritance.Core.Keys
         public static ModKeybind AstralArcanumUIHotkey { get; private set; }
         public static ModKeybind QOLUIHotKey { get; private set; }
         public static ModKeybind GodSlayerDash { get; private set; }
+        public static ModKeybind WeaponTransformation { get; private set; }
         public override void Load()
         {
             BoCLoreTeleportation = KeybindLoader.RegisterKeybind(Mod, "BoCLoreTeleportation", "Z");
@@ -16,6 +17,7 @@ namespace CalamityInheritance.Core.Keys
             AstralArcanumUIHotkey = KeybindLoader.RegisterKeybind(Mod, "Astral Arcanum UI Toggle", "O");
             QOLUIHotKey = KeybindLoader.RegisterKeybind(Mod, "Qol Panel UI Toggle", "L");
             GodSlayerDash = KeybindLoader.RegisterKeybind(Mod, "God Slayer Dash Toggle", "L");
+            WeaponTransformation = KeybindLoader.RegisterKeybind(Mod, "Weapon Transformation Toggle", "X");
         }
         public override void Unload()
         {
@@ -24,6 +26,7 @@ namespace CalamityInheritance.Core.Keys
             AstralArcanumUIHotkey = null;
             QOLUIHotKey = null;
             GodSlayerDash = null;
+            WeaponTransformation = null;
         }
     }
 }

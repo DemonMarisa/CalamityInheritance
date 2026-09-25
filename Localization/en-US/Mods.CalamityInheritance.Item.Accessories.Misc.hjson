@@ -27,3 +27,68 @@ ToxicHeartLegacy: {
 	DisplayName: Toxic Heart Legacy
 	Tooltip: ""
 }
+
+AncientEtherealTalisman: {
+	DisplayName: Ancient Ethereal Talisman
+	Tooltip: ""
+}
+
+ManaOverloader: {
+	DisplayName: Mana Overloader
+	Tooltip: ""
+}
+
+BadgeofBravery: {
+	DisplayName: Badgeof Bravery
+	Tooltip: ""
+}
+
+DaedalusEmblem: {
+	DisplayName: Daedalus Emblem
+	Tooltip: ""
+}
+
+ElementalGauntletold: {
+	DisplayName: Elemental Gauntletold
+	Tooltip: ""
+}
+
+ElementalQuiver: {
+	DisplayName: Elemental Quiver
+	Tooltip: ""
+}
+
+PsychoticAmulet: {
+	DisplayName: Psychotic Amulet
+	Tooltip: ""
+}
+
+SamuraiBadge: {
+	DisplayName: Samurai Badge
+	Tooltip: ""
+}
+
+YharimsInsignia: {
+	DisplayName: Yharims Insignia
+	Tooltip: ""
+}
+
+EclispeMirrorLegacy: {
+	DisplayName: Eclispe Mirror Legacy
+	Tooltip: ""
+}
+
+NanotechOld: {
+	DisplayName: Nanotech Old
+	Tooltip: ""
+}
+
+DoubleSonYharon: {
+	DisplayName: Double Son Yharon
+	Tooltip: ""
+}
+
+NucleogenesisLegacy: {
+	DisplayName: Nucleogenesis Legacy
+	Tooltip: ""
+}

@@ -282,3 +282,18 @@ PulsePistolLegacy: {
 	DisplayName: Pulse Pistol Legacy
 	Tooltip: ""
 }
+
+ACTAlphaRay: {
+	DisplayName: A C T Alpha Ray
+	Tooltip: ""
+}
+
+ACTWingman: {
+	DisplayName: A C T Wingman
+	Tooltip: ""
+}
+
+ACTGenisis: {
+	DisplayName: A C T Genisis
+	Tooltip: ""
+}

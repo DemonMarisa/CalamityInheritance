@@ -53,5 +53,11 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle PulseRifleFire = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/PulseRifleFire");
         public static readonly SoundStyle LargeMechGaussRifle = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LargeMechGaussRifle");
         public static readonly SoundStyle LaserRifleFire = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LaserRifleFire");
+
+        public static readonly SoundStyle KarasawaCharge = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaCharge");
+        public static readonly SoundStyle KarasawaChargeFailed = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaChargeFailed");
+        public static readonly SoundStyle KarasawaEnergyPulse = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaEnergyPulse");
+        public static readonly SoundStyle KarasawaLaunch1 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaLaunch1");
+        public static readonly SoundStyle KarasawaLaunch2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaLaunch2");
     }
 }

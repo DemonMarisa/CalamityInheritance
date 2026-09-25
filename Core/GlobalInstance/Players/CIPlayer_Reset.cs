@@ -6,6 +6,8 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
     {
         public override void ResetEffects()
         {
+            PotionBuffReset();
+            HitReset();
             MainResetEffects();
             UpdateTimer();
             ResetWeapons();

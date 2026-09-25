@@ -10,11 +10,26 @@ Keybinds: {
 	"Astral Arcanum UI Toggle.DisplayName": Astral  Arcanum  U I  Toggle
 	"Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
 	"God Slayer Dash Toggle.DisplayName": God  Slayer  Dash  Toggle
+	"Weapon Transformation Toggle.DisplayName": Weapon  Transformation  Toggle
 }
 
-Buffs: {
-	TrinketofChiLegacyBuff: {
-		DisplayName: Trinketof Chi Legacy Buff
-		Description: Mods.CalamityInheritance.Buffs.TrinketofChiLegacyBuff.Description
+Configs: {
+	CIConfig: {
+		DisplayName: C I Config
+
+		TurnoffCorner: {
+			Label: Turnoff Corner
+			Tooltip: ""
+		}
+
+		DrawDifficultyUI: {
+			Label: Draw Difficulty U I
+			Tooltip: ""
+		}
+
+		CalClone: {
+			Label: Cal Clone
+			Tooltip: ""
+		}
 	}
 }

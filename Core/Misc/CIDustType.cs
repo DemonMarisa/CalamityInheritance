@@ -74,6 +74,8 @@ namespace CalamityInheritance.Core.Misc
         public static readonly int DustNimbusRod = 154;
         public static readonly int DustHeatRay = 162;
         public static readonly int DustGoldenShower = 170;
+        public static readonly int PurpleCosmilite = 173;
+        public static readonly int BlueCosmilite = 180;
         public static readonly int DustDeadlySphere = 226;
         public static readonly int DustMartianBlood227 = 227;
         public static readonly int DustLifeDrain = 235;

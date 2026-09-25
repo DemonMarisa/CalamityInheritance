@@ -9,6 +9,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
 {
     public class ShieldoftheOceanLegacy : CIAccessories
     {
+        public override int AccessoriesStyle => Defense;
         public override void SetDefaults()
         {
             Item.accessory = true;

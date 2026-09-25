@@ -11,6 +11,10 @@
 	  <Optimize>False</Optimize>
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="Localization\en-US\Mods.CalamityInheritance.Item.Accessories.Professional.hjson" />
+	  <AdditionalFiles Remove="Localization\zh-Hans\Mods.CalamityInheritance.Item.Accessories.Professional.hjson" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Compile Remove="C:\Users\Administrator\.nuget\packages\krafs.publicizer\2.3.0\contentfiles\cs\any\Publicizer\IgnoresAccessChecksToAttribute.cs" />
 	</ItemGroup>
 	<ItemGroup>

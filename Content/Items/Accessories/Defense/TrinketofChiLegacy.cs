@@ -9,6 +9,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
 {
     public class TrinketofChiLegacy : CIAccessories, ILocalizedModType
     {
+        public override int AccessoriesStyle => Defense;
         public override void SetDefaults()
         {
             Item.accessory = true;

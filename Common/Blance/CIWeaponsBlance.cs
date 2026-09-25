@@ -3,5 +3,6 @@
     public static class CIWeaponsBlance
     {
         public const int MaxAOTCCharge = 16;
+        public const int StealthAttackFocusCost = 40;
     }
 }

@@ -22,6 +22,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
 {
     public class TheSpongeLegacy : CIAccessories
     {
+        public override int AccessoriesStyle => Defense;
         // public static int CIShieldDurabilityMax => Main.LocalPlayer?.GetModPlayer<CalamityInheritancePlayer>()?.ShieldDurabilityMax ?? 0;
         public static int CIShieldRechargeDelay = SecondsToFrames(15); // was 6
         public static int CIShieldRechargeRelay = SecondsToFrames(9);
@@ -106,7 +107,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
                 float extraScalePulseInterpolant = MathF.Pow(4f, MathF.Sin(Main.GlobalTimeWrappedHourly * 0.791f) - 1);
                 float scale = baseScale + maxExtraScale * extraScalePulseInterpolant;
                 float noiseScale = MathHelper.Lerp(0.28f, 0.38f, 0.5f + 0.5f * MathF.Sin(Main.GlobalTimeWrappedHourly * 0.347f));
-                InsertDraw.SubmitDrawRequest_APlayer(() =>
+                InsertDraw.SubmitDrawRequest_APlayer("SpongeShieldDraw",() =>
                 {
                     LAPUtilities.ReSetToBeginShader();
                     Effect shieldEffect = CIShaders.RoverDriveShield.Value;

@@ -93,5 +93,21 @@ namespace CalamityInheritance.Common.CalamityModCross
         {
             return damageClass.CountsAsClass<TrueMeleeDamageClass>();
         }
+        public static void BoostTrueMelee(this Player player, float damage)
+        {
+            if (HasCalamity())
+            {
+                BoostTrueMelee_Jit(player, damage);
+            }
+            else
+            {
+                player.GetDamage<TrueMelee>() += damage;
+            }
+        }
+        [JITWhenModsEnabled("CalamityMod")]
+        internal static void BoostTrueMelee_Jit(Player player, float damage)
+        {
+            player.GetDamage<TrueMeleeDamageClass>() += damage;
+        }
     }
 }

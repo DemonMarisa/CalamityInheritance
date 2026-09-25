@@ -1,6 +1,7 @@
 ﻿using LAP.Core.Enums;
 using LAP.Core.Graphics.PixelatedRender;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -10,8 +11,7 @@ namespace CalamityInheritance.Core.Graphics.Insertlayer
 {
     public class InsertDraw : ModSystem
     {
-        public static Queue<Action> GlowRequests_AfterPlayer = new Queue<Action>();
-        public static bool BeginCheckDraw;
+        public static Dictionary<string, Action> CIPlayerDraw_PostDraw = new Dictionary<string, Action>();
         public override void Load()
         {
             On_Main.DrawPlayers_AfterProjectiles += DrawRequest_AfterPlayer;
@@ -20,28 +20,25 @@ namespace CalamityInheritance.Core.Graphics.Insertlayer
         {
             On_Main.DrawPlayers_AfterProjectiles -= DrawRequest_AfterPlayer;
         }
-        public static void SubmitDrawRequest_APlayer(Action drawAction)
+        public static void SubmitDrawRequest_APlayer(string name, Action drawAction)
         {
             if (Main.dedServ || drawAction == null)
                 return;
-            GlowRequests_AfterPlayer.Enqueue(drawAction);
-        }
-        public override void PreUpdatePlayers()
-        {
-            BeginCheckDraw = false;
+            if (!CIPlayerDraw_PostDraw.ContainsKey(name))
+                CIPlayerDraw_PostDraw.Add(name, drawAction);
         }
         public static void DrawRequest_AfterPlayer(On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
         {
             orig(self);
-            if (GlowRequests_AfterPlayer.Count != 0)
+            if (CIPlayerDraw_PostDraw.Count != 0)
             {
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.LinearWrap, DepthStencilState.None, RasterizerState.CullNone, null, Main.GameViewMatrix.TransformationMatrix);
-                while (GlowRequests_AfterPlayer.Count > 0)
+                foreach (var key in CIPlayerDraw_PostDraw.Values)
                 {
-                    Action drawAction = GlowRequests_AfterPlayer.Dequeue();
-                    drawAction.Invoke();
+                    key.Invoke();
                 }
                 Main.spriteBatch.End();
+                CIPlayerDraw_PostDraw.Clear();
             }
         }
     }

@@ -17,3 +17,33 @@ BurdenBreaker: {
 	DisplayName: Burden Breaker
 	Tooltip: ""
 }
+
+AngelTreadsLegacy: {
+	DisplayName: Angel Treads Legacy
+	Tooltip: ""
+}
+
+AsgardianAegisold: {
+	DisplayName: Asgardian Aegisold
+	Tooltip: ""
+}
+
+AsgardsValorold: {
+	DisplayName: Asgards Valorold
+	Tooltip: ""
+}
+
+ElysianAegisold: {
+	DisplayName: Elysian Aegisold
+	Tooltip: ""
+}
+
+StatisNinjaBeltLegacy: {
+	DisplayName: Statis Ninja Belt Legacy
+	Tooltip: ""
+}
+
+StatisVoidSash: {
+	DisplayName: Statis Void Sash
+	Tooltip: ""
+}

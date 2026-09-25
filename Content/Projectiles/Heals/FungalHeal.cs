@@ -2,7 +2,6 @@
 using LAP.Core.BaseClass.Projectiles;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Heals
 {
@@ -23,6 +22,7 @@ namespace CalamityInheritance.Content.Projectiles.Heals
 
         public override void AI()
         {
+            base.AI();
             int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.BlueFairy, 0f, 0f, 100);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 0f;

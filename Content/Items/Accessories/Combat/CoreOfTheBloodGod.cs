@@ -37,12 +37,14 @@ namespace CalamityInheritance.Content.Items.Accessories.Combat
             player.LAP().healingPotionMult += 0.25f;
             player.CI().ContactDamageReduction *= 0.85f;
             player.CI().FleshTotem = true;
+            player.CI().LifeRegen += 8;
             if (!player.HasCD<CotbgTotem>())
                 player.CI().ContactDamageReduction *= 0.5f;
         }
         public static void FleshTotem_PreHurt(Player player)
         {
-            player.AddCD(LAPContent.CDType<CotbgTotem>(), SecondsToFrames(20));
+            if (!player.HasCD<CotbgTotem>())
+                player.AddCD(LAPContent.CDType<CotbgTotem>(), SecondsToFrames(20));
         }
         public override void AddRecipes()
         {

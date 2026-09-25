@@ -1,14 +1,12 @@
 using CalamityInheritance.Content.BaseClass.Items;
+using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Buff.SummonBuff.Accessories;
-using CalamityInheritance.Content.Items.Weapons.Summon.Normal.Worm;
-using CalamityInheritance.Content.Projectiles.Summon.Normal.Worm;
 using CalamityInheritance.Content.Projectiles.Typeless.Accessories;
 using CalamityInheritance.Content.Projectiles.Typeless.General;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
-using Mono.Cecil;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -18,6 +16,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Restorative
 {
     public class TheAmalgamLegacy : CIAccessories
     {
+        public override int AccessoriesStyle => Restorative;
         public const int FireProjectiles = 2;
         public const float FireAngleSpread = 120;
         public int FireCountdown = 0;
@@ -36,6 +35,7 @@ namespace CalamityInheritance.Content.Items.Accessories.Restorative
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.CI().NormalDoge = true;
             player.GetDamage<GenericDamageClass>() += 0.20f;
             if (player.lavaWet)
             {
@@ -132,6 +132,30 @@ namespace CalamityInheritance.Content.Items.Accessories.Restorative
                 {
                     int p = Projectile.NewProjectile(player.GetSource_Accessory(Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ProjectileType<FungalClumpMinion>(), 15, 1, player.whoAmI);
                     Main.projectile[p].originalDamage = 15;
+                }
+            }
+            // Debuff
+            if (player.miscCounter % 50 == 0)
+            {
+                foreach (NPC npc in Main.ActiveNPCs)
+                {
+                    if (npc.active && !npc.friendly && !npc.dontTakeDamage && Vector2.Distance(player.Center, npc.Center) <= 300f)
+                    {
+                        if (npc.buffImmune[BuffID.Venom])
+                            return;
+                        if (npc.FindBuffIndex(BuffID.Venom) == -1)
+                            npc.AddBuff(BuffID.Venom, 120, false);
+
+                        if (npc.buffImmune[BuffType<CIGodSlayerInferno>()])
+                            return;
+                        if (npc.FindBuffIndex(BuffType<CIGodSlayerInferno>()) == -1)
+                            npc.AddBuff(BuffType<CIGodSlayerInferno>(), 120, false);
+
+                        if (npc.buffImmune[BuffType<CIBrimstoneFlames>()])
+                            return;
+                        if (npc.FindBuffIndex(BuffType<CIBrimstoneFlames>()) == -1)
+                            npc.AddBuff(BuffType<CIBrimstoneFlames>(), 120, false);
+                    }
                 }
             }
         }

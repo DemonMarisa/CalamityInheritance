@@ -552,3 +552,13 @@ GaussDagger: {
 	// DisplayName: Gauss Dagger
 	// Tooltip: ""
 }
+
+ACTExcelsus: {
+	// DisplayName: A C T Excelsus
+	// Tooltip: ""
+}
+
+SeekingScorcherLegacy: {
+	// DisplayName: Seeking Scorcher Legacy
+	// Tooltip: ""
+}

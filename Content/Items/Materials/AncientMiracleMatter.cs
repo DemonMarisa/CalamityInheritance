@@ -49,7 +49,7 @@ namespace CalamityInheritance.Content.Items.Materials
             for (int i = 0; i < 8; i++)
             {
                 Vector2 drawPosition = baseDrawPosition + (MathHelper.TwoPi * i / 8f).ToRotationVector2() * drawPositionOffset;
-                spriteBatch.Draw(TextureAssets.Item[Item.type].Value, drawPosition, frame, drawColor, 0f, Vector2.Zero, baseScale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(TextureAssets.Item[Item.type].Value, drawPosition, frame, drawColor, 0f, TextureAssets.Item[Item.type].Size() / 2, baseScale, SpriteEffects.None, 0f);
             }
         }
 
@@ -57,14 +57,14 @@ namespace CalamityInheritance.Content.Items.Materials
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
             Rectangle frame = TextureAssets.Item[Item.type].Value.Frame();
-            DrawBackAfterimage(spriteBatch, Item.position - Main.screenPosition, frame, scale);
+            DrawBackAfterimage(spriteBatch, Item.Center - Main.screenPosition + Vector2.UnitY * 8, frame, scale);
             return true;
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Item.velocity.X = 0f;
-            DrawBackAfterimage(spriteBatch, position - frame.Size() * 0.25f, frame, scale);
+            DrawBackAfterimage(spriteBatch, position, frame, scale);
             return true;
         }
 

@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Buff.Armor.Misc;
 using CalamityInheritance.Content.CDs;
 using CalamityInheritance.Content.Misc;
+using LAP.Core.Enums;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Terraria;
@@ -80,13 +81,21 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             }
             Player.statLife = +100;
             if (DraconicSurge)
+            {
                 Player.NCHeal(Player.statLifeMax2);
+                Player.AddCD(LAPContent.CDType<DraconicElixirCD>(), MiscAniNum.Frame60 * 20);
+            }
             Player.AddCD(LAPContent.CDType<GodSlayerCooldown>(), 30 * 60);
         }
         public void SReborn()
         {
             SoundEngine.PlaySound(CISounds.SilvaActivation, Player.Center);
             SilvaTimer = 900;
+            Player.NCHeal(Player.statLifeMax2);
+            if (DraconicSurge)
+            {
+                Player.AddCD(LAPContent.CDType<DraconicElixirCD>(), MiscAniNum.Frame60 * 20);
+            }
         }
     }
 }

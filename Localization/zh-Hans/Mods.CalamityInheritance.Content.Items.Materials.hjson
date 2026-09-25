@@ -82,3 +82,8 @@ WulfrumShard: {
 	// DisplayName: Wulfrum Shard
 	// Tooltip: ""
 }
+
+UnholyEssenceLegacy: {
+	// DisplayName: Unholy Essence Legacy
+	// Tooltip: ""
+}

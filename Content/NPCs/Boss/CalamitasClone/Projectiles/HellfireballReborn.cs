@@ -1,0 +1,94 @@
+using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.Buff.DamageBuffs;
+using LAP.Core.Graphics.DeepGlow;
+using LAP.Core.Utilities;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
+using Terraria.ID;
+
+namespace CalamityInheritance.Content.NPCs.Boss.CalamitasClone.Projectiles
+{
+    public class HellfireballReborn : CIBossProj
+    {
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 6;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 3;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 34;
+            Projectile.height = 34;
+            Projectile.hostile = true;
+            Projectile.ignoreWater = true;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 300;
+            Projectile.alpha = 255;
+        }
+
+        public override void AI()
+        {
+            Projectile.frame = Projectile.FramesChanger(9, 6);
+            if (Projectile.alpha > 5)
+                Projectile.alpha -= 15;
+            if (Projectile.alpha < 5)
+                Projectile.alpha = 5;
+
+
+            //转角
+            Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
+            Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) - MathHelper.ToRadians(90) * Projectile.direction;
+
+            Projectile.velocity.Y *= 1.01f;
+            Projectile.velocity.X *= 1.01f;
+            Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0.5f / 255f, (255 - Projectile.alpha) * 0.05f / 255f, (255 - Projectile.alpha) * 0.05f / 255f);
+            if (Projectile.localAI[0] == 0f)
+            {
+                SoundEngine.PlaySound(SoundID.Item20, Projectile.position);
+                Projectile.localAI[0] += 1f;
+            }
+
+            int d = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.LifeDrain, 0f, 0f, 170, default, 1.1f);
+            Main.dust[d].noGravity = true;
+            Main.dust[d].velocity *= 0.5f;
+            Main.dust[d].velocity += Projectile.velocity * 0.1f;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color(250, 50, 50, Projectile.alpha);
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            if (Projectile.owner == Main.myPlayer)
+            {
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, 0f, 0f, ProjectileType<HellfireExplosion>(), Projectile.damage, Projectile.knockBack, Projectile.owner, 0f, 0f);
+            }
+        }
+
+        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+        {
+            target.AddBuff(BuffType<CIBrimstoneFlames>(), 240);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Color color = lightColor;
+            DeepGlow.SubmitCustomGlow(() =>
+            {
+                int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+                int frameY = frameHeight * Projectile.frame;
+                Rectangle rectangle = new Rectangle(0, frameY, texture.Width, frameHeight);
+                Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle?(rectangle), Color.Orange * 0.8f, Projectile.rotation, rectangle.Size() / 2, Projectile.scale, 0, 0f);
+            });
+            LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
+            return false;
+        }
+    }
+}

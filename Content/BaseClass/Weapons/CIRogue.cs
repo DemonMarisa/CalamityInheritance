@@ -1,7 +1,6 @@
-﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
-using CalamityInheritance.Common.CalamityModCross.RogueCheck;
+﻿using CalamityInheritance.Common.Blance;
+using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Core.Path;
-using CalamityInheritance.Core.Utils;
 using LAP.Core.BaseClass;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
@@ -21,8 +20,8 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
             Item.autoReuse = true;
             Item.LAP().UseWeaponSkill = true;
             Item.LAP().UseCustomWeaponSkill = true;
-            Item.LAP().WeaponSkillFocusCost = 20;
-            Item.LAP().WeaponSkillRealFocusCost = 20;
+            Item.LAP().WeaponSkillFocusCost = CIWeaponsBlance.StealthAttackFocusCost;
+            Item.LAP().WeaponSkillRealFocusCost = CIWeaponsBlance.StealthAttackFocusCost;
             ExSD();
             Item.LAP().SkillShootSpeed = Item.shootSpeed;
             Item.LAP().WeaponSkillTime = Item.useTime;
@@ -41,8 +40,6 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
         }
         public override void UpdateHoldItem(Player player)
         {
-            if (CIUtils.HasCalamity())
-                Item.LAP().WeaponSkillRealFocusCost = (int)(Item.LAP().WeaponSkillRealFocusCost * player.GetStealthFocuseMult());
             UpdateHoldRogue(player);
         }
         public virtual void UpdateHoldRogue(Player player)

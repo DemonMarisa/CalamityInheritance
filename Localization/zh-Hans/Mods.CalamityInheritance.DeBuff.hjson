@@ -22,3 +22,18 @@ KamiFlu: {
 	// DisplayName: Kami Flu
 	// Description: Mods.CalamityInheritance.DeBuff.KamiFlu.Description
 }
+
+AbyssalFlames: {
+	// DisplayName: Abyssal Flames
+	// Description: Mods.CalamityInheritance.DeBuff.AbyssalFlames.Description
+}
+
+Horror: {
+	// DisplayName: Horror
+	// Description: Mods.CalamityInheritance.DeBuff.Horror.Description
+}
+
+VulnerabilityHexLegacy: {
+	// DisplayName: Vulnerability Hex Legacy
+	// Description: Mods.CalamityInheritance.DeBuff.VulnerabilityHexLegacy.Description
+}

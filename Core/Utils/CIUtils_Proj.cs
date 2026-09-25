@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Assets;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -13,6 +12,13 @@ namespace CalamityInheritance.Core.Utils
 {
     public static partial class CIUtils
     {
+        public static void PredictHomeIn(this Projectile proj, float flyspeed, float inertia ,Entity target)
+        {
+            float DistanceToPlayer = (proj.Center - target.Center).Length();
+            float PredictMult = DistanceToPlayer / (flyspeed * (proj.extraUpdates + 1));
+            proj.HomingTarget(target.Center + target.velocity * PredictMult, 3000, flyspeed, inertia);
+        }
+        // AI写的，效果也不大好，以后再重写了
         /// <summary>
         /// 计算受重力影响下的发射速度，使弹幕能够命中目标。
         /// </summary>
@@ -25,26 +31,15 @@ namespace CalamityInheritance.Core.Utils
         {
             Vector2 diff = target - origin;
             float dx = diff.X;
-
-            // 水平距离过小时直接发射（避免除零）
             float horizontalDist = Math.Abs(dx);
             if (horizontalDist < 0.001f)
             {
-                // 正上/正下，重力修正没有意义，直接朝向目标
                 return diff.SafeNormalize(Vector2.UnitY) * speed;
             }
-
-            // 估算飞行时间（假设水平速度 ≈ 总速度，因为抬升角度通常不大）
             float t = horizontalDist / speed;
             if (t < 0.01f) t = 0.01f;
-
-            // 重力造成的下落量： drop = 0.5 * g * t²
             float drop = 0.5f * gravity * t * t;
-
-            // 抬高目标点（Y轴向下，所以减去drop）
             Vector2 compensatedTarget = new Vector2(target.X, target.Y - drop);
-
-            // 计算修正后的方向并乘以速度大小
             Vector2 direction = compensatedTarget - origin;
             if (direction.LengthSquared() < 0.0001f)
                 direction = Vector2.UnitY;

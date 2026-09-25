@@ -1,10 +1,11 @@
+using CalamityInheritance.Content.BaseClass.Buff;
 using CalamityInheritance.Core.Utils;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Buff.Buffs
 {
-    public class TrinketofChiLegacyBuff : ModBuff
+    public class TrinketofChiLegacyBuff : CIBuff
     {
         public override void SetStaticDefaults()
         {

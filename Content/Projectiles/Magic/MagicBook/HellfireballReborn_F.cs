@@ -2,11 +2,14 @@
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Projectiles.Magic.Books;
 using CalamityInheritance.Core.Utils;
+using LAP.Core.Graphics.DeepGlow;
 using LAP.Core.MiscDate;
 using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.MagicBook
@@ -79,6 +82,15 @@ namespace CalamityInheritance.Content.Projectiles.Magic.MagicBook
 
         public override bool PreDraw(ref Color lightColor)
         {
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Color color = lightColor;
+            DeepGlow.SubmitCustomGlow(() =>
+            {
+                int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+                int frameY = frameHeight * Projectile.frame;
+                Rectangle rectangle = new Rectangle(0, frameY, texture.Width, frameHeight);
+                Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition, new Rectangle?(rectangle), Color.Orange * 0.8f, Projectile.rotation, rectangle.Size() / 2, Projectile.scale, 0, 0f);
+            });
             LAPUtilities.DrawAfterimages(Projectile, ProjectileID.Sets.TrailingMode[Projectile.type], lightColor, 1);
             return false;
         }

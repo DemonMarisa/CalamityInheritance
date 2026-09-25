@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Tools
         }
         public override void AddRecipes()
         {
-            if (CIUtils.HasCalamity())
+            if (HasCalamity())
             {
                 CreateRecipe().
                     AddIngredient(CalamityMaterials.DubiousPlating, 50).

@@ -1,6 +1,5 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass;
-using CalamityInheritance.Content.BaseClass.Items;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Core.Utils;
 using Terraria;

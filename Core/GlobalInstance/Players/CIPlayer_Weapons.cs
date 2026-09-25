@@ -8,8 +8,10 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public int HellbornBoost;
         public int PolarisPhase;
         public int PolarisBoostCounter;
+        public bool LoreExo;
         public void ResetWeapons()
         {
+            LoreExo = false;
             // 地狱降临
             if (HellbornBoost > 0)
                 HellbornBoost--;

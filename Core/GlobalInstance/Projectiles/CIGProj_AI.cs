@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.Items.Armor.ArmorBonus;
+﻿using CalamityInheritance.Content.Items.Accessories.Professional;
+using CalamityInheritance.Content.Items.Armor.ArmorBonus;
 using CalamityInheritance.Core.GlobalInstance.Players;
 using CalamityInheritance.Core.Utils;
 using Terraria;
@@ -14,6 +15,15 @@ namespace CalamityInheritance.Core.GlobalInstance.Projectiles
             CIPlayer ciplayer = player.CI();
             if (ciplayer.ReaverRogueSet)
                 ReaverLegacyBonus.ProjAI_Rogue(player, projectile);
+        }
+        public override void PostAI(Projectile projectile)
+        {
+            Player player = Main.player[projectile.owner];
+            CIPlayer ciplayer = player.CI();
+            if (ciplayer.ElemQuiver)
+                ElementalQuiver.ProjSpilt(projectile);
+            if (ciplayer.NanoTech)
+                NanotechOld.ProjSpilt(projectile);
         }
     }
 }

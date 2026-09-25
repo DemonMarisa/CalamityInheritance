@@ -86,23 +86,17 @@ namespace CalamityInheritance.Content.Items.Weapons.Melee.GreatSwords
 
         public override void AddRecipes()
         {
-            if (CIUtils.HasCalamity())
-            {
-                CreateRecipe().
-                    AddIngredient<TerraEdge>().
-                    AddIngredient(CalamityMaterials.UelibloomBar, 7).
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
-            }
-            else
-            {
-                CreateRecipe().
-                    AddIngredient<TerraEdge>().
-                    AddIngredient(ItemID.LunarBar, 7).
-                    AddTile(TileID.LunarCraftingStation).
-                    Register();
+            CreateCalRecipe(Type).
+                AddCalIngredient<TerraEdge>().
+                AddCalIngredient(CalamityMaterials.UelibloomBar, 7).
+                AddCalTile(TileID.LunarCraftingStation).
+                RegisterCal();
 
-            }
+            CreateRecipe().
+                AddIngredient<TerraEdge>().
+                AddIngredient(ItemID.LunarBar, 7).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
         }
     }
 }

@@ -12,3 +12,43 @@ HolyWrathPotion: {
 	// DisplayName: Holy Wrath Potion
 	// Tooltip: ""
 }
+
+PenumbraPotion: {
+	// DisplayName: Penumbra Potion
+	// Tooltip: ""
+}
+
+ProfanedRagePotion: {
+	// DisplayName: Profaned Rage Potion
+	// Tooltip: ""
+}
+
+PurifiedJam: {
+	// DisplayName: Purified Jam
+	// Tooltip: ""
+}
+
+RevivifyPotion: {
+	// DisplayName: Revivify Potion
+	// Tooltip: ""
+}
+
+ShatteringPotion: {
+	// DisplayName: Shattering Potion
+	// Tooltip: ""
+}
+
+TitanScalePotion: {
+	// DisplayName: Titan Scale Potion
+	// Tooltip: ""
+}
+
+TriumphPotion: {
+	// DisplayName: Triumph Potion
+	// Tooltip: ""
+}
+
+YharimsStimulants: {
+	// DisplayName: Yharims Stimulants
+	// Tooltip: ""
+}

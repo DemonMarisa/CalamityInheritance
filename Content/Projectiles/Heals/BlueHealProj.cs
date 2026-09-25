@@ -1,7 +1,6 @@
 ﻿using LAP.Assets.TextureRegister;
 using LAP.Core.BaseClass.Projectiles;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 

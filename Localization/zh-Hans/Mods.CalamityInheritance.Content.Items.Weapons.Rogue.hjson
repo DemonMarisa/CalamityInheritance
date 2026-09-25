@@ -172,3 +172,19 @@ TrackingDisk: {
 	// DisplayName: Tracking Disk
 	// Tooltip: ""
 }
+
+elee: {
+	Eradicator: {
+		DisplayName: {
+			$parentVal: {
+				// $parentVal: Eradicator
+			}
+		}
+
+		Tooltip: {
+			$parentVal: {
+				// $parentVal: ""
+			}
+		}
+	}
+}

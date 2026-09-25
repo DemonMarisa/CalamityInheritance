@@ -57,3 +57,33 @@ TheAmalgamLegacy: {
 	DisplayName: The Amalgam Legacy
 	Tooltip: ""
 }
+
+AstralArcanum: {
+	DisplayName: Astral Arcanum
+	Tooltip: ""
+}
+
+AncientCotBG: {
+	DisplayName: Ancient Cot B G
+	Tooltip: ""
+}
+
+AncientReaperToothNecklace: {
+	DisplayName: Ancient Reaper Tooth Necklace
+	Tooltip: ""
+}
+
+AbyssalAmulet: {
+	DisplayName: Abyssal Amulet
+	Tooltip: ""
+}
+
+LumenousAmuletLegacy: {
+	DisplayName: Lumenous Amulet Legacy
+	Tooltip: ""
+}
+
+LuxorsGiftLegacy: {
+	DisplayName: Luxors Gift Legacy
+	Tooltip: ""
+}

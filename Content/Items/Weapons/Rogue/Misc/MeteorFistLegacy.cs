@@ -20,7 +20,6 @@ namespace CalamityInheritance.Content.Items.Weapons.Rogue.Misc
             Item.height = 28;
             Item.damage = 15;
             Item.noMelee = true;
-            Item.useTurn = true;
             Item.noUseGraphic = true;
             Item.useAnimation = 18;
             Item.useStyle = ItemUseStyleID.Shoot;

@@ -4,7 +4,6 @@ using CalamityInheritance.Content.Particles;
 using LAP.Content.Particles;
 using LAP.Core.GlobalInstance.Players.DashSystem;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using ReLogic.Utilities;
 using System;
 using Terraria;

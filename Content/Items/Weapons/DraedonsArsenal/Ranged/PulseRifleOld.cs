@@ -1,14 +1,12 @@
 ﻿using CalamityInheritance.Assets.Sounds;
 using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Weapons;
-using CalamityInheritance.Content.Items.CraftingStations;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Projectiles.DraedonsArsenal.Ranged;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Content.Tiles.CraftingStations;
 using CalamityInheritance.Core.Utils;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

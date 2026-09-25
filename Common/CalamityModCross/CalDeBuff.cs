@@ -14,6 +14,12 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int BrimstoneFlames;
         public static int Plague;
         public static int ArmorCrunch;
+        public static int RiptideDebuff;
+        public static int CrushDepth;
+        public static int SulphuricPoisoning;
+        public static int GodSlayerInferno;
+        public static int HolyFlames;
+        public static int IcarusFolly;
         public override void Load()
         {
             if (CIUtils.HasCalamity())
@@ -31,6 +37,12 @@ namespace CalamityInheritance.Common.CalamityModCross
             BrimstoneFlames = BuffType<BrimstoneFlames>();
             Plague = BuffType<Plague>();
             ArmorCrunch = BuffType<ArmorCrunch>();
+            RiptideDebuff = BuffType<RiptideDebuff>();
+            CrushDepth = BuffType<CrushDepth>();
+            SulphuricPoisoning = BuffType<SulphuricPoisoning>();
+            GodSlayerInferno = BuffType<GodSlayerInferno>();
+            HolyFlames = BuffType<HolyFlames>();
+            IcarusFolly = BuffType<IcarusFolly>();
         }
     }
 }

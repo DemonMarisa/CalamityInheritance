@@ -2,3 +2,38 @@ AncientAeroWings: {
 	DisplayName: Ancient Aero Wings
 	Tooltip: ""
 }
+
+AncientTarragonWings: {
+	DisplayName: Ancient Tarragon Wings
+	Tooltip: ""
+}
+
+AncientXerocWings: {
+	DisplayName: Ancient Xeroc Wings
+	Tooltip: ""
+}
+
+AureateBoosterRevamped: {
+	DisplayName: Aureate Booster Revamped
+	Tooltip: ""
+}
+
+DrewsWings: {
+	DisplayName: Drews Wings
+	Tooltip: ""
+}
+
+FasterAuricTracers: {
+	DisplayName: Faster Auric Tracers
+	Tooltip: ""
+}
+
+FasterGodSlayerTracers: {
+	DisplayName: Faster God Slayer Tracers
+	Tooltip: ""
+}
+
+FasterLunarTracers: {
+	DisplayName: Faster Lunar Tracers
+	Tooltip: ""
+}
