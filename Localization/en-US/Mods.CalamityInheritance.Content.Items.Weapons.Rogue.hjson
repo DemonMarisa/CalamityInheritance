@@ -172,15 +172,3 @@ TrackingDisk: {
 	DisplayName: Tracking Disk
 	Tooltip: ""
 }
-
-elee: {
-	Eradicator: {
-		DisplayName: {
-			$parentVal: Eradicator
-		}
-
-		Tooltip: {
-			$parentVal: ""
-		}
-	}
-}

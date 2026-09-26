@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 

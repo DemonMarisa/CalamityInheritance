@@ -1,11 +1,18 @@
-﻿using CalamityInheritance.Common.Blance;
+﻿using CalamityInheritance.Assets.Sounds;
+using CalamityInheritance.Common.Blance;
 using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.HitEffect;
+using CalamityInheritance.Content.Particles;
 using CalamityInheritance.Core.Keys;
 using CalamityInheritance.Core.Path;
+using LAP.Content.Particles;
 using LAP.Core.BaseClass;
+using LAP.Core.Presets.Content;
+using LAP.Core.StateMachine.SynedHitEffect;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.BaseClass.Weapons
@@ -14,7 +21,7 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
     {
         public new string LocalizationCategory => LocalizationPath.RogueMeleeWeapon;
         public bool IsMelee = false;
-        public Color EffectColor;
+        public Color EffectColor = Color.White;
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;
@@ -46,14 +53,16 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
         public override void UpdateHoldItem(Player player)
         {
             UpdateHold(player);
-            WeaponTransformation();
+            WeaponTransformation(player);
         }
         public virtual void UpdateHold(Player player)
         {
 
         }
-        public virtual void WeaponTransformation()
+        public virtual void WeaponTransformation(Player player)
         {
+            if (Main.myPlayer != player.whoAmI)
+                return;
             if (CIKeybinds.WeaponTransformation.JustPressed)
             {
                 if (IsMelee)
@@ -68,6 +77,7 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
                     OnTranseToMelee();
                     Item.DamageType = DamageClass.Melee;
                 }
+                HitEffectManager.SpawnHitEffect(HitEffectManager.HEType<WeaponTransEffect>(), player.whoAmI, player.GetSource_FromThis(), player.Center, Vector2.Zero);
             }
         }
         public virtual void OnTranseToRogue()

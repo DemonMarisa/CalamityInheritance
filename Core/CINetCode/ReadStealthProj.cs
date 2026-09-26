@@ -37,7 +37,7 @@ namespace CalamityInheritance.Core.CINetCode
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 // 创建一个新的网络数据包
-                ModPacket packet = CalamityInheritance.Instance.GetPacket();
+                ModPacket packet = LAP.LAP.Instance.GetPacket();
                 // 写入一个自定义的消息类型，以便HandlePacket能识别
                 packet.Write(LAPContent.PackHandleType<ReadCustomCD>());
                 // 写入射弹索引

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Items.Weapons.RogueMelee;
 using CalamityInheritance.Content.Projectiles.Melee.CurvedSword;
@@ -41,7 +42,11 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Projectile.timeLeft = Lifetime;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 18;
-            Projectile.DamageType = RogueDamage.Instance;
+            ModItem item = Projectile.Owner()?.HeldItem?.ModItem;
+            if (item is not null && item is CIMeleeRogue rogue && rogue.IsMelee)
+                Projectile.DamageType = DamageClass.Melee;
+            else
+                Projectile.DamageType = RogueDamage.Instance;
         }
 
         public override void ExAI()

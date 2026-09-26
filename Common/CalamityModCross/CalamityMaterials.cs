@@ -75,6 +75,8 @@ namespace CalamityInheritance.Common.CalamityModCross
         public static int EffulgentFeather;
         public static int PlantyMush;
         public static int BloodOrb;
+
+        public static int LivingShard;
         public override void OnModLoad()
         {
             if (CIUtils.HasCalamity())
@@ -135,6 +137,8 @@ namespace CalamityInheritance.Common.CalamityModCross
             EffulgentFeather = ItemType<EffulgentFeather>();
             PlantyMush = ItemType<PlantyMush>();
             BloodOrb = ItemType<BloodOrb>();
+
+            LivingShard = ItemType<LivingShard>();
         }
     }
 }

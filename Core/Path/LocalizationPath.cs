@@ -9,7 +9,7 @@
         public const string SummonWeapon = "Content.Items.Weapons.Summon";
         public const string RogueWeapon = "Content.Items.Weapons.Rogue";
         public const string TypelessWeapon = "Content.Items.Weapons.Typeless";
-        public const string RogueMeleeWeapon = "Content.Items.Weapons.RogueMelee";
+        public const string RogueMeleeWeapon = "Content.Items.Weapons.Special.RogueMelee";
 
         public const string VanityItem = "Content.Items.Vanity";
         public const string SummonItem = "Content.Items.SummonItem";
@@ -35,10 +35,11 @@
         public const string RangedProj = "Content.Projectiles.Ranged";
         public const string MagicProj = "Content.Projectiles.Magic";
         public const string SummonProj = "Content.Projectiles.Summon";
-        public const string RogueProj = "Content.Projectiles.Rogue";
         public const string TypelessProj = "Content.Projectiles.Typeless";
         public const string AmmoProj = "Content.Projectiles.Ammo";
         public const string BossProj = "Content.Projectiles.Boss";
+
+        public const string RogueProj = "Content.Projectiles.Rogue";
         public const string RogueMeleeProj = "Content.Projectiles.RogueMelee";
 
         public const string CIMaterials = "Content.Items.Materials";
