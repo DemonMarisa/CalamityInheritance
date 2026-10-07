@@ -55,7 +55,8 @@ namespace CalamityInheritance.Content.Items.Weapons.RogueMelee
                 AddCalIngredient(CalamityMaterials.PerennialBar, 7).
                 AddCalTile(TileID.MythrilAnvil).
                 RegisterCal();
-
+            if (!HasCalamity())
+                return;
             CreateRecipe().
                 AddIngredient(ItemID.ChlorophyteBar, 3).
                 AddIngredient(ItemID.JungleSpores, 3).

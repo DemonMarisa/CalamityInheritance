@@ -7,12 +7,14 @@ using LAP.Core.Utilities;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
     public class SubductionSlicerProj : CIMeleeRogueProj
     {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<SubductionSlicer>();
         public override string Texture => GetInstance<SubductionSlicer>().Texture;
 
         public override void SetDefaults()

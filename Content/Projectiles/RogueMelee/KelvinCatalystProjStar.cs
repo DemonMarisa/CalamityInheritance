@@ -1,8 +1,11 @@
-﻿using CalamityInheritance.Content.BaseClass.Projectiles;
+﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using LAP.Core.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
@@ -22,6 +25,11 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Projectile.penetrate = 1;
             Projectile.tileCollide = false;
             Projectile.coldDamage = true;
+            ModItem item = Projectile.Owner()?.HeldItem?.ModItem;
+            if (item is not null && item is CIMeleeRogue rogue && rogue.IsMelee)
+                Projectile.DamageType = DamageClass.Melee;
+            else
+                Projectile.DamageType = RogueDamage.Instance;
         }
 
         public override void AI()
@@ -34,6 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             }
             else
             {
+                Projectile.extraUpdates = 1;
                 Projectile.HomeInNPC(900f, 12f, 20f);
             }
 

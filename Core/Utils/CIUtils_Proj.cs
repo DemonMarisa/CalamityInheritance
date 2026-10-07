@@ -192,7 +192,7 @@ namespace CalamityInheritance.Core.Utils
             else
                 return null;
         }
-        public static Projectile ProjectileBarrage(IEntitySource source, Vector2 originVec, Vector2 targetPos, bool fromRight, float xOffsetMin, float xOffsetMax, float yOffsetMin, float yOffsetMax, float projSpeed, int projType, int damage, float knockback, int owner, bool clamped = false, float inaccuracyOffset = 5f)
+        public static Projectile ProjectileBarrage(IEntitySource source, Vector2 originVec, Vector2 targetPos, bool fromRight, float xOffsetMin, float xOffsetMax, float yOffsetMin, float yOffsetMax, float projSpeed, int projType, int damage, float knockback, int owner, bool clamped = false, float inaccuracyOffset = 5f, float ai0 = 0, float ai1 = 0, float ai2 = 0)
         {
             float xPos = originVec.X + Main.rand.NextFloat(xOffsetMin, xOffsetMax) * fromRight.ToDirectionInt();
             float yPos = originVec.Y + Main.rand.NextFloat(yOffsetMin, yOffsetMax) * Main.rand.NextBool().ToDirectionInt();
@@ -208,7 +208,7 @@ namespace CalamityInheritance.Core.Utils
                 velocity.X = MathHelper.Clamp(velocity.X, -15f, 15f);
                 velocity.Y = MathHelper.Clamp(velocity.Y, -15f, 15f);
             }
-            return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner);
+            return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner, ai0, ai1, ai2);
         }
         public static Projectile FireToClostNPC(this Projectile proj, int type, Vector2 firePos, float Speed, float distance, float damageMult = 1f, float knockBackMult = 1f, float ai0 = 0, float ai1 = 0, float ai2 = 0)
         {
@@ -221,7 +221,7 @@ namespace CalamityInheritance.Core.Utils
             else
                 return null;
         }
-        public static Projectile ProjectileRain(IEntitySource source, Vector2 targetPos, float xLimit, float xVariance, float yLimitLower, float yLimitUpper, float projSpeed, int projType, int damage, float knockback, int owner)
+        public static Projectile ProjectileRain(IEntitySource source, Vector2 targetPos, float xLimit, float xVariance, float yLimitLower, float yLimitUpper, float projSpeed, int projType, int damage, float knockback, int owner, float ai0 = 0, float ai1 = 0, float ai2 = 0)
         {
             float x = targetPos.X + Main.rand.NextFloat(-xLimit, xLimit);
             float y = targetPos.Y - Main.rand.NextFloat(yLimitLower, yLimitUpper);
@@ -232,7 +232,7 @@ namespace CalamityInheritance.Core.Utils
             targetDist = projSpeed / targetDist;
             velocity.X *= targetDist;
             velocity.Y *= targetDist;
-            return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner);
+            return Projectile.NewProjectileDirect(source, spawnPosition, velocity, projType, damage, knockback, owner, ai0, ai1, ai2);
         }
         /// <summary>
         /// Creates an explosion which is visually identical to vanilla's Rocket III and Rocket IV on-hit explosions.

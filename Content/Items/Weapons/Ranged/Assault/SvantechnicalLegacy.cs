@@ -81,15 +81,14 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
             {
                 realPlayerPos += new Vector2(randXOffset, randYOffset);
             }
-            Projectile.NewProjectile(source, position.X, position.Y - player.gravDir * 4f, randXOffset, randYOffset, type, damage, knockback, i, 0f, Main.rand.Next(12) / 6f);
-            int bulletAmt = Main.rand.Next(4, 6);
+            int bulletAmt = Main.rand.Next(2, 3);
             for (int index = 0; index < bulletAmt; ++index)
             {
                 float SpeedX = velocity.X + Main.rand.Next(-60, 61) * 0.05f;
                 float SpeedY = velocity.Y + Main.rand.Next(-60, 61) * 0.05f;
                 Projectile.NewProjectile(source, realPlayerPos.X, realPlayerPos.Y, SpeedX, SpeedY, type, damage, knockback, player.whoAmI, 0f, 0f);
             }
-            return true;
+            return false;
         }
 
         public override void AddRecipes()

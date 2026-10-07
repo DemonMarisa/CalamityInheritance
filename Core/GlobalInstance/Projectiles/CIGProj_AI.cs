@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Accessories.Professional;
 using CalamityInheritance.Content.Items.Armor.ArmorBonus;
+using CalamityInheritance.Core.CINetCode;
 using CalamityInheritance.Core.GlobalInstance.Players;
 using CalamityInheritance.Core.Utils;
 using Terraria;
@@ -9,6 +10,15 @@ namespace CalamityInheritance.Core.GlobalInstance.Projectiles
 {
     public partial class CIGProj : GlobalProjectile
     {
+        public override bool PreAI(Projectile projectile)
+        {
+            if (Stealth && !SendStealth)
+            {
+                ReadStealthProj.SyncedStealth(projectile);
+                SendStealth = true;
+            }
+            return true;
+        }
         public override void AI(Projectile projectile)
         {
             Player player = Main.player[projectile.owner];

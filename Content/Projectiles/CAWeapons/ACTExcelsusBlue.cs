@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Projectiles.CAWeapons
             if (Projectile.timeLeft < 85)
             {
                 Projectile.rotation += rotSpeed;
-                Projectile.velocity *= 0.93f;
+                Projectile.velocity *= 0.9f;
                 rotSpeed *= 0.96f;
                 return;
             }
@@ -66,14 +66,14 @@ namespace CalamityInheritance.Content.Projectiles.CAWeapons
             if (Timer < 18)
             {
                 Projectile.rotation += rotSpeed;
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.91f;
                 rotSpeed *= 0.96f;
             }
             else if (Timer >= 18 && Timer < 60)
             {
                 rotSpeed *= 0.96f;
                 Projectile.rotation += rotSpeed;
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.91f;
                 rotSpeed *= 0.96f;
                 NPC target = LAPUtilities.FindClosestTarget(Projectile.Center, 1500);
                 if (target is not null)

@@ -7,12 +7,14 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
     public class TerraDiskProj : CIMeleeRogueProj
     {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<TerraDisk>();
         public override string Texture => GetInstance<TerraDisk>().Texture;
         private int Lifetime = 240;
         private int ReboundTime = 65;
@@ -59,7 +61,8 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             if (Projectile.timeLeft < Lifetime - ReboundTime)
             {
                 Projectile.tileCollide = false;
-                Projectile.extraUpdates = 1;
+                if (!Projectile.CI().Stealth)
+                    Projectile.extraUpdates = 1;
                 Player owner = Main.player[Projectile.owner];
                 Projectile.PredictHomeIn(12f, 0f, owner);
                 if (Main.myPlayer == Projectile.owner)

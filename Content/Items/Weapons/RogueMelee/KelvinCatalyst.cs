@@ -1,11 +1,14 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Common.CalamityModCross.RogueCheck;
 using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Misc;
 using CalamityInheritance.Content.Projectiles.RogueMelee;
 using CalamityInheritance.Content.Rarity.ShopValue;
+using LAP.Core.LAPSource;
 using LAP.Core.Utilities;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 
 namespace CalamityInheritance.Content.Items.Weapons.RogueMelee
@@ -30,11 +33,17 @@ namespace CalamityInheritance.Content.Items.Weapons.RogueMelee
             Item.UseSound = CISoundID.SoundWeaponSwing;
             Item.value = CIShopValue.RarityPricePink;
             Item.rare = ItemRarityID.Pink;
-            // Item.shoot = ProjectileType<MeleeKelvinCatalystProj>();
+            Item.shoot = ProjectileType<KelvinCatalystProj>();
             Item.shootSpeed = 15f;
             Item.DamageType = RogueDamage.Instance;
 
-            Item.LAP().SkillShoot = ProjectileType<MangroveChakramProj>();
+            Item.LAP().SkillShoot = ProjectileType<KelvinCatalystProj_Rogue>();
+        }
+        public override void WeaponSkill(Player player, EntitySource_ItemUse_WeaponSkill source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            SoundEngine.PlaySound(Item.UseSound);
+            int p = Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, type, damage, knockback, player.whoAmI);
+            Main.projectile[p].SetStealthAttack();
         }
         public override void AddRecipes()
         {

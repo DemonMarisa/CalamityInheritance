@@ -8,12 +8,14 @@ using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
     public class EradicatorProj : CIMeleeRogueProj
     {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<Eradicator>();
         public override string Texture => GetInstance<Eradicator>().Texture;
         private static float RotationIncrement = 0.15f;
         private static int Lifetime = 350;

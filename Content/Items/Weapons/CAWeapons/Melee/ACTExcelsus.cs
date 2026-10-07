@@ -53,7 +53,7 @@ namespace CalamityInheritance.Content.Items.Weapons.CAWeapons.Melee
                 float speedY = velocity.Y + spreading * i;
                 Vector2 newSpeed = new(speedX, speedY);
                 Vector2 boostSpeed = i == 0 ? newSpeed / 4f : Vector2.Zero;
-                Projectile.NewProjectile(source, position, newSpeed + boostSpeed, pType, damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, (newSpeed  + boostSpeed) * 2f, pType, damage, knockback, player.whoAmI);
             }
             return false;
         }

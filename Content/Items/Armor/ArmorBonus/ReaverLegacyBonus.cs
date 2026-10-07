@@ -100,9 +100,9 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
         }
         public static void ProjAI_Rogue(Player player, Projectile projectile)
         {
-            if (projectile.DamageType.CountsAsClass<ThrowingDamageClass>())
+            if (projectile.owner == Main.myPlayer && projectile.DamageType.CountsAsClass<ThrowingDamageClass>())
             {
-                if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate() && projectile.owner == Main.myPlayer)
+                if (Main.player[projectile.owner].miscCounter % 60 == 0 && projectile.FinalExtraUpdate())
                 {
                     int damage = (int)player.GetTotalDamage<ThrowingDamageClass>().ApplyTo(60);
                     int newProjectileId = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, Vector2.Zero, ProjectileType<TerraShard>(), damage, 0f, projectile.owner);

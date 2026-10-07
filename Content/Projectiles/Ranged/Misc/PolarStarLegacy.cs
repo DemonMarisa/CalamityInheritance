@@ -131,6 +131,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Misc
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            Projectile.Owner().CI().PolarisBoostCounter += 2;
             Player player = Main.player[Projectile.owner];
             if (Projectile.owner == Main.myPlayer)
             {
@@ -147,7 +148,6 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Misc
 
         public override void OnKill(int timeLeft)
         {
-            Projectile.Owner().CI().PolarisBoostCounter += 2;
             SoundEngine.PlaySound(SoundID.Item62 with { Volume = SoundID.Item62.Volume * 0.5f }, Projectile.position);
             if (Projectile.ai[1] == 1f)
             {

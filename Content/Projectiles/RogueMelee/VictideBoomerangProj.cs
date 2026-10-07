@@ -6,12 +6,14 @@ using CalamityInheritance.Content.Items.Weapons.RogueMelee;
 using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
 using LAP.Core.Utilities;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
     public class VictideBoomerangProj : CIMeleeRogueProj
     {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<VictideBoomerang>();
         public override string Texture => GetInstance<VictideBoomerang>().Texture;
         public override void SetDefaults()
         {

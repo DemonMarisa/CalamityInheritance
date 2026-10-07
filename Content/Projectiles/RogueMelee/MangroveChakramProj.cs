@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Common.CalamityModCross.RogueCheck;
 using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Items.Weapons.RogueMelee;
 using CalamityInheritance.Content.Projectiles.Typeless.HomeIn;
 using LAP.Core.Utilities;
@@ -24,7 +25,11 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 180;
-            Projectile.DamageType = DamageClass.MeleeNoSpeed;
+            ModItem item = Projectile.Owner()?.HeldItem?.ModItem;
+            if (item is not null && item is CIMeleeRogue rogue && rogue.IsMelee)
+                Projectile.DamageType = DamageClass.Melee;
+            else
+                Projectile.DamageType = RogueDamage.Instance;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 6;
         }
@@ -36,10 +41,10 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Lighting.AddLight(Projectile.Center, 0f, 0.25f, 0f);
             if (Projectile.CI().Stealth)
             {
-                Projectile.localAI[0] += Main.rand.Next(1, 3);
-                if (Projectile.localAI[0] >= 60f)
+                Projectile.localAI[0] -= Main.rand.Next(1, 3);
+                if (Projectile.localAI[0] <= 0)
                 {
-                    Projectile.localAI[0] = 0f;
+                    Projectile.localAI[0] = 60f;
                     Vector2 flowerSpawnPosition = Projectile.Center + Main.rand.NextVector2Square(-10f, 10f);
                     Vector2 flowerShootVelocity = Projectile.velocity.RotatedByRandom(0.1f) * 0.25f;
                     int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), flowerSpawnPosition, flowerShootVelocity, ProjectileType<PinkFlower>(), Projectile.damage / 4, 0f, Projectile.owner);

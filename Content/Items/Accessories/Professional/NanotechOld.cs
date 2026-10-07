@@ -28,9 +28,9 @@ namespace CalamityInheritance.Content.Items.Accessories.Professional
         }
         public static void ProjSpilt(Projectile proj)
         {
-            if (!proj.DamageType.CountsAsClass<ThrowingDamageClass>())
+            if (!proj.DamageType.CountsAsClass<ThrowingDamageClass>() || !proj.IsLocalPlayer())
                 return;
-            if (Main.player[proj.owner].miscCounter % 30 == 0 && proj.FinalExtraUpdate())
+            if (proj.IsLocalPlayer() && Main.player[proj.owner].miscCounter % 30 == 0 && proj.FinalExtraUpdate())
             {
                 if (proj.owner == Main.myPlayer)
                 {

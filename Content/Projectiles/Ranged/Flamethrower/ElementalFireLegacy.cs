@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Flamethrower
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = 150;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 7;
+            Projectile.localNPCHitCooldown = 21;
         }
 
         public override void AI()

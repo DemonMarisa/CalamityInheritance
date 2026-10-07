@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.HitEffect
         public override void HitEffect(Entity entity, IEntitySource source, Player owner)
         {
             ModItem item = owner?.HeldItem?.ModItem;
-            if (item == null || !(item is CIMeleeRogue rogue))
+            if (item == null || item is not CIMeleeRogue rogue)
                 return;
             Color effectColor = rogue.EffectColor;
             new Particles.StrongBloom(owner.Center, Vector2.Zero, effectColor * 0.6f, 0.56f, 9).Spawn();
@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.HitEffect
                 Color RandomColor = LAPUtilities.LerpColor(effectColor, Color.WhiteSmoke);
                 ParticlePreset.NewTGlowBall(owner.Center, Vector2.Zero, RandomColor, 55, 0.1f, Main.rand.NextFloat(3f, 6f));
             }
-            SoundEngine.PlaySound(CISounds.Switch2 with { Pitch = Main.rand.NextFloat(0.5f, 1f) }, owner.Center);
+            SoundEngine.PlaySound(CISounds.Switch2 with { Pitch = Main.rand.NextFloat(1f, 2f) }, owner.Center);
         }
     }
 }

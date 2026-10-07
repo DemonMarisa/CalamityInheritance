@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Core.Utils;
+﻿using CalamityInheritance.Core.CINetCode;
+using CalamityInheritance.Core.Utils;
 using CalamityMod;
 using System;
 using Terraria;
@@ -38,7 +39,6 @@ namespace CalamityInheritance.Common.CalamityModCross.RogueCheck
             proj.CI().Stealth = true;
             if (CIUtils.HasCalamity())
                 proj.SetCalamityStealth();
-
         }
         [JITWhenModsEnabled("CalamityMod")]
         internal static void SetCalamityStealth(this Projectile proj)

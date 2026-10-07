@@ -15,11 +15,18 @@ namespace CalamityInheritance.Core.GlobalInstance.Projectiles
         public override bool InstancePerEntity => true;
         public bool AMRextra = false;
         public bool Stealth = false;
+        public bool SendStealth = false;
         public bool CanSplit = true;
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (Stealth)
-                ReadStealthProj.SyncedStealth(projectile);
+        }
+        public override void SendExtraAI(Projectile projectile, BitWriter bitWriter, BinaryWriter binaryWriter)
+        {
+            binaryWriter.Write(Stealth);
+        }
+        public override void ReceiveExtraAI(Projectile projectile, BitReader bitReader, BinaryReader binaryReader)
+        {
+            Stealth = binaryReader.ReadBoolean();
         }
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {

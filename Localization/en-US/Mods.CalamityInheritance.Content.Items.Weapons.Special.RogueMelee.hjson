@@ -27,3 +27,33 @@ VictideBoomerang: {
 	DisplayName: Victide Boomerang
 	Tooltip: ""
 }
+
+ElementalDisk: {
+	DisplayName: Elemental Disk
+	Tooltip: ""
+}
+
+Pwnagehammer: {
+	DisplayName: Pwnagehammer
+	Tooltip: ""
+}
+
+FallenHammer: {
+	DisplayName: Fallen Hammer
+	Tooltip: ""
+}
+
+StellarContempt: {
+	DisplayName: Stellar Contempt
+	Tooltip: ""
+}
+
+GalaxySmasher: {
+	DisplayName: Galaxy Smasher
+	Tooltip: ""
+}
+
+NanoblackReaper: {
+	DisplayName: Nanoblack Reaper
+	Tooltip: ""
+}

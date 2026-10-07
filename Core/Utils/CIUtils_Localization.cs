@@ -16,7 +16,7 @@ namespace CalamityInheritance.Core.Utils
         }
         public static string GetTextValue(string key)
         {
-            return Language.GetTextValue("Mods.CalamityInheritance." + key);
+            return Language.GetOrRegister("Mods.CalamityInheritance." + key).Value;
         }
         /// <summary>
         /// 在聊天框中发送文本，支持多人模式。

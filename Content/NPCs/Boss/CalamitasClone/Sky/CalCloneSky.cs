@@ -50,7 +50,6 @@ namespace CalamityInheritance.Content.NPCs.Boss.CalamitasClone.Sky
             {
                 return Color.Lerp(Color.Orange, Color.Red, Main.rand.NextFloat(0.2f, 0.9f));
             }
-
             // Randomly add cinders.
             if (Main.rand.NextBool(CinderReleaseChance))
             {

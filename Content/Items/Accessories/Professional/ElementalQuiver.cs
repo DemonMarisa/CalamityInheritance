@@ -1,12 +1,22 @@
-﻿using CalamityInheritance.Content.BaseClass.Items;
+﻿using CalamityInheritance.Assets.Sounds;
+using CalamityInheritance.Content.BaseClass.Items;
+using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.HitEffect;
+using CalamityInheritance.Content.Particles;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.GlobalInstance.Players;
 using CalamityInheritance.Core.Utils;
+using LAP.Content.Particles;
 using LAP.Core.IDSets;
+using LAP.Core.Presets.Content;
+using LAP.Core.StateMachine.SynedHitEffect;
 using LAP.Core.Utilities;
+using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Accessories.Professional
@@ -32,9 +42,20 @@ namespace CalamityInheritance.Content.Items.Accessories.Professional
             player.pickSpeed -= 0.100f;
             player.magicQuiver = true;
         }
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (Main.keyState.IsKeyDown(Keys.LeftShift) && Main.mouseRight && Main.mouseRightRelease)
+            {
+                Player owner = Main.LocalPlayer;
+                Main.LocalPlayer.CI().ElemQuiverSpiltStyle++;
+                if (Main.LocalPlayer.CI().ElemQuiverSpiltStyle > 3)
+                    Main.LocalPlayer.CI().ElemQuiverSpiltStyle = 0;
+                HitEffectManager.SpawnHitEffect(HitEffectManager.HEType<MiscTransEffect>(), owner.whoAmI, owner.GetSource_FromThis(), owner.Center, Vector2.Zero);
+            }
+        }
         public static void ProjSpilt(Projectile projectile)
         {
-            if (!projectile.CI().CanSplit)
+            if (!projectile.CI().CanSplit || projectile.owner != Main.myPlayer)
                 return;
             if (LAPIDSet.HeldProj.Contains(projectile.type) || projectile.minion || !projectile.friendly || projectile.hostile || projectile.damage < 5)
             {

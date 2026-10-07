@@ -1,16 +1,21 @@
-﻿using CalamityInheritance.Content.Items.Weapons.RogueMelee;
+﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles;
+using CalamityInheritance.Content.BaseClass.Weapons;
+using CalamityInheritance.Content.Items.Weapons.RogueMelee;
 using CalamityInheritance.Content.Misc;
 using LAP.Core.Utilities;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.RogueMelee
 {
-    public class KelvinCatalystProj : ModProjectile, ILocalizedModType
+    public class KelvinCatalystProj : CIMeleeRogueProj
     {
+        public override LocalizedText DisplayName => LAPUtilities.GetItemName<KelvinCatalyst>();
         public override string Texture => GetInstance<KelvinCatalyst>().Texture;
         public int AIState = 0;
 
@@ -27,7 +32,11 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.penetrate = -1;
-            Projectile.DamageType = DamageClass.MeleeNoSpeed;
+            ModItem item = Projectile.Owner()?.HeldItem?.ModItem;
+            if (item is not null && item is CIMeleeRogue rogue && rogue.IsMelee)
+                Projectile.DamageType = DamageClass.Melee;
+            else
+                Projectile.DamageType = RogueDamage.Instance;
             Projectile.coldDamage = true;
             Projectile.extraUpdates = 1; //给了一个额外更新
             Projectile.usesLocalNPCImmunity = true;
@@ -46,14 +55,6 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
 
         public override void AI()
         {
-            /*
-            if(CIFunction.IsThereNpcNearby(ModContent.NPCType<CalamitasRebornPhase2>(), Main.player[Projectile.owner], 3000f) || Main.zenithWorld)  
-            {
-                Projectile.localAI[1] += 1f;
-                if (Projectile.localAI[1] % (Main.zenithWorld? 10 : 72) == 0)
-                OnHitEffects();
-            }
-            */
             VisualAudioEffects();
             BoomerangAI();
         }
@@ -77,6 +78,8 @@ namespace CalamityInheritance.Content.Projectiles.RogueMelee
             Player player = Main.player[Projectile.owner];
             float returnSpeed = 20f;
             float acceleration = 2f;
+            Player owner = Main.player[Projectile.owner];
+            Projectile.PredictHomeIn(returnSpeed, acceleration, owner);
             if (Main.myPlayer == Projectile.owner)
                 if (Projectile.Hitbox.Intersects(player.Hitbox))
                     Projectile.Kill();

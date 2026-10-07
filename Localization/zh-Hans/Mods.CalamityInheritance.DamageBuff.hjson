@@ -182,3 +182,8 @@ BossEffects: {
 	// DisplayName: Boss Effects
 	// Description: Mods.CalamityInheritance.DamageBuff.BossEffects.Description
 }
+
+CIMiracleBlight: {
+	// DisplayName: C I Miracle Blight
+	// Description: Mods.CalamityInheritance.DamageBuff.CIMiracleBlight.Description
+}

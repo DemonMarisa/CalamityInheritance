@@ -27,6 +27,16 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle GatlingLaserFireLoop = new("CalamityInheritance/Assets/Sounds/Weapons/GatlingLaser/GatlingLaserFireLoop") { Volume = 0.9f, Pitch = 0.7f };
         public static readonly SoundStyle GatlingLaserFireStart = new("CalamityInheritance/Assets/Sounds/Weapons/GatlingLaser/GatlingLaserFireStart") { Volume = 0.9f, Pitch = 0.7f };
 
+        public static readonly SoundStyle VividClarityBeamAppear = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/VividClarity/VividClarityBeamAppear");
+        public static readonly SoundStyle VividClarityShoot = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/VividClarity/VividClarityShoot");
+
+        public static readonly SoundStyle VortexBoom = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexBoom");
+        public static readonly SoundStyle VortexDone = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexDone");
+        public static readonly SoundStyle VortexStart = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexStart");
+        public static readonly SoundStyle VortexToss1 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexToss1");
+        public static readonly SoundStyle VortexToss2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexToss2");
+        public static readonly SoundStyle VortexToss3 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexToss3");
+
         public static readonly SoundStyle CrystylCharge = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/CrystylCharge") { Volume = 1f };
         public static readonly SoundStyle SwiftSlice = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/SwiftSlice") { Volume = 1f };
         public static readonly SoundStyle LouderPhantomPhoenix = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/LouderPhantomPhoenix", 3);
@@ -34,7 +44,10 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle LaserCannon = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/LaserCannon");
         public static readonly SoundStyle WyrmScream = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/WyrmScream");
         public static readonly SoundStyle YharonInfernado = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/YharonInfernado");
-        
+
+        public static readonly SoundStyle MagnomalyBoom = new("CalamityInheritance/Assets/Sounds/Weapons/MagnomalyCannon/MagnomalyBoom") { Volume = 0.7f, PitchVariance = 0.3f };
+        public static SoundStyle MagnomalyShoot => new($"CalamityInheritance/Assets/Sounds/Weapons/MagnomalyCannon/MagnomalyShoot", 3) { Volume = 0.7f, PitchVariance = 0.2f };
+        // =====
         public static readonly SoundStyle LargeWeaponFire = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LargeWeaponFire");
         public static readonly SoundStyle PlasmaBolt = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/PlasmaBolt");
         public static readonly SoundStyle OpalStriker = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/OpalStrike");
@@ -54,6 +67,7 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle LargeMechGaussRifle = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LargeMechGaussRifle");
         public static readonly SoundStyle LaserRifleFire = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LaserRifleFire");
 
+        // =====
         public static readonly SoundStyle KarasawaCharge = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaCharge");
         public static readonly SoundStyle KarasawaChargeFailed = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaChargeFailed");
         public static readonly SoundStyle KarasawaEnergyPulse = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ACTKarasawa/KarasawaEnergyPulse");

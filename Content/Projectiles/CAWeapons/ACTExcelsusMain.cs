@@ -77,14 +77,14 @@ namespace CalamityInheritance.Content.Projectiles.CAWeapons
             if (Timer < 18)
             {
                 Projectile.rotation += rotSpeed;
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.91f;
                 rotSpeed *= 0.96f;
             }
             else if (Timer >= 18 && Timer < 60)
             {
                 rotSpeed *= 0.96f;
                 Projectile.rotation += rotSpeed;
-                Projectile.velocity *= 0.96f;
+                Projectile.velocity *= 0.91f;
                 rotSpeed *= 0.96f;
                 NPC target = LAPUtilities.FindClosestTarget(Projectile.Center, 1500);
                 if (target is not null)
@@ -103,7 +103,7 @@ namespace CalamityInheritance.Content.Projectiles.CAWeapons
                     if (target.Distance(Projectile.Center) < npcWidth + 60)
                         Projectile.HomingTarget(target.Center, 1500, 24, 0);
                     else
-                        Projectile.HomingTarget(target.Center, 1500, 24, 6);
+                        Projectile.HomingTarget(target.Center, 1500, 24, 0f);
                 }
                 else
                 {
