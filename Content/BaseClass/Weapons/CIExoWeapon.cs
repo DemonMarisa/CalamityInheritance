@@ -6,13 +6,22 @@ using LAP.Core.BaseClass;
 using LAP.Core.StateMachine.SynedHitEffect;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace CalamityInheritance.Content.BaseClass.Weapons
 {
     public abstract class CIExoWeapon : BaseSkillWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => LocalizationPath.ExoWeapon;
+        public override string LocalizationCategory => LocalizationPath.ExoWeapon;
         public bool UseAlt;
+        public override void SaveData(TagCompound tag)
+        {
+            tag.Add("CalamityInheritance:UseAlt", UseAlt);
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            UseAlt = tag.GetBool("CalamityInheritance:UseAlt");
+        }
         public override void UpdateHoldItem(Player player)
         {
             UpdateHold(player);
@@ -21,6 +30,10 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
         public virtual void UpdateHold(Player player)
         {
 
+        }
+        public override bool CanUseWeaponSkill(Player player)
+        {
+            return false;
         }
         public virtual void WeaponTransformation(Player player)
         {

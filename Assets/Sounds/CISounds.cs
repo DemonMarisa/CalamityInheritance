@@ -31,5 +31,7 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle IronHeartHurt = new("CalamityInheritance/Assets/Sounds/Customs/IronHeartHurt") { PitchVariance = 0.6f, Volume = 0.6f, MaxInstances = 0 };
 
         public static readonly SoundStyle AuricBulletHit = new SoundStyle("CalamityInheritance/Assets/Sounds/Customs/AuricBulletHit");
+
+        public static readonly SoundStyle BloodflareRangerActivation = new SoundStyle("CalamityInheritance/Assets/Sounds/Customs/BloodflareRangerActivation");
     }
 }

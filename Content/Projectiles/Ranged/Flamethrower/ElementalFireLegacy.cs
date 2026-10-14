@@ -16,11 +16,11 @@ namespace CalamityInheritance.Content.Projectiles.Ranged.Flamethrower
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.DamageType = DamageClass.Ranged;
-            Projectile.penetrate = 2;
+            Projectile.penetrate = -1;
             Projectile.extraUpdates = 3;
             Projectile.timeLeft = 150;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 21;
+            Projectile.localNPCHitCooldown = 35;
         }
 
         public override void AI()

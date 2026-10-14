@@ -37,6 +37,31 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle VortexToss2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexToss2");
         public static readonly SoundStyle VortexToss3 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/SubsumingVortex/VortexToss3");
 
+        public static readonly SoundStyle CelestusHit1 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusHit1");
+        public static readonly SoundStyle CelestusHit2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusHit2");
+        public static readonly SoundStyle CelestusHit3 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusHit3");
+        public static readonly SoundStyle CelestusShoot1 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusShoot1");
+        public static readonly SoundStyle CelestusShoot2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusShoot2");
+        public static readonly SoundStyle CelestusShoot3 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Celestus/CelestusShoot3");
+
+        public static readonly SoundStyle SupernovaBoom = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Supernova/SupernovaBoom");
+        public static readonly SoundStyle SupernovaStealthCharge = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Supernova/SupernovaStealthCharge");
+        public static readonly SoundStyle SupernovaStealthExplode = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Supernova/SupernovaStealthExplode");
+        public static readonly SoundStyle SupernovaRightClick = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Supernova/SupernovaRightClick") { Volume = 0.6f};
+
+        public static readonly SoundStyle ExoFlameHard = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoFlame/ExoFlameHard");
+        public static readonly SoundStyle ExoFlameLeft = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoFlame/ExoFlameLeft");
+        public static readonly SoundStyle ExoFlameRight = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoFlame/ExoFlameRight");
+
+        public static readonly SoundStyle ExoApostleStealth = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoTheApostle/ExoApostleStealth") { Volume = 1.2f, PitchVariance = 0.3f };
+        public static readonly SoundStyle ExoApostleStealthHit = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoTheApostle/ExoApostleStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
+        public static readonly SoundStyle RealityRupture = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoTheApostle/RealityRupture") { Volume = 1.2f, PitchVariance = 0.3f };
+        public static readonly SoundStyle RealityRuptureStealthHit = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/ExoTheApostle/RealityRuptureStealthHit") { Volume = 1.2f, PitchVariance = 0.3f };
+
+        public static readonly SoundStyle CosmicSpiral1 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/CosmicSpiral/CosmicSpiral1") { Volume = 0.9f, Pitch = 0.7f };
+        public static readonly SoundStyle CosmicSpiral2 = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/CosmicSpiral/CosmicSpiral2") { Volume = 0.9f, Pitch = 0.7f };
+
+        // MiscWeapon
         public static readonly SoundStyle CrystylCharge = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/CrystylCharge") { Volume = 1f };
         public static readonly SoundStyle SwiftSlice = new("CalamityInheritance/Assets/Sounds/Weapons/Misc/SwiftSlice") { Volume = 1f };
         public static readonly SoundStyle LouderPhantomPhoenix = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Misc/LouderPhantomPhoenix", 3);
@@ -47,6 +72,7 @@ namespace CalamityInheritance.Assets.Sounds
 
         public static readonly SoundStyle MagnomalyBoom = new("CalamityInheritance/Assets/Sounds/Weapons/MagnomalyCannon/MagnomalyBoom") { Volume = 0.7f, PitchVariance = 0.3f };
         public static SoundStyle MagnomalyShoot => new($"CalamityInheritance/Assets/Sounds/Weapons/MagnomalyCannon/MagnomalyShoot", 3) { Volume = 0.7f, PitchVariance = 0.2f };
+      
         // =====
         public static readonly SoundStyle LargeWeaponFire = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/LargeWeaponFire");
         public static readonly SoundStyle PlasmaBolt = new SoundStyle("CalamityInheritance/Assets/Sounds/Weapons/Common/PlasmaBolt");

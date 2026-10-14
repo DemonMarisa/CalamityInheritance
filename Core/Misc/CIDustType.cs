@@ -63,6 +63,7 @@ namespace CalamityInheritance.Core.Misc
         public static readonly int DustShinyStone = 55;
         public static readonly int DustFallenStarsYellow = 57;
         public static readonly int DustFallenStarsPink = 58;
+        public static readonly int DustNecroplasm = 60;
         public static readonly int DustHallowedEnemies = 71;
         public static readonly int DustNebulaBlaze = 72;
         public static readonly int DustTrueCalibur = 73;

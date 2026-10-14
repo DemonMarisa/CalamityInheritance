@@ -39,10 +39,10 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             {
                 LightningSetting setting = new LightningSetting(Projectile.Center, End, Color.Turquoise,
                     strength: 30,
-                    width: 15,
+                    width: 25,
                     lifetime: 60,
-                    generationsStep: 7,
-                    branchChance: 0.4f,
+                    generationsStep: 6,
+                    branchChance: 0.6f,
                     maxBranchGenerations: 3,
                     distanceProtect: 100,
                     strengthDecay: 0.6f,

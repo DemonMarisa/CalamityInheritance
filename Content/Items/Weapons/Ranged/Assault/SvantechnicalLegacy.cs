@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using Microsoft.Xna.Framework;
 using System;
@@ -30,6 +31,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
             Item.noMelee = true;
             Item.knockBack = 3.5f;
 
+            Item.rare = RarityType<DonatorPink>();
             Item.value = CIShopValue.RarityPriceDonatorPink;
 
             Item.ArmorPenetration = 500;

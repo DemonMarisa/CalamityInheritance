@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Content.BaseClass.Projectiles.HeldProj;
+﻿using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
+using CalamityInheritance.Content.BaseClass.Projectiles.HeldProj;
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using CalamityInheritance.Content.Items.Weapons.ExoWeapons;
 using CalamityInheritance.Core.Misc;
@@ -15,6 +16,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
     {
         public override LocalizedText DisplayName => LAPUtilities.GetItemName<ExoFlail>();
         public int Counter = 12;
+        public override float LengthMult => 1.3f;
+        public override float HeightMult => 0.75f;
         public override void SetDefaults()
         {
             Projectile.width = 16;
@@ -23,7 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             Projectile.alpha = 255;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
-            Projectile.DamageType = DamageClass.MeleeNoSpeed;
+            Projectile.DamageType = TrueMelee.Instance;
             Projectile.ignoreWater = true;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 8;

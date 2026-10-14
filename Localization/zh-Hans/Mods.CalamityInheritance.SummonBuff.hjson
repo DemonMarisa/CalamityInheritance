@@ -112,3 +112,8 @@ FungalClumpLegacyBuff: {
 	// DisplayName: Fungal Clump Legacy Buff
 	// Description: Mods.CalamityInheritance.SummonBuff.FungalClumpLegacyBuff.Description
 }
+
+CosmicEnergyOld: {
+	// DisplayName: Cosmic Energy Old
+	// Description: Mods.CalamityInheritance.SummonBuff.CosmicEnergyOld.Description
+}

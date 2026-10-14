@@ -31,6 +31,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             Projectile.DamageType = DamageClass.Melee;
             Projectile.tileCollide = false;
             Projectile.extraUpdates = 2;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 5;
         }
         public override void AI()
         {

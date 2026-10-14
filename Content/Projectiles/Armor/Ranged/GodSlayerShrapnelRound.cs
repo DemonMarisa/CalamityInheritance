@@ -17,7 +17,7 @@ namespace CalamityInheritance.Content.Projectiles.Armor.Ranged
             Projectile.height = 16;
             Projectile.friendly = true;
             Projectile.penetrate = 1;
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 3;
             Projectile.timeLeft = 300;
         }
 

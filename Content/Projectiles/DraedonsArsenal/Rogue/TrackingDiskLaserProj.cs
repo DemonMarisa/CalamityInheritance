@@ -39,7 +39,7 @@ namespace CalamityInheritance.Content.Projectiles.DraedonsArsenal.Rogue
                 {
                     Dust dust = Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.TheDestroyer, 0f, 0f, 160, default, 2f);
                     dust.position = Projectile.Center;
-                    dust.velocity = Projectile.velocity;
+                    dust.velocity = Vector2.Zero;
                     dust.scale = Projectile.scale;
                     dust.noGravity = true;
                 }

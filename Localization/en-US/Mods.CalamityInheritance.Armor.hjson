@@ -327,3 +327,28 @@ SilvaLeggingsold: {
 	DisplayName: Silva Leggingsold
 	Tooltip: ""
 }
+
+BloodflareBodyLegacy: {
+	DisplayName: Bloodflare Body Legacy
+	Tooltip: ""
+}
+
+BloodflareHeadMagicLegacy: {
+	DisplayName: Bloodflare Head Magic Legacy
+	Tooltip: ""
+}
+
+BloodflareLegLegacy: {
+	DisplayName: Bloodflare Leg Legacy
+	Tooltip: ""
+}
+
+BloodflareHeadMeleeLegacy: {
+	DisplayName: Bloodflare Head Melee Legacy
+	Tooltip: ""
+}
+
+BloodflareHeadRangedLegacy: {
+	DisplayName: Bloodflare Head Ranged Legacy
+	Tooltip: ""
+}

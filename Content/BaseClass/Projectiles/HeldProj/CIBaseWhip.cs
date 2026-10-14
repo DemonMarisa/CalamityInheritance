@@ -12,19 +12,14 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles.HeldProj
         // This class by default uses the values in the Mourningstar projectile
         // Note: the original solar eruption code uses hide and player.heldProj.
         // These two combined will prevent the second version of the whip from being drawn.
-
+        public virtual float LengthMult => 1f;
+        public virtual float HeightMult => 1f;
         public virtual void Behavior()
         {
             Player player = Main.player[Projectile.owner];
             if (Projectile.localAI[1] > 0f)
             {
                 Projectile.localAI[1] -= 1f;
-            }
-            // Rapidly appear
-            Projectile.alpha -= 42;
-            if (Projectile.alpha < 0)
-            {
-                Projectile.alpha = 0;
             }
             // Determine the starting velocity direction
             if (Projectile.localAI[0] == 0f)
@@ -44,7 +39,7 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles.HeldProj
             // It will always be compressed a bit relative to the X travel movement, however,
             // because sin(pi/4) = 1/sqrt(2), which is less than the default multiplier the X distance
             // receives: 1.
-            velocityAdditive.Y *= (float)Math.Sin(Projectile.ai[1]);
+            velocityAdditive.Y *= (float)Math.Sin(Projectile.ai[1]) * HeightMult;
             if (Projectile.ai[1] <= 0f)
             {
                 velocityAdditive.Y *= -1f;
@@ -55,7 +50,7 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles.HeldProj
             Projectile.ai[0] += 1f;
             if (Projectile.ai[0] < 30f)
             {
-                Projectile.velocity += 48f * velocityAdditive;
+                Projectile.velocity += 48f * LengthMult * velocityAdditive;
             }
             else
             {
@@ -87,10 +82,7 @@ namespace CalamityInheritance.Content.BaseClass.Projectiles.HeldProj
             Projectile.Center = player.RotatedRelativePoint(player.position + centerDelta, true) - Projectile.velocity;
 
             // Cool dust
-            if (Projectile.alpha == 0)
-            {
-                GenerateDust();
-            }
+            GenerateDust();
         }
         public virtual void ExtraBehavior()
         {

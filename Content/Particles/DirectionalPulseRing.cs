@@ -2,11 +2,9 @@
 using LAP.Core.Enums;
 using LAP.Core.ParticleSystem;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Particles
 {

@@ -19,6 +19,8 @@ namespace CalamityInheritance.Assets
         public static Asset<Texture2D> MediumMist { get; set; }
         public static Asset<Texture2D> TechyHolosquare { get; set; }
         public static Asset<Texture2D> SmallSmoke { get; set; }
+        public static Asset<Texture2D> GlowSpark { get; set; }
+        public static Asset<Texture2D> FireStrike { get; private set; }
         public override void Load()
         {
             Sparkle2 = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/Sparkle2");
@@ -34,6 +36,8 @@ namespace CalamityInheritance.Assets
             MediumMist = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/MediumMist");
             TechyHolosquare = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/TechyHolosquare");
             SmallSmoke = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/SmallSmoke");
+            GlowSpark = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/GlowSpark");
+            FireStrike = Request<Texture2D>("CalamityInheritance/Assets/ParticleTextures/FireStrike");
         }
         public override void Unload()
         {
@@ -50,6 +54,8 @@ namespace CalamityInheritance.Assets
             MediumMist = null;
             TechyHolosquare = null;
             SmallSmoke = null;
+            GlowSpark = null;
+            FireStrike = null;
         }
     }
 }

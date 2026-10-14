@@ -5,7 +5,6 @@ using CalamityInheritance.Content.Projectiles.Ranged.HandGun;
 using LAP.Content.Particles;
 using LAP.Core.BaseClass.Projectiles;
 using LAP.Core.Utilities;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
@@ -191,7 +190,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.HandGun
             // 范围100-200的透明度变化
             float alphaFactor = (float)(Math.Sin(blinkTimer) + 1) / 2; // 转换为0-1范围，而不是-1到1范围
             int alpha = 125 + (int)(75 * alphaFactor); // 映射到125-200范围
-            Color blinkColor = new Color(255, 255, 255, alpha);
+            Color blinkColor = new Color(alpha, alpha, alpha, alpha);
             #endregion
             #region 材质注册
             Texture2D laserTexture = CIExtraTexture.PearlGodAimLaser.Value;
@@ -204,15 +203,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.HandGun
             Vector2 orig = new(0, laserTexture.Height / 2);
             SpriteEffects flipSprite = player.direction * Main.player[Projectile.owner].gravDir == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically;
 
-            // 重置绘制批次来设置叠加混合模式
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Additive, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
-
-            Main.EntitySpriteDraw(laserTexture, drawPosition + DrawPosOffset, null, blinkColor, Projectile.rotation + DrawRotOffset, orig, Projectile.scale * Main.player[Projectile.owner].gravDir * 0.5f, flipSprite);
-
-            // 绘制后恢复原始状态
-            Main.spriteBatch.End();
-            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.TransformationMatrix);
+            Main.EntitySpriteDraw(laserTexture, drawPosition + DrawPosOffset, null, blinkColor with { A = 0 }, Projectile.rotation + DrawRotOffset, orig, Projectile.scale * Main.player[Projectile.owner].gravDir * 0.5f, flipSprite);
 
             Vector2 Baseorig = new(0, texture.Height / 2);
 

@@ -55,7 +55,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X > 0).ToDirectionInt();
             Projectile.rotation = Projectile.velocity.ToRotation() + (Projectile.spriteDirection == 1 ? 0f : MathHelper.Pi) + MathHelper.ToRadians(90) * Projectile.direction;
 
-            Projectile.extraUpdates = 1;
+            Projectile.extraUpdates = 2;
             Projectile.HomeInNPC(2500f, 12f, 20f, 10f);
 
             int dustType = Main.rand.NextBool() ? 107 : 234;
@@ -186,7 +186,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
                     int proj2 = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ProjectileType<MagnomalyBeam>(), Projectile.damage / 4, Projectile.knockBack / 4, Projectile.owner, 0f, 1f);
                 }
             }
-            SoundEngine.PlaySound(CISounds.MagnomalyBoom);
+            SoundEngine.PlaySound(CISounds.MagnomalyBoom, Projectile.Center);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

@@ -164,7 +164,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
                     gore.velocity.Y -= 1f;
                 }
             }
-            SoundEngine.PlaySound(CISounds.MagnomalyBoom);
+            SoundEngine.PlaySound(CISounds.MagnomalyBoom, Projectile.Center);
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

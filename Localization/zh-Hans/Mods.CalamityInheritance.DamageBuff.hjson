@@ -187,3 +187,8 @@ CIMiracleBlight: {
 	// DisplayName: C I Miracle Blight
 	// Description: Mods.CalamityInheritance.DamageBuff.CIMiracleBlight.Description
 }
+
+BloodflareBloodFrenzy: {
+	// DisplayName: Bloodflare Blood Frenzy
+	// Description: Mods.CalamityInheritance.DamageBuff.BloodflareBloodFrenzy.Description
+}

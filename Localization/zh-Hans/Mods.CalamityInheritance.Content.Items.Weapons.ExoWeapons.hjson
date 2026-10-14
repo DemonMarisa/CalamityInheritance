@@ -27,3 +27,38 @@ ExoFlail: {
 	// DisplayName: Exo Flail
 	// Tooltip: ""
 }
+
+CelestialObliterator: {
+	// DisplayName: Celestial Obliterator
+	// Tooltip: ""
+}
+
+Photovisceratorold: {
+	// DisplayName: Photovisceratorold
+	// Tooltip: ""
+}
+
+HeavenlyGaleold: {
+	// DisplayName: Heavenly Galeold
+	// Tooltip: ""
+}
+
+Celestusold: {
+	// DisplayName: Celestusold
+	// Tooltip: ""
+}
+
+Supernovaold: {
+	// DisplayName: Supernovaold
+	// Tooltip: ""
+}
+
+ExoTheApostle: {
+	// DisplayName: Exo The Apostle
+	// Tooltip: ""
+}
+
+CosmicImmaterializerOld: {
+	// DisplayName: Cosmic Immaterializer Old
+	// Tooltip: ""
+}

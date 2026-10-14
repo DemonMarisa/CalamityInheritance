@@ -1,8 +1,8 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Content.Items.Armor.ArmorBonus;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace CalamityInheritance.Core.GlobalInstance.Players
 {
@@ -11,29 +11,41 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public bool victideSet = false;
         public bool victideSummon = false;
         public bool DesertProwler = false;
+
         public bool ReaverRogueSet = false;
         public bool ReaverSummoner = false;
         public bool ReaverMelee = false;
         public bool ReaverMagic = false;
         public bool ReaverRanged = false;
+
         public bool AncientAeroSet = false;
         public bool AncientTarragonSet = false;
         public bool AncientBloodflareSet = false;
         public bool AncientAstralSet = false;
         public bool AncientGodSlayer = false;
         public bool AncientSilvaSet = false;
+
         public bool GodSlayerSet = false;
         public bool GodSlayerMagic = false;
         public bool GodSlayerMelee = false;
         public bool GodSlayerRogue = false;
         public bool GodSlayerRanged = false;
         public bool GodSlayerSummon = false;
+
         public bool SilvaSet = false;
         public bool SilvaMagic = false;
         public bool SilvaMelee = false;
         public bool SilvaRogue = false;
         public bool SilvaRanged = false;
         public bool SilvaSummon = false;
+
+        public bool BloodflareSet = false;
+        public bool BloodflareMagic = false;
+        public bool BloodflareMelee = false;
+        public int BloodflareMeleeHitCount = 0;
+        public bool BloodflareRogue = false;
+        public bool BloodflareRanged = false;
+        public bool BloodflareSummon = false;
         public void ResetArmor()
         {
             victideSet = false;
@@ -61,6 +73,12 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             SilvaRogue = false;
             SilvaRanged = false;
             SilvaSummon = false;
+            BloodflareSet = false;
+            BloodflareMagic = false;
+            BloodflareMelee = false;
+            BloodflareRogue = false;
+            BloodflareRanged = false;
+            BloodflareSummon = false;
         }
         public void ArmorLifeRegen()
         {
@@ -81,6 +99,10 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 GodSlayerBonus.PostUpdate_Ranged(Player);
             if (SilvaMelee)
                 SilvaBonus.PostUpdate_Melee(Player);
+            if (BloodflareMagic)
+                BloodflareBonus.MagicShoot_PostUpdateMisc(Player);
+            if (BloodflareRanged)
+                BloodflareBonus.RangedShoot_PostUpdateMisc(Player);
         }
         public void ArmorModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -101,6 +123,8 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 AncientBloodflare.AncientBloodFlareArmorHitNPC(this, target);
             if (AncientAstralSet)
                 AncientAstralBonus.AncientAstralArmorBonus_OnHitNPC(this, Player, hit);
+            if (BloodflareSet)
+                BloodflareBonus.Main_OnHitNPC(this, hit, target);
             if (hit.DamageType.CountsAsClass(DamageClass.Melee))
             {
                 if (GodSlayerMelee)
@@ -110,13 +134,20 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             {
                 if (SilvaMagic)
                     SilvaBonus.HitNPC_Magic(this, hit, target);
+                if (BloodflareMagic)
+                    BloodflareBonus.MagicHit_OnHitNPC(this, hit, target);
             }
         }
         public void ArmorOnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (SilvaSet)
                 SilvaBonus.HitNPCWithProj_All(this, proj, hit, target);
-            if (proj.DamageType.CountsAsClass(DamageClass.Melee))
+            if (proj.DamageType.CountsAsClass<TrueMelee>())
+            {
+                if (BloodflareMelee)
+                    BloodflareBonus.MeleeHit_OnHitNPC(this, hit, target);
+            }
+            else if (proj.DamageType.CountsAsClass(DamageClass.Melee))
             {
                 if (ReaverMelee)
                     ReaverLegacyBonus.HitNPCWithProj_Melee(Player,proj, target);
@@ -145,6 +176,8 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             {
                 if (ReaverMelee)
                     ReaverLegacyBonus.HitNPCWithItem_Melee(Player, target, hit);
+                if (BloodflareMelee)
+                    BloodflareBonus.MeleeHit_OnHitNPC(this, hit, target);
             }
         }
         public void ArmorOnHurt(Player.HurtInfo info)

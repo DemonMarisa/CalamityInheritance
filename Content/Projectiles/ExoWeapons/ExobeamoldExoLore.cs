@@ -141,6 +141,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (Projectile.LAP().OnceHitEffect)
             OnHitEffects(target.Center);
             target.AddBuff(BuffType<CIMiracleBlight>(), 300);
         }

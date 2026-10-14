@@ -15,6 +15,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
     public class ExoFlailProj2 : CIBaseWhip
     {
         public override LocalizedText DisplayName => LAPUtilities.GetItemName<ExoFlail>();
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.DrawScreenCheckFluff[Type] = 10000;
+        }
 
         public override void SetDefaults()
         {

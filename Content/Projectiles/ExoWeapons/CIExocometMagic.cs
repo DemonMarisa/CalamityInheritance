@@ -19,8 +19,8 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
 
         public override void SetDefaults()
         {
-            Projectile.width = 12;
-            Projectile.height = 12;
+            Projectile.width = 42;
+            Projectile.height = 42;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
@@ -61,11 +61,13 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             {
                 if (Projectile.timeLeft % 2 == 0)
                 {
-                    int exo = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
+                    int exo = Dust.NewDust(
+                        new Vector2(Projectile.Center.X - Projectile.velocity.X * 4f + 2f - 8, Projectile.Center.Y + 2f - Projectile.velocity.Y * 4f - 8), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
                     Main.dust[exo].velocity *= -0.25f;
-                    exo = Dust.NewDust(new Vector2(Projectile.position.X - Projectile.velocity.X * 4f + 2f, Projectile.position.Y + 2f - Projectile.velocity.Y * 4f), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
+                    exo = Dust.NewDust(
+                        new Vector2(Projectile.Center.X - Projectile.velocity.X * 4f + 2f - 8, Projectile.Center.Y + 2f - Projectile.velocity.Y * 4f - 8), 8, 8, DustID.TerraBlade, Projectile.oldVelocity.X, Projectile.oldVelocity.Y, 100, new Color(0, 255, 255), 0.5f);
                     Main.dust[exo].velocity *= -0.25f;
-                    Main.dust[exo].position -= Projectile.velocity * 0.5f;
+                    Main.dust[exo].position -= Projectile.velocity * 0.25f;
                 }
             }
 

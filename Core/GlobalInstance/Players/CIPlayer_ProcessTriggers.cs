@@ -1,4 +1,5 @@
-﻿using CalamityInheritance.Core.Keys;
+﻿using CalamityInheritance.Content.Items.Armor.ArmorBonus;
+using CalamityInheritance.Core.Keys;
 using CalamityInheritance.Core.UI;
 using LAP.Core.MiscDate;
 using Terraria.GameInput;
@@ -20,6 +21,11 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 {
                     ElysianGuard = !ElysianGuard;
                 }
+            }
+            if (CIKeybinds.ArmorSetBonusHotKey.JustPressed)
+            {
+                if (BloodflareRanged)
+                    BloodflareBonus.RangedArmorSetBonus_KeyPress(this, Player);
             }
         }
     }

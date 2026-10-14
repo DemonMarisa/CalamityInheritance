@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Content.BaseClass.Weapons;
 using CalamityInheritance.Content.Items.Materials;
+using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Enums;
@@ -36,6 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Ranged.Assault
             Item.shootSpeed = 30f;
             Item.useAmmo = AmmoID.Bullet;
 
+            Item.rare = RarityType<DonatorPink>();
             Item.value = CIShopValue.RarityPriceDonatorPink;
 
             Item.SetCalStatInflation(AllWeaponTier.DemonShadow, 2f);

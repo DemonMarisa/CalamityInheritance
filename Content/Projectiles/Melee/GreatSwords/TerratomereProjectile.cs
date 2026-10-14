@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Melee.GreatSwords
             Projectile.penetrate = 1;
             Projectile.timeLeft = 180;
             Projectile.tileCollide = false;
+            Projectile.extraUpdates = 2;
             AIType = ProjectileID.TerraBeam;
         }
 

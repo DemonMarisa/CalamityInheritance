@@ -11,7 +11,7 @@ namespace CalamityInheritance.Content.BaseClass.Weapons
 {
     public abstract class CIRogue : BaseSkillWeapon, ILocalizedModType
     {
-        public new string LocalizationCategory => LocalizationPath.RogueWeapon;
+        public override string LocalizationCategory => LocalizationPath.RogueWeapon;
         public override void SetDefaults()
         {
             Item.width = Item.height = 32;

@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using LAP.Assets.TextureRegister;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -12,12 +13,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
     public class Exoboomold : CIExoProj
     {
         public override string Texture => LAPTextureRegister.InvisibleTexturePath;
-
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Explosion");
         }
-
         public override void SetDefaults()
         {
             Projectile.width = 250;
@@ -31,7 +30,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 3;
         }
-
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, (255 - Projectile.alpha) * 0f / 255f, (255 - Projectile.alpha) * 0.75f / 255f, (255 - Projectile.alpha) * 0.75f / 255f);

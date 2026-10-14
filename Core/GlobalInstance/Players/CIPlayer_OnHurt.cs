@@ -17,7 +17,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         }
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            if (ContactDamageReduction != 1)
+            if (ContactDamageReduction != 1f)
             {
                 modifiers.FinalDamage *= ContactDamageReduction;
             }

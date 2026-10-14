@@ -20,7 +20,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
 {
     public class Exobladeold : CIExoWeapon
     {
-
+        public bool CanAddHitCount;
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
@@ -44,6 +44,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
+            CanAddHitCount = true;
             if (UseAlt)
                 Projectile.NewProjectile(source, position.X, position.Y, velocity.X, velocity.Y, ProjectileType<ExobeamoldExoLore>(), damage, knockback, player.whoAmI, 0f);
             else
@@ -70,6 +71,10 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             SoundEngine.PlaySound(SoundID.Item88, player.Center);
+            if (!CanAddHitCount)
+                return;
+            if (CanAddHitCount)
+                CanAddHitCount = false;
             float xPos = player.position.X + 800 * Main.rand.NextBool(2).ToDirectionInt();
             float yPos = player.position.Y + Main.rand.Next(-800, 801);
             Vector2 startPos = new Vector2(xPos, yPos);
@@ -90,7 +95,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
                     Projectile.NewProjectile(player.GetSource_OnHit(target), target.Center, Vector2.Zero, ProjectileType<Exoboomold>(), damageDone / 4, (int)Item.knockBack, Main.myPlayer);
                     hitCount = 0;
                 }
-                if (hitCount2 >= 2 || target.life <= target.lifeMax * 0.15f)
+                if (hitCount2 >= 0 || target.life <= target.lifeMax * 0.15f)
                 {
                     for (int comet = 0; comet < 2; comet++)
                     {

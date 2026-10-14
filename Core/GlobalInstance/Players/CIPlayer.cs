@@ -1,7 +1,5 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using LAP.Core.Utilities;
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
