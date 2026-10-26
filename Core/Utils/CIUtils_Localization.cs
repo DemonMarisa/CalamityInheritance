@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Chat;
@@ -39,5 +40,6 @@ namespace CalamityInheritance.Core.Utils
             Rectangle location = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
             CombatText.NewText(location, color, Language.GetTextValue(key));
         }
+        public static bool PressingAlt(this KeyboardState keyState) => keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.LeftAlt) || keyState.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.RightAlt);
     }
 }
