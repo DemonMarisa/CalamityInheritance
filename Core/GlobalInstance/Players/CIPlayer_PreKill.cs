@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Buff.Armor.Misc;
 using CalamityInheritance.Content.CDs;
 using CalamityInheritance.Content.Misc;
+using CalamityInheritance.Content.NPCs.Boss.Scal;
 using LAP.Core.Enums;
 using LAP.Core.SystemsLoader;
 using LAP.Core.Utilities;
@@ -60,6 +61,11 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             {
                 SReborn();
                 return false;
+            }
+            if (LegacyScal_PlayerDeathCount < 60)
+            {
+                if (NPC.AnyNPCs(NPCType<SupremeCalamitasLegacy>()))
+                    LegacyScal_PlayerDeathCount++;
             }
             return true;
         }

@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Graphics;
+using Terraria.Graphics.Renderers;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Core.Graphics.Insertlayer
@@ -12,6 +14,7 @@ namespace CalamityInheritance.Core.Graphics.Insertlayer
     public class InsertDraw : ModSystem
     {
         public static Dictionary<string, Action> CIPlayerDraw_PostDraw = new Dictionary<string, Action>();
+        public static bool DrawAuricTrail;
         public override void Load()
         {
             On_Main.DrawPlayers_AfterProjectiles += DrawRequest_AfterPlayer;
@@ -29,6 +32,11 @@ namespace CalamityInheritance.Core.Graphics.Insertlayer
         }
         public static void DrawRequest_AfterPlayer(On_Main.orig_DrawPlayers_AfterProjectiles orig, Main self)
         {
+            if (DrawAuricTrail)
+            {
+                orig(self);
+                DrawAuricTrail = false;
+            }
             orig(self);
             if (CIPlayerDraw_PostDraw.Count != 0)
             {

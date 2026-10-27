@@ -197,6 +197,8 @@ namespace CalamityInheritance.Content.NPCs.Boss.CalamitasClone
         }
         public override void AI()
         {
+            NPC.netOffset = Vector2.Zero;
+
             if (NPC.rotation < 0f)
                 NPC.rotation += MathHelper.TwoPi;
             else if (NPC.rotation > MathHelper.TwoPi)
@@ -221,8 +223,11 @@ namespace CalamityInheritance.Content.NPCs.Boss.CalamitasClone
             if (target is not null)
                 target.AddBuff(BuffType<BossEffects>(), 1);
             if (Main.slimeRain)
+            {
                 Main.StopSlimeRain(true);
-
+                if (Main.dedServ)
+                    NetMessage.SendData(MessageID.WorldData);
+            }
             // 目标死亡后消失
             if (!target.active || target.dead || Main.IsItDay())
             {

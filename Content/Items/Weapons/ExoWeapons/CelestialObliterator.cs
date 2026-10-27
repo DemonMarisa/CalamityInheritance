@@ -30,7 +30,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
 
         public override void SetDefaults()
         {
-            Item.damage = 400;
+            Item.damage = 1000;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 120;
             Item.height = 38;

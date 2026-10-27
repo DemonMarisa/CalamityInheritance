@@ -30,6 +30,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
             player.CI().BloodflareSet = true;
             player.CI().BloodflareRanged = true;
             player.setBonus = this.GetLocalization("SetBonus").Value;
+            player.crimsonRegen = true;
         }
 
         public override void UpdateEquip(Player player)
@@ -37,7 +38,6 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
             player.GetDamage<RangedDamageClass>() += 0.1f;
             player.GetCritChance<RangedDamageClass>() += 10;
         }
-
         public override void AddRecipes()
         {
             CreateRecipe().

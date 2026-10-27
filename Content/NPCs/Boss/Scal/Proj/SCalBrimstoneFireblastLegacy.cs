@@ -93,7 +93,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
 
             Color DrawColor = Color.Red;
 
-            if (CIBossAliveFlag.LegacySCalLament != -1)
+            if (CIBossAliveFlag.LegacySCalBGM == SupremeCalamitasLegacy.Lament)
             {
                 DrawColor = Color.White;
                 texture = Request<Texture2D>($"{Texture}_Blue").Value;
@@ -122,7 +122,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             else
                 target.AddBuff(BuffType<CIBrimstoneFlames>(), 90);
         }
-
+        public int dustType = CIBossAliveFlag.LegacySCalBGM != SupremeCalamitasLegacy.Lament ? DustID.LifeDrain : CIDustID.DustMushroomSpray113;
         public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(CISounds.BrimstoneFireblastImpact, Projectile.Center);
@@ -141,13 +141,13 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
                 }
             }
 
-            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 50, default, 1f);
+            Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 50, default, 1f);
             for (int j = 0; j < 10; j++)
             {
-                int redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 0, default, 1.5f);
+                int redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 0, default, 1.5f);
                 Main.dust[redFire].noGravity = true;
                 Main.dust[redFire].velocity *= 3f;
-                redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 50, default, 1f);
+                redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 50, default, 1f);
                 Main.dust[redFire].velocity *= 2f;
                 Main.dust[redFire].noGravity = true;
             }

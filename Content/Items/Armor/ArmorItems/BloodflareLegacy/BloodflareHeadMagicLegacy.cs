@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
+using LAP.Core.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -43,7 +44,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
             player.manaCost *= 0.83f;
             player.GetDamage<MagicDamageClass>() += 0.2f;
             player.GetCritChance<MagicDamageClass>() += 10;
-            player.statManaMax2 += 100;
+            player.LAP().MaxManaAdditive += 100;
         }
 
         public override void AddRecipes()

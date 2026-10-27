@@ -83,7 +83,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
 
             Color DrawColor = Color.Red;
 
-            if (CIBossAliveFlag.LegacySCalLament != -1)
+            if (CIBossAliveFlag.LegacySCalBGM == SupremeCalamitasLegacy.Lament)
             {
                 DrawColor = Color.White;
                 texture = Request<Texture2D>($"{Texture}_Blue").Value;

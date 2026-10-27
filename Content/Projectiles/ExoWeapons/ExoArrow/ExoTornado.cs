@@ -25,6 +25,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons.ExoArrow
             Projectile.timeLeft = 240;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
+            Projectile.CI().CanSplit = false;
         }
 
         public override void AI()

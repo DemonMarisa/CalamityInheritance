@@ -26,6 +26,8 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Ray
             Projectile.penetrate = 10;
             Projectile.extraUpdates = 100;
             Projectile.timeLeft = Lifetime;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 10;
         }
         public override void AI()
         {

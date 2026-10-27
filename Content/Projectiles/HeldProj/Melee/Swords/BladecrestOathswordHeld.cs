@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Melee.Swords
             float baseRotation = Projectile.velocity.ToRotation();
             Owner.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, baseRotation - MathHelper.PiOver2);
             HandleAni();
-            if (Time % 7 == 0 && FireCount < 3)
+            if (Time % 7 == 0 && FireCount < 3 && Projectile.IsLocalPlayer())
             {
                 int type = ProjectileType<BloodScytheLegacy>();
                 Vector2 fireVel = Vector2.UnitX.RotatedBy((FireCount - 1) * Filp * 0.2f) * 12;

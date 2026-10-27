@@ -42,6 +42,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
                 Projectile.frame = Main.rand.Next(3);
                 Projectile.localAI[0] = 1f;
                 Projectile.netUpdate = true;
+                Projectile.netSpam = 0;
             }
             NPC potentialTarget = LAPUtilities.FindClosestTarget(Projectile.Center, MaxTargetDistance);
             if (potentialTarget != null)

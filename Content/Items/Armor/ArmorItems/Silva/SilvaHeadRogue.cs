@@ -6,6 +6,7 @@ using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.SystemsLoader;
+using LAP.Core.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -30,15 +31,13 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.Silva
         public override bool IsArmorSet(Item head, Item body, Item legs) => body.type == ItemType<SilvaArmorold>() && legs.type == ItemType<SilvaLeggingsold>();
         public override void UpdateArmorSet(Player player)
         {
+            player.LAP().MaxFocusAdd += 15;
+            player.LAP().ExImmuneTime += 30;
             player.CI().SilvaSet = true;
             player.CI().SilvaReborn = true;
             player.CI().SilvaRogue = true;
             player.SetRogueArmor(1.25f);
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (player.statLife > (int)(player.statLifeMax2 * 0.5) && player.HeldItem.DamageType.CountsAsClass<ThrowingDamageClass>())
-                player.GetAttackSpeed<ThrowingDamageClass>() += 0.2f;
-            if (player.HasCD<SilvaReviveCD>())
-                player.GetDamage<ThrowingDamageClass>() += 0.40f;
         }
 
         public override void UpdateEquip(Player player)

@@ -63,7 +63,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.Rifle
             Vector2 firedirection = Vector2.UnitX.RotatedBy(Projectile.rotation + MathHelper.ToRadians(0.7f) * Owner.direction);
             firedirection = firedirection.SafeNormalize(Vector2.UnitX);
 
-            if (UseCounter == 0)
+            if (UseCounter == 0 && Projectile.IsLocalPlayer())
             {
                 Owner.PickAmmo(Owner.ActiveItem(), out int Proj, out float shootSpeed, out int damage, out float knockback, out _, false);
                 SoundEngine.PlaySound(SoundID.Item41, Projectile.Center);

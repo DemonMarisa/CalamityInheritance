@@ -26,7 +26,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
             Item.useAnimation = Item.useTime = 12;
             Item.width = 56;
             Item.height = 56;
-            Item.damage = 670;
+            Item.damage = 3600;
             Item.DamageType = DamageClass.Melee;
             Item.knockBack = 9.9f;
             Item.UseSound = CISoundID.SoundWeaponSwing;

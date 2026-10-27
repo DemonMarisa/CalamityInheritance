@@ -16,7 +16,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         {
             Item.width = 84;
             Item.height = 30;
-            Item.damage = 279;
+            Item.damage = 2200;
             Item.DamageType = DamageClass.Ranged;
             Item.useTime = 15;
             Item.useAnimation = 15;

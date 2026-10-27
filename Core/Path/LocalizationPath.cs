@@ -17,7 +17,7 @@
         public const string SummonItem = "Content.Items.SummonItem";
         public const string MusicBoxs = "Content.Items.MusicBoxs";
         public const string Banner = "Content.Items.Banner";
-        public const string ModeItem = "Content.Items.ModeItem";
+        public const string TreasureBag = "Content.Items.TreasureBag";
 
         public const string AmmoItem = "Ammo";
         public const string Tool = "Tools";

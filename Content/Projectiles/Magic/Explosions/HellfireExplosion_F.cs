@@ -26,6 +26,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.Books
             Projectile.timeLeft = 180;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
+            Projectile.DamageType = DamageClass.Magic;
         }
 
         public override void SendExtraAI(BinaryWriter writer)

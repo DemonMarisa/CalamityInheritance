@@ -77,7 +77,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             int drawStart = frameHeight * Projectile.frame;
             Color DrawColor = Color.Red;
 
-            if (CIBossAliveFlag.LegacySCalLament != -1)
+            if (CIBossAliveFlag.LegacySCalBGM == SupremeCalamitasLegacy.Lament)
             {
                 DrawColor = Color.White;
                 texture = Request<Texture2D>($"{Texture}_Blue").Value;

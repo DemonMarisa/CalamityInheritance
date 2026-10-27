@@ -57,7 +57,10 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons.CosmicSpiral
         {
             Player player = Main.player[Projectile.owner];
             if (Projectile.IsLocalPlayer())
+            {
                 exoLore = Projectile.Owner().CI().LoreExo;
+                Projectile.netUpdate = true;
+            }
             Lighting.AddLight((int)Projectile.Center.X / 16, (int)Projectile.Center.Y / 16, Main.DiscoR / 255f, Main.DiscoG / 255f, Main.DiscoB / 255f);
             bool flag64 = Projectile.type == ProjectileType<CosmicEnergySpiralOld>();
             player.AddBuff(BuffType<CosmicEnergyOld>(), 2);
@@ -287,7 +290,6 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons.CosmicSpiral
             Player player = Main.player[Projectile.owner];
             if (exoLore)
             {
-                Projectile.netUpdate = true;
                 return new Color(255, 255, 255, 255);
             }
             else

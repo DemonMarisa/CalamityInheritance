@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.CalamitasClone.Sky
             screenTarget.SwapToTarget();
             Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointWrap, DepthStencilState.None, Main.Rasterizer, null);
 
-            Main.spriteBatch.Draw(screenTarget, Vector2.Zero, Color.White);
+            Main.spriteBatch.Draw(screenTargetSwap, Vector2.Zero, Color.White);
 
             Effect effect = LAPShaderRegister.OverlayPass.Value;
             effect.Parameters["uIntensity"].SetValue(Strength * 0.52f);

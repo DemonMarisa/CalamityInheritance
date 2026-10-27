@@ -32,7 +32,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         }
         public override void SetDefaults()
         {
-            Item.damage = 235;
+            Item.damage = 1085;
             Item.DamageType = DamageClass.Magic;
             Item.mana = 78;
             Item.width = 38;

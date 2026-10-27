@@ -11,6 +11,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Projectiles.Magic.MagicBook
 {
@@ -32,6 +33,7 @@ namespace CalamityInheritance.Content.Projectiles.Magic.MagicBook
             Projectile.timeLeft = 300;
             Projectile.alpha = 255;
             Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Magic;
         }
 
         public override void AI()

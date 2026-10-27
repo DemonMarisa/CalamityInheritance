@@ -11,6 +11,7 @@ Keybinds: {
 	// "Qol Panel UI Toggle.DisplayName": Qol  Panel  U I  Toggle
 	// "God Slayer Dash Toggle.DisplayName": God  Slayer  Dash  Toggle
 	// "Weapon Transformation Toggle.DisplayName": Weapon  Transformation  Toggle
+	// "CI ArmorSetBonus HotKey.DisplayName": C I  Armor Set Bonus  Hot Key
 }
 
 Configs: {
@@ -31,5 +32,17 @@ Configs: {
 			// Label: Cal Clone
 			// Tooltip: ""
 		}
+
+		Scal: {
+			// Label: Scal
+			// Tooltip: ""
+		}
+
+		Tyrant: {
+			// Label: Tyrant
+			// Tooltip: ""
+		}
 	}
 }
+
+// Tiles.LegacyArenaTile.MapEntry: Legacy Arena Tile

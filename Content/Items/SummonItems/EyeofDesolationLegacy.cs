@@ -1,7 +1,6 @@
 ﻿using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.NPCs.Boss.CalamitasClone;
 using CalamityInheritance.Core.Path;
-using CalamityInheritance.Core.UI;
 using CalamityInheritance.Core.Utils;
 using Terraria;
 using Terraria.ID;
@@ -38,7 +37,7 @@ namespace CalamityInheritance.Content.Items.SummonItems
         }
         public override bool? UseItem(Player player)
         {
-            CIUtils.SpawnBossUsingItem<CalamitasCloneLegacy>(player, SoundID.Roar);
+            SpawnBossUsingItem<CalamitasCloneLegacy>(player, SoundID.Roar);
             return true;
         }
         public override void AddRecipes()

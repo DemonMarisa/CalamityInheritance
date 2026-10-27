@@ -53,7 +53,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 return true;
             if (InvincibleTimer > 0)
                 return true;
-            if (GodSlayerSet && info.Damage < 80)
+            if (GodSlayerSet && info.Damage < 15)
                 return true;
             return false;
         }

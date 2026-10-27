@@ -26,5 +26,13 @@ namespace CalamityInheritance.Core.CIConfigs
         [BackgroundColor(192, 54, 64, 192)]
         [DefaultValue(true)]
         public bool CalClone { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool Scal { get; set; }
+
+        [BackgroundColor(192, 54, 64, 192)]
+        [DefaultValue(true)]
+        public bool Tyrant { get; set; }
     }
 }

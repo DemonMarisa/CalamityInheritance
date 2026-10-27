@@ -352,3 +352,83 @@ BloodflareHeadRangedLegacy: {
 	DisplayName: Bloodflare Head Ranged Legacy
 	Tooltip: ""
 }
+
+BloodflareHeadRogueLegacy: {
+	DisplayName: Bloodflare Head Rogue Legacy
+	Tooltip: ""
+}
+
+BloodflareHeadSummonLegacy: {
+	DisplayName: Bloodflare Head Summon Legacy
+	Tooltip: ""
+}
+
+TarragonBreastplateLegacy: {
+	DisplayName: Tarragon Breastplate Legacy
+	Tooltip: ""
+}
+
+TarragonHeadMagicLegacy: {
+	DisplayName: Tarragon Head Magic Legacy
+	Tooltip: ""
+}
+
+TarragonLeglegacy: {
+	DisplayName: Tarragon Leglegacy
+	Tooltip: ""
+}
+
+TarragonHeadMeleeLegacy: {
+	DisplayName: Tarragon Head Melee Legacy
+	Tooltip: ""
+}
+
+TarragonHeadRangedLegacy: {
+	DisplayName: Tarragon Head Ranged Legacy
+	Tooltip: ""
+}
+
+TarragonHeadRogueLegacy: {
+	DisplayName: Tarragon Head Rogue Legacy
+	Tooltip: ""
+}
+
+TarragonHeadSummonLegacy: {
+	DisplayName: Tarragon Head Summon Legacy
+	Tooltip: ""
+}
+
+AuricTeslaBodyArmorold: {
+	DisplayName: Auric Tesla Body Armorold
+	Tooltip: ""
+}
+
+AuricTeslaCuissesold: {
+	DisplayName: Auric Tesla Cuissesold
+	Tooltip: ""
+}
+
+AuricTeslaHeadMagicLegacy: {
+	DisplayName: Auric Tesla Head Magic Legacy
+	Tooltip: ""
+}
+
+AuricTeslaHeadMeleeLegacy: {
+	DisplayName: Auric Tesla Head Melee Legacy
+	Tooltip: ""
+}
+
+AuricTeslaHeadRangedLegacy: {
+	DisplayName: Auric Tesla Head Ranged Legacy
+	Tooltip: ""
+}
+
+AuricTeslaHeadRogueLegacy: {
+	DisplayName: Auric Tesla Head Rogue Legacy
+	Tooltip: ""
+}
+
+AuricTeslaHeadSummonLegacy: {
+	DisplayName: Auric Tesla Head Summon Legacy
+	Tooltip: ""
+}

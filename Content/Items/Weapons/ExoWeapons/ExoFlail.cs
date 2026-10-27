@@ -35,7 +35,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
             Item.width = 54;
             Item.height = 90;
             Item.DamageType = TrueMelee.Instance;
-            Item.damage = 1000;
+            Item.damage = 6125;
             Item.knockBack = 9f;
             Item.useAnimation = 15;
             Item.useTime = 15;

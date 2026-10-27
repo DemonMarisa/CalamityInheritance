@@ -34,7 +34,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             Projectile.timeLeft = 255;
             CooldownSlot = ImmunityCooldownID.Bosses;
         }
-        public int dustType = CIBossAliveFlag.LegacySCalLament == -1 ? CIDustID.DustLifeDrain : CIDustID.DustMushroomSpray113;
+        public int dustType = CIBossAliveFlag.LegacySCalBGM != SupremeCalamitasLegacy.Lament ? CIDustID.DustLifeDrain : CIDustID.DustMushroomSpray113;
         public override void AI()
         {
             Projectile.frameCounter++;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             int drawStart = frameHeight * Projectile.frame;
             Color DrawColor = Color.Red;
 
-            if (CIBossAliveFlag.LegacySCalLament != -1)
+            if (CIBossAliveFlag.LegacySCalBGM == SupremeCalamitasLegacy.Lament)
             {
                 DrawColor = Color.White;
                 texture = Request<Texture2D>($"{Texture}_Blue").Value;

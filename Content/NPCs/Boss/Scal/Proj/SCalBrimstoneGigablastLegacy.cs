@@ -31,7 +31,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             Projectile.Opacity = 0f;
             CooldownSlot = ImmunityCooldownID.Bosses;
         }
-        public int dustType = CIBossAliveFlag.LegacySCalLament == -1 ? DustID.LifeDrain : CIDustID.DustMushroomSpray113;
+        public int dustType = CIBossAliveFlag.LegacySCalBGM != SupremeCalamitasLegacy.Lament ? DustID.LifeDrain : CIDustID.DustMushroomSpray113;
         public override void AI()
         {
             Projectile.frameCounter++;
@@ -88,7 +88,7 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
 
             Color DrawColor = Color.Red;
 
-            if (CIBossAliveFlag.LegacySCalLament != -1)
+            if (CIBossAliveFlag.LegacySCalBGM == SupremeCalamitasLegacy.Lament)
             {
                 DrawColor = Color.White;
                 texture = Request<Texture2D>($"{Texture}_Blue").Value;
@@ -134,14 +134,14 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
 
             for (int j = 0; j < 2; j++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 50, default, 1f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 50, default, 1f);
             }
             for (int k = 0; k < 20; k++)
             {
-                int redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 0, default, 1.5f);
+                int redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 0, default, 1.5f);
                 Main.dust[redFire].noGravity = true;
                 Main.dust[redFire].velocity *= 3f;
-                redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, CIDustID.DustLifeDrain, 0f, 0f, 50, default, 1f);
+                redFire = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, dustType, 0f, 0f, 50, default, 1f);
                 Main.dust[redFire].velocity *= 2f;
                 Main.dust[redFire].noGravity = true;
             }

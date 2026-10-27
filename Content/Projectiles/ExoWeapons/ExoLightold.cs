@@ -179,7 +179,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             bool isLoreExo = Projectile.Owner().HeldItem.ModItem is not null && Projectile.Owner().HeldItem.ModItem is CIExoWeapon exoWeapon && exoWeapon.UseAlt;
             SoundStyle deathSound = isLoreExo ? CISounds.ExoFlameHard : SoundID.Item14;
             SoundEngine.PlaySound(deathSound, Projectile.Center);
-            if (Main.netMode != NetmodeID.MultiplayerClient)
+            if (Projectile.IsLocalPlayer())
             {
                 int projID = ProjectileType<ExoSparkold>();
                 for (int i = 0; i < 3; i++)

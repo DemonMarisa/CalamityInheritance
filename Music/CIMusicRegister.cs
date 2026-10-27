@@ -16,5 +16,9 @@ namespace CalamityInheritance.Music
         public const string Interlude2 = "Music/Interlude2";
         public const string Interlude3 = "Music/Interlude3";
         public const string CalamitasClone = "Music/CalamitasClone";
+        public const string CalamitasPhase1 = "Music/CalamitasPhase1";
+        public const string CalamitasPhase2 = "Music/CalamitasPhase2";
+        public const string CalamitasPhase3 = "Music/CalamitasPhase3";
+        public const string CalamitasPhase4 = "Music/CalamitasPhase4";
     }
 }

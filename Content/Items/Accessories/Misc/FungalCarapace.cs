@@ -28,54 +28,58 @@ namespace CalamityInheritance.Content.Items.Accessories.Misc
         public static void Hurt(Player.HurtInfo info, Player player)
         {
             var source = player.GetSource_Accessory(ItemLoader.GetItem(ItemType<FungalCarapace>()).Item);
-            if (info.Damage > 0)
+            // 播放声音
+            SoundEngine.PlaySound(SoundID.NPCHit45, player.position);
+
+            // 弹幕生成参数
+            float spread = 45f * 0.0174f;
+            double startAngle = Math.Atan2(player.velocity.X, player.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 8f;
+            double offsetAngle;
+
+            int sDamage = 70;
+            if (Main.hardMode)
+                sDamage += 100;
+            if (NPC.downedMoonlord)
+                sDamage += 600;
+
+            int fDamage = (int)player.CalcIntDamage<GenericDamageClass>(sDamage);
+
+            if (player.whoAmI == Main.myPlayer)
             {
-                // 播放声音
-                SoundEngine.PlaySound(SoundID.NPCHit45, player.position);
-
-                // 弹幕生成参数
-                float spread = 45f * 0.0174f;
-                double startAngle = Math.Atan2(player.velocity.X, player.velocity.Y) - spread / 2;
-                double deltaAngle = spread / 8f;
-                double offsetAngle;
-                int fDamage = (int)player.CalcIntDamage<GenericDamageClass>(70);
-
-                if (player.whoAmI == Main.myPlayer)
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        // 确定生成位置
-                        float xPos = Main.rand.NextBool() ? player.Center.X + 100 : player.Center.X - 100;
-                        Vector2 spawnPos = new Vector2(xPos, player.Center.Y + Main.rand.Next(-100, 101));
+                    // 确定生成位置
+                    float xPos = Main.rand.NextBool() ? player.Center.X + 100 : player.Center.X - 100;
+                    Vector2 spawnPos = new Vector2(xPos, player.Center.Y + Main.rand.Next(-100, 101));
 
-                        // 计算角度
-                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                    // 计算角度
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
 
-                        // 创建弹幕
-                        var spore1 = Projectile.NewProjectileDirect(
-                            source,
-                            spawnPos,
-                            new Vector2((float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f)),
-                            ProjectileID.TruffleSpore,
-                            fDamage,
-                            1.25f,
-                            player.whoAmI
-                        );
+                    // 创建弹幕
+                    var spore1 = Projectile.NewProjectileDirect(
+                        source,
+                        spawnPos,
+                        new Vector2((float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f)),
+                        ProjectileID.TruffleSpore,
+                        fDamage,
+                        1.25f,
+                        player.whoAmI
+                    );
 
-                        var spore2 = Projectile.NewProjectileDirect(
-                            source,
-                            spawnPos,
-                            new Vector2((float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f)),
-                            ProjectileID.TruffleSpore,
-                            fDamage,
-                            1.25f,
-                            player.whoAmI
-                        );
+                    var spore2 = Projectile.NewProjectileDirect(
+                        source,
+                        spawnPos,
+                        new Vector2((float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f)),
+                        ProjectileID.TruffleSpore,
+                        fDamage,
+                        1.25f,
+                        player.whoAmI
+                    );
 
-                        // 设置时间
-                        spore1.timeLeft = 300;
-                        spore2.timeLeft = 300;
-                    }
+                    // 设置时间
+                    spore1.timeLeft = 300;
+                    spore2.timeLeft = 300;
                 }
             }
         }

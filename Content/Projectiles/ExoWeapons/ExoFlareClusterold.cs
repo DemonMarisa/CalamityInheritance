@@ -41,7 +41,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             // localAI[0] is used by the sticky AI method, so use localAI[1] to spawn the flares.
             if (Projectile.localAI[1] == 0f)
             {
-                if (Main.netMode != NetmodeID.Server)
+                if (Projectile.IsLocalPlayer())
                 {
                     int projID = ProjectileType<ExoFlareold>();
                     int flareDamage = (int)(0.6f * Projectile.damage);

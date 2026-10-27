@@ -33,8 +33,6 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.Silva
             player.CI().SilvaReborn = true;
             player.CI().SilvaMelee = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (player.HasCD<SilvaReviveCD>())
-                player.CI().ContactDamageReduction *= 0.6f;
         }
 
         public override void UpdateEquip(Player player)

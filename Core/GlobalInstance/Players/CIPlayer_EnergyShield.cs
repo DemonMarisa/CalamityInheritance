@@ -6,6 +6,7 @@ using LAP.Core.SystemsLoader;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -17,6 +18,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public int stateShield;
         public int stateShieldMax;
         public float ShieldRegenPool;
+        public bool ShieldBlockedThisHit;
         public void ResetShield()
         {
             stateShieldMax = 0;
@@ -82,14 +84,44 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                     if (CIsponge)
                         TheSpongeLegacy.TheSponge_Hurt(Player, false, info);
                 }
-                FreeDodgeThisDamage = true;
                 // 如果任何护盾受到了伤害，则显示文本以指示护盾受到了伤害
                 string shieldDamageText = (-totalDamageBlocked).ToString();
                 Rectangle location = new Rectangle((int)Player.position.X, (int)Player.position.Y - 16, Player.width, Player.height);
                 CombatText.NewText(location, Color.LightBlue, Language.GetTextValue(shieldDamageText));
                 // 无敌帧
-                int shieldHitIFrames = 60;
+                int shieldHitIFrames = 40;
                 Player.GiveIFrames(info.CooldownCounter, shieldHitIFrames, true);
+                // 阻挡伤害
+                info.Damage = 1;
+                info.Knockback = 0;
+                info.SoundDisabled = true;
+                info.DustDisabled = true;
+                ShieldBlockedThisHit = true;
+            }
+        }
+        public void ShieldHurt_PostHurt(Player.HurtInfo info)
+        {
+            if (ShieldBlockedThisHit)
+            {
+                Player.statLife = Player.statLife + info.Damage;
+                ShieldBlockedThisHit = false;
+                RemoveVanillaHurtCombatText();
+            }
+        }
+        public void RemoveVanillaHurtCombatText()
+        {
+            foreach (CombatText ct in Main.combatText)
+            {
+                if (!ct.active)
+                    continue;
+                if (ct.text != "1")
+                    continue;
+                if (ct.color != CombatText.DamagedFriendly && ct.color != CombatText.DamagedFriendlyCrit)
+                    continue;
+                if (Math.Abs(ct.position.X - Player.Center.X) > Player.width / 2f + 40f || Math.Abs(ct.position.Y - Player.Center.Y) > Player.height / 2f + 60f)
+                    continue;
+                ct.active = false;
+                ct.lifeTime = 0;
             }
         }
     }

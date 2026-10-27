@@ -1,12 +1,11 @@
-﻿using CalamityInheritance.Content.BaseClass.Items;
+﻿using CalamityInheritance.Common.CalamityModCross;
+using CalamityInheritance.Content.BaseClass.Items;
+using CalamityInheritance.Content.Items.Materials;
 using CalamityInheritance.Content.Rarity;
 using CalamityInheritance.Content.Rarity.ShopValue;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
@@ -19,7 +18,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
             Item.width = 18;
             Item.height = 18;
             Item.value = CIShopValue.RarityPriceAbsoluteGreen;
-            Item.defense = 34;
+            Item.defense = 28;
             Item.rare = RarityType<AbsoluteGreen>();
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -30,10 +29,24 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.BloodflareLegacy
 
         public override void UpdateArmorSet(Player player)
         {
+            player.SetRogueArmor(1.2f);
             player.CI().BloodflareSet = true;
-            player.CI().BloodflareRanged = true;
+            player.CI().BloodflareRogue = true;
             player.setBonus = this.GetLocalization("SetBonus").Value;
+            player.crimsonRegen = true;
         }
-
+        public override void UpdateEquip(Player player)
+        {
+            player.GetDamage<ThrowingDamageClass>() += 0.1f;
+            player.GetCritChance<ThrowingDamageClass>() += 10;
+            player.moveSpeed += 0.05f;
+        }
+        public override void AddRecipes()
+        {
+            CreateRecipe().
+                AddIngredient<BloodstoneCore>(11).
+                AddTile(TileID.LunarCraftingStation).
+                Register();
+        }
     }
 }

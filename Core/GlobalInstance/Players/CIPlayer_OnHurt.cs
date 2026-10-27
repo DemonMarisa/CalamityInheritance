@@ -49,6 +49,11 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             MainOnHurt(info);
             OnHurt_Accessories(info);
         }
+        public override void PostHurt(Player.HurtInfo info)
+        {
+            ShieldHurt_PostHurt(info);
+            PostHurt_Accessories(info);
+        }
         #region Kill Player
         public void KillPlayer()
         {

@@ -59,7 +59,6 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             if (Projectile.localAI[0] == 0f)
             {
                 Projectile.soundDelay = 1125 - choice * 225;
-                SoundEngine.PlaySound(CISounds.BrimstoneMonsterSpawn, Projectile.Center);
                 Projectile.localAI[0] += 1f;
                 switch (choice)
                 {
@@ -86,7 +85,6 @@ namespace CalamityInheritance.Content.NPCs.Boss.Scal.Proj
             if (Projectile.soundDelay <= 0 && (choice == 0 || choice == 2))
             {
                 Projectile.soundDelay = 420;
-                SoundEngine.PlaySound(CISounds.BrimstoneMonsterDrone, Projectile.Center);
             }
 
             bool revenge = CIWorld.Revenge;

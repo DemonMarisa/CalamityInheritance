@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using LAP.Core.Utilities;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,6 +24,12 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public float EnemyMaxSpawnMult;
         public int ExGrabRange;
         public float ExShootSpeed;
+        // 玩家击杀終灾的计数
+        public int LegacyScal_PlayerKillCount = 0;
+        // 玩家死于終灾的计数
+        public int LegacyScal_PlayerDeathCount = 0;
+        public readonly Queue<Vector2> oldPositions = new();
+        public int MaxoldPositions = 8; // 最多保存多少个
         public void MainResetEffects()
         {
             if (BlockDefenseDamage)
@@ -76,6 +83,9 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         {
             MultDefense_PostUpdate();
             UpdateShield_PostUpdate();
+            oldPositions.Enqueue(Player.position);
+            while (oldPositions.Count > MaxoldPositions)
+                oldPositions.Dequeue();
         }
     }
 }

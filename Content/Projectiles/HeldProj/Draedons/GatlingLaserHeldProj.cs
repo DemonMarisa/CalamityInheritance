@@ -52,7 +52,7 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Draedons
                     Projectile.soundDelay = 12;
                     gatlingLaserLoopID = SoundEngine.PlaySound(CISounds.GatlingLaserFireLoop, Projectile.Center);
                 }
-                if (UseDelay <= 0)
+                if (UseDelay <= 0 && Projectile.IsLocalPlayer())
                 {
                     if (Owner.CheckMana(Owner.GetRealManaCost(Owner.ActiveItem().mana), true))
                     {

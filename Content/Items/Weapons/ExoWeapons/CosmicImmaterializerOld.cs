@@ -23,7 +23,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         public override void SetDefaults()
         {
             Item.mana = 10;
-            Item.damage = 1000;
+            Item.damage = 2400;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.width = 74;
             Item.height = 72;

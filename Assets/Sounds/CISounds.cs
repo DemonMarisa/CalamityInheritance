@@ -33,5 +33,7 @@ namespace CalamityInheritance.Assets.Sounds
         public static readonly SoundStyle AuricBulletHit = new SoundStyle("CalamityInheritance/Assets/Sounds/Customs/AuricBulletHit");
 
         public static readonly SoundStyle BloodflareRangerActivation = new SoundStyle("CalamityInheritance/Assets/Sounds/Customs/BloodflareRangerActivation");
+
+        public static readonly SoundStyle DeadSunRicochet = new SoundStyle("CalamityInheritance/Assets/Sounds/Customs/DeadSunRicochet");
     }
 }

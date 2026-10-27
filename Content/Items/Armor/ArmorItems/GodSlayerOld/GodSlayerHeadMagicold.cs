@@ -38,12 +38,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.GodSlayerOld
             player.CI().GodSlayerReborn = true;
             player.CI().GodSlayerMagic = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (CIKeybinds.GodSlayerDash.JustPressed && !player.HasCD<GodSlayerDashLegacyCD>())
-            {
-                player.ImmediatelyDash(LAPContent.DashType<GodSlayerDashLegacy>());
-                if (LAPUtilities.IsLocalPlayer(player.whoAmI))
-                    player.AddCD(LAPContent.CDType<GodSlayerDashLegacyCD>(), 60 * 15);
-            }
+            player.CI().GodSlayerDash = true;
         }
         public override void UpdateEquip(Player player)
         {

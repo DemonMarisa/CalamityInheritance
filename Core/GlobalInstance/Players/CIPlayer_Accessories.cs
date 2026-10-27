@@ -113,6 +113,9 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             if (RampartOfDeitiesStar)
                 RampartofDeities.RampartOfDeitiesStar_OnHurt(this);
         }
+        public void PostHurt_Accessories(Player.HurtInfo info)
+        {
+        }
         public void ModifyHitNPC_Accessories(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (modifiers.DamageType.CountsAsClass<ThrowingDamageClass>())
@@ -155,30 +158,30 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         #region 其它饰品
         public void AmidiasSpark_Hurt(Player.HurtInfo info)
         {
-            if (info.Damage > 0)
+            SoundEngine.PlaySound(SoundID.Item93, Player.Center);
+            float spread = 45f * 0.0174f;
+            double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
+            double deltaAngle = spread / 8f;
+            double offsetAngle;
+
+            // Start with base damage, then apply the best damage class you can
+            int sDamage = 6;
+            if (Main.hardMode)
+                sDamage += 42;
+            if (NPC.downedMoonlord)
+                sDamage += 500;
+
+            sDamage = (int)Player.CalcIntDamage<GenericDamageClass>(sDamage);
+
+            if (Player.whoAmI == Main.myPlayer)
             {
-                SoundEngine.PlaySound(SoundID.Item93, Player.Center);
-                float spread = 45f * 0.0174f;
-                double startAngle = Math.Atan2(Player.velocity.X, Player.velocity.Y) - spread / 2;
-                double deltaAngle = spread / 8f;
-                double offsetAngle;
-
-                // Start with base damage, then apply the best damage class you can
-                int sDamage = 6;
-                if (Main.hardMode)
-                    sDamage += 42;
-                sDamage = (int)Player.CalcIntDamage<GenericDamageClass>(sDamage);
-
-                if (Player.whoAmI == Main.myPlayer)
+                for (int i = 0; i < 4; i++)
                 {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                        int spark1 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<ElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 1);
-                        int spark2 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<ElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 1);
-                        Main.projectile[spark1].timeLeft = 120;
-                        Main.projectile[spark2].timeLeft = 120;
-                    }
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                    int spark1 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<ElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 1);
+                    int spark2 = Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center.X, Player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), ModContent.ProjectileType<ElectricSpark>(), sDamage, 1.25f, Player.whoAmI, 0f, 1);
+                    Main.projectile[spark1].timeLeft = 120;
+                    Main.projectile[spark2].timeLeft = 120;
                 }
             }
         }

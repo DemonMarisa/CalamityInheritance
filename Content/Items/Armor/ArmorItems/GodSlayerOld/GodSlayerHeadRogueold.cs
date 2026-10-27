@@ -40,26 +40,14 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.GodSlayerOld
         public override void ModifyTooltips(List<TooltipLine> list) => list.IntegrateHotkey(CIKeybinds.GodSlayerDash);
         public override void UpdateArmorSet(Player player)
         {
-            if (player.statLife == player.statLifeMax2)
-            {
-                player.GetDamage<ThrowingDamageClass>() += 0.1f;
-                player.GetCritChance<ThrowingDamageClass>() += 10;
-                player.GetAttackSpeed<ThrowingDamageClass>() += 0.1f;
-            }
-            player.LAP().MaxFocusAdd += 20;
+            player.LAP().MaxFocusAdd += 10;
             player.LAP().ExImmuneTime += 30;
             player.SetRogueArmor(1.4f);
             player.CI().GodSlayerSet = true;
             player.CI().GodSlayerReborn = true;
             player.CI().GodSlayerRogue = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (CIKeybinds.GodSlayerDash.JustPressed && !player.HasCD<GodSlayerDashLegacyCD>())
-            {
-                player.ImmediatelyDash(LAPContent.DashType<GodSlayerDashLegacy>());
-                player.SyncedDash(LAPContent.DashType<GodSlayerDashLegacy>());
-                if (LAPUtilities.IsLocalPlayer(player.whoAmI))
-                    player.AddCD(LAPContent.CDType<GodSlayerDashLegacyCD>(), 60 * 15);
-            }
+            player.CI().GodSlayerDash = true;
         }
         public override void UpdateEquip(Player player)
         {

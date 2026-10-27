@@ -92,6 +92,8 @@ namespace CalamityInheritance.Content.Projectiles.HeldProj.Ranged.HandGun
         #region 发射逻辑
         public void CustomShoot()
         {
+            if (!Projectile.IsLocalPlayer())
+                return;
             if (spread > 6)
             {
                 spread = defaultSpread;

@@ -1,5 +1,6 @@
 ﻿using CalamityInheritance.Core.Utils;
 using CalamityMod.Items.Accessories;
+using CalamityMod.Items.Mounts;
 using Terraria.ModLoader;
 
 namespace CalamityInheritance.Common.CalamityModCross

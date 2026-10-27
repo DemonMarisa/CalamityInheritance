@@ -37,7 +37,7 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
         }
         public override void SetDefaults()
         {
-            Item.damage = 600;
+            Item.damage = 1300;
             Item.knockBack = 6f;
             Item.useAnimation = Item.useTime = 19;
             Item.DamageType = RogueDamage.Instance;

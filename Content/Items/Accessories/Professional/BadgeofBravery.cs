@@ -20,13 +20,10 @@ namespace CalamityInheritance.Content.Items.Accessories.Professional
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetAttackSpeed<MeleeDamageClass>() += 0.15f;
-            bool helm =
-                player.armor[0].type == ItemType<AncientTarragonHelm>();
-            bool chest =
-                player.armor[1].type == ItemType<AncientTarragonBreastplate>();
-            bool legs =
-                player.armor[2].type == ItemType<AncientTarragonLeggings>();
-            if (helm && chest && legs)
+            bool helm = player.armor[0].type == ItemType<AncientTarragonHelm>();
+            bool chest = player.armor[1].type == ItemType<AncientTarragonBreastplate>();
+            bool legs = player.armor[2].type == ItemType<AncientTarragonLeggings>();
+            if ((helm && chest && legs) || player.CI().TarragonSet)
             {
                 player.GetCritChance<MeleeDamageClass>() += 10;
                 player.GetDamage<MeleeDamageClass>() += 0.10f;

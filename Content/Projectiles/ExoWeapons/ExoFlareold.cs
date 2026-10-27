@@ -2,6 +2,7 @@
 using CalamityInheritance.Content.BaseClass.Projectiles;
 using CalamityInheritance.Content.Buff.DamageBuffs;
 using LAP.Assets.TextureRegister;
+using LAP.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -71,7 +72,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             Projectile owner = Main.projectile[Father];
 
             // Ensure the owner is the correct projectile.
-            if (owner.type != ProjectileType<ExoFlareClusterold>())
+            if (owner.type != ProjectileType<ExoFlareClusterold>() && Projectile.IsLocalPlayer())
                 Projectile.Kill();
 
             // Movement around the owner.

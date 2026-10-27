@@ -1,6 +1,7 @@
 ﻿using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Common.CalamityModCross.CalDamageClass;
 using CalamityInheritance.Content.Items.Armor.ArmorBonus;
+using CalamityMod.Cooldowns;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -26,6 +27,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public bool AncientSilvaSet = false;
 
         public bool GodSlayerSet = false;
+        public bool GodSlayerDash = false;
         public bool GodSlayerMagic = false;
         public bool GodSlayerMelee = false;
         public bool GodSlayerRogue = false;
@@ -46,6 +48,22 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
         public bool BloodflareRogue = false;
         public bool BloodflareRanged = false;
         public bool BloodflareSummon = false;
+
+        public bool TarragonSet = false;
+        public bool TarragonMagic = false;
+        public int TarragonMagicHitCount = 0;
+        public bool TarragonMelee = false;
+        public bool TarragonRogue = false;
+        public bool TarragonRanged = false;
+        public bool TarragonSummon = false;
+
+        public bool AuricSet = false;
+        public bool AuricBoost = false;
+        public bool AuricMagic = false;
+        public bool AuricMelee = false;
+        public bool AuricRogue = false;
+        public bool AuricRanged = false;
+        public bool AuricSummon = false;
         public void ResetArmor()
         {
             victideSet = false;
@@ -63,6 +81,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             AncientGodSlayer = false;
             AncientSilvaSet = false;
             GodSlayerSet = false;
+            GodSlayerDash = false;
             GodSlayerMagic = false;
             GodSlayerMelee = false;
             GodSlayerRogue = false;
@@ -79,6 +98,19 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
             BloodflareRogue = false;
             BloodflareRanged = false;
             BloodflareSummon = false;
+            TarragonSet = false;
+            TarragonMagic = false;
+            TarragonMelee = false;
+            TarragonRogue = false;
+            TarragonRanged = false;
+            TarragonSummon = false;
+            AuricSet = false;
+            AuricBoost = false;
+            AuricMagic = false;
+            AuricMelee = false;
+            AuricRogue = false;
+            AuricRanged = false;
+            AuricSummon = false;
         }
         public void ArmorLifeRegen()
         {
@@ -97,12 +129,32 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 AncientAeroBonus.AncientAeroArmorBonus_PostUpdate(this, Player);
             if (GodSlayerRanged)
                 GodSlayerBonus.PostUpdate_Ranged(Player);
+            if (GodSlayerRogue)
+                GodSlayerBonus.Rogue_PostUpdate(Player);
+            if (GodSlayerSummon)
+                GodSlayerBonus.Summon_PostUpdate(Player);
+            if (SilvaSet)
+                SilvaBonus.Main_PostUpdate(this, Player);
             if (SilvaMelee)
                 SilvaBonus.PostUpdate_Melee(Player);
             if (BloodflareMagic)
                 BloodflareBonus.MagicShoot_PostUpdateMisc(Player);
             if (BloodflareRanged)
                 BloodflareBonus.RangedShoot_PostUpdateMisc(Player);
+            if (BloodflareSummon)
+                BloodflareBonus.Summon_PostUpdate(Player);
+            if (BloodflareRogue)
+                BloodflareBonus.Rogue_PostUpdate(Player);
+            if (TarragonSet)
+                TarragonBonus.Main_PostUpdate(Player);
+            if (TarragonMagic)
+                TarragonBonus.MagicShoot_PostUpdateMisc(Player);
+            if (TarragonRogue)
+                TarragonBonus.Rogue_PostUpdateMisc(Player);
+            if (TarragonSummon)
+                TarragonBonus.Summon_PostUpdateMisc(Player);
+            if (AuricBoost)
+                AuricBonus.Main_PostUpdate(Player);
         }
         public void ArmorModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -111,7 +163,7 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 if (GodSlayerRanged)
                     GodSlayerBonus.ModifyHitNPC_Ranged(Player, ref modifiers);
             }
-            else if (modifiers.DamageType.IsTrueMelee())
+            if (modifiers.DamageType.IsTrueMelee())
             {
                 if (SilvaMelee)
                     SilvaBonus.ModifyHitNPC_Melee(target, ref modifiers);
@@ -130,12 +182,19 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 if (GodSlayerMelee)
                     GodSlayerBonus.HitNPC_Melee(this, hit, target);
             }
-            else if (hit.DamageType.CountsAsClass(DamageClass.Magic))
+            if (hit.DamageType.CountsAsClass(DamageClass.Magic))
             {
                 if (SilvaMagic)
                     SilvaBonus.HitNPC_Magic(this, hit, target);
                 if (BloodflareMagic)
                     BloodflareBonus.MagicHit_OnHitNPC(this, hit, target);
+                if (TarragonMagic)
+                    TarragonBonus.Magic_OnHitNPC(this, hit, target);
+            }
+            if (hit.DamageType.CountsAsClass(DamageClass.Throwing))
+            {
+                if (BloodflareRogue)
+                    BloodflareBonus.RogueHit_OnHitNPC(this);
             }
         }
         public void ArmorOnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
@@ -147,24 +206,26 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 if (BloodflareMelee)
                     BloodflareBonus.MeleeHit_OnHitNPC(this, hit, target);
             }
-            else if (proj.DamageType.CountsAsClass(DamageClass.Melee))
+            if (proj.DamageType.CountsAsClass(DamageClass.Melee))
             {
                 if (ReaverMelee)
                     ReaverLegacyBonus.HitNPCWithProj_Melee(Player,proj, target);
             }
-            else if (proj.DamageType.CountsAsClass(DamageClass.Ranged))
+            if (proj.DamageType.CountsAsClass(DamageClass.Ranged))
             {
                 if (DesertProwler)
                     DesertProwlerBonus.DesertProwlerArmorBonus_OnHitNPCProj(this, Player, proj, target, hit, damageDone);
+                if (TarragonRanged)
+                    TarragonBonus.Ranged_OnHitNPCWithProj(this, proj, hit, target);
             }
-            else if (proj.DamageType.CountsAsClass(DamageClass.Magic))
+            if (proj.DamageType.CountsAsClass(DamageClass.Magic))
             {
                 if (ReaverMagic)
                     ReaverLegacyBonus.HitNPCWithProj_Magic(Player, proj, target);
                 if (GodSlayerMagic)
                     GodSlayerBonus.HitNPCWithProj_Magic(this, proj, hit, target);
             }
-            else if (proj.DamageType.CountsAsClass(DamageClass.Summon))
+            if (proj.DamageType.CountsAsClass(DamageClass.Summon))
             {
                 if (GodSlayerSummon)
                     GodSlayerBonus.HitNPCWithProj_Summon(this, proj, hit, target);
@@ -198,6 +259,8 @@ namespace CalamityInheritance.Core.GlobalInstance.Players
                 GodSlayerBonus.OnHurt_Magic(Player);
             if (GodSlayerMelee)
                 GodSlayerBonus.OnHurt_Melee(Player);
+            if (TarragonMelee)
+                TarragonBonus.Melee_Hurt(Player);
         }
     }
 }

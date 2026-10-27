@@ -5,6 +5,7 @@ using CalamityInheritance.Common.CalamityModCross;
 using CalamityInheritance.Content.BaseClass.Items;
 using CalamityInheritance.Content.Buff.Debuffs;
 using CalamityInheritance.Content.CDs;
+using CalamityInheritance.Content.Items.Accessories.Misc;
 using CalamityInheritance.Content.Items.Accessories.Restorative;
 using CalamityInheritance.Content.Particles;
 using CalamityInheritance.Content.Rarity;
@@ -70,6 +71,8 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
                 player.endurance += 0.10f;
                 player.moveSpeed += 0.20f;
             }
+            // 阴阳石
+            player.CI().AmidiasSpark = true;
             player.CI().FungalCarapaceHurt = true;
             // 炫彩凝胶
             if (MathF.Abs(player.velocity.X) < 0.05f && MathF.Abs(player.velocity.Y) < 0.05f)
@@ -86,8 +89,6 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
             player.buffImmune[BuffID.Chilled] = true;
             player.buffImmune[BuffID.Frostburn] = true;
             player.buffImmune[BuffID.Frostburn2] = true;
-            // 阴阳石
-            player.CI().AmidiasSpark = true;
             player.CI().HurtHeal += 0.1f;
         }
         public override void UpdateVanity(Player player)
@@ -172,11 +173,11 @@ namespace CalamityInheritance.Content.Items.Accessories.Defense
         }
         public static void TheSponge_Hurt(Player player, bool broken, in Player.HurtInfo info)
         {
-            int numParticles = Main.rand.Next(24, 28) + (broken ? 16 : 0);
+            int numParticles = Main.rand.Next(24, 28) + (broken ? 32 : 0);
             for (int i = 0; i < numParticles; i++)
             {
-                float maxVelocity = 36f;
-                Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(8f, maxVelocity);
+                float maxVelocity = broken ? 48f : 24f;
+                Vector2 velocity = Main.rand.NextVector2CircularEdge(1f, 1f) * Main.rand.NextFloat(0, maxVelocity);
                 velocity.X += 5f * info.HitDirection;
 
                 float scale = Main.rand.NextFloat(4f, 7f);

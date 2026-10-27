@@ -1,8 +1,11 @@
-﻿using CalamityInheritance.Content.Projectiles.Armor.Magic;
+﻿using CalamityInheritance.Common.Blance;
+using CalamityInheritance.Content.Items.Weapons.Summon.Normal.Worm;
+using CalamityInheritance.Content.Projectiles.Armor.Magic;
 using CalamityInheritance.Content.Projectiles.Armor.Melee;
 using CalamityInheritance.Content.Projectiles.Armor.Ranged;
 using CalamityInheritance.Content.Projectiles.Armor.Summon;
 using CalamityInheritance.Content.Projectiles.Heals;
+using CalamityInheritance.Content.Projectiles.Summon.Normal.Worm;
 using CalamityInheritance.Core.GlobalInstance.Players;
 using CalamityInheritance.Core.Utils;
 using LAP.Core.Utilities;
@@ -16,14 +19,25 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
 {
     public class GodSlayerBonus
     {
+        public static void Summon_PostUpdate(Player player)
+        {
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (player.ownedProjectileCounts[ProjectileType<DOGworm_Auric>()] < 1)
+                {
+                    ModItem item = ItemLoader.GetItem(ItemType<StaffofDOG>());
+                    int p = Projectile.NewProjectile(player.GetSource_ItemUse(item.Item), player.Center + new Vector2(600, 300), Vector2.UnitX, ProjectileType<DOGworm_Auric>(), StaffofDOG.BaseDamage, 1, player.whoAmI);
+                    Main.projectile[p].originalDamage = StaffofDOG.BaseDamage;
+                }
+            }
+        }
         public static void HitNPCWithProj_Magic(CIPlayer player, Projectile proj, NPC.HitInfo hit, NPC target)
         {
             if (player.Player.whoAmI != Main.myPlayer)
                 return;
             if (!player.HasCount("GodSlayerMagicProj"))
             {
-                int weaponDamage = hit.SourceDamage;
-                int finalDamage = 400 + weaponDamage / 4;
+                int finalDamage = player.Player.GetIntDamage<MagicDamageClass>(CIArmorBlance.GodSlayerMagicFire(player.Player));
                 int projectileTypes = ProjectileType<GodSlayerOrb>();
                 float randomAngleOffset = (float)(Main.rand.NextFloat(MathHelper.TwoPi));
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
@@ -42,7 +56,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
             if (!player.HasCount("GodSlayerSummonProj"))
             {
                 int weaponDamage = hit.SourceDamage;
-                int finalDamage = 800 + weaponDamage / 2;
+                int finalDamage = player.Player.GetIntDamage<SummonDamageClass>(CIArmorBlance.GodSlayerSummonFire(player.Player));
                 int projectileTypes = ProjectileType<GodSlayerPhantom>();
                 float randomAngleOffset = (float)(Main.rand.NextDouble() * 2 * MathHelper.Pi);
                 Vector2 direction = new((float)Math.Cos(randomAngleOffset), (float)Math.Sin(randomAngleOffset));
@@ -57,7 +71,7 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
                 return;
             if (!player.HasCount("GodSlayerMeleeProj"))
             {
-                int finalDamage = (int)(500 + hit.SourceDamage / 2f);
+                int finalDamage = player.Player.GetIntDamage<MeleeDamageClass>(CIArmorBlance.GodSlayerMeleeDart(player.Player));
                 Vector2 getSpwanPos = player.Player.Center;
                 Vector2 velocity = Vector2.Zero;
                 Projectile.NewProjectile(player.Player.GetSource_FromThis(), getSpwanPos, velocity * 4f, ProjectileType<GodslayerDartMount>(), finalDamage, 0f, player.Player.whoAmI);
@@ -70,10 +84,9 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
                 return;
             if (!player.CI().HasCount("GodSlayerRangedProj"))
             {
-                int damage = player.CalcIntDamage<RangedDamageClass>(player.ActiveItem().damage);
-                int shrapnelRoundDamage = CIUtils.DamageSoftCap(damage * 2, 1500);
+                int damage = player.GetIntDamage<MagicDamageClass>(CIArmorBlance.GodSlayerRangedProj(player));
                 Vector2 fireVel = player.GetPlayerToMouseVector2();
-                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, fireVel * 12.5f, ProjectileType<GodSlayerShrapnelRound>(), shrapnelRoundDamage, 2f, player.whoAmI);
+                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, fireVel * 12.5f, ProjectileType<GodSlayerShrapnelRound>(), damage, 2f, player.whoAmI);
                 player.CI().AddCount("GodSlayerRangedProj", 120);
             }
         }
@@ -92,7 +105,19 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorBonus
         {
             SoundEngine.PlaySound(SoundID.Item73, player.Center);
             if (player.whoAmI == Main.myPlayer)
-                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<GodSlayerBlaze>(), 1200, 1f, player.whoAmI, 0f, 0f);
+            {
+                int damage = player.GetIntDamage<MagicDamageClass>(CIArmorBlance.GodSlayerMagicHurtBlast(player));
+                Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, Vector2.Zero, ProjectileType<GodSlayerBlaze>(), damage, 1f, player.whoAmI, 0f, 0f);
+            }
+        }
+        public static void Rogue_PostUpdate(Player player)
+        {
+            if (player.statLife >= player.statLifeMax2 * 0.5f)
+            {
+                player.GetDamage<ThrowingDamageClass>() += 0.1f;
+                player.GetCritChance<ThrowingDamageClass>() += 10;
+                player.GetAttackSpeed<ThrowingDamageClass>() += 0.1f;
+            }
         }
         public static void OnHurt_Melee(Player player)
         {

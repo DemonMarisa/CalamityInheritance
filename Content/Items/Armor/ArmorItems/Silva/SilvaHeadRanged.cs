@@ -34,10 +34,6 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.Silva
             player.CI().SilvaReborn = true;
             player.CI().SilvaRanged = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (player.HeldItem.useTime > 3 && player.HeldItem.DamageType.CountsAsClass<RangedDamageClass>())
-                player.GetAttackSpeed<RangedDamageClass>() += 0.1f;
-            if (player.HasCD<SilvaReviveCD>())
-                player.GetDamage<RangedDamageClass>() += 0.40f;
         }
 
         public override void UpdateEquip(Player player)

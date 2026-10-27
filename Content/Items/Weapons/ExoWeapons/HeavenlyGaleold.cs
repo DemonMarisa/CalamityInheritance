@@ -44,12 +44,12 @@ namespace CalamityInheritance.Content.Items.Weapons.ExoWeapons
 
         public override void SetDefaults()
         {
-            Item.damage = 208;
+            Item.damage = 708;
             Item.DamageType = DamageClass.Ranged;
             Item.width = 46;
             Item.height = 98;
-            Item.useTime = 9;
-            Item.useAnimation = 9;
+            Item.useTime = 11;
+            Item.useAnimation = 11;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 4f;

@@ -94,7 +94,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
         #region 发射星流水晶
         public void FireCrystal(Player player, CIPlayer usPlayer, Vector2 mouseToPlayer)
         {
-            if (player.HeldItem.ModItem is not null && player.HeldItem.ModItem is CIExoWeapon exoWeapon && exoWeapon.UseAlt)
+            if (player.HeldItem.ModItem is not null && player.HeldItem.ModItem is CIExoWeapon exoWeapon && exoWeapon.UseAlt && Projectile.IsLocalPlayer())
             {
                 Vector2 playerToMouseVec = LAPUtilities.GetVector2(Owner.Center, player.LocalMouseWorld());
                 float warpDist = Main.rand.NextFloat(60f, 120f);
@@ -114,7 +114,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
             bool isLoreExo = player.HeldItem.ModItem is not null && player.HeldItem.ModItem is CIExoWeapon exoWeapon && exoWeapon.UseAlt;
             SoundStyle leftClick = isLoreExo ? CISounds.ExoFlameLeft : CISoundID.SoundFlamethrower;
 
-            if (UseDelay == 0)
+            if (UseDelay == 0 && Projectile.IsLocalPlayer())
             {
                 SoundEngine.PlaySound(leftClick, Projectile.Center);
                 Vector2 offset = new Vector2(Xoffset, 0).RotatedBy(Projectile.rotation);
@@ -128,7 +128,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
                 UseDelay = leftUseCD;
                 BombCounts++;
             }
-            if (BombCounts >= 5)
+            if (BombCounts >= 5 && Projectile.IsLocalPlayer())
             {
                 SoundEngine.PlaySound(leftClick, Projectile.Center);
                 for (int i = 0; i < 2; i++)
@@ -154,7 +154,7 @@ namespace CalamityInheritance.Content.Projectiles.ExoWeapons
         public void RightFire(ref float UseCounter, float firefire, Vector2 mouseToPlayer, Player player)
         {
             rightUseCD = (int)(25 / Owner.GetWeaponAttackSpeed(Owner.HeldItem));
-            if (UseDelay == 0)
+            if (UseDelay == 0 && Projectile.IsLocalPlayer())
             {
                 bool isLoreExo = player.HeldItem.ModItem is not null && player.HeldItem.ModItem is CIExoWeapon exoWeapon && exoWeapon.UseAlt;
                 SoundStyle rightClick = isLoreExo ? CISounds.ExoFlameRight : CISoundID.SoundFlamethrower;

@@ -192,3 +192,18 @@ BloodflareBloodFrenzy: {
 	// DisplayName: Bloodflare Blood Frenzy
 	// Description: Mods.CalamityInheritance.DamageBuff.BloodflareBloodFrenzy.Description
 }
+
+TarragonCloak: {
+	// DisplayName: Tarragon Cloak
+	// Description: Mods.CalamityInheritance.DamageBuff.TarragonCloak.Description
+}
+
+TarraLife: {
+	// DisplayName: Tarra Life
+	// Description: Mods.CalamityInheritance.DamageBuff.TarraLife.Description
+}
+
+TarragonImmunity: {
+	// DisplayName: Tarragon Immunity
+	// Description: Mods.CalamityInheritance.DamageBuff.TarragonImmunity.Description
+}

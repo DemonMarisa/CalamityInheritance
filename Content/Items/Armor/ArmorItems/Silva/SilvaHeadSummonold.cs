@@ -44,26 +44,8 @@ namespace CalamityInheritance.Content.Items.Armor.ArmorItems.Silva
             player.CI().SilvaReborn = true;
             player.CI().SilvaSummon = true;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            if (player.whoAmI == Main.myPlayer)
-            {
-                var source = player.GetSource_ItemUse(Item);
-                if (player.FindBuffIndex(BuffType<SilvaCrystalBuff>()) == -1)
-                {
-                    player.AddBuff(BuffType<SilvaCrystalBuff>(), 2, true);
-                }
-                if (player.ownedProjectileCounts[ProjectileType<SilvaCrystal>()] < 1)
-                {
-                    var damage = (int)player.GetTotalDamage<SummonDamageClass>().ApplyTo(10000);
-
-                    var p = Projectile.NewProjectile(source, player.Center.X, player.Center.Y, 0f, -1f, ProjectileType<SilvaCrystal>(), damage, 0f, Main.myPlayer, -20f, 0f);
-                    if (Main.projectile.IndexInRange(p))
-                        Main.projectile[p].originalDamage = 10000;
-                }
-            }
             player.GetDamage<SummonDamageClass>() += 0.75f;
             player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += 0.15f;
-            if (player.HasCD<SilvaReviveCD>())
-                player.GetDamage<ThrowingDamageClass>() *= 1.10f;
         }
 
         public override void UpdateEquip(Player player)
