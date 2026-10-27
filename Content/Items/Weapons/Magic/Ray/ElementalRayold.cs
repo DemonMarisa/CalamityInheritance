@@ -58,7 +58,7 @@ namespace CalamityInheritance.Content.Items.Weapons.Magic.Ray
             CreateRecipe().
                 AddIngredient<TerraRay>().
                 AddIngredient(ItemID.LunarBar, 5).
-                AddIngredient<GalacticaSingularity>(5).
+                //AddIngredient<GalacticaSingularity>(5).
                 AddTile(TileID.LunarCraftingStation).
                 Register();
         }
